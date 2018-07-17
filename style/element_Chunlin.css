@@ -24,3 +24,9 @@
 	width: 100%;
 	/*border: 0.5px dashed #ddd;*/
 }
+
+
+@media (max-width: 1024px) {
+	.chunlin_pic003--width{	width: 50% ;left:20%;}
+
+}
