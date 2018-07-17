@@ -1,0 +1,418 @@
+ @import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
+
+*{
+	position: relative;
+	box-sizing: border-box;
+	font-family: 'Noto Sans TC';
+}
+
+
+body{
+
+}
+
+
+
+
+/*-----------------------------------linkblock setup*/
+
+.container{
+	width: 1170px;
+	height: 100%;/*--------------why 0px*/
+	margin: 0px auto;/*----------why  0px*/
+	padding: 0 16px;
+	/*border: 1px dashed #ddd;*/
+}
+
+.row{
+	margin-left: -15px;
+	margin-right: -15px;
+}
+.row:after{
+	content: "";
+	display: block;
+	clear: both;
+	height: 0px;
+	visibility: hidden;
+	margin: 
+}
+.col-1-2{
+	float: left;
+	width: 50%;
+	/*border: 0.5px dashed #ddd;*/
+	padding: 0 15px;
+}
+.col-1-3{
+	float: left;
+	width: 33.33333%;
+	/*border: 0.5px dashed #ddd;*/
+	padding: 0 15px;
+}
+
+.col-2-3{
+	float: left;
+	width: 66.6666666666%;
+	/*border: 0.5px dashed #ddd;*/
+	padding: 0 15px;
+}
+
+.col-1-4{
+	float: left;
+	width: 25%;
+	/*border: 0.5px dashed #ddd;*/
+	padding: 0 15px;
+}
+.col-1-5{
+	float: left;
+	width: 20%;
+	/*border: 0.5px dashed #ddd;*/
+	padding: 0 15px;
+}
+.col-1-6{
+	float: left;
+	width: 16.6666667%;
+	/*border: 0.5px dashed #ddd;*/
+	padding: 0 15px;
+}
+
+
+.col-1-12{
+	float: left;
+	width: 8.333333333%;
+	border: 0.5px dashed #ddd;
+	padding: 0 15px;
+}
+
+.col-7-12{
+	float: left;
+	width: 58.333333333333333333333333333333%;
+	/*border: 0.5px dashed #ddd;*/
+	padding: 0 15px;
+}
+
+.col-5-12{
+	float: left;
+	width: 41.666666666666666666666666666667%;
+	/*border: 0.5px dashed #ddd;*/
+	padding: 0 15px;
+}
+
+
+
+/*---------------------------------------------gulidline*/
+
+.space80{
+	padding: 80px;
+	/*border: 0.5px dashed #ddd;*/
+}
+.space40{
+	padding: 40px;
+	/*border: 0.5px dashed #ddd;*/
+}
+.space20{
+	padding: 20px;
+	/*border: 0.5px dashed #ddd;*/
+}
+.space10{
+	padding: 10px;
+	/*border: 0.5px dashed #ddd;*/
+}
+
+
+/*
+Noto Sans TC black
+Noto Sans TC medium
+Noto Sans TC regular
+Noto Sans TC light
+Noto Sans TC thin
+*/
+
+
+h1{
+	font-size: 30px;
+	font-family: 'Noto Sans TC';
+	font-style: normal;
+	font-weight:700;
+    color: #3e3322;
+	letter-spacing:3.4px;
+	line-height:48px;
+	margin: 15px 0;	
+}
+
+
+
+
+
+h2{
+	font-family: 'Noto Sans TC';
+	font-size: 25px;
+	color: #3e3322;
+	letter-spacing:3.4px ;
+	line-height:40px;
+	/*font-weight:900;*/
+	margin: 0;
+}
+
+h3{
+	font-size: 20px;
+	font-family: 'Noto Sans TC';
+	color: #3e3322;
+	letter-spacing:2.4px ;
+	line-height:28px;
+	/*margin: 0;*/
+}
+
+
+
+
+
+
+
+
+h4{
+	font-size: 16px;
+	font-family: 'Noto Sans TC Regular', sans-serif;
+	color: #3e3322;
+	letter-spacing:1.3px ;
+	line-height:24px;
+	/*margin: 0;*/
+}
+
+.bartext{
+	font-size: 15px;
+	font-family: 'Noto Sans TC Regular', sans-serif;
+	font-weight:200;
+	color: #4d4d4d;
+	letter-spacing:5px ;
+}
+
+.footertext{
+	font-size: 15px;
+	font-family: 'Noto Sans TC Regular', sans-serif;
+	color: #fff;
+	letter-spacing:5px ;
+	font-weight:200;
+}
+
+/*footer*/
+.textsm{
+	font-size: 13px;
+	letter-spacing:3px ;
+	line-height:35px;
+	color: #ddd;
+	transform: translate(-50%,-50%);
+
+	transform: scale(1.1);
+}
+
+
+.sstext{
+	font-size: 12px;
+	font-family: 'Noto Sans TC Regular', sans-serif;
+	color: #3e3222;
+	letter-spacing:5px ;
+	position: relative;
+}
+
+
+p{
+	font-size: 15px;
+	font-family: 'Noto Sans TC Regular', sans-serif;
+	font-weight:100;
+	/*font-weight: bold;*/
+	color: #666;
+	letter-spacing:1.2px ;
+	line-height:21px;
+	margin: 15px 0;	
+}
+
+.btn{
+	display: inline-block;
+	padding: 10px 40px;
+	font-size: 15px;
+	font-family: 'Noto Sans TC Regular', sans-serif;
+	color: #231d13;
+	letter-spacing:4px ;
+	border: 1px solid #231d13;
+	border-radius: 3px;
+	transition: all 0.5s;
+}
+
+.btn:hover{
+	color: #fff;
+	border: 1px solid #6e753d;
+	background-color: #6e753d;
+}
+
+.down{
+	position: absolute;
+	bottom: 0px;
+}
+.btnblack{
+	color: #fff;
+	letter-spacing:4px ;
+	border: 1px solid #fff;
+}
+
+.btnblack:hover{
+	color: #6e753d;
+	border: 1px solid #fff;
+	background-color: #fff;
+}
+
+.titleDividers{
+	margin:12px 0 15px 0;
+	height: 6px;
+	width:  65px;
+	background-color: #3e3322;
+}
+
+
+footer{
+	background-color: #231d13;
+	/*background-color: #aaa;*/
+	padding: 40px;
+}
+
+..{
+	position: absolute;
+	top: 0;
+	position: relative;
+}
+
+
+/*---------------------------------------------custom*/
+
+
+
+/*for some element*/
+
+.guildtitle{
+	transform: translateY(-50%); 
+	position: absolute;
+	right: 110px;
+	top: 50%;
+}
+
+.listicon{
+	height: 13px;
+	width: 13px;
+	transform: rotateZ(45deg) translateY(-50%); 
+	background-color: #4d4d4d;
+	display: block;
+	position: absolute;
+	left: -25px;
+	top: 50%;
+}
+
+.box{
+	height: 50px;
+	width: 90px;
+	margin-bottom: 30px;
+	border-radius: 5px;
+}
+.boxtext{
+	position: absolute;
+	top:50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	font-size: 15px;
+	color: #444;
+}
+
+
+.gameword{
+	transform: translate(20px,15px);
+}
+
+
+.fixed_bg{
+	background-size: cover;
+	background-repeat: :no-repeat;
+	background-position: 0px 20%;
+	background-color: :raba(0,0,0,0);
+	background-attachment: fixed;
+	min-width: 1241px;
+	left: 0px;
+	/*width: 1240px;*/
+	height: 400px;
+}
+
+/*<div  style="background-size: cover; background-repeat: no-repeat; background-position: 0px 20%;
+ background-color: rgba(0, 0, 0, 0);
+  background-image: url(picture/visionpic.jpg); 
+  background-attachment: fixed; 
+  min-width: 1241px; left: 0px; width: 1240px;">
+	
+</div>*/
+
+
+
+/*col style*/
+
+.col0padding{
+	padding: 0px;
+}
+
+.coldashed{
+	border: 0.5px dashed #ddd;
+}
+
+.colback{
+	display: inline-block;
+	height: 70px;
+	width: 70px;
+	background-color: #ddd;
+}
+
+
+/*font style*/
+
+.center{
+	text-align:center;
+}
+
+.right{
+	text-align:right;
+}
+
+.boxcenter{
+	position: absolute;
+	top: 50%;
+	right: 50%;
+	transform: translate(50%,-50%);
+	color: #555;
+	letter-spacing:5px ;
+	line-height:48px;
+}
+
+.fontwhite{
+	color:#FFF;
+}
+
+.fontblack{
+	color: #444;
+}
+
+
+/*line*/
+
+
+.footerline{
+padding-left: 65px;
+border-left: 1px solid #888;
+}
+
+.underline{
+	border-bottom: 1px solid #444;
+	padding-bottom: 40px;
+}
+
+
+
+
+
+
+
+
+

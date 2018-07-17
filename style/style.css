@@ -32,9 +32,6 @@ ul{
         padding: 0 16px;
     }
 }
-
-
-
 .row{
 	margin-left: -8px;
 	margin-right: -8px;
@@ -46,88 +43,83 @@ ul{
 	height: 0px;
 	visibility: hidden;
 }
-.col-1-2{
+.col-1-2,.col-1-3,.col-2-3,.col-1-4,.col-1-5,.col-1-6,.col-5-6,.col-1-12,.col-7-12,.col-5-12,.col-11-12{
 	float: left;
-	width: 50%;
-	/*border: 0.5px dashed #ddd;*/
 	padding: 0 8px;
+}
+.col-1-2{
+	width: 50%;
 }
 .col-1-3{
-	float: left;
-	width: 33.33333%;
-	/*border: 0.5px dashed #ddd;*/
-	padding: 0 8px;
+	width: 33.3333333%;
 }
-
 .col-2-3{
-	float: left;
-	width: 66.6666666666%;
-	/*border: 0.5px dashed #ddd;*/
-	padding: 0 8px;
+	width: 66.6666666%;
 }
-
 .col-1-4{
-	float: left;
 	width: 25%;
-	/*border: 0.5px dashed #ddd;*/
-	padding: 0 8px;
 }
 .col-1-5{
-	float: left;
 	width: 20%;
-	/*border: 0.5px dashed #ddd;*/
-	padding: 0 8px;
 }
 .col-1-6{
-	float: left;
-	width: 16.6666667%;
-	/*border: 0.5px dashed #ddd;*/
-	padding: 0 8px;
+	width: 16.6666666%;
+}
+.col-5-6{
+	width: 83.3333333%;
 }
 .col-1-12{
-	float: left;
-	width: 8.333333333%;
-	border: 0.5px dashed #ddd;
-	padding: 0 8px;
+	width: 8.33333333%;
 }
 .col-7-12{
-	float: left;
-	width: 58.333333333333333333333333333333%;
-	/*border: 0.5px dashed #ddd;*/
-	padding: 0 8px;
+	width: 58.3333333%;
 }
 .col-5-12{
-	float: left;
-	width: 41.666666666666666666666666666667%;
-	/*border: 0.5px dashed #ddd;*/
-	padding: 0 8px;
+	width: 41.6666666%;
+}
+.col-11-12{
+	width: 91.6666666%;
 }
 
+
+@media (max-width: 1024px) {
+	.col-md-1-1{	width: 100%;}
+	.col-md-1-2{	width: 50%;}
+	.col-md-1-3{	width: 33.33333333%;}
+	.md-hidden{		visibility: hidden; height: 0;}
+}
+
+
+@media (max-width: 768px) {
+	.col-sm-1-1{	width: 100%;}
+	.col-sm-1-2{	width: 50%;}
+	.col-sm-1-3{	width: 33.33333333%;}
+	.sm-hidden{		visibility: hidden; height: 0;}
+}
+
+
+@media (max-width: 480px) {
+	.col-xs-1-1{	width: 100%;}
+	.col-xs-1-2{	width: 50%;}
+	.col-xs-1-3{	width: 33.33333333%;}
+	.xs-hidden{		visibility: hidden; height: 0;}
+}
 
 
 
 
 /*----------------------------------------------------Modifier tool*/
 
-.space64{
-	padding: 64px;
-	/*border: 0.5px dashed #ddd;*/
-}
-.space32{
-	padding: 32px;
-	/*border: 0.5px dashed #ddd;*/
-}
-.space16{
-	padding: 16px;
-	/*border: 0.5px dashed #ddd;*/
-}
-.space8{
-	padding: 8px;
-	/*border: 0.5px dashed #ddd;*/
-}
-.dashed {
-	border: 0.5px dashed #ddd;
-}
+.space64{	padding-top: 128px;}
+.space32{	padding-top: 64px;}
+.space16{	padding-top: 32px;}
+.space8 {	padding-top: 16px;}
+
+.marginleft{	margin-left: 30px; }
+.marginright{	margin-right: 30px; }
+
+.dashed {	border: 0.5px dashed #ddd;}
+
 .u-cf:after{
 	content:"";
 	display: block;
@@ -141,10 +133,20 @@ ul{
 
 h1{
 	font-size: 32px;
-    color: #444;
-	letter-spacing:3.4px;
+    color: #555;
+	letter-spacing:1.6px;
 	line-height:48px;
 	margin: 15px 0;	
+	font-weight: 500;
+	margin: 0;
+}
+h2{
+	font-size: 20px;
+	font-weight: 500;
+    color: #555;
+	letter-spacing:2.4px;
+	line-height:32px;
+	margin: 24px 0;	
 }
 h3{
 	font-size: 16px;
@@ -152,14 +154,17 @@ h3{
     color: #555;
 	letter-spacing:1.3px;
 	line-height:28px;
-	margin: 16px 0;	
+	margin: 24px 0;	
 }
 p{
 	font-size: 14px;
 	color: #555;
-	letter-spacing:1.1px ;
-	line-height:21px;
+	letter-spacing:0.8px ;
+	line-height:25px;
 	margin: 16px 0;	
+}
+.p--lineup{
+	line-height:35px;
 }
 .btn{
 	display: inline-block;
@@ -177,7 +182,6 @@ p{
 	border: 1px solid #6e753d;
 	background-color: #6e753d;
 }
-
 
 /*---------------------------------------------------------Module*/
 
@@ -218,35 +222,39 @@ p{
 	z-index: 100;
 	left: 12%;
 }
-@media only screen and (max-width: 1850px) {
-    .sidebar{
-        left: 10%;
-    }
-}
-@media only screen and (max-width: 1790px) {
-    .sidebar{
-        left: 8%;
-    }
-}
-@media only screen and (max-width: 1700px) {
-    .sidebar{
-        left: 5%;
-    }
-}
-@media only screen and (max-width: 1530px) {
-    .sidebar{
-        left: 20px;
-    }
-}
 .sidebar .block{
 	-webkit-writing-mode: vertical-rl;
 	writing-mode: vertical-rl;
 	border: #ccc solid 1px;
 	padding: 16px 8px 16px 8px;
-	margin: 0px 0 40px 0;
+	margin: 16px 0 40px 0;
 	font-size: 15px
 	letter-spacing: 5px;
 }
+@media only screen and (max-width: 1850px) {
+    .sidebar{        left: 10%;    }
+}
+@media only screen and (max-width: 1790px) {
+    .sidebar{        left: 8%;    }
+}
+@media only screen and (max-width: 1700px) {
+    .sidebar{        left: 5%;    }
+}
+@media only screen and (max-width: 1530px) {
+    .sidebar{        left: 20px;    }
+}
+@media only screen and (max-width: 1336px) {
+    .sidebar{        left: 0px;    }
+    .sidebar .block{
+	border: #ccc solid 0px;
+	color:#fff;
+	background-color: rgba(5, 5, 5, 0.7);;
+	border-radius: 0 4px 0 4px;
+	margin: 0px 0 28px 0;
+	font-size: 14px
+	}
+}
+
 /*-----------------------------------Picblock*/
 .picblock{
 	height: 360px;
