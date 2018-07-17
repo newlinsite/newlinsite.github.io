@@ -275,8 +275,7 @@ p{
 	height: 360px;
 	overflow:hidden;
 }
-
-.picblock--hov{
+.picblockhov{
 	height: 100%;
 	width: 100%;
 	background-color: #f45;
@@ -287,11 +286,10 @@ p{
 	transition: .5s;
 	transform: scale(10);
 }
-.picblock--hov:hover{
+.picblockhov:hover{
 	opacity: 1;
 	transform: scale(1.1);
 }
-
 .picblock--lightshort{
 	height: 240px;
 }
