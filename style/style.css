@@ -214,6 +214,14 @@ p{
 	float: left;
 	margin-left: 64px;
 	font-size: 14px;
+	color: #222;
+}
+.menu li a{
+	color: #888;
+	transition: 0.4s;
+}
+.menu li a:hover{
+	color: #111;
 }
 
 /*-----------------------------------sidebar*/
@@ -261,7 +269,7 @@ p{
 	border: #ccc solid 0px;
 	color:#fff;
 	background-color: rgba(5, 5, 5, 0.7);;
-	border-radius: 0 4px 0 4px;
+	border-radius: 0 4px 4px 0;
 	margin: 0px 0 28px 0;
 	padding: 12px 6px 12px 6px;
 	font-size: 13px;
@@ -269,6 +277,15 @@ p{
 	}
 }
 
+@media only screen and (max-width: 768px) {
+    .sidebar .block{
+	font-size: 12px;
+	letter-spacing: 1px;
+	margin: 0px 0 15px 0;
+	padding: 12px 4px 12px 4px;
+	background-color: rgba(5, 5, 5, 0.65);;
+	}
+}
 
 /*------------------------------------Picblock*/
 .picblock{
