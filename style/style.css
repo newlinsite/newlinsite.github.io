@@ -295,7 +295,7 @@ p{
 	height: 360px;
 	overflow:hidden;
 }
-.picblockhov{
+.picblock-hov{
 	height: 100%;
 	width: 100%;
 	position: absolute;
@@ -305,17 +305,17 @@ p{
 	transition: .5s;
 	transform: scale(1);
 }
-.picblockhov:hover{
+.picblock-hov:hover{
 	opacity: 1;
 	transform: scale(1.02);
 }
-.picblockhov_wordbox{
+.picblock-hov_wordbox{
 	margin: 10px;
 	padding: 25px;
 	height: 340px;
 	background-color: rgba(255, 255, 255, 0.4);
 }
-.picblockhov_word{
+.picblock-hov_word{
 	text-align:right;	
 	position: absolute;
 	bottom: 10px;
