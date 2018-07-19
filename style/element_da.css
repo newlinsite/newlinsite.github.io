@@ -1,0 +1,57 @@
+
+.work01{
+	background-image: url("../picture/004_da/001.png");
+	background-repeat: no-repeat;
+    background-position: center; 
+    background-size:contain;
+    height: 500px;
+}
+
+.gifbg{
+	background-color: #FBFBFB;
+	padding: 50px;
+}
+
+
+
+/*-------------------------for kashmir*/
+
+
+.work02{
+	background-image: url("../picture/005_kash/001.png");
+	background-repeat: no-repeat;
+    background-position: center; 
+    background-size:contain;
+    height: 500px;
+}
+
+@media (max-width: 768px) {
+	.pic_upper1{
+		position: relative;
+		top: -200px;
+	}
+	.pic_upper2{
+		position: relative;
+		top: -150px;
+	}
+	.pic_upper3{
+		position: relative;
+		top: -140px;
+	}
+
+}
+
+@media (max-width: 480px) {
+	.pic_upper1{
+		position: relative;
+		top: 0px;
+	}
+	.pic_upper2{
+		position: relative;
+		top: 0px;
+	}
+	.pic_upper3{
+		position: relative;
+		top: 0px;
+	}
+}

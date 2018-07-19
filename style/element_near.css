@@ -1,0 +1,53 @@
+.work01{
+	background-color: #ddd;
+	height: 568px;
+}
+
+.flowbox{
+	display: inline-block;
+	padding: 8px 32px 8px 32px;
+	margin: 16px 16px 16px 0;
+	border: 1px #888 solid;
+	border-radius: 4px;
+	font-size: 14px;
+	color: #555;
+	letter-spacing:0.8px ;
+	line-height:21px;
+}
+
+
+.work01{
+	background-image: url("../picture/003_near/001.png");
+	background-repeat: no-repeat;
+    background-position: center; 
+    background-size:cover;
+    /*height: 500px;*/
+}
+
+
+
+.gifpo{
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.gif_padding0{
+	padding: 0px;
+	margin: 0px;
+}
+
+
+
+.gifbg{
+	background-color: #EDEDED;
+	padding: 90px;
+}
+@media (max-width: 480px) {
+.gifbg{
+	background-color: #EDEDED;
+	padding: 0px;
+}
+}
+
+
+
