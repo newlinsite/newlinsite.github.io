@@ -61,6 +61,9 @@ ul{
 .col-1-4{
 	width: 25%;
 }
+.col-3-4{
+	width: 75%;
+}
 .col-1-5{
 	width: 20%;
 }
@@ -123,6 +126,10 @@ ul{
 }
 .marginright{	margin-right: 30px; }
 
+.padding0{
+	padding: 0px;
+	margin: 0px;
+}
 
 .dashed {	border: 0.5px dashed #ddd;}
 
@@ -313,7 +320,7 @@ p{
 	margin: 10px;
 	padding: 25px;
 	height: 340px;
-	background-color: rgba(255, 255, 255, 0.4);
+	background-color: rgba(255, 255, 255, 0.6);
 }
 .picblockhov_word{
 	text-align:right;	
@@ -326,7 +333,7 @@ p{
 	letter-spacing:1px;
 	line-height:0px;
 	font-size: 25px;
-	font-weight: 600;
+	font-weight: 700;
 }
 .picblock_p_box{
 	color: #333;
@@ -337,6 +344,10 @@ p{
 	border: 1px solid #666;
 	border-radius: 2px;
 	display: inline-block;
+}
+.p_box--bold{
+	font-weight: 900;
+	border: 1px solid #222;
 }
 .picblock--lightshort{
 	height: 240px;

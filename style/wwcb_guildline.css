@@ -8,10 +8,13 @@
 
 
 body{
-
+	
 }
 
-
+.style_text{
+	font-family: 'Segoe UI','Lucida Grande';
+	font-weight: 100;
+}
 
 
 /*-----------------------------------linkblock setup*/

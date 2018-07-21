@@ -9,18 +9,35 @@
 
 
 
+.work03{
+	background-image: url("../picture/000/003.svg");
+	background-repeat: no-repeat;
+    background-position: center; 
+    background-size:cover;
+}
 .work04{
 	background-image: url("../picture/000/004.png");
 	background-repeat: no-repeat;
     background-position: center; 
     background-size:cover;
-    /*height: 500px;*/
 }
-
 .work05{
-	background-image: url("../picture/000/005.png");
+	background-image: url("../picture/000/005.svg");
 	background-repeat: no-repeat;
     background-position: center; 
     background-size:cover;
-    /*height: 500px;*/
+}
+
+.work06{
+	background-image: url("../picture/000/006.png");
+	background-repeat: no-repeat;
+    background-position: center; 
+    background-size:cover;
+}
+
+.work07{
+	background-image: url("../picture/000/007.png");
+	background-repeat: no-repeat;
+    background-position: center; 
+    background-size:cover;
 }
