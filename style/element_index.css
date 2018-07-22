@@ -5,10 +5,12 @@
 	background-color: #ddd;
 }
 
-
-
-
-
+.work02{
+	background-image: url("../picture/000/002.png");
+	background-repeat: no-repeat;
+    background-position: center; 
+    background-size:cover;
+}
 .work03{
 	background-image: url("../picture/000/003.svg");
 	background-repeat: no-repeat;
