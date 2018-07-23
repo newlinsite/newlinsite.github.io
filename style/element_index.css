@@ -54,10 +54,12 @@
     background-size:cover;
 }
 
-
-
-
-
+.work09{
+	background-image: url("../picture/000/009.svg");
+	background-repeat: no-repeat;
+    background-position: center; 
+    background-size:cover;
+}
 
 .work10{
 	background-image: url("../picture/000/010.png");

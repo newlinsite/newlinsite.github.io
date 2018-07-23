@@ -1,0 +1,17 @@
+.pic002{
+	padding: 50px;
+}
+.pic014{
+	padding: 0px 200px;
+}
+.word010{
+	padding-top: 110px;
+}
+@media (max-width: 1024px) {
+	.word010{	padding-top: 15px}
+	.pic014{	padding: 0px 150px;}
+}
+@media (max-width: 480px) {
+	.pic002{	padding: 15px 0px;}
+	.pic014{	padding: 0px 0px;}
+}
