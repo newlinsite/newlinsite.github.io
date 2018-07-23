@@ -1,7 +1,13 @@
 .work01{
-	background-color: #ddd;
-	height: 568px;
+	background-image: url("../picture/001_wwcb/000.png");
+	background-repeat: no-repeat;
+    background-position: center; 
+    background-size:contain;
+    height: 500px;
+    /*margin-top: -60px;*/
+    /*background-color: #555;*/
 }
+
 
 .flowbox{
 	display: inline-block;

@@ -2,7 +2,10 @@
 	background-color: #FE8C8C;
 }
 .work01{
-	background-color: #ddd;
+	background-image: url("../picture/000/001.png");
+	background-repeat: no-repeat;
+    background-position: center; 
+    background-size:cover;
 }
 
 .work02{
@@ -56,3 +59,9 @@
 
 
 
+.work10{
+	background-image: url("../picture/000/010.png");
+	background-repeat: no-repeat;
+    background-position: center; 
+    background-size:cover;
+}

@@ -49,6 +49,9 @@ ul{
 .col-right{	
 	float: right;
 }
+.col-1-1{
+	width: 100%;
+}
 .col-1-2{
 	width: 50%;
 }
@@ -326,6 +329,9 @@ p{
 }
 .picblockhov_wordbox-1-2{
 	margin: 10px 12px 10px 12px;
+}
+.picblockhov_wordbox-1-3{
+	margin: 10px 15px;
 }
 
 .picblockhov_word{
