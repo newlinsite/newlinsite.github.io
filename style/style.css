@@ -255,9 +255,10 @@ p{
 	-webkit-writing-mode: vertical-rl;
 	writing-mode: vertical-rl;
 	border: #ccc solid 1px;
+	border-radius: 4px;
 	padding: 16px 8px 16px 8px;
 	margin: 16px 0 40px 0;
-	font-size: 15px;
+	font-size: 14px;
 	letter-spacing: 5px;
 	transition: .4s;
 }
@@ -266,7 +267,7 @@ p{
 	background-color: #fcfcfc;
 }
 .sidebar .now{
-	border: #999 solid 1px;
+	border: #888 solid 1px;
 }
 @media only screen and (max-width: 1850px) {
     .sidebar{        left: 10%;    }
@@ -306,6 +307,7 @@ p{
 .picblock{
 	height: 360px;
 	overflow:hidden;
+	border-radius: 4px;
 }
 .picblockhov{
 	height: 100%;
@@ -316,16 +318,18 @@ p{
 	opacity: 0;
 	transition: .5s;
 	transform: scale(1);
+
 }
 .picblockhov:hover{
-	opacity: 1;
+	opacity: .70;
 	transform: scale(1.02);
 }
 .picblockhov_wordbox{
 	margin: 10px;
 	padding: 25px;
 	height: 340px;
-	background-color: rgba(255, 255, 255, 0.6);
+	background-color: rgba(255, 255, 255, 0.75);
+	border-radius: 4px;
 }
 .picblockhov_wordbox-1-2{
 	margin: 10px 12px 10px 12px;
@@ -341,11 +345,11 @@ p{
 	right: 20px;
 }
 .picblock_h2{
-	color: #222;
-	letter-spacing:1px;
+	color: #333;
+	letter-spacing:0px;
 	line-height:0px;
-	font-size: 25px;
-	font-weight: 700;
+	font-size: 23px;
+	font-weight: 650;
 }
 .picblock_p_box{
 	color: #333;

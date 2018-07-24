@@ -41,7 +41,7 @@
 }
 
 .work07{
-	background-image: url("../picture/000/007.png");
+	background-image: url("../picture/000/007.svg");
 	background-repeat: no-repeat;
     background-position: center; 
     background-size:cover;
@@ -66,4 +66,23 @@
 	background-repeat: no-repeat;
     background-position: center; 
     background-size:cover;
+}
+
+
+.work_me{
+	background-image: url("../picture/000/me-1.png");
+	background-repeat: no-repeat;
+    background-position: center; 
+    /*background-size:cover;*/
+    background-attachment: fixed;
+}
+
+.work_me-1{
+	background-image: url("../picture/000/me-1.png");
+	/*background-repeat: no-repeat;*/
+    background-position: center; 
+    /*background-size:cover;*/
+    background-attachment: fixed;
+    height: 400px;
+
 }
