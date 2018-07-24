@@ -1,9 +1,18 @@
 .pic_ma_top{
-	margin-top: 16px;
+	margin-top: 4px;
 }
 
 
 .con--w{
-	max-width: 1000px;
+	max-width: 980px;
 
+}
+
+.row{
+	margin-left: -4px;
+	margin-right: -4px;
+}
+.col-1-1,.col-1-2,.col-1-3,.col-2-3,.col-1-4,.col-3-4,.col-1-5,.col-1-6,.col-5-6,.col-1-12,.col-7-12,.col-5-12,.col-11-12{
+	float: left;
+	padding: 0 4px;
 }
