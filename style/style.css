@@ -303,6 +303,44 @@ p{
 	background-color: rgba(5, 5, 5, 0.65);
 	}
 }
+
+
+/*------------------------------------footer*/
+
+footer{
+	height: 150px;
+	background-color: #f7f7f7;
+}
+
+.footer_last,.footer_next,.footer_top{
+	position: absolute;
+	transform: translateY(-50%);
+	top: 50%;
+	/*border:1px solid #999;*/
+	border-radius: 5px;
+	padding: 40px 40px;
+	color: #666;
+	font-size: 16px;
+	font-weight: 500;
+	display: inline-block;
+	/*background-color: #333;*/
+	/*opacity: .5;*/
+}
+.footer_last{
+	left: 0%;
+}
+
+.footer_next{
+	right: 0%;
+}
+.footer_top{
+	left: 50%;
+	transform: translate(-50% -50%);
+	font-weight: 200;
+}
+
+
+
 /*------------------------------------Picblock*/
 .picblock{
 	height: 360px;
