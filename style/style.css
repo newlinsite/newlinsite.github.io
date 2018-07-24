@@ -26,11 +26,7 @@ ul{
 	margin: 0px auto;/*----------why  0px*/
 	padding: 0 8px;
 }
-@media only screen and (max-width: 1200px) {
-    .container {
-        padding: 0 16px;
-    }
-}
+
 .row{
 	margin-left: -8px;
 	margin-right: -8px;
@@ -89,9 +85,12 @@ ul{
 	width: 91.6666666%;
 }
 
-
+@media only screen and (max-width: 1200px) {
+    .container { padding: 0 16px; max-width: 1024px; }
+}
 
 @media (max-width: 1024px) {
+	/*.container { padding: 0 16px; max-width: 768px; }*/
 	.col-md-right{	float: right;}
 	.col-md-1-1{	width: 100%;}
 	.col-md-1-2{	width: 50%;}
@@ -100,6 +99,7 @@ ul{
 	.md-hidden{		visibility: hidden; height: 0;}
 }
 @media (max-width: 768px) {
+	/*.container { padding: 0 16px; max-width: 480px; }*/
 	.col-sm-right{	float: right;}
 	.col-sm-1-1{	width: 100%;}
 	.col-sm-1-2{	width: 50%;}
