@@ -60,6 +60,12 @@
     background-position: center; 
     background-size:cover;
 }
+.work09-1{
+	position: absolute;
+	top: 16px;
+	left:16px; 
+	height: 35px;
+}
 
 .work10{
 	background-image: url("../picture/000/010.png");

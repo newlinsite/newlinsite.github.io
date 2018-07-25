@@ -348,6 +348,10 @@ footer{
 	overflow:hidden;
 	border-radius: 4px;
 }
+@media (max-width: 480px) {
+.picblock{height: 240px;}
+}
+
 .picblockhov{
 	height: 100%;
 	width: 100%;

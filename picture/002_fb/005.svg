@@ -1,156 +1,156 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 563.744 499.57">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 572.021 499.57">
   <defs>
     <style>
-      .cls-1 {
-        fill: #ffdb4f;
-        font-size: 25px;
-        font-family: Muli-Black, Muli;
-        font-weight: 800;
-        letter-spacing: 0.05em;
-      }
-
-      .cls-12, .cls-2 {
+      .cls-1, .cls-11 {
         fill: none;
       }
 
-      .cls-10, .cls-19, .cls-3 {
+      .cls-18, .cls-2, .cls-9 {
         fill: #717071;
         font-family: YuGothicUI-Regular, Yu Gothic UI;
       }
 
-      .cls-19, .cls-3 {
+      .cls-18, .cls-2 {
         font-size: 14px;
       }
 
-      .cls-3 {
+      .cls-2 {
         letter-spacing: 0.03em;
       }
 
-      .cls-4 {
+      .cls-3 {
         font-family: SegoeUI, Segoe UI;
       }
 
-      .cls-5 {
+      .cls-4 {
         fill: #fbd970;
       }
 
-      .cls-6 {
+      .cls-5 {
         fill: #e1e1da;
       }
 
-      .cls-7 {
+      .cls-6 {
         fill: #7c7a75;
       }
 
-      .cls-8, .cls-9 {
+      .cls-7, .cls-8 {
         fill: #9a9994;
       }
 
-      .cls-8 {
+      .cls-7 {
         opacity: 0.5;
       }
 
-      .cls-10 {
+      .cls-9 {
         font-size: 12px;
         letter-spacing: 0.08em;
       }
 
-      .cls-11 {
+      .cls-10 {
         font-family: MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI;
       }
 
-      .cls-12 {
+      .cls-11 {
         stroke: #ecd375;
         stroke-width: 2px;
       }
 
-      .cls-12, .cls-15, .cls-17 {
+      .cls-11, .cls-14, .cls-16 {
         stroke-miterlimit: 10;
       }
 
-      .cls-13 {
+      .cls-12 {
         fill: #ecd375;
       }
 
-      .cls-14 {
+      .cls-13 {
         fill: #f8d573;
       }
 
-      .cls-15 {
+      .cls-14 {
         fill: #b9b9b9;
       }
 
-      .cls-15, .cls-17 {
+      .cls-14, .cls-16 {
         stroke: #e7e4be;
         stroke-width: 0.79px;
       }
 
-      .cls-16 {
+      .cls-15 {
         fill: #a79f85;
         opacity: 0.8;
       }
 
-      .cls-17 {
+      .cls-16 {
         fill: #fff;
       }
 
-      .cls-18 {
+      .cls-17 {
         fill: #8c8e90;
       }
 
-      .cls-19 {
+      .cls-18 {
         letter-spacing: 0.1em;
+      }
+
+      .cls-19 {
+        fill: #ffdb4f;
+        font-size: 28px;
+        font-family: Muli-Black, Muli;
+        font-weight: 800;
       }
     </style>
   </defs>
   <g id="_005" data-name="005" transform="translate(-1075.256 -1389.43)">
-    <text id="_" data-name="[                                                 ]" class="cls-1" transform="translate(1179.7 1680.19)"><tspan x="0" y="0" xml:space="preserve">[                                                 ]</tspan></text>
-    <rect id="Rectangle_676" data-name="Rectangle 676" class="cls-2" width="294.591" height="60.291" transform="translate(1230.424 1656.836)"/>
-    <text id="隨後surface_以及ipad_pro_等附有鍵盤以及強大處理器具生產" data-name="隨後surface 以及ipad pro 等附有鍵盤以及強大處理器具生產" class="cls-3" transform="translate(1209.002 1664.924)"><tspan x="0" y="0">隨後</tspan><tspan class="cls-4" y="0">surface </tspan><tspan y="0">以及</tspan><tspan class="cls-4" y="0">ipad pro </tspan><tspan y="0">等附有鍵盤以及強大處理器具生產</tspan></text>
-    <text id="力的設備出現後筆記型電腦市場又在面臨一次考驗_" data-name="力的設備出現後筆記型電腦市場又在面臨一次考驗。" class="cls-3" transform="translate(1232.401 1693.203)"><tspan x="0" y="0">力的設備出現後筆記型電腦市場又在面臨一次考驗。</tspan></text>
-    <ellipse id="Ellipse_195" data-name="Ellipse 195" class="cls-5" cx="50.151" cy="50.151" rx="50.151" ry="50.151" transform="translate(1075.256 1483.775) rotate(-70.153)"/>
-    <ellipse id="Ellipse_196" data-name="Ellipse 196" class="cls-5" cx="50.151" cy="50.151" rx="50.151" ry="50.151" transform="translate(1288.966 1483.776) rotate(-70.153)"/>
-    <ellipse id="Ellipse_197" data-name="Ellipse 197" class="cls-5" cx="50.151" cy="50.151" rx="50.151" ry="50.151" transform="translate(1490.976 1483.777) rotate(-70.153)"/>
-    <path id="Path_876" data-name="Path 876" class="cls-6" d="M472.6,743.095a2.264,2.264,0,0,1-2.262,2.262H424.162a2.263,2.263,0,0,1-2.262-2.262V683.662a2.264,2.264,0,0,1,2.262-2.262h46.174a2.264,2.264,0,0,1,2.262,2.262Z" transform="translate(906.565 740.315)"/>
-    <path id="Path_877" data-name="Path 877" class="cls-6" d="M198.7,719.1a2.165,2.165,0,0,1-1.95,1.716h-42.9a2.09,2.09,0,0,1-1.95-1.716V691.648c0-.78,1.092-1.248,1.95-1.248h42.9c.936,0,1.95.468,1.95,1.248Z" transform="translate(965.976 738.334)"/>
-    <path id="Path_878" data-name="Path 878" class="cls-7" d="M197.018,718.139c0,.7-1.014.78-1.794.78h-38.53c-.78,0-1.794-.078-1.794-.78V693.492c0-.7,1.014-1.092,1.794-1.092h38.53c.78,0,1.794.312,1.794,1.092v24.647Z" transform="translate(965.316 737.894)"/>
-    <path id="Path_879" data-name="Path 879" class="cls-6" d="M197.918,747.261a1.6,1.6,0,0,1-1.638,1.638H153.538a1.6,1.6,0,0,1-1.638-1.638V731.038a1.6,1.6,0,0,1,1.638-1.638H196.28a1.6,1.6,0,0,1,1.638,1.638v16.223Z" transform="translate(965.976 729.753)"/>
-    <path id="Path_880" data-name="Path 880" class="cls-6" d="M195.173,731.2l11.621,16.457c0,.936-1.092,1.638-2.5,1.638H139.8c-1.326,0-2.5-.78-2.5-1.638L148.921,731.2" transform="translate(969.189 729.357)"/>
-    <path id="Path_881" data-name="Path 881" class="cls-8" d="M193.82,731.778l7.488,12.557c0,.7-.858,1.17-1.95,1.17H149.05c-1.092,0-1.95-.468-1.95-1.17l7.488-12.635" transform="translate(967.032 729.247)"/>
-    <path id="Path_882" data-name="Path 882" class="cls-6" d="M729.173,733.2l11.621,16.457c0,.936-1.092,1.638-2.5,1.638H673.8c-1.326,0-2.5-.78-2.5-1.638L682.921,733.2" transform="translate(851.688 728.917)"/>
-    <path id="Path_883" data-name="Path 883" class="cls-8" d="M727.82,733.778l7.488,12.557c0,.7-.858,1.17-1.95,1.17H683.05c-1.092,0-1.95-.468-1.95-1.17l7.488-12.635" transform="translate(849.531 728.807)"/>
-    <path id="Path_884" data-name="Path 884" class="cls-7" d="M470.358,732.346c0,1.092-.468,1.872-1.56,1.872H427.85a1.867,1.867,0,0,1-1.95-1.872v-45.94a2.068,2.068,0,0,1,1.95-2.106H468.8c1.092,0,1.56,1.014,1.56,2.106Z" transform="translate(905.686 739.677)"/>
-    <ellipse id="Ellipse_198" data-name="Ellipse 198" class="cls-9" cx="2.262" cy="2.262" rx="2.262" ry="2.262" transform="translate(1351.24 1477.95)"/>
-    <path id="Path_885" data-name="Path 885" class="cls-6" d="M729.068,704.845a1.688,1.688,0,0,1-1.17,2.028L685.78,717.636a1.689,1.689,0,0,1-2.028-1.17l-8.268-32.29a1.689,1.689,0,0,1,1.17-2.028l42.118-10.763a1.689,1.689,0,0,1,2.028,1.17Z" transform="translate(850.779 742.53)"/>
-    <path id="Path_886" data-name="Path 886" class="cls-7" d="M690.41,714.793c-.78.234-1.95-.078-2.184-.858l-7.332-28.859a2.081,2.081,0,0,1,1.482-2.028l36.736-9.359c.78-.234.858.624,1.092,1.4l7.332,28.858c.156.78.39,1.248-.39,1.482Z" transform="translate(849.581 742.02)"/>
+    <rect id="Rectangle_676" data-name="Rectangle 676" class="cls-1" width="294.591" height="60.291" transform="translate(1230.424 1656.836)"/>
+    <text id="隨後surface_以及ipad_pro_等附有鍵盤以及強大處理器具生產" data-name="隨後surface 以及ipad pro 等附有鍵盤以及強大處理器具生產" class="cls-2" transform="translate(1209.002 1664.924)"><tspan x="0" y="0">隨後</tspan><tspan class="cls-3" y="0">surface </tspan><tspan y="0">以及</tspan><tspan class="cls-3" y="0">ipad pro </tspan><tspan y="0">等附有鍵盤以及強大處理器具生產</tspan></text>
+    <text id="力的設備出現後筆記型電腦市場又在面臨一次考驗_" data-name="力的設備出現後筆記型電腦市場又在面臨一次考驗。" class="cls-2" transform="translate(1232.401 1693.203)"><tspan x="0" y="0">力的設備出現後筆記型電腦市場又在面臨一次考驗。</tspan></text>
+    <ellipse id="Ellipse_195" data-name="Ellipse 195" class="cls-4" cx="50.151" cy="50.151" rx="50.151" ry="50.151" transform="translate(1075.256 1483.775) rotate(-70.153)"/>
+    <ellipse id="Ellipse_196" data-name="Ellipse 196" class="cls-4" cx="50.151" cy="50.151" rx="50.151" ry="50.151" transform="translate(1288.966 1483.776) rotate(-70.153)"/>
+    <ellipse id="Ellipse_197" data-name="Ellipse 197" class="cls-4" cx="50.151" cy="50.151" rx="50.151" ry="50.151" transform="translate(1490.976 1483.777) rotate(-70.153)"/>
+    <path id="Path_876" data-name="Path 876" class="cls-5" d="M472.6,743.095a2.264,2.264,0,0,1-2.262,2.262H424.162a2.263,2.263,0,0,1-2.262-2.262V683.662a2.264,2.264,0,0,1,2.262-2.262h46.174a2.264,2.264,0,0,1,2.262,2.262Z" transform="translate(906.565 740.315)"/>
+    <path id="Path_877" data-name="Path 877" class="cls-5" d="M198.7,719.1a2.165,2.165,0,0,1-1.95,1.716h-42.9a2.09,2.09,0,0,1-1.95-1.716V691.648c0-.78,1.092-1.248,1.95-1.248h42.9c.936,0,1.95.468,1.95,1.248Z" transform="translate(965.976 738.334)"/>
+    <path id="Path_878" data-name="Path 878" class="cls-6" d="M197.018,718.139c0,.7-1.014.78-1.794.78h-38.53c-.78,0-1.794-.078-1.794-.78V693.492c0-.7,1.014-1.092,1.794-1.092h38.53c.78,0,1.794.312,1.794,1.092v24.647Z" transform="translate(965.316 737.894)"/>
+    <path id="Path_879" data-name="Path 879" class="cls-5" d="M197.918,747.261a1.6,1.6,0,0,1-1.638,1.638H153.538a1.6,1.6,0,0,1-1.638-1.638V731.038a1.6,1.6,0,0,1,1.638-1.638H196.28a1.6,1.6,0,0,1,1.638,1.638v16.223Z" transform="translate(965.976 729.753)"/>
+    <path id="Path_880" data-name="Path 880" class="cls-5" d="M195.173,731.2l11.621,16.457c0,.936-1.092,1.638-2.5,1.638H139.8c-1.326,0-2.5-.78-2.5-1.638L148.921,731.2" transform="translate(969.189 729.357)"/>
+    <path id="Path_881" data-name="Path 881" class="cls-7" d="M193.82,731.778l7.488,12.557c0,.7-.858,1.17-1.95,1.17H149.05c-1.092,0-1.95-.468-1.95-1.17l7.488-12.635" transform="translate(967.032 729.247)"/>
+    <path id="Path_882" data-name="Path 882" class="cls-5" d="M729.173,733.2l11.621,16.457c0,.936-1.092,1.638-2.5,1.638H673.8c-1.326,0-2.5-.78-2.5-1.638L682.921,733.2" transform="translate(851.688 728.917)"/>
+    <path id="Path_883" data-name="Path 883" class="cls-7" d="M727.82,733.778l7.488,12.557c0,.7-.858,1.17-1.95,1.17H683.05c-1.092,0-1.95-.468-1.95-1.17l7.488-12.635" transform="translate(849.531 728.807)"/>
+    <path id="Path_884" data-name="Path 884" class="cls-6" d="M470.358,732.346c0,1.092-.468,1.872-1.56,1.872H427.85a1.867,1.867,0,0,1-1.95-1.872v-45.94a2.068,2.068,0,0,1,1.95-2.106H468.8c1.092,0,1.56,1.014,1.56,2.106Z" transform="translate(905.686 739.677)"/>
+    <ellipse id="Ellipse_198" data-name="Ellipse 198" class="cls-8" cx="2.262" cy="2.262" rx="2.262" ry="2.262" transform="translate(1351.24 1477.95)"/>
+    <path id="Path_885" data-name="Path 885" class="cls-5" d="M729.068,704.845a1.688,1.688,0,0,1-1.17,2.028L685.78,717.636a1.689,1.689,0,0,1-2.028-1.17l-8.268-32.29a1.689,1.689,0,0,1,1.17-2.028l42.118-10.763a1.689,1.689,0,0,1,2.028,1.17Z" transform="translate(850.779 742.53)"/>
+    <path id="Path_886" data-name="Path 886" class="cls-6" d="M690.41,714.793c-.78.234-1.95-.078-2.184-.858l-7.332-28.859a2.081,2.081,0,0,1,1.482-2.028l36.736-9.359c.78-.234.858.624,1.092,1.4l7.332,28.858c.156.78.39,1.248-.39,1.482Z" transform="translate(849.581 742.02)"/>
     <text id="筆電_優勢_性能足夠_價格廣_劣勢_滑鼠必備_最不輕便_代表產品_imac_book" data-name="筆電
 優勢：性能足夠﹑價格廣
 劣勢：滑鼠必備﹑最不輕便
-代表產品：imac book" class="cls-10" transform="translate(1096.386 1532.868)"><tspan x="0" y="0">筆電</tspan><tspan class="cls-4" y="0"></tspan><tspan x="0" y="20">優勢：性能足</tspan><tspan class="cls-11" y="20">夠﹑</tspan><tspan y="20">價格廣</tspan><tspan class="cls-4" y="20"></tspan><tspan x="0" y="40">劣勢：滑鼠必備</tspan><tspan class="cls-11" y="40">﹑</tspan><tspan y="40">最不輕便</tspan><tspan class="cls-4" y="40"></tspan><tspan x="0" y="60">代表產品：</tspan><tspan class="cls-4" y="60">imac book</tspan></text>
+代表產品：imac book" class="cls-9" transform="translate(1096.386 1532.868)"><tspan x="0" y="0">筆電</tspan><tspan class="cls-3" y="0"></tspan><tspan x="0" y="20">優勢：性能足</tspan><tspan class="cls-10" y="20">夠﹑</tspan><tspan y="20">價格廣</tspan><tspan class="cls-3" y="20"></tspan><tspan x="0" y="40">劣勢：滑鼠必備</tspan><tspan class="cls-10" y="40">﹑</tspan><tspan y="40">最不輕便</tspan><tspan class="cls-3" y="40"></tspan><tspan x="0" y="60">代表產品：</tspan><tspan class="cls-3" y="60">imac book</tspan></text>
     <text id="平板筆電_優勢_性能足夠_可繪圖_劣勢_定價高_代表產品_surfacebook" data-name="平板筆電
 優勢：性能足夠,可繪圖
 劣勢：定價高
-代表產品：surfacebook" class="cls-10" transform="translate(1494.969 1531.003)"><tspan x="0" y="0">平板筆電</tspan><tspan class="cls-4" y="0"></tspan><tspan x="0" y="20">優勢：性能足</tspan><tspan class="cls-11" y="20">夠</tspan><tspan class="cls-4" y="20">,</tspan><tspan y="20">可繪圖</tspan><tspan class="cls-4" y="20"></tspan><tspan x="0" y="40">劣勢：定價高</tspan><tspan class="cls-4" y="40"></tspan><tspan x="0" y="60">代表產品：</tspan><tspan class="cls-4" y="60">surfacebook</tspan></text>
+代表產品：surfacebook" class="cls-9" transform="translate(1494.969 1531.003)"><tspan x="0" y="0">平板筆電</tspan><tspan class="cls-3" y="0"></tspan><tspan x="0" y="20">優勢：性能足</tspan><tspan class="cls-10" y="20">夠</tspan><tspan class="cls-3" y="20">,</tspan><tspan y="20">可繪圖</tspan><tspan class="cls-3" y="20"></tspan><tspan x="0" y="40">劣勢：定價高</tspan><tspan class="cls-3" y="40"></tspan><tspan x="0" y="60">代表產品：</tspan><tspan class="cls-3" y="60">surfacebook</tspan></text>
     <text id="平板電腦_優勢_攜帶方便_劣勢_長時間文書_作業有困難_代表產品_ipad" data-name="平板電腦
 優勢：攜帶方便
 劣勢：長時間文書/作業有困難
-代表產品：ipad" class="cls-10" transform="translate(1294.546 1531.003)"><tspan x="0" y="0">平板電腦</tspan><tspan class="cls-4" y="0"></tspan><tspan x="0" y="20">優勢：攜帶方便</tspan><tspan class="cls-4" y="20"></tspan><tspan x="0" y="40">劣勢：長時間文書</tspan><tspan class="cls-4" y="40">/</tspan><tspan y="40">作業有困難</tspan><tspan class="cls-4" y="40"></tspan><tspan x="0" y="60">代表產品：</tspan><tspan class="cls-4" y="60">ipad</tspan></text>
-    <ellipse id="Ellipse_199" data-name="Ellipse 199" class="cls-9" cx="1.17" cy="1.17" rx="1.17" ry="1.17" transform="translate(1531.255 1441.604)"/>
+代表產品：ipad" class="cls-9" transform="translate(1294.546 1531.003)"><tspan x="0" y="0">平板電腦</tspan><tspan class="cls-3" y="0"></tspan><tspan x="0" y="20">優勢：攜帶方便</tspan><tspan class="cls-3" y="20"></tspan><tspan x="0" y="40">劣勢：長時間文書</tspan><tspan class="cls-3" y="40">/</tspan><tspan y="40">作業有困難</tspan><tspan class="cls-3" y="40"></tspan><tspan x="0" y="60">代表產品：</tspan><tspan class="cls-3" y="60">ipad</tspan></text>
+    <ellipse id="Ellipse_199" data-name="Ellipse 199" class="cls-8" cx="1.17" cy="1.17" rx="1.17" ry="1.17" transform="translate(1531.255 1441.604)"/>
     <g id="Group_1746" data-name="Group 1746" transform="translate(1120.216 1587.846)">
-      <path id="Path_900" data-name="Path 900" class="cls-12" d="M153.927,917.841l.973,190.346a8.009,8.009,0,0,0,7.8,7.955l22.463.468" transform="translate(-154.9 -894.4)"/>
+      <path id="Path_900" data-name="Path 900" class="cls-11" d="M153.927,917.841l.973,190.346a8.009,8.009,0,0,0,7.8,7.955l22.463.468" transform="translate(-154.9 -894.4)"/>
       <g id="Group_1745" data-name="Group 1745" transform="translate(29.015 218.311)">
-        <path id="Path_901" data-name="Path 901" class="cls-13" d="M192.1,1182.1l6.864-3.744-6.708-4.056Z" transform="translate(-192.1 -1174.3)"/>
+        <path id="Path_901" data-name="Path 901" class="cls-12" d="M192.1,1182.1l6.864-3.744-6.708-4.056Z" transform="translate(-192.1 -1174.3)"/>
       </g>
     </g>
-    <path id="Path_902" data-name="Path 902" class="cls-12" d="M290.09,886a7.822,7.822,0,0,1-7.8,7.8H110.7a7.823,7.823,0,0,1-7.8-7.8V801.2a7.823,7.823,0,0,1,7.8-7.8H282.291a7.823,7.823,0,0,1,7.8,7.8Z" transform="translate(976.758 715.67)"/>
-    <ellipse id="Ellipse_200" data-name="Ellipse 200" class="cls-14" cx="49.762" cy="49.762" rx="49.762" ry="49.762" transform="translate(1176.263 1760.481)"/>
+    <path id="Path_902" data-name="Path 902" class="cls-11" d="M290.09,886a7.822,7.822,0,0,1-7.8,7.8H110.7a7.823,7.823,0,0,1-7.8-7.8V801.2a7.823,7.823,0,0,1,7.8-7.8H282.291a7.823,7.823,0,0,1,7.8,7.8Z" transform="translate(976.758 715.67)"/>
+    <ellipse id="Ellipse_200" data-name="Ellipse 200" class="cls-13" cx="49.762" cy="49.762" rx="49.762" ry="49.762" transform="translate(1176.263 1760.481)"/>
     <g id="Group_1750" data-name="Group 1750" transform="translate(1200.62 1801.502)">
-      <path id="Path_912" data-name="Path 912" class="cls-15" d="M294.185,1172.558a2.076,2.076,0,0,1-2.7.988l-14.489-6.784a2.077,2.077,0,0,1-.988-2.7l3.82-8.167a2.077,2.077,0,0,1,2.7-.988l14.489,6.784a2.076,2.076,0,0,1,.988,2.7Z" transform="translate(-275.827 -1154.727)"/>
+      <path id="Path_912" data-name="Path 912" class="cls-14" d="M294.185,1172.558a2.076,2.076,0,0,1-2.7.988l-14.489-6.784a2.077,2.077,0,0,1-.988-2.7l3.82-8.167a2.077,2.077,0,0,1,2.7-.988l14.489,6.784a2.076,2.076,0,0,1,.988,2.7Z" transform="translate(-275.827 -1154.727)"/>
     </g>
-    <ellipse id="Ellipse_201" data-name="Ellipse 201" class="cls-16" cx="23.381" cy="4.149" rx="23.381" ry="4.149" transform="translate(1203.764 1832.043)"/>
-    <ellipse id="Ellipse_202" data-name="Ellipse 202" class="cls-17" cx="5.862" cy="5.862" rx="5.862" ry="5.862" transform="translate(1225.169 1779.486)"/>
-    <path id="Path_913" data-name="Path 913" class="cls-17" d="M324.907,1156.415c-.066,0-4.676-3.227-6.85-4.874a19.022,19.022,0,0,1-2.305-3.82c-1.91-3.622-2.832-6.915-7.376-8.628-5.137-1.91-8.562,3.425-12.316,7.969-.2.263-.4.461-.461.593a76.335,76.335,0,0,0-4.874,7.442,2.3,2.3,0,0,0,3.952,2.371,78.226,78.226,0,0,1,4.347-6.718c.132-.132.329-.4.593-.724.066-.066.132-.132.132-.2-.856,9.221-1.581,10.735.263,13.172.4.527,1.449,1.054,2.305,2.107l-.593.79c-1.12,1.515-2.239,3.029-3.1,4.347-2.173,3.293-6.323,9.155-6.323,9.221a2.869,2.869,0,0,0,.724,4.017,3.048,3.048,0,0,0,1.647.527,2.8,2.8,0,0,0,2.371-1.251c.2-.263,4.215-5.993,6.454-9.352.659-1.054,1.647-2.305,2.569-3.622,4.544,5.73,10.143,12.645,10.472,13.106a2.8,2.8,0,0,0,2.239,1.054,2.6,2.6,0,0,0,1.778-.659,2.847,2.847,0,0,0,.461-4.017c-.066-.132-6.718-8.3-11.526-14.358a15.267,15.267,0,0,0,1.712-3.1c.527-1.449.922-6.191,1.185-10.6a11.189,11.189,0,0,0,2.832,3.886c2.239,1.778,6.915,4.874,7.113,5.005a2.375,2.375,0,0,0,1.317.4,2.315,2.315,0,0,0,1.91-.988A2.265,2.265,0,0,0,324.907,1156.415Z" transform="translate(919.822 652.248)"/>
-    <path id="Path_914" data-name="Path 914" class="cls-18" d="M335.268,1160.044a6.674,6.674,0,0,0,.593-.856l1.317-1.844c.2-.263.461-.329.659-.132a.451.451,0,0,0,.659-.132l.066-.132c.2-.263.4-.329.593-.263a1.483,1.483,0,0,0,.79.066l.2-.066a1.311,1.311,0,0,0,.79-.527l1.515-2.042a.475.475,0,0,0-.132-.724l-1.12-.79a.476.476,0,0,0-.724.132l-.988,1.383a1,1,0,0,1-.724.461.968.968,0,0,1-.79-.263l-.659-.461a1.132,1.132,0,0,1-.461-.724,1.6,1.6,0,0,1,.263-.856l.922-1.317a.476.476,0,0,0-.132-.725l-1.12-.79a.476.476,0,0,0-.725.132l-1.449,1.976a1.646,1.646,0,0,0-.263.922l.066.329a2.216,2.216,0,0,0,.263.659c.132.066.066.329-.066.593l-.066.132a.433.433,0,0,0,.066.659.5.5,0,0,1,.066.659l-1.317,1.844a6.69,6.69,0,0,0-.593.856l-1.646,2.305a6.682,6.682,0,0,0-.593.856l-1.317,1.844c-.2.264-.461.329-.659.132a.511.511,0,0,0-.659.132l-.066.132c-.2.263-.4.329-.593.263a1,1,0,0,0-.79-.066l-.2.066a1.31,1.31,0,0,0-.79.527l-1.515,2.042a.475.475,0,0,0,.132.724l1.12.79a.475.475,0,0,0,.724-.132l.988-1.383a1,1,0,0,1,.724-.461.968.968,0,0,1,.79.263l.659.461a1.132,1.132,0,0,1,.461.724,1.449,1.449,0,0,1-.263.856l-.922,1.317a.475.475,0,0,0,.132.724l1.12.79a.476.476,0,0,0,.725-.132l1.449-1.976a1.647,1.647,0,0,0,.263-.922l-.066-.329a2.215,2.215,0,0,0-.263-.659c-.132-.066-.066-.329.066-.593l.066-.132a.433.433,0,0,0-.066-.659.5.5,0,0,1-.066-.659l1.317-1.844a6.685,6.685,0,0,0,.593-.856Z" transform="translate(908.407 648.618)"/>
-    <text id="筆記型電腦在與其他產品競爭之時_移動辦公模式的興起了_專業的筆電市場在2016漸漸復甦_而移動式工作者將會成為筆記型電腦最新的使用族群_" data-name="筆記型電腦在與其他產品競爭之時，移動辦公模式的興起了，專業的筆電市場在2016漸漸復甦。而移動式工作者將會成為筆記型電腦最新的使用族群。" class="cls-19" transform="translate(1298 1774)"><tspan x="0" y="15">筆記型電腦在與其他產品競爭之時，移動辦公模式</tspan><tspan x="0" y="45">的興起了，專業的筆電市場在</tspan><tspan class="cls-4" y="45">2016</tspan><tspan y="45">漸漸復甦。而移</tspan><tspan x="0" y="75">動式工作者將會成為筆記型電腦最新的使用族群。</tspan></text>
+    <ellipse id="Ellipse_201" data-name="Ellipse 201" class="cls-15" cx="23.381" cy="4.149" rx="23.381" ry="4.149" transform="translate(1203.764 1832.043)"/>
+    <ellipse id="Ellipse_202" data-name="Ellipse 202" class="cls-16" cx="5.862" cy="5.862" rx="5.862" ry="5.862" transform="translate(1225.169 1779.486)"/>
+    <path id="Path_913" data-name="Path 913" class="cls-16" d="M324.907,1156.415c-.066,0-4.676-3.227-6.85-4.874a19.022,19.022,0,0,1-2.305-3.82c-1.91-3.622-2.832-6.915-7.376-8.628-5.137-1.91-8.562,3.425-12.316,7.969-.2.263-.4.461-.461.593a76.335,76.335,0,0,0-4.874,7.442,2.3,2.3,0,0,0,3.952,2.371,78.226,78.226,0,0,1,4.347-6.718c.132-.132.329-.4.593-.724.066-.066.132-.132.132-.2-.856,9.221-1.581,10.735.263,13.172.4.527,1.449,1.054,2.305,2.107l-.593.79c-1.12,1.515-2.239,3.029-3.1,4.347-2.173,3.293-6.323,9.155-6.323,9.221a2.869,2.869,0,0,0,.724,4.017,3.048,3.048,0,0,0,1.647.527,2.8,2.8,0,0,0,2.371-1.251c.2-.263,4.215-5.993,6.454-9.352.659-1.054,1.647-2.305,2.569-3.622,4.544,5.73,10.143,12.645,10.472,13.106a2.8,2.8,0,0,0,2.239,1.054,2.6,2.6,0,0,0,1.778-.659,2.847,2.847,0,0,0,.461-4.017c-.066-.132-6.718-8.3-11.526-14.358a15.267,15.267,0,0,0,1.712-3.1c.527-1.449.922-6.191,1.185-10.6a11.189,11.189,0,0,0,2.832,3.886c2.239,1.778,6.915,4.874,7.113,5.005a2.375,2.375,0,0,0,1.317.4,2.315,2.315,0,0,0,1.91-.988A2.265,2.265,0,0,0,324.907,1156.415Z" transform="translate(919.822 652.248)"/>
+    <path id="Path_914" data-name="Path 914" class="cls-17" d="M335.268,1160.044a6.674,6.674,0,0,0,.593-.856l1.317-1.844c.2-.263.461-.329.659-.132a.451.451,0,0,0,.659-.132l.066-.132c.2-.263.4-.329.593-.263a1.483,1.483,0,0,0,.79.066l.2-.066a1.311,1.311,0,0,0,.79-.527l1.515-2.042a.475.475,0,0,0-.132-.724l-1.12-.79a.476.476,0,0,0-.724.132l-.988,1.383a1,1,0,0,1-.724.461.968.968,0,0,1-.79-.263l-.659-.461a1.132,1.132,0,0,1-.461-.724,1.6,1.6,0,0,1,.263-.856l.922-1.317a.476.476,0,0,0-.132-.725l-1.12-.79a.476.476,0,0,0-.725.132l-1.449,1.976a1.646,1.646,0,0,0-.263.922l.066.329a2.216,2.216,0,0,0,.263.659c.132.066.066.329-.066.593l-.066.132a.433.433,0,0,0,.066.659.5.5,0,0,1,.066.659l-1.317,1.844a6.69,6.69,0,0,0-.593.856l-1.646,2.305a6.682,6.682,0,0,0-.593.856l-1.317,1.844c-.2.264-.461.329-.659.132a.511.511,0,0,0-.659.132l-.066.132c-.2.263-.4.329-.593.263a1,1,0,0,0-.79-.066l-.2.066a1.31,1.31,0,0,0-.79.527l-1.515,2.042a.475.475,0,0,0,.132.724l1.12.79a.475.475,0,0,0,.724-.132l.988-1.383a1,1,0,0,1,.724-.461.968.968,0,0,1,.79.263l.659.461a1.132,1.132,0,0,1,.461.724,1.449,1.449,0,0,1-.263.856l-.922,1.317a.475.475,0,0,0,.132.724l1.12.79a.476.476,0,0,0,.725-.132l1.449-1.976a1.647,1.647,0,0,0,.263-.922l-.066-.329a2.215,2.215,0,0,0-.263-.659c-.132-.066-.066-.329.066-.593l.066-.132a.433.433,0,0,0-.066-.659.5.5,0,0,1-.066-.659l1.317-1.844a6.685,6.685,0,0,0,.593-.856Z" transform="translate(908.407 648.618)"/>
+    <text id="筆記型電腦在與其他產品競爭之時_移動辦公模式的興起了_專業的筆電市場在2016漸漸復甦_而移動式工作者將會成為筆記型電腦最新的使用族群_" data-name="筆記型電腦在與其他產品競爭之時，移動辦公模式的興起了，專業的筆電市場在2016漸漸復甦。而移動式工作者將會成為筆記型電腦最新的使用族群。" class="cls-18" transform="translate(1298 1774)"><tspan x="0" y="15">筆記型電腦在與其他產品競爭之時，移動辦公模式</tspan><tspan x="0" y="45">的興起了，專業的筆電市場在</tspan><tspan class="cls-3" y="45">2016</tspan><tspan y="45">漸漸復甦。而移</tspan><tspan x="0" y="75">動式工作者將會成為筆記型電腦最新的使用族群。</tspan></text>
+    <text id="_" data-name="[ " class="cls-19" transform="translate(1164.277 1680.696)"><tspan x="0" y="0">[ </tspan></text>
+    <text id="_2" data-name=" ]" class="cls-19" transform="translate(1627.277 1680.696)"><tspan x="0" y="0" xml:space="preserve"> ]</tspan></text>
   </g>
 </svg>
