@@ -86,3 +86,29 @@
     height: 400px;
 
 }
+
+
+/*------------ABOUT---*/
+
+.ab_h1{
+	font-weight: 400;font-size: 14px;
+	letter-spacing: 3.5px;
+}
+.p_line{
+	line-height: 2px;
+}
+.p_line4{
+	line-height: 5px;
+}
+
+.aboutbox{
+	border: 1px solid #999;
+	border-radius: 5px;
+	padding:1px 18px;
+	display: inline-block;
+	transition: .3s;
+	opacity: .7;
+}
+.aboutbox:hover{
+	opacity: 1;
+}
