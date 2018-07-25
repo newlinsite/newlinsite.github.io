@@ -2,3 +2,14 @@
  	margin: 64px 0 16px 0;
 	color: #606060;
 }
+.pic003{
+	padding-right: 150px;
+}
+
+
+@media (max-width: 768px) {
+	.pic003{	padding-right: 45%;}
+}
+@media (max-width: 480px) {
+	.pic003{	padding-right: 5%;}
+}

@@ -336,7 +336,7 @@ footer{
 }
 .footer_top{
 	left: 50%;
-	transform: translate(-50% -50%);
+	transform: translate(-50%,-50%);
 	font-weight: 200;
 }
 
