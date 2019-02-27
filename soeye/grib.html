@@ -3,73 +3,145 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width initial-scale=1.0,user-scalable=0,maximum-scale=1.5">
-	<title>portfolio</title>
+	<title>SO!eyewear</title>
 	<link rel="stylesheet" href="style/reset.css">
 	<link rel="stylesheet" href="style/style.css">
-	<link rel="stylesheet" href="style/guildline.css">
-	<link rel="stylesheet" href="style/elememt_main.css">
-	<link rel="stylesheet" href="style/element_index.css">
+	<link rel="stylesheet" href="style/plugins/OwlCarousel2-2.3.4/owl.carousel.min.css">
+	<link rel="stylesheet" href="style/plugins/OwlCarousel2-2.3.4/owl.theme.default.css">
    	<link rel="icon" type="image/png" href="web_icon.png" />
+   	<link rel="stylesheet" href="style/guideline.css">
+	<link rel="stylesheet" href="style/element_index.css">
 </head>
 <body>
+
 	<div class="container">
 		<header>
-		<div class="space32"></div>
-		</header>
-		1200
-		<div class="space8"></div>
-		<div class="col-1-12 dashed">
-			<div class="box_bg"></div>
-		</div>
-		<div class="col-1-12 dashed">
-			<div class="box_bg"></div>
-		</div>
-		<div class="col-1-12 dashed">
-			<div class="box_bg"></div>
-		</div>
-		<div class="col-1-12 dashed">
-			<div class="box_bg"></div>
-		</div>
-		<div class="col-1-12 dashed">
-			<div class="box_bg"></div>
-		</div>
-		<div class="col-1-12 dashed">
-			<div class="box_bg"></div>
-		</div>
-		<div class="col-1-12 dashed">
-			<div class="box_bg"></div>
-		</div>
-		<div class="col-1-12 dashed">
-			<div class="box_bg"></div>
-		</div>
-		<div class="col-1-12 dashed">
-			<div class="box_bg"></div>
-		</div>
-		<div class="col-1-12 dashed">
-			<div class="box_bg"></div>
-		</div>
-		<div class="col-1-12 dashed">
-			<div class="box_bg"></div>
-		</div>
-		<div class="col-1-12 dashed">
-			<div class="box_bg"></div>
-		</div>
-
-
-
-	
- 
-		
-		<!-- /* .........................................About me........*/ -->
-		<div class="space32"></div>
-		<p>About me</p>
-		<div class="space8"></div>
-		<div class="picblock work_me"></div>
-		<div class="picblock work_me-1"></div>
-		<div class="space8"></div>
-		<div class="row">
+			<div class="fixed">
+			<div class="navbar u-cf">
+					<div class="logo">
+						<img src="picture/01_icon/so!eyewear.svg" alt="so!eyewear_logo">
+					</div>
+					<ul class="menu">
+						<li><a href="#">NEWS</span><span class="sm">新訊</span></a></li>
+						<li><a href="#">STYLE<span class="sm">風格</span></a></li>
+						<li><a href="#">PROJECTS<span class="lg">企劃</span></a></li>
+						<li><a href="#">HEALTH<span class="md">健康</span></a></li>
+						<li><a href="#">BRANDS<span class="md">品牌</span></a></li>
+						<li><a href="#">STORES<span class="md">店家</span></a></li>
+						<li><a href="#">FORUM<span class="xs">討論</span></a></li>
+					</ul>
+					<div class="searchbox icon">
+						<form id="app" action="#">
+							<label :data-state="state" for="search">
+								  <input type="text" placeholder="Search" @click="state = 'opan'" @blur="state='close'"/>
+								 <img src="picture/01_icon/search.png" alt="">
+							</label>
+						</form>
+					</div>
+					<div class="icon">
+							<a href="#"><img src="picture/01_icon/login.png" ></a>
+							<a href="#"><img src="picture/01_icon/facebook.png"></a>
+							<a href="#"><img src="picture/01_icon/ig.png" ></a>
+							<a href="#"><img src="picture/01_icon/wechat.png" ></a>
+							<a href="#"><img src="picture/01_icon/language.png" ></a>
+					</div>
+			</div>
+			</div>		
+		</header>	
+<!-- Section - 01   slider -->
+		<section class="owl-carousel owl-theme">
+			<div class="imgbox-lg" style="background-image:url('picture/00_temp_picture/slider.png')"></div>
+			<div class="imgbox-lg" style="background-image:url('picture/00_temp_picture/103.jpg')"></div>
+			<div class="imgbox-lg" style="background-image:url('picture/00_temp_picture/105.jpg')"></div>
+			<div class="imgbox-lg" style="background-image:url('picture/00_temp_picture/104.jpg')"></div>
+			<div class="imgbox-lg" style="background-image:url('picture/00_temp_picture/103.jpg')"></div>
+			<div class="imgbox-lg" style="background-image:url('picture/00_temp_picture/106.jpg')"></div>
+		</section>
 		<div class="space64"></div>
-	</div>     
+<!-- Section - 02   article_card_01&02-->
+<!--  -->
+		<div class="space16"></div>
+		<div class="row ">
+			<div class="col-9-13 ">
+				<div class="col-1-3">
+					<div class="card_01">
+						<div class="imgbox-md" style="background-image:url('picture/00_temp_picture/015.jpg')"></div>
+						<div class="textbox">
+							<p class="p_h7">PEOPLE</p>
+							<h3>建議最多四十一個中文字,超過會變成...建議最多四十一中文字,超過會變成建議最四...</h3>
+							<p class="p_date">2017/11/02</p>
+							<div class="tagbox">
+								<p class="p_tag">球鞋</p>
+								<p class="p_tag">時尚穿搭</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-1-3">
+					<div class="card_01">
+						<div class="imgbox-md" style="background-image:url('picture/00_temp_picture/007.jpg')"></div>
+						<div class="textbox">
+							<p class="p_h7">PEOPLE</p>
+							<h3>【球鞋與眼鏡 VOL. 8】 裝備不能輸！Nike Kobe A.D. NXT 360 & Wensotti 運動護目眼鏡</h3>
+							<p class="p_date">2017/11/02</p>
+							<div class="tagbox">
+								<p class="p_tag">球鞋</p>
+								<p class="p_tag">時尚穿搭</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-1-3">
+					<div class="card_01">
+						<div class="imgbox-md" style="background-image:url('picture/00_temp_picture/021.jpg')"></div>
+						<div class="textbox">
+							<p class="p_h7">PEOPLE</p>
+							<h3>台南和光堂眼鏡，引入全台唯一 日本MASUNAGA增永眼鏡店中店</h3>
+							<p class="p_date">2017/11/02</p>
+							<div class="tagbox">
+								<p class="p_tag">球鞋</p>
+								<p class="p_tag">時尚穿搭</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-4-13">
+				<div class="temp-box"></div>
+			</div>
+		</div>
+	<div class="space128"></div>
+
+
+	</div> 
+
+	<script src="js/jquery/jquery-3.3.1.min.js"></script> 
+	<script src="js/Vue.js/Vue.js"></script>
+	<!-- slider plugin -->
+	<script src="js/plugins/OwlCarousel2-2.3.4/owl.carousel.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('.owl-carousel').owlCarousel({
+			    loop:true,
+			    margin:10,
+			    nav:true,
+
+			    responsive:{
+			        0:{tems:1},
+			        600:{tems:3},
+			        1000:{items:1}
+			    }
+			})
+		});
+	</script>
+	<script>
+		var app = new Vue({
+		  el: '#app',
+		  data:{
+		    state: "close"
+		  }
+		});
+	</script>
 </body>
 </html>
 

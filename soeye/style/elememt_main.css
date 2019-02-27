@@ -1,6 +1,9 @@
 elememt_main.css
 
 /*-----------------------------------navbar*/
+header{
+	position: fixed;
+}
 .navbar{
  	margin: 64px 0 64px 0;
 	color: #606060;

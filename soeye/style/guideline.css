@@ -1,0 +1,409 @@
+
+/******************************
+     Guildeline.css index
+		atoms
+			font (h1~h6 p)
+			bottom
+			picture box
+
+		organisms
+			artcle-card
+			navbar
+			sidebar
+			sidebar-artcle-card
+			footer
+
+
+          
+
+*******************************/
+
+
+
+
+
+
+
+
+/******************************
+           font  (h1~h6 p)
+*******************************/
+
+h1,h2,h3,h4,h5,h6,p{
+	font-family: "Noto sans TC","微軟正黑體","Microsoft JhengHei ",sans-serif;
+	margin: 0;
+	letter-spacing:0.09em;
+	line-height:1.168em;
+}
+
+h1{
+
+}
+h2{
+}
+h3{
+	font-size: 18px
+	color: #151718;
+	font-weight: 300;
+	
+}
+p{
+
+}
+
+.p_h7{
+	font-size: 14px;
+	color: #075457;
+	font-weight: 600;
+}
+
+.p_date{
+	font-size: 10px;
+	color: #606060;
+	font-weight: 400;
+}
+
+.p_tag{
+	font-size: 11px;
+	color: #075457;
+	font-weight: 400;
+	display: inline-block;
+	padding: 2px 10px 2px 10px ;
+	border: 1px solid #075457;
+	border-radius: 5px;
+}
+
+
+/*font Utility*/
+
+.u-font-size-12{font-size: 12px;}
+.u-font-size-16{font-size: 16px;}
+.u-font-size-24{font-size: 24px;}
+
+.u-font-color-white{color: #fff;}
+.u-font-color-333{color: #333;}
+
+
+
+
+/******************************
+          bottom
+*******************************/
+
+
+.btn{
+	display: inline-block;
+	padding: 10px 40px;
+	font-size: 15px;
+	font-family: 'Noto Sans TC Regular', sans-serif;
+	color: #231d13;
+	letter-spacing:4px ;
+	border: 1px solid #231d13;
+	border-radius: 3px;
+	transition: all 0.5s;
+}
+.btn:hover{
+	color: #fff;
+	border: 1px solid #6e753d;
+	background-color: #6e753d;
+}
+
+/******************************
+          picture box , textbox
+*******************************/
+
+.imgbox-lg,.imgbox-md,.imgbox-sm{
+	background-size: cover;
+	background-position: center;
+}
+
+
+.imgbox-lg{height: 550px;}
+.imgbox-md{height: 196px;}
+.imgbox-sm{height: 120px;}
+
+
+
+
+
+/******************************
+        card 01 - article 01
+*******************************/
+
+
+.card_01{
+	height: 368px;
+}
+
+.card_01 .textbox{
+	height: 174px;
+	background-color: #F9F9F9;
+	padding: 12px;
+}
+
+.card_01 .p_h7{
+	padding-bottom: 8px;
+}
+
+.card_01 .p_date,.card_01 .tagbox{
+	position: absolute;
+	bottom: 12px;
+}
+
+.card_01 .p_date{left:12px; }
+.card_01 .tagbox{right:12px; }
+
+
+
+/******************************
+           navbar
+*******************************/
+
+
+header{
+	height: 148px;
+}
+header .fixed{
+	width: 100%;
+	position: fixed;
+	left: 0%;
+	z-index: 5000;
+	height: inherit;
+	/*background-color: #333;*/
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&1+0,1+20,0.87+47,0.7+63,0+100 */
+background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 20%, rgba(255,255,255,0.87) 47%, rgba(255,255,255,0.7) 63%, rgba(255,255,255,0) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,1) 20%,rgba(255,255,255,0.87) 47%,rgba(255,255,255,0.7) 63%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,1) 20%,rgba(255,255,255,0.87) 47%,rgba(255,255,255,0.7) 63%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
+
+}
+.navbar{
+ 	width: 1344px;
+ 	position: absolute;
+	left: 50%;
+ 	transform: translateX(-50%);
+ 	padding:32px 0 10px 0;
+	color: #606060;
+}
+.navbar .logo{
+	float: left;
+
+}
+
+/*menu*/
+.navbar .menu{
+	position: absolute;
+    bottom: 0;
+    right: 46.5%;
+    transform: translate(45%,-85%);
+}
+.navbar .menu li{
+	float: left;
+	padding-left:32px;
+}
+.navbar .menu li a{
+	color: #606060;
+	font-size: 16px;
+	transition: 0.4s;
+	letter-spacing: 0.02em;
+		transition: 0.2s;
+}
+.navbar .menu span{
+	position: absolute;
+	left: 0%;
+	letter-spacing: 0.2em;
+	opacity: 0;
+	transition: 0.2s;
+}
+.navbar .menu .sm{	padding: 0 4% 0 4%;}
+.navbar .menu .xs{	padding: 0 8% 0 8%;}
+.navbar .menu .md{	padding: 0 11% 0 11%;}
+.navbar .menu .lg{	padding: 0 18% 0 18%;}
+
+.navbar .menu li a:hover{
+	color: #fff;
+	visibility:hidden;
+}
+.navbar .menu span:hover{
+	color: #000;
+	opacity: .8;
+	visibility:visible;
+}
+
+
+/*icon bar*/
+
+.navbar .icon{
+	position: absolute;
+    bottom: 0;
+    right:  0;
+    transform: translateY(-25%);
+
+}
+.navbar .icon img{
+    opacity: .45;
+    transition: .4s;
+}
+.navbar .icon img:hover{
+	opacity: .7;
+}
+
+/*search bar*/
+.navbar .searchbox{
+	position: absolute;
+	right: 152px;
+	bottom: 7px;
+}
+.navbar label {
+  position: absolute;
+  bottom: 0;
+  right:  0;
+  display: inline-block;
+  background-color: #fff;
+  padding: 5px 12px;
+  transition: all 1s ease;
+  border-radius: 5px;
+  box-shadow: 0px 0px 4px rgba(150, 150, 150, 0.1);
+}
+.navbar label::after {
+  content: '';
+  display: block;
+  height: 1px;
+  width: 80%;
+  background-color: #2FB0B3;
+  transition: all 1s ease 0.5s;
+}
+.navbar label input {
+  transition: width 1s ease, opacity 0.5s ease 0.5s;
+  opacity: 1;
+  width: 120px;
+  height: 25px;
+  border: 0;
+  outline: none;
+  color: #2FB0B3;
+}
+.navbar label img{
+  position: absolute;
+  top: 6px;
+  right: 4px;
+  cursor: pointer;
+}
+.navbar label[data-state="close"] {
+  border-radius: 30px;
+  padding: 5px 5px;
+  transition: all 1s ease;
+  background-color: #fff;
+  box-shadow: .5px .5px 6px rgba(0, 0, 0, 0);
+}
+.navbar label[data-state="close"]::after {
+  width: 0%;
+  transition: all 1.1s ease;
+}
+.navbar label[data-state="close"] img {
+  pointer-events: none;
+}
+.navbar label[data-state="close"] input {
+  width: 25px;
+  height: 25px;
+  opacity: 0;
+  cursor: pointer;
+  transition: opacity 0.5s ease, width 1s ease;
+  -webkit-appearance: none;
+}
+
+
+/*-----------------------------------sidebar*/
+.sidebar{
+	float: left;
+	position: fixed;
+	z-index: 100;
+	left: 12%;
+}
+.sidebar .block{
+	-webkit-writing-mode: vertical-rl;
+	writing-mode: vertical-rl;
+	border: #ccc solid 1px;
+	border-radius: 4px;
+	padding: 16px 8px 16px 8px;
+	margin: 16px 0 40px 0;
+	font-size: 14px;
+	letter-spacing: 5px;
+	transition: .4s;
+}
+.sidebar .block:hover{
+	border: #888 solid 1px;
+	background-color: #fcfcfc;
+}
+.sidebar .now{
+	border: #888 solid 1px;
+}
+@media only screen and (max-width: 1850px) {
+    .sidebar{        left: 10%;    }
+}
+@media only screen and (max-width: 1790px) {
+    .sidebar{        left: 8%;    }
+}
+@media only screen and (max-width: 1700px) {
+    .sidebar{        left: 5%;    }
+}
+@media only screen and (max-width: 1530px) {
+    .sidebar{        left: 20px;    }
+}
+@media only screen and (max-width: 1336px) {
+    .sidebar{        left: 0px;    }
+    .sidebar .block{
+	border: #ccc solid 0px;
+	color:#fff;
+	background-color: rgba(5, 5, 5, 0.7);;
+	border-radius: 0 4px 4px 0;
+	margin: 0px 0 28px 0;
+	padding: 12px 6px 12px 6px;
+	font-size: 13px;
+	top:-50px;
+	}
+}
+@media only screen and (max-width: 768px) {
+    .sidebar .block{
+	font-size: 12px;
+	letter-spacing: 1px;
+	margin: 0px 0 15px 0;
+	padding: 12px 4px 12px 4px;
+	background-color: rgba(5, 5, 5, 0.65);
+	}
+}
+
+
+/*------------------------------------footer*/
+
+footer{
+	height: 150px;
+	background-color: #f7f7f7;
+}
+
+.footer_last,.footer_next,.footer_top{
+	position: absolute;
+	transform: translateY(-50%);
+	top: 50%;
+	/*border:1px solid #999;*/
+	border-radius: 5px;
+	padding: 40px 40px;
+	color: #666;
+	font-size: 16px;
+	font-weight: 500;
+	display: inline-block;
+	/*background-color: #333;*/
+	/*opacity: .5;*/
+}
+.footer_last{
+	left: 0%;
+}
+
+.footer_next{
+	right: 0%;
+}
+.footer_top{
+	left: 50%;
+	transform: translate(-50%,-50%);
+	font-weight: 200;
+}
+

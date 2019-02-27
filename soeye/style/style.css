@@ -1,16 +1,40 @@
+ 
+
+/******************************
+	 Style.css index
+		import
+		page
+		layout
+		Utility
+*******************************/
+
+
+/******************************
+           import
+*******************************/
+
+/*import Noto sans TC*/
  @import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
 
+
+/******************************
+           Page
+*******************************/
 *{
 	position: relative;
+	-webkit-box-sizing: border-box;	
+	-moz-box-sizing: border-box;	
 	box-sizing: border-box;	
 }
 body{
-	font-family: 'Segoe UI','Lucida Grande';
-	font-weight: 100;
+	width: 100%;
+	height: 100%;
+	font-family: "Noto sans TC","Microsoft JhengHei ","微軟正黑體",sans-serif;
+	font-weight: 300;
+	color: #333;
 }
 a{
 	text-decoration:none;
-	color: #333;
 }
 ul{
 	list-style: none;
@@ -18,12 +42,18 @@ ul{
 	margin: 0;
 }
 
-/*--------------------------------------------linkblock setup*/
+
+
+
+
+/******************************
+           layout
+*******************************/
 
 .container{
-	max-width: 1200px;
-	height: 100%;/*--------------why 0px*/
-	margin: 0px auto;/*----------why  0px*/
+	max-width: 1360px;
+	height: 100%;
+	margin: 0px auto;
 	padding: 0 8px;
 }
 
@@ -38,7 +68,7 @@ ul{
 	height: 0px;
 	visibility: hidden;
 }
-.col-1-1,.col-1-2,.col-1-3,.col-2-3,.col-1-4,.col-3-4,.col-1-5,.col-1-6,.col-5-6,.col-1-12,.col-7-12,.col-5-12,.col-11-12{
+.col-1-1,.col-1-2,.col-1-3,.col-2-3,.col-1-4,.col-3-4,.col-1-5,.col-1-6,.col-5-6,.col-1-12,.col-7-12,.col-5-12,.col-11-12,.col-1-13,.col-4-13,.col-3-13,.col-9-13{
 	float: left;
 	padding: 0 8px;
 }
@@ -84,6 +114,24 @@ ul{
 .col-11-12{
 	width: 91.6666666%;
 }
+.col-1-13{
+	width: 7.69230769230769%;
+}
+.col-3-13{
+	width: 23.07692307692308%;
+}
+.col-4-13{
+	width: 30.76923076923077%;
+}
+.col-9-13{
+	width:69.23076923076923%;
+}
+
+
+@media only screen and (max-width: 1440px) {
+    .container { padding: 0 16px; max-width: 1200px; }
+}
+
 
 @media only screen and (max-width: 1200px) {
     .container { padding: 0 16px; max-width: 1024px; }
@@ -116,33 +164,30 @@ ul{
 }
 
 
+/******************************
+           Utility
+*******************************/
 
-/*----------------------------------------------------Modifier tool*/
+.u-mar-0 {margin: 0px !important;}
+.u-mar-sm{margin: 8px !important;}
+.u-mar-md{margin: 16px !important;}
+.u-mar-lg{margin: 32px !important;}
 
-.space64{	padding-top: 128px;}
-.space32{	padding-top: 64px;}
-.space16{	padding-top: 32px;}
-.space8 {	padding-top: 16px;}
-.space4 {	padding-top: 4px;}
+.u-pad-0 {padding: 0px !important;}
+.u-pad-sm{padding: 8px !important;}
+.u-pad-md{padding: 16px !important;}
+.u-pad-lg{padding: 32px !important;}
 
-.padding0{
-	padding: 0px;
-	margin: 0px;
-}
+.u-padl-sm{padding-left: 8px !important;}
+.u-padl-md{padding-left: 16px !important;}
+.u-padl-lg{padding-left: 32px !important;}
 
+.u-padr-sm{padding-right: 8px !important;}
+.u-padr-md{padding-right: 16px !important;}
+.u-padr-lg{padding-right: 32px !important;}
 
-
-.marginleft{	
-	position: relative;
-	left:50%;
-	transform: translateX(-50%);
-}
-.marginright{	margin-right: 30px; }
-
-
-
-.dashed {	border: 0.5px dashed #ddd;}
-.box_bg {	height: 100px;  background-color: #888;}
+.u-show  {display: block !important;}
+.u-hidden{display: none !important;}
 
 .u-cf:after{
 	content:"";
@@ -152,89 +197,15 @@ ul{
 	visibility: hidden;
 }
 
+.space4 {	padding-top: 4px;}
+.space8 {	padding-top: 8px;}
+.space16{	padding-top: 16px;}
+.space32{	padding-top: 32px;}
+.space48{	padding-top: 48px;}
+.space64{	padding-top: 64px;}
+.space128{	padding-top: 128px;}
 
-
-
-
-/*------------------------------------Picblock*/
-.picblock{
-	height: 360px;
-	overflow:hidden;
-	border-radius: 4px;
-}
-@media (max-width: 480px) {
-.picblock{height: 240px;}
-}
-
-.picblockhov{
-	height: 100%;
-	width: 100%;
-	position: absolute;
-	top: 0px;
-	z-index: 10;
-	opacity: 0;
-	transition: .5s;
-	transform: scale(1);
-
-}
-.picblockhov:hover{
-	opacity: .80;
-	transform: scale(1.02);
-}
-.picblockhov_wordbox{
-	margin: 10px;
-	padding: 25px;
-	height: 340px;
-	background-color: rgba(255, 255, 255, 0.75);
-	border-radius: 4px;
-}
-.box_bg_black{
-	background-color: rgba(0, 0, 0, .9);
-}
-.picblockhov_wordbox-1-2{
-	margin: 10px 12px 10px 12px;
-}
-.picblockhov_wordbox-1-3{
-	margin: 10px 15px;
-}
-
-.picblockhov_word{
-	text-align:right;	
-	position: absolute;
-	bottom: 10px;
-	right: 20px;
-}
-.picblock_h2{
-	color: #333;
-	letter-spacing:0px;
-	line-height:0px;
-	font-size: 35px;
-	font-weight: 650;
-}
-.picblock_p_box{
-	color: #333;
-	font-size: 13px;
-	font-weight: 400;
-	margin: 5px;
-	padding: 2px 8px 2px 8px;
-	border: 1px solid #666;
-	border-radius: 2px;
-	display: inline-block;
-}
-.p_box--bold{
-	font-weight: 700;
-	border: 1px solid #444;
-}
-.picblockhov_word .lightshort{
-	height: 240px;
-}
-.picblockhov_word .short{
-	height: 180px;
-}
-.picblockhov_word .white{
-	color: #fff;
-}
-
-
-/*---------------------------------------------------------content*/
+.temp---- {	border: 0.5px dashed #ddd;}
+.temp-box {	height: 80px;  background-color: #888;}
+.temp-box-lg {	height: 500px;  background-color: #888;}
 
