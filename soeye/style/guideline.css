@@ -123,23 +123,20 @@ a.tag:hover{background-color:#2FB0B3;opacity: 1;}
 
 .btn{
 	display: inline-block;
-	padding: 10px 40px;
-	font-size: 15px;
-	font-weight: 400;
-	letter-spacing:4px ;	
+	font-size: 16px;
+	font-weight: 500;
+	letter-spacing:2px ;	
 	border-radius: 20px;
 	transition: all 0.3s;}
 
 .btn.type01{
 	position: relative;
-	left: 50%;
-	transform: translateX(-50%);
+	/*padding: 4px 10px 4px 10px;*/
+	left: 100%;
+	transform: translateX(-100%);
 	color: #2FB0B3;
-	z-index: 1000;
-	border: 3px solid #2FB0B3;}
-.btn.type01:hover{color: #2FB0B3;
-	border: 3px solid #FFD064;
-	background-color: #FFD064;}
+	z-index: 1000;}
+.btn.type01:hover{color: #FFD064;}
 
 
 /******************************
@@ -163,12 +160,14 @@ a.tag:hover{background-color:#2FB0B3;opacity: 1;}
 @media only screen and (max-width: 600px) {
 	.imgbox-lg{height: 280px;margin-bottom: 270px;}}
 
-.ad_box{width: 100%}
+.ad_box{}
 .ad_box .a5{
-	/*position: absolute;*/
+	/*width: 80%*/
 	left: 50%;
 	transform: translateX(-50%);
-	margin: 48px 0 48px 0;}
+	margin: 52px 0 52px 0;}
+@media only screen and (max-width: 1200px) {
+	.ad_box .a5{width: 100%}}
 /******************************
         card 01 - article 01
 *******************************/
@@ -185,7 +184,7 @@ a.tag:hover{background-color:#2FB0B3;opacity: 1;}
 	.card_01 .tagbox{right:12px; margin-left: 90px;text-align:right;}
 	.card_01 .tagbox .tag{margin-top: 4px;}
 
-.card_02{height: 120px;margin-bottom:24px;overflow: hidden; }
+.card_02{height: 120px;margin-bottom:25px;overflow: hidden; }
 	.card_02 .picbox{width: 120px;display: inline-block;}
 	.card_02 .textbox{
 		background-color: rgba(250,250,250,.75);
@@ -244,8 +243,7 @@ header{
 		top: 35px;
 		visibility: hidden;}
 	.navbar .hamberger:active{
-		background-color: #cdf;
-	}
+		background-color: #2FB0B3;}
 	.navbar .menu{
 		position: absolute;
 	    bottom: 0;
@@ -278,8 +276,8 @@ header{
 			visibility:hidden;
 			color: #fff;}
 		.navbar .menu span:hover{
-			color: #000;
-			opacity: .8;
+			color: #2FB0B3;
+			opacity: 1;
 			visibility:visible;}
 		.navbar .menu .main ul{
 			padding: 10px 12px 10px 12px;
@@ -300,7 +298,7 @@ header{
 			border-top: 1px solid rgba(200,200,200,.20);}
 		.navbar .menu .main li a{
 			font-size: 14px;}
-		.navbar .menu .main li a:hover{color: #222;}
+		.navbar .menu .main li a:hover{color: #2FB0B3;}
 		.navbar .menu .main:hover > ul{
 			visibility:visible;
 			opacity: 1;
@@ -391,35 +389,35 @@ header{
 		.navbar .logo{left: 50%;transform: translateX(-50%);}
 		/*.navbar .humger_menubox*/
 		.navbar .menu{
-			display: none;
+			/*display: none;*/
 			position:fixed;
 			left: 0; 
 			top: 0;
 		    transform: translate(-2%,0%);
 			width: 450px;
 			height: 666.66%;
-			padding: 20px ;
-			padding-top: 80px;
+			padding: 95px 20px 30px 6px;
 			overflow-y: auto;
 			overflow-x: hidden;
 			background-color: rgba(255,255,255,.95);}
-			.navbar .menu .main{
+			.navbar .menu .main,.navbar .menu .main.s{
 				width: 100%;
-				padding:0 0px 64px 16px;}
-			.navbar .menu .main.xl{
-				padding:0 0px 108px 16px;}
+				padding:0 0px 72px 4px;}
+			.navbar .menu .main.xl{padding:0 0px 118px 4px;}
+			.navbar .menu .main.xxl{padding:0 0px 165px 4px;}
+			.navbar .menu .main.xs{padding:0 0px 0px 4px;}
 			.navbar .menu .main .a{
-				color: #000;}
+				color: #2FB0B3;
+				font-weight: 500;}
 			.navbar .menu .main .a:hover{
 				visibility:visible;
 				opacity: 1;
 				color: #000;}
 			.navbar .menu span{
 				position: relative;
-				opacity: 1;}
+				opacity: 0;}
 			.navbar .menu span:hover{
-				color: #606060;
-				opacity: 1;
+				opacity: 0;
 				visibility:visible;}
 			.navbar .menu .sm,.navbar .menu .xs,.navbar .menu .md,.navbar .menu .lg{padding: 0 8px 0 8px;}
 			.navbar .menu .main a{
@@ -428,11 +426,10 @@ header{
 				transition: 0s;
 				letter-spacing: 0.02em;}
 			.navbar .menu .main ul{
-				padding: 0px;
-				/*margin: 0 -100px 0 0px;*/
+				/*padding: 0px;*/
 				background-color: rgba(255,255,255,0);
 				top: 16px;
-				left: 8px;
+				left: -16px;
 				width: 340px;
 				opacity: 1;
 				transform: translateY(0%);
@@ -470,13 +467,18 @@ header{
 		.navbar .menu{width: 108%;}
 		.navbar .icon{ left: 88%;}
 		.navbar .menu .main li {
-			width: 100%;
-			padding:6px 8px 0px 8px;}	
-		.navbar .menu .main{padding:0 0px 155px 16px;}
-		.navbar .menu .main.xs{padding:0 0px 35px 16px;}
-		.navbar .menu .main.s{padding:0 0px 110px 16px;}
-		.navbar .menu .main.xl{padding:0 0px 240px 16px;}
-		.navbar .menu .main.xxl{padding:0 0px 285px 16px;}
+			width: 29%;
+			padding:6px 8px 0px 3px;}
+		.navbar .menu .main li.xs {width: 22%;}
+		.navbar .menu .main li.s {width: 28%;}	
+		.navbar .menu .main li.l {width: 50%;}	
+		.navbar .menu .main li.xl {width: 80%;}	
+	
+		.navbar .menu .main{padding:0 0px 75px 0px;}
+		.navbar .menu .main.xs{padding:0 0px 35px 0px;}
+		.navbar .menu .main.s{padding:0 0px 90px 0px;}
+		.navbar .menu .main.xl{padding:0 0px 120px 0px;}
+		.navbar .menu .main.xxl{padding:0 0px 150px 0px;}
 		}
 
 
