@@ -33,47 +33,52 @@ h1,h2,h3,h4,h5,h6,p{
 	font-family: "Noto sans TC","微軟正黑體","Microsoft JhengHei ",sans-serif;
 	margin: 0;
 	letter-spacing:0.09em;
-	line-height:1.168em;
-
-}
+	line-height:1.168em;}
 
 h1,h2{
 	color: #232626;
 	font-size: 33px;
 	line-height:1.36em;
-	margin-bottom: 12px;
-}
-
-
+	margin-bottom: 12px;}
 h3{
-	font-size: 18px
-	color: #151718;
-	font-weight: 300;
-}
-p{
-	color: #232626;
 	font-size: 18px;
-	line-height:1.36em;
-}
-
-.p_h7{
-	font-size: 14px;
-	color: #075457;
-	font-weight: 600;}
-
-.p_date{
-	font-size: 10px;
-	color: #606060;
-	font-weight: 400;}
-
-.p_tag{
-	font-size: 11px;
-	color: #075457;
+	color: #151718;
 	font-weight: 400;
+	line-height:1.268em;
+	transition: .3s}
+h3.sm{font-size: 15px;}
+h3:hover{color:#2FB0B3;}
+
+
+h5{	font-size: 28px;
+	color: #135A5D;
+	font-weight: 600;}
+h6{	font-size: 14px;
+	color: #075457;
+	font-weight: 600;
+	transition: .6s}
+h6:hover{color:#2FB0B3;}
+
+p{	color: #232626;
+	font-size: 18px;
+	line-height:1.36em;}
+p.date{
+	font-size: 11px;
+	color: #668B8D;
+	letter-spacing:0.01em;
+	font-weight: 500;}
+a.tag{
+	font-size: 12px;
+	color: #FFF;
+	font-weight: 400;
+	letter-spacing:0.1em;
+	background-color: #668B8D;
+	opacity: .85;
 	display: inline-block;
-	padding: 2px 10px 2px 10px ;
-	border: 1px solid #075457;
-	border-radius: 5px;}
+	padding: 3px 10px 3px 10px ;
+	border-radius: 5px;
+	transition: all ease-out .5s}
+a.tag:hover{background-color:#2FB0B3;opacity: 1;}
 
 
 /*font Utility*/
@@ -88,6 +93,31 @@ p{
 
 
 /******************************
+         title bar
+*******************************/
+
+.title_bar{
+
+}
+
+.title_bar .textbox{
+	margin: 4px 0 0 8px;
+	z-index: 800;
+}
+.title_bar .box{
+	transform: translateY(-14px);
+}
+.title_bar .box .b1,.title_bar .box .b2,.title_bar .box .b3{
+	display: inline-block;
+	background-color: #B7C2C2;
+	opacity: .15;
+	height: 32px;
+	margin-left: 16px;}
+.title_bar .box .b1{width: 54%;margin-left: 0px;}
+.title_bar .box .b2{width: 12%;}
+.title_bar .box .b3{width: 5%;}
+
+/******************************
           bottom
 *******************************/
 
@@ -95,16 +125,22 @@ p{
 	display: inline-block;
 	padding: 10px 40px;
 	font-size: 15px;
-	font-family: 'Noto Sans TC Regular', sans-serif;
-	color: #231d13;
-	letter-spacing:4px ;
-	border: 1px solid #231d13;
-	border-radius: 3px;
-	transition: all 0.5s;}
-.btn:hover{
-	color: #fff;
-	border: 1px solid #6e753d;
-	background-color: #6e753d;}
+	font-weight: 400;
+	letter-spacing:4px ;	
+	border-radius: 20px;
+	transition: all 0.3s;}
+
+.btn.type01{
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	color: #2FB0B3;
+	z-index: 1000;
+	border: 3px solid #2FB0B3;}
+.btn.type01:hover{color: #2FB0B3;
+	border: 3px solid #FFD064;
+	background-color: #FFD064;}
+
 
 /******************************
           picture box , textbox
@@ -117,23 +153,52 @@ p{
 .imgbox-md{height: 196px;}
 .imgbox-sm{height: 120px;}
 
+.imgbox-zoom{transition: all cubic-bezier(.05,0.2,0.01,1) 5s;transform: scale(1);}
+.imgbox-zoom:hover{transform: scale(1.05);}
+.imgbox-zoom_2{transition: all cubic-bezier(0.1,0.2,0.01,1) 15s;transform: scale(1);}
+.imgbox-zoom_2:hover{transform: scale(1.05);}
+
+@media only screen and (max-width: 1200px) {
+	.imgbox-lg{height: 350px;margin-bottom: 200px;}}
+@media only screen and (max-width: 600px) {
+	.imgbox-lg{height: 280px;margin-bottom: 270px;}}
+
+.ad_box{width: 100%}
+.ad_box .a5{
+	/*position: absolute;*/
+	left: 50%;
+	transform: translateX(-50%);
+	margin: 48px 0 48px 0;}
 /******************************
         card 01 - article 01
 *******************************/
-
-.card_01{height: 368px;}
+.card_01{height: 368px;margin-bottom: 16px; overflow: hidden;}
 	.card_01 .textbox{
 		height: 174px;
 		background-color: #F9F9F9;
 		padding: 12px;}
-	.card_01 .p_h7{
-		padding-bottom: 8px;}
-	.card_01 .p_date,.card_01 .tagbox{
+	.card_01 h6{padding-bottom: 8px;}
+	.card_01 p.date,.card_01 .tagbox{
 		position: absolute;
-		bottom: 12px;}
-	.card_01 .p_date{left:12px; }
-	.card_01 .tagbox{right:12px; }
+		bottom: 14px;}
+	.card_01 p.date{left:12px; }
+	.card_01 .tagbox{right:12px; margin-left: 90px;text-align:right;}
+	.card_01 .tagbox .tag{margin-top: 4px;}
 
+.card_02{height: 120px;margin-bottom:24px;overflow: hidden; }
+	.card_02 .picbox{width: 120px;display: inline-block;}
+	.card_02 .textbox{
+		background-color: rgba(250,250,250,.75);
+		padding:12px 26px 12px 10px;
+		border-radius: 2px;
+		position: absolute;
+		top: 60px;
+		left: 95px;
+		transition: .25s;
+		transform: translate(25px,-50%);}
+	.card_02 .textbox:hover{
+		background-color: rgba(250,250,250,1);
+		transform:translate(25px,-50%) scale(1.01);}
 
 /******************************
            navbar
@@ -156,7 +221,6 @@ header{
 		max-width: 1344px;
 		left: 0%;
 		height: 100%;}
-
 .navbar{
  	float: left;
  	width: 100%;
@@ -170,7 +234,6 @@ header{
 	/*****************logo****************/
 	.navbar .logo{float: left;}
 	/*****************menu****************/
-	
 	.navbar .hamberger{
 		height: 40px;
 		width: 40px;
@@ -314,13 +377,11 @@ header{
 	pad/phone     768px
 	phone         480
 	*******************************/
-	@media only screen and (max-width: 1440px) {
+	@media only screen and (max-width: 5440px) {
 		header .fixed{max-width: 1172px;}
 		.navbar .menu{right: 45.5%;}
 		.navbar .menu .main{padding:0 12px 0 12px;}
-		.navbar label input { width: 90px;}
-
-	}
+		.navbar label input { width: 90px;}}
 
 	@media only screen and (max-width: 1200px) {
 		/*header{position: relative;}*/
@@ -405,6 +466,7 @@ header{
 	}
 
 	@media (max-width: 480px) {
+		.navbar .logo{transform: translateX(-50%) scale(0.7);}
 		.navbar .menu{width: 108%;}
 		.navbar .icon{ left: 88%;}
 		.navbar .menu .main li {
@@ -415,8 +477,7 @@ header{
 		.navbar .menu .main.s{padding:0 0px 110px 16px;}
 		.navbar .menu .main.xl{padding:0 0px 240px 16px;}
 		.navbar .menu .main.xxl{padding:0 0px 285px 16px;}
-			
-	}
+		}
 
 
 
@@ -468,7 +529,6 @@ header{
 	margin: 0px 0 15px 0;
 	padding: 12px 4px 12px 4px;
 	background-color: rgba(5, 5, 5, 0.65);}}
-
 
 /*------------------------------------footer*/
 
