@@ -1,0 +1,137 @@
+elememt_main.css
+
+/*-----------------------------------navbar*/
+header{
+	position: fixed;
+}
+.navbar{
+ 	margin: 64px 0 64px 0;
+	color: #606060;
+}
+.navbar .logo{
+	float: left;
+	transform: translateY(-20px);
+}
+.navbar .logo .cname{
+	-webkit-writing-mode: vertical-rl;
+	writing-mode: vertical-rl;
+	font-size: 12px;
+	letter-spacing: 4px;
+	line-height: 10px;
+}
+.navbar .logo .ename{
+	font-size: 18px;
+	transform:  translateX(-3px);
+}
+.menu{
+	float: right;
+}
+.menu li{
+	float: left;
+	margin-left: 64px;
+	font-size: 14px;
+	color: #222;
+}
+.menu li a{
+	color: #888;
+	transition: 0.4s;
+}
+.menu li a:hover{
+	color: #111;
+}
+
+/*-----------------------------------sidebar*/
+.sidebar{
+	float: left;
+	position: fixed;
+	z-index: 100;
+	left: 12%;
+}
+.sidebar .block{
+	-webkit-writing-mode: vertical-rl;
+	writing-mode: vertical-rl;
+	border: #ccc solid 1px;
+	border-radius: 4px;
+	padding: 16px 8px 16px 8px;
+	margin: 16px 0 40px 0;
+	font-size: 14px;
+	letter-spacing: 5px;
+	transition: .4s;
+}
+.sidebar .block:hover{
+	border: #888 solid 1px;
+	background-color: #fcfcfc;
+}
+.sidebar .now{
+	border: #888 solid 1px;
+}
+@media only screen and (max-width: 1850px) {
+    .sidebar{        left: 10%;    }
+}
+@media only screen and (max-width: 1790px) {
+    .sidebar{        left: 8%;    }
+}
+@media only screen and (max-width: 1700px) {
+    .sidebar{        left: 5%;    }
+}
+@media only screen and (max-width: 1530px) {
+    .sidebar{        left: 20px;    }
+}
+@media only screen and (max-width: 1336px) {
+    .sidebar{        left: 0px;    }
+    .sidebar .block{
+	border: #ccc solid 0px;
+	color:#fff;
+	background-color: rgba(5, 5, 5, 0.7);;
+	border-radius: 0 4px 4px 0;
+	margin: 0px 0 28px 0;
+	padding: 12px 6px 12px 6px;
+	font-size: 13px;
+	top:-50px;
+	}
+}
+@media only screen and (max-width: 768px) {
+    .sidebar .block{
+	font-size: 12px;
+	letter-spacing: 1px;
+	margin: 0px 0 15px 0;
+	padding: 12px 4px 12px 4px;
+	background-color: rgba(5, 5, 5, 0.65);
+	}
+}
+
+
+/*------------------------------------footer*/
+
+footer{
+	height: 150px;
+	background-color: #f7f7f7;
+}
+
+.footer_last,.footer_next,.footer_top{
+	position: absolute;
+	transform: translateY(-50%);
+	top: 50%;
+	/*border:1px solid #999;*/
+	border-radius: 5px;
+	padding: 40px 40px;
+	color: #666;
+	font-size: 16px;
+	font-weight: 500;
+	display: inline-block;
+	/*background-color: #333;*/
+	/*opacity: .5;*/
+}
+.footer_last{
+	left: 0%;
+}
+
+.footer_next{
+	right: 0%;
+}
+.footer_top{
+	left: 50%;
+	transform: translate(-50%,-50%);
+	font-weight: 200;
+}
+

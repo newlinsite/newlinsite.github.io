@@ -1,0 +1,45 @@
+.pic002{
+	padding: 50px;
+}
+.pic014{
+	padding: 0px 200px;
+}
+.word010{
+	padding-top: 110px;
+}
+@media (max-width: 1024px) {
+	.word010{	padding-top: 15px}
+	.pic014{	padding: 0px 150px;}
+}
+@media (max-width: 480px) {
+	.pic002{	padding: 15px 0px;}
+	.pic014{	padding: 0px 0px;}
+}
+
+
+.p--lineh{
+	padding-left: 10px;
+	line-height:8px;
+}
+.pd_box{
+	padding-right: 100%;
+	height: 100%;
+	background-color: #fff;
+	opacity: 0;
+	transition: .5s;
+	position: absolute;
+	top: 0px;
+	z-index: 10;
+}
+.pd_box:hover{
+	opacity: .8;
+}
+.pd_box-p{
+	padding: 8px 32px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
