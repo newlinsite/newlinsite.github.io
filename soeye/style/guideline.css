@@ -22,9 +22,6 @@
 
 
 
-
-
-
 /******************************
            font  (h1~h6 p)
 *******************************/
@@ -36,17 +33,18 @@ h1,h2,h3,h4,h5,h6,p{
 	line-height:1.168em;}
 
 h1,h2{
-	color: #232626;
+	/*color: #232626;*/
 	font-size: 33px;
 	line-height:1.36em;
-	margin-bottom: 12px;}
+	margin-bottom: 12px;
+	font-weight: 500;}
 h3{
-	font-size: 18px;
+	font-size: 16px;
 	color: #151718;
 	font-weight: 400;
 	line-height:1.268em;
 	transition: .3s}
-h3.sm{font-size: 15px;}
+h3.sm{font-size: 14.5px;}
 h3:hover{color:#2FB0B3;}
 
 
@@ -63,15 +61,15 @@ p{	color: #232626;
 	font-size: 18px;
 	line-height:1.36em;}
 p.date{
-	font-size: 11px;
+	font-size: 10px;
 	color: #668B8D;
-	letter-spacing:0.01em;
+	letter-spacing:0.005em;
 	font-weight: 500;}
 a.tag{
-	font-size: 12px;
+	font-size: 10px;
 	color: #FFF;
-	font-weight: 400;
-	letter-spacing:0.1em;
+	font-weight: 300;
+	letter-spacing:0.08em;
 	background-color: #668B8D;
 	opacity: .85;
 	display: inline-block;
@@ -96,26 +94,21 @@ a.tag:hover{background-color:#2FB0B3;opacity: 1;}
          title bar
 *******************************/
 
-.title_bar{
-
-}
-
-.title_bar .textbox{
-	margin: 4px 0 0 8px;
-	z-index: 800;
-}
-.title_bar .box{
-	transform: translateY(-14px);
-}
-.title_bar .box .b1,.title_bar .box .b2,.title_bar .box .b3{
-	display: inline-block;
-	background-color: #B7C2C2;
-	opacity: .15;
-	height: 32px;
-	margin-left: 16px;}
-.title_bar .box .b1{width: 54%;margin-left: 0px;}
-.title_bar .box .b2{width: 12%;}
-.title_bar .box .b3{width: 5%;}
+.title_bar{}
+	.title_bar .textbox{
+		margin: 4px 0 0 8px;
+		z-index: 800;}
+	.title_bar .box{
+		transform: translateY(-14px);}
+	.title_bar .box .b1,.title_bar .box .b2,.title_bar .box .b3{
+		display: inline-block;
+		background-color: #B7C2C2;
+		opacity: .15;
+		height: 32px;
+		margin-left: 16px;}
+	.title_bar .box .b1{width: 54%;margin-left: 0px;}
+	.title_bar .box .b2{width: 12%;}
+	.title_bar .box .b3{width: 5%;}
 
 /******************************
           bottom
@@ -140,7 +133,7 @@ a.tag:hover{background-color:#2FB0B3;opacity: 1;}
 
 
 /******************************
-          picture box , textbox
+          picture box
 *******************************/
 
 .imgbox-lg,.imgbox-md,.imgbox-sm{
@@ -171,10 +164,19 @@ a.tag:hover{background-color:#2FB0B3;opacity: 1;}
 /******************************
         card 01 - article 01
 *******************************/
-.card_01{height: 368px;margin-bottom: 16px; overflow: hidden;}
+.card_01{
+	height: 368px;
+	margin-bottom: 16px; 
+	overflow: hidden;
+	box-shadow:0px 0px 16px -2px rgba(0,0,0,.035),-3px 1px 8px rgba(19,90,93,0.02);
+	border-radius: 4px;
+	transition: 1s}
+.card_01:hover{
+	box-shadow:2px 2px 21px -4px rgba(0,0,0,.05),-3px 1px 15px rgba(19,90,93,0.06)}
 	.card_01 .textbox{
 		height: 174px;
-		background-color: #F9F9F9;
+		/*background-color: #F9F9F9;*/
+		background-color: #fff;
 		padding: 12px;}
 	.card_01 h6{padding-bottom: 8px;}
 	.card_01 p.date,.card_01 .tagbox{
@@ -210,11 +212,10 @@ header{
 	position: fixed;
 	z-index: 5000;
 	padding-right: 36px;
-	/*background-color: #333;*/
-	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&1+0,1+20,0.87+47,0.7+63,0+100 */
-	background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,.9) 25%, rgba(255,255,255,0.7) 58%,  rgba(255,255,255,0) 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,.9) 25%,rgba(255,255,255,0.7) 58%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,.9) 25%,rgba(255,255,255,0.7) 58%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+55,ffffff+100&1+0,0.7+55,0+100 */
+	background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,0.7) 55%, rgba(255,255,255,0) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,0.7) 55%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,0.7) 55%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */}
 	header .fixed{
 		max-width: 1344px;
@@ -226,52 +227,57 @@ header{
  	position: absolute;
 	left: 50%;
  	transform: translateX(-50%);
- 	padding:32px 0 10px 0;
+ 	padding:39px 0 10px 0;
  	margin: 0 50px 0 0;
 	color: #606060;}
 	
 	/*****************logo****************/
-	.navbar .logo{float: left;}
+	.navbar .logo{float: left;left: 4px;}
 	/*****************menu****************/
-	.navbar .hamberger{
-		height: 40px;
-		width: 40px;
-		background-color: #aaa;
+	.navbar .hamberger,.navbar .xx{
+		height: 32px;
+		width: 32px;
+		background-image: url(../picture/01_icon/hambuer.png);
 		position: fixed;
+		opacity: .8;
+		border-radius: 6px;
 		z-index: 6000;
 		left: 0px;
-		top: 35px;
+		top: 33px;
 		visibility: hidden;}
+	.navbar .xx{ top: 26px;background-image: url(../picture/01_icon/x.png);}
 	.navbar .hamberger:active{
 		background-color: #2FB0B3;}
 	.navbar .menu{
 		position: absolute;
-	    bottom: 0;
+	    bottom: 13px;
 	    right: 46.5%;
 	    background-color: rgba(255,255,255,0);
 	    transform: translate(45%,-85%);}
 		.navbar .menu .main{
 			float: left;
-			padding:0 16px 0 16px;}
-		.navbar .menu .main.xs{padding:0 16px 0px 16px;}
-		.navbar .menu .main.s{padding:0 16px 0px 16px;}
-		.navbar .menu .main.xl{padding:0 16px 0px 16px;}
-		.navbar .menu .main.xxl{padding:0 16px 0px 16px;}
+			padding:0 3px 0 3px;}
+		.navbar .menu .main.xs{padding:0 3px 0px 3px;}
+		.navbar .menu .main.s{padding:0 3px 0px 3px;}
+		.navbar .menu .main.xl{padding:0 3px 0px 3px;}
+		.navbar .menu .main.xxl{padding:0 3px 0px 3px;}
 		.navbar .menu .main a{
 			color: #606060;
+			padding:10px;
 			font-size: 16px;
 			transition: 0s;
 			letter-spacing: 0.02em;}
 		.navbar .menu span{
 			position: absolute;
-			left: 0%;
+			left: 0px;
+			top: 0px;
 			letter-spacing: 0.2em;
 			opacity: 0;
 			transition: .25s;}
-		.navbar .menu .sm{	padding: 0 4% 0 4%;}
-		.navbar .menu .xs{	padding: 0 8% 0 8%;}
-		.navbar .menu .md{	padding: 0 11% 0 11%;}
-		.navbar .menu .lg{	padding: 0 18% 0 18%;}
+		.navbar .menu .sm{	padding: 12px 19% 12px 19%;}
+		.navbar .menu .xs{	padding: 12px 20% 12px 23%}
+		.navbar .menu .md{	padding: 12px 22% 12px 25%}
+		.navbar .menu .lg{	padding: 12px 29% 12px 29%;}
 		.navbar .menu .main .a:hover{
 			visibility:hidden;
 			color: #fff;}
@@ -281,7 +287,7 @@ header{
 			visibility:visible;}
 		.navbar .menu .main ul{
 			padding: 10px 12px 10px 12px;
-			width: 155px;
+			width: 185px;
 			border-radius: 4px;
 			background-color: rgba(255,255,255,.95);
 			position: absolute;
@@ -297,7 +303,8 @@ header{
 			border-bottom: 1px solid rgba(200,200,200,.20);
 			border-top: 1px solid rgba(200,200,200,.20);}
 		.navbar .menu .main li a{
-			font-size: 14px;}
+			font-size: 14px;
+			padding:2px;}
 		.navbar .menu .main li a:hover{color: #2FB0B3;}
 		.navbar .menu .main:hover > ul{
 			visibility:visible;
@@ -306,7 +313,7 @@ header{
 	/******************icon bar******************/
 	.navbar .icon{
 		position: absolute;
-	    bottom: 0;
+	    bottom: 12px;
 	    right:  0;
 	    transform: translateY(-25%);}
 		.navbar .icon img{
@@ -318,14 +325,16 @@ header{
 		.navbar .searchbox{
 			position: absolute;
 			right: 152px;
-			bottom: 7px;}
+			bottom: 20.5px}
+			.navbar .searchbox label img.m{visibility: visible;}
+			.navbar .searchbox label img.xl{visibility: hidden;}
 			.navbar label {
 			  position: absolute;
 			  bottom: 0;
 			  right:  0;
 			  display: inline-block;
 			  background-color: #fff;
-			  padding: 5px 12px;
+			  padding: 4px 28px 4px 12px;
 			  transition: all .3s ease;
 			  border-radius: 5px;
 			  box-shadow: 0px 0px 4px rgba(150, 150, 150, 0.05);}
@@ -333,13 +342,13 @@ header{
 			  content: '';
 			  display: block;
 			  height: 1px;
-			  width: 80%;
+			  width: 95%;
 			  background-color: #2FB0B3;
 			  transition: all .5s ease 0.5s;}
 			.navbar label input {
 			  transition: width .5s ease, opacity 0.2s ease 0.2s;
 			  opacity: 1;
-			  width: 120px;
+			  width: 80px;
 			  height: 25px;
 			  border: 0;
 			  outline: none;
@@ -351,7 +360,7 @@ header{
 			  cursor: pointer;}
 			.navbar label[data-state="close"] {
 			  border-radius: 30px;
-			  padding: 2px 2px;
+			  padding: 4px 4px;
 			  transition: all .5s ease;
 			  background-color:rgba(255, 255, 255, 0);
 			  box-shadow: .5px .5px 6px rgba(0, 0, 0, 0);}
@@ -376,20 +385,23 @@ header{
 	phone         480
 	*******************************/
 	@media only screen and (max-width: 5440px) {
-		header .fixed{max-width: 1172px;}
-		.navbar .menu{right: 45.5%;}
-		.navbar .menu .main{padding:0 12px 0 12px;}
-		.navbar label input { width: 90px;}}
+		header .fixed{max-width: 1184px;}
+		.navbar .menu{right: 45.5%;}}
+
+	@media only screen and (max-width: 1440px) {
+		header .fixed{max-width: 1172px;}}
 
 	@media only screen and (max-width: 1200px) {
-		/*header{position: relative;}*/
+
 		header .fixed{max-width: 992px;}
-		.navbar{height: 100%;}
-		.navbar .hamberger{visibility: visible;}
-		.navbar .logo{left: 50%;transform: translateX(-50%);}
+		.navbar{height: 100%;padding:26px 0 10px 0;}
+		.navbar .hamberger,.navbar .xx{visibility: visible;}
+		/*.navbar .hamberger.xx{ visibility: hidden;}*/
+		
+		.navbar .logo{ left: 50%;transform: translateX(-50%);}
 		/*.navbar .humger_menubox*/
 		.navbar .menu{
-			/*display: none;*/
+			display: none;
 			position:fixed;
 			left: 0; 
 			top: 0;
@@ -399,13 +411,14 @@ header{
 			padding: 95px 20px 30px 6px;
 			overflow-y: auto;
 			overflow-x: hidden;
-			background-color: rgba(255,255,255,.95);}
+			background-color: rgba(255,255,255,.98);}
 			.navbar .menu .main,.navbar .menu .main.s{
 				width: 100%;
-				padding:0 0px 72px 4px;}
-			.navbar .menu .main.xl{padding:0 0px 118px 4px;}
-			.navbar .menu .main.xxl{padding:0 0px 165px 4px;}
-			.navbar .menu .main.xs{padding:0 0px 0px 4px;}
+				padding:0 0px 75px 0px;}
+			.navbar .menu .main.xs{padding:0 0px 35px 0px;}
+			.navbar .menu .main.s{padding:0 0px 90px 0px;}
+			.navbar .menu .main.xl{padding:0 0px 120px 0px;}
+			.navbar .menu .main.xxl{padding:0 0px 150px 0px;}
 			.navbar .menu .main .a{
 				color: #2FB0B3;
 				font-weight: 500;}
@@ -422,24 +435,29 @@ header{
 			.navbar .menu .sm,.navbar .menu .xs,.navbar .menu .md,.navbar .menu .lg{padding: 0 8px 0 8px;}
 			.navbar .menu .main a{
 				color: #606060;
+				padding:0;
 				font-size: 16px;
 				transition: 0s;
 				letter-spacing: 0.02em;}
 			.navbar .menu .main ul{
-				/*padding: 0px;*/
 				background-color: rgba(255,255,255,0);
 				top: 16px;
 				left: -16px;
-				width: 340px;
+				width: 380px;
 				opacity: 1;
 				transform: translateY(0%);
 				visibility:visible;}
 			.navbar .menu .main li{
 				float: left;
-				padding:8px 8px 0px 8px;
+				width: 29%;
+				padding:6px 8px 0px 3px;
 				text-align:left;
 				border-bottom: 1px solid rgba(200,200,200,0);
 				border-top: 1px solid rgba(200,200,200,0);}
+			.navbar .menu .main li.xs {width: 22%;}
+			.navbar .menu .main li.s {width: 28%;}	
+			.navbar .menu .main li.l {width: 50%;}	
+			.navbar .menu .main li.xl {width: 80%;}	
 			.navbar .menu .main li a{
 				font-size: 13px;}
 			.navbar .menu .main li a:hover{color: #222;}
@@ -449,37 +467,49 @@ header{
 				transform: translateY(0%);}
 		.navbar .icon.phone{
 			display: none;
-			top: 75px;
-		    left: 365px;
-		    width: 50px;
-		    transform: translate(50%,0%);}
-		.navbar .icon img{ opacity: .6;}
-		.navbar .searchbox{
 			position: absolute;
+			top: 0px;
+		    left: 0px;
+		    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+55,ffffff+100&1+0,0.7+55,0+100 */
+			background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 30%,rgba(255,255,255,0.8) 80%, rgba(255,255,255,0) 100%); /* FF3.6-15 */
+			background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,1) 30%,rgba(255,255,255,0.8) 80%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
+			background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,1) 30%,rgba(255,255,255,0.8) 80%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
+		    margin: 0 -4px;
+		    padding: 28px 20px 10px 46px;
+		    transform: translate(0%,0%);}
+		.navbar .icon img{ opacity: .7;}
+		.navbar .searchbox{
+			position: relative;
 			right: 10px;
-			top: 75px;}}
-	@media (max-width: 1023px) {
+			top: 38px;}
+			.navbar .searchbox label img.m{visibility: hidden;}
+			.navbar .searchbox label img.xl{visibility: visible;}
+			.navbar label {padding: 4px 28px 24px 12px;margin: 0 0 -20px 0 }
+			.navbar label[data-state="close"] {padding: 4px 28px 24px 12px;margin: 0 0 -20px 0 }
+			.navbar label input {
+				  width: 160px;
+				  height: 25px;}
+			.navbar label::after {height: 0px;}}
+			
 
-	}
+	@media (max-width: 700px) {.navbar label input {width: 100px;}}
 
 	@media (max-width: 480px) {
+		.navbar label input {width: 270px;}
 		.navbar .logo{transform: translateX(-50%) scale(0.7);}
 		.navbar .menu{width: 108%;}
 		.navbar .icon{ left: 88%;}
-		.navbar .menu .main li {
-			width: 29%;
-			padding:6px 8px 0px 3px;}
-		.navbar .menu .main li.xs {width: 22%;}
-		.navbar .menu .main li.s {width: 28%;}	
-		.navbar .menu .main li.l {width: 50%;}	
-		.navbar .menu .main li.xl {width: 80%;}	
-	
-		.navbar .menu .main{padding:0 0px 75px 0px;}
-		.navbar .menu .main.xs{padding:0 0px 35px 0px;}
-		.navbar .menu .main.s{padding:0 0px 90px 0px;}
-		.navbar .menu .main.xl{padding:0 0px 120px 0px;}
-		.navbar .menu .main.xxl{padding:0 0px 150px 0px;}
+		.navbar .searchbox{
+			left: 0;}
 		}
+	@media (max-width: 400px){
+		.navbar label input {width: 240px;}
+	}
+
+	@media (max-width: 350px){
+		.navbar label input {width: 210px;}
+	}
 
 
 
