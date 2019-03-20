@@ -13,7 +13,8 @@
     height: 12px;
     width: 12px;
     margin: 0 6px 0 6px;
-    border-radius: 50%;}
+    border-radius: 50%;
+	outline: none;}
 .owl-theme .owl-dots .owl-dot:hover{
     background-color: #FFD064;
 	border: 3px solid #FFD064;}
@@ -26,9 +27,10 @@
   width: 36px;
   height: 36px;
   top:-52px;
+  outline: none;
   transition: .3s}
 	.owl-carousel .owl-nav button.owl-next{
-	  right: 20px;
+	  right: 20px; 
 	  background-image: url('../picture/01_icon/arr_right.svg');}
 	.owl-carousel .owl-nav button.owl-prev{
 	  right: 68px;

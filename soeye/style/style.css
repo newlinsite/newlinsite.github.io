@@ -42,7 +42,7 @@ ul{
 	margin: 0;
 }
 
-
+div .block{display: inline-block;}
 
 
 
@@ -156,12 +156,12 @@ phone         480
 
 @media (max-width: 1024px) {
 	/*.container { padding: 0 16px; max-width: 768px; }*/
-	.col-md-right{	float: right;}
-	.col-md-1-1{	width: 100%;}
-	.col-md-1-2{	width: 50%;}
-	.col-md-1-3{	width: 33.33333333%;}
-	.col-md-2-3{	width: 66.6666666%;}
-	.md-hidden{		visibility: hidden; height: 0;}
+	.col-smd-right{	float: right;}
+	.col-smd-1-1{	width: 100%;}
+	.col-smd-1-2{	width: 50%;}
+	.col-smd-1-3{	width: 33.33333333%;}
+	.col-smd-2-3{	width: 66.6666666%;}
+	.smd-hidden{		visibility: hidden; height: 0;}
 }
 @media (max-width: 768px) {
 	/*.container { padding: 0 16px; max-width: 480px; }*/
@@ -177,8 +177,8 @@ phone         480
 	.col-xs-1-1{	width: 100%;}
 	.col-xs-1-2{	width: 50%;}
 	.col-xs-1-3{	width: 33.33333333%;}
-	.xs-hidden{		visibility: hidden; height: 0;}
-	.xs-visibility{		visibility: visibility: hidden;; height: 0;}
+	.xs-hidden{		display: none; height: 0;}
+	.xs-visibility{		 visibility:visible; height: 0;}
 }
 
 
@@ -221,6 +221,7 @@ phone         480
 .space32{	padding-top: 32px;}
 .space48{	position: relative; padding-top: 48px;}
 .space64{	padding-top: 64px;}
+.space96{	padding-top: 96px;}
 .space128{	padding-top: 128px;}
 
 .temp---- {	border: 0.5px dashed #ddd;}
