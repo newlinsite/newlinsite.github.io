@@ -270,7 +270,7 @@ a.tag:hover {
 
 *******************************/
 
-.ad_box,.imgbox-lg,.imgbox-md,.imgbox-sm,.imgbox-lgmd {
+.ad_boxs,.imgbox-lg,.imgbox-md,.imgbox-sm,.imgbox-lgmd {
 	background-color: #aaa;
 	background-size: cover;
 	background-position: center;}
@@ -302,15 +302,15 @@ a.tag:hover {
 	.imgbox-lgmd {
 		height: 196px;}}
 
-/* .ad_box {} */
-	.ad_box .a5 {
+/* .ad_boxs {} */
+	.ad_boxs .a5 {
 		left: 50%;
 		transform: translateX(-50%);
 		margin: 52px 0 52px 0;}
 	@media only screen and (max-width: 1200px) {
-		.ad_box .a5 {width: 100%}}
+		.ad_boxs .a5 {width: 100%}}
 
-	.ad_box.a2 {
+	.ad_boxs.a2 {
 		height: 152px;
 		margin: 8px 0;
 	}
