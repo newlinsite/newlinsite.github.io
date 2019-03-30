@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="28" viewBox="0 0 24 28">
-  <g id="fb" transform="translate(-1266 -57)" opacity="0.7">
-    <g id="Icon" transform="translate(1275.229 64.972)">
-      <path id="Path_707" data-name="Path 707" d="M331.294,92.677h-2.175c-1.291,0-2.726.543-2.726,2.413.006.652,0,1.276,0,1.979H324.9v2.376h1.539v6.839h2.828V99.4h1.867l.169-2.337h-2.084s0-1.04,0-1.342c0-.739.769-.7.815-.7.366,0,1.078,0,1.26,0V92.677Z" transform="translate(-324.9 -92.677)" fill="#232626"/>
+  <g id="fb" transform="translate(-1266 -57)">
+    <g id="Icon" transform="translate(1274.2 64.143)">
+      <path id="Path_707" data-name="Path 707" d="M331.684,92.677h-2.307c-1.369,0-2.892.576-2.892,2.561.007.692,0,1.354,0,2.1H324.9v2.521h1.633v7.256h3v-7.3h1.981l.179-2.48h-2.211s0-1.1,0-1.423c0-.784.816-.739.865-.739.388,0,1.143,0,1.337,0v-2.49Z" transform="translate(-324.9 -92.677)" fill="#232626"/>
     </g>
     <rect id="Rectangle_759" data-name="Rectangle 759" width="24" height="28" transform="translate(1266 57)" fill="none"/>
   </g>

@@ -69,8 +69,7 @@
 
 .owl-theme .textbox:hover {
 	background-color: rgba(255, 255, 255, .88);
-	color: #2FB0B3;
-}
+	color: #2FB0B3;}
 
 
 
@@ -168,3 +167,18 @@
 	.stores{margin-top: 80px;}}
 @media only screen and (max-width: 359px){
 	.stores{margin-top: 20px;display: none}}
+
+
+/* sign-up section */
+
+section.sign-up{
+	margin: 128px 0;
+	width: 100%;}
+	.sign-up .sign-up_box{
+		/* width: 50%; */
+		left: 50%;
+		transform: translateX(-50%);
+		text-align: center;
+	}
+	section.sign-up img{transform: scale(.8)}
+	section.sign-up p{margin: 28px 0;line-height: 1.92em}
