@@ -1,0 +1,158 @@
+
+.main_img_box{}
+    .main_img_box img{
+    max-width: 920px;
+    width: 100%;
+    margin-bottom: 96px;}
+    .z10{z-index: 10;}
+    @media only screen and (max-width: 1200px) {
+        .main_img_box img{left: 50%;transform: translateX(-50%);}
+        .articontainer{
+            max-width: 800px;
+            left: 50%;
+            transform: translateX(-50%);}}
+            @media only screen and (max-width: 836px) {
+                .articontainer{
+                    max-width: auto;
+                    left: auto;
+                    transform: translateX(0);}}   
+    @media only screen and (max-width: 920px) {
+        .main_img_box{margin: 0 -16px;}}
+    .main_img_box .imgbox{
+        height: 400px;
+    }
+
+
+.sidebar_h{
+    color: #668B8D;
+    font-size: 18px;
+    text-align: center;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    margin: 20px 0;}
+    .sidebar_h.en{
+        letter-spacing: 0.02em;
+        font-size: 20px;}
+
+.author_box{
+    background-color: #F4F4F4;
+    padding: 12px 12px 24px 12px}
+    .author_box .text_box{
+        display: inline-block;
+        width: 80%;
+        left: 10px;}
+    .author_box .sidebar_h{
+        position: absolute;
+        left: 50%;
+        top: -24px;
+        transform: translate(-50% ,-50%)}
+    .author_box  h3{ margin: 12px 0;}
+    .author_box  p{ font-size: 12px;letter-spacing: 0.01em;color: #606060}
+    .author_box .imgbox{
+        width: 48px;
+        height: 48px;
+        background-color: #F4F4F4;
+        display: inline-block;
+        /* float: left; */
+        left: 0px;}
+    @media (max-width: 1200px) {
+        .next_article_box,.store,.author_box{
+            width: 60%;
+            left: 20%;
+            margin-bottom: 64px;
+        }}
+    @media (max-width: 700px) {
+        .next_article_box,.store,.author_box{
+            width: 90%;
+            left: 5%;
+            margin-bottom: 64px;
+        }}
+    
+
+.share_box{ width: 100%;margin: 32px 0 48px 0;}
+.share_box p ,.share_box img{
+    display: inline-block;
+    left: 0;}
+    .share_box .r ,.share_box img{float:right; margin: 0 4px; opacity: .8;font-size: 14px;}
+    .share_box img{transform: translateY(-4px);width: 25px;}
+    .share_box img:hover{opacity: .95;}
+
+.card_02 .textbox {width: 74%; left: 80px;}
+
+/* **********************
+    
+        article conyext style
+
+*********************** */
+article p{
+    font-size: 17px;
+    line-height: 1.568em;
+    margin: 16px 3px;}
+    article p.date{margin: 0px 3px;}   
+article p.quote{
+    padding: 42px 56px;
+    margin: 36px 12px;;
+    line-height: 1.768em;
+    background-color: #E9EAEA;
+    border-radius: 4px;}
+article img{
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 24px 0;
+    max-width: 100%;}
+article a{color: #2FB0B3;transition: .3s;}
+    article a:hover{color: #FFD064}
+article h3 {font-size: 25px;
+	color: #151718;
+	font-weight: 500;}
+	h3:hover {color: #151718;}
+article h4,h5,h6{color: #075457;letter-spacing: 0.1em}
+h4:hover,h6:hover{ color: #075457;}
+article h4 {font-size: 20px;
+    margin: 12px 0}
+article h5 ,.next_article_box h5{font-size: 18px;
+	font-weight: 500;}
+article h6 {font-size: 16px;
+    font-weight: 600;}
+article .tag_box{margin: 48px 0}
+    article a.tag {
+        padding: 5px 16px 5px 16px;
+        margin: 6px 10px 6px 0;}
+
+
+
+
+/* **********************
+
+    other article 
+
+*********************** */
+
+.store{margin: 16px 0 32px 0}
+    .store a{
+        color: #135A5D;
+        display: block;
+        margin: 8px 0;}
+.fb_block  {
+    margin: 32px 0;
+    padding: 100px;
+    height: 230px;
+    text-align: center;
+    background-color: #f8f8f8;}
+
+.next_article_box{
+    background-color: #F9F9F9;
+    margin: 16px 4px;
+    border-radius: 4px;
+    transition: .5s;
+    padding: 12px 16px}
+    .next_article_box h6{
+        color: #2FB0B3;
+        float: left;
+        width: 25%;}
+    .next_article_box h5{
+        color: #555;
+        float:right;
+        width: 70%;}
+    .next_article_box:hover{background-color: #f1f1f1;}
+    .next_article_box:hover>h6{color:#075457;}

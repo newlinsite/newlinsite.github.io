@@ -1,0 +1,40 @@
+
+.card_optome{
+    margin-top: 80px;
+    text-align: center
+}
+.card_optome .imgbox{
+    width: 160px;
+    height: 160px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 80px;
+    transition: .4s;
+    box-shadow: 0px 0px 16px -2px rgba(0, 0, 0, .1)}
+.card_optome .name{
+    margin: 12px 0 8px 0;
+    font-size: 16px;
+    font-weight: 500;}
+.card_optome .area{margin: 0;}
+.card_optome:hover>.imgbox{
+    box-shadow: 0px 0px 28px -2px rgba(0, 0, 0, .25);
+    transform:translateX(-50%) scale(1.01)}
+.card_optome:hover>.name{color: #2FB0B3}
+.card_optome:hover>.area{color: #707070}   
+
+@media (max-width: 768px) {
+        .u-width-sm{
+            width:94%;
+            left: 6%;
+        }}
+@media (max-width: 550px) {
+    .card_optome .imgbox{
+        width: 120px;
+        height: 120px;
+    }}
+@media (max-width: 480px) {
+    .card_optome .imgbox{
+        width: 120px;
+        height: 120px;}
+    }
+
