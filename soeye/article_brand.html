@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width initial-scale=1.0,user-scalable=0,maximum-scale=1.5">
+	<title>SO!eyewear搜鏡王-全球華人最大眼鏡入口網站</title>
+	<meta name=”description” content=”網頁說明”>
+	<link rel="shortcut icon" href="picture/01_icon/so.png">
+	<link rel="stylesheet" href="style/reset.css">
+	<link rel="stylesheet" href="style/style.css">
+	<link rel="icon" type="image/png" href="picture/01_icon/so.png">
+	<link rel="stylesheet" href="style/guideline.css">
+	<link rel="stylesheet" href="style/element_article_page.css">
+	<script type="text/javascript" src="js/jquery-1.6.min.js"></script>
+	<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+	<!-- <script type="text/javascript" src="js/top.js"></script> -->
+</head>
+<body>
+	<div class="container">
+	<header>
+        <div class="fixed">
+            <nav>
+                <div class="hamberger toggle toggle_x"></div>
+                <div class=" xx toggle toggle_x" style="display: none;" ></div>
+                <div class="logo">
+                    <a href="index.html"><img src="picture/01_icon/soeyewear.svg" alt="so!eyewear_logo"></a>
+                </div>
+                <ul class="menu toggle toggle_x">
+                    <li class="main xl">
+                        <a class="a" href="#">NEWS<span class="sm">新訊</span></a>
+                        <ul>
+                            <li class="s"><a href="#">EYEWEAR<br>眼鏡情報</a></li>
+                            <li class="xs"><a href="#">REPORT<br>特別報導</a></li>
+                            <li class="s"><a href="#">LOOKBOOK<br>新品型錄</a></li>
+                            <li class="l"><a href="#">JAPANESE HANDMADE<br>日本手作 榮谷川</a></li>
+                            <li class="l"><a href="#">INDUSTRY INFO<br>業界資訊</a></li>
+                        </ul>
+                    </li>
+                    <li class="main">
+                        <a class="a active" href="#">STYLE<span class="sm">風格</span></a>
+                        <ul>
+                            <li><a href="#">FEATURE<br>專欄特輯</a></li>
+                            <li><a href="#">PEOPLE<br>人物配戴</a></li>
+                            <li><a href="#">SNEAKERS & EYEWEAR <br>球鞋與眼鏡</a></li>
+                        </ul>
+                    </li>
+                    <li class="main">
+                        <a class="a" href="#">PROJECTS<span class="lg">企劃</span></a>
+                        <ul>
+                            <li><a href="#">FAMOUS<br>名人專訪</a></li>
+                            <li><a href="#">UNBOXING<br>開箱分享</a></li>
+                            <li><a href="#">POLL<br>民調</a></li>
+                        </ul>
+                    </li>
+                    <li class="main">
+                        <a class="a" href="#">HEALTH<span class="md">健康</span></a>
+                        <ul>
+                            <li><a href="#">DOCTOR<br>醫師有約</a></li>
+                            <li><a href="#">VISION CARE<br>視力保健</a></li>
+                            <li><a href="Optometrist.html">OPTOMETRISTS<br>驗光人員</a></li>
+                        </ul>
+                    </li>
+                    <li class="main  xl xxl">
+                        <a class="a" href="#">BRANDS<span class="md">品牌</span></a>
+                        <ul>
+                            <li><a href="#">FASHION<br>國際精品</a></li>
+                            <li><a href="#">EUROPEAN DESIGN<br>歐美設計</a></li>
+                            <li><a href="#">JAPANESE CRAFTS<br>日本工藝</a></li>
+                            <li><a href="#">POPULAR STYLE<br>流行風格</a></li>
+                            <li><a href="#">SPORTS TECH<br>運動機能</a></li>
+                            <li><a href="#">LENSES<br>鏡片 / 隱形眼鏡</a></li>
+                        </ul>
+                    </li>
+                    <li class="main s">
+                        <a class="a" href="#">STORES<span class="md">店家</span></a>
+                        <ul>
+                            <li><a href="#">SEARCH STORES<br>搜尋店家</a></li>
+                            <li><a href="#">SEARCH STORES BY MAP<br>地圖顯示</a></li>
+                        </ul>
+                    </li>
+                    <li class="main xs">
+                        <a class="a" href="#">FORUM<span class="xs">討論</span></a>
+                    </li>
+                </ul>
+                <div class="searchbox icon toggle toggle_x">
+                    <form id="mainsearch" action="#">
+                        <label :data-state="state" for="search">
+                            <input type="text" placeholder="Search" @click="state = 'opan'" @blur="state='close'" />
+                            <img class="m" src="picture/01_icon/search.svg" alt="search icon">
+                            <img class="xl" src="picture/01_icon/search_xl.svg" alt="search icon">
+                        </label>
+                    </form>
+                </div>
+                <div class="icon phone toggle toggle_x">
+                    <div>
+                        <a href="#"><img src="picture/01_icon/profile.svg"></a>
+                        <ul>
+                        <li><a href="#">一般會員</a></li>
+                        <li><a href="#">驗光人員</a></li>
+                        <li><a href="#">店家登入</a></li>
+                        </ul>
+                    </div> 
+                    <a href="#"><img src="picture/01_icon/fb.svg"></a>
+                    <a href="#"><img src="picture/01_icon/ig.svg"></a>
+                    <a href="#"><img src="picture/01_icon/wechat.svg"></a>
+                    <a href="#"><img src="picture/01_icon/language.svg"></a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="space_header"></div>
+    <div class="row">
+        <div class="col-1-4 md-hidden">
+            <div class="sidebar">
+                <ul>
+                <a href="#">    
+                    <div>
+                        <li class="none first">
+                            <div class="line l"></div>
+                            ALL BRANDS<br>所有品牌
+                            <div class="line r"></div>
+                        </li>
+                </div>
+                </a>
+                <div>
+                    <li class="divline"></li>
+                </div>  
+                <div>
+                    <a href="#">
+                        <li class="active">
+                            <div class="line l"></div>
+                            FASHION<br>國際精品
+                            <div class="line r"></div>
+                        </li>
+                    </a>
+                </div>
+                <div>
+                    <a href="#">
+                        <li class="none">
+                            <div class="line l"></div>
+                            EUROPEAN DESIGN<br>歐美設計
+                            <div class="line r"></div>
+                        </li>
+                    </a>
+                </div>
+                <div>
+                    <a href="#">
+                        <li class="none">
+                            <div class="line l"></div>
+                            JAPANESE CRAFTS<br>日本工藝
+                            <div class="line r"></div>
+                        </li>
+                    </a>
+                </div>
+                <div>
+                    <a href="#">
+                        <li class="none">
+                            <div class="line l"></div>
+                            POPULAR STYLE<br>流行風格
+                            <div class="line r"></div>
+                        </li>
+                    </a>
+                    </div>
+                    <div>
+                        <a href="#">
+                            <li class="none">
+                                <div class="line l"></div>
+                                SPORTS TECH<br>運動機能
+                                <div class="line r"></div>
+                            </li>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="#">
+                            <li class="none">
+                                <div class="line l"></div>
+                                LENSES<br>鏡片 / 隱形眼鏡
+                                <div class="line r"></div>
+                            </li>
+                        </a>
+                    </div>
+                </ul>
+            </div>
+        </div>
+        <div class="col-3-4 col-md-1-1 col-right">
+                <div class="main_img_box">
+                    <div class="imgbox" style="background-image:url('picture/00_temp_picture/501.png')"></div>
+                </div>
+                    <div class="row articontainer space64">
+                        <article class="col-2-3-69 col-md-1-1 z10">
+                                <a href="#"><h4>FASHION 國際精品</h4></a>
+                                <h1>Chrome Hearts</h1>
+                                <div class="share_box u-cf">
+                                    <a href="#"><img src="picture/01_icon/tw.svg" alt="facebook"></a>
+                                    <a href="#"><img src="picture/01_icon/fb.svg" alt="facebook"></a>
+                                    <p class="r">share -</p>
+                                </div>
+                                <div>
+                                <p>
+                                    全球豪奢品牌之一，Chrome Hearts的其設計有著中世紀藝術的優雅與極高的原創性。品牌創始於1989年，由Richard Stark、John Baumann、Lennard Kamhout三人一同創立。
+                                </p>
+                                <img src="picture/00_temp_picture/502.png" alt="">
+                                <h2> h2同為了發揚眼繼續努力著！</h2>
+                                <p class="quote">
+                                    武漢吾鏡的店面前身是老式工業廠房，保留了過去建築物的寬敞空間，將外觀漆上質感的霧面黑色並鋪上清水模地板，相較起周邊選擇保留老式磚牆的店面而言，營造出更加濃厚的時尚現代都會風格。甫一進入店面，便可以看見大片的眼鏡陳列牆，而一旁被玻璃圍住的小空間，便是搜鏡王團隊此行的重點──吾鏡手作眼鏡坊。
+                                </p>
+                                <p>延伸閱讀：<a href="#">吾鏡手作體驗坊台灣直營店開幕</a></p>
+                                <img src="picture/00_temp_picture/503.png" alt="">
+                                <p>
+                                    為期四天的參訪交流行程，飛也似地結束了。這幾天來，雙方團隊都靈感四射，進行了多次充滿創意又有火花的對話；而除了參觀吾鏡總部與實體工坊以外，吾鏡的主理人Daniel還全程陪同，甚至帶領團隊全體穿梭在武漢的大小巷弄，進行了食物與文化的深度交流，充分體驗了兩地深藏的人文底蘊。
+                                </p>
+                                <p>
+                                Chrome Hearts在1992年獲得美國設計師協會時尚大獎(CFDA Fashion Awards)的獎項後從此一躍成名。直營店遍布世界各地，以大幅度的曝光與名人配戴的方式，確立了品牌無人能及的高度。
+                                </p>
+                                <p>
+                                        Chrome Hearts的作品不只走在潮流尖端，同時在經典與時尚中取得平衡點才是讓它人氣不墜的秘密。香奈兒首席設計師卡爾拉格斐、史密斯飛船主唱、歌手瑪丹娜、日韓藝人木村拓哉、Big BANG、台港藝人謝霆鋒、羅志祥、吳建豪、關穎等皆是該品牌的愛好者。
+                                </p>
+                            </div>
+                            <div class="tag_box">
+                                    <a href="#" class="tag">a.tag</a>
+                                    <a href="#" class="tag">時尚穿搭</a>
+                                    <a href="#" class="tag">工業廠房</a>
+                                    <a href="#" class="tag">吾鏡手作眼鏡體驗坊</a>
+                                    <a href="#" class="tag">球鞋</a>
+                                    <a href="#" class="tag">a.tag</a>
+                                    <a href="#" class="tag">時尚穿搭</a>
+                                    <a href="#" class="tag">工業廠房</a>
+                                    <a href="#" class="tag">吾鏡手作眼鏡體驗坊</a>
+                                    <a href="#" class="tag">球鞋</a>
+                                    <a href="#" class="tag">a.tag</a>
+                                    <a href="#" class="tag">時尚穿搭</a>
+                                    <a href="#" class="tag">工業廠房</a>
+                                    <a href="#" class="tag">吾鏡手作眼鏡體驗坊</a>
+                                    <a href="#" class="tag">球鞋</a>                                                        
+                            </div>
+                            <div class="share_box u-cf">
+                                <a href="#"><img src="picture/01_icon/tw.svg" alt="facebook"></a>
+                                <a href="#"><img src="picture/01_icon/fb.svg" alt="facebook"></a>
+                                <p class="r">share -</p>
+                            </div>
+                        </article>
+                        <div class="col-1-3 s col-md-1-1 col-right z10">
+                            <div class="row">
+                                <h6 class="sidebar_h">熱門文章</h6> 
+                                <!-- card 02 -->
+                                <div class="col-1-1 col-md-1-2 col-xs-1-1">
+                                    <div class="card_02">
+                                        <div class="row">
+                                            <div class="col-1-3">
+                                                <div class="imgbox-zoom_2">
+                                                    <div class="imgbox-sm picbox"
+                                                        style="background-image:url('picture/00_temp_picture/102.jpg')"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-2-3 textbox">
+                                                <a href="#">
+                                                    <h3 class="sm">【球鞋與眼鏡 VOL. 8裝備be A.D. N運動護目眼鏡Wensotti</h3>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- card 02 -->
+                                <div class="col-1-1 col-md-1-2 col-xs-1-1">
+                                    <div class="card_02">
+                                        <div class="row">
+                                            <div class="col-1-3">
+                                                <div class="imgbox-zoom_2">
+                                                    <div class="imgbox-sm picbox"
+                                                        style="background-image:url('picture/00_temp_picture/103.jpg')"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-2-3 textbox">
+                                                <a href="#">
+                                                    <h3 class="sm">【球鞋與眼鏡 VOL. 8裝備不能輸！Nike Kobe A.D. NXT 360 & 運動護目眼鏡Wensotti</h3>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- card 02 -->
+                                <div class="col-1-1 col-md-1-2 col-xs-1-1">
+                                    <div class="card_02">
+                                        <div class="row">
+                                            <div class="col-1-3">
+                                                <div class="imgbox-zoom_2">
+                                                    <div class="imgbox-sm picbox"
+                                                        style="background-image:url('picture/00_temp_picture/101.jpg')"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-2-3 textbox">
+                                                <a href="#">
+                                                    <h3 class="sm">【球鞋與眼鏡 VOL. 8裝備不能輸！Nike Kobe A.D. NXT 360 & 運動護目眼鏡Wensotti</h3>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- card 02 -->
+                                <div class="col-1-1 col-md-1-2 col-xs-1-1">
+                                    <div class="card_02">
+                                        <div class="row">
+                                            <div class="col-1-3">
+                                                <div class="imgbox-zoom_2">
+                                                    <div class="imgbox-sm picbox"
+                                                        style="background-image:url('picture/00_temp_picture/104.jpg')"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-2-3 textbox">
+                                                <a href="#">
+                                                    <h3 class="sm">【球鞋與眼鏡 VOL. 8裝備不能輸！Nike Kobe A.D. NXT 360 & 運動護目眼鏡Wensotti</h3>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h6 class="sidebar_h">最新文章</h6> 
+                                <!-- card 02 -->
+                                <div class="col-1-1 col-md-1-2 col-xs-1-1">
+                                        <div class="card_02">
+                                            <div class="row">
+                                                <div class="col-1-3">
+                                                    <div class="imgbox-zoom_2">
+                                                        <div class="imgbox-sm picbox"
+                                                            style="background-image:url('picture/00_temp_picture/107.jpg')"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2-3 textbox">
+                                                    <a href="#">
+                                                        <h3 class="sm">【球鞋與眼鏡 VOL. 8裝備不能輸！Nike Kobe A.D. NXT 360 & 運動護目眼鏡Wensotti</h3>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <!-- card 02 -->
+                                <div class="col-1-1 col-md-1-2 col-xs-1-1">
+                                        <div class="card_02">
+                                            <div class="row">
+                                                <div class="col-1-3">
+                                                    <div class="imgbox-zoom_2">
+                                                        <div class="imgbox-sm picbox"
+                                                            style="background-image:url('picture/00_temp_picture/108.jpg')"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2-3 textbox">
+                                                    <a href="#">
+                                                        <h3 class="sm">【球鞋與眼鏡 VOL. 8裝備不能輸！Nike Kobe A.D. NXT 360 & 運動護目眼鏡Wensotti</h3>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                                <!-- card 02 -->
+                                <div class="col-1-1 col-md-1-2 col-xs-1-1">
+                                        <div class="card_02">
+                                            <div class="row">
+                                                <div class="col-1-3">
+                                                    <div class="imgbox-zoom_2">
+                                                        <div class="imgbox-sm picbox"
+                                                            style="background-image:url('picture/00_temp_picture/101.jpg')"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2-3 textbox">
+                                                    <a href="#">
+                                                        <h3 class="sm">【球鞋與眼鏡 VOL. 8裝備不能輸！Nike Kobe A.D. NXT 360 & 運動護目眼鏡Wensotti</h3>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div> 
+                                <!-- card 02 -->
+                                <div class="col-1-1 col-md-1-2 col-xs-1-1">
+                                        <div class="card_02">
+                                            <div class="row">
+                                                <div class="col-1-3">
+                                                    <div class="imgbox-zoom_2">
+                                                        <div class="imgbox-sm picbox"
+                                                            style="background-image:url('picture/00_temp_picture/104.jpg')"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2-3 textbox">
+                                                    <a href="#">
+                                                        <h3 class="sm">【球鞋與眼鏡 VOL. 8裝備不能輸！Nike Kobe A.D. NXT 360 & 運動護目眼鏡Wensotti</h3>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="col-2-3-69 col-md-1-1  space16 z10">
+                            <div class="store">
+                                <h4>販售店家</h4>
+                                <a href="#">Daren Eyewear 達人眼鏡</a>
+                                <a href="#">視明精品眼鏡名店</a>
+                                <a href="#">睛點光學眼鏡</a>
+                                <a href="#">金特麗眼鏡 - 彰化店</a>
+                                <a href="#">藝光眼鏡</a>                        
+                            </div>
+                            <a href="#">
+                                <div class="next_article_box u-cf z10">
+                                    <h6>上一篇</h6>
+                                    <h5>建議最多三十五個中文字，超過不會怎樣。建議最多三十五個中文字，超過也不會怎樣</h5>
+                                </div>
+                            </a>
+                            <a href="#">
+                                <div class="next_article_box u-cf z10">
+                                    <h6>下一篇</h6>
+                                    <h5>建議最多三十五個中文字，超過不會怎樣。建議最多三十五個中文字，超過也不會怎樣</h5>
+                                </div>
+                            </a>
+                            <div class="row z10">
+                                    <div class="fb_block">FB留言區</div>         
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-1-1">
+                                <h6 class="sidebar_h u-text-l">相關文章</h6> 
+                            </div>
+                            <!-- card 01 -->
+                            <div class="col-1-3 col-sm-1-2 col-xs-1-1">
+                                <div class="card_01">
+                                    <div class="imgbox-zoom">
+                                        <a href="#">
+                                            <div class="imgbox-md"
+                                                style="background-image:url('picture/00_temp_picture/021.jpg')"></div>
+                                        </a>
+                                    </div>
+                                    <div class="textbox">
+                                        <a href="#">
+                                            <h6>PEOPLE</h6>
+                                        </a>
+                                        <a href="#">
+                                            <h3>5555議最多三十五個中文字超過會變成建議最多三十五個中文字超過會變成建議最多...</h3>
+                                        </a>
+                                        <p class="date">2017 . 11 . 02</p>
+                                        <div class="tagbox">
+                                            <a href="#" class="tag">2018眼鏡新品</a>
+                                            <a href="#" class="tag">綻放眾多名人眾臉龐...</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- card 01 -->
+                            <div class="col-1-3 col-sm-1-2 col-xs-1-1">
+                                <div class="card_01">
+                                    <div class="imgbox-zoom">
+                                        <a href="#">
+                                            <div class="imgbox-md"
+                                                style="background-image:url('picture/00_temp_picture/014.jpg')"></div>
+                                        </a>
+                                    </div>
+                                    <div class="textbox">
+                                        <a href="#">
+                                            <h6>PEOPLE</h6>
+                                        </a>
+                                        <a href="#">
+                                            <h3>VEDI VERO 2018眼鏡新品，綻放眾多名人臉龐</h3>
+                                        </a>
+                                        <p class="date">2017 . 11 . 02</p>
+                                        <div class="tagbox">
+                                            <a href="#" class="tag">球鞋</a>
+                                            <a href="#" class="tag">時尚穿搭</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- card 01 -->
+                            <div class="col-1-3 col-sm-1-2 col-xs-1-1">
+                                <div class="card_01">
+                                    <div class="imgbox-zoom">
+                                        <a href="#">
+                                            <div class="imgbox-md"
+                                                style="background-image:url('picture/00_temp_picture/016.jpg')"></div>
+                                        </a>
+                                    </div>
+                                    <div class="textbox">
+                                        <a href="#">
+                                            <h6>PEOPLE</h6>
+                                        </a>
+                                        <a href="#">
+                                            <h3>VEDI VERO 2018眼鏡新品，綻放眾多名人臉龐</h3>
+                                        </a>
+                                        <p class="date">2017 . 11 . 02</p>
+                                        <div class="tagbox">
+                                            <a href="#" class="tag">球鞋</a>
+                                            <a href="#" class="tag">時尚穿搭</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- card 01 -->
+                            <div class="col-1-3 col-sm-1-2 col-xs-1-1">
+                                <div class="card_01">
+                                    <div class="imgbox-zoom">
+                                        <a href="#">
+                                            <div class="imgbox-md"
+                                                style="background-image:url('picture/00_temp_picture/005.jpg')"></div>
+                                        </a>
+                                    </div>
+                                    <div class="textbox">
+                                        <a href="#">
+                                            <h6>PEOPLE</h6>
+                                        </a>
+                                        <a href="#">
+                                            <h3>VEDI VERO 2018眼鏡新品，綻放眾多名人臉龐</h3>
+                                        </a>
+                                        <p class="date">2017 . 11 . 02</p>
+                                        <div class="tagbox">
+                                            <a href="#" class="tag">球鞋</a>
+                                            <a href="#" class="tag">時尚穿搭</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- card 01 -->
+                            <div class="col-1-3 col-sm-1-2 col-xs-1-1">
+                                <div class="card_01">
+                                    <div class="imgbox-zoom">
+                                        <a href="#">
+                                            <div class="imgbox-md"
+                                                style="background-image:url('picture/00_temp_picture/002.jpg')"></div>
+                                        </a>
+                                    </div>
+                                    <div class="textbox">
+                                        <a href="#">
+                                            <h6>PEOPLE</h6>
+                                        </a>
+                                        <a href="#">
+                                            <h3>VEDI VERO 2018眼鏡新品，綻放眾多名人臉龐</h3>
+                                        </a>
+                                        <p class="date">2017 . 11 . 02</p>
+                                        <div class="tagbox">
+                                            <a href="#" class="tag">球鞋</a>
+                                            <a href="#" class="tag">時尚穿搭</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- card 01 -->
+                            <div class="col-1-3 col-sm-1-2 col-xs-1-1">
+                                <div class="card_01">
+                                    <div class="imgbox-zoom">
+                                        <a href="#">
+                                            <div class="imgbox-md"
+                                                style="background-image:url('picture/00_temp_picture/011.jpg')"></div>
+                                        </a>
+                                    </div>
+                                    <div class="textbox">
+                                        <a href="#">
+                                            <h6>PEOPLE</h6>
+                                        </a>
+                                        <a href="#">
+                                            <h3>VEDI VERO 2018眼鏡新品，綻放眾多名人臉龐</h3>
+                                        </a>
+                                        <p class="date">2017 . 11 . 02</p>
+                                        <div class="tagbox">
+                                            <a href="#" class="tag">球鞋</a>
+                                            <a href="#" class="tag">時尚穿搭</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row space64">
+                            <div class="col-1-2 col-sm-1-1 col-xs-1-1">
+                                <div class="ad_boxs a2" style="background-image:url('picture/00_temp_picture/101.jpg')"></div>
+                            </div>
+                            <div class="col-1-2 col-sm-1-1 col-xs-1-1">
+                                <div class="ad_boxs a2" style="background-image:url('picture/00_temp_picture/103.jpg')"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-1-1">
+                                <h6 class="sidebar_h u-text-l">同區品牌</h6> 
+                            </div>
+                            <div class="col-1-3 col-smd-1-2  col-xs-1-1 space16">
+                                <div class="u-over_hidden">
+                                    <div class="imgbox-zoom">
+                                        <a href="#">
+                                            <div class="card_03" style="background-image:url('picture/00_temp_picture/301.jpg')">
+                                                <div class="textbox">
+                                                    <h4>
+                                                        【球鞋與眼鏡 VOL. 8】 裝備不能輸！Nike Kobe A.D. NXT 360 & Wensotti
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-1-3 col-smd-1-2  col-xs-1-1 space16">
+                                <div class="u-over_hidden">
+                                    <div class="imgbox-zoom">
+                                        <a href="#">
+                                            <div class="card_03" style="background-image:url('picture/00_temp_picture/301.jpg')">
+                                                <div class="textbox">
+                                                    <h4>
+                                                        【球鞋與眼鏡 VOL. 8】 裝備不能輸！Nike Kobe A.D. NXT 360 & Wensotti
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-1-3 col-smd-1-2  col-xs-1-1 space16">
+                                <div class="u-over_hidden">
+                                    <div class="imgbox-zoom">
+                                        <a href="#">
+                                            <div class="card_03" style="background-image:url('picture/00_temp_picture/301.jpg')">
+                                                <div class="textbox">
+                                                    <h4>
+                                                        【球鞋與眼鏡 VOL. 8】 裝備不能輸！Nike Kobe A.D. NXT 360 & Wensotti
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-1-3 col-smd-1-2  col-xs-1-1 space16">
+                                <div class="u-over_hidden">
+                                    <div class="imgbox-zoom">
+                                        <a href="#">
+                                            <div class="card_03" style="background-image:url('picture/00_temp_picture/301.jpg')">
+                                                <div class="textbox">
+                                                    <h4>
+                                                        【球鞋與眼鏡 VOL. 8】 裝備不能輸！Nike Kobe A.D. NXT 360 & Wensotti
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-1-3 col-smd-1-2  col-xs-1-1 space16">
+                                <div class="u-over_hidden">
+                                    <div class="imgbox-zoom">
+                                        <a href="#">
+                                            <div class="card_03" style="background-image:url('picture/00_temp_picture/301.jpg')">
+                                                <div class="textbox">
+                                                    <h4>
+                                                        【球鞋與眼鏡 VOL. 8】 裝備不能輸！Nike Kobe A.D. NXT 360 & Wensotti
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-1-3 col-smd-1-2  col-xs-1-1 space16">
+                                <div class="u-over_hidden">
+                                    <div class="imgbox-zoom">
+                                        <a href="#">
+                                            <div class="card_03" style="background-image:url('picture/00_temp_picture/301.jpg')">
+                                                <div class="textbox">
+                                                    <h4>
+                                                        【球鞋與眼鏡 VOL. 8】 裝備不能輸！Nike Kobe A.D. NXT 360 & Wensotti
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>   
+                    </div> 
+                </div>
+                <a class="go_top" href="#" id="goTop"></a>
+        </div>
+    </div>
+	<footer>
+		<div class="footer_container">
+			<div class="row">
+				<div class="col-1-3 col-smd-1-1 ">
+					<div class="textbox phone">
+						<div>
+							<div class="line l"></div>
+							<div class="p_box">
+								<p>
+									Sunglasses are like eye shadow: They make everything look younger and pretty.
+								</p>
+							</div>
+							<div class="line r"></div>
+							<div class="name">
+								<p>- Karl Lagerfeld</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-5-12 col-smd-1-1">
+					<div class="linkbox">
+						<div class="row">
+							<div class="col-1-4 smd-hidden"><a href="#">NEWS</a></div>
+							<div class="col-1-4 smd-hidden"><a href="#">STYLE</a></div>
+							<div class="col-1-4 smd-hidden"><a href="#">PROJECTS</a></div>
+							<div class="col-1-4 smd-hidden"><a href="#">HEALTH</a></div>
+							<div class="col-1-4 smd-hidden"><a href="#">BRANDS</a></div>
+							<div class="col-1-4 smd-hidden"><a href="#">STORES</a></div>
+							<div class="col-1-4 smd-hidden"><a href="#">FORUM</a></div>
+						</div>
+						<div class="space8"></div>
+						<div class="row">
+							<div class="col-1-4  col-smd-1-2 l"><a href="#">關於我們</a></div>
+							<div class="col-1-4 col-smd-1-2 r"><a href="#">廣告洽談</a></div>
+							<div class="col-1-4 col-smd-1-2 l"><a href="#">隱私權政策</a></div>
+							<div class="col-1-4 col-smd-1-2 r"><a href="#">字媒體</a></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-1-4 col-smd-1-1">
+					<div class="iconbox">
+						<a href="#">
+							<div class="btn type02 sm">註冊 / 登入</div>
+						</a>
+						<div class="space16"></div>
+						<div class="row">
+							<div class="center">
+								<div class="col-1-6 col-smd-1-4"><a href="#"><img src="picture/01_icon/fb_lg.png"
+											alt=""></a></div>
+								<div class="col-1-6 col-smd-1-4"><a href="#"><img src="picture/01_icon/ig_lg.png"
+											alt=""></a></div>
+								<div class="col-1-6 col-smd-1-4"><a href="#"><img src="picture/01_icon/yb.png"
+											alt=""></a></div>
+								<div class="col-1-6 col-smd-1-4"><a href="#"><img src="picture/01_icon/wechat_lg.png"
+											alt=""></a></div>
+							</div>
+						</div>
+						<div class="space8"></div>
+						<p>
+							Copyright © 2015-2019 </br>
+							Soeyewear, All rights reserved.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- plugin -->
+	<script src="js/jquery/jquery-3.3.1.min.js"></script>
+	<script src="js/Vue.js/Vue.js"></script>
+	<script>
+		// hamburger
+		$(document).ready(function () {
+			$(".hamberger").click(function () {
+				$(".toggle").toggle();
+			});
+		});
+		$(document).ready(function () {
+			$(".xx").click(function () {
+				$(".toggle_x").toggle();
+			});
+		});
+		// search bar
+		var mainsearch = new Vue({
+			el: '#mainsearch',
+			data: {
+				state: "close"
+			}
+		});
+	</script>
+</body>
+</html>
