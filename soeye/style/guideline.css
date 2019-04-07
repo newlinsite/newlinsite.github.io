@@ -524,17 +524,18 @@ form .divline{
 				
 *******************************/
 .card_01 {
-	height: 368px;
-	margin-bottom: 16px;
+	height: 360px;
+	margin: 1% 1% 19px 1%;
 	overflow: hidden;
 	box-shadow: 0px 0px 16px -2px rgba(0, 0, 0, .035), -3px 1px 8px rgba(19, 90, 93, 0.02);
-	border-radius: 1px;
-	transition: 1s}
+	border-radius: 2px;
+	transition: .6s}
 	.card_01:hover {box-shadow: 2px 2px 21px -4px rgba(0, 0, 0, .05), -3px 1px 15px rgba(19, 90, 93, 0.06)}
 	.card_01 .textbox {
-		height: 174px;
+		height: 166px;
 		background-color: #fff;
-		padding: 12px;}
+		padding: 14px;}
+	.card_01 h3 {font-weight: 400;font-size: 16px;}
 	.card_01 h6 {padding-bottom: 8px;}
 
 	.card_01 p.date,.card_01 .tagbox {
@@ -552,7 +553,7 @@ form .divline{
 
 	.card_01.xl {height: 650px;}
 		.card_01.xl h3 {
-			font-size: 22px;
+			font-size: 20px;
 			letter-spacing: 0.05em;
 			padding-bottom: 18px;}
 		.card_01.xl .textbox {height: 357px;}
@@ -560,7 +561,7 @@ form .divline{
 	@media (max-width: 480px) {
 		.card_01.xl {height: 388px}
 		.card_01.xl h3 {
-			font-size: 17px;
+			font-size: 16px;
 			letter-spacing: 0.09em;
 			padding-bottom: 0px;}
 		.card_01.xl .textbox {height: 194px;}
@@ -569,7 +570,7 @@ form .divline{
 .card_02 {
 	z-index: 2;
 	height: 120px;
-	margin-bottom: 25px;
+	margin-bottom: 23.5px;
 	overflow: hidden;}
 	.card_02 .picbox {
 		width: 120px;

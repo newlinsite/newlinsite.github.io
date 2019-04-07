@@ -86,6 +86,7 @@
 *********************** */
 article p{
     font-size: 17px;
+    font-weight: 350;
     line-height: 1.568em;
     margin: 16px 3px;}
     article p.date{margin: 0px 3px;}   
