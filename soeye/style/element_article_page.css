@@ -1,5 +1,4 @@
 
-.main_img_box{}
     .main_img_box img{
     max-width: 920px;
     width: 100%;
@@ -18,9 +17,7 @@
                     transform: translateX(0);}}   
     @media only screen and (max-width: 920px) {
         .main_img_box{margin: 0 -16px;}}
-    .main_img_box .imgbox{
-        height: 400px;
-    }
+    .main_img_box .imgbox{height: 400px;}
 
 
 .sidebar_h{

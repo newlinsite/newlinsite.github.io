@@ -503,7 +503,7 @@ form .divline{
 	.ad_boxs .a5 {
 		left: 50%;
 		transform: translateX(-50%);
-		width: 100%;
+		/* width: 100%; */
 		margin: 52px 0 52px 0;}
 	@media only screen and (max-width: 1200px) {
 		.ad_boxs .a5 {width: 100%}}
