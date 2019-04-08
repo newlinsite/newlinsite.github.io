@@ -1,0 +1,22 @@
+
+.owl-theme .owl-nav .owl-next{
+  
+}
+.owl-theme .owl-dots{
+  
+}
+
+.owl-theme .owl-dots .owl-dot{
+  
+}
+.owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev{
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  top:-52px;}
+.owl-carousel .owl-nav button.owl-next{
+  right: 20px;
+  background-image: url('../../../picture/01_icon/arr_left.svg');}
+.owl-carousel .owl-nav button.owl-prev{
+  right: 68px;
+  background-image: url('../../../picture/01_icon/arr_right.svg');}
