@@ -138,17 +138,17 @@
 	width: 100%;
 	padding: 25px 46px;
 	background-color: rgba(183, 194, 194,.1);}
-
+	.stores.padding0{padding: 8px 8px 30px 8px;}
 .stores .owl-carousel .owl-nav button.owl-next,
 .stores .owl-carousel .owl-nav button.owl-prev {
 	top: 10px;}
 
 @media only screen and (max-width: 1024px){
-	.stores{margin-top: 16px;}}
+	.stores{margin-top: 16px;}.stores.aru{margin-top: 0px;}}
 @media only screen and (max-width: 618px){
-	.stores{margin-top: 24px;}}
+	.stores{margin-top: 24px;}.stores.aru{margin-top: 0px;}}
 @media only screen and (max-width: 538px){
-	.stores{margin-top: 32px;}}
+	.stores{margin-top: 32px;}.stores.aru{margin-top: 0px;}}
 
 @media only screen and (max-width: 448px){
 	.stores{
@@ -157,9 +157,11 @@
 		padding: 0px;
 		background-color: rgba(183, 194, 194,0);}}
 @media only screen and (max-width: 400px){
-	.stores{margin-top: 80px;}}
+	.stores{margin-top: 80px;}
+	.stores.aru{margin-top: 0px;}}
 @media only screen and (max-width: 359px){
-	.stores{margin-top: 20px;display: none}}
+	.stores{margin-top: 20px;display: none}
+	.stores.aru{margin-top: 0px;display: inline-block}}
 
 
 /* sign-up section */

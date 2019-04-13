@@ -2,8 +2,9 @@
     .main_img_box img{
     max-width: 920px;
     width: 100%;
-    margin-bottom: 96px;}
+    margin-bottom: 48px;}
     .z10{z-index: 10;}
+    
     @media only screen and (max-width: 1200px) {
         .main_img_box img{left: 50%;transform: translateX(-50%);}
         .articontainer{
@@ -16,8 +17,9 @@
                     left: auto;
                     transform: translateX(0);}}   
     @media only screen and (max-width: 920px) {
-        .main_img_box{margin: 0 -16px;}}
+    .main_img_box{margin: 0 -16px;}}
     .main_img_box .imgbox{height: 400px;}
+    .main_img_box .imgbox.md{height: 316px;}
 
 
 .sidebar_h{
@@ -83,46 +85,82 @@
 *********************** */
 article p{
     font-size: 17px;
-    font-weight: 350;
+    font-weight: 380;
     line-height: 1.568em;
-    margin: 16px 3px;}
+    margin: 8px 3px;}
     article p.date{margin: 0px 3px;}   
 article p.quote{
     padding: 42px 56px;
-    margin: 36px 12px;;
+    margin: 24px 8px;;
     line-height: 1.768em;
+    font-weight: 380;
     background-color: #E9EAEA;
+    color: #070707;
     border-radius: 4px;}
+    @media only screen and (max-width:550px){
+        article p.quote{padding: 24px 24px;}}
 article img{
-    left: 50%;
-    transform: translateX(-50%);
-    margin: 24px 0;
     max-width: 100%;}
 article a{color: #2FB0B3;transition: .3s;}
     article a:hover{color: #FFD064}
 article h3 {font-size: 25px;
 	color: #151718;
 	font-weight: 500;}
-	h3:hover {color: #151718;}
+    h3:hover {color: #151718;}
+    .card_01 h3:hover {color: #2FB0B3}
 article h4,h5,h6{color: #075457;letter-spacing: 0.1em}
 h4:hover,h6:hover{ color: #075457;}
+.card_01 h6:hover{ color: #2FB0B3}
 article h4 {font-size: 20px;
     margin: 12px 0}
-article h5 ,.next_article_box h5{font-size: 18px;
+article h5 ,.next_article_box h5{
+    font-size: 18px;
 	font-weight: 500;}
 article h6 {font-size: 16px;
     font-weight: 600;}
 article .tag_box{margin: 48px 0}
     article a.tag {
         padding: 5px 16px 5px 16px;
-        margin: 6px 10px 6px 0;}
+        margin: 5px 10px 5px 0;}
+@media only screen and (max-width:480px){
+    h1,h2{font-size:24px ;}}
 
+@media only screen and (max-width:768px){
+article .smd-textbox{
+    background-color: #f5f5f5;
+    padding: 20px;
+    margin: 0 8px 12px 8px;}}
+    @media only screen and (max-width:480px){
+        article .smd-textbox{
+            background-color: #fff;
+            padding: 0px;
+            margin: 0 0px 12px 0px;}}
 
+article .map{
+    height: 300px;
+    width: 100%;}
+article .card-1-4{
+    height: 186px;;}
+    article .card-1-4:hover>a h6{color: #2FB0B3;}
+
+article .optomH div{margin: 16px 0}
+article .optomH h2,article .optomH h3{
+    margin: 2px 0 8px 0;
+    font-size: 18px;}
+article .optomH h3{
+    font-size: 15px;
+    line-height: 1.6em}
+article .optomH h5{font-size: 14px;}
+article .optomH img{
+    left: 0;
+    transform: translate(0,0);
+    max-height: 300px;
+    max-width: auto;}
 
 
 /* **********************
 
-    other article 
+    other
 
 *********************** */
 
@@ -138,6 +176,8 @@ article .tag_box{margin: 48px 0}
     text-align: center;
     background-color: #f8f8f8;}
 
+
+
 .next_article_box{
     background-color: #F9F9F9;
     margin: 16px 4px;
@@ -147,10 +187,12 @@ article .tag_box{margin: 48px 0}
     .next_article_box h6{
         color: #2FB0B3;
         float: left;
-        width: 25%;}
+        width: 20%;}
     .next_article_box h5{
         color: #555;
+        font-size: 16px;
         float:right;
         width: 70%;}
+        .next_article_box h5.lg{width:80%;}
     .next_article_box:hover{background-color: #f1f1f1;}
     .next_article_box:hover>h6{color:#075457;}

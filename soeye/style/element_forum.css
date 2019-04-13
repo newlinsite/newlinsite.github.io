@@ -23,7 +23,7 @@
     padding: 16px;
     margin: 20px 0;
     border-radius: 4px;
-    opacity: .85;
+    opacity: .9;
     transition: .3s}
 .card_forum p,
 .card_forum .point,
@@ -50,11 +50,37 @@
     font-size: 13px;}
 .card_forum:hover{background-color: rgba(183,183,194,.15);opacity: 1;}
 .card_forum h2:hover{color: #33B3C2;}
-.card_forum p.author:hover{color: #33B3C2;}
-.card_forum p.replyer:hover{color: #33B3C2;}
+/* .card_forum p.author:hover{color: #33B3C2;} */
+/* .card_forum p.replyer:hover{color: #33B3C2;} */
 
+.card_forum.page{background-color: rgb(250, 250, 250);opacity: 1;}
+.card_forum.page:hover{background-color: rgba(245, 245, 245, 1);opacity: 1;}
+.card_forum.replybox{background-color: #fff;}
+.card_forum.replybox:hover{background-color: #fff;}
+.card_forum.page p{font-weight: 400}
+.card_forum.page .author.reply,.card_forum.page .time{margin: 2px 0;font-weight: 500;}
+.card_forum.page .time{
+    font-size: 12px;
+    color: #668B8D;
+}
+.card_forum.page img{margin: 12px 0}
+.card_forum.replybox textarea{
+    left: 2%;
+    width: 100%;
+    height: 60px;
+    max-width: 94%;
+    min-width: 94%;
+    max-height: 200px;
+    min-height: 55px;
+}
+.card_forum.page input{font-weight: 500}
 
-
+.card_forum .imgbox{
+    height: 48px;
+    width: 48px;
+    border-radius: 24px;
+    margin: 0 0 16px 0;
+}
 .sidebar_h{
     color: #668B8D;
     font-size: 18px;
@@ -65,3 +91,6 @@
     .sidebar_h.en{
         letter-spacing: 0.02em;
         font-size: 20px;}
+.sidebar_h.re{margin: 20px 0;}
+
+

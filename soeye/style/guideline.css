@@ -58,7 +58,7 @@ h6 {font-size: 14px;
 	transition: .6s}
 	h6:hover {color: #2FB0B3;}
 
-p {color: #232626;
+p {color: #1a1b1b;
 	font-size: 14px;
 	letter-spacing: 0.07em;
 	line-height: 1.36em;}
@@ -362,6 +362,17 @@ a.tag:hover {
 	background-color: #fff;
 	margin: 16px  8px;
 	height: 34px;}
+.form_02 img{width: 100%;margin: 8px 0;}
+.form_02 .cash{
+	height: 34px;
+	width: 34px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	opacity: 0;
+	transition: .3s}
+	.form_02 .cash:hover{opacity: 1;}
 .form_02 .imgbox.img01{width: 66px;}
 .form_02 .imgbox.img02{width: 34px;}
 .form input,
@@ -385,6 +396,9 @@ a.tag:hover {
 	max-width:100%;
 	min-height: 40px;
 	max-height: 200px;}
+	.form_02 textarea.lg{
+		height: 280px;
+		max-height: 800px;}
 form .divline{
 	border-bottom: #f1f1f1 2px solid;
 	margin: 36px 0;}
@@ -499,14 +513,19 @@ form .divline{
 	.imgbox-lgmd {
 		height: 196px;}}
 
-/* .ad_boxs {} */
+/* .ad_boxs */
+	
 	.ad_boxs .a5 {
 		left: 50%;
 		transform: translateX(-50%);
-		/* width: 100%; */
 		margin: 52px 0 52px 0;}
+	.ad_boxs .md{width: 100%;}
+	.ad_boxs .a5.sm{
+		width: 90%;
+		margin: 12px 0 0px 0; }
 	@media only screen and (max-width: 1200px) {
-		.ad_boxs .a5 {width: 100%}}
+		.ad_boxs .a5 ,.ad_boxs .a5.sm{width: 100%}
+		}
 
 	.ad_boxs.a2 {
 		height: 152px;
@@ -743,7 +762,7 @@ nav .hamberger,
 	nav .xx {
 		height: 32px;
 		width: 32px;
-		background-image: url(../picture/01_icon/hambuer.png);
+		background-image: url(../picture/01_icon/hambuer.svg);
 		position: fixed;
 		opacity: .8;
 		border-radius: 6px;

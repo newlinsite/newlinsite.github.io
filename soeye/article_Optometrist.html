@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width initial-scale=1.0,user-scalable=0,maximum-scale=1.5">
+	<title>SO!eyewear搜鏡王-全球華人最大眼鏡入口網站</title>
+	<meta name=”description” content=”網頁說明”>
+	<link rel="shortcut icon" href="picture/01_icon/so.png">
+	<link rel="stylesheet" href="style/reset.css">
+	<link rel="stylesheet" href="style/style.css">
+	<link rel="icon" type="image/png" href="picture/01_icon/so.png">
+	<link rel="stylesheet" href="style/guideline.css">
+	<link rel="stylesheet" href="style/element_article_page.css">
+	<script type="text/javascript" src="js/jquery-1.6.min.js"></script>
+	<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+	<script type="text/javascript" src="js/top.js"></script>
+</head>
+<body>
+	<div class="container">
+	<header>
+        <div class="fixed">
+            <nav>
+                <div class="hamberger toggle toggle_x"></div>
+                <div class=" xx toggle toggle_x" style="display: none;" ></div>
+                <div class="logo">
+                    <a href="index.html"><img src="picture/01_icon/soeyewear.svg" alt="so!eyewear_logo"></a>
+                </div>
+                <ul class="menu toggle toggle_x">
+                    <li class="main xl">
+                        <a class="a" href="#">NEWS<span class="sm">新訊</span></a>
+                        <ul>
+                            <li class="s"><a href="#">EYEWEAR<br>眼鏡情報</a></li>
+                            <li class="xs"><a href="#">REPORT<br>特別報導</a></li>
+                            <li class="s"><a href="#">LOOKBOOK<br>新品型錄</a></li>
+                            <li class="l"><a href="#">JAPANESE HANDMADE<br>日本手作 榮谷川</a></li>
+                            <li class="l"><a href="#">INDUSTRY INFO<br>業界資訊</a></li>
+                        </ul>
+                    </li>
+                    <li class="main">
+                        <a class="a active" href="#">STYLE<span class="sm">風格</span></a>
+                        <ul>
+                            <li><a href="#">FEATURE<br>專欄特輯</a></li>
+                            <li><a href="#">PEOPLE<br>人物配戴</a></li>
+                            <li><a href="#">SNEAKERS & EYEWEAR <br>球鞋與眼鏡</a></li>
+                        </ul>
+                    </li>
+                    <li class="main">
+                        <a class="a" href="#">PROJECTS<span class="lg">企劃</span></a>
+                        <ul>
+                            <li><a href="#">FAMOUS<br>名人專訪</a></li>
+                            <li><a href="#">UNBOXING<br>開箱分享</a></li>
+                            <li><a href="#">POLL<br>民調</a></li>
+                        </ul>
+                    </li>
+                    <li class="main">
+                        <a class="a" href="#">HEALTH<span class="md">健康</span></a>
+                        <ul>
+                            <li><a href="#">DOCTOR<br>醫師有約</a></li>
+                            <li><a href="#">VISION CARE<br>視力保健</a></li>
+                            <li><a href="Optometrist.html">OPTOMETRISTS<br>驗光人員</a></li>
+                        </ul>
+                    </li>
+                    <li class="main  xl xxl">
+                        <a class="a" href="#">BRANDS<span class="md">品牌</span></a>
+                        <ul>
+                            <li><a href="#">FASHION<br>國際精品</a></li>
+                            <li><a href="#">EUROPEAN DESIGN<br>歐美設計</a></li>
+                            <li><a href="#">JAPANESE CRAFTS<br>日本工藝</a></li>
+                            <li><a href="#">POPULAR STYLE<br>流行風格</a></li>
+                            <li><a href="#">SPORTS TECH<br>運動機能</a></li>
+                            <li><a href="#">LENSES<br>鏡片 / 隱形眼鏡</a></li>
+                        </ul>
+                    </li>
+                    <li class="main s">
+                        <a class="a" href="#">STORES<span class="md">店家</span></a>
+                        <ul>
+                            <li><a href="#">SEARCH STORES<br>搜尋店家</a></li>
+                            <li><a href="#">SEARCH STORES BY MAP<br>地圖顯示</a></li>
+                        </ul>
+                    </li>
+                    <li class="main xs">
+                        <a class="a" href="#">FORUM<span class="xs">討論</span></a>
+                    </li>
+                </ul>
+                <div class="searchbox icon toggle toggle_x">
+                    <form id="mainsearch" action="#">
+                        <label :data-state="state" for="search">
+                            <input type="text" placeholder="Search" @click="state = 'opan'" @blur="state='close'" />
+                            <img class="m" src="picture/01_icon/search.svg" alt="search icon">
+                            <img class="xl" src="picture/01_icon/search_xl.svg" alt="search icon">
+                        </label>
+                    </form>
+                </div>
+                <div class="icon phone toggle toggle_x">
+                    <div>
+                        <a href="#"><img src="picture/01_icon/profile.svg"></a>
+                        <ul>
+                        <li><a href="#">一般會員</a></li>
+                        <li><a href="#">驗光人員</a></li>
+                        <li><a href="#">店家登入</a></li>
+                        </ul>
+                    </div> 
+                    <a href="#"><img src="picture/01_icon/fb.svg"></a>
+                    <a href="#"><img src="picture/01_icon/ig.svg"></a>
+                    <a href="#"><img src="picture/01_icon/wechat.svg"></a>
+                    <a href="#"><img src="picture/01_icon/language.svg"></a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="space_header"></div>
+    <div class="row">
+        <div class="col-1-4 md-hidden">
+            <div class="sidebar">
+                <ul>
+                <a href="#">    
+                    <div>
+                        <li class="none first">
+                            <div class="line l"></div>
+                            ALL  HEALTH<br>所有健康
+                            <div class="line r"></div>
+                        </li>
+                </div>
+                </a>
+                <div>
+                    <li class="divline"></li>
+                </div>  
+                <div>
+                    <a href="#">
+                        <li class="none">
+                            <div class="line l"></div>
+                            DOCTOR<br>醫師有約
+                            <div class="line r"></div>
+                        </li>
+                    </a>
+                </div>
+                <div>
+                    <a href="#">
+                        <li class="none">
+                            <div class="line l"></div>
+                            VISION CARE<br>視力保健
+                            <div class="line r"></div>
+                        </li>
+                    </a>
+                </div>
+                <div>
+                    <a href="#">
+                        <li class="active">
+                            <div class="line l"></div>
+                            OPTOMETRIST<br>驗光人員
+                            <div class="line r"></div>
+                        </li>
+                    </a>
+                </div>
+                </ul>
+            </div>
+        </div>
+        <div class="col-3-4 col-md-1-1 col-right">
+            <div class="row space32">
+                <div class="col-1-2 col-sm-1-1 col-xs-1-1">
+                    <div class="ad_boxs a2" style="background-image:url('picture/00_temp_picture/101.jpg')"></div>
+                </div>
+                <div class="col-1-2 col-sm-1-1 col-xs-1-1">
+                    <div class="ad_boxs a2" style="background-image:url('picture/00_temp_picture/103.jpg')"></div>
+                </div>
+            </div>        
+            <div class="row articontainer space32" >
+                <article class="col-2-3-69 col-md-1-1 z10">
+                    <h4 class="sm-hidden">南投縣</h4>
+                    <h1 class="sm-hidden">粘瑛珊</h1>
+                    <div class="share_box u-cf">
+                        <a href="#"><img src="picture/01_icon/tw.svg" alt="facebook"></a>
+                        <a href="#"><img src="picture/01_icon/fb.svg" alt="facebook"></a>
+                        <p class="r">share -</p>
+                    </div>
+                    <div class="row optomH">
+                        <div class="col-1-1 col-center">
+                            <img src="picture/00_temp_picture/510.png" alt="">
+                        </div>
+                        <div class="col-1-5 col-sm-1-1 sm-hidden">
+                            <h5 class="sm-hidden">姓名</h5>
+                            <h5 class="sm-hidden">Name</h5>
+                        </div>
+                        <div class="col-4-5 col-sm-1-1 col-center">
+                            <h2>粘瑛珊</h2>
+                        </div>
+                        <div class="col-1-5 col-sm-1-1">
+                            <h5>考試及格證書</h5>
+                            <h5>License</h5>
+                        </div>
+                        <div class="col-4-5 col-sm-1-1">
+                            <h2>高等暨普通考試驗光人員考試 驗光師考試類科</h2>
+                        </div>
+                        <div class="col-1-5 col-sm-1-1">
+                            <h5>學歷</h5>
+                            <h5>Education</h5>
+                        </div>
+                        <div class="col-4-5 col-sm-1-1">
+                            <h2>中山醫學大學視光學士 中山醫學大學視光碩士</h2>
+                        </div>
+                        <div class="col-1-5 col-sm-1-1">
+                            <h5>經歷</h5>
+                            <h5>Experience</h5>
+                        </div>
+                        <div class="col-4-5 col-sm-1-1">
+                            <h2>嘉義縣民雄鄉中興眼鏡行驗光配鏡門市服務7年</h2>
+                        </div>
+                        <div class="col-1-5 col-sm-1-1">
+                            <h5>專長</h5>
+                            <h5>Skills</h5>
+                        </div>
+                        <div class="col-4-5 col-sm-1-1">
+                            <a href="#" class="tag">近視、遠視、散光配鏡</a>
+                            <a href="#" class="tag">漸近鏡片配鏡</a>
+                            <a href="#" class="tag">工業廠房</a>
+                            <a href="#" class="tag">電腦專用眼鏡</a>
+                            <a href="#" class="tag">球鞋</a>
+                            <a href="#" class="tag">生理光學</a>
+                            <a href="#" class="tag">時尚穿搭</a>
+                            <a href="#" class="tag">工業廠房</a>
+                            <a href="#" class="tag">吾鏡手作眼鏡體驗坊</a>
+                            <a href="#" class="tag">球鞋</a>
+                            <a href="#" class="tag">a.tag</a>
+                            <a href="#" class="tag">時尚穿搭</a>
+                            <a href="#" class="tag">工業廠房</a>
+                            <a href="#" class="tag">斜弱視訓練</a>
+                            <a href="#" class="tag">漸進多焦點隱形眼鏡</a>
+                            <a href="#" class="tag">吾鏡手作眼鏡體驗坊</a>
+                            <a href="#" class="tag">球鞋</a>
+                            <a href="#" class="tag">a.tag</a>
+                            <a href="#" class="tag">時尚穿搭</a>
+                            <a href="#" class="tag">工業廠房</a>
+                            <a href="#" class="tag">斜弱視訓練</a>
+                            <a href="#" class="tag">漸進多焦點隱形眼鏡</a>                                                        
+                        </div>
+                        <div class="col-1-5 col-sm-1-1">
+                            <h5>地址</h5>
+                            <h5>Address</h5>
+                        </div>
+                        <div class="col-4-5 col-sm-1-1">
+                            <h3>花旗光學眼鏡 -<br>
+                                南投縣(542)草屯鎮碧山路123號 <br>
+                                0492310654
+                            </h3>
+                        </div>
+                        <div class="col-1-1">
+                            <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13466.783432612681!2d120.19894327187458!3d22.98478492760509!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346e769aa52f2acb%3A0x797b0da965882caa!2z6Ie654Gj5bqc5Z-OLeadsemWgOWfjijov47mmKXploAp!5e0!3m2!1szh-TW!2stw!4v1555128779501!5m2!1szh-TW!2stw" frameborder="0" style="border:0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </article>
+                <div class="col-1-3s col-md-1-1 col-right z10">
+                    <div class="row">
+                        <h6 class="sidebar_h">熱門文章</h6> 
+                        <!-- card 02 -->
+                        <div class="col-1-1 col-md-1-2 col-xs-1-1">
+                            <div class="card_02">
+                                <div class="row">
+                                    <div class="col-1-3">
+                                        <div class="imgbox-zoom_2">
+                                            <div class="imgbox-sm picbox"
+                                                style="background-image:url('picture/00_temp_picture/102.jpg')"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-2-3 textbox">
+                                        <a href="#">
+                                            <h3 class="sm">【球鞋與眼鏡 VOL. 8裝備be A.D. N運動護目眼鏡Wensotti</h3>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- card 02 -->
+                        <div class="col-1-1 col-md-1-2 col-xs-1-1">
+                            <div class="card_02">
+                                <div class="row">
+                                    <div class="col-1-3">
+                                        <div class="imgbox-zoom_2">
+                                            <div class="imgbox-sm picbox"
+                                                style="background-image:url('picture/00_temp_picture/103.jpg')"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-2-3 textbox">
+                                        <a href="#">
+                                            <h3 class="sm">【球鞋與眼鏡 VOL. 8裝備不能輸！Nike Kobe A.D. NXT 360 & 運動護目眼鏡Wensotti</h3>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- card 02 -->
+                        <div class="col-1-1 col-md-1-2 col-xs-1-1">
+                            <div class="card_02">
+                                <div class="row">
+                                    <div class="col-1-3">
+                                        <div class="imgbox-zoom_2">
+                                            <div class="imgbox-sm picbox"
+                                                style="background-image:url('picture/00_temp_picture/101.jpg')"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-2-3 textbox">
+                                        <a href="#">
+                                            <h3 class="sm">【球鞋與眼鏡 VOL. 8裝備不能輸！Nike Kobe A.D. NXT 360 & 運動護目眼鏡Wensotti</h3>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- card 02 -->
+                        <div class="col-1-1 col-md-1-2 col-xs-1-1">
+                            <div class="card_02">
+                                <div class="row">
+                                    <div class="col-1-3">
+                                        <div class="imgbox-zoom_2">
+                                            <div class="imgbox-sm picbox"
+                                                style="background-image:url('picture/00_temp_picture/104.jpg')"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-2-3 textbox">
+                                        <a href="#">
+                                            <h3 class="sm">【球鞋與眼鏡 VOL. 8裝備不能輸！Nike Kobe A.D. NXT 360 & 運動護目眼鏡Wensotti</h3>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h6 class="sidebar_h">最新文章</h6> 
+                        <!-- card 02 -->
+                        <div class="col-1-1 col-md-1-2 col-xs-1-1">
+                                <div class="card_02">
+                                    <div class="row">
+                                        <div class="col-1-3">
+                                            <div class="imgbox-zoom_2">
+                                                <div class="imgbox-sm picbox"
+                                                    style="background-image:url('picture/00_temp_picture/107.jpg')"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-2-3 textbox">
+                                            <a href="#">
+                                                <h3 class="sm">【球鞋與眼鏡 VOL. 8裝備不能輸！Nike Kobe A.D. NXT 360 & 運動護目眼鏡Wensotti</h3>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <!-- card 02 -->
+                        <div class="col-1-1 col-md-1-2 col-xs-1-1">
+                                <div class="card_02">
+                                    <div class="row">
+                                        <div class="col-1-3">
+                                            <div class="imgbox-zoom_2">
+                                                <div class="imgbox-sm picbox"
+                                                    style="background-image:url('picture/00_temp_picture/108.jpg')"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-2-3 textbox">
+                                            <a href="#">
+                                                <h3 class="sm">【球鞋與眼鏡 VOL. 8裝備不能輸！Nike Kobe A.D. NXT 360 & 運動護目眼鏡Wensotti</h3>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <!-- card 02 -->
+                        <div class="col-1-1 col-md-1-2 col-xs-1-1">
+                                <div class="card_02">
+                                    <div class="row">
+                                        <div class="col-1-3">
+                                            <div class="imgbox-zoom_2">
+                                                <div class="imgbox-sm picbox"
+                                                    style="background-image:url('picture/00_temp_picture/101.jpg')"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-2-3 textbox">
+                                            <a href="#">
+                                                <h3 class="sm">【球鞋與眼鏡 VOL. 8裝備不能輸！Nike Kobe A.D. NXT 360 & 運動護目眼鏡Wensotti</h3>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div> 
+                        <!-- card 02 -->
+                        <div class="col-1-1 col-md-1-2 col-xs-1-1">
+                                <div class="card_02">
+                                    <div class="row">
+                                        <div class="col-1-3">
+                                            <div class="imgbox-zoom_2">
+                                                <div class="imgbox-sm picbox"
+                                                    style="background-image:url('picture/00_temp_picture/104.jpg')"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-2-3 textbox">
+                                            <a href="#">
+                                                <h3 class="sm">【球鞋與眼鏡 VOL. 8裝備不能輸！Nike Kobe A.D. NXT 360 & 運動護目眼鏡Wensotti</h3>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div> 
+            </div> 
+        </div>
+            <a class="go_top" href="#" id="goTop"></a>
+        </div>
+    </div>
+	<footer>
+		<div class="footer_container">
+			<div class="row">
+				<div class="col-1-3 col-smd-1-1 ">
+					<div class="textbox phone">
+						<div>
+							<div class="line l"></div>
+							<div class="p_box">
+								<p>
+									Sunglasses are like eye shadow: They make everything look younger and pretty.
+								</p>
+							</div>
+							<div class="line r"></div>
+							<div class="name">
+								<p>- Karl Lagerfeld</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-5-12 col-smd-1-1">
+					<div class="linkbox">
+						<div class="row">
+							<div class="col-1-4 smd-hidden"><a href="#">NEWS</a></div>
+							<div class="col-1-4 smd-hidden"><a href="#">STYLE</a></div>
+							<div class="col-1-4 smd-hidden"><a href="#">PROJECTS</a></div>
+							<div class="col-1-4 smd-hidden"><a href="#">HEALTH</a></div>
+							<div class="col-1-4 smd-hidden"><a href="#">BRANDS</a></div>
+							<div class="col-1-4 smd-hidden"><a href="#">STORES</a></div>
+							<div class="col-1-4 smd-hidden"><a href="#">FORUM</a></div>
+						</div>
+						<div class="space8"></div>
+						<div class="row">
+							<div class="col-1-4  col-smd-1-2 l"><a href="#">關於我們</a></div>
+							<div class="col-1-4 col-smd-1-2 r"><a href="#">廣告洽談</a></div>
+							<div class="col-1-4 col-smd-1-2 l"><a href="#">隱私權政策</a></div>
+							<div class="col-1-4 col-smd-1-2 r"><a href="#">字媒體</a></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-1-4 col-smd-1-1">
+					<div class="iconbox">
+						<a href="#">
+							<div class="btn type02 sm">註冊 / 登入</div>
+						</a>
+						<div class="space16"></div>
+						<div class="row">
+							<div class="center">
+								<div class="col-1-6 col-smd-1-4"><a href="#"><img src="picture/01_icon/fb_lg.png"
+											alt=""></a></div>
+								<div class="col-1-6 col-smd-1-4"><a href="#"><img src="picture/01_icon/ig_lg.png"
+											alt=""></a></div>
+								<div class="col-1-6 col-smd-1-4"><a href="#"><img src="picture/01_icon/yb.png"
+											alt=""></a></div>
+								<div class="col-1-6 col-smd-1-4"><a href="#"><img src="picture/01_icon/wechat_lg.png"
+											alt=""></a></div>
+							</div>
+						</div>
+						<div class="space8"></div>
+						<p>
+							Copyright © 2015-2019 </br>
+							Soeyewear, All rights reserved.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- plugin -->
+	<script src="js/jquery/jquery-3.3.1.min.js"></script>
+	<script src="js/Vue.js/Vue.js"></script>
+	<script>
+		// hamburger
+		$(document).ready(function () {
+			$(".hamberger").click(function () {
+				$(".toggle").toggle();
+			});
+		});
+		$(document).ready(function () {
+			$(".xx").click(function () {
+				$(".toggle_x").toggle();
+			});
+		});
+		// search bar
+		var mainsearch = new Vue({
+			el: '#mainsearch',
+			data: {
+				state: "close"
+			}
+		});
+	</script>
+</body>
+</html>

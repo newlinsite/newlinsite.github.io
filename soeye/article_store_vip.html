@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width initial-scale=1.0,user-scalable=0,maximum-scale=1.5">
+	<title>SO!eyewear搜鏡王-全球華人最大眼鏡入口網站</title>
+	<meta name=”description” content=”網頁說明”>
+	<link rel="shortcut icon" href="picture/01_icon/so.png">
+    <link rel="stylesheet" href="style/reset.css">
+    <link rel="stylesheet" href="style/plugins/OwlCarousel2-2.3.4/owl.carousel.min.css">
+	<link rel="stylesheet" href="style/style.css">
+	<link rel="icon" type="image/png" href="picture/01_icon/so.png">
+    <link rel="stylesheet" href="style/guideline.css">
+    <link rel="stylesheet" href="style/element_index.css">
+    <link rel="stylesheet" href="style/element_article_page.css">
+	<link rel="stylesheet" href="style/element_article_page.css">
+	<script type="text/javascript" src="js/jquery-1.6.min.js"></script>
+	<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+	<script type="text/javascript" src="js/top.js"></script>
+</head>
+<body>
+	<div class="container">
+	<header>
+        <div class="fixed">
+            <nav>
+                <div class="hamberger toggle toggle_x"></div>
+                <div class=" xx toggle toggle_x" style="display: none;" ></div>
+                <div class="logo">
+                    <a href="index.html"><img src="picture/01_icon/soeyewear.svg" alt="so!eyewear_logo"></a>
+                </div>
+                <ul class="menu toggle toggle_x">
+                    <li class="main xl">
+                        <a class="a" href="#">NEWS<span class="sm">新訊</span></a>
+                        <ul>
+                            <li class="s"><a href="#">EYEWEAR<br>眼鏡情報</a></li>
+                            <li class="xs"><a href="#">REPORT<br>特別報導</a></li>
+                            <li class="s"><a href="#">LOOKBOOK<br>新品型錄</a></li>
+                            <li class="l"><a href="#">JAPANESE HANDMADE<br>日本手作 榮谷川</a></li>
+                            <li class="l"><a href="#">INDUSTRY INFO<br>業界資訊</a></li>
+                        </ul>
+                    </li>
+                    <li class="main">
+                        <a class="a active" href="#">STYLE<span class="sm">風格</span></a>
+                        <ul>
+                            <li><a href="#">FEATURE<br>專欄特輯</a></li>
+                            <li><a href="#">PEOPLE<br>人物配戴</a></li>
+                            <li><a href="#">SNEAKERS & EYEWEAR <br>球鞋與眼鏡</a></li>
+                        </ul>
+                    </li>
+                    <li class="main">
+                        <a class="a" href="#">PROJECTS<span class="lg">企劃</span></a>
+                        <ul>
+                            <li><a href="#">FAMOUS<br>名人專訪</a></li>
+                            <li><a href="#">UNBOXING<br>開箱分享</a></li>
+                            <li><a href="#">POLL<br>民調</a></li>
+                        </ul>
+                    </li>
+                    <li class="main">
+                        <a class="a" href="#">HEALTH<span class="md">健康</span></a>
+                        <ul>
+                            <li><a href="#">DOCTOR<br>醫師有約</a></li>
+                            <li><a href="#">VISION CARE<br>視力保健</a></li>
+                            <li><a href="Optometrist.html">OPTOMETRISTS<br>驗光人員</a></li>
+                        </ul>
+                    </li>
+                    <li class="main  xl xxl">
+                        <a class="a" href="#">BRANDS<span class="md">品牌</span></a>
+                        <ul>
+                            <li><a href="#">FASHION<br>國際精品</a></li>
+                            <li><a href="#">EUROPEAN DESIGN<br>歐美設計</a></li>
+                            <li><a href="#">JAPANESE CRAFTS<br>日本工藝</a></li>
+                            <li><a href="#">POPULAR STYLE<br>流行風格</a></li>
+                            <li><a href="#">SPORTS TECH<br>運動機能</a></li>
+                            <li><a href="#">LENSES<br>鏡片 / 隱形眼鏡</a></li>
+                        </ul>
+                    </li>
+                    <li class="main s">
+                        <a class="a" href="#">STORES<span class="md">店家</span></a>
+                        <ul>
+                            <li><a href="#">SEARCH STORES<br>搜尋店家</a></li>
+                            <li><a href="#">SEARCH STORES BY MAP<br>地圖顯示</a></li>
+                        </ul>
+                    </li>
+                    <li class="main xs">
+                        <a class="a" href="#">FORUM<span class="xs">討論</span></a>
+                    </li>
+                </ul>
+                <div class="searchbox icon toggle toggle_x">
+                    <form id="mainsearch" action="#">
+                        <label :data-state="state" for="search">
+                            <input type="text" placeholder="Search" @click="state = 'opan'" @blur="state='close'" />
+                            <img class="m" src="picture/01_icon/search.svg" alt="search icon">
+                            <img class="xl" src="picture/01_icon/search_xl.svg" alt="search icon">
+                        </label>
+                    </form>
+                </div>
+                <div class="icon phone toggle toggle_x">
+                    <div>
+                        <a href="#"><img src="picture/01_icon/profile.svg"></a>
+                        <ul>
+                        <li><a href="#">一般會員</a></li>
+                        <li><a href="#">驗光人員</a></li>
+                        <li><a href="#">店家登入</a></li>
+                        </ul>
+                    </div> 
+                    <a href="#"><img src="picture/01_icon/fb.svg"></a>
+                    <a href="#"><img src="picture/01_icon/ig.svg"></a>
+                    <a href="#"><img src="picture/01_icon/wechat.svg"></a>
+                    <a href="#"><img src="picture/01_icon/language.svg"></a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="space_header"></div>
+    <div class="row">
+        <div class="col-1-4 md-hidden">
+            <div class="sidebar">
+                <ul>
+                <a href="#">    
+                    <div>
+                        <li class="none first">
+                            <div class="line l"></div>
+                            SEARCH STORES<br>搜尋店家
+                            <div class="line r"></div>
+                        </li>
+                </div>
+                </a>
+                <div>
+                    <a href="#">
+                        <li class="none">
+                            <div class="line l"></div>
+                            SEARCH STORES<br>地圖顯示
+                            <div class="line r"></div>
+                        </li>
+                    </a>
+                </div>
+                <div>
+                    <li class="divline"></li>
+                </div>
+                <div>
+                    <a href="#">
+                        <li class="none">
+                            <div class="line l"></div>
+                            St STORES<br>我的收藏店家
+                            <div class="line r"></div>
+                        </li>
+                    </a>
+                </div>
+                <div>
+                    <a href="#">
+                        <li class="none">
+                            <div class="line l"></div>
+                            St STORES<br>我要刊登
+                            <div class="line r"></div>
+                        </li>
+                    </a>
+                    </div>
+                </ul>
+            </div>
+        </div>
+        <div class="col-3-4-80 col-md-1-1 col-right">
+                <div class="main_img_box">
+                    <div class="imgbox md" style="background-image:url('picture/00_temp_picture/506.png')"></div>
+                </div>
+                    <div class="row articontainer space64">
+                        <article class="col-2-3-69 col-md-1-1 z10 col-padding_l16">
+                                <h1>勝美眼鏡ShengMei</h1>
+                                <div class="share_box u-cf">
+                                    <a href="#"><img src="picture/01_icon/tw.svg" alt="facebook"></a>
+                                    <a href="#"><img src="picture/01_icon/fb.svg" alt="facebook"></a>
+                                    <p class="r">share -</p>
+                                </div>
+                                <div>
+                                <p>
+                                    勝美眼鏡在南投竹山開業20餘年，秉持著為客人解決疑難雜症的原則，服務在地的鄉親朋友。我們不只是追求服務的至善完美，也期許為在地的鄉親提供最多選擇的鏡框平台，不惜重資與各大精品眼鏡品牌簽約合作，讓竹山在地的鄉親朋友，不用跑遠路，也能有一級品牌的精品鏡框可選擇，歡迎大家來勝美眼鏡喔!!
+                                </p>
+                                <p>延伸閱讀：<a href="#">南投竹山 勝美眼鏡 精品眼鏡指標名店 用口碑延續30年</a></p>
+                                <p>
+                                Chrome Hearts在1992年獲得美國設計師協會時尚大獎(CFDA Fashion Awards)的獎項後從此一躍成名。直營店遍布世界各地，以大幅度的曝光與名人配戴的方式，確立了品牌無人能及的高度。
+                                </p>
+                                <img src="picture/00_temp_picture/507.png" alt="">
+                                <div class="space32"></div>
+                                <h4 class="u-smd-text-c u-xs-text-l space16">推薦商品</h4>
+                                <div class="stores space8">
+                                    <div class="owl-carousel slider-store  owl-theme" >
+                                        <div class="imgbox-sm" style="background-image:url('picture/00_temp_picture/101.jpg')"></div>
+                                        <div class="imgbox-sm" style="background-image:url('picture/00_temp_picture/102.jpg')"></div>
+                                        <div class="imgbox-sm" style="background-image:url('picture/00_temp_picture/103.jpg')"></div>
+                                        <div class="imgbox-sm" style="background-image:url('picture/00_temp_picture/104.jpg')"></div>
+                                        <div class="imgbox-sm" style="background-image:url('picture/00_temp_picture/108.jpg')"></div>
+                                        <div class="imgbox-sm" style="background-image:url('picture/00_temp_picture/106.jpg')"></div>
+                                        <div class="imgbox-sm" style="background-image:url('picture/00_temp_picture/107.jpg')"></div>	
+                                    </div>
+                                </div>
+                            </div>
+                            <h4 class="space48 u-smd-text-c u-xs-text-l">店家最新消息</h4>
+                            <a href="#">
+                                <div class="next_article_box u-cf z10">
+                                    <h6>1/</h6>
+                                    <h5 class="lg">建議最多三十五個中文字文字，超過也不會怎不會怎不會怎樣</h5>
+                                </div>
+                            </a>
+                            <a href="#">
+                                <div class="next_article_box u-cf z10">
+                                    <h6>2/</h6>
+                                    <h5 class="lg">建議最多三十五樣。建議最多三十五個中文字，超過也不會怎樣</h5>
+                                </div>
+                            </a>
+                            <a href="#">
+                                <div class="next_article_box u-cf z10">
+                                    <h6>3/</h6>
+                                    <h5 class="lg">建議最多三十五個中文字，超過不會怎樣。字，超過也不會怎樣</h5>
+                                </div>
+                            </a>
+                            <h4 class="space48 u-smd-text-c u-xs-text-l">如何去</h4>
+                            <p class="article smd-textbox">住址：<strong>南投縣竹山鎮下橫街59-5號</strong><br>
+                            電話：<strong>049-2641718</strong><br>
+                            傳真：<strong>049-2643360</strong><br>
+                            店經理：<strong>杜春秋</strong><br>
+                            網站：<strong><a href="#">勝美眼鏡ShengMei</a></strong></p>
+                            <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13466.783432612681!2d120.19894327187458!3d22.98478492760509!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346e769aa52f2acb%3A0x797b0da965882caa!2z6Ie654Gj5bqc5Z-OLeadsemWgOWfjijov47mmKXploAp!5e0!3m2!1szh-TW!2stw!4v1555128779501!5m2!1szh-TW!2stw" frameborder="0" style="border:0" allowfullscreen></iframe>
+                            <h4 class="space48 u-smd-text-c u-xs-text-l">鏡框品牌</h4>
+                            <div class="row">
+                                <div class="col-1-4 col-sm-1-3 col-xs-1-2 u-text-c space8 card-1-4">
+                                    <a href="#">
+                                        <div class="imgbox-sm" style="background-image:url('picture/00_temp_picture/101.jpg')"></div>
+                                        <h6 class="space8">LINDBERG</h6>
+                                    </a>
+                                </div>
+                                <div class="col-1-4 col-sm-1-3 col-xs-1-2 u-text-c space8 card-1-4">
+                                    <a href="#">
+                                        <div class="imgbox-sm" style="background-image:url('picture/00_temp_picture/101.jpg')"></div>
+                                        <h6 class="space8">Salvatore Ferragamo  Ferragamo</h6>
+                                    </a>
+                                </div>
+                                <div class="col-1-4 col-sm-1-3 col-xs-1-2 u-text-c space8 card-1-4">
+                                    <a href="#">
+                                        <div class="imgbox-sm" style="background-image:url('picture/00_temp_picture/101.jpg')"></div>
+                                        <h6 class="space8">LINDBERG</h6>
+                                    </a>
+                                </div>
+                                <div class="col-1-4 col-sm-1-3 col-xs-1-2 u-text-c space8 card-1-4">
+                                    <a href="#">
+                                        <div class="imgbox-sm" style="background-image:url('picture/00_temp_picture/101.jpg')"></div>
+                                        <h6 class="space8">LINDBERG</h6>
+                                    </a>
+                                </div>
+                                <div class="col-1-4 col-sm-1-3 col-xs-1-2 u-text-c space8 card-1-4">
+                                    <a href="#">
+                                        <div class="imgbox-sm" style="background-image:url('picture/00_temp_picture/101.jpg')"></div>
+                                        <h6 class="space8">Salvatore Ferragamo</h6>
+                                    </a>
+                                </div>
+                                <div class="col-1-4 col-sm-1-3 col-xs-1-2 u-text-c space8 card-1-4">
+                                    <a href="#">
+                                        <div class="imgbox-sm" style="background-image:url('picture/00_temp_picture/101.jpg')"></div>
+                                        <h6 class="space8">LINDBERG</h6>
+                                    </a>
+                                </div>
+                                <div class="col-1-4 col-sm-1-3 col-xs-1-2 u-text-c space8 card-1-4">
+                                    <a href="#">
+                                        <div class="imgbox-sm" style="background-image:url('picture/00_temp_picture/101.jpg')"></div>
+                                        <h6 class="space8">LINDBERG</h6>
+                                    </a>
+                                </div>
+                                <div class="col-1-4 col-sm-1-3 col-xs-1-2 u-text-c space8 card-1-4">
+                                    <a href="#">
+                                        <div class="imgbox-sm" style="background-image:url('picture/00_temp_picture/101.jpg')"></div>
+                                        <h6 class="space8">Salvatore Ferragamo</h6>
+                                    </a>
+                                </div>
+                            </div>
+                            <h4 class="space16 u-smd-text-c u-xs-text-l">鏡片品牌</h4>
+                            <div class="row">
+                                <div class="col-1-4 col-sm-1-3 col-xs-1-2 u-text-c space8 card-1-4">
+                                    <a href="#">
+                                        <div class="imgbox-sm" style="background-image:url('picture/00_temp_picture/101.jpg')"></div>
+                                        <h6 class="space8">LINDBERG</h6>
+                                    </a>
+                                </div>
+                                <div class="col-1-4 col-sm-1-3 col-xs-1-2 u-text-c space8 card-1-4">
+                                    <a href="#">
+                                        <div class="imgbox-sm" style="background-image:url('picture/00_temp_picture/101.jpg')"></div>
+                                        <h6 class="space8">Salvatore Ferragamo  Ferragamo</h6>
+                                    </a>
+                                </div>
+                                <div class="col-1-4 col-sm-1-3 col-xs-1-2 u-text-c space8 card-1-4">
+                                    <a href="#">
+                                        <div class="imgbox-sm" style="background-image:url('picture/00_temp_picture/101.jpg')"></div>
+                                        <h6 class="space8">LINDBERG</h6>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="space64"></div>
+                        </article>
+                        <div class="col-1-3s col-md-1-1 col-right z10 col-padding_r16">
+                            <div class="row">
+                                <div class="col-1-1 md-hidden space16">
+                                    <img src="picture/00_temp_picture/307.jpg" alt="">
+                                </div>
+                                <div class="col-1-1 md-hidden space16">
+                                    <img src="picture/00_temp_picture/308.jpg" alt="">
+                                </div>                               
+                            </div>
+                        </div>
+                        <div class="row space16">
+                            <div class="col-1-3 col-smd-1-2 col-xs-1-1">
+                                <div class="ad_boxs a2" style="background-image:url('picture/00_temp_picture/101.jpg')"></div>
+                            </div>
+                            <div class="col-1-3 col-smd-1-2 col-xs-1-1">
+                                <div class="ad_boxs a2" style="background-image:url('picture/00_temp_picture/103.jpg')"></div>
+                            </div>
+                            <div class="col-1-3 smd-hidden xs-visibility col-xs-1-1">
+                                <div class="ad_boxs a2" style="background-image:url('picture/00_temp_picture/104.jpg')"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <a class="go_top" href="#" id="goTop"></a>
+        </div>
+    </div>
+	<footer>
+		<div class="footer_container">
+			<div class="row">
+				<div class="col-1-3 col-smd-1-1 ">
+					<div class="textbox phone">
+						<div>
+							<div class="line l"></div>
+							<div class="p_box">
+								<p>
+									Sunglasses are like eye shadow: They make everything look younger and pretty.
+								</p>
+							</div>
+							<div class="line r"></div>
+							<div class="name">
+								<p>- Karl Lagerfeld</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-5-12 col-smd-1-1">
+					<div class="linkbox">
+						<div class="row">
+							<div class="col-1-4 smd-hidden"><a href="#">NEWS</a></div>
+							<div class="col-1-4 smd-hidden"><a href="#">STYLE</a></div>
+							<div class="col-1-4 smd-hidden"><a href="#">PROJECTS</a></div>
+							<div class="col-1-4 smd-hidden"><a href="#">HEALTH</a></div>
+							<div class="col-1-4 smd-hidden"><a href="#">BRANDS</a></div>
+							<div class="col-1-4 smd-hidden"><a href="#">STORES</a></div>
+							<div class="col-1-4 smd-hidden"><a href="#">FORUM</a></div>
+						</div>
+						<div class="space8"></div>
+						<div class="row">
+							<div class="col-1-4  col-smd-1-2 l"><a href="#">關於我們</a></div>
+							<div class="col-1-4 col-smd-1-2 r"><a href="#">廣告洽談</a></div>
+							<div class="col-1-4 col-smd-1-2 l"><a href="#">隱私權政策</a></div>
+							<div class="col-1-4 col-smd-1-2 r"><a href="#">字媒體</a></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-1-4 col-smd-1-1">
+					<div class="iconbox">
+						<a href="#">
+							<div class="btn type02 sm">註冊 / 登入</div>
+						</a>
+						<div class="space16"></div>
+						<div class="row">
+							<div class="center">
+								<div class="col-1-6 col-smd-1-4"><a href="#"><img src="picture/01_icon/fb_lg.png"
+											alt=""></a></div>
+								<div class="col-1-6 col-smd-1-4"><a href="#"><img src="picture/01_icon/ig_lg.png"
+											alt=""></a></div>
+								<div class="col-1-6 col-smd-1-4"><a href="#"><img src="picture/01_icon/yb.png"
+											alt=""></a></div>
+								<div class="col-1-6 col-smd-1-4"><a href="#"><img src="picture/01_icon/wechat_lg.png"
+											alt=""></a></div>
+							</div>
+						</div>
+						<div class="space8"></div>
+						<p>
+							Copyright © 2015-2019 </br>
+							Soeyewear, All rights reserved.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- plugin -->
+	<script src="js/jquery/jquery-3.3.1.min.js"></script>
+	<script src="js/Vue.js/Vue.js"></script>
+	<script src="js/plugins/OwlCarousel2-2.3.4/owl.carousel.min.js"></script>
+	<script>
+		// hamburger
+		$(document).ready(function () {
+			$(".hamberger").click(function () {
+				$(".toggle").toggle();
+			});
+		});
+		$(document).ready(function () {
+			$(".xx").click(function () {
+				$(".toggle_x").toggle();
+			});
+		});
+		// search bar
+		var mainsearch = new Vue({
+			el: '#mainsearch',
+			data: {
+				state: "close"
+			}
+		});
+		// slider
+		$(document).ready(function () {
+			$('.slider-store').owlCarousel({
+				margin:10,
+				dots:false,
+				nav:true,
+				navText: [],
+				responsiveClass:true,
+    			responsive:{
+				769 :{items: 5,},
+				768 : {items: 4,},
+				600 : {items: 3,},
+				500 : {items: 2,},
+				0 : {items: 1,},
+				},
+			})
+			$('.owl-carousel').owlCarousel({
+				items: 1,
+				loop: true,
+				nav: true,
+				navText: [],
+				// autoplay: true,
+				autoplayspeed: 5000,
+				smallplayspeed: 2500,				
+			})
+		});
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <g id="hambuer" transform="translate(-329 -25)">
+    <g id="Group_200" data-name="Group 200" transform="translate(-3.798 0.404)">
+      <line id="Line_138" data-name="Line 138" x2="17.622" transform="translate(339.798 33.596)" fill="rgba(0,0,0,0)" stroke="#232626" stroke-linecap="round" stroke-width="3"/>
+      <line id="Line_139" data-name="Line 139" x2="17.622" transform="translate(339.798 41.077)" fill="rgba(0,0,0,0)" stroke="#232626" stroke-linecap="round" stroke-width="3" opacity="0.89"/>
+      <line id="Line_140" data-name="Line 140" x2="17.622" transform="translate(339.798 48.143)" fill="rgba(0,0,0,0)" stroke="#232626" stroke-linecap="round" stroke-width="3" opacity="0.89"/>
+    </g>
+    <rect id="Rectangle_902" data-name="Rectangle 902" width="32" height="32" transform="translate(329 25)" fill="none"/>
+  </g>
+</svg>

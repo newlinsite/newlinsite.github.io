@@ -17,157 +17,179 @@
 </head>
 <body>
 	<div class="container">
-	<header>
-        <div class="fixed">
-            <nav>
-                <div class="hamberger toggle toggle_x"></div>
-                <div class=" xx toggle toggle_x" style="display: none;" ></div>
-                <div class="logo">
-                    <a href="index.html"><img src="picture/01_icon/soeyewear.svg" alt="so!eyewear_logo"></a>
-                </div>
-                <ul class="menu toggle toggle_x">
-                    <li class="main xl">
-                        <a class="a" href="#">NEWS<span class="sm">新訊</span></a>
-                        <ul>
-                            <li class="s"><a href="#">EYEWEAR<br>眼鏡情報</a></li>
-                            <li class="xs"><a href="#">REPORT<br>特別報導</a></li>
-                            <li class="s"><a href="#">LOOKBOOK<br>新品型錄</a></li>
-                            <li class="l"><a href="#">JAPANESE HANDMADE<br>日本手作 榮谷川</a></li>
-                            <li class="l"><a href="#">INDUSTRY INFO<br>業界資訊</a></li>
-                        </ul>
-                    </li>
-                    <li class="main">
-                        <a class="a active" href="#">STYLE<span class="sm">風格</span></a>
-                        <ul>
-                            <li><a href="#">FEATURE<br>專欄特輯</a></li>
-                            <li><a href="#">PEOPLE<br>人物配戴</a></li>
-                            <li><a href="#">SNEAKERS & EYEWEAR <br>球鞋與眼鏡</a></li>
-                        </ul>
-                    </li>
-                    <li class="main">
-                        <a class="a" href="#">PROJECTS<span class="lg">企劃</span></a>
-                        <ul>
-                            <li><a href="#">FAMOUS<br>名人專訪</a></li>
-                            <li><a href="#">UNBOXING<br>開箱分享</a></li>
-                            <li><a href="#">POLL<br>民調</a></li>
-                        </ul>
-                    </li>
-                    <li class="main">
-                        <a class="a" href="#">HEALTH<span class="md">健康</span></a>
-                        <ul>
-                            <li><a href="#">DOCTOR<br>醫師有約</a></li>
-                            <li><a href="#">VISION CARE<br>視力保健</a></li>
-                            <li><a href="Optometrist.html">OPTOMETRISTS<br>驗光人員</a></li>
-                        </ul>
-                    </li>
-                    <li class="main  xl xxl">
-                        <a class="a" href="#">BRANDS<span class="md">品牌</span></a>
-                        <ul>
-                            <li><a href="#">FASHION<br>國際精品</a></li>
-                            <li><a href="#">EUROPEAN DESIGN<br>歐美設計</a></li>
-                            <li><a href="#">JAPANESE CRAFTS<br>日本工藝</a></li>
-                            <li><a href="#">POPULAR STYLE<br>流行風格</a></li>
-                            <li><a href="#">SPORTS TECH<br>運動機能</a></li>
-                            <li><a href="#">LENSES<br>鏡片 / 隱形眼鏡</a></li>
-                        </ul>
-                    </li>
-                    <li class="main s">
-                        <a class="a" href="#">STORES<span class="md">店家</span></a>
-                        <ul>
-                            <li><a href="#">SEARCH STORES<br>搜尋店家</a></li>
-                            <li><a href="#">SEARCH STORES BY MAP<br>地圖顯示</a></li>
-                        </ul>
-                    </li>
-                    <li class="main xs">
-                        <a class="a" href="#">FORUM<span class="xs">討論</span></a>
-                    </li>
-                </ul>
-                <div class="searchbox icon toggle toggle_x">
-                    <form id="mainsearch" action="#">
-                        <label :data-state="state" for="search">
-                            <input type="text" placeholder="Search" @click="state = 'opan'" @blur="state='close'" />
-                            <img class="m" src="picture/01_icon/search.svg" alt="search icon">
-                            <img class="xl" src="picture/01_icon/search_xl.svg" alt="search icon">
-                        </label>
-                    </form>
-                </div>
-                <div class="icon phone toggle toggle_x">
-                    <div>
-                        <a href="#"><img src="picture/01_icon/profile.svg"></a>
-                        <ul>
-                        <li><a href="#">一般會員</a></li>
-                        <li><a href="#">驗光人員</a></li>
-                        <li><a href="#">店家登入</a></li>
-                        </ul>
-                    </div> 
-                    <a href="#"><img src="picture/01_icon/fb.svg"></a>
-                    <a href="#"><img src="picture/01_icon/ig.svg"></a>
-                    <a href="#"><img src="picture/01_icon/wechat.svg"></a>
-                    <a href="#"><img src="picture/01_icon/language.svg"></a>
-                </div>
-            </nav>
+        <header>
+            <div class="fixed">
+                <nav>
+                    <div class="hamberger toggle toggle_x"></div>
+                    <div class=" xx toggle toggle_x" style="display: none;" ></div>
+                    <div class="logo">
+                        <a href="index.html"><img src="picture/01_icon/soeyewear.svg" alt="so!eyewear_logo"></a>
+                    </div>
+                    <ul class="menu toggle toggle_x">
+                        <li class="main xl">
+                            <a class="a" href="#">NEWS<span class="sm">新訊</span></a>
+                            <ul>
+                                <li class="s"><a href="#">EYEWEAR<br>眼鏡情報</a></li>
+                                <li class="xs"><a href="#">REPORT<br>特別報導</a></li>
+                                <li class="s"><a href="#">LOOKBOOK<br>新品型錄</a></li>
+                                <li class="l"><a href="#">JAPANESE HANDMADE<br>日本手作 榮谷川</a></li>
+                                <li class="l"><a href="#">INDUSTRY INFO<br>業界資訊</a></li>
+                            </ul>
+                        </li>
+                        <li class="main">
+                            <a class="a active" href="#">STYLE<span class="sm">風格</span></a>
+                            <ul>
+                                <li><a href="#">FEATURE<br>專欄特輯</a></li>
+                                <li><a href="#">PEOPLE<br>人物配戴</a></li>
+                                <li><a href="#">SNEAKERS & EYEWEAR <br>球鞋與眼鏡</a></li>
+                            </ul>
+                        </li>
+                        <li class="main">
+                            <a class="a" href="#">PROJECTS<span class="lg">企劃</span></a>
+                            <ul>
+                                <li><a href="#">FAMOUS<br>名人專訪</a></li>
+                                <li><a href="#">UNBOXING<br>開箱分享</a></li>
+                                <li><a href="#">POLL<br>民調</a></li>
+                            </ul>
+                        </li>
+                        <li class="main">
+                            <a class="a" href="#">HEALTH<span class="md">健康</span></a>
+                            <ul>
+                                <li><a href="#">DOCTOR<br>醫師有約</a></li>
+                                <li><a href="#">VISION CARE<br>視力保健</a></li>
+                                <li><a href="Optometrist.html">OPTOMETRISTS<br>驗光人員</a></li>
+                            </ul>
+                        </li>
+                        <li class="main  xl xxl">
+                            <a class="a" href="#">BRANDS<span class="md">品牌</span></a>
+                            <ul>
+                                <li><a href="#">FASHION<br>國際精品</a></li>
+                                <li><a href="#">EUROPEAN DESIGN<br>歐美設計</a></li>
+                                <li><a href="#">JAPANESE CRAFTS<br>日本工藝</a></li>
+                                <li><a href="#">POPULAR STYLE<br>流行風格</a></li>
+                                <li><a href="#">SPORTS TECH<br>運動機能</a></li>
+                                <li><a href="#">LENSES<br>鏡片 / 隱形眼鏡</a></li>
+                            </ul>
+                        </li>
+                        <li class="main s">
+                            <a class="a" href="#">STORES<span class="md">店家</span></a>
+                            <ul>
+                                <li><a href="#">SEARCH STORES<br>搜尋店家</a></li>
+                                <li><a href="#">SEARCH STORES BY MAP<br>地圖顯示</a></li>
+                            </ul>
+                        </li>
+                        <li class="main xs">
+                            <a class="a" href="#">FORUM<span class="xs">討論</span></a>
+                        </li>
+                    </ul>
+                    <div class="searchbox icon toggle toggle_x">
+                        <form id="mainsearch" action="#">
+                            <label :data-state="state" for="search">
+                                <input type="text" placeholder="Search" @click="state = 'opan'" @blur="state='close'" />
+                                <img class="m" src="picture/01_icon/search.svg" alt="search icon">
+                                <img class="xl" src="picture/01_icon/search_xl.svg" alt="search icon">
+                            </label>
+                        </form>
+                    </div>
+                    <div class="icon phone toggle toggle_x">
+                        <div>
+                            <a href="#"><img src="picture/01_icon/profile.svg"></a>
+                            <ul>
+                            <li><a href="#">一般會員</a></li>
+                            <li><a href="#">驗光人員</a></li>
+                            <li><a href="#">店家登入</a></li>
+                            </ul>
+                        </div> 
+                        <a href="#"><img src="picture/01_icon/fb.svg"></a>
+                        <a href="#"><img src="picture/01_icon/ig.svg"></a>
+                        <a href="#"><img src="picture/01_icon/wechat.svg"></a>
+                        <a href="#"><img src="picture/01_icon/language.svg"></a>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <div class="space_header"></div>
+        <div class="main_img_box">
+            <img src="picture/00_temp_picture/artcle_main_img.png" alt="">
         </div>
-    </header>
-    <div class="space_header"></div>
-    <div class="main_img_box">
-        <img class="artcle_main_img " src="picture/00_temp_picture/artcle_main_img.png" alt="">
-    </div>
         <div class="row articontainer ">
             <article class="col-2-3-69 col-md-1-1 col-padding_l16 ">
-                    <a href="#"><h4>VISION CARE 視力保健</h4></a>
-                    <h1> h1 建議最多三十五個中文字，超過不會怎樣。建議最多三十五個中文字，超過也不會怎樣</h1>
-                    <div class="share_box u-cf">
-                        <p class="date">2017 . 11 . 02</p>
-                        <a href="#"><img src="picture/01_icon/tw.svg" alt="facebook"></a>
-                        <a href="#"><img src="picture/01_icon/fb.svg" alt="facebook"></a>
-                        <p class="r">share -</p>
+                <a href="#"><h4>VISION CARE 視力保健</h4></a>
+                <h1> h1 建議最多三十五個中文字，超過不會怎樣。建議最多三十五個中文字，超過也不會怎樣</h1>
+                <div class="share_box u-cf">
+                    <p class="date">2017 . 11 . 02</p>
+                    <a href="#"><img src="picture/01_icon/tw.svg" alt="facebook"></a>
+                    <a href="#"><img src="picture/01_icon/fb.svg" alt="facebook"></a>
+                    <p class="r">share -</p>
+                </div>
+                <div>
+                    <p class="quote">
+                        2018年，搜鏡王陸續報導了許多關於「吾鏡手作眼鏡體驗坊」的相關訊息，自從幾個月前第一間吾鏡在台南正式上線、引爆了火熱的人氣之後，手作眼鏡的風潮與珍貴之處也逐漸被世人所瞭解，愈來愈多人為了追求心靈的沉澱及對眼鏡價值的渴望，爭相報名吾鏡手作眼鏡的體驗。當搜鏡王團隊受到台灣吾鏡團隊的邀請，隨行遠赴湖北武漢吾鏡進行參訪交流時，則是迫不及待的答應，只為帶回第一手的手作眼鏡情報。
+                    </p>
+                    <img src="picture/00_temp_picture/401.png" alt="">
+                    <h2> h2同為了發揚眼鏡的深層價值而繼續努力著！</h2>
+                    <p>
+                        武漢吾鏡的店面前身是老式工業廠房，保留了過去建築物的寬敞空間，將外觀漆上質感的霧面黑色並鋪上清水模地板，相較起周邊選擇保留老式磚牆的店面而言，營造出更加濃厚的時尚現代都會風格。甫一進入店面，便可以看見大片的眼鏡陳列牆，而一旁被玻璃圍住的小空間，便是搜鏡王團隊此行的重點──吾鏡手作眼鏡坊。
+                    </p>
+                    <p>延伸閱讀：<a href="#">吾鏡手作體驗坊台灣直營店開幕</a></p>
+                    <img src="picture/00_temp_picture/402.png" alt="">
+                    <p>來源:XXXX</p>
+                    <p>
+                        為期四天的參訪交流行程，飛也似地結束了。這幾天來，雙方團隊都靈感四射，進行了多次充滿創意又有火花的對話；而除了參觀吾鏡總部與實體工坊以外，吾鏡的主理人Daniel還全程陪同，甚至帶領團隊全體穿梭在武漢的大小巷弄，進行了食物與文化的深度交流，充分體驗了兩地深藏的人文底蘊。
+                    </p>
+                    <h3>h3 店家資訊 </h3>
+                    <p>吾鏡手作眼鏡坊 官方網站</p>
+                    <h4>h4 店家資訊 </h4>
+                    <p>吾鏡手作眼鏡坊 Facebook</p>
+                    <h5>h5 店家資訊</h5>
+                    <p>連絡電話：(06)2232-525<br>
+                        地址：台南市中西區府前路一段320號</p>
+                    <h6>h6 店家資訊</h6>
+                    <p>吾鏡首間合作眼鏡店：台南久必大眼鏡</p>
+                </div>
+                <div class="tag_box">
+                        <a href="#" class="tag">a.tag</a>
+                        <a href="#" class="tag">時尚穿搭</a>
+                        <a href="#" class="tag">工業廠房</a>
+                        <a href="#" class="tag">吾鏡手作眼鏡體驗坊</a>
+                        <a href="#" class="tag">球鞋</a>
+                        <a href="#" class="tag">a.tag</a>
+                        <a href="#" class="tag">時尚穿搭</a>
+                        <a href="#" class="tag">工業廠房</a>
+                        <a href="#" class="tag">吾鏡手作眼鏡體驗坊</a>
+                        <a href="#" class="tag">球鞋</a>
+                        <a href="#" class="tag">a.tag</a>
+                        <a href="#" class="tag">時尚穿搭</a>
+                        <a href="#" class="tag">工業廠房</a>
+                        <a href="#" class="tag">吾鏡手作眼鏡體驗坊</a>
+                        <a href="#" class="tag">球鞋</a>                                                        
+                </div>
+                <div class="share_box u-cf">
+                    <a href="#"><img src="picture/01_icon/tw.svg" alt="facebook"></a>
+                    <a href="#"><img src="picture/01_icon/fb.svg" alt="facebook"></a>
+                    <p class="r">share -</p>
+                </div>
+                <div class="store">
+                    <h4>販售店家</h4>
+                    <a href="#">Daren Eyewear 達人眼鏡</a>
+                    <a href="#">視明精品眼鏡名店</a>
+                    <a href="#">睛點光學眼鏡</a>
+                    <a href="#">金特麗眼鏡 - 彰化店</a>
+                    <a href="#">藝光眼鏡</a>                        
+                </div>
+                <a href="#">
+                    <div class="next_article_box u-cf">
+                        <h6>上一篇</h6>
+                        <h5>建議最多三十五個中文字，超過不會怎樣。建議最多三十五個中文字，超過也不會怎樣</h5>
                     </div>
-                    <div>
-                        <p class="quote">
-                            2018年，搜鏡王陸續報導了許多關於「吾鏡手作眼鏡體驗坊」的相關訊息，自從幾個月前第一間吾鏡在台南正式上線、引爆了火熱的人氣之後，手作眼鏡的風潮與珍貴之處也逐漸被世人所瞭解，愈來愈多人為了追求心靈的沉澱及對眼鏡價值的渴望，爭相報名吾鏡手作眼鏡的體驗。當搜鏡王團隊受到台灣吾鏡團隊的邀請，隨行遠赴湖北武漢吾鏡進行參訪交流時，則是迫不及待的答應，只為帶回第一手的手作眼鏡情報。
-                        </p>
-                        <img src="picture/00_temp_picture/401.png" alt="">
-                        <h2> h2同為了發揚眼鏡的深層價值而繼續努力著！</h2>
-                        <p>
-                            武漢吾鏡的店面前身是老式工業廠房，保留了過去建築物的寬敞空間，將外觀漆上質感的霧面黑色並鋪上清水模地板，相較起周邊選擇保留老式磚牆的店面而言，營造出更加濃厚的時尚現代都會風格。甫一進入店面，便可以看見大片的眼鏡陳列牆，而一旁被玻璃圍住的小空間，便是搜鏡王團隊此行的重點──吾鏡手作眼鏡坊。
-                        </p>
-                        <p>延伸閱讀：<a href="#">吾鏡手作體驗坊台灣直營店開幕</a></p>
-                        <img src="picture/00_temp_picture/402.png" alt="">
-                        <p>
-                                為期四天的參訪交流行程，飛也似地結束了。這幾天來，雙方團隊都靈感四射，進行了多次充滿創意又有火花的對話；而除了參觀吾鏡總部與實體工坊以外，吾鏡的主理人Daniel還全程陪同，甚至帶領團隊全體穿梭在武漢的大小巷弄，進行了食物與文化的深度交流，充分體驗了兩地深藏的人文底蘊。
-                        </p>
-                        <h3>h3 店家資訊 </h3>
-                        <p>吾鏡手作眼鏡坊 官方網站</p>
-                        <h4>h4 店家資訊 </h4>
-                        <p>吾鏡手作眼鏡坊 Facebook</p>
-                        <h5>h5 店家資訊</h5>
-                        <p>連絡電話：(06)2232-525<br>
-                            地址：台南市中西區府前路一段320號</p>
-                        <h6>h6 店家資訊</h6>
-                        <p>吾鏡首間合作眼鏡店：台南久必大眼鏡</p>
+                </a>
+                <a href="#">
+                    <div class="next_article_box u-cf">
+                        <h6>下一篇</h6>
+                        <h5>建議最多三十五個中文字，超過不會怎樣。建議最多三十五個中文字，超過也不會怎樣</h5>
                     </div>
-                    <div class="tag_box">
-                            <a href="#" class="tag">a.tag</a>
-                            <a href="#" class="tag">時尚穿搭</a>
-                            <a href="#" class="tag">工業廠房</a>
-                            <a href="#" class="tag">吾鏡手作眼鏡體驗坊</a>
-                            <a href="#" class="tag">球鞋</a>
-                            <a href="#" class="tag">a.tag</a>
-                            <a href="#" class="tag">時尚穿搭</a>
-                            <a href="#" class="tag">工業廠房</a>
-                            <a href="#" class="tag">吾鏡手作眼鏡體驗坊</a>
-                            <a href="#" class="tag">球鞋</a>
-                            <a href="#" class="tag">a.tag</a>
-                            <a href="#" class="tag">時尚穿搭</a>
-                            <a href="#" class="tag">工業廠房</a>
-                            <a href="#" class="tag">吾鏡手作眼鏡體驗坊</a>
-                            <a href="#" class="tag">球鞋</a>                                                        
-                    </div>
-                    <div class="share_box u-cf">
-                        <a href="#"><img src="picture/01_icon/tw.svg" alt="facebook"></a>
-                        <a href="#"><img src="picture/01_icon/fb.svg" alt="facebook"></a>
-                        <p class="r">share -</p>
-                    </div>
+                </a>
+                <div class="fb_block">FB留言區</div>   
             </article>
             <div class="col-1-4 col-md-1-1 col-right">
                 <div class="row">
@@ -332,35 +354,15 @@
                 </div>
             </div> 
             <div class="col-2-3-69 col-md-1-1 col-padding_l16 space16">
-                <div class="store">
-                    <h4>販售店家</h4>
-                    <a href="#">Daren Eyewear 達人眼鏡</a>
-                    <a href="#">視明精品眼鏡名店</a>
-                    <a href="#">睛點光學眼鏡</a>
-                    <a href="#">金特麗眼鏡 - 彰化店</a>
-                    <a href="#">藝光眼鏡</a>                        
-                </div>
-                <a href="#">
-                    <div class="next_article_box u-cf">
-                        <h6>上一篇</h6>
-                        <h5>建議最多三十五個中文字，超過不會怎樣。建議最多三十五個中文字，超過也不會怎樣</h5>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="next_article_box u-cf">
-                        <h6>下一篇</h6>
-                        <h5>建議最多三十五個中文字，超過不會怎樣。建議最多三十五個中文字，超過也不會怎樣</h5>
-                    </div>
-                </a>
-                <div class="row">
-                        <div class="fb_block">FB留言區</div>         
-                </div>
+
+            </div>
+            <div class="col-1-1">
                 <div class="row">
                     <div class="col-1-1">
                         <h6 class="sidebar_h u-text-l">相關文章</h6> 
                     </div>
                     <!-- card 01 -->
-                    <div class="col-1-3 col-sm-1-2 col-xs-1-1">
+                    <div class="col-1-4 col-sm-1-2 col-xs-1-1">
                         <div class="card_01">
                             <div class="imgbox-zoom">
                                 <a href="#">
@@ -384,7 +386,7 @@
                         </div>
                     </div>
                     <!-- card 01 -->
-                    <div class="col-1-3 col-sm-1-2 col-xs-1-1">
+                    <div class="col-1-4 col-sm-1-2 col-xs-1-1">
                         <div class="card_01">
                             <div class="imgbox-zoom">
                                 <a href="#">
@@ -408,7 +410,7 @@
                         </div>
                     </div>
                     <!-- card 01 -->
-                    <div class="col-1-3 col-sm-1-2 col-xs-1-1">
+                    <div class="col-1-4 col-sm-1-2 col-xs-1-1">
                         <div class="card_01">
                             <div class="imgbox-zoom">
                                 <a href="#">
@@ -432,7 +434,7 @@
                         </div>
                     </div>
                     <!-- card 01 -->
-                    <div class="col-1-3 col-sm-1-2 col-xs-1-1">
+                    <div class="col-1-4 col-sm-1-2 col-xs-1-1">
                         <div class="card_01">
                             <div class="imgbox-zoom">
                                 <a href="#">
@@ -455,58 +457,10 @@
                             </div>
                         </div>
                     </div>
-                    <!-- card 01 -->
-                    <div class="col-1-3 col-sm-1-2 col-xs-1-1">
-                        <div class="card_01">
-                            <div class="imgbox-zoom">
-                                <a href="#">
-                                    <div class="imgbox-md"
-                                        style="background-image:url('picture/00_temp_picture/002.jpg')"></div>
-                                </a>
-                            </div>
-                            <div class="textbox">
-                                <a href="#">
-                                    <h6>PEOPLE</h6>
-                                </a>
-                                <a href="#">
-                                    <h3>VEDI VERO 2018眼鏡新品，綻放眾多名人臉龐</h3>
-                                </a>
-                                <p class="date">2017 . 11 . 02</p>
-                                <div class="tagbox">
-                                    <a href="#" class="tag">球鞋</a>
-                                    <a href="#" class="tag">時尚穿搭</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- card 01 -->
-                    <div class="col-1-3 col-sm-1-2 col-xs-1-1">
-                        <div class="card_01">
-                            <div class="imgbox-zoom">
-                                <a href="#">
-                                    <div class="imgbox-md"
-                                        style="background-image:url('picture/00_temp_picture/011.jpg')"></div>
-                                </a>
-                            </div>
-                            <div class="textbox">
-                                <a href="#">
-                                    <h6>PEOPLE</h6>
-                                </a>
-                                <a href="#">
-                                    <h3>VEDI VERO 2018眼鏡新品，綻放眾多名人臉龐</h3>
-                                </a>
-                                <p class="date">2017 . 11 . 02</p>
-                                <div class="tagbox">
-                                    <a href="#" class="tag">球鞋</a>
-                                    <a href="#" class="tag">時尚穿搭</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
-        </div>    
-            <div class="row space64">
+            <div class="col-1-1">
+                <div class="row space64">
                     <div class="col-1-2 col-xs-1-1 space16">
                         <a href="#"><div class="ad_boxs a2" style="background-image:url('picture/00_temp_picture/102.jpg')"></div></a>
                     </div>
@@ -514,14 +468,16 @@
                         <a href="#"><div class="ad_boxs a2" style="background-image:url('picture/00_temp_picture/103.jpg')"></div></a>
                     </div>
                     <div class="col-1-1 space16 ">
-                            <a href="#"><div class="ad_boxs a2" style="background-image:url('picture/00_temp_picture/101.jpg')"></div></a>
+                        <div class="ad_boxs">
+                            <img class="md" src="picture/00_temp_picture/101.jpg" alt="">
+                        </div>
                     </div>
-            </div>
-        </div> 
+                </div>
+            </div> 
+        </div>
     </div>
-    <div class="space128"></div>
     <a class="go_top" href="#" id="goTop"></a>
-	<footer>
+	<footer class="space128">
 		<div class="footer_container">
 			<div class="row">
 				<div class="col-1-3 col-smd-1-1 ">
