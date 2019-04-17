@@ -501,6 +501,12 @@ form .divline{
 	transform: scale(1);}
 .imgbox-zoom_2:hover {transform: scale(1.05);}
 
+.imgbox-zoom_3 {
+	transition: cubic-bezier(.05, 0.2, 0.01, 1) 1s;
+	transform: scale(1);}
+.imgbox-zoom_3:hover {transform: scale(1.02);}
+
+
 @media only screen and (max-width: 1200px) {
 	.imgbox-lg {
 		height: 350px;

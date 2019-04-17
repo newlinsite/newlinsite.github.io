@@ -167,6 +167,7 @@ phone         480
 	.col-sm-2-3 {width: 66.6666666%;}
 	.col-sm-1-6 {width: 16.6666666%;}
 	.col-sm-1-4 {width: 25%;}
+	.col-sm-margin0{margin: 0 -16px}
 	.col-center{text-align: center}
 	.sm-hidden {
 		visibility: hidden;
@@ -207,6 +208,8 @@ phone         480
 .u-text-l{text-align: left !important;}
 .u-text-r{text-align: right ;}
 .u-text-c{text-align: center ;}
+
+
 
 @media only screen and (max-width: 1024px) {
 	.u-smd-text-l{text-align: left !important;}
