@@ -94,7 +94,7 @@ a.tag:hover {
 
 .go_top{
 	position:fixed;
-	right: 5%;
+	right: 35px;
 	bottom: 5%;
 	background-image: url(../picture/01_icon/arr_top.svg);
 	background-size: cover;
@@ -106,6 +106,10 @@ a.tag:hover {
 	transition: .5s;
 }
 .go_top.hideden{opacity: 0;}
+.go_top.stop{bottom: 300px;}
+
+
+
 
 
 
@@ -506,10 +510,12 @@ form .divline{
 	transform: scale(1);}
 .imgbox-zoom_2:hover {transform: scale(1.05);}
 
-.imgbox-zoom_3 {
-	transition: cubic-bezier(.05, 0.2, 0.01, 1) 1s;
+.imgbox-zoom_4,.imgbox-zoom_3 {
+	transition: cubic-bezier(.05, 0.2, 0.01, 1) .8s;
 	transform: scale(1);}
-.imgbox-zoom_3:hover {transform: scale(1.02);}
+.imgbox-zoom_4:hover,.imgbox-zoom_3:hover {transform: scale(1.02);}
+
+.imgbox-zoom_4 {transition: .2s;}
 
 
 @media only screen and (max-width: 1200px) {
@@ -731,12 +737,10 @@ form .divline{
 
 *******************************/
 
-.space_header {padding-bottom: 127px;}
-
-
+.space_header {padding-bottom: 108px;}
 
 header {
-	height: 15%;
+	height: 10%;
 	width: 100%;
 	position: fixed;
 	z-index: 5000;
@@ -750,26 +754,28 @@ header {
 	/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#00ffffff', GradientType=0);
 	/* IE6-9 */}
-.mini{height: 8.5%;}
+
+/********* mini ************/
+.mini{height: 15.5%;}
 .mini:hover{
 	box-shadow:  0px 5px 10px rgba(0, 0, 0, .05);
 	background-color: rgba(255, 255, 255, 1);
-	height: 60px;}
-.mini nav{padding: 15px 0 5px 0;}
-.mini nav .logo {transform: scale(.65) translateX(-10%);bottom: 14px;}
+	height: 70px;}
+.mini nav{padding: 25px 0 5px 0;}
+.mini nav .logo {transform:translateX(-10%) scale(.78);bottom: 14px;}
 .mini nav .pull-down{
-	top:70px;
+	top:80px;
 	width: 1150px;}
 
 
-	nav {
+
+nav {
 	max-width: 1200px;
 	left: 50%;
 	transform: translate(-50%);
 	width: 100%;
 	padding: 48px 0 10px 0;
 	transition: 1s;}
-
 nav .logo {
 	transition: 1s;
 	float: left;
@@ -786,8 +792,8 @@ nav .xx {
 	opacity: .8;
 	border-radius: 6px;
 	z-index: 6000;
-	left: 0px;
-	top: 33px;
+	left: 18px;
+	top: 24px;
 	visibility: hidden;}
 	nav .xx {
 		top: 26px;
@@ -830,14 +836,13 @@ nav .menu {
 			opacity: 1;
 			visibility: visible;}
 
-		/* *******  list hover  ******** */
+/* *******  list hover  ******** */
 		nav .pull-down_tri,
 		nav .pull-down{
 			opacity: 0; 
 			visibility: hidden;
-			transition: .35s;
-			transform: translate(-50%, -5%);
-		}
+			transition: .2s;
+			transform: translate(-50%, -5%);}
 		nav .pull-down_tri{
 			height: 0px;
 			width: 0px;
@@ -850,14 +855,15 @@ nav .menu {
 		nav .pull-down{
 			position: fixed;
 			left: 50%;
-			top: 100px;
+			top: 95px;
 			width: 1200px;
+			height: 360px;
 			border-radius: 4px;
 			background-color: rgba(255, 255, 255, .98);
-			box-shadow:  0px 5px 30px rgba(0, 0, 0, .06);}
+			box-shadow:  0px 5px 30px rgba(0, 0, 0, .1);}
 
 		nav .pull-down ul {
-			padding: 36px;
+			padding:  16px 36px;
 			border-radius: 4px;}
 		nav .pull-down li {
 			padding: 8px;
@@ -865,7 +871,7 @@ nav .menu {
 			border-top: 2px solid rgba(200, 200, 200, .20);}
 			nav .pull-down li:first-child{border-top: 0px }
 		nav .pull-down li a {
-			font-size: 14px;
+			font-size: 13px;
 			margin: 0px;
 			padding: 0px;}
 		nav .pull-down li a:hover {color: #2FB0B3;}
@@ -874,33 +880,28 @@ nav .menu {
 			opacity: 1;
 			transform: translate(-50%, 0);}
 		nav .pull-down .card{
-			margin: 28px 8px 32px 0;
-			transition: .8s;
+			margin: 20px 16px 0 0;
+			transition: .2s;
 			box-shadow: 0px 0px 16px -2px rgba(0, 0, 0, .035);
-			overflow: hidden;
-		}
+			overflow: hidden;}
 		nav .pull-down .card .imgbox{
 			background-color: #333;
-			height: 40px;
-		}
+			height: 40px;}
 		nav .pull-down .card .textbox{
 			padding: 0 12px 24px 12px;
-			background-color: #fff;
-		}
+			background-color: #fff;}
 		nav .pull-down .card h2{
 			font-size: 15px;
-			transition: .5s;
-		}
+			transition: .2s;}
 		nav .pull-down .card p{
 			font-size: 12px;
 			line-height: 4px;}
 		
 		nav .pull-down .card:hover{
-			box-shadow: 0px 0px 19px -2px rgba(0, 0, 0, .065);
-		}
+			box-shadow: 0px 0px 19px -2px rgba(0, 0, 0, .065);}
 		nav .pull-down .card:hover>a h2{color:#2FB0B3}
 
-		
+		nav .card_hover_0_ta,
 		nav .card_hover_1_ta,
 		nav .card_hover_2_ta,
 		nav .card_hover_3_ta,
@@ -908,15 +909,13 @@ nav .menu {
 		nav .card_hover_5_ta,
 		nav .card_hover_6_ta{
 			visibility: hidden;
-			display: none;
 			height: 0;
 			opacity: 0;
-			transition: .5s}
+			transition: .2s}
 		
 		nav .card_hovering{
 			visibility: visible;
 			opacity: 1;
-			display: inline-block
 		}
 	
 /******************icon bar******************/
@@ -930,16 +929,16 @@ nav .icon {
 		opacity: .7;
 		transition: .4s;}
 	nav .icon img:hover {opacity: .9;}
-
 	nav .icon ul{
 		padding: 10px 12px;
-		width: 120px;
+		width: 130px;
 		border-radius: 4px;
-		background-color: rgba(255, 255, 255, .95);
+		background-color: rgba(255, 255, 255, .98);
 		position: absolute;
-		top: 22px;
+		top: 35px;
 		transition: .5s;
 		transform: translate(-44px, -2.5%);
+		box-shadow: 0 5px 18px rgba(0, 0, 0, .1);
 		visibility: hidden;
 		opacity: 0;}
 		nav .icon li {
@@ -1013,93 +1012,59 @@ nav .searchbox { float: right;width: auto;margin: 0 4px 0 0}
 
 
 @media only screen and (max-width: 1200px) {
-	nav {
-		height: 100%;
-		padding: 26px 0 10px 0;}
 	nav .hamberger,
 	nav .xx {visibility: visible;}
-
 	nav .logo {
 		left: 50%;
-		transform: translateX(-50%);}
-
+		transform: translate(-50%,-22%);}
+	.mini nav .logo {
+		transform:translate(-50%,5%) scale(.78);
+		bottom: 14px;}
 	nav .menu {
 		display: none;
 		position: fixed;
 		left: 0;
-		top: 0;
-		transform: translate(-2%, 0%);
+		top: -25px;
 		width: 450px;
-		height: 666.66%;
+		height: 104vh;
 		padding: 95px 20px 30px 6px;
 		overflow-y: auto;
 		overflow-x: hidden;
 		background-color: rgba(255, 255, 255, .98);}
-		nav .main,nav .main.s {
-			width: 100%;
-			padding: 0 0px 75px 0px;}
-		nav .main.xs {padding: 0 0px 35px 0px;}
-		nav .main.s {padding: 0 0px 90px 0px;}
-		nav .main.xl {padding: 0 0px 120px 0px;}
-		nav .main.xxl {padding: 0 0px 150px 0px;}
-		nav .main .a {
-			color: #2FB0B3;
-			font-weight: 500;}
-			nav .main .a.active{ 
-				border-bottom: 0;
-				padding: 5px 0 20px 0;
-				margin: 0;
-				font-weight: 400}
-		nav .main .a:hover {
+		.card_hover_remove{display: none}
+		.mini nav .pull-down,nav .pull-down{
+			opacity: 1;
 			visibility: visible;
-			opacity: 1;
-			color: #000;}
-		nav .menu span {
 			position: relative;
-			opacity: 0;}
-		nav .menu span:hover {
-			opacity: 0;
-			visibility: visible;}
-		nav .menu .sm,
-		nav .menu .xs,
-		nav .menu .md,
-		nav .menu .lg {padding: 0 8px 0 8px;}
+			width: auto;
+			height: auto;
+			left: 0;
+			top: 0;
+			transform: translate(0 ,0);
+			box-shadow: none;}
+		nav .main{margin: 12px}
 		nav .menu .main a {
-			color: #606060;
-			padding: 0;
-			font-size: 16px;
-			transition: 0s;
-			letter-spacing: 0.02em;}
-			nav .main ul {
-			background-color: rgba(255, 255, 255, 0);
-			top: 16px;
-			left: -16px;
-			width: 380px;
-			opacity: 1;
-			transform: translateY(0%);
-			visibility: visible;}
+			color: #323536;
+			font-weight: 500;}
+		nav .menu .main .a {color: #135A5D;}
+		nav .main ul {
+		padding: 8px 0;
+		width: 380px;
+		opacity: 1;}
 		nav .main li {
 			float: left;
-			width: 29%;
-			padding: 6px 8px 0px 3px;
+			width: 30%;
+			padding: 0px 0px 8px 0px;
 			text-align: left;
-			border-bottom: 1px solid rgba(200, 200, 200, 0);
-			border-top: 1px solid rgba(200, 200, 200, 0);}
-			nav .main li.xs {width: 22%;}
-			nav .main li.s {width: 28%;}
-			nav .main li.l {width: 50%;}
-			nav .main li.xl {width: 80%;}
-			nav .main li a {font-size: 13px;}
-			nav .main li a:hover {color: #222;}
-		nav .main:hover>ul {
-			visibility: visible;
-			opacity: 1;
-			transform: translateY(0%);}
+			border: none;}
+		nav .main:hover>.pull-down, nav .main:hover>.pull-down_tri{transform: translate(0 ,0);}
+		nav .main:hover > a span{text-align:left}
 	nav .icon.phone {
 		display: none;
 		position: absolute;
 		top: 0px;
 		left: 0px;
+		width: 450px;
 		/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+55,ffffff+100&1+0,0.7+55,0+100 */
 		background: -moz-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 30%, rgba(255, 255, 255, 0.8) 80%, rgba(255, 255, 255, 0) 100%);
 		/* FF3.6-15 */
@@ -1115,9 +1080,9 @@ nav .searchbox { float: right;width: auto;margin: 0 4px 0 0}
 	nav .icon img {opacity: .7;}
 
 	nav .searchbox {
-		position: relative;
-		right: 10px;
-		top: 38px;}
+		position: absolute;
+		right: 16px;
+		top: 24px;}
 		nav .searchbox label img.m {visibility: hidden;}
 		nav .searchbox label img.xl {visibility: visible;}
 		nav label {
@@ -1134,10 +1099,11 @@ nav .searchbox { float: right;width: auto;margin: 0 4px 0 0}
 @media (max-width: 700px) {
 	nav label input {width: 100px;}}
 @media (max-width: 480px) {
+	nav .icon.phone,nav .main ul{width: 100vw;}
 	nav label input {width: 270px;}
-	nav .logo {transform: translateX(-50%) scale(0.7);}
+	nav .logo {transform:translate(-50%,-24%) scale(.78);}
+	.mini nav .logo {transform:translate(-50%,5%) scale(.7);}
 	nav .menu {width: 108%;}
-	nav .icon {left: 88%;}
 	nav .searchbox {left: 0;}}
 @media (max-width: 400px) {
 	nav label input {width: 240px;
@@ -1154,7 +1120,9 @@ nav .searchbox { float: right;width: auto;margin: 0 4px 0 0}
 
 .sidebar {
 	position: fixed;
-	margin-top: 26px;}
+	transition: 1s;
+	bottom: auto;
+	top:110px;}
 	.sidebar ul {font-weight: 300}
 	.sidebar a{display: inline;}
 	.sidebar li{
@@ -1165,6 +1133,8 @@ nav .searchbox { float: right;width: auto;margin: 0 4px 0 0}
 		margin: 8px 0px;
 		padding: 0 12px;
 		translate: .5s}
+	@media (max-height: 820px) {
+		.sidebar.stop{top:auto; bottom: 300px;}}
 	.sidebar .divline{
 		left: 12px;
 		border-bottom: 1px solid  #a7a7a7;
