@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="281" height="275" viewBox="0 0 281 275">
+  <defs>
+    <filter id="Ellipse_89" x="21.798" y="86.798" width="117.404" height="117.405" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="optom" transform="translate(7943 1296)">
+    <g id="Group_589" data-name="Group 589" transform="translate(135.298 4.298)">
+      <g transform="matrix(1, 0, 0, 1, -8078.3, -1300.3)" filter="url(#Ellipse_89)">
+        <circle id="Ellipse_89-2" data-name="Ellipse 89" cx="36.202" cy="36.202" r="36.202" transform="translate(44.3 106.3)" fill="#606060"/>
+      </g>
+      <g id="Group_588" data-name="Group 588" transform="translate(-8013.574 -1176.55)">
+        <circle id="Ellipse_19" data-name="Ellipse 19" cx="10.084" cy="10.084" r="10.084" transform="translate(5.587)" fill="#fff"/>
+        <path id="Path_738" data-name="Path 738" d="M2552.277-570.749a1.977,1.977,0,0,0,1.8-2.591c-2.279-7.442-8.394-12.981-15.579-12.981s-13.3,5.539-15.581,12.981a1.976,1.976,0,0,0,1.8,2.591Z" transform="translate(-2522.825 608.107)" fill="#fff"/>
+      </g>
+    </g>
+    <text id="搜尋驗光師_生" data-name="搜尋驗光師 / 生" transform="translate(-7862 -1079)" fill="#757575" font-size="14" font-family="NotoSansCJKtc-Medium, Noto Sans CJK TC" font-weight="500" letter-spacing="0.1em"><tspan x="-53.48" y="0">搜尋驗光師 / 生</tspan></text>
+    <rect id="Rectangle_1065" data-name="Rectangle 1065" width="281" height="275" transform="translate(-7943 -1296)" fill="none"/>
+  </g>
+</svg>

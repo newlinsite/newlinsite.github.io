@@ -27,6 +27,7 @@
 	height: 36px;
 	top: -52px;
 	outline: none;
+	-webkit-transition: .3s;
 	transition: .3s}
 
 .owl-carousel .owl-nav button.owl-next {
@@ -57,12 +58,14 @@
 	bottom: 24px;
 	border-radius: 4px;
 	background-color: rgba(255, 255, 255, .65);
+	-webkit-transition: .4s;
 	transition: .4s;
 }
 .imgbox-zoom_3:hover>.imgbox-lg .textbox {
 	background-color: rgba(255, 255, 255, .88);
 	color: #2FB0B3;
-	transform: scale(.973)}
+	-webkit-transform: scale(.973);
+	        transform: scale(.973)}
 
 
 	
@@ -82,7 +85,8 @@
 
 	.owl-theme .owl-dots {
 		left: 50%;
-		transform: translateX(-50%);
+		-webkit-transform: translateX(-50%);
+		        transform: translateX(-50%);
 		bottom: 36px;
 	}
 
@@ -101,8 +105,7 @@
 		/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+0,1+31,1+100 */
 		/* FF3.6-15 */
 		/* Chrome10-25,Safari5.1-6 */
-		background: -webkit-linear-gradient(rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 31%, rgba(255, 255, 255, 1) 100%);
-		background: -o-linear-gradient(rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 31%, rgba(255, 255, 255, 1) 100%);
+		background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), color-stop(31%, rgba(255, 255, 255, 1)), to(rgba(255, 255, 255, 1)));
 		background: linear-gradient(rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 31%, rgba(255, 255, 255, 1) 100%);
 		/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff', endColorstr='#ffffff', GradientType=0);
@@ -111,12 +114,14 @@
 	.owl-carousel .owl-nav button.owl-prev {visibility: hidden;}
 	.owl-theme .owl-dots {
 		left: 50%;
-		transform: translateX(-50%);
+		-webkit-transform: translateX(-50%);
+		        transform: translateX(-50%);
 		bottom: 36px;}
 	.slider_bule_bar {
 		max-width: 100%;
 		left: 50%;
-		transform: translateX(-50%);
+		-webkit-transform: translateX(-50%);
+		        transform: translateX(-50%);
 		width: 150px;
 		bottom: 20px;}
 	.owl-theme .textbox h2 {font-size: 25px;}
@@ -172,8 +177,9 @@ section.sign-up{
 	.sign-up .sign-up_box{
 		/* width: 50%; */
 		left: 50%;
-		transform: translateX(-50%);
+		-webkit-transform: translateX(-50%);
+		        transform: translateX(-50%);
 		text-align: center;
 	}
-	section.sign-up img{transform: scale(.8)}
+	section.sign-up img{-webkit-transform: scale(.8);transform: scale(.8)}
 	section.sign-up p{margin: 28px 0;line-height: 1.92em}

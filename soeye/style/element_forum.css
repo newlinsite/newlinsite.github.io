@@ -24,11 +24,13 @@
     margin: 20px 0;
     border-radius: 4px;
     opacity: .9;
+    -webkit-transition: .3s;
     transition: .3s}
 .card_forum p,
 .card_forum .point,
 .card_forum h3{
     display: inline-block;
+    -webkit-transition: .3s;
     transition: .3s;
     font-size: 14px}
 .card_forum h3{color: #075457;}

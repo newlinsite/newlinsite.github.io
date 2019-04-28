@@ -6,16 +6,18 @@
     .z10{z-index: 10;}
     
     @media only screen and (max-width: 1200px) {
-        .main_img_box img{left: 50%;transform: translateX(-50%);}
+        .main_img_box img{left: 50%;-webkit-transform: translateX(-50%);transform: translateX(-50%);}
         .articontainer{
             max-width: 800px;
             left: 50%;
-            transform: translateX(-50%);}}
+            -webkit-transform: translateX(-50%);
+                    transform: translateX(-50%);}}
             @media only screen and (max-width: 836px) {
                 .articontainer{
                     max-width: auto;
                     left: auto;
-                    transform: translateX(0);}}   
+                    -webkit-transform: translateX(0);
+                            transform: translateX(0);}}   
     @media only screen and (max-width: 920px) {
     .main_img_box{margin: 0 -16px;}}
     .main_img_box .imgbox{height: 400px;}
@@ -44,7 +46,8 @@
         position: absolute;
         left: 50%;
         top: -24px;
-        transform: translate(-50% ,-50%)}
+        -webkit-transform: translate(-50% ,-50%);
+                transform: translate(-50% ,-50%)}
     .author_box  h3{ margin: 12px 0;}
     .author_box  p{ font-size: 12px;letter-spacing: 0.01em;color: #606060}
     .author_box .imgbox{
@@ -73,7 +76,7 @@
     display: inline-block;
     left: 0;}
     .share_box .r ,.share_box img{float:right; margin: 0 4px; opacity: .8;font-size: 14px;}
-    .share_box img{transform: translateY(-4px);width: 25px;}
+    .share_box img{-webkit-transform: translateY(-4px);transform: translateY(-4px);width: 25px;}
     .share_box img:hover{opacity: .95;}
 
 .card_02 .textbox {width: 74%; left: 80px;}
@@ -101,7 +104,7 @@ article p.quote{
         article p.quote{padding: 24px 24px;}}
 article img{
     max-width: 100%;}
-article a{color: #2FB0B3;transition: .3s;}
+article a{color: #2FB0B3;-webkit-transition: .3s;transition: .3s;}
     article a:hover{color: #FFD064}
 article h3 {font-size: 25px;
 	color: #151718;
@@ -153,7 +156,8 @@ article .optomH h3{
 article .optomH h5{font-size: 14px;}
 article .optomH img{
     left: 0;
-    transform: translate(0,0);
+    -webkit-transform: translate(0,0);
+            transform: translate(0,0);
     max-height: 300px;
     max-width: auto;}
 
@@ -182,6 +186,7 @@ article .optomH img{
     background-color: #F9F9F9;
     margin: 16px 4px;
     border-radius: 4px;
+    -webkit-transition: .5s;
     transition: .5s;
     padding: 12px 16px}
     .next_article_box h6{
