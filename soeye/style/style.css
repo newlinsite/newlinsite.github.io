@@ -225,12 +225,21 @@ phone         480
 .u-center{
 	left: 50%;
 	-webkit-transform: translateX(-50%);
-	        transform: translateX(-50%);}
+	transform: translateX(-50%);}
+@media only screen and (max-width: 1200px) {
+	.u-md-center{
+		left: 50%;
+		-webkit-transform: translateX(-50%);
+		transform: translateX(-50%);}}
 
 @media only screen and (max-width: 580px) {
 	.u-width-md{
 		width:auto;
 		margin: 0 8px 0 8px;}
+		.u-md-center{
+			left: 0;
+			-webkit-transform: translateX(0);
+			transform: translateX(0);}
 		.u-width-md.u-center{
 		left: 0;
 		-webkit-transform: translateX(0);
