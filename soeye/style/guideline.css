@@ -1,23 +1,4 @@
 /******************************
-		Guildeline.css index
-		atoms
-			font (h1~h6 p)
-			bottom
-			picture box
-
-		organisms
-			artcle-card
-			navbar
-			sidebar
-			sidebar-artcle-card
-			footer
-
-*******************************/
-
-
-
-
-/******************************
 
 		font  (h1~h6 p)
 
@@ -150,7 +131,6 @@ a.tag:hover {
 /* ****************
 	.title_Column
 *******************/
-/* .title_Column {} */
 	.title_Column .pic_box,.title_Column .col-1-2,
 	.title_Column .pic_box,.title_Column .col-5-12,
 	.title_Column .pic_box,.title_Column .col-7-12{
