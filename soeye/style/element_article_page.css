@@ -109,7 +109,7 @@ article a{color: #2FB0B3;-webkit-transition: .3s;transition: .3s;}
 article h3 {font-size: 25px;
 	color: #151718;
 	font-weight: 500;}
-    h3:hover {color: #151718;}
+    article h3:hover {color: #151718;}
     .card_01 h3:hover {color: #2FB0B3}
 article h4,h5,h6{color: #075457;letter-spacing: 0.1em}
 h4:hover,h6:hover{ color: #075457;}
