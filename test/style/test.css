@@ -197,6 +197,11 @@
     border: solid #999 10px;
 }
 
+.btn.type02:active{
+    border: solid #999 50px;
+}
+
+
 
 @keyframes oxxo{
     0%{
