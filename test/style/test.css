@@ -192,16 +192,18 @@
     border: solid #999 1px;
     transition: 2s;
 }
-
 .btn.type02:hover{
     border: solid #999 10px;
+    
 }
-
 .btn.type02:active{
     border: solid #999 50px;
 }
 
-
+.btn.type02.fix{
+    height: 200px;
+    width: 300px;
+}
 
 @keyframes oxxo{
     0%{
