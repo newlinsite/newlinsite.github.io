@@ -188,6 +188,15 @@
     animation-iteration-count:2;
 }
 
+.btn.type02{
+    border: solid #999 1px;
+    transition: 2s;
+}
+
+.btn.type02:hover{
+    border: solid #999 10px;
+}
+
 
 @keyframes oxxo{
     0%{
@@ -202,4 +211,11 @@
     75%{
         transform: rotate(15deg);
     }
+    
+}
+
+
+
+.space-md{
+    padding: 72px;
 }
