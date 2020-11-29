@@ -4,9 +4,26 @@ iframe{
 	border-radius: 4px;
 }
 
+
+.main_img{
+	background-image: url("../picture/000/001.png");
+	background-repeat: no-repeat;
+    background-position: center; 
+    background-size:cover;
+}
+.work09-1{
+	position: absolute;
+	top: 16px;
+	left:16px; 
+	height: 35px;
+}
+
+
 .page_main_img{
 	background-repeat: no-repeat;
     background-position: center; 
     background-size:contain;
     height: 500px;
 }
+
+
