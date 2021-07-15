@@ -1,0 +1,46 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>你好</title>
+</head>
+
+<body>
+    <input type="file" id="fileInput">
+    <div id="question"></div>
+
+</body>
+<script type="text/javascript">
+    var b = []
+    var b_len = 0
+    document.getElementById('fileInput').addEventListener('change', function selectedFileChanged() {
+        if (this.files.length === 0) {
+            console.log('請選擇檔案！');
+            return;
+        }
+        const reader = new FileReader();
+        reader.onload = function fileReadCompleted() {
+            // 當讀取完成時，內容只在`reader.result`中 
+            // console.log(reader.result);
+            b = reader.result.split("\r");
+            b_len = b.length;
+        };
+        reader.readAsText(this.files[0]);
+    });
+
+    function getRandom() {
+        return Math.floor(Math.random() * b_len);
+    }
+
+    window.addEventListener("keydown", torandom, false);
+    function torandom(e) {
+        var keyID = e.code;
+        if (keyID === 'Space') {
+            a = getRandom();
+            document.getElementById("question").innerHTML = b[a]
+        };
+    }
+
+</script>
+
+</html>
