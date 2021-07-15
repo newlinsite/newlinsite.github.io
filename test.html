@@ -8,6 +8,7 @@
 <body>
     <input type="file" id="fileInput">
     <div id="question"></div>
+    點N換下題
 
 </body>
 <script type="text/javascript">
@@ -35,7 +36,7 @@
     window.addEventListener("keydown", torandom, false);
     function torandom(e) {
         var keyID = e.code;
-        if (keyID === 'Space') {
+        if (keyID === 'KeyN') {
             a = getRandom();
             document.getElementById("question").innerHTML = b[a]
         };
