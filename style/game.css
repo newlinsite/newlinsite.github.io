@@ -119,13 +119,17 @@
     
 }
 
-
+span,#hotkey{
+    display:block;
+    color:#727272;
+    font-size: 18px;
+    margin-top:16px;
+    
+}
 #hotkey{
     position: fixed;
     left: 50%;
     bottom: 20px;
-    color:#727272;
-    font-size: 18px;
     z-index:1500;
     transform: translateX(-50%);
 }
