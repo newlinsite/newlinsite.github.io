@@ -1,0 +1,131 @@
+ /******************************
+           import
+*******************************/
+
+ /*import Noto sans TC*/
+ @import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
+
+
+ /******************************
+           Page
+*******************************/
+ * {
+ 	position: relative;
+ 	-webkit-box-sizing: border-box;
+ 	box-sizing: border-box;
+ }
+
+ body {
+ 	width: 100%;
+ 	height: 100%;
+ 	font-family: "Noto sans TC", "Microsoft JhengHei ", "微軟正黑體", sans-serif;
+	background-color: #222222;
+    overflow:hidden
+ }
+
+ a {
+ 	text-decoration: none;
+ }
+
+ ul {
+ 	list-style: none;
+ 	padding: 0;
+ 	margin: 0;
+ }
+
+ div .block {
+ 	display: inline-block;
+ }
+
+
+ 
+ /******************************
+           style
+*******************************/
+.container {
+    width: 100%;
+ 	height: 100vh;
+}
+
+#question{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 60px;
+    border-radius: 4px;
+    color: #21BCF9;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    z-index: 100;
+}
+
+#mask{  
+    height :100%;
+    width :100%;
+    background-color: #222222;
+}
+
+#mask>div{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+
+#mask>div p{
+    color: #21BCF9;
+    font-size: 100px;
+    font-weight: 500;
+    letter-spacing:0.2em;
+    margin:36px 0;
+}
+
+/* #mask>div button{
+    color: rgb(0, 0, 0);
+    font-size: 36px;
+    background-color: #21BCF9;
+    padding:8px 48px;
+    border-radius: 16px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.089);
+    border:0;
+} */
+
+.show{
+    opacity:1;
+    transition: 0.3s;
+    z-index: 1000;
+}
+
+.hidden{
+    opacity:0;
+    transition: 0.3s;
+    z-index: 0;
+}
+
+#mask>div input{
+    opacity: 0;
+    position: absolute;
+    left:43%;
+    bottom:1%;
+    z-index:1100;
+}
+
+.input_btn{
+    color:#fff;
+    border:1px solid #fff;
+    border-radius: 4px;
+    padding: 4px 16px;
+    
+}
+
+
+#hotkey{
+    position: fixed;
+    left: 50%;
+    bottom: 20px;
+    color:#727272;
+    font-size: 18px;
+    z-index:1500;
+    transform: translateX(-50%);
+}
