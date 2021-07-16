@@ -16,6 +16,8 @@
                 <p>快問快答</p>
                 <input type="file" id="fileInput">
                 <div class="input_btn block">Upload file</div>
+                <span>Please upload .txt and a line is a question</span>
+
             </div>
         </div>
         <div id="question"></div>
@@ -25,7 +27,6 @@
 </body>
 
 <script>
-
 
     // Start & Home
 
@@ -41,8 +42,6 @@
         home_mask.setAttribute("class", "show");
         document.getElementById("hotkey").innerHTML = "Press N to Start";
     }
-
-
 
     // -------------------------
     // Random question 
