@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/game.css">
+    <title>快問快答</title>
+</head>
+
+<body>
+    <div class="container">
+        <div id="mask" class="show">
+            <div>
+                <p>快問快答</p>
+                <input type="file" id="fileInput">
+                <div class="input_btn block">Upload file</div>
+            </div>
+        </div>
+        <div id="question"></div>
+        <div id="hotkey"></div>
+    </div>
+
+</body>
+
+<script>
+
+
+    // Start & Home
+
+    document.getElementById("hotkey").innerHTML = "Press N to Start";
+    var home_mask = document.getElementById("mask");
+    // start_btn.addEventListener("click", to_start, false);
+
+    function to_start() {
+        home_mask.setAttribute("class", "hidden");
+        document.getElementById("hotkey").innerHTML = "Press N to Next question , Press H to back Home";
+    };
+    function to_home() {
+        home_mask.setAttribute("class", "show");
+        document.getElementById("hotkey").innerHTML = "Press N to Start";
+    }
+
+
+
+    // -------------------------
+    // Random question 
+    // -------------------------
+
+    var Qlist = [];
+    var Qlist_len = 0;
+
+    // 預設問題
+    Qlist = ["如果看到金城武熟睡在自己面前，你會做什麼?",
+        "去年你最後悔的一件事是什麼?",
+        "哪天你變身蜘蛛人，第一件事會做什麼?",
+        "你昨天吃什麼當晚餐?",
+        "你曾遇過最感動的事情是什麼?",
+        "如果你有一張單程機票，你會去哪?",
+        "你覺得人生勝利組是要具備什麼條件?",
+        "如果你有任意門，你想去哪?",
+        "如果你有隱型斗篷，你會怎麼做?",
+        "如果你想重來，你會回到哪個時期?",
+        "你相信一見鍾情嗎?",
+        "你相信男女間有純友誼嗎?",
+        "要對10年後的自己說一句話，你會說什麼?",
+        "你最討厭的動物是什麼?",
+        "你在Uber上發現沒帶錢包也沒帶手機，怎麼辦?",
+        "如果你中10萬塊樂透，你要幹嘛?",
+    ];
+
+    // 建立隨機題號
+    Qlist_len = Qlist.length;
+    function getRandom() {
+        return Math.floor(Math.random() * Qlist_len);
+    }
+    var num = getRandom();
+
+
+
+    // 隨機取得題目,並印入 id:question
+    function QintoHTML() {
+        num = getRandom();
+        document.getElementById("question").innerHTML = Qlist[num];
+    }
+    QintoHTML()
+
+
+
+    // 問題輸入
+    document.getElementById('fileInput').addEventListener('change', function selectedFileChanged() {
+        if (this.files.length === 0) {
+            console.log('請選擇檔案！');
+            return;
+        }
+        const reader = new FileReader();
+        reader.onload = function fileReadCompleted() {
+            // 檔案問題分割 → 重新計算題目數 → 輸出題目
+            Qlist = reader.result.split("\r");
+            Qlist_len = Qlist.length;
+            QintoHTML()
+        };
+        reader.readAsText(this.files[0]);
+    });
+
+
+
+    // 鍵盤快捷鍵
+    window.addEventListener("keydown", torandom, false);
+    function torandom(e) {
+        var keyID = e.code;
+        if (keyID === 'KeyN') {
+            QintoHTML();
+            to_start();
+        };
+        // if (keyID === 'Space') {
+        //     QintoHTML();
+        //     to_start();
+        // };
+        if (keyID === 'KeyH') {
+            to_home()
+        }
+        if (keyID === 'KeyS') {
+            to_start()
+        }
+    }
+
+
+
+
+
+</script>
+
+</html>
