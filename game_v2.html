@@ -27,15 +27,19 @@
 
 <script>
 
-    // Start & Home
 
+
+    // -------------------------
+    // Start & Home
+    // -------------------------
+    
     document.getElementById("hotkey").innerHTML = "Press N to Start";
     var home_mask = document.getElementById("mask");
 
 
     function to_start() {
         home_mask.setAttribute("class", "hidden");
-        document.getElementById("hotkey").innerHTML = "Press N to Next question , Press H to back Home";
+        document.getElementById("hotkey").innerHTML = "Click / Press N or space to Next question , Press H to back Home";
     };
     function to_home() {
         home_mask.setAttribute("class", "show");
@@ -76,14 +80,12 @@
     var num = getRandom();
 
 
-
     // 隨機取得題目,並印入 id:question
     function QintoHTML() {
         num = getRandom();
         document.getElementById("question").innerHTML = Qlist[num];
     }
     QintoHTML()
-
 
 
     // 問題輸入
@@ -103,13 +105,17 @@
     });
 
 
+    // -------------------------
+    // 切換功能、計時器、快捷鍵
+    // -------------------------
+
     // 計時器
     var timer = document.getElementById("timer");
-    var count = 60;
     var timerNum = null;
+    var body = document.getElementById("body")
     function timerStart() {
         clearInterval(timerNum);
-        var count = 60;
+        var count = 40;
         timer.innerHTML=`<span>${count}</span>`;  
         timerNum = setInterval(function () {
                 if (count > 0) {
@@ -118,37 +124,38 @@
                 }
                 else {
                     clearInterval(timer);
+                    body.setAttribute("class", "timeout");
+                    timer.innerHTML = `<span style="font-size:28px; color:#a81f07">OUT!</span>`;
                 }
             }, 1000);
     }
 
 
-    
- 
-    // 按鈕快捷鍵
-    var body = document.getElementById('body');    
-    home_mask.addEventListener('click',bodyClick , false);
+    // 下一題
 
-    function bodyClick() {
+    function nextQ() {
         QintoHTML();
         to_start();
         timerStart()
+        body.removeAttribute("class", "timeout");
     }
 
+
+ 
+    // 按鈕 
+    home_mask.addEventListener('click',nextQ, false);
+
+  
 
     // 鍵盤快捷鍵
     window.addEventListener("keydown", torandom, false);
     function torandom(e) {
         var keyID = e.code;
         if (keyID === 'KeyN') {
-            QintoHTML();
-            to_start();
-            timerStart()
+            nextQ()
         };
         if (keyID === 'Space') {
-            QintoHTML();
-            to_start();
-            timerStart()
+            nextQ()
         };
         if (keyID === 'KeyH') {
             to_home()
