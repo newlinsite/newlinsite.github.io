@@ -20,7 +20,7 @@
             </div>
         </div>
         <div id="question"></div>
-        <div id="timer"><span>45</span></div>
+        <div id="timer"><span>60</span></div>
         <div id="hotkey"></div>
     </div>
 
@@ -105,16 +105,17 @@
 
 
     // 計時器
-
-    window.onload = function () {
-        var timer = document.getElementById("timer");
+    var timer = document.getElementById("timer");
+    var count = 60;
+    var timerNum = null;
+    function timerStart() {
+        clearInterval(timerNum);
         var count = 60;
-        timer.innerHTML="<span>"+count+"</span>";
-        var timerNum = null;
+        timer.innerHTML=`<span>${count}</span>`;  
         timerNum = setInterval(function () {
                 if (count > 0) {
                     count = count - 1;
-                    timer.innerHTML = "<span>"+count+"</span>";
+                    timer.innerHTML = `<span>${count}</span>`;
                 }
                 else {
                     clearInterval(timer);
@@ -123,6 +124,7 @@
     }
 
 
+    
  
 
 
@@ -133,11 +135,13 @@
         if (keyID === 'KeyN') {
             QintoHTML();
             to_start();
+            timerStart()
         };
-        // if (keyID === 'Space') {
-        //     QintoHTML();
-        //     to_start();
-        // };
+        if (keyID === 'Space') {
+            QintoHTML();
+            to_start();
+            timerStart()
+        };
         if (keyID === 'KeyH') {
             to_home()
         }
