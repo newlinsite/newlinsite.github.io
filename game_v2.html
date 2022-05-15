@@ -9,7 +9,7 @@
     <title>Games</title>
 </head>
 
-<body>
+<body id="body">
     <div class="container">
         <div id="mask" class="show">
             <div>
@@ -23,7 +23,6 @@
         <div id="timer"><span>60</span></div>
         <div id="hotkey"></div>
     </div>
-
 </body>
 
 <script>
@@ -126,6 +125,15 @@
 
     
  
+    // 按鈕快捷鍵
+    var body = document.getElementById('body');    
+    home_mask.addEventListener('click',bodyClick , false);
+
+    function bodyClick() {
+        QintoHTML();
+        to_start();
+        timerStart()
+    }
 
 
     // 鍵盤快捷鍵
