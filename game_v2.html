@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/game.css">
+    <title>Games</title>
+</head>
+
+<body>
+    <div class="container">
+        <div id="mask" class="show">
+            <div>
+                <p>比手畫腳</p>
+                <input type="file" id="fileInput">
+                <div class="input_btn block">Upload file</div>
+                <span>Please upload .txt and a line is a question</span>
+            </div>
+        </div>
+        <div id="question"></div>
+        <div id="timer"><span>45</span></div>
+        <div id="hotkey"></div>
+    </div>
+
+</body>
+
+<script>
+
+    // Start & Home
+
+    document.getElementById("hotkey").innerHTML = "Press N to Start";
+    var home_mask = document.getElementById("mask");
+
+
+    function to_start() {
+        home_mask.setAttribute("class", "hidden");
+        document.getElementById("hotkey").innerHTML = "Press N to Next question , Press H to back Home";
+    };
+    function to_home() {
+        home_mask.setAttribute("class", "show");
+        document.getElementById("hotkey").innerHTML = "Press N to Start";
+    }
+
+    // -------------------------
+    // Random question 
+    // -------------------------
+
+    var Qlist = [];
+    var Qlist_len = 0;
+
+    // 預設問題
+    Qlist = ["甘草芭樂",
+        "咖哩飯",
+        "蜘蛛人",
+        "咖啡牛奶",
+        "香蒜麵包",
+        "法式吐司",
+        "人生勝利組",
+        "任意門",
+        "隱型斗篷",
+        "健達出奇蛋",
+        "一見鍾情",
+        "番茄",
+        "胡椒餅",
+        "抹茶巧克力",
+        "薄荷巧克力",
+        "龍舌蘭",
+    ];
+
+    // 建立隨機題號
+    Qlist_len = Qlist.length;
+    function getRandom() {
+        return Math.floor(Math.random() * Qlist_len);
+    }
+    var num = getRandom();
+
+
+
+    // 隨機取得題目,並印入 id:question
+    function QintoHTML() {
+        num = getRandom();
+        document.getElementById("question").innerHTML = Qlist[num];
+    }
+    QintoHTML()
+
+
+
+    // 問題輸入
+    document.getElementById('fileInput').addEventListener('change', function selectedFileChanged() {
+        if (this.files.length === 0) {
+            console.log('請選擇檔案！');
+            return;
+        }
+        const reader = new FileReader();
+        reader.onload = function fileReadCompleted() {
+            // 檔案問題分割 → 重新計算題目數 → 輸出題目
+            Qlist = reader.result.split("\r");
+            Qlist_len = Qlist.length;
+            QintoHTML()
+        };
+        reader.readAsText(this.files[0]);
+    });
+
+
+    // 計時器
+
+
+
+
+
+
+
+    // 鍵盤快捷鍵
+    window.addEventListener("keydown", torandom, false);
+    function torandom(e) {
+        var keyID = e.code;
+        if (keyID === 'KeyN') {
+            QintoHTML();
+            to_start();
+        };
+        // if (keyID === 'Space') {
+        //     QintoHTML();
+        //     to_start();
+        // };
+        if (keyID === 'KeyH') {
+            to_home()
+        }
+        if (keyID === 'KeyS') {
+            to_start()
+        }
+    }
+
+
+
+
+
+</script>
+
+</html>
