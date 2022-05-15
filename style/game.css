@@ -48,24 +48,34 @@
  style
 *******************************/
 .container {
+    position: fixed;
     width: 100%;
     height: 100vh;
+
 }
 
 /* ---  element  ---*/
 
 
-#question,#timer,#timer span,#hotkey{
+.question_box,#timer span,#hotkey{
     position: absolute;
     text-align: center;
     left: 50%;
     transform: translate(-50%,-50%);
 }
-
+.question_box{
+    display: flex;
+    flex-direction: column ;
+    justify-content:center;
+    align-items:center;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+}
 #question{
+    width: 90%;
     top: 45%;
     font-size: 70px;
-    border-radius: 4px;
     color: #21BCF9;
     z-index: 100;
 }
@@ -78,6 +88,7 @@
     background-color: #fff;
     border-radius: 50%;
     z-index: 100;
+    margin:12px
 }
 #timer span{
     top: 50%;
@@ -93,7 +104,7 @@ span,#hotkey{
 }
 #hotkey{
     position: fixed;
-    bottom: 20px;
+    bottom: 8px;
     z-index:1500;
 }
 
@@ -109,6 +120,7 @@ span,#hotkey{
     position: absolute;
     top: 50%;
     left: 50%;
+    width: 90%;
     transform: translate(-50%,-50%);
     text-align: center;
 }
@@ -123,20 +135,31 @@ span,#hotkey{
 
 
 /* ---  input  ---*/
+.input_box{
+    display: inline-block;
+     margin-bottom: 16px;
+     width:60%;
+     text-align: center;
 
-#mask>div input{
+}
+.input_box input{
     opacity: 0;
     position: absolute;
-    left:43%;
-    bottom:15%;
+    width: 100%;
+    height: 100%;
+    left:0%;
+    bottom:0%;
     z-index:1100;
+    background-color: rgba(255, 255, 255, 0.479);
 }
-.input_btn{
+.input_box .input_btn{
     color:#fff;
     border:1px solid #fff;
+    width: 100%;
     border-radius: 4px;
     padding: 4px 16px;
-    margin-bottom:16px;
+    
+   
 }
 
 
@@ -155,4 +178,17 @@ span,#hotkey{
     opacity:0;
     transition: 0.3s;
     z-index: 0;
+}
+
+
+@media screen  and (max-width: 480px){
+    #question{
+        font-size: 42px;
+    }
+    #hotkey{
+        transform: translate(-50%,0);
+        font-size: 18px;
+        width: 80%;
+    }
+    
 }
