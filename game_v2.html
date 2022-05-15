@@ -24,6 +24,7 @@
         <div class="question_box">
             <div id="question"></div>
             <div id="timer" class="ing"><span>60</span></div>
+            
         </div>
        <div id="home">H</div>
        <div id="screen_click"></div>
@@ -123,14 +124,14 @@
         var count = 40;
         timer.innerHTML=`<span>${count}</span>`;  
         timerNum = setInterval(function () {
-                if (count > 0) {
+                if (count > 1) {
                     count = count - 1;
                     timer.innerHTML = `<span>${count}</span>`;
                 }
                 else {
                     clearInterval(timer);
                     body.setAttribute("class", "timeout");
-                    timer.innerHTML = `<span style="font-size:28px; color:#a81f07">OUT!</span>`;
+                    timer.innerHTML = `<span>OUT!</span>`;
                 }
             }, 1000);
     }
