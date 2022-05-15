@@ -90,6 +90,25 @@
     z-index: 100;
     margin:12px
 }
+/* #timer:after.ing{
+    border: 5px dashed #da1c3c;
+    animation: dash 4s ease-in-out infinite;
+    transform: rotate(0deg) scale(1);
+} */
+
+/* @keyframes dash {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    50% {
+        transform: rotate(360deg) scale(1.5);
+    }
+    100% {
+        transform: rotate(0deg) scale(1);
+    }
+  } */
+
+
 #timer span{
     top: 50%;
     font-size: 50px;
