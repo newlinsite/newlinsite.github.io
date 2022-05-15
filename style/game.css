@@ -39,26 +39,61 @@
 
 
  
- /******************************
-           style
+/******************************    
+ style
 *******************************/
 .container {
     width: 100%;
- 	height: 100vh;
+    height: 100vh;
+}
+
+/* ---  element  ---*/
+
+
+#question,#timer,#timer span,#hotkey{
+    position: absolute;
+    text-align: center;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }
 
 #question{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    font-size: 60px;
+    top: 45%;
+    font-size: 70px;
     border-radius: 4px;
     color: #21BCF9;
-    transform: translate(-50%,-50%);
-    text-align: center;
     z-index: 100;
 }
 
+
+#timer{
+    top: 60%;
+    width:120px;
+    height: 120px;
+    background-color: #fff;
+    border-radius: 50%;
+    z-index: 100;
+}
+#timer span{
+    top: 50%;
+    font-size: 50px;
+    color: #000000;
+    font-weight: 600;
+}
+
+span,#hotkey{
+    display:block;
+    color:#727272;
+    font-size: 18px;
+}
+#hotkey{
+    position: fixed;
+    bottom: 20px;
+    z-index:1500;
+}
+
+
+/* ---  Start Mask  ---*/
 #mask{  
     height :100%;
     width :100%;
@@ -81,27 +116,8 @@
     margin:36px 0;
 }
 
-/* #mask>div button{
-    color: rgb(0, 0, 0);
-    font-size: 36px;
-    background-color: #21BCF9;
-    padding:8px 48px;
-    border-radius: 16px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.089);
-    border:0;
-} */
 
-.show{
-    opacity:1;
-    transition: 0.3s;
-    z-index: 1000;
-}
-
-.hidden{
-    opacity:0;
-    transition: 0.3s;
-    z-index: 0;
-}
+/* ---  input  ---*/
 
 #mask>div input{
     opacity: 0;
@@ -110,26 +126,28 @@
     bottom:15%;
     z-index:1100;
 }
-
 .input_btn{
     color:#fff;
     border:1px solid #fff;
     border-radius: 4px;
     padding: 4px 16px;
-    
+    margin-bottom:16px;
 }
 
-span,#hotkey{
-    display:block;
-    color:#727272;
-    font-size: 18px;
-    margin-top:16px;
-    
+
+
+
+
+/******************************    
+    Modifier
+*******************************/
+.show{
+    opacity:1;
+    transition: 0.3s;
+    z-index: 1000;
 }
-#hotkey{
-    position: fixed;
-    left: 50%;
-    bottom: 20px;
-    z-index:1500;
-    transform: translateX(-50%);
+.hidden{
+    opacity:0;
+    transition: 0.3s;
+    z-index: 0;
 }

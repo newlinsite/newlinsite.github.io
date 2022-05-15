@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="http://www.softwhy.com/" />
+<title>螞蟻部落</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+}
+#ant {
+  width:150px;
+  height:50px;
+  color:red;
+  text-align:center;
+  line-height:50px;
+  margin:0px auto;
+}
+</style>
+<script>
+window.onload = function () {
+  var odiv = document.getElementById("ant");
+  var count = 60;
+    odiv.innerHTML=count;
+  var timer = null;
+  timer = setInterval(function () {
+    if (count > 0) {
+      count = count - 1;
+      odiv.innerHTML = count;
+    }
+    else {
+      clearInterval(timer);
+    }
+  }, 1000);
+}
+</script>
+</head> 
+<body> 
+<div id="ant"></div>
+</body> 
+</html>
