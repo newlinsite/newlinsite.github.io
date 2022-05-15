@@ -72,6 +72,7 @@
     left: 50%;
     width: 100%;
 }
+
 #question{
     width: 90%;
     top: 45%;
@@ -156,10 +157,6 @@
     }
   }
 
-
-
-
-
 #timer span{
     top: 50%;
     font-size: 50px;
@@ -171,6 +168,14 @@
     font-size:28px;
     color:#a81f07
 }
+
+
+.question_box #time_tag{
+    color:rgba(255, 255, 255, 0.527);
+}
+
+
+
 
 
 

@@ -24,7 +24,7 @@
         <div class="question_box">
             <div id="question"></div>
             <div id="timer" class="ing"><span>60</span></div>
-            
+            <div id="time_tag"></div>
         </div>
         <div class="setting_btns">
             <div id="home">H</div>
@@ -48,7 +48,7 @@
     
     document.getElementById("hotkey").innerHTML = "Press N to Start";
     var home_mask = document.getElementById("mask");
-
+    
 
     function to_start() {
         home_mask.setAttribute("class", "hidden");
@@ -163,17 +163,19 @@
     var screen_click = document.getElementById("screen_click")
     var game_name = document.getElementById("game_name")
     var time_btn = document.getElementsByClassName("time_btn")
+    var time_tag = document.getElementById("time_tag")
+    time_tag.innerHTML=timerResetSec;
     
-
     home.addEventListener('click',to_home, false);
     game_name.addEventListener('click',nextQ, false);
     screen_click.addEventListener('click',nextQ, false);
     
-    time_btn[0].addEventListener('click',function(){timerResetSec = 60;}, false);
-    time_btn[1].addEventListener('click',function(){timerResetSec = 40;}, false);
-    time_btn[2].addEventListener('click',function(){timerResetSec = 30;}, false);
-    time_btn[3].addEventListener('click',function(){timerResetSec = 20;}, false);
-    time_btn[4].addEventListener('click',function(){timerResetSec = 10;}, false);
+
+    time_btn[0].addEventListener('click',function(){timerResetSec = 60;time_tag.innerHTML=timerResetSec;}, false);
+    time_btn[1].addEventListener('click',function(){timerResetSec = 40;time_tag.innerHTML=timerResetSec;}, false);
+    time_btn[2].addEventListener('click',function(){timerResetSec = 30;time_tag.innerHTML=timerResetSec;}, false);
+    time_btn[3].addEventListener('click',function(){timerResetSec = 20;time_tag.innerHTML=timerResetSec;}, false);
+    time_btn[4].addEventListener('click',function(){timerResetSec = 10;time_tag.innerHTML=timerResetSec;}, false);
 
 
     // 鍵盤快捷鍵
