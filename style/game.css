@@ -160,6 +160,7 @@ span,#hotkey{
     display: inline-block;
      margin-bottom: 16px;
      width:60%;
+     max-width: 320px;
      text-align: center;
 
 }
