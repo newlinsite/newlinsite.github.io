@@ -106,10 +106,24 @@
 
     // 計時器
 
+    window.onload = function () {
+        var timer = document.getElementById("timer");
+        var count = 60;
+        timer.innerHTML="<span>"+count+"</span>";
+        var timerNum = null;
+        timerNum = setInterval(function () {
+                if (count > 0) {
+                    count = count - 1;
+                    timer.innerHTML = "<span>"+count+"</span>";
+                }
+                else {
+                    clearInterval(timer);
+                }
+            }, 1000);
+    }
 
 
-
-
+ 
 
 
     // 鍵盤快捷鍵
