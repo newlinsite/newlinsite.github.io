@@ -13,7 +13,7 @@
     <div class="container">
         <div id="mask" class="show">
             <div>
-                <p>比手畫腳</p>
+                <p id="game_name">比手畫腳</p>
                 <div class="input_box">
                     <input type="file" id="fileInput">
                     <div class="input_btn block">Upload file</div>
@@ -25,12 +25,11 @@
             <div id="question"></div>
             <div id="timer"><span>60</span></div>
         </div>
-        
-       
+       <div id="home">H</div>
+       <div id="screen_click"></div>
         <div id="hotkey"></div>
     </div>
 </body>
-
 <script>
 
 
@@ -149,9 +148,14 @@
 
  
     // 按鈕 
-    home_mask.addEventListener('click',nextQ, false);
-
-  
+    var home = document.getElementById("home")
+    var screen_click = document.getElementById("screen_click")
+    var game_name = document.getElementById("game_name")
+    
+    home.addEventListener('click',to_home, false);
+    game_name.addEventListener('click',nextQ, false);
+    screen_click.addEventListener('click',nextQ, false);
+    
 
     // 鍵盤快捷鍵
     window.addEventListener("keydown", torandom, false);
