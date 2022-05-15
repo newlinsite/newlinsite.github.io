@@ -76,8 +76,13 @@
     width: 90%;
     top: 45%;
     font-size: 70px;
-    color: #21BCF9;
+    color: #3c83c5;
     z-index: 100;
+    transition: 1s;
+}
+
+.timeout #question{
+    color: #fff;
 }
 
 #timer,.question_box svg{
@@ -89,23 +94,6 @@
     z-index: 100;
     margin:16px
 }
-/* #timer:after.ing{
-    border: 5px dashed #da1c3c;
-    animation: dash 4s ease-in-out infinite;
-    transform: rotate(0deg) scale(1);
-} */
-
-/* @keyframes dash {
-    0% {
-        transform: rotate(0deg) scale(1);
-    }
-    50% {
-        transform: rotate(360deg) scale(1.5);
-    }
-    100% {
-        transform: rotate(0deg) scale(1);
-    }
-  } */
 
 #timer:after,.timeout #timer:after,.timeout #timer:before{
     content: "";
@@ -197,20 +185,45 @@ span,#hotkey{
     bottom: 8px;
     z-index:1500;
 }
-#home{
+
+
+
+.setting_btns{
     position: fixed;
+    flex-direction: row;
+    justify-content:center;
+    align-items:center;
+    width:100%;
+    /* max-width: 500px; */
     top: 16px;
-    left: 16px;
+    left: 0;
+    margin: 4px;
+    display:flex;
+    z-index: 1000;
+}
+
+#home,.time_btn{
     width:50px;
     height: 50px;
     color: #fff;
     border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.329);
     background-color: rgba(255, 255, 255, 0.2);
-    opacity: .6;
     display: flex;
     justify-content:center;
     align-items:center;
+    margin: 0 1vw;;
+    opacity: .8;
+    transition: .4s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
+
+.time_btn{
+    opacity: .55;
+    border: none;
+}
+
+
 #screen_click{   
     position: fixed;
     top: 50px;
@@ -296,6 +309,9 @@ span,#hotkey{
         transform: translate(-50%,0);
         font-size: 18px;
         width: 80%;
+    }
+    .setting_btns{
+        flex-direction: row;
     }
     
 }

@@ -26,8 +26,15 @@
             <div id="timer" class="ing"><span>60</span></div>
             
         </div>
-       <div id="home">H</div>
-       <div id="screen_click"></div>
+        <div class="setting_btns">
+            <div id="home">H</div>
+            <div class="time_btn">60s</div>
+            <div class="time_btn">40s</div>
+            <div class="time_btn">30s</div>
+            <div class="time_btn">20s</div>
+            <div class="time_btn">10s</div>
+        </div>
+        <div id="screen_click"></div>
         <div id="hotkey"></div>
     </div>
 </body>
@@ -46,10 +53,12 @@
     function to_start() {
         home_mask.setAttribute("class", "hidden");
         document.getElementById("hotkey").innerHTML = "Click / Press N or space to Next question , Press H to back Home";
+
     };
     function to_home() {
         home_mask.setAttribute("class", "show");
         document.getElementById("hotkey").innerHTML = "Press N to Start";
+
     }
 
     // -------------------------
@@ -118,10 +127,11 @@
     // 計時器
     var timer = document.getElementById("timer");
     var timerNum = null;
+    var timerResetSec = 40;
     var body = document.getElementById("body")
     function timerStart() {
         clearInterval(timerNum);
-        var count = 40;
+        var count = timerResetSec;
         timer.innerHTML=`<span>${count}</span>`;  
         timerNum = setInterval(function () {
                 if (count > 1) {
@@ -152,11 +162,19 @@
     var home = document.getElementById("home")
     var screen_click = document.getElementById("screen_click")
     var game_name = document.getElementById("game_name")
+    var time_btn = document.getElementsByClassName("time_btn")
     
+
     home.addEventListener('click',to_home, false);
     game_name.addEventListener('click',nextQ, false);
     screen_click.addEventListener('click',nextQ, false);
     
+    time_btn[0].addEventListener('click',function(){timerResetSec = 60;}, false);
+    time_btn[1].addEventListener('click',function(){timerResetSec = 40;}, false);
+    time_btn[2].addEventListener('click',function(){timerResetSec = 30;}, false);
+    time_btn[3].addEventListener('click',function(){timerResetSec = 20;}, false);
+    time_btn[4].addEventListener('click',function(){timerResetSec = 10;}, false);
+
 
     // 鍵盤快捷鍵
     window.addEventListener("keydown", torandom, false);
