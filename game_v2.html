@@ -9,33 +9,31 @@
     <title>Games</title>
 </head>
 
-<body id="body">
-    <div class="container">
-        <div id="mask" class="show">
-            <div>
-                <p id="game_name">比手畫腳</p>
-                <div class="input_box">
-                    <input type="file" id="fileInput">
-                    <div class="input_btn block">Upload file</div>
-                </div>
-                <span>Please upload .txt and a line is a question</span>
+<body>
+    <div id="container" class="home">
+        <div id="home">
+            <h1 id="game_name">比手</br>畫腳</h1>
+            <div class="time_btns">
+                <div class="time_btn">60s</div>
+                <div class="time_btn">40s</div>
+                <div class="time_btn">30s</div>
+                <div class="time_btn">20s</div>
+                <div class="time_btn">10s</div>
             </div>
+            <div class="question_input_box">
+                <input type="file" id="fileInput">
+                <div class="input_btn block">Upload file</div>
+            </div>
+            <p>Please upload .txt and a line is a question</p>
         </div>
         <div class="question_box">
             <div id="question"></div>
             <div id="timer" class="ing"><span>60</span></div>
             <div id="time_tag"></div>
         </div>
-        <div class="setting_btns">
-            <div id="home">H</div>
-            <div class="time_btn">60s</div>
-            <div class="time_btn">40s</div>
-            <div class="time_btn">30s</div>
-            <div class="time_btn">20s</div>
-            <div class="time_btn">10s</div>
-        </div>
+        <div id="home_btn">H</div>
         <div id="screen_click"></div>
-        <div id="hotkey"></div>
+        <p id="hotkey"></p>
     </div>
 </body>
 <script>
@@ -45,20 +43,22 @@
     // -------------------------
     // Start & Home
     // -------------------------
-    
+
+
+    var container = document.getElementById("container")
     document.getElementById("hotkey").innerHTML = "Press N to Start";
-    var home_mask = document.getElementById("mask");
-    
+
+    // var home = document.getElementById("home");
+
 
     function to_start() {
-        home_mask.setAttribute("class", "hidden");
+        container.setAttribute("class", "playing");
         document.getElementById("hotkey").innerHTML = "Click / Press N or space to Next question , Press H to back Home";
-
     };
     function to_home() {
-        home_mask.setAttribute("class", "show");
+        container.setAttribute("class", "home");
         document.getElementById("hotkey").innerHTML = "Press N to Start";
-
+        timerStop()
     }
 
     // -------------------------
@@ -128,24 +128,25 @@
     var timer = document.getElementById("timer");
     var timerNum = null;
     var timerResetSec = 40;
-    var body = document.getElementById("body")
     function timerStart() {
         clearInterval(timerNum);
         var count = timerResetSec;
-        timer.innerHTML=`<span>${count}</span>`;  
+        timer.innerHTML = `<span>${count}</span>`;
         timerNum = setInterval(function () {
-                if (count > 1) {
-                    count = count - 1;
-                    timer.innerHTML = `<span>${count}</span>`;
-                }
-                else {
-                    clearInterval(timer);
-                    body.setAttribute("class", "timeout");
-                    timer.innerHTML = `<span>OUT!</span>`;
-                }
-            }, 1000);
+            if (count > 1) {
+                count = count - 1;
+                timer.innerHTML = `<span>${count}</span>`;
+            }
+            else {
+                clearInterval(timerNum);
+                container.setAttribute("class", "playing timeout");
+                timer.innerHTML = `<span>OUT!</span>`;
+            }
+        }, 1000);
     }
-
+    function timerStop() {
+        clearInterval(timerNum);
+    }
 
     // 下一題
 
@@ -153,29 +154,28 @@
         QintoHTML();
         to_start();
         timerStart()
-        body.removeAttribute("class", "timeout");
     }
 
 
- 
+
     // 按鈕 
-    var home = document.getElementById("home")
+    var home_btn = document.getElementById("home_btn")
     var screen_click = document.getElementById("screen_click")
     var game_name = document.getElementById("game_name")
     var time_btn = document.getElementsByClassName("time_btn")
     var time_tag = document.getElementById("time_tag")
-    time_tag.innerHTML=timerResetSec;
-    
-    home.addEventListener('click',to_home, false);
-    game_name.addEventListener('click',nextQ, false);
-    screen_click.addEventListener('click',nextQ, false);
-    
+    time_tag.innerHTML = timerResetSec;
 
-    time_btn[0].addEventListener('click',function(){timerResetSec = 60;time_tag.innerHTML=timerResetSec;}, false);
-    time_btn[1].addEventListener('click',function(){timerResetSec = 40;time_tag.innerHTML=timerResetSec;}, false);
-    time_btn[2].addEventListener('click',function(){timerResetSec = 30;time_tag.innerHTML=timerResetSec;}, false);
-    time_btn[3].addEventListener('click',function(){timerResetSec = 20;time_tag.innerHTML=timerResetSec;}, false);
-    time_btn[4].addEventListener('click',function(){timerResetSec = 10;time_tag.innerHTML=timerResetSec;}, false);
+    home_btn.addEventListener('click', to_home, false);
+    game_name.addEventListener('click', nextQ, false);
+    screen_click.addEventListener('click', nextQ, false);
+
+
+    time_btn[0].addEventListener('click', function () { timerResetSec = 60; time_tag.innerHTML = timerResetSec; }, false);
+    time_btn[1].addEventListener('click', function () { timerResetSec = 40; time_tag.innerHTML = timerResetSec; }, false);
+    time_btn[2].addEventListener('click', function () { timerResetSec = 30; time_tag.innerHTML = timerResetSec; }, false);
+    time_btn[3].addEventListener('click', function () { timerResetSec = 20; time_tag.innerHTML = timerResetSec; }, false);
+    time_btn[4].addEventListener('click', function () { timerResetSec = 10; time_tag.innerHTML = timerResetSec; }, false);
 
 
     // 鍵盤快捷鍵
