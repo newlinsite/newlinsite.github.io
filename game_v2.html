@@ -21,14 +21,14 @@
                 <div class="time_btn">10s</div>
             </div>
             <div class="question_input_box">
-                <input type="file" id="fileInput">
                 <div class="input_btn block">Upload file</div>
+                <input type="file" id="fileInput">
             </div>
             <p>Please upload .txt and a line is a question</p>
         </div>
         <div class="question_box">
             <div id="question"></div>
-            <div id="timer" class="ing"><span>60</span></div>
+            <div id="timer" class="ing"><span></span></div>
             <div id="time_tag"></div>
         </div>
         <div id="home_btn">H</div>
@@ -40,6 +40,13 @@
 
 
 
+    // ******************************
+    // 
+    //
+    //
+    // ******************************
+
+
     // -------------------------
     // Start & Home
     // -------------------------
@@ -47,8 +54,6 @@
 
     var container = document.getElementById("container")
     document.getElementById("hotkey").innerHTML = "Click Game Name or Press N to Start";
-
-    // var home = document.getElementById("home");
 
 
     function to_start() {
