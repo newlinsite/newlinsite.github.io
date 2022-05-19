@@ -262,7 +262,7 @@
      background-color: rgba(255, 255, 255, 0.842);
      border-radius: 50%;
      z-index: 100;
-     margin: 16px
+     margin: 28px;
  }
 
  #timer:after,
@@ -273,8 +273,8 @@
      left: 50%;
      top: 50%;
      transform: translate(-50%, -50%);
-     width: 105px;
-     height: 105px;
+     width: 85px;
+     height: 85px;
      border-radius: 50%;
      opacity: 0;
  }
