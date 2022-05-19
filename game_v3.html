@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/game.css">
+    <title>Games</title>
+</head>
+
+<body>
+    <div id="container" class="home">
+        <div id="home">
+            <h1 id="game_name">比手</br>畫腳</h1>
+            <div class="time_btns">
+                <div class="time_btn">60s</div>
+                <div class="time_btn">40s</div>
+                <div class="time_btn">30s</div>
+                <div class="time_btn">20s</div>
+                <div class="time_btn">10s</div>
+            </div>
+            <div class="question_input_box">
+                <div class="input_btn block">Upload file</div>
+                <input type="file" id="fileInput">
+            </div>
+            <p>Please upload .txt and a line is a question</p>
+        </div>
+        <div class="question_box">
+            <div id="question"></div>
+            <div id="timer" class="ing"><span></span></div>
+            <div id="time_tag"></div>
+        </div>
+        <div id="home_btn">H</div>
+        <div id="screen_click"></div>
+        <p id="hotkey"></p>
+    </div>
+</body>
+<script>
+
+
+
+    // ******************************
+    // 
+    //
+    //
+    // ******************************
+
+
+    // -------------------------
+    // Start & Home
+    // -------------------------
+
+
+    var container = document.getElementById("container")
+    document.getElementById("hotkey").innerHTML = "Click Game Name or Press N to Start";
+
+
+    function to_start() {
+        container.setAttribute("class", "playing");
+        document.getElementById("hotkey").innerHTML = "Click / Press N or space to Next question , Press H to back Home";
+    };
+    function to_home() {
+        container.setAttribute("class", "home");
+        document.getElementById("hotkey").innerHTML = "Click Game Name or Press N to Start";
+        timerStop()
+    }
+
+    // -------------------------
+    // Random question 
+    // -------------------------
+
+    var Qlist = [];
+    var Qlist_len = 0;
+
+    // 預設問題
+    Qlist = ["甘草芭樂",
+        "咖哩飯",
+        "蜘蛛人",
+        "咖啡牛奶",
+        "香蒜麵包",
+        "法式吐司",
+        "人生勝利組",
+        "任意門",
+        "隱型斗篷",
+        "健達出奇蛋",
+        "一見鍾情",
+        "番茄",
+        "胡椒餅",
+        "抹茶巧克力",
+        "薄荷巧克力",
+        "龍舌蘭",
+    ];
+
+    // 建立隨機題號
+    Qlist_len = Qlist.length;
+    function getRandom() {
+        return Math.floor(Math.random() * Qlist_len);
+    }
+    var num = getRandom();
+
+
+    // 隨機取得題目,並印入 id:question
+    function QintoHTML() {
+        num = getRandom();
+        document.getElementById("question").innerHTML = Qlist[num];
+    }
+    QintoHTML()
+
+
+    // 問題輸入
+    document.getElementById('fileInput').addEventListener('change', function selectedFileChanged() {
+        if (this.files.length === 0) {
+            console.log('請選擇檔案！');
+            return;
+        }
+        const reader = new FileReader();
+        reader.onload = function fileReadCompleted() {
+            // 檔案問題分割 → 重新計算題目數 → 輸出題目
+            console.log(reader.result);
+            Qlist = reader.result.split("\n");
+            Qlist_len = Qlist.length;
+            QintoHTML()
+        };
+        reader.readAsText(this.files[0]);
+    });
+
+
+    // -------------------------
+    // 切換功能、計時器、快捷鍵
+    // -------------------------
+
+    // 計時器
+    var timer = document.getElementById("timer");
+    var timerNum = null;
+    var timerResetSec = 40;
+    function timerStart() {
+        clearInterval(timerNum);
+        var count = timerResetSec;
+        timer.innerHTML = `<span>${count}</span>`;
+        timerNum = setInterval(function () {
+            if (count > 1) {
+                count = count - 1;
+                timer.innerHTML = `<span>${count}</span>`;
+            }
+            else {
+                clearInterval(timerNum);
+                container.setAttribute("class", "playing timeout");
+                timer.innerHTML = `<span>OUT!</span>`;
+            }
+        }, 1000);
+    }
+    function timerStop() {
+        clearInterval(timerNum);
+    }
+
+    // 下一題
+
+    function nextQ() {
+        QintoHTML();
+        to_start();
+        timerStart()
+    }
+
+
+
+    // 按鈕 
+    var home_btn = document.getElementById("home_btn")
+    var screen_click = document.getElementById("screen_click")
+    var game_name = document.getElementById("game_name")
+    var time_btn = document.getElementsByClassName("time_btn")
+    var time_tag = document.getElementById("time_tag")
+    time_tag.innerHTML = timerResetSec;
+
+    home_btn.addEventListener('click', to_home, false);
+    game_name.addEventListener('click', nextQ, false);
+    screen_click.addEventListener('click', nextQ, false);
+
+
+    time_btn[0].addEventListener('click', function () { timerResetSec = 60; time_tag.innerHTML = timerResetSec; }, false);
+    time_btn[1].addEventListener('click', function () { timerResetSec = 40; time_tag.innerHTML = timerResetSec; }, false);
+    time_btn[2].addEventListener('click', function () { timerResetSec = 30; time_tag.innerHTML = timerResetSec; }, false);
+    time_btn[3].addEventListener('click', function () { timerResetSec = 20; time_tag.innerHTML = timerResetSec; }, false);
+    time_btn[4].addEventListener('click', function () { timerResetSec = 10; time_tag.innerHTML = timerResetSec; }, false);
+
+
+    // 鍵盤快捷鍵
+    window.addEventListener("keydown", torandom, false);
+    function torandom(e) {
+        var keyID = e.code;
+        if (keyID === 'KeyN') {
+            nextQ()
+        };
+        if (keyID === 'Space') {
+            nextQ()
+        };
+        if (keyID === 'KeyH') {
+            to_home()
+        }
+        if (keyID === 'KeyS') {
+            to_start()
+        }
+    }
+
+
+
+
+
+</script>
+
+</html>
