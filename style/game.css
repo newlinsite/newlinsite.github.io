@@ -257,8 +257,8 @@
  #timer,
  .question_box svg {
      top: 60%;
-     width: 120px;
-     height: 120px;
+     width: 80px;
+     height: 80px;
      background-color: rgba(255, 255, 255, 0.842);
      border-radius: 50%;
      z-index: 100;
@@ -309,7 +309,7 @@
 
  #timer span {
      top: 50%;
-     font-size: 50px;
+     font-size: 30px;
      color: #000000;
      font-weight: 600;
  }
@@ -410,14 +410,10 @@
 
 *******************************/
  .show {
-     opacity: 1;
-     z-index: 1000;
      display: block;
  }
 
  .hidden {
-     opacity: 0;
-     z-index: 0;
      display: none;
  }
 

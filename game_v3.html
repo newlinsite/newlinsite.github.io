@@ -15,10 +15,10 @@
             <h1 id="game_name">比手</br>畫腳</h1>
             <div class="time_btns">
                 <div class="time_btn">None</div>
-                <div class="time_btn active">40s</div>
-                <div class="time_btn">30s</div>
-                <div class="time_btn">20s</div>
-                <div class="time_btn">10s</div>
+                <div class="time_btn active">200s</div>
+                <div class="time_btn">180s</div>
+                <div class="time_btn">120s</div>
+                <div class="time_btn">60s</div>
             </div>
             <div class="question_input_box">
                 <div class="input_btn block">Upload file</div>
@@ -59,6 +59,7 @@
     function to_start() {
         container.setAttribute("class", "playing");
         document.getElementById("hotkey").innerHTML = "Click / Press N or space to Next question , Press H to back Home";
+        timerStart()
     };
     function to_home() {
         container.setAttribute("class", "home");
@@ -133,7 +134,7 @@
     // 計時器
     var timer = document.getElementById("timer");
     var timerNum = null;
-    var timerResetSec = 40;
+    var timerResetSec = 180;
     function timerStart() {
         clearInterval(timerNum);
         var count = timerResetSec;
@@ -158,8 +159,8 @@
 
     function nextQ() {
         QintoHTML();
-        to_start();
-        timerStart()
+        // to_start();
+        // timerStart();
     }
 
 
@@ -173,7 +174,7 @@
     time_tag.innerHTML = timerResetSec;
 
     home_btn.addEventListener('click', to_home, false);
-    game_name.addEventListener('click', nextQ, false);
+    game_name.addEventListener('click', to_start, false);
     screen_click.addEventListener('click', nextQ, false);
 
 
@@ -189,10 +190,10 @@
 
         
     time_btn[0].addEventListener('click', function () { timerResetSec = 10000; time_tag.innerHTML = timerResetSec; time_btnActiver(0);timer.classList.add("hidden");}, false);
-    time_btn[1].addEventListener('click', function () { timerResetSec = 40; time_tag.innerHTML = timerResetSec; time_btnActiver(1);}, false);
-    time_btn[2].addEventListener('click', function () { timerResetSec = 30; time_tag.innerHTML = timerResetSec; time_btnActiver(2);}, false);
-    time_btn[3].addEventListener('click', function () { timerResetSec = 20; time_tag.innerHTML = timerResetSec; time_btnActiver(3);}, false);
-    time_btn[4].addEventListener('click', function () { timerResetSec = 10; time_tag.innerHTML = timerResetSec; time_btnActiver(4);}, false);
+    time_btn[1].addEventListener('click', function () { timerResetSec = 200; time_tag.innerHTML = timerResetSec; time_btnActiver(1);}, false);
+    time_btn[2].addEventListener('click', function () { timerResetSec = 180; time_tag.innerHTML = timerResetSec; time_btnActiver(2);}, false);
+    time_btn[3].addEventListener('click', function () { timerResetSec = 120; time_tag.innerHTML = timerResetSec; time_btnActiver(3);}, false);
+    time_btn[4].addEventListener('click', function () { timerResetSec = 60; time_tag.innerHTML = timerResetSec; time_btnActiver(4);}, false);
 
 
     // 鍵盤快捷鍵
@@ -204,6 +205,7 @@
         };
         if (keyID === 'Space') {
             nextQ()
+            
         };
         if (keyID === 'KeyH') {
             to_home()
