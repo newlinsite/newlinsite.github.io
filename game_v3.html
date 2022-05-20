@@ -225,6 +225,13 @@
     //      - to_start()
     //      - to_home()
     //      - nextQ()
+    //      -
+    //      - toTimerResetSec(sec)      設定遊戲的秒數
+    //      - setTime_btns()            設定秒數按鈕的執行動作
+    //      - inputTimerResetSec(mode)  填入秒數按鈕的執行秒數
+    //      -
+    //      - setGameType()             遊戲模式設定
+    //      - gameTypeChange()          切換遊戲模式
     //
     // ******************************
 
@@ -263,11 +270,13 @@
             }
         }
     }
-
-    // 首頁按鈕功能
+    // ******************************
+    // 首頁時間按鈕功能
+    // ******************************
     var timerResetSecList = []
     var TimerResetNum = 2
 
+    // 設定遊戲的秒數
     function toTimerResetSec(sec) {
         if (sec == "none") {
             timerResetSec = 9999;
@@ -279,16 +288,15 @@
         }
     }
 
-
-    // 設定時間按鈕執行動作
+    // 設定秒數按鈕的執行動作
     function setTime_btns() {
         for (let i = 0; i < time_btn.length; i++) {
             time_btn[i].addEventListener('click', function () { toTimerResetSec(timerResetSecList[i]); time_btnActiver(i); TimerResetNum = i; }, false);
             time_btn[i].innerHTML = timerResetSecList[i]
         }
     }
-    // 選取時間按鈕執行內容
 
+    // 填入秒數按鈕的執行秒數    
     function inputTimerResetSec(mode) {
         if (mode == "mode_00") {
             timerResetSecList = ["none", 180, 150, 120, 60]
@@ -301,8 +309,11 @@
     }
 
 
-
+    // ******************************
     // 遊戲模式
+    // ******************************
+
+    // 遊戲模式設定
     function setGameType() {
         if (gameType == 0) {
             game_name.innerHTML = "比手</br>畫腳"
@@ -322,6 +333,7 @@
         }
     }
 
+    // 切換遊戲模式
     function gameTypeChange() {
         if (gameType == 0) {
             gameType = 1;
