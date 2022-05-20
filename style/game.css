@@ -7,6 +7,11 @@
  /*import Noto sans TC*/
  @import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
 
+ @font-face {
+     font-family: 'Symbols';
+     src: url(https://fonts.gstatic.com/s/materialsymbolsoutlined/v7/kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY43zj-jCxv3fzvRNU22ZXGJpEpjC_1n-q_4MrImHCIJIZrDCvHOej.woff2) format('woff2');
+ }
+
 
  /******************************
 
@@ -37,22 +42,14 @@
      margin: 0;
  }
 
-
- /******************************    
-    Style
-        color
-        font
-        buttons
-*******************************/
-
  :root {
      --pri-color: #21BCF9;
      --sec-color: #21BCF9;
      --ter-color: #ffffff;
      --bg-color: #222222;
-     --text-color: #727272;
+     --text-color: rgba(255, 255, 255, 0.405);
      --warn-color: #ff3c3c;
-     --warn-bg-color: #ff3c3c;
+     --warn-bg-color: #811704;
  }
 
 
@@ -65,21 +62,10 @@
  }
 
  p {
-     display: block;
      color: var(--text-color);
      font-size: 18px;
+     text-align: center;
  }
-
-
-
-
-
- /******************************    
-    Element ( Normal Status )
-        Home
-        Playing
-        Score
-*******************************/
 
 
  #container {
@@ -93,60 +79,67 @@
      position: fixed;
      bottom: 8px;
      z-index: 1500;
+     width: 100%;
+     padding: 0 8px;
  }
 
- /******************************
-           Home
-*******************************/
-
-
- #home,
- .time_btns,
- .time_btn {
+ .flex-c {
      display: flex;
+     flex-direction: column;
      justify-content: center;
      align-items: center;
      text-align: center;
  }
 
+
+
+
+ /******************************    
+    Element ( Normal Status )
+        Home
+        Playing
+        Score
+*******************************/
+
+
+
+ /******************************
+           Home
+*******************************/
+
  #home {
-     flex-direction: column;
+     position: absolute;
      height: 100%;
      width: 100%;
      background-color: var(--bg-color);
      transition: .4s;
-     opacity: 1;
      z-index: 1000;
-     transform: scale(1);
  }
 
  .time_btns {
+     flex-direction: row;
      justify-content: space-around;
      width: 100%;
      max-width: 400px;
      margin: 12px 0
  }
 
-
  .time_btn {
      width: 50px;
      height: 50px;
      color: var(--ter-color);
-     /* border: 0px solid var(--ter-color); */
      border-radius: 50%;
      background-color: rgba(255, 255, 255, 0.2);
      margin: 2px;
      opacity: .5;
-     transition: .4s;
-     box-shadow: 0 0 8px rgba(0, 0, 0, 0.4),0 0 0 rgba(15, 102, 233, 0.9);
+     box-shadow: 0 0 8px rgba(0, 0, 0, 0.4), 0 0 0 rgba(15, 102, 233, 0.9);
      transition: 1s
  }
 
  .time_btn.active {
-    opacity: .85;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8),0 0 4px rgba(15, 102, 233, 0.9);
-    /* border: 1px solid var(--ter-color);; */
-}
+     opacity: .85;
+     box-shadow: 0 0 20px rgba(0, 0, 0, 0.8), 0 0 4px rgba(15, 102, 233, 0.9);
+ }
 
  /********  input  ********/
 
@@ -177,7 +170,8 @@
  }
 
 
- #home_btn {
+ #home_btn,
+ #swich_btn {
      position: fixed;
      top: 2%;
      left: 2%;
@@ -186,19 +180,23 @@
      color: var(--ter-color);
      border-radius: 50%;
      background-color: rgba(255, 255, 255, 0.15);
-     display: flex;
-     justify-content: center;
-     align-items: center;
      transition: .8s;
      box-shadow: 0 2px 24px rgba(0, 0, 0, 0.5);
      z-index: 0;
-     opacity: 0
+     opacity: 0;
+     font-family: 'Symbols';
+     font-size: 26px;
+     font-variation-settings:
+         'FILL' 0,
+         'wght' 400,
+         'GRAD' 0,
+         'opsz' 48
  }
 
-
- /********  State : Playing  ********/
-
-
+ #swich_btn {
+     z-index: 1000;
+     opacity: 1
+ }
 
 
 
@@ -206,9 +204,6 @@
  /******************************
            Playing (normal)
 *******************************/
-
-
-
 
  #screen_click {
      position: fixed;
@@ -218,112 +213,91 @@
      height: 100%;
  }
 
-
- /* ---  element  ---*/
-
-
- .question_box,
- #timer span,
- #hotkey {
-     position: absolute;
-     text-align: center;
-     left: 50%;
-     transform: translate(-50%, -50%);
- }
-
  .question_box {
-     display: flex;
-     flex-direction: column;
-     justify-content: center;
-     align-items: center;
-     top: 50%;
-     left: 50%;
+     position: absolute;
      width: 100%;
+     height: 100%;
  }
 
  #question {
      width: 90%;
-     top: 45%;
      font-size: 70px;
      color: var(--pri-color);
-     z-index: 100;
      transition: 1s;
  }
 
- .timeout #question {
-     color: #fff;
- }
-
- #timer,
- .question_box svg {
-     top: 60%;
+ #timer {
      width: 80px;
      height: 80px;
      background-color: rgba(255, 255, 255, 0.842);
      border-radius: 50%;
-     z-index: 100;
      margin: 28px;
- }
-
- #timer:after,
- .timeout #timer:after,
- .timeout #timer:before {
-     content: "";
-     position: absolute;
-     left: 50%;
-     top: 50%;
-     transform: translate(-50%, -50%);
-     width: 85px;
-     height: 85px;
-     border-radius: 50%;
-     opacity: 0;
- }
-
- #timer:after {
-     border: 5px solid hsla(0, 0%, 35%, 0.137);
-     border-top-color: #ff3c3c;
-     opacity: .5;
-     animation: timeing 2s ease-in-out infinite;
- }
-
-
-
- @keyframes timeing {
-     0% {
-         transform: translate(-50%, -50%) rotate(0deg) scale(1);
-         opacity: 1;
-     }
-
-     50% {
-         transform: translate(-50%, -50%) rotate(360deg) scale(1);
-         opacity: 1;
-     }
-
-     100% {
-         transform: translate(-50%, -50%) rotate(0deg) scale(1);
-         opacity: 1;
-     }
- }
-
-
-
- #timer span {
-     top: 50%;
      font-size: 30px;
      color: #000000;
      font-weight: 600;
  }
 
- .timeout #timer span {
-     font-size: 28px;
-     color: #a81f07
+ #timer:after,
+ #timer:after,
+ #timer:before {
+     content: "";
+     position: absolute;
+     width: 85px;
+     height: 85px;
+     border-radius: 50%;
+     opacity: 0;
+
  }
 
+ #timer:after {
+     border: 5px solid hsla(0, 0%, 35%, 0.137);
+     border-top-color: var(--warn-color);
+     opacity: .5;
+     animation: timeing 2s ease-in-out infinite;
+ }
 
- .question_box #time_tag {
+ #answer_count {
      color: rgba(255, 255, 255, 0.527);
-     font-size:24px;
+     font-size: 24px;
+     margin-top: 24px
  }
+
+
+ #answer_count::before,
+ #answer_count::after {
+     font-size: 16px;
+     margin: 0 8px;
+     opacity: 0.6;
+ }
+
+ #answer_count::before {
+     content: "Completed";
+ }
+
+ #answer_count::after {
+     content: "questions";
+
+ }
+
+
+ @keyframes timeing {
+     0% {
+         transform: rotate(0deg) scale(1);
+         opacity: 1;
+     }
+
+     50% {
+         transform: rotate(360deg) scale(1);
+         opacity: 1;
+     }
+
+     100% {
+         transform: rotate(0deg) scale(1);
+         opacity: 1;
+     }
+ }
+
+
 
 
 
@@ -334,10 +308,11 @@
     Status
         Home
         Playing
-        Playing 15s
-        Playing 5s
         Timeout
         Score
+    GameType
+        0
+        1
 *******************************/
 
 
@@ -346,7 +321,8 @@
  /******************************    
     Playing
 *******************************/
- .playing #home {
+ .playing #home,
+ .playing #swich_btn {
      opacity: 0;
      z-index: 0;
      transform: scale(0.9);
@@ -359,51 +335,74 @@
 
 
 
-
  /******************************    
     Timeout
 *******************************/
 
  #container.timeout {
-     background-color: #811704;
+     background-color: var(--warn-bg-color)
  }
 
+ .timeout #question {
+     color: #fff;
+ }
 
  .timeout #timer:after,
  .timeout #timer:before {
-     border: 5px solid #ff3c3c;
-     animation: timeouting 1s cubic-bezier(.15, .11, .95, .13)
+     border: 5px solid var(--warn-color);
+     animation: timeouting 1.2s cubic-bezier(.15, .11, .95, .13)
  }
 
  .timeout #timer:before {
      animation-delay: 0.15s;
  }
 
+
+ .timeout #timer {
+     font-size: 24px;
+     color: var(--warn-bg-color);
+ }
+
  @keyframes timeouting {
      0% {
-         transform: translate(-50%, -50%) rotate(0deg) scale(1);
+         transform: rotate(0deg) scale(1);
          opacity: 0;
-         border: 5px solid #ff3c3c
      }
 
      5% {
-         transform: translate(-50%, -50%) rotate(0deg) scale(0.95);
+         transform: rotate(0deg) scale(0.95);
          opacity: .5;
-         border: 5px solid #ff3c3c;
+     }
+
+     80% {
+         transform: rotate(0deg) scale(10);
+         opacity: .0;
+     }
+
+     81% {
+         transform: rotate(0deg) scale(0.8);
+         opacity: .0;
      }
 
      100% {
-         transform: translate(-50%, -50%) rotate(0deg) scale(10);
-         opacity: .0;
-         border: 1px solid #ff3c3c;
+         transform: rotate(0deg) scale(1);
+         opacity: .4;
      }
+
+
  }
 
 
 
+ /******************************    
+    
+    Type = 1 快問快答
 
+*******************************/
 
-
+ .gametype_01 #question {
+     font-size: 50px;
+ }
 
  /******************************    
     
@@ -420,11 +419,6 @@
 
 
  @media screen and (max-width: 480px) {
-     #hotkey {
-         transform: translate(-50%, 0);
-         font-size: 18px;
-         width: 80%;
-     }
 
      .setting_btns {
          flex-direction: row;
