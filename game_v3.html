@@ -126,7 +126,7 @@
             <div id="answer_count"></div>
         </div>
         <div id="home_btn" class="flex-c">home</div>
-        <div id="swich_btn" class="flex-c">refresh</div>
+        <div id="swich_btn" class="flex-c">compare_arrows</div>
         <div id="screen_click"></div>
         <p id="hotkey"></p>
 
@@ -248,6 +248,7 @@
         timerStop()
         answerCount = 0
         answerCountbox.innerHTML = answerCount;
+        toTimerResetSec(timerResetSecList[TimerResetNum])
     }
 
     function nextQ() {
@@ -257,6 +258,9 @@
         if (gameType == 1) {
             timerStop()
             timerStart()
+            if (timerResetSec > 5) {
+                timerResetSec = timerResetSec - 1
+            }
         }
     }
 

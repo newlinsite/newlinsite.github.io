@@ -129,16 +129,16 @@
      height: 50px;
      color: var(--ter-color);
      border-radius: 50%;
-     background-color: rgba(255, 255, 255, 0.2);
+     background-color: rgba(255, 255, 255, 0.115);
      margin: 2px;
      opacity: .5;
      box-shadow: 0 0 8px rgba(0, 0, 0, 0.4), 0 0 0 rgba(15, 102, 233, 0.9);
-     transition: 1s
+     transition: .6s
  }
 
  .time_btn.active {
      opacity: .85;
-     box-shadow: 0 0 20px rgba(0, 0, 0, 0.8), 0 0 4px rgba(15, 102, 233, 0.9);
+     box-shadow: 0 0 20px rgba(0, 0, 0, 0.9), 0 0 4px rgba(15, 102, 233, 0.9);
  }
 
  /********  input  ********/
