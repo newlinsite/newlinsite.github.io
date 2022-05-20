@@ -18,6 +18,13 @@
         "抹茶巧克力",
         "薄荷巧克力",
         "龍舌蘭",
+        "菜雞",
+        "泡牛奶",
+        "烤餅乾",
+        "簽字筆",
+        "下午茶",
+        "漢堡肉",
+        "豪大大雞排",
     ];
     var Qlist_1 = ["如果看到金城武熟睡在自己面前，你會做什麼?",
         "你最近都聽什麼哥?",
@@ -255,6 +262,7 @@
 
     // 首頁按鈕功能
     var timerResetSecList = []
+    var TimerResetNum = 2
 
     function toTimerResetSec(sec) {
         if (sec == "none") {
@@ -271,11 +279,12 @@
     // 設定時間按鈕執行動作
     function setTime_btns() {
         for (let i = 0; i < time_btn.length; i++) {
-            time_btn[i].addEventListener('click', function () { toTimerResetSec(timerResetSecList[i]); time_btnActiver(i); }, false);
+            time_btn[i].addEventListener('click', function () { toTimerResetSec(timerResetSecList[i]); time_btnActiver(i); TimerResetNum = i; }, false);
             time_btn[i].innerHTML = timerResetSecList[i]
         }
     }
     // 選取時間按鈕執行內容
+
     function inputTimerResetSec(mode) {
         if (mode == "mode_00") {
             timerResetSecList = ["none", 180, 150, 120, 60]
@@ -313,10 +322,12 @@
         if (gameType == 0) {
             gameType = 1;
             setGameType()
+            toTimerResetSec(timerResetSecList[TimerResetNum])
         }
         else {
             gameType = 0;
             setGameType()
+            toTimerResetSec(timerResetSecList[TimerResetNum])
         }
     }
 
@@ -374,10 +385,11 @@
         var keyID = e.code;
         if (keyID === 'KeyN') {
             nextQ()
+            to_start()
         };
         if (keyID === 'Space') {
             nextQ()
-
+            to_start()
         };
         if (keyID === 'KeyH') {
             to_home()
