@@ -135,7 +135,6 @@
 <script>
 
 
-
     // ******************************
     // 
     //      Random question 
@@ -145,30 +144,46 @@
     // ******************************
 
     var Qlist = [];
-    var Qlist_len = 0;
+    var Qlisting = [];
+    var Qlisting_len = 0;
 
     // 輸入預設問題
     Qlist = Qlist_0
 
+    // 輸入執行遊戲的問題集
+    Qlisting = Qlist
+
+
     // 建立隨機題號
-    Qlist_len = Qlist.length;
+    var Qlisting_len = Qlisting.length;
     function getRandom() {
-        return Math.floor(Math.random() * Qlist_len);
+        Qlisting_len = Qlisting.length;
+        return Math.floor(Math.random() * Qlisting_len);
     }
     var num = getRandom();
 
 
-    // 隨機取得題目,並印入 id:question
+    // 隨機取得題目,並印入 id:question 後,刪除該題目
     var questionBox = document.getElementById("question")
     function QintoHTML() {
-        num = getRandom();
-        questionBox.innerHTML = Qlist[num];
+        Qlisting_len = Qlisting.length;
+        if (Qlisting_len == 1){
+            questionBox.innerHTML = "It's over";
+        }
+        else{
+            num = getRandom();  
+            questionBox.innerHTML = Qlisting[num];
+            Qlisting=Qlisting.filter((element, index) => index != num);
+            // console.log(Qlisting)
+            // console.log(Qlist)
+        }
     }
-    QintoHTML()
+
+    
 
 
     // 問題檔案輸入
-    document.getElementById('fileInput').addEventListener('change', function selectedFileChanged() {
+    function selectedFileChanged() {
         if (this.files.length === 0) {
             console.log('請選擇檔案！');
             return;
@@ -182,7 +197,10 @@
             QintoHTML()
         };
         reader.readAsText(this.files[0]);
-    });
+    }
+
+
+    document.getElementById('fileInput').addEventListener('change',selectedFileChanged);
 
     // ******************************
     // 
@@ -248,6 +266,7 @@
         container.setAttribute("class", "playing");
         hotkeyBox.innerHTML = "Click / Press N or space to Next question , Press H to back Home";
         timerStart()
+        QintoHTML()
     };
     function to_home() {
         container.setAttribute("class", "home");
@@ -256,6 +275,7 @@
         answerCount = 0
         answerCountbox.innerHTML = answerCount;
         toTimerResetSec(timerResetSecList[TimerResetNum])
+        Qlisting = Qlist // 重設執行遊戲的問題集
     }
 
     function nextQ() {
@@ -318,6 +338,7 @@
         if (gameType == 0) {
             game_name.innerHTML = "比手</br>畫腳"
             Qlist = Qlist_0
+            Qlisting = Qlist
             QintoHTML()
             body.classList.remove("gametype_01")
             body.classList.add("gametype_00")
@@ -326,6 +347,7 @@
         else {
             game_name.innerHTML = "快問</br>快答"
             Qlist = Qlist_1
+            Qlisting = Qlist
             QintoHTML()
             body.classList.remove("gametype_00")
             body.classList.add("gametype_01")
