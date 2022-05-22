@@ -271,16 +271,17 @@
         container.setAttribute("class", "home");
         hotkeyBox.innerHTML = "Click Game Name or Press N to Start";
         timerStop()
-        answerCount = 0
+        answerCount = 0                                     // 重設執行答對題目
         answerCountbox.innerHTML = answerCount;
-        toTimerResetSec(timerResetSecList[TimerResetNum])
-        Qlisting = Qlist // 重設執行遊戲的問題集
+        toTimerResetSec(timerResetSecList[TimerResetNum])   // 重設秒數
+        Qlisting = Qlist                                    // 重設執行遊戲的問題集
     }
 
     function nextQ() {
         QintoHTML();
         answerCount++
         answerCountbox.innerHTML = answerCount;
+        // 換題重設秒數，且減一秒 (給快問快答使用)
         if (gameType == 1) {
             timerStop()
             timerStart()
