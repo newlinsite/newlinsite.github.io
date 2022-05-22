@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 895.06 106.466">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #636363;
+        font-size: 25px;
+        font-family: SegoeUI, Segoe UI;
+      }
+
+      .cls-2, .cls-3 {
+        fill: #231815;
+        opacity: 0.7;
+      }
+
+      .cls-2 {
+        font-size: 19px;
+      }
+
+      .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7, .cls-8, .cls-9 {
+        font-family: MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI;
+      }
+
+      .cls-3 {
+        font-size: 23px;
+      }
+
+      .cls-4, .cls-5, .cls-6, .cls-7, .cls-8, .cls-9 {
+        fill: #717071;
+      }
+
+      .cls-4 {
+        font-size: 13px;
+      }
+
+      .cls-5 {
+        font-size: 10px;
+      }
+
+      .cls-6 {
+        font-size: 6px;
+      }
+
+      .cls-7 {
+        font-size: 12px;
+      }
+
+      .cls-8 {
+        font-size: 14px;
+      }
+
+      .cls-9 {
+        font-size: 20px;
+      }
+
+      .cls-10 {
+        fill: #ffdb4f;
+        font-size: 41px;
+        font-family: Muli-Black, Muli;
+        font-weight: 800;
+      }
+    </style>
+  </defs>
+  <g id="_007" data-name="007" transform="translate(-498.126 -2537.261)">
+    <text id="keyword" class="cls-1" transform="translate(498.126 2600.238)"><tspan x="0" y="0">keyword</tspan></text>
+    <text id="_in" data-name="１３～１７in" class="cls-2" transform="translate(747.622 2584.913)"><tspan x="0" y="0">１３～１７in</tspan></text>
+    <text id="Light" class="cls-3" transform="translate(1083.402 2560.261)"><tspan x="0" y="0">Light</tspan></text>
+    <text id="FHD" class="cls-4" transform="translate(952.431 2589.294)"><tspan x="0" y="0">FHD</tspan></text>
+    <text id="quality_of_the_brand" data-name="quality of the brand" class="cls-5" transform="translate(1221.54 2588.44)"><tspan x="0" y="0">quality of the brand</tspan></text>
+    <text id="_" data-name="ＧＰＵ|||" class="cls-6" transform="translate(1060.29 2637.442)"><tspan x="0" y="0">ＧＰＵ|||</tspan></text>
+    <text id="i5" class="cls-7" transform="translate(1229.614 2625.89)"><tspan x="0" y="0">i5</tspan></text>
+    <text id="i7" class="cls-8" transform="translate(1160.341 2589.756)"><tspan x="0" y="0">i7</tspan></text>
+    <text id="MOVE" class="cls-9" transform="translate(895.895 2638.727)"><tspan x="0" y="0">MOVE</tspan></text>
+    <text id="_2" data-name="[ " class="cls-10" transform="translate(679.663 2607.696)"><tspan x="0" y="0">[ </tspan></text>
+    <text id="_3" data-name=" ]" class="cls-10" transform="translate(1364.187 2607.696)"><tspan x="0" y="0" xml:space="preserve"> ]</tspan></text>
+  </g>
+</svg>
