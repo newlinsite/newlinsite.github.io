@@ -1,106 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<script>
-    // 預設問題
-    var Qlist_0 = ["甘草芭樂",
-        "咖哩飯",
-        "蜘蛛人",
-        "咖啡牛奶",
-        "香蒜麵包",
-        "法式吐司",
-        "人生勝利組",
-        "任意門",
-        "隱型斗篷",
-        "健達出奇蛋",
-        "一見鍾情",
-        "番茄",
-        "胡椒餅",
-        "抹茶巧克力",
-        "薄荷巧克力",
-        "龍舌蘭",
-        "菜雞",
-        "泡牛奶",
-        "烤餅乾",
-        "簽字筆",
-        "下午茶",
-        "漢堡肉",
-        "豪大大雞排",
-    ];
-    var Qlist_1 = ["如果看到金城武熟睡在自己面前，你會做什麼?",
-        "你最近都聽什麼哥?",
-        "當你不知道要穿什麼顏色的衣服時，你會選什麼顏色?",
-        "去年你最後悔的一件事是什麼?",
-        "哪天你變身蜘蛛人，第一件事會做什麼?",
-        "你昨天吃什麼當晚餐?",
-        "你曾遇過最感動的事情是什麼?",
-        "如果你有一張單程機票，你會去哪?",
-        "你覺得人生勝利組是要具備什麼條件?",
-        "如果你有任意門，你想去哪?",
-        "如果你有隱型斗篷，你會怎麼做?",
-        "如果你想重來，你會回到哪個時期?",
-        "你相信一見鍾情嗎?",
-        "你相信男女間有純友誼嗎?",
-        "要對10年後的自己說一句話，你會說什麼?",
-        "你最討厭的動物是什麼?",
-        "你在Uber上發現沒帶錢包也沒帶手機，怎麼辦?",
-        "如果你中10萬塊樂透，你要幹嘛?",
-        "最近買過最貴的物品是什麼?",
-        "上一次去台北101，是跟誰去?",
-        "若發生地震你要逃跑只能拿一樣東西，你會拿什麼?",
-        "你認為在哪跨年最浪漫?",
-        "要選另一半，眼睛是要深遂的好．還是小眼睛好?",
-        "愛情跟麵包，你會選哪一個?",
-        "你醒來發現旁邊睡了一個陌生人，你會怎麼辦?",
-        "如果你會功夫，你想要什麼功夫?",
-        "提到劉德華，你會馬上想到什麼?",
-        "最經典的西洋電影，你會推薦哪一部?",
-        "你最喜歡和哪一個星座的人當朋友?",
-        "當老闆對你說你明天可以不要來了，你會怎麼反應?",
-        "最近一次去的遊樂園是哪一個?",
-        "如果要跟一個人說對不起，你想對誰說?",
-        "四個季節你最喜歡哪一個?",
-        "提到NBA，你會想到哪個球星?",
-        "要選台灣離島深度旅行，你會選哪裡?",
-        "露營帳篷和露營車，你會選哪個住?",
-        "夜釣小管和夜遊看梅花鹿，你會選哪個?",
-        "當你另一半必須要有的一個特點?",
-        "最喜歡的便利商店飲料?",
-        "上廁所上到一半，老闆打來你會怎麼辦?",
-        "最喜歡的夜市小吃?",
-        "最近聽到的笑話?",
-        "最喜歡的一句話(至理名言)?",
-        "如果有下輩子，想當男生還是女生?",
-        "回憶國小時期，現在還有印象的事是什麼?",
-        "宏正上班第一天，最有印象的事?",
-        "最喜歡的卡通人物?",
-        "做過最有勇氣的事?",
-        "扶老太太過馬路和淨灘，哪一件事你覺得比較有意義?",
-        "聽到哪一句話，你會馬上翻臉?",
-        "當你不爽的時候，會怎麼樣?",
-        "看農民曆你會先看什麼資訊?",
-        "你喜歡過聖誕節還是中秋節?",
-        "你喜歡戴墨鏡還是戴帽子?",
-        "彩虹七個顏色，你會喜歡哪一色?",
-        "海水浴場和動物園，你比較喜歡哪一個?",
-        "如果可以改變，你想多高(身高)?",
-        "你退休後會想在哪個城市居住?",
-        "珍珠和椰果，你比較喜歡飲料加哪種料?",
-        "最推薦的飲料店?",
-        "解封後，你最想做的事是什麼?",
-        "林志玲和侯佩岑，你覺得誰比較是你的菜?",
-        "給你抱怨公司一件事，你會講什麼?",
-        "當你和老闆獨處在電梯，從1樓搭到14樓的期間，你會講什麼話?",
-        "近期發生你最後悔的事?",
-    ];
-</script>
+
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/game.css">
+    <script type="text/javascript" src="js/question.js"></script>
     <title>Games</title>
-
 </head>
 
 <body class="gametype_00">
@@ -113,6 +21,13 @@
                 <div class="time_btn flex-c"></div>
                 <div class="time_btn flex-c"></div>
                 <div class="time_btn flex-c"></div>
+            </div>
+            <div class="Qlist_btns flex-c">
+                <div class="Qlist_btn flex-c">Default</div>
+                <div class="Qlist_btn flex-c">Film AFI</div>
+                <div class="Qlist_btn flex-c">Taiwan Food</div>
+                <div class="Qlist_btn flex-c">JP Drama</div>
+                <div class="Qlist_btn flex-c">JP Drama</div>
             </div>
             <div class="question_input_box">
                 <div class="input_btn block">Upload file</div>
@@ -147,11 +62,8 @@
     var Qlisting = [];
     var Qlisting_len = 0;
 
-    // 輸入預設問題
-    Qlist = Qlist_0
-
-    // 輸入執行遊戲的問題集
-    Qlisting = Qlist
+    Qlist = Qlist_0_00     // 輸入預設問題
+    Qlisting = Qlist       // 輸入執行遊戲的問題集
 
 
     // 建立隨機題號
@@ -167,18 +79,24 @@
     var questionBox = document.getElementById("question")
     function QintoHTML() {
         Qlisting_len = Qlisting.length;
-        if (Qlisting_len == 1){
+        if (Qlisting_len == 1) {
             questionBox.innerHTML = "It's over";
         }
-        else{
-            num = getRandom();  
+        else {
+            num = getRandom();
             questionBox.innerHTML = Qlisting[num];
-            Qlisting=Qlisting.filter((element, index) => index != num);
-            console.log(Qlisting)
+            Qlisting = Qlisting.filter((element, index) => index != num);
+            // console.log(Qlisting)
         }
     }
 
-    
+    // 切換題組
+    function changeQList(QlistName) {
+        Qlist = QlistName
+        Qlisting = Qlist
+        QintoHTML()
+    }
+
 
 
     // 問題檔案輸入
@@ -199,7 +117,7 @@
     }
 
 
-    document.getElementById('fileInput').addEventListener('change',selectedFileChanged);
+    document.getElementById('fileInput').addEventListener('change', selectedFileChanged);
 
     // ******************************
     // 
@@ -257,6 +175,7 @@
     var answerCountbox = document.getElementById("answer_count")
     var body = document.querySelector("body")
     var time_btn = document.getElementsByClassName("time_btn")
+
 
     var answerCount = 0
     var gameType = 0
@@ -337,18 +256,14 @@
     function setGameType() {
         if (gameType == 0) {
             game_name.innerHTML = "比手</br>畫腳"
-            Qlist = Qlist_0
-            Qlisting = Qlist
-            QintoHTML()
+            changeQList(Qlist_0_01)
             body.classList.remove("gametype_01")
             body.classList.add("gametype_00")
             inputTimerResetSec("mode_00")
         }
         else {
             game_name.innerHTML = "快問</br>快答"
-            Qlist = Qlist_1
-            Qlisting = Qlist
-            QintoHTML()
+            changeQList(Qlist_1_01)
             body.classList.remove("gametype_00")
             body.classList.add("gametype_01")
             inputTimerResetSec("mode_01")
@@ -368,6 +283,8 @@
             toTimerResetSec(timerResetSecList[TimerResetNum])
         }
     }
+
+
 
 
 
@@ -400,11 +317,18 @@
     var screen_click = document.getElementById("screen_click")
     var game_name = document.getElementById("game_name")
     var swich_btn = document.getElementById("swich_btn")
+    var Qlist_btn = document.getElementsByClassName("Qlist_btn")
+
+
+
 
     home_btn.addEventListener('click', to_home, false);
     game_name.addEventListener('click', to_start, false);
     screen_click.addEventListener('click', nextQ, false);
     swich_btn.addEventListener('click', gameTypeChange, false);
+
+
+
 
     // 選取時間按鈕狀態 
     function time_btnActiver(x) {
@@ -414,6 +338,21 @@
         time_btn[x].classList.add("active");
     }
 
+
+
+
+
+    // 設定換題目組按鈕的執行動作
+    function setQlist_btn() {
+        for (let i = 0; i < Qlist_btn.length; i++) {
+            Qlist_btn[i].addEventListener('click', function () {
+                console.log(Qlist_0s[i]);
+                changeQList(Qlist_0s[i]);
+                console.log(Qlisting);
+            }, false);
+        }
+    }
+    setQlist_btn()
 
 
 

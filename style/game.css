@@ -63,8 +63,9 @@
 
  p {
      color: var(--text-color);
-     font-size: 18px;
+     font-size: 16px;
      text-align: center;
+     margin: 8px 0;
  }
 
 
@@ -136,16 +137,61 @@
      transition: .6s
  }
 
+ .time_btn:hover {
+     opacity: .7;
+     box-shadow: 0 0 12px rgba(0, 0, 0, 0.9), 0 0 4px rgba(15, 102, 233, 0.9);
+ }
+
  .time_btn.active {
      opacity: .85;
      box-shadow: 0 0 20px rgba(0, 0, 0, 0.9), 0 0 4px rgba(15, 102, 233, 0.9);
  }
 
+
+
+
+ /********  Question Lists ********/
+
+ .Qlist_btns {
+     flex-direction: row;
+     flex-wrap: wrap;
+     /* justify-content: space-around; */
+     width: 100%;
+     max-width: 400px;
+     margin: 16px 0
+ }
+
+ .Qlist_btn {
+     padding: 8px 18px;
+     margin: 4px;
+     color: var(--ter-color);
+     border-radius: 8px;
+     background-color: rgba(255, 255, 255, 0.115);
+     opacity: .5;
+     box-shadow: 0 0 8px rgba(0, 0, 0, 0.4), 0 0 0 rgba(15, 102, 233, 0.9);
+     transition: .6s
+ }
+
+ .Qlist_btn:hover {
+     opacity: .8;
+     box-shadow: 0 0 12px rgba(0, 0, 0, 0.9), 0 0 4px rgba(15, 102, 233, 0.9);
+ }
+
+ .Qlist_btn.active {
+     opacity: .85;
+     box-shadow: 0 0 20px rgba(0, 0, 0, 0.9), 0 0 4px rgba(15, 102, 233, 0.9);
+ }
+
+
+
+
+
+
  /********  input  ********/
 
  .question_input_box {
      display: inline-block;
-     margin: 16px 0;
+     margin: 12px 0;
      width: 60%;
      max-width: 320px;
      text-align: center;
@@ -225,6 +271,14 @@
      color: var(--pri-color);
      transition: 1s;
  }
+
+ #question span {
+     display: block;
+     font-size: 40px;
+     opacity: .7;
+ }
+
+
 
  #timer {
      width: 80px;
@@ -418,10 +472,25 @@
  }
 
 
- @media screen and (max-width: 480px) {
 
-     .setting_btns {
-         flex-direction: row;
+
+
+
+
+
+
+
+ @media screen and (max-width: 480px) {
+     h1 {
+         font-size: 80px;
+     }
+
+     p {
+         font-size: 14px;
+     }
+
+     .question_input_box {
+         margin: 4px 0;
      }
 
  }
