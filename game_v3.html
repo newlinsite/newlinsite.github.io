@@ -44,7 +44,6 @@
         <div id="swich_btn" class="flex-c">compare_arrows</div>
         <div id="screen_click"></div>
         <p id="hotkey"></p>
-
     </div>
 </body>
 <script>
@@ -151,6 +150,102 @@
         clearInterval(timerNum);
     }
 
+    // ******************************
+    // 
+    //      音樂撥放器
+    //      - 
+    //      - 
+    //
+    // ******************************
+
+
+
+    var bufferBox = [];
+    var audioUrlList = [
+        "music/ui_01.mp3",
+        "music/ui_02.mp3",
+        "music/bgm_BrandNewToy.mp3"
+    ];
+
+    // Fix up prefixing
+    window.AudioContext = window.AudioContext || window.webkitAudioContext;
+    var context = new AudioContext();
+
+    function loadSound(num) {
+        url = audioUrlList[num]
+        var request = new XMLHttpRequest();
+        request.open('GET', url, true);
+        request.responseType = 'arraybuffer';
+
+        // Decode asynchronously
+        request.onload = function () {
+            context.decodeAudioData(request.response, function (buffer) {
+                bufferBox[num] = buffer;               // 將 buffer 倒入清單管理
+            }, onError);
+        }
+        request.send();
+    }
+
+
+
+    // 將清單內的音樂載入Buffer
+    for (let i = 0; i < audioUrlList.length; i++) {
+        loadSound(i)
+    }
+
+
+
+    //創一個的音源 與連接節點倒終點
+
+    var sourceBox = [];
+
+    function playSound(num, loop = false) {
+        buffer = bufferBox[num];
+        var source = context.createBufferSource();         // creates a sound source
+        source.loop = loop;
+        sourceBox[num] = source                            // 將 Souece 倒入清單管理
+        sourceBox[num].buffer = buffer;                    // tell the source which sound to play
+        sourceBox[num].connect(context.destination);       // connect the source to the context's destination (the speakers)
+        sourceBox[num].start(0);                           // play the source now
+    }
+
+
+    function stopSound(num) {
+        try {
+            sourceBox[num].disconnect(context.destination);
+        }
+        catch (e) {
+            console.log("Source", num, "is not playing")
+        }
+
+    }
+
+
+    // 鍵盤快捷鍵
+    window.addEventListener("keydown", torandom2, false);
+    function torandom2(e) {
+        var keyID = e.code;
+        if (keyID === 'KeyQ') {
+
+            playSound(0)
+        }
+        if (keyID === 'KeyW') {
+            playSound(1)
+        }
+        if (keyID === 'KeyE') {
+            playSound(2)
+        }
+        if (keyID === 'KeyR') {
+            stopSound(2)
+        }
+
+    }
+
+
+
+
+
+
 
 
 
@@ -185,6 +280,7 @@
         hotkeyBox.innerHTML = "Click / Press N or space to Next question , Press H to back Home";
         timerStart()
         QintoHTML()
+        playSound(2, true)
     };
     function to_home() {
         container.setAttribute("class", "home");
@@ -194,6 +290,7 @@
         answerCountbox.innerHTML = answerCount;
         toTimerResetSec(timerResetSecList[TimerResetNum])   // 重設秒數
         Qlisting = Qlist                                    // 重設執行遊戲的問題集
+        stopSound(2)
     }
 
     function nextQ() {
@@ -231,7 +328,8 @@
     function setTime_btns() {
         for (let i = 0; i < time_btn.length; i++) {
             time_btn[i].addEventListener('click', function () { toTimerResetSec(timerResetSecList[i]); time_btnActiver(i); TimerResetNum = i; }, false);
-            time_btn[i].innerHTML = timerResetSecList[i]
+            time_btn[i].innerHTML = timerResetSecList[i];
+
         }
     }
 
@@ -286,7 +384,10 @@
 
 
 
-
+    // 錯誤提示
+    function onError() {
+        console.log("error")
+    }
 
 
     // ******************************
@@ -336,6 +437,7 @@
             time_btn[i].classList.remove("active");
         }
         time_btn[x].classList.add("active");
+        playSound(1);
     }
 
 
@@ -346,9 +448,8 @@
     function setQlist_btn() {
         for (let i = 0; i < Qlist_btn.length; i++) {
             Qlist_btn[i].addEventListener('click', function () {
-                console.log(Qlist_0s[i]);
                 changeQList(Qlist_0s[i]);
-                // console.log(Qlisting);
+                playSound(0)
             }, false);
         }
     }
@@ -374,6 +475,7 @@
         if (keyID === 'KeyS') {
             to_start()
         }
+
     }
 
 
