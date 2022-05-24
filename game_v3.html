@@ -202,8 +202,8 @@
     function playSound(num, loop = false) {
         buffer = bufferBox[num];
         var source = context.createBufferSource();         // creates a sound source
-        source.loop = loop;
         sourceBox[num] = source                            // 將 Souece 倒入清單管理
+        sourceBox[num].loop = loop;
         sourceBox[num].buffer = buffer;                    // tell the source which sound to play
         sourceBox[num].connect(context.destination);       // connect the source to the context's destination (the speakers)
         sourceBox[num].start(0);                           // play the source now
