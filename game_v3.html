@@ -38,6 +38,10 @@
         <div class="question_box flex-c">
             <div id="question"></div>
             <div id="timer" class="flex-c"></div>
+            <div class="next_box flex-c">
+                <a href="#" class="next_btn flex-c">close</a>
+                <a href="#" class="next_btn flex-c">done</a>
+            </div>
             <div id="answer_count"></div>
         </div>
         <div id="home_btn" class="flex-c">home</div>
@@ -143,6 +147,7 @@
                 clearInterval(timerNum);
                 container.setAttribute("class", "playing timeout");
                 timer.innerHTML = "OUT!";
+                stopSound(2)
             }
         }, 1000);
     }
@@ -164,7 +169,9 @@
     var audioUrlList = [
         "music/ui_01.mp3",
         "music/ui_02.mp3",
-        "music/bgm_BrandNewToy.mp3"
+        "music/bgm_BrandNewToy.mp3",
+        "music/ui_04.wav",
+        "music/bgm_cut-to-the-chase.mp3"
     ];
 
     // Fix up prefixing
@@ -207,6 +214,8 @@
         sourceBox[num].buffer = buffer;                    // tell the source which sound to play
         sourceBox[num].connect(context.destination);       // connect the source to the context's destination (the speakers)
         sourceBox[num].start(0);                           // play the source now
+
+        
     }
 
 
@@ -233,7 +242,7 @@
             playSound(1)
         }
         if (keyID === 'KeyE') {
-            playSound(2)
+            playSound(3,true,10)
         }
         if (keyID === 'KeyR') {
             stopSound(2)
@@ -277,25 +286,32 @@
 
     function to_start() {
         container.setAttribute("class", "playing");
-        hotkeyBox.innerHTML = "Click / Press N or space to Next question , Press H to back Home";
+        hotkeyBox.innerHTML = "Press N + 1 , B + 0 , Press H to back Home";
         timerStart()
         QintoHTML()
-        playSound(2, true)
+        if (tagQList==1){
+            playSound(4, true)
+        }
+        else{
+            playSound(2, true)
+        }
+        
     };
     function to_home() {
         container.setAttribute("class", "home");
-        hotkeyBox.innerHTML = "Click Game Name or Press N to Start";
+        hotkeyBox.innerHTML = "Click Game Name to Start";
         timerStop()
         answerCount = 0                                     // 重設執行答對題目
         answerCountbox.innerHTML = answerCount;
         toTimerResetSec(timerResetSecList[TimerResetNum])   // 重設秒數
         Qlisting = Qlist                                    // 重設執行遊戲的問題集
         stopSound(2)
+        stopSound(4)
     }
 
-    function nextQ() {
+    function nextQ(score=1,music=1) {
         QintoHTML();
-        answerCount++
+        answerCount=answerCount+score
         answerCountbox.innerHTML = answerCount;
         // 換題重設秒數，且減一秒 (給快問快答使用)
         if (gameType == 1) {
@@ -305,7 +321,12 @@
                 timerResetSec = timerResetSec - 1
             }
         }
+        playSound(music)
     }
+
+
+
+
     // ******************************
     // 首頁時間按鈕功能
     // ******************************
@@ -397,7 +418,7 @@
     // ******************************
 
 
-    hotkeyBox.innerHTML = "Click Game Name or Press N to Start";
+    hotkeyBox.innerHTML = "Click Game Name to Start";
     answerCountbox.innerHTML = answerCount;
     inputTimerResetSec("mode_00")
 
@@ -419,15 +440,16 @@
     var game_name = document.getElementById("game_name")
     var swich_btn = document.getElementById("swich_btn")
     var Qlist_btn = document.getElementsByClassName("Qlist_btn")
-
+    var next_btn = document.getElementsByClassName("next_btn")
 
 
 
     home_btn.addEventListener('click', to_home, false);
     game_name.addEventListener('click', to_start, false);
-    screen_click.addEventListener('click', nextQ, false);
     swich_btn.addEventListener('click', gameTypeChange, false);
-
+    next_btn[0].addEventListener('click', function(){nextQ(0,3)}, false);
+    next_btn[1].addEventListener('click', function(){nextQ()}, false);
+    // screen_click.addEventListener('click', function(){nextQ()}, false);
 
 
 
@@ -437,7 +459,7 @@
             time_btn[i].classList.remove("active");
         }
         time_btn[x].classList.add("active");
-        playSound(1);
+        playSound(0);
     }
 
 
@@ -445,11 +467,13 @@
 
 
     // 設定換題目組按鈕的執行動作
+    var tagQList = 0
     function setQlist_btn() {
         for (let i = 0; i < Qlist_btn.length; i++) {
             Qlist_btn[i].addEventListener('click', function () {
                 changeQList(Qlist_0s[i]);
                 playSound(0)
+                tagQList = i
             }, false);
         }
     }
@@ -463,11 +487,12 @@
         var keyID = e.code;
         if (keyID === 'KeyN') {
             nextQ()
-            to_start()
         };
         if (keyID === 'Space') {
             nextQ()
-            to_start()
+        };
+        if (keyID === 'KeyB') {
+            nextQ(0)
         };
         if (keyID === 'KeyH') {
             to_home()
