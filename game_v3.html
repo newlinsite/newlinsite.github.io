@@ -457,9 +457,10 @@
     function time_btnActiver(x) {
         for (let i = 0; i < 5; i++) {
             time_btn[i].classList.remove("active");
+            playSound(0);
         }
         time_btn[x].classList.add("active");
-        playSound(0);
+        
     }
 
 
