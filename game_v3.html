@@ -49,8 +49,9 @@
         <div id="screen_click"></div>
         <p id="hotkey"></p>
     </div>
-    <audio id="bgm01" src="music/bgm_BrandNewToy.mp3"></audio>
-    <audio id="bgm02" src="music/bgm_cut-to-the-chase.mp3"></audio>
+    <audio class="bgm" src="music/bgm_BrandNewToy.mp3"></audio>
+    <audio class="bgm" src="music/bgm_cut-to-the-chase.mp3"></audio>
+    <audio class="bgm" src="music/bgm_greensleeves.mp3"></audio>
 </body>
 <script>
 
@@ -159,10 +160,7 @@
                 clearInterval(timerNum);
                 container.setAttribute("class", "playing timeout");
                 timer.innerHTML = "OUT!";
-                stopSound(10);
-                stopSound(11);
-                stopSound(12);
-                stopSound(13);
+                musicAllStop()
             }
         }, 1000);
     }
@@ -259,30 +257,94 @@
 
     }
 
-    // 長音源
-    bgmSource01=document.getElementById("bgm01");
-    bgm01Source = ctx.createMediaElementSource(bgmSource01);
 
 
 
+
+    bgmSource=document.getElementsByClassName("bgm");
+
+    var music = function(num){
+        this.source = ctx.createMediaElementSource(bgmSource[num]);
+        this.gainCode = ctx.createGain();
+        this.lowPassCode = ctx.createBiquadFilter();
+                
+        this.source.connect(this.gainCode).connect(this.lowPassCode).connect(ctx.destination);
+
+        // option
+        this.playingTag = 0   
+
+        this.lowPassCode.type = 'lowpass'; 
+        this.lowPassCode.frequency.value = 22050;
+
+
+        this.play = function(){
+            this.playingTag = 1
+            bgmSource[num].play()
+            this.gainCode.gain.cancelScheduledValues(ctx.currentTime)   
+        }
+        this.stop = function(){
+            this.playingTag = 0
+            bgmSource[num].pause()
+            bgmSource[num].currentTime = 0;
+        }
+        this.fadeStop = function(fadeTime=1){          
+            if(this.playingTag == 1){
+                this.playingTag = 0               
+                let tempGain = this.gainCode.gain.value
+                this.gainCode.gain.linearRampToValueAtTime(0, ctx.currentTime+fadeTime);
+                setTimeout(() => {               
+                    if(this.playingTag == 1){
+                        this.gainCode.gain.linearRampToValueAtTime(tempGain, ctx.currentTime+0.5);
+                        console.log("replay")
+                    }
+                    else {
+                        this.stop()
+                        this.gainCode.gain.value = tempGain
+                    }                   
+                }, fadeTime*1000+100); 
+            }
+        }
+        this.fadeLowPass=function(frequency=22050,gain=-40,fadeTime=1){
+            this.lowPassCode.frequency.linearRampToValueAtTime(frequency,ctx.currentTime+fadeTime);
+        }
+    }
+    
+    var bgm01= new music(0)
+    var bgm02= new music(1)
+    var bgm03= new music(2)
+
+
+    function musicAllStop(){
+        bgm01.fadeStop()
+        bgm02.fadeStop()
+        bgm03.fadeStop()
+        // for(let i = 0;i<bgmSource.length;i++){
+        //     bgmSource[i].fadeStop()
+        // }        
+    }
+    
 
     // 測試鍵盤快捷鍵
     window.addEventListener("keydown", torandomTest, false);
     function torandomTest(e) {
         var keyID = e.code;
         if (keyID === 'KeyQ') {
-            
+            bgm01.play()
         };
         if (keyID === 'KeyW') {
+            bgm01.stop()
             
         };
         if (keyID === 'KeyE') {
-            
+            bgm01.fadeStop()
         };
         if (keyID === 'KeyR') {
-           
+            bgm01.fadeLowPass(2000,-40,4)
         }
         if (keyID === 'KeyT') {
+            bgm01.fadeLowPass(22050,0)
+        }
+        if (keyID === 'KeyY') {
             
         }
 
@@ -331,13 +393,13 @@
         timerStart()
         QintoHTML()
         if (tagQList==1){
-            playSound(11, true)
+            bgm02.play();
         }
         else if(tagQList==2){
-            playSound(12, true)
+            bgm03.play();
         }
         else{
-            playSound(10, true)
+            bgm01.play();
         }
         
     };
@@ -349,10 +411,7 @@
         answerCountbox.innerHTML = answerCount;
         toTimerResetSec(timerResetSecList[TimerResetNum])   // 重設秒數
         Qlisting = Qlist                                    // 重設執行遊戲的問題集
-        stopSound(10)
-        stopSound(11)
-        stopSound(12)
-        stopSound(13)
+        musicAllStop()
     }
 
     function nextQ(score=1,music=1) {
