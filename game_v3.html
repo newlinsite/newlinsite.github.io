@@ -78,7 +78,7 @@
     var num = getRandom();
 
 
-    // 隨機取得題目,並印入 id:question 後,刪除該題目
+    // 取得隨機題目,印 入HTML 後,刪除該題目
     var questionBox = document.getElementById("question")
     function QintoHTML() {
         Qlisting_len = Qlisting.length;
@@ -89,9 +89,12 @@
             num = getRandom();
             questionBox.innerHTML = Qlisting[num];
             Qlisting = Qlisting.filter((element, index) => index != num);
-            // console.log(Qlisting)
         }
     }
+
+
+
+
 
     // 切換題組
     function changeQList(QlistName) {
@@ -99,7 +102,6 @@
         Qlisting = Qlist
         QintoHTML()
     }
-
 
 
     // 問題檔案輸入
@@ -122,11 +124,19 @@
 
     document.getElementById('fileInput').addEventListener('change', selectedFileChanged);
 
+
+
+
+
     // ******************************
+    //
     // 
     //      計時器
     //      - timerStart()
     //      - timerStop()
+    //
+    //
+    //
     //
     // ******************************
 
@@ -147,13 +157,22 @@
                 clearInterval(timerNum);
                 container.setAttribute("class", "playing timeout");
                 timer.innerHTML = "OUT!";
-                stopSound(2)
+                stopSound(10);
+                stopSound(11);
+                stopSound(12);
+                stopSound(13);
             }
         }, 1000);
     }
     function timerStop() {
         clearInterval(timerNum);
     }
+
+
+
+
+
+
 
     // ******************************
     // 
@@ -167,11 +186,23 @@
 
     var bufferBox = [];
     var audioUrlList = [
+        // UI SFX 0-4
         "music/ui_01.mp3",
         "music/ui_02.mp3",
-        "music/bgm_BrandNewToy.mp3",
         "music/ui_04.wav",
-        "music/bgm_cut-to-the-chase.mp3"
+        "music/default.aac",
+        "music/default.aac",
+        //Time SFX 5-10
+        "music/default.aac",
+        "music/default.aac",
+        "music/default.aac",
+        "music/default.aac",
+        "music/default.aac",
+        //bgm 10-13
+        "music/bgm_BrandNewToy.mp3",
+        "music/bgm_cut-to-the-chase.mp3",
+        "music/default.aac",
+        "music/default.aac"
     ];
 
     // Fix up prefixing
@@ -230,27 +261,6 @@
     }
 
 
-    // 鍵盤快捷鍵
-    window.addEventListener("keydown", torandom2, false);
-    function torandom2(e) {
-        var keyID = e.code;
-        if (keyID === 'KeyQ') {
-
-            playSound(0)
-        }
-        if (keyID === 'KeyW') {
-            playSound(1)
-        }
-        if (keyID === 'KeyE') {
-            playSound(3,true,10)
-        }
-        if (keyID === 'KeyR') {
-            stopSound(2)
-        }
-
-    }
-
-
 
 
 
@@ -284,16 +294,24 @@
     var answerCount = 0
     var gameType = 0
 
+
+    // ******************************
+    // 基本控制
+    // ******************************
+
     function to_start() {
         container.setAttribute("class", "playing");
         hotkeyBox.innerHTML = "Press N + 1 , B + 0 , Press H to back Home";
         timerStart()
         QintoHTML()
         if (tagQList==1){
-            playSound(4, true)
+            playSound(11, true)
+        }
+        else if(tagQList==2){
+            playSound(12, true)
         }
         else{
-            playSound(2, true)
+            playSound(10, true)
         }
         
     };
@@ -305,8 +323,10 @@
         answerCountbox.innerHTML = answerCount;
         toTimerResetSec(timerResetSecList[TimerResetNum])   // 重設秒數
         Qlisting = Qlist                                    // 重設執行遊戲的問題集
-        stopSound(2)
-        stopSound(4)
+        stopSound(10)
+        stopSound(11)
+        stopSound(12)
+        stopSound(13)
     }
 
     function nextQ(score=1,music=1) {
@@ -456,11 +476,10 @@
     // 選取時間按鈕狀態 
     function time_btnActiver(x) {
         for (let i = 0; i < 5; i++) {
-            time_btn[i].classList.remove("active");
-            playSound(0);
+            time_btn[i].classList.remove("active");          
         }
         time_btn[x].classList.add("active");
-        
+         console.log(2)
     }
 
 
