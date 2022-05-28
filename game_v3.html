@@ -49,6 +49,8 @@
         <div id="screen_click"></div>
         <p id="hotkey"></p>
     </div>
+    <audio id="bgm01" src="music/bgm_BrandNewToy.mp3"></audio>
+    <audio id="bgm02" src="music/bgm_cut-to-the-chase.mp3"></audio>
 </body>
 <script>
 
@@ -171,9 +173,6 @@
 
 
 
-
-
-
     // ******************************
     // 
     //      音樂撥放器
@@ -201,13 +200,13 @@
         //bgm 10-13
         "music/bgm_BrandNewToy.mp3",
         "music/bgm_cut-to-the-chase.mp3",
-        "music/default.aac",
+        "music/bgm_greensleeves.mp3",
         "music/default.aac"
     ];
 
     // Fix up prefixing
     window.AudioContext = window.AudioContext || window.webkitAudioContext;
-    var context = new AudioContext();
+    var ctx = new AudioContext();
 
     function loadSound(num) {
         url = audioUrlList[num]
@@ -217,7 +216,7 @@
 
         // Decode asynchronously
         request.onload = function () {
-            context.decodeAudioData(request.response, function (buffer) {
+            ctx.decodeAudioData(request.response, function (buffer) {
                 bufferBox[num] = buffer;               // 將 buffer 倒入清單管理
             }, onError);
         }
@@ -239,11 +238,11 @@
 
     function playSound(num, loop = false) {
         buffer = bufferBox[num];
-        var source = context.createBufferSource();         // creates a sound source
+        var source = ctx.createBufferSource();         // creates a sound source
         sourceBox[num] = source                            // 將 Souece 倒入清單管理
         sourceBox[num].loop = loop;
         sourceBox[num].buffer = buffer;                    // tell the source which sound to play
-        sourceBox[num].connect(context.destination);       // connect the source to the context's destination (the speakers)
+        sourceBox[num].connect(ctx.destination);       // connect the source to the ctx's destination (the speakers)
         sourceBox[num].start(0);                           // play the source now
 
         
@@ -252,7 +251,7 @@
 
     function stopSound(num) {
         try {
-            sourceBox[num].disconnect(context.destination);
+            sourceBox[num].disconnect(ctx.destination);
         }
         catch (e) {
             console.log("Source", num, "is not playing")
@@ -260,7 +259,34 @@
 
     }
 
+    // 長音源
+    bgmSource01=document.getElementById("bgm01");
+    bgm01Source = ctx.createMediaElementSource(bgmSource01);
 
+
+
+
+    // 測試鍵盤快捷鍵
+    window.addEventListener("keydown", torandomTest, false);
+    function torandomTest(e) {
+        var keyID = e.code;
+        if (keyID === 'KeyQ') {
+            
+        };
+        if (keyID === 'KeyW') {
+            
+        };
+        if (keyID === 'KeyE') {
+            
+        };
+        if (keyID === 'KeyR') {
+           
+        }
+        if (keyID === 'KeyT') {
+            
+        }
+
+    }
 
 
 
@@ -467,7 +493,7 @@
     home_btn.addEventListener('click', to_home, false);
     game_name.addEventListener('click', to_start, false);
     swich_btn.addEventListener('click', gameTypeChange, false);
-    next_btn[0].addEventListener('click', function(){nextQ(0,3)}, false);
+    next_btn[0].addEventListener('click', function(){nextQ(0,2)}, false);
     next_btn[1].addEventListener('click', function(){nextQ()}, false);
     // screen_click.addEventListener('click', function(){nextQ()}, false);
 
@@ -479,7 +505,7 @@
             time_btn[i].classList.remove("active");          
         }
         time_btn[x].classList.add("active");
-         console.log(2)
+        playSound(0)
     }
 
 
@@ -498,6 +524,11 @@
         }
     }
     setQlist_btn()
+
+
+
+
+
 
 
 
