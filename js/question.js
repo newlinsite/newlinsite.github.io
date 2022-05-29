@@ -161,7 +161,7 @@ var Qlist_0_02 = [
     "麻糬<span>Mochi    </span>",
     "加熱滷味<span>Anything braised with Lantern soy</span>",
     "筒仔米糕<span>Tube rice pudding  </span>",
-    "台式早餐（豆漿油條）Taiwanese<span>breakfast    </span>",
+    "台式早餐（豆漿油條）<span>Taiwanesebreakfast</span>",
     "豬血湯<span>Pig’s blood rice pudding </span>",
     "三杯雞<span>Three-cup chicken   </span>",
     "粄條<span>Ban tiao noodles  </span>",
