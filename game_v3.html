@@ -157,14 +157,16 @@
         var count = timerResetSec;
         timer.innerHTML = count;
         timerNum = setInterval(function () {
-            if (count < 15 && bgm[3].playingTag==0) {
+    
+            if (count> 1) {              
                 count = count - 1;
                 timer.innerHTML = `${count}`;
-                bgm[3].fadePlay(1,5,0.2);
-            }
-            else if (count> 1) {              
-                count = count - 1;
-                timer.innerHTML = `${count}`;
+                if (count < 15 && bgm[3].playingTag==0) {
+                    bgm[3].fadePlay(1,5,0.2);
+                }
+                else if (count > 15 && bgm[3].playingTag==1) {
+                    bgm[3].stop();
+                }
             }
             else {
                 clearInterval(timerNum);
@@ -177,7 +179,7 @@
                     playSound(3);  
                 }                            
                 musicAllStop();
-                // bgm[4].fadePlay(0.6,7,0);
+                bgm[4].fadePlay(0.2,7,0);
             }
         }, 1000);
     }
@@ -204,8 +206,6 @@
 
 
 
-
-
     // Audio Effect 短音效
 
     var bufferBox = [];
@@ -216,7 +216,6 @@
         "music/out_logos---classic.aac",
         "music/x_laughing.mp3",
     ];
-
 
     function loadSound(num) {
         url = audioUrlList[num]
@@ -232,7 +231,6 @@
         }
         request.send();
     }
-
 
     // 將清單內的音樂載入Buffer
     for (let i = 0; i < audioUrlList.length; i++) {
@@ -269,20 +267,16 @@
         this.lowPassCode.type = 'lowpass'; 
         this.lowPassCode.frequency.value = 22050;
 
-
+        // function
         this.play = function(){
             this.playingTag = 1
             bgmSource[num].play() 
         }
-
         this.fadePlay = function(gain=1,fadeTime=1,startGain=0){
             this.play();
             this.gainCode.gain.value = startGain
             this.gainCode.gain.linearRampToValueAtTime(gain, ctx.currentTime+10);
-            
         }
-
-
         this.stop = function(){
             this.playingTag = 0
             bgmSource[num].pause()
