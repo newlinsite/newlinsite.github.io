@@ -52,6 +52,11 @@
     <audio loop class="bgm" src="music/bgm_BrandNewToy.mp3"></audio>
     <audio loop class="bgm" src="music/bgm_cut-to-the-chase.mp3"></audio>
     <audio loop class="bgm" src="music/bgm_greensleeves.mp3"></audio>
+    <audio loop class="bgm" src="music/out_clock-sound.mp3"></audio>
+    <audio loop class="bgm" src="music/bgm_NewCity.mp3"></audio>
+
+
+    
 </body>
 <script>
 
@@ -152,7 +157,12 @@
         var count = timerResetSec;
         timer.innerHTML = count;
         timerNum = setInterval(function () {
-            if (count > 1) {
+            if (count < 15 && bgm[3].playingTag==0) {
+                count = count - 1;
+                timer.innerHTML = `${count}`;
+                bgm[3].fadePlay(1,5,0.2);
+            }
+            else if (count> 1) {              
                 count = count - 1;
                 timer.innerHTML = `${count}`;
             }
@@ -160,7 +170,9 @@
                 clearInterval(timerNum);
                 container.setAttribute("class", "playing timeout");
                 timer.innerHTML = "OUT!";
-                musicAllStop()
+                playSound(3);               
+                musicAllStop();
+                // bgm[4].fadePlay(0.6,7,0);
             }
         }, 1000);
     }
@@ -181,30 +193,25 @@
 
 
 
-    var bufferBox = [];
-    var audioUrlList = [
-        // UI SFX 0-4
-        "music/ui_01.mp3",
-        "music/ui_02.mp3",
-        "music/ui_04.wav",
-        "music/default.aac",
-        "music/default.aac",
-        //Time SFX 5-10
-        // "music/default.aac",
-        // "music/default.aac",
-        // "music/default.aac",
-        // "music/default.aac",
-        // "music/default.aac",
-        //bgm 10-13
-        // "music/bgm_BrandNewToy.mp3",
-        // "music/bgm_cut-to-the-chase.mp3",
-        // "music/bgm_greensleeves.mp3",
-        // "music/default.aac"
-    ];
-
     // Fix up prefixing
     window.AudioContext = window.AudioContext || window.webkitAudioContext;
     var ctx = new AudioContext();
+
+
+
+
+
+    // Audio Effect 短音效
+
+    var bufferBox = [];
+    var audioUrlList = [
+        "music/ui_01.mp3",
+        "music/ui_02.mp3",
+        "music/ui_04.wav",
+        "music/out_logos---classic.aac",
+        "music/default.aac",
+    ];
+
 
     function loadSound(num) {
         url = audioUrlList[num]
@@ -222,66 +229,53 @@
     }
 
 
-
     // 將清單內的音樂載入Buffer
     for (let i = 0; i < audioUrlList.length; i++) {
         loadSound(i)
     }
 
-
-
     //創一個的音源 與連接節點倒終點
 
-    var sourceBox = [];
-
-    function playSound(num, loop = false) {
+    function playSound(num) {
         buffer = bufferBox[num];
-        var source = ctx.createBufferSource();         // creates a sound source
-        sourceBox[num] = source                            // 將 Souece 倒入清單管理
-        sourceBox[num].loop = loop;
-        sourceBox[num].buffer = buffer;                    // tell the source which sound to play
-        sourceBox[num].connect(ctx.destination);       // connect the source to the ctx's destination (the speakers)
-        sourceBox[num].start(0);                           // play the source now
-
-        
-    }
-
-
-    function stopSound(num) {
-        try {
-            sourceBox[num].disconnect(ctx.destination);
-        }
-        catch (e) {
-            console.log("Source", num, "is not playing")
-        }
-
+        var source = ctx.createBufferSource();  // creates a sound source
+        source.buffer = buffer;                 // tell the source which sound to play
+        source.connect(ctx.destination);        // connect the source to the ctx's destination (the speakers)
+        source.start(0);                        // play the source now
     }
 
 
 
 
 
-    bgmSource=document.getElementsByClassName("bgm");
 
+    // BGM 長音樂
+    
     var music = function(num){
         this.source = ctx.createMediaElementSource(bgmSource[num]);
         this.gainCode = ctx.createGain();
         this.lowPassCode = ctx.createBiquadFilter();
-                
         this.source.connect(this.gainCode).connect(this.lowPassCode).connect(ctx.destination);
 
         // option
         this.playingTag = 0   
-
         this.lowPassCode.type = 'lowpass'; 
         this.lowPassCode.frequency.value = 22050;
 
 
         this.play = function(){
             this.playingTag = 1
-            bgmSource[num].play()
-            this.gainCode.gain.cancelScheduledValues(ctx.currentTime)   
+            bgmSource[num].play() 
         }
+
+        this.fadePlay = function(gain=1,fadeTime=1,startGain=0){
+            this.play();
+            this.gainCode.gain.value = startGain
+            this.gainCode.gain.linearRampToValueAtTime(gain, ctx.currentTime+10);
+            
+        }
+
+
         this.stop = function(){
             this.playingTag = 0
             bgmSource[num].pause()
@@ -308,19 +302,21 @@
             this.lowPassCode.frequency.linearRampToValueAtTime(frequency,ctx.currentTime+fadeTime);
         }
     }
-    
-    var bgm01= new music(0)
-    var bgm02= new music(1)
-    var bgm03= new music(2)
+
+
+
+
+    bgmSource=document.getElementsByClassName("bgm");
+    var bgm = []
+    for(let i =0;i< bgmSource.length;i++ ){
+        bgm[i]= new music(i)
+    }
 
 
     function musicAllStop(){
-        bgm01.fadeStop()
-        bgm02.fadeStop()
-        bgm03.fadeStop()
-        // for(let i = 0;i<bgmSource.length;i++){
-        //     bgmSource[i].fadeStop()
-        // }        
+        for(let i =0;i< bgmSource.length;i++ ){
+        bgm[i].fadeStop()
+        }   
     }
     
 
@@ -329,19 +325,19 @@
     function torandomTest(e) {
         var keyID = e.code;
         if (keyID === 'KeyQ') {
-            bgm01.play()
+            bgm[1].play()
         };
         if (keyID === 'KeyW') {
-            bgm01.stop()           
+            bgm[1].stop()           
         };
         if (keyID === 'KeyE') {
-            bgm01.fadeStop()
+            bgm[1].fadeStop()
         };
         if (keyID === 'KeyR') {
-            bgm01.fadeLowPass(2000,-40,4)
+            bgm[1].fadeLowPass(2000,-40,4)
         }
         if (keyID === 'KeyT') {
-            bgm01.fadeLowPass(22050,0)
+            bgm[1].fadeLowPass(22050,0)
         }
         if (keyID === 'KeyY') {
             
@@ -392,13 +388,13 @@
         timerStart()
         QintoHTML()
         if (tagQList==1){
-            bgm02.play();
+            bgm[1].play();
         }
         else if(tagQList==2){
-            bgm03.play();
+            bgm[2].play();
         }
         else{
-            bgm01.play();
+            bgm[0].play();
         }
         
     };
