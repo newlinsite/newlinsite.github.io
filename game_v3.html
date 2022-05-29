@@ -167,6 +167,16 @@
                 else if (count > 15 && bgm[3].playingTag==1) {
                     bgm[3].stop();
                 }
+                if (count==30){
+                    playSound(5,2);
+                }
+                else if (count==20){
+                    playSound(5,2);
+                }
+                else if (count==10){
+                    playSound(5,2);
+                }
+                
             }
             else {
                 clearInterval(timerNum);
@@ -215,6 +225,7 @@
         "music/ui_04.wav",
         "music/out_logos---classic.aac",
         "music/x_laughing.mp3",
+        "music/out_BoardGamesDominoTilesFalling.aac"
     ];
 
     function loadSound(num) {
