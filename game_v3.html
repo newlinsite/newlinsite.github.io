@@ -170,7 +170,12 @@
                 clearInterval(timerNum);
                 container.setAttribute("class", "playing timeout");
                 timer.innerHTML = "OUT!";
-                playSound(3);               
+                if(answerCount<6){
+                    playSound(4,3);
+                }
+                else {
+                    playSound(3);  
+                }                            
                 musicAllStop();
                 // bgm[4].fadePlay(0.6,7,0);
             }
@@ -209,7 +214,7 @@
         "music/ui_02.mp3",
         "music/ui_04.wav",
         "music/out_logos---classic.aac",
-        "music/default.aac",
+        "music/x_laughing.mp3",
     ];
 
 
@@ -236,12 +241,14 @@
 
     //創一個的音源 與連接節點倒終點
 
-    function playSound(num) {
+    function playSound(num,gain=1) {
         buffer = bufferBox[num];
-        var source = ctx.createBufferSource();  // creates a sound source
-        source.buffer = buffer;                 // tell the source which sound to play
-        source.connect(ctx.destination);        // connect the source to the ctx's destination (the speakers)
-        source.start(0);                        // play the source now
+        var source = ctx.createBufferSource();                      // creates a sound source
+        var gainCode = ctx.createGain();
+        gainCode.gain.value =gain
+        source.buffer = buffer;                                   // tell the source which sound to play
+        source.connect(gainCode).connect(ctx.destination);        // connect the source to the ctx's destination (the speakers)
+        source.start(0);                                          // play the source now
     }
 
 
