@@ -56,7 +56,7 @@
     <audio loop class="bgm" src="music/bgm_NewCity.mp3"></audio>
 
 
-    
+
 </body>
 <script>
 
@@ -157,39 +157,39 @@
         var count = timerResetSec;
         timer.innerHTML = count;
         timerNum = setInterval(function () {
-    
-            if (count> 1) {              
+
+            if (count > 1) {
                 count = count - 1;
                 timer.innerHTML = `${count}`;
-                if (count < 15 && bgm[3].playingTag==0) {
-                    bgm[3].fadePlay(1,5,0.2);
+                if (count < 15 && bgm[3].playingTag == 0) {
+                    bgm[3].fadePlay(1, 5, 0.2);
                 }
-                else if (count > 15 && bgm[3].playingTag==1) {
+                else if (count > 15 && bgm[3].playingTag == 1) {
                     bgm[3].stop();
                 }
-                if (count==30){
-                    playSound(5,2);
+                if (count == 30) {
+                    playSound(5, 2);
                 }
-                else if (count==20){
-                    playSound(5,2);
+                else if (count == 20) {
+                    playSound(5, 2);
                 }
-                else if (count==10){
-                    playSound(5,2);
+                else if (count == 10) {
+                    playSound(5, 2);
                 }
-                
+
             }
             else {
                 clearInterval(timerNum);
                 container.setAttribute("class", "playing timeout");
                 timer.innerHTML = "OUT!";
-                if(answerCount<6){
-                    playSound(4,3);
+                if (answerCount < 6) {
+                    playSound(4, 3);
                 }
                 else {
-                    playSound(3);  
-                }                            
+                    playSound(3);
+                }
                 musicAllStop();
-                bgm[4].fadePlay(0.2,7,0);
+                bgm[4].fadePlay(0.2, 7, 0);
             }
         }, 1000);
     }
@@ -250,11 +250,11 @@
 
     //創一個的音源 與連接節點倒終點
 
-    function playSound(num,gain=1) {
+    function playSound(num, gain = 1) {
         buffer = bufferBox[num];
         var source = ctx.createBufferSource();                      // creates a sound source
         var gainCode = ctx.createGain();
-        gainCode.gain.value =gain
+        gainCode.gain.value = gain
         source.buffer = buffer;                                   // tell the source which sound to play
         source.connect(gainCode).connect(ctx.destination);        // connect the source to the ctx's destination (the speakers)
         source.start(0);                                          // play the source now
@@ -266,71 +266,71 @@
 
 
     // BGM 長音樂
-    
-    var music = function(num){
+
+    var music = function (num) {
         this.source = ctx.createMediaElementSource(bgmSource[num]);
         this.gainCode = ctx.createGain();
         this.lowPassCode = ctx.createBiquadFilter();
         this.source.connect(this.gainCode).connect(this.lowPassCode).connect(ctx.destination);
 
         // option
-        this.playingTag = 0   
-        this.lowPassCode.type = 'lowpass'; 
+        this.playingTag = 0
+        this.lowPassCode.type = 'lowpass';
         this.lowPassCode.frequency.value = 22050;
 
         // function
-        this.play = function(){
+        this.play = function () {
             this.playingTag = 1
-            bgmSource[num].play() 
+            bgmSource[num].play()
         }
-        this.fadePlay = function(gain=1,fadeTime=1,startGain=0){
+        this.fadePlay = function (gain = 1, fadeTime = 1, startGain = 0) {
             this.play();
             this.gainCode.gain.value = startGain
-            this.gainCode.gain.linearRampToValueAtTime(gain, ctx.currentTime+10);
+            this.gainCode.gain.linearRampToValueAtTime(gain, ctx.currentTime + 10);
         }
-        this.stop = function(){
+        this.stop = function () {
             this.playingTag = 0
             bgmSource[num].pause()
             bgmSource[num].currentTime = 0;
         }
-        this.fadeStop = function(fadeTime=1){          
-            if(this.playingTag == 1){
-                this.playingTag = 0               
+        this.fadeStop = function (fadeTime = 1) {
+            if (this.playingTag == 1) {
+                this.playingTag = 0
                 let tempGain = this.gainCode.gain.value
-                this.gainCode.gain.linearRampToValueAtTime(0, ctx.currentTime+fadeTime);
-                setTimeout(() => {               
-                    if(this.playingTag == 1){
-                        this.gainCode.gain.linearRampToValueAtTime(tempGain, ctx.currentTime+0.5);
+                this.gainCode.gain.linearRampToValueAtTime(0, ctx.currentTime + fadeTime);
+                setTimeout(() => {
+                    if (this.playingTag == 1) {
+                        this.gainCode.gain.linearRampToValueAtTime(tempGain, ctx.currentTime + 0.5);
                         console.log("replay")
                     }
                     else {
                         this.stop()
                         this.gainCode.gain.value = tempGain
-                    }                   
-                }, fadeTime*1000+100); 
+                    }
+                }, fadeTime * 1000 + 100);
             }
         }
-        this.fadeLowPass=function(frequency=22050,gain=-40,fadeTime=1){
-            this.lowPassCode.frequency.linearRampToValueAtTime(frequency,ctx.currentTime+fadeTime);
+        this.fadeLowPass = function (frequency = 22050, gain = -40, fadeTime = 1) {
+            this.lowPassCode.frequency.linearRampToValueAtTime(frequency, ctx.currentTime + fadeTime);
         }
     }
 
 
 
 
-    bgmSource=document.getElementsByClassName("bgm");
+    bgmSource = document.getElementsByClassName("bgm");
     var bgm = []
-    for(let i =0;i< bgmSource.length;i++ ){
-        bgm[i]= new music(i)
+    for (let i = 0; i < bgmSource.length; i++) {
+        bgm[i] = new music(i)
     }
 
 
-    function musicAllStop(){
-        for(let i =0;i< bgmSource.length;i++ ){
-        bgm[i].fadeStop()
-        }   
+    function musicAllStop() {
+        for (let i = 0; i < bgmSource.length; i++) {
+            bgm[i].fadeStop()
+        }
     }
-    
+
 
     // 測試鍵盤快捷鍵
     window.addEventListener("keydown", torandomTest, false);
@@ -340,19 +340,19 @@
             bgm[1].play()
         };
         if (keyID === 'KeyW') {
-            bgm[1].stop()           
+            bgm[1].stop()
         };
         if (keyID === 'KeyE') {
             bgm[1].fadeStop()
         };
         if (keyID === 'KeyR') {
-            bgm[1].fadeLowPass(2000,-40,4)
+            bgm[1].fadeLowPass(2000, -40, 4)
         }
         if (keyID === 'KeyT') {
-            bgm[1].fadeLowPass(22050,0)
+            bgm[1].fadeLowPass(22050, 0)
         }
         if (keyID === 'KeyY') {
-            
+
         }
 
     }
@@ -399,16 +399,16 @@
         hotkeyBox.innerHTML = "Press N + 1 , B + 0 , Press H to back Home";
         timerStart()
         QintoHTML()
-        if (tagQList==1){
+        if (tagQList == 1) {
             bgm[1].play();
         }
-        else if(tagQList==2){
+        else if (tagQList == 2) {
             bgm[2].play();
         }
-        else{
+        else {
             bgm[0].play();
         }
-        
+
     };
     function to_home() {
         container.setAttribute("class", "home");
@@ -421,9 +421,9 @@
         musicAllStop()
     }
 
-    function nextQ(score=1,music=1) {
+    function nextQ(score = 1, music = 1) {
         QintoHTML();
-        answerCount=answerCount+score
+        answerCount = answerCount + score
         answerCountbox.innerHTML = answerCount;
         // 換題重設秒數，且減一秒 (給快問快答使用)
         if (gameType == 1) {
@@ -559,8 +559,8 @@
     home_btn.addEventListener('click', to_home, false);
     game_name.addEventListener('click', to_start, false);
     swich_btn.addEventListener('click', gameTypeChange, false);
-    next_btn[0].addEventListener('click', function(){nextQ(0,2)}, false);
-    next_btn[1].addEventListener('click', function(){nextQ()}, false);
+    next_btn[0].addEventListener('click', function () { nextQ(0, 2) }, false);
+    next_btn[1].addEventListener('click', function () { nextQ() }, false);
     // screen_click.addEventListener('click', function(){nextQ()}, false);
 
 
@@ -568,7 +568,7 @@
     // 選取時間按鈕狀態 
     function time_btnActiver(x) {
         for (let i = 0; i < 5; i++) {
-            time_btn[i].classList.remove("active");          
+            time_btn[i].classList.remove("active");
         }
         time_btn[x].classList.add("active");
         playSound(0)
@@ -609,7 +609,7 @@
             nextQ()
         };
         if (keyID === 'KeyB') {
-            nextQ(0,2)
+            nextQ(0, 2)
         };
         if (keyID === 'KeyH') {
             to_home()
