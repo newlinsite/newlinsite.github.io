@@ -121,9 +121,8 @@
         const reader = new FileReader();
         reader.onload = function fileReadCompleted() {
             // 檔案問題分割 → 重新計算題目數 → 輸出題目
-            console.log(reader.result);
             Qlist = reader.result.split("\n");
-            Qlist_len = Qlist.length;
+            Qlisting = Qlist
             QintoHTML()
         };
         reader.readAsText(this.files[0]);
