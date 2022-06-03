@@ -34,10 +34,13 @@
                 <div class="Qlist_btn flex-c">ATENer</div>
             </div>
             <div class="question_input_box">
-                <div class="input_btn block">Upload file</div>
+                <div class="input_btn">Upload file</div>
                 <input type="file" id="fileInput">
-                <div class="input_btn block">image</div>
-                <input type="file" id="imageInput" name="file" multiple>
+            </div>
+            <div class="question_input_box sm ">
+                <div class="input_btn">image</div>
+                <div class="side_btn" id="bg_clear">clear</div>
+                <input type="file" id="imageInput" name="file">
             </div>
             <p>Please upload .txt and a line is a question</p>
         </div>
@@ -524,22 +527,22 @@
     // 背景切換功能
     // ******************************
 
-    // container.style="background-image: url(picture/game/002.jpg);"
-
-    const myImage = document.getElementById('imageInput')
-
+    var myImage = document.getElementById('imageInput')
     myImage.addEventListener('change', function(e) {
-        console.log("0")
-        const file = e.target.files[0]
-        // const img = document.querySelector('#img123')
-        // console.log(img)
-        console.log(file)
-        console.log(URL.createObjectURL(file))
-        // img.src = URL.createObjectURL(file)
-        
+        var file = e.target.files[0]
         container.style="background-image: url("+URL.createObjectURL(file)+");"
     })
 
+    var bgClear = document.getElementById('bg_clear')
+    bgClear.addEventListener('click', function(e) {
+        container.style=""
+    })
+
+
+
+    // ******************************
+    // 其他功能
+    // ******************************
 
 
     // 錯誤提示
