@@ -336,9 +336,9 @@
     }
 
 
-    function musicAllStop() {
+    function musicAllStop(fadeTime = 1) {
         for (let i = 0; i < bgmSource.length; i++) {
-            bgm[i].fadeStop()
+            bgm[i].fadeStop(fadeTime)
         }
     }
 
@@ -450,8 +450,8 @@
         playSound(music)
 
         //小當家彩蛋
-        if(tagQList == 6 && answerCount>10){
-            musicAllStop()
+        if(tagQList == 6 && answerCount==16){
+            musicAllStop(3)
             bgm[6].play();
             
         }
@@ -624,7 +624,7 @@
     function setQlist_btn() {
         for (let i = 0; i < Qlist_btn.length; i++) {
             Qlist_btn[i].addEventListener('click', function () {
-                 changeQList(Qlist_0s[i]);
+                changeQList(Qlist_0s[i]);
                 playSound(0)
                 tagQList = i
             }, false);
