@@ -433,6 +433,7 @@
         toTimerResetSec(timerResetSecList[TimerResetNum])   // 重設秒數
         Qlisting = Qlist                                    // 重設執行遊戲的問題集
         musicAllStop()
+        answerCountbox.classList.remove("ch");              // 除掉小當家彩蛋
     }
 
     function nextQ(score = 1, music = 1) {
@@ -453,7 +454,7 @@
         if(tagQList == 6 && answerCount==16){
             musicAllStop(3)
             bgm[6].play();
-            
+            answerCountbox.classList.add("ch");
         }
     }
 

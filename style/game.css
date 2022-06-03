@@ -391,6 +391,14 @@
      margin-top: 24px;
      transition: 1s ease-in;
  }
+ /* 小當家彩蛋 */
+ #answer_count.ch{
+    transition: 4s ease-out;
+    font-size: 50px !important;
+    font-weight: 600 !important;
+    color:rgb(255, 186, 95) !important;
+ }
+
 
 
  #answer_count::before,
