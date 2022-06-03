@@ -63,6 +63,9 @@
     <audio loop class="bgm" src="music/bgm_greensleeves.mp3"></audio>
     <audio loop class="bgm" src="music/out_clock-sound.mp3"></audio>
     <audio loop class="bgm" src="music/bgm_NewCity.mp3"></audio>
+    <audio loop class="bgm" src="music/ch_bgm.mp3"></audio>
+    <audio loop class="bgm" src="music/ch_good.mp3"></audio>
+    
 
 
 
@@ -407,11 +410,14 @@
         hotkeyBox.innerHTML = "Press N + 1 , B + 0 , Press H to back Home";
         timerStart()
         QintoHTML()
-        if (tagQList == 1) {
+        if (tagQList == 1 && tagQList == 2) {
             bgm[1].play();
         }
-        else if (tagQList == 2) {
+        else if (tagQList == 3) {
             bgm[2].play();
+        }
+        else if (tagQList == 6) {
+            bgm[5].play();
         }
         else {
             bgm[0].play();
@@ -442,6 +448,13 @@
             }
         }
         playSound(music)
+
+        //小當家彩蛋
+        if(tagQList == 6 && answerCount>10){
+            musicAllStop()
+            bgm[6].play();
+            
+        }
     }
 
 
