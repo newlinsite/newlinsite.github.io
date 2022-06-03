@@ -36,6 +36,8 @@
             <div class="question_input_box">
                 <div class="input_btn block">Upload file</div>
                 <input type="file" id="fileInput">
+                <div class="input_btn block">image</div>
+                <input type="file" id="imageInput" name="file" multiple>
             </div>
             <p>Please upload .txt and a line is a question</p>
         </div>
@@ -517,6 +519,26 @@
             toTimerResetSec(timerResetSecList[TimerResetNum])
         }
     }
+
+    // ******************************
+    // 背景切換功能
+    // ******************************
+
+    // container.style="background-image: url(picture/game/002.jpg);"
+
+    const myImage = document.getElementById('imageInput')
+
+    myImage.addEventListener('change', function(e) {
+        console.log("0")
+        const file = e.target.files[0]
+        // const img = document.querySelector('#img123')
+        // console.log(img)
+        console.log(file)
+        console.log(URL.createObjectURL(file))
+        // img.src = URL.createObjectURL(file)
+        
+        container.style="background-image: url("+URL.createObjectURL(file)+");"
+    })
 
 
 
