@@ -25,8 +25,12 @@
             <div class="Qlist_btns flex-c">
                 <div class="Qlist_btn flex-c">Default</div>
                 <div class="Qlist_btn flex-c">Film AFI</div>
+                <div class="Qlist_btn flex-c">Film 2000</div>
                 <div class="Qlist_btn flex-c">Taiwan Food</div>
+                <div class="Qlist_btn flex-c">Taiwan Town</div>
                 <div class="Qlist_btn flex-c">JP Drama</div>
+                <div class="Qlist_btn flex-c">ちゅうかいちばん！</div>
+                
                 <div class="Qlist_btn flex-c">ATENer</div>
             </div>
             <div class="question_input_box">
@@ -251,7 +255,7 @@
 
     function playSound(num, gain = 1) {
         buffer = bufferBox[num];
-        var source = ctx.createBufferSource();                      // creates a sound source
+        var source = ctx.createBufferSource();                    // creates a sound source
         var gainCode = ctx.createGain();
         gainCode.gain.value = gain
         source.buffer = buffer;                                   // tell the source which sound to play
@@ -582,7 +586,7 @@
     function setQlist_btn() {
         for (let i = 0; i < Qlist_btn.length; i++) {
             Qlist_btn[i].addEventListener('click', function () {
-                changeQList(Qlist_0s[i]);
+                 changeQList(Qlist_0s[i]);
                 playSound(0)
                 tagQList = i
             }, false);
