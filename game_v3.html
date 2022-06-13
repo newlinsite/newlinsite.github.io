@@ -25,13 +25,22 @@
             <div class="Qlist_btns flex-c">
                 <div class="Qlist_btn flex-c">Default</div>
                 <div class="Qlist_btn flex-c">Film AFI</div>
+                <div class="Qlist_btn flex-c">Film 2000</div>
                 <div class="Qlist_btn flex-c">Taiwan Food</div>
+                <div class="Qlist_btn flex-c">Taiwan Town</div>
                 <div class="Qlist_btn flex-c">JP Drama</div>
+                <div class="Qlist_btn flex-c">ちゅうかいちばん！</div>
+                
                 <div class="Qlist_btn flex-c">ATENer</div>
             </div>
             <div class="question_input_box">
-                <div class="input_btn block">Upload file</div>
+                <div class="input_btn">Upload file</div>
                 <input type="file" id="fileInput">
+            </div>
+            <div class="question_input_box sm ">
+                <div class="input_btn">image</div>
+                <div class="side_btn" id="bg_clear">clear</div>
+                <input type="file" id="imageInput" name="file">
             </div>
             <p>Please upload .txt and a line is a question</p>
         </div>
@@ -54,6 +63,9 @@
     <audio loop class="bgm" src="music/bgm_greensleeves.mp3"></audio>
     <audio loop class="bgm" src="music/out_clock-sound.mp3"></audio>
     <audio loop class="bgm" src="music/bgm_NewCity.mp3"></audio>
+    <audio loop class="bgm" src="music/ch_bgm.mp3"></audio>
+    <audio loop class="bgm" src="music/ch_good.mp3"></audio>
+    
 
 
 
@@ -121,9 +133,8 @@
         const reader = new FileReader();
         reader.onload = function fileReadCompleted() {
             // 檔案問題分割 → 重新計算題目數 → 輸出題目
-            console.log(reader.result);
             Qlist = reader.result.split("\n");
-            Qlist_len = Qlist.length;
+            Qlisting = Qlist
             QintoHTML()
         };
         reader.readAsText(this.files[0]);
@@ -252,7 +263,7 @@
 
     function playSound(num, gain = 1) {
         buffer = bufferBox[num];
-        var source = ctx.createBufferSource();                      // creates a sound source
+        var source = ctx.createBufferSource();                    // creates a sound source
         var gainCode = ctx.createGain();
         gainCode.gain.value = gain
         source.buffer = buffer;                                   // tell the source which sound to play
@@ -325,9 +336,9 @@
     }
 
 
-    function musicAllStop() {
+    function musicAllStop(fadeTime = 1) {
         for (let i = 0; i < bgmSource.length; i++) {
-            bgm[i].fadeStop()
+            bgm[i].fadeStop(fadeTime)
         }
     }
 
@@ -399,11 +410,14 @@
         hotkeyBox.innerHTML = "Press N + 1 , B + 0 , Press H to back Home";
         timerStart()
         QintoHTML()
-        if (tagQList == 1) {
-            bgm[1].play();
+        if (tagQList == 1 || tagQList == 2) {
+            console.log(11)
         }
-        else if (tagQList == 2) {
+        else if (tagQList == 3) {
             bgm[2].play();
+        }
+        else if (tagQList == 6) {
+            bgm[5].play();
         }
         else {
             bgm[0].play();
@@ -419,6 +433,7 @@
         toTimerResetSec(timerResetSecList[TimerResetNum])   // 重設秒數
         Qlisting = Qlist                                    // 重設執行遊戲的問題集
         musicAllStop()
+        answerCountbox.classList.remove("ch");              // 除掉小當家彩蛋
     }
 
     function nextQ(score = 1, music = 1) {
@@ -434,6 +449,13 @@
             }
         }
         playSound(music)
+
+        //小當家彩蛋
+        if(tagQList == 6 && answerCount==16){
+            musicAllStop(3)
+            bgm[6].play();
+            answerCountbox.classList.add("ch");
+        }
     }
 
 
@@ -515,6 +537,26 @@
         }
     }
 
+    // ******************************
+    // 背景切換功能
+    // ******************************
+
+    var myImage = document.getElementById('imageInput')
+    myImage.addEventListener('change', function(e) {
+        var file = e.target.files[0]
+        container.style="background-image: url("+URL.createObjectURL(file)+");"
+    })
+
+    var bgClear = document.getElementById('bg_clear')
+    bgClear.addEventListener('click', function(e) {
+        container.style=""
+    })
+
+
+
+    // ******************************
+    // 其他功能
+    // ******************************
 
 
     // 錯誤提示
