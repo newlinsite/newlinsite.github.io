@@ -70,86 +70,99 @@
 
 
 
-
     var osc = function(){
-          // Create 
-        
+        // Create 
+        console.log("create")
         
         // this.gainCode.gain.value = 0 // 音量
-
-        this.ADSR={
-            attack : 0.01,
-            delay : 0.3,
-            sustain : 0.5,
-            release : 0.1
-        }
-
  
 
-        this.compressor = ctx.createDynamicsCompressor();
-        this.compressor.threshold.setValueAtTime(-50, ctx.currentTime);
-        this.compressor.knee.setValueAtTime(40, ctx.currentTime);
-        this.compressor.ratio.setValueAtTime(12, ctx.currentTime);
-        this.compressor.attack.setValueAtTime(0, ctx.currentTime);
-        this.compressor.release.setValueAtTime(0.25, ctx.currentTime);
-
-
-        this.compressor.connect(ctx.destination);       
-        console.log("create")
+        let pressTime = 1;
+        
         this.ADSR={
             attack : 0.01,
             delay : 0.3,
             sustain : 0.5,
-            release : 1
+            release : 2
+        }
+        let release = this.ADSR.release
+
+        this.newOsc=function(
+                frequency,
+                type = 'sine',
+                detune=0,
+                gain=1,
+                filter="lowpass",
+                fValue=20000,
+                oscTime = pressTime + release){  
+            // create osc
+            this.oscSource = ctx.createOscillator()
+            this.oscSource.type = type
+            this.oscSource.frequency.value = frequency
+            this.oscSource.detune.value = 0 // 解諧
+            
+            // filter
+            this.lowPassCode = ctx.createBiquadFilter();
+            this.lowPassCode.type = filter
+            this.lowPassCode.frequency.value = fValue;
+            
+            // gain
+            this.gainCode = ctx.createGain()
+            this.gainCode.value = gain
+            // console.log(this.gainCode.value)
+
+            //connect and play
+            this.code = this.oscSource.connect(this.lowPassCode).connect(this.gainCode)
+            
+            
+            this.oscSource.start(ctx.currentTime)
+            this.oscSource.stop(ctx.currentTime+oscTime)
         }
 
 
-        this.play = function (frequency) {
-            console.log(frequency)
-            let pressTime = 1;
 
-            this.gainCode = ctx.createGain()
-            this.oscSource = ctx.createOscillator()
-            this.oscSource.type = 'sine' // 正弦波
-            this.oscSource.frequency.value = frequency// A4 頻率
-            this.oscSource.detune.value = 0 // 解諧
+
+
         
-
-            this.gainCode02 = ctx.createGain()
-            this.gainCode02.gain.value = 0.1
-
-            this.lowPassCode = ctx.createBiquadFilter();
-            this.lowPassCode.type = 'lowpass';
-            this.lowPassCode.frequency.value = 1000;
-
-
-            this.oscSource02 = ctx.createOscillator()
-            this.oscSource02.type = 'sawtooth' // 正弦波
-            this.oscSource02.frequency.value = frequency// A4 頻率
-            this.oscSource02.detune.value = 0 // 解諧
+        this.play = function (frequency) {
             
+            
+            console.log(frequency)                    
+
+            a01 = new this.newOsc(frequency)
+            a02 = new this.newOsc(frequency,"sawtooth",20,0.1,"lowpass",1500)
+            console.log(a01.gainCode.value)
 
 
+            //ASDR
+            
+            this.ASDRgainCode = ctx.createGain()
             //Attack
-            this.gainCode.gain.value = 0
-            this.gainCode.gain.linearRampToValueAtTime(1, ctx.currentTime + this.ADSR.attack);
-            
+            this.ASDRgainCode.gain.value = 0
+            this.ASDRgainCode.gain.linearRampToValueAtTime(1, ctx.currentTime + this.ADSR.attack);           
             //Decay
-
-            this.gainCode.gain.linearRampToValueAtTime(this.ADSR.sustain, ctx.currentTime + this.ADSR.attack + this.ADSR.delay);
-
+            this.ASDRgainCode.gain.linearRampToValueAtTime(this.ADSR.sustain, ctx.currentTime + this.ADSR.attack + this.ADSR.delay);
             //Release
+            this.ASDRgainCode.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + this.ADSR.release);
+           
 
-            this.gainCode.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + this.ADSR.release);
 
-            
-            this.oscSource02.connect(this.lowPassCode).connect(this.gainCode02).connect(this.gainCode)
-            this.oscSource.connect(this.gainCode).connect(this.compressor)
+            // last compressor
+            this.compressor = ctx.createDynamicsCompressor();
+            this.compressor.threshold.setValueAtTime(-50, ctx.currentTime);
+            this.compressor.knee.setValueAtTime(40, ctx.currentTime);
+            this.compressor.ratio.setValueAtTime(12, ctx.currentTime);
+            this.compressor.attack.setValueAtTime(0, ctx.currentTime);
+            this.compressor.release.setValueAtTime(0.25, ctx.currentTime);
 
-            this.oscSource.start(ctx.currentTime)
-            this.oscSource.stop(ctx.currentTime+pressTime+this.ADSR.release)
-            this.oscSource02.start(ctx.currentTime)
-            this.oscSource02.stop(ctx.currentTime+pressTime+this.ADSR.release)
+
+
+            // last Connect
+            a01.code.connect(this.ASDRgainCode)
+            a02.code.connect(this.ASDRgainCode)
+                
+            this.ASDRgainCode.connect(this.compressor).connect(ctx.destination); 
+
         }
     }
 
@@ -196,115 +209,38 @@
 
 
 
+            
+
+            // this.a01.connect(this.a01.lowPassCode).connect(this.a01.gainCode).connect(this.ASDRgainCode)
+            
+            // this.gainCode = ctx.createGain()
+            // this.oscSource = ctx.createOscillator()
+            // this.oscSource.type = 'sine' // 正弦波
+            // this.oscSource.frequency.value = frequency// A4 頻率
+            // this.oscSource.detune.value = 0 // 解諧
+        
+
+            // this.gainCode02 = ctx.createGain()
+            // this.gainCode02.gain.value = 0
+
+            // this.lowPassCode = ctx.createBiquadFilter();
+            // this.lowPassCode.type = 'lowpass';
+            // this.lowPassCode.frequency.value = 1000;
 
 
-    // Audio Effect 短音效
-
-    // var bufferBox = [];
-    // var audioUrlList = [
-    //     "music/ui_01.mp3",
-    //     "music/ui_02.mp3",
-    //     "music/ui_04.wav",
-    //     "music/out_logos---classic.aac",
-    //     "music/x_laughing.mp3",
-    //     "music/out_BoardGamesDominoTilesFalling.aac"
-    // ];
-
-    // function loadSound(num) {
-    //     url = audioUrlList[num]
-    //     var request = new XMLHttpRequest();
-    //     request.open('GET', url, true);
-    //     request.responseType = 'arraybuffer';
-
-    //     // Decode asynchronously
-    //     request.onload = function () {
-    //         ctx.decodeAudioData(request.response, function (buffer) {
-    //             bufferBox[num] = buffer;               // 將 buffer 倒入清單管理
-    //         }, onError);
-    //     }
-    //     request.send();
-    // }
-
-    // // 將清單內的音樂載入Buffer
-    // for (let i = 0; i < audioUrlList.length; i++) {
-    //     loadSound(i)
-    // }
-
-    // //創一個的音源 與連接節點倒終點
-
-    // function playSound(num,gain=1) {
-    //     buffer = bufferBox[num];
-    //     var source = ctx.createBufferSource();                      // creates a sound source
-    //     var gainCode = ctx.createGain();
-    //     gainCode.gain.value =gain
-    //     source.buffer = buffer;                                   // tell the source which sound to play
-    //     source.connect(gainCode).connect(ctx.destination);        // connect the source to the ctx's destination (the speakers)
-    //     source.start(0);                                          // play the source now
-    // }
+            // this.oscSource02 = ctx.createOscillator()
+            // this.oscSource02.type = 'sawtooth' 
+            // this.oscSource02.frequency.value = frequency// A4 頻率
+            // this.oscSource02.detune.value = 0 // 解諧
+            
 
 
+            // connect(this.ASDRgainCode).connect(this.compressor)
 
-
-
-
-
-
-
-
-
-
-    // // BGM 長音樂
-    
-    // var music = function(num){
-    //     this.source = ctx.createMediaElementSource(bgmSource[num]);
-    //     this.gainCode = ctx.createGain();
-    //     this.lowPassCode = ctx.createBiquadFilter();
-    //     this.source.connect(this.gainCode).connect(this.lowPassCode).connect(ctx.destination);
-
-    //     // option
-    //     this.playingTag = 0   
-    //     this.lowPassCode.type = 'lowpass'; 
-    //     this.lowPassCode.frequency.value = 22050;
-
-    //     // function
-    //     this.play = function(){
-    //         this.playingTag = 1
-    //         bgmSource[num].play() 
-    //     }
-    //     this.fadePlay = function(gain=1,fadeTime=1,startGain=0){
-    //         this.play();
-    //         this.gainCode.gain.value = startGain
-    //         this.gainCode.gain.linearRampToValueAtTime(gain, ctx.currentTime+10);
-    //     }
-    //     this.stop = function(){
-    //         this.playingTag = 0
-    //         bgmSource[num].pause()
-    //         bgmSource[num].currentTime = 0;
-    //     }
-    //     this.fadeStop = function(fadeTime=1){          
-    //         if(this.playingTag == 1){
-    //             this.playingTag = 0               
-    //             let tempGain = this.gainCode.gain.value
-    //             this.gainCode.gain.linearRampToValueAtTime(0, ctx.currentTime+fadeTime);
-    //             setTimeout(() => {               
-    //                 if(this.playingTag == 1){
-    //                     this.gainCode.gain.linearRampToValueAtTime(tempGain, ctx.currentTime+0.5);
-    //                     console.log("replay")
-    //                 }
-    //                 else {
-    //                     this.stop()
-    //                     this.gainCode.gain.value = tempGain
-    //                 }                   
-    //             }, fadeTime*1000+100); 
-    //         }
-    //     }
-    //     this.fadeLowPass=function(frequency=22050,gain=-40,fadeTime=1){
-    //         this.lowPassCode.frequency.linearRampToValueAtTime(frequency,ctx.currentTime+fadeTime);
-    //     }
-    // }
-
-
-
+            // this.oscSource.start(ctx.currentTime)
+            // this.oscSource.stop(ctx.currentTime+pressTime+this.ADSR.release)
+            // this.oscSource02.start(ctx.currentTime)
+            // this.oscSource02.stop(ctx.currentTime+pressTime+this.ADSR.release)
 
 
 </script>
