@@ -23,23 +23,15 @@
                 <div class="time_btn flex-c"></div>
             </div>
             <div class="Qlist_btns flex-c">
-                <div class="Qlist_btn flex-c">Default</div>
-                <div class="Qlist_btn flex-c">Film AFI</div>
-                <div class="Qlist_btn flex-c">Film 2000</div>
-                <div class="Qlist_btn flex-c">Taiwan Food</div>
-                <div class="Qlist_btn flex-c">Taiwan Town</div>
-                <div class="Qlist_btn flex-c">JP Drama</div>
-                <div class="Qlist_btn flex-c">ちゅうかいちばん！</div>
-                
-                <div class="Qlist_btn flex-c">ATENer</div>
+
             </div>
             <div class="question_input_box">
                 <div class="input_btn">Upload file</div>
                 <input type="file" id="fileInput">
             </div>
             <div class="question_input_box sm ">
-                <div class="input_btn">image</div>
-                <div class="side_btn" id="bg_clear">clear</div>
+                <div class="input_btn">Background</div>
+                <div class="side_btn" id="bg_clear">Clear</div>
                 <input type="file" id="imageInput" name="file">
             </div>
             <p>Please upload .txt and a line is a question</p>
@@ -65,8 +57,6 @@
     <audio loop class="bgm" src="music/bgm_NewCity.mp3"></audio>
     <audio loop class="bgm" src="music/ch_bgm.mp3"></audio>
     <audio loop class="bgm" src="music/ch_good.mp3"></audio>
-    
-
 
 
 </body>
@@ -444,14 +434,15 @@
         if (gameType == 1) {
             timerStop()
             timerStart()
-            if (timerResetSec > 5) {
+            // 特定秒數以上每題減一秒
+            if (timerResetSec > 3) {
                 timerResetSec = timerResetSec - 1
             }
         }
         playSound(music)
 
         //小當家彩蛋
-        if(tagQList == 6 && answerCount==16){
+        if (tagQList == 6 && answerCount == 16) {
             musicAllStop(3)
             bgm[6].play();
             answerCountbox.classList.add("ch");
@@ -482,9 +473,12 @@
     // 設定秒數按鈕的執行動作
     function setTime_btns() {
         for (let i = 0; i < time_btn.length; i++) {
-            time_btn[i].addEventListener('click', function () { toTimerResetSec(timerResetSecList[i]); time_btnActiver(i); TimerResetNum = i; }, false);
+            time_btn[i].addEventListener('click', function () {
+                toTimerResetSec(timerResetSecList[i]);
+                time_btnActiver(i);
+                TimerResetNum = i;
+            }, false);
             time_btn[i].innerHTML = timerResetSecList[i];
-
         }
     }
 
@@ -542,14 +536,14 @@
     // ******************************
 
     var myImage = document.getElementById('imageInput')
-    myImage.addEventListener('change', function(e) {
+    myImage.addEventListener('change', function (e) {
         var file = e.target.files[0]
-        container.style="background-image: url("+URL.createObjectURL(file)+");"
+        container.style = "background-image: url(" + URL.createObjectURL(file) + ");"
     })
 
     var bgClear = document.getElementById('bg_clear')
-    bgClear.addEventListener('click', function(e) {
-        container.style=""
+    bgClear.addEventListener('click', function (e) {
+        container.style = ""
     })
 
 
@@ -593,7 +587,8 @@
     var screen_click = document.getElementById("screen_click")
     var game_name = document.getElementById("game_name")
     var swich_btn = document.getElementById("swich_btn")
-    var Qlist_btn = document.getElementsByClassName("Qlist_btn")
+    var Qlist_btns = document.getElementsByClassName("Qlist_btns")
+    // var Qlist_btn = document.getElementsByClassName("Qlist_btn")
     var next_btn = document.getElementsByClassName("next_btn")
 
 
@@ -603,7 +598,7 @@
     swich_btn.addEventListener('click', gameTypeChange, false);
     next_btn[0].addEventListener('click', function () { nextQ(0, 2) }, false);
     next_btn[1].addEventListener('click', function () { nextQ() }, false);
-    // screen_click.addEventListener('click', function(){nextQ()}, false);
+
 
 
 
@@ -617,12 +612,19 @@
     }
 
 
-
-
-
     // 設定換題目組按鈕的執行動作
     var tagQList = 0
-    function setQlist_btn() {
+    function setQlist_btn(ListNum = 0) {
+        //創造按鈕
+        if (ListNum = 1) {
+            Qlist_btns[0].innerHTML = '<div class="Qlist_btn flex-c">default</div><div class="Qlist_btn flex-c">Film AFI</div><div class="Qlist_btn flex-c">Film 2000</div><div class="Qlist_btn flex-c">Taiwan Food</div><div class="Qlist_btn flex-c">Taiwan Town</div><div class="Qlist_btn flex-c">JP Drama</div><div class="Qlist_btn flex-c">ちゅうかいちばん！</div><div class="Qlist_btn flex-c">ATENer</div><div class="Qlist_btn flex-c">Cora</div>'
+        }
+        else {
+            Qlist_btns[0].innerHTML = '<div class="Qlist_btn flex-c">default</div><div class="Qlist_btn flex-c">Cora</div>'
+        }
+        var Qlist_btn = document.getElementsByClassName("Qlist_btn")
+
+        //倒入切換問題功能
         for (let i = 0; i < Qlist_btn.length; i++) {
             Qlist_btn[i].addEventListener('click', function () {
                 changeQList(Qlist_0s[i]);
