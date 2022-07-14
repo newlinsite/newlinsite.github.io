@@ -1150,6 +1150,39 @@ var Qlist_1_cora = [
 
 
 // 此 List 名稱需與上方實際名稱一致，然後記得去 HTML 新增按鈕
-var Qlist_0s = [Qlist_0_00, Qlist_0_film_afi, Qlist_0_file_2000, Qlist_0_tw_food, Qlist_0_tw_town, Qlist_0_jpdrama, Qlist_0_chuka, Qlist_0_aten, Qlist_0_cora]
-var Qlist_1s = [Qlist_1_01, Qlist_1_cora]
+var Qlist_0s = [
+    Qlist_0_00,
+    Qlist_0_film_afi,
+    Qlist_0_file_2000,
+    Qlist_0_tw_food,
+    Qlist_0_tw_town,
+    Qlist_0_jpdrama,
+    Qlist_0_chuka,
+    Qlist_0_aten,
+    Qlist_0_cora
+]
+var Qlist_0s_Name = [
+    "default",
+    "Film AFI",
+    "Film 2000",
+    "Taiwan Food",
+    "Taiwan Town",
+    "JP Drama",
+    "ちゅうかいちばん！",
+    "ATENer",
+    "Cora"
+]
+
+
+var Qlist_1s_Name = [
+    "default",
+    "Cora"
+]
+
+
+
+var Qlist_1s = [
+    Qlist_1_01,
+    Qlist_1_cora
+]
 

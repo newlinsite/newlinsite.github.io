@@ -158,7 +158,6 @@
         var count = timerResetSec;
         timer.innerHTML = count;
         timerNum = setInterval(function () {
-
             if (count > 1) {
                 count = count - 1;
                 timer.innerHTML = `${count}`;
@@ -184,7 +183,7 @@
                 container.setAttribute("class", "playing timeout");
                 timer.innerHTML = "OUT!";
                 if (answerCount < 6) {
-                    playSound(4, 3);
+                    playSound(4, 12);
                 }
                 else {
                     playSound(3);
@@ -438,6 +437,7 @@
             if (timerResetSec > 3) {
                 timerResetSec = timerResetSec - 1
             }
+            container.setAttribute("class", "playing");
         }
         playSound(music)
 
@@ -473,11 +473,11 @@
     // 設定秒數按鈕的執行動作
     function setTime_btns() {
         for (let i = 0; i < time_btn.length; i++) {
-            time_btn[i].addEventListener('click', function () {
+            time_btn[i].onclick = function () {
                 toTimerResetSec(timerResetSecList[i]);
                 time_btnActiver(i);
                 TimerResetNum = i;
-            }, false);
+            }
             time_btn[i].innerHTML = timerResetSecList[i];
         }
     }
@@ -523,13 +523,13 @@
             gameType = 1;
             setGameType()
             toTimerResetSec(timerResetSecList[TimerResetNum])
-            // setQlist_btn(1)
+            setQlist_btn(1)
         }
         else {
             gameType = 0;
             setGameType()
             toTimerResetSec(timerResetSecList[TimerResetNum])
-            // setQlist_btn()
+            setQlist_btn()
         }
     }
 
@@ -617,20 +617,24 @@
     // 設定換題目組按鈕的執行動作
     var tagQList = 0
     function setQlist_btn(listNum = 0) {
-        //創造按鈕
-        if (listNum == 0) {
-            Qlist_btns[0].innerHTML = '<div class="Qlist_btn flex-c">default</div><div class="Qlist_btn flex-c">Film AFI</div><div class="Qlist_btn flex-c">Film 2000</div><div class="Qlist_btn flex-c">Taiwan Food</div><div class="Qlist_btn flex-c">Taiwan Town</div><div class="Qlist_btn flex-c">JP Drama</div><div class="Qlist_btn flex-c">ちゅうかいちばん！</div><div class="Qlist_btn flex-c">ATENer</div><div class="Qlist_btn flex-c">Cora</div>'
+
+
+        //創建按鈕
+        HDMITempInput = ""
+        Qlist_tempList_Name = [Qlist_0s_Name, Qlist_1s_Name]
+        for (let i = 0; i < Qlist_tempList_Name[listNum].length; i++) {
+            HDMITempInput = HDMITempInput + '<div class="Qlist_btn flex-c">' + Qlist_tempList_Name[listNum][i] + '</div>'
         }
-        else {
-            Qlist_btns[0].innerHTML = '<div class="Qlist_btn flex-c">default</div><div class="Qlist_btn flex-c">Cora</div>'
-        }
-        var Qlist_btn = document.getElementsByClassName("Qlist_btn")
+        Qlist_btns[0].innerHTML = HDMITempInput
+
+
 
         //倒入切換問題功能
+        var Qlist_btn = document.getElementsByClassName("Qlist_btn")
         for (let i = 0; i < Qlist_btn.length; i++) {
-            Qlist_xs = [Qlist_0s, Qlist_1s]
+            Qlist_tempList = [Qlist_0s, Qlist_1s]
             Qlist_btn[i].addEventListener('click', function () {
-                changeQList(Qlist_xs[listNum][i]);
+                changeQList(Qlist_tempList[listNum][i]);
                 playSound(0)
                 tagQList = i
             }, false);
@@ -664,7 +668,6 @@
         if (keyID === 'KeyS') {
             to_start()
         }
-
     }
 
 
