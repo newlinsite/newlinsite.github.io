@@ -401,7 +401,7 @@
         timerStart()
         QintoHTML()
         if (tagQList == 1 || tagQList == 2) {
-            console.log(11)
+            bgm[1].play();
         }
         else if (tagQList == 3) {
             bgm[2].play();
@@ -503,7 +503,7 @@
     function setGameType() {
         if (gameType == 0) {
             game_name.innerHTML = "比手</br>畫腳"
-            changeQList(Qlist_0_01)
+            changeQList(Qlist_0_00)
             body.classList.remove("gametype_01")
             body.classList.add("gametype_00")
             inputTimerResetSec("mode_00")
@@ -523,11 +523,13 @@
             gameType = 1;
             setGameType()
             toTimerResetSec(timerResetSecList[TimerResetNum])
+            // setQlist_btn(1)
         }
         else {
             gameType = 0;
             setGameType()
             toTimerResetSec(timerResetSecList[TimerResetNum])
+            // setQlist_btn()
         }
     }
 
@@ -614,9 +616,9 @@
 
     // 設定換題目組按鈕的執行動作
     var tagQList = 0
-    function setQlist_btn(ListNum = 0) {
+    function setQlist_btn(listNum = 0) {
         //創造按鈕
-        if (ListNum = 1) {
+        if (listNum == 0) {
             Qlist_btns[0].innerHTML = '<div class="Qlist_btn flex-c">default</div><div class="Qlist_btn flex-c">Film AFI</div><div class="Qlist_btn flex-c">Film 2000</div><div class="Qlist_btn flex-c">Taiwan Food</div><div class="Qlist_btn flex-c">Taiwan Town</div><div class="Qlist_btn flex-c">JP Drama</div><div class="Qlist_btn flex-c">ちゅうかいちばん！</div><div class="Qlist_btn flex-c">ATENer</div><div class="Qlist_btn flex-c">Cora</div>'
         }
         else {
@@ -626,8 +628,9 @@
 
         //倒入切換問題功能
         for (let i = 0; i < Qlist_btn.length; i++) {
+            Qlist_xs = [Qlist_0s, Qlist_1s]
             Qlist_btn[i].addEventListener('click', function () {
-                changeQList(Qlist_0s[i]);
+                changeQList(Qlist_xs[listNum][i]);
                 playSound(0)
                 tagQList = i
             }, false);
