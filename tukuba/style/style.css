@@ -16,7 +16,7 @@
 body {
 	font-family: "Noto sans TC", "Microsoft JhengHei ", "微軟正黑體", sans-serif;
 	font-weight: 100;
-	background-color: rgb(218, 217, 213);
+	background-color: var(--bg-color)
 }
 
 a {
@@ -31,6 +31,14 @@ ul {
 }
 
 
+:root {
+	--pri-color: #094576;
+	--sec-color: #008CFF;
+	--ter-color: #85C12F;
+	--bg-color: #FAFAFA;
+	--text-color: #5A5A5A;
+	--warn-color: #EA0F0F;
+}
 
 
 /******************************
@@ -248,9 +256,10 @@ h2 {
 	color: #333;
 	letter-spacing: 0px;
 	line-height: 1.168em;
-	font-size: 26px;
-	font-weight: 650;
+	font-size: 20px;
+	font-weight: 450;
 	margin: 8px 0;
+	transition: 0.8s;
 }
 
 
@@ -519,13 +528,13 @@ footer {
 	top: 0;
 	left: 0;
 	background: #000;
-	background: linear-gradient(5deg, #000000ee 0%, #000000ab 34%, #00000000 64%);
-	opacity: 0.7;
+	background: linear-gradient(0deg, #000000ee 0%, #000000c2 25%, #00000000 40%);
+	opacity: 0.5;
 	transition: 0.5s;
 }
 
 .cardbox.workcard a:Hover::before {
-	opacity: 1;
+	opacity: 0.9;
 }
 
 .workcard h2 {
@@ -538,12 +547,13 @@ footer {
 }
 
 .workcard p.tag {
-	font-size: 14px;
+	font-size: 13px;
 	font-weight: 350;
-	padding: 2px 6px;
+	padding: 4px 6px;
 	margin: 4px;
-	background-color: rgba(255, 255, 255, 0.2);
+	background-color: rgba(0, 0, 0, 0.55);
 	border-radius: 4px;
+	border: 1px rgba(255, 255, 255, 0.193) solid;
 }
 
 .workcard p.tag::before {
@@ -551,18 +561,38 @@ footer {
 }
 
 .workcard p.ctx {
+	margin: 0;
+}
+
+
+.workcard .detail_box {
 	width: 100%;
-	bottom: -80px;
+	bottom: -50px;
 	opacity: 0;
 	transition: 1s;
 	height: 0;
 }
 
-.cardbox.workcard a:Hover p.ctx {
+
+
+
+.cardbox.workcard a:Hover h2 {
+	font-size: 22px;
+}
+
+
+.cardbox.workcard a:Hover .detail_box {
 	bottom: 0;
 	opacity: 1;
-	height: 70px;
+	height: 80px;
 }
+
+.cardbox.workcard a:Hover .detail_box.sm {
+	height: 40px;
+}
+
+
+
 
 
 @media (max-width: 480px) {
