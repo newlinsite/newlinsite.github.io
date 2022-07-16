@@ -23,15 +23,16 @@
                 <div class="time_btn flex-c"></div>
             </div>
             <div class="Qlist_btns flex-c">
-                <div class="Qlist_btn flex-c">Default</div>
-                <div class="Qlist_btn flex-c">Film AFI</div>
-                <div class="Qlist_btn flex-c">Taiwan Food</div>
-                <div class="Qlist_btn flex-c">JP Drama</div>
-                <div class="Qlist_btn flex-c">ATENer</div>
+
             </div>
             <div class="question_input_box">
-                <div class="input_btn block">Upload file</div>
+                <div class="input_btn">Upload file</div>
                 <input type="file" id="fileInput">
+            </div>
+            <div class="question_input_box sm ">
+                <div class="input_btn">Background</div>
+                <div class="side_btn" id="bg_clear">Clear</div>
+                <input type="file" id="imageInput" name="file">
             </div>
             <p>Please upload .txt and a line is a question</p>
         </div>
@@ -54,9 +55,10 @@
     <audio loop class="bgm" src="music/bgm_greensleeves.mp3"></audio>
     <audio loop class="bgm" src="music/out_clock-sound.mp3"></audio>
     <audio loop class="bgm" src="music/bgm_NewCity.mp3"></audio>
+    <audio loop class="bgm" src="music/ch_bgm.mp3"></audio>
+    <audio loop class="bgm" src="music/ch_good.mp3"></audio>
 
 
-    
 </body>
 <script>
 
@@ -90,7 +92,7 @@
     var questionBox = document.getElementById("question")
     function QintoHTML() {
         Qlisting_len = Qlisting.length;
-        if (Qlisting_len == 1) {
+        if (Qlisting_len == 0) {
             questionBox.innerHTML = "It's over";
         }
         else {
@@ -121,9 +123,8 @@
         const reader = new FileReader();
         reader.onload = function fileReadCompleted() {
             // 檔案問題分割 → 重新計算題目數 → 輸出題目
-            console.log(reader.result);
             Qlist = reader.result.split("\n");
-            Qlist_len = Qlist.length;
+            Qlisting = Qlist
             QintoHTML()
         };
         reader.readAsText(this.files[0]);
@@ -157,39 +158,38 @@
         var count = timerResetSec;
         timer.innerHTML = count;
         timerNum = setInterval(function () {
-    
-            if (count> 1) {              
+            if (count > 1) {
                 count = count - 1;
                 timer.innerHTML = `${count}`;
-                if (count < 15 && bgm[3].playingTag==0) {
-                    bgm[3].fadePlay(1,5,0.2);
+                if (count < 15 && bgm[3].playingTag == 0) {
+                    bgm[3].fadePlay(1, 5, 0.2);
                 }
-                else if (count > 15 && bgm[3].playingTag==1) {
+                else if (count > 15 && bgm[3].playingTag == 1) {
                     bgm[3].stop();
                 }
-                if (count==30){
-                    playSound(5,2);
+                if (count == 30) {
+                    playSound(5, 2);
                 }
-                else if (count==20){
-                    playSound(5,2);
+                else if (count == 20) {
+                    playSound(5, 2);
                 }
-                else if (count==10){
-                    playSound(5,2);
+                else if (count == 10) {
+                    playSound(5, 2);
                 }
-                
+
             }
             else {
                 clearInterval(timerNum);
                 container.setAttribute("class", "playing timeout");
                 timer.innerHTML = "OUT!";
-                if(answerCount<6){
-                    playSound(4,3);
+                if (answerCount < 6) {
+                    playSound(4, 12);
                 }
                 else {
-                    playSound(3);  
-                }                            
+                    playSound(3);
+                }
                 musicAllStop();
-                bgm[4].fadePlay(0.2,7,0);
+                bgm[4].fadePlay(0.2, 7, 0);
             }
         }, 1000);
     }
@@ -250,11 +250,11 @@
 
     //創一個的音源 與連接節點倒終點
 
-    function playSound(num,gain=1) {
+    function playSound(num, gain = 1) {
         buffer = bufferBox[num];
-        var source = ctx.createBufferSource();                      // creates a sound source
+        var source = ctx.createBufferSource();                    // creates a sound source
         var gainCode = ctx.createGain();
-        gainCode.gain.value =gain
+        gainCode.gain.value = gain
         source.buffer = buffer;                                   // tell the source which sound to play
         source.connect(gainCode).connect(ctx.destination);        // connect the source to the ctx's destination (the speakers)
         source.start(0);                                          // play the source now
@@ -266,71 +266,71 @@
 
 
     // BGM 長音樂
-    
-    var music = function(num){
+
+    var music = function (num) {
         this.source = ctx.createMediaElementSource(bgmSource[num]);
         this.gainCode = ctx.createGain();
         this.lowPassCode = ctx.createBiquadFilter();
         this.source.connect(this.gainCode).connect(this.lowPassCode).connect(ctx.destination);
 
         // option
-        this.playingTag = 0   
-        this.lowPassCode.type = 'lowpass'; 
+        this.playingTag = 0
+        this.lowPassCode.type = 'lowpass';
         this.lowPassCode.frequency.value = 22050;
 
         // function
-        this.play = function(){
+        this.play = function () {
             this.playingTag = 1
-            bgmSource[num].play() 
+            bgmSource[num].play()
         }
-        this.fadePlay = function(gain=1,fadeTime=1,startGain=0){
+        this.fadePlay = function (gain = 1, fadeTime = 1, startGain = 0) {
             this.play();
             this.gainCode.gain.value = startGain
-            this.gainCode.gain.linearRampToValueAtTime(gain, ctx.currentTime+10);
+            this.gainCode.gain.linearRampToValueAtTime(gain, ctx.currentTime + 10);
         }
-        this.stop = function(){
+        this.stop = function () {
             this.playingTag = 0
             bgmSource[num].pause()
             bgmSource[num].currentTime = 0;
         }
-        this.fadeStop = function(fadeTime=1){          
-            if(this.playingTag == 1){
-                this.playingTag = 0               
+        this.fadeStop = function (fadeTime = 1) {
+            if (this.playingTag == 1) {
+                this.playingTag = 0
                 let tempGain = this.gainCode.gain.value
-                this.gainCode.gain.linearRampToValueAtTime(0, ctx.currentTime+fadeTime);
-                setTimeout(() => {               
-                    if(this.playingTag == 1){
-                        this.gainCode.gain.linearRampToValueAtTime(tempGain, ctx.currentTime+0.5);
+                this.gainCode.gain.linearRampToValueAtTime(0, ctx.currentTime + fadeTime);
+                setTimeout(() => {
+                    if (this.playingTag == 1) {
+                        this.gainCode.gain.linearRampToValueAtTime(tempGain, ctx.currentTime + 0.5);
                         console.log("replay")
                     }
                     else {
                         this.stop()
                         this.gainCode.gain.value = tempGain
-                    }                   
-                }, fadeTime*1000+100); 
+                    }
+                }, fadeTime * 1000 + 100);
             }
         }
-        this.fadeLowPass=function(frequency=22050,gain=-40,fadeTime=1){
-            this.lowPassCode.frequency.linearRampToValueAtTime(frequency,ctx.currentTime+fadeTime);
+        this.fadeLowPass = function (frequency = 22050, gain = -40, fadeTime = 1) {
+            this.lowPassCode.frequency.linearRampToValueAtTime(frequency, ctx.currentTime + fadeTime);
         }
     }
 
 
 
 
-    bgmSource=document.getElementsByClassName("bgm");
+    bgmSource = document.getElementsByClassName("bgm");
     var bgm = []
-    for(let i =0;i< bgmSource.length;i++ ){
-        bgm[i]= new music(i)
+    for (let i = 0; i < bgmSource.length; i++) {
+        bgm[i] = new music(i)
     }
 
 
-    function musicAllStop(){
-        for(let i =0;i< bgmSource.length;i++ ){
-        bgm[i].fadeStop()
-        }   
+    function musicAllStop(fadeTime = 1) {
+        for (let i = 0; i < bgmSource.length; i++) {
+            bgm[i].fadeStop(fadeTime)
+        }
     }
-    
+
 
     // 測試鍵盤快捷鍵
     window.addEventListener("keydown", torandomTest, false);
@@ -340,19 +340,19 @@
             bgm[1].play()
         };
         if (keyID === 'KeyW') {
-            bgm[1].stop()           
+            bgm[1].stop()
         };
         if (keyID === 'KeyE') {
             bgm[1].fadeStop()
         };
         if (keyID === 'KeyR') {
-            bgm[1].fadeLowPass(2000,-40,4)
+            bgm[1].fadeLowPass(2000, -40, 4)
         }
         if (keyID === 'KeyT') {
-            bgm[1].fadeLowPass(22050,0)
+            bgm[1].fadeLowPass(22050, 0)
         }
         if (keyID === 'KeyY') {
-            
+
         }
 
     }
@@ -399,16 +399,19 @@
         hotkeyBox.innerHTML = "Press N + 1 , B + 0 , Press H to back Home";
         timerStart()
         QintoHTML()
-        if (tagQList==1){
+        if (tagQList == 1 || tagQList == 2) {
             bgm[1].play();
         }
-        else if(tagQList==2){
+        else if (tagQList == 3) {
             bgm[2].play();
         }
-        else{
+        else if (tagQList == 6) {
+            bgm[5].play();
+        }
+        else {
             bgm[0].play();
         }
-        
+
     };
     function to_home() {
         container.setAttribute("class", "home");
@@ -419,21 +422,31 @@
         toTimerResetSec(timerResetSecList[TimerResetNum])   // 重設秒數
         Qlisting = Qlist                                    // 重設執行遊戲的問題集
         musicAllStop()
+        answerCountbox.classList.remove("ch");              // 除掉小當家彩蛋
     }
 
-    function nextQ(score=1,music=1) {
+    function nextQ(score = 1, music = 1) {
         QintoHTML();
-        answerCount=answerCount+score
+        answerCount = answerCount + score
         answerCountbox.innerHTML = answerCount;
         // 換題重設秒數，且減一秒 (給快問快答使用)
         if (gameType == 1) {
             timerStop()
             timerStart()
-            if (timerResetSec > 5) {
+            // 特定秒數以上每題減一秒
+            if (timerResetSec > 3) {
                 timerResetSec = timerResetSec - 1
             }
+            container.setAttribute("class", "playing");
         }
         playSound(music)
+
+        //小當家彩蛋
+        if (tagQList == 6 && answerCount == 16) {
+            musicAllStop(3)
+            bgm[6].play();
+            answerCountbox.classList.add("ch");
+        }
     }
 
 
@@ -460,9 +473,12 @@
     // 設定秒數按鈕的執行動作
     function setTime_btns() {
         for (let i = 0; i < time_btn.length; i++) {
-            time_btn[i].addEventListener('click', function () { toTimerResetSec(timerResetSecList[i]); time_btnActiver(i); TimerResetNum = i; }, false);
+            time_btn[i].onclick = function () {
+                toTimerResetSec(timerResetSecList[i]);
+                time_btnActiver(i);
+                TimerResetNum = i;
+            }
             time_btn[i].innerHTML = timerResetSecList[i];
-
         }
     }
 
@@ -487,7 +503,7 @@
     function setGameType() {
         if (gameType == 0) {
             game_name.innerHTML = "比手</br>畫腳"
-            changeQList(Qlist_0_01)
+            changeQList(Qlist_0_00)
             body.classList.remove("gametype_01")
             body.classList.add("gametype_00")
             inputTimerResetSec("mode_00")
@@ -507,14 +523,36 @@
             gameType = 1;
             setGameType()
             toTimerResetSec(timerResetSecList[TimerResetNum])
+            setQlist_btn(1)
         }
         else {
             gameType = 0;
             setGameType()
             toTimerResetSec(timerResetSecList[TimerResetNum])
+            setQlist_btn()
         }
     }
 
+    // ******************************
+    // 背景切換功能
+    // ******************************
+
+    var myImage = document.getElementById('imageInput')
+    myImage.addEventListener('change', function (e) {
+        var file = e.target.files[0]
+        container.style = "background-image: url(" + URL.createObjectURL(file) + ");"
+    })
+
+    var bgClear = document.getElementById('bg_clear')
+    bgClear.addEventListener('click', function (e) {
+        container.style = ""
+    })
+
+
+
+    // ******************************
+    // 其他功能
+    // ******************************
 
 
     // 錯誤提示
@@ -551,7 +589,8 @@
     var screen_click = document.getElementById("screen_click")
     var game_name = document.getElementById("game_name")
     var swich_btn = document.getElementById("swich_btn")
-    var Qlist_btn = document.getElementsByClassName("Qlist_btn")
+    var Qlist_btns = document.getElementsByClassName("Qlist_btns")
+    // var Qlist_btn = document.getElementsByClassName("Qlist_btn")
     var next_btn = document.getElementsByClassName("next_btn")
 
 
@@ -559,31 +598,43 @@
     home_btn.addEventListener('click', to_home, false);
     game_name.addEventListener('click', to_start, false);
     swich_btn.addEventListener('click', gameTypeChange, false);
-    next_btn[0].addEventListener('click', function(){nextQ(0,2)}, false);
-    next_btn[1].addEventListener('click', function(){nextQ()}, false);
-    // screen_click.addEventListener('click', function(){nextQ()}, false);
+    next_btn[0].addEventListener('click', function () { nextQ(0, 2) }, false);
+    next_btn[1].addEventListener('click', function () { nextQ() }, false);
+
 
 
 
     // 選取時間按鈕狀態 
     function time_btnActiver(x) {
         for (let i = 0; i < 5; i++) {
-            time_btn[i].classList.remove("active");          
+            time_btn[i].classList.remove("active");
         }
         time_btn[x].classList.add("active");
         playSound(0)
     }
 
 
-
-
-
     // 設定換題目組按鈕的執行動作
     var tagQList = 0
-    function setQlist_btn() {
+    function setQlist_btn(listNum = 0) {
+
+
+        //創建按鈕
+        HDMITempInput = ""
+        Qlist_tempList_Name = [Qlist_0s_Name, Qlist_1s_Name]
+        for (let i = 0; i < Qlist_tempList_Name[listNum].length; i++) {
+            HDMITempInput = HDMITempInput + '<div class="Qlist_btn flex-c">' + Qlist_tempList_Name[listNum][i] + '</div>'
+        }
+        Qlist_btns[0].innerHTML = HDMITempInput
+
+
+
+        //倒入切換問題功能
+        var Qlist_btn = document.getElementsByClassName("Qlist_btn")
         for (let i = 0; i < Qlist_btn.length; i++) {
+            Qlist_tempList = [Qlist_0s, Qlist_1s]
             Qlist_btn[i].addEventListener('click', function () {
-                changeQList(Qlist_0s[i]);
+                changeQList(Qlist_tempList[listNum][i]);
                 playSound(0)
                 tagQList = i
             }, false);
@@ -609,7 +660,7 @@
             nextQ()
         };
         if (keyID === 'KeyB') {
-            nextQ(0,2)
+            nextQ(0, 2)
         };
         if (keyID === 'KeyH') {
             to_home()
@@ -617,7 +668,6 @@
         if (keyID === 'KeyS') {
             to_start()
         }
-
     }
 
 

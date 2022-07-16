@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>audio</title>
+</head>
+<style>
+    body {
+        background-color: #222;
+    }
+</style>
+
+<body>
+
+
+
+</body>
+
+<script>
+
+
+    // ******************************
+    // 
+    //      音樂撥放器
+    //      - 
+    //      - 
+    //
+    // ******************************
+
+
+
+    // Fix up prefixing
+    window.AudioContext = window.AudioContext || window.webkitAudioContext;
+    var ctx = new AudioContext();
+
+
+    // console.log(this.ADSR.attack)
+
+
+
+
+    var hz={
+            C : 261.63,
+            Cs: 277.18,
+            D : 293.66,
+            Ds: 311.13,
+            E : 329.63,
+            F : 349.23,
+            Fs: 369.99,
+            G : 392.00,
+            A : 440.00,
+            As: 466.16,
+            B : 493.88,
+            C5 :1046.5,
+            C5s:1108.7,
+            D5 :1174.7,
+            D5s:1244.5,
+            E5 :1318.5,
+            F5 :1396.9,
+            F5s:1568.0,
+            G5 :1661.2,
+            A5 :1760.0,
+            A5s:1864.7,
+            B5 :1975.5
+        }
+
+
+
+
+    var osc = function(){
+        // Create 
+        console.log("create")
+        
+        // this.gainCode.gain.value = 0 // 音量
+ 
+
+        let pressTime = 1;
+        
+        this.ADSR={
+            attack : 0.01,
+            delay : 0.3,
+            sustain : 0.5,
+            release : 2
+        }
+        let release = this.ADSR.release
+
+        this.newOsc=function(
+                frequency,
+                type = 'sine',
+                detune=0,
+                gain=1,
+                filter="lowpass",
+                fValue=20000,
+                oscTime = pressTime + release){  
+            // create osc
+            this.oscSource = ctx.createOscillator()
+            this.oscSource.type = type
+            this.oscSource.frequency.value = frequency
+            this.oscSource.detune.value = 0 // 解諧
+            
+            // filter
+            this.lowPassCode = ctx.createBiquadFilter();
+            this.lowPassCode.type = filter
+            this.lowPassCode.frequency.value = fValue;
+            
+            // gain
+            this.gainCode = ctx.createGain()
+            this.gainCode.value = gain
+            // console.log(this.gainCode.value)
+
+            //connect and play
+            this.code = this.oscSource.connect(this.lowPassCode).connect(this.gainCode)
+            
+            
+            this.oscSource.start(ctx.currentTime)
+            this.oscSource.stop(ctx.currentTime+oscTime)
+        }
+
+
+
+
+
+        
+        this.play = function (frequency) {
+            
+            
+            console.log(frequency)                    
+
+            a01 = new this.newOsc(frequency)
+            a02 = new this.newOsc(frequency,"sawtooth",20,0.1,"lowpass",1500)
+            console.log(a01.gainCode.value)
+
+
+            //ASDR
+            
+            this.ASDRgainCode = ctx.createGain()
+            //Attack
+            this.ASDRgainCode.gain.value = 0
+            this.ASDRgainCode.gain.linearRampToValueAtTime(1, ctx.currentTime + this.ADSR.attack);           
+            //Decay
+            this.ASDRgainCode.gain.linearRampToValueAtTime(this.ADSR.sustain, ctx.currentTime + this.ADSR.attack + this.ADSR.delay);
+            //Release
+            this.ASDRgainCode.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + this.ADSR.release);
+           
+
+
+            // last compressor
+            this.compressor = ctx.createDynamicsCompressor();
+            this.compressor.threshold.setValueAtTime(-50, ctx.currentTime);
+            this.compressor.knee.setValueAtTime(40, ctx.currentTime);
+            this.compressor.ratio.setValueAtTime(12, ctx.currentTime);
+            this.compressor.attack.setValueAtTime(0, ctx.currentTime);
+            this.compressor.release.setValueAtTime(0.25, ctx.currentTime);
+
+
+
+            // last Connect
+            a01.code.connect(this.ASDRgainCode)
+            a02.code.connect(this.ASDRgainCode)
+                
+            this.ASDRgainCode.connect(this.compressor).connect(ctx.destination); 
+
+        }
+    }
+
+
+    var os = new osc()
+
+
+
+    // 測試鍵盤快捷鍵
+    window.addEventListener("keydown", torandomTest, false);
+    function torandomTest(e) {
+        var keyID = e.code;
+        if (keyID === 'KeyQ') {
+            os.play(hz.C)
+        };
+        if (keyID === 'KeyW') {
+            os.play(hz.D) 
+        };
+        if (keyID === 'KeyE') {
+            os.play(329.63)
+        };
+        if (keyID === 'KeyR') {
+            os.play(349.23)
+        }
+        if (keyID === 'KeyT') {
+            os.play(392.00)
+        }
+        if (keyID === 'KeyY') {
+            os.play(440)
+        }
+        if (keyID === 'KeyU') {
+            os.play(493.88)
+        }
+        if (keyID === 'KeyI') {
+            os.play(523.25)
+        }
+        if (keyID === 'KeyO') {
+            os.play(587.33)
+        }
+        if (keyID === 'KeyP') {
+            os.play(659.26)
+        }
+    }
+
+
+
+            
+
+            // this.a01.connect(this.a01.lowPassCode).connect(this.a01.gainCode).connect(this.ASDRgainCode)
+            
+            // this.gainCode = ctx.createGain()
+            // this.oscSource = ctx.createOscillator()
+            // this.oscSource.type = 'sine' // 正弦波
+            // this.oscSource.frequency.value = frequency// A4 頻率
+            // this.oscSource.detune.value = 0 // 解諧
+        
+
+            // this.gainCode02 = ctx.createGain()
+            // this.gainCode02.gain.value = 0
+
+            // this.lowPassCode = ctx.createBiquadFilter();
+            // this.lowPassCode.type = 'lowpass';
+            // this.lowPassCode.frequency.value = 1000;
+
+
+            // this.oscSource02 = ctx.createOscillator()
+            // this.oscSource02.type = 'sawtooth' 
+            // this.oscSource02.frequency.value = frequency// A4 頻率
+            // this.oscSource02.detune.value = 0 // 解諧
+            
+
+
+            // connect(this.ASDRgainCode).connect(this.compressor)
+
+            // this.oscSource.start(ctx.currentTime)
+            // this.oscSource.stop(ctx.currentTime+pressTime+this.ADSR.release)
+            // this.oscSource02.start(ctx.currentTime)
+            // this.oscSource02.stop(ctx.currentTime+pressTime+this.ADSR.release)
+
+
+</script>
+</html>

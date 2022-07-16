@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/reset.css">
+    <link rel="stylesheet" href="style/device.css">
+    <title>device</title>
+</head>
+
+<body>
+    <div class="container">
+        <div id="box"></div>
+    </div>
+</body>
+
+
+
+<script>
+    var box = document.getElementById("box")
+
+    var traceMouse = function (e) {
+        console.log(e.clientX, e.clientY);
+        box.style.top = e.clientY + "px";
+        box.style.left = e.clientX + "px";
+    }
+
+
+    box.addEventListener("mousedown", function () {
+        box.addEventListener("mousemove", function (e) {
+            traceMouse(e)
+        })
+        box.removeEventListener("mousedown", box)
+    })
+
+
+
+
+
+</script>
+
+</html>
