@@ -34,9 +34,13 @@ ul {
 
 :root {
     --pri-color: #094576;
+    --pri-bg-color: #08375E;
     --sec-color: #008CFF;
     --ter-color: #85C12F;
-    --bg-color: #FAFAFA;
+    --bg-color-03: #CDCDCD;
+    --bg-color-04: #E4E4E4;
+    --bg-color-05: #F5F5F5;
+    --bg-color-06: #FAFAFA;
     --text-color: #5A5A5A;
     --warn-color: #EA0F0F;
 }
@@ -49,7 +53,7 @@ ul {
 .container {
     width: 100%;
     height: 100%;
-    background-color: var(--bg-color);
+    background-color: var(--bg-color-03);
     display: flex;
     flex-direction: column
 }
@@ -61,17 +65,24 @@ ul {
 }
 
 .row>* {
-    padding: 0 8px;
+    /* padding: 0 8px; */
 }
 
+.row.space>* {
+    padding: 0 8px;
+}
 
 .flex-align-c {
     align-items: center;
 }
 
+.flex-jus-c {
+    justify-content: center;
+}
 
-
-
+.flex-dir-c {
+    flex-direction: column
+}
 
 .col {
     flex: 1 0 0%;
@@ -194,51 +205,6 @@ ul {
 
 
 
-
-/******************************
-            Modifier tool
-*******************************/
-.h-100 {
-    height: 100%;
-}
-
-.mb-64 {
-    margin-bottom: 128px;
-}
-
-.mb-32 {
-    margin-bottom: 64px;
-}
-
-.mb-16 {
-    margin-bottom: 32px;
-}
-
-.mb-8 {
-    margin-bottom: 16px;
-}
-
-.mb-4 {
-    margin-bottom: 1px;
-}
-
-.pm-0 {
-    padding: 0;
-    margin: 0;
-}
-
-.dashed {
-    border: 0.5px dashed #ddd;
-}
-
-.u-cf:after {
-    content: "";
-    display: block;
-    clear: both;
-    height: 0;
-    visibility: hidden;
-}
-
 /******************************
             Guildline
 *******************************/
@@ -287,17 +253,24 @@ p {
 		Module
             header
             Main sidebar
-            File bar
-            Pagination
+            Files explorer
+            Edit area
 
 
 *******************************************/
 
+
+/******************************************
+
+    header
+
+*******************************************/
 header {
     width: 100%;
     height: 64px;
     background-color: #fff;
-    box-shadow: 0 1px 0 #0000002d;
+    box-shadow: 0 2px 0 #00000010;
+    z-index: 1000;
 }
 
 header .product_name {
@@ -312,9 +285,321 @@ header .tools {}
 
 
 
+/******************************************
+
+    Main sidebar
+
+*******************************************/
 
 .sidebar {
-    background-color: var(--pri-color);
-    width: 240px;
+    background-color: var(--pri-bg-color);
+    min-width: 240px;
+}
+
+/******************************************
+
+    Files Explorer
+
+*******************************************/
+
+
+.files_exp {
+    background-color: var(--bg-color-05);
+    border-right: 2px solid var(--bg-color-04);
+    width: 0;
+}
+
+.files_exp.open {
+    min-width: 220px;
+    width: auto;
+}
+
+/******************************************
+
+    Edit area
+    
+*******************************************/
+
+
+.edit_area {}
+
+.bar-mode {}
+
+.bar-mode .mask {
+    position: absolute;
+    left: 0;
+    flex-wrap: nowrap;
+    padding: 0 24px;
+}
+
+.bar-mode .tool_btn.arrive {
+    position: absolute;
+    z-index: 100;
+    background-color: var(--bg-color-06);
+}
+
+.page_tabs.bar-mode .tool_btn.arrive {
+    background-color: var(--bg-color-03);
+    padding: 2px;
+}
+
+
+
+.bar-mode .arrive.left {
+    left: 0;
+}
+
+.bar-mode .arrive.right {
+    right: 0;
+}
+
+.bar-mode.non-scroll .mask {
+    padding: 0 4px;
+}
+
+.bar-mode.non-scroll .arrive {
+    display: none;
+    opacity: 0;
+}
+
+/* File Tab */
+
+.edit_area .page_tabs {
+    padding: 8px 0 0 0;
+    height: 36px;
+    overflow: hidden;
+}
+
+.edit_area .page_tabs .tab {
+    font-size: 14px;
+    font-weight: normal;
+    padding: 6px 12px 6px 12px;
+    min-width: 160px;
+    border-radius: 8px 8px 0 0;
+    margin-right: 8px;
+}
+
+.edit_area .page_tabs .tab.active {
+    background-color: var(--bg-color-06);
+}
+
+.edit_area .page_tabs .tab::after {
+    content: '';
+    background-image: url(../image/icon_x.png);
+    position: absolute;
+    right: 8px;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.edit_area .page_tabs .tab.active::after {
+    opacity: 0.5;
+}
+
+.edit_area .page_tabs .tab:hover::after {
+    opacity: 1;
+}
+
+.edit_area .page_tabs .tab:hover {
+    background-color: var(--bg-color-06);
+}
+
+
+/* Tool Bar */
+
+.edit_area .tools {
+    height: 60px;
+    width: 100%;
+    background-color: var(--bg-color-06);
+    border-bottom: 2px solid var(--bg-color-04);
+    overflow: hidden;
+}
+
+
+.edit_area .tool_btn {
+    flex-wrap: nowrap;
+    padding: 14px;
+    font-weight: normal;
+
+    background-color: #ebebeb00;
+    transition: 0.4s
+}
+
+
+.edit_area .tool_btn:hover {
+    background-color: #ebebeb;
+}
+
+
+.edit_area .tool_btn span {
+    margin: 0 4px;
+    white-space: nowrap;
+}
+
+.edit_area span.text-u::after {
+    content: '';
+    display: inline-block;
+    background-color: #2FC38C;
+    position: absolute;
+    bottom: -6px;
+    right: 0;
+    height: 2px;
+    width: 100%;
+}
+
+.edit_area span.text-u.yellow::after {
+    background-color: #E5D601;
+}
+
+.edit_area .div {
+    width: 2px;
+    background-color: var(--bg-color-04);
+    padding: 0;
+    margin: 8px 4px;
+}
+
+
+
+/* Page container */
+
+.edit_area .page_container {
+    height: 0;
+    flex-grow: 1;
+    overflow: auto;
+}
+
+
+.edit_area .page_container .pagebox {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 80%;
+    max-width: 1200px;
+    min-width: 540px;
+    min-height: 540px;
+
+}
+
+.edit_area .page_container .page {
+    margin: 24px 16px;
+    padding: 16px;
+    border-radius: 12px;
+    background-color: #fff;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.227);
+}
+
+@media (max-width: 1250px) {
+    .edit_area .page_container .page {
+        width: 90%;
+    }
+}
+
+@media (max-width: 830px) {
+    .edit_area .page_container .page {
+        left: 0;
+        transform: translate(0, 0);
+    }
+}
+
+
+.edit_area .page_container .page textarea {
+    border: none;
+    resize: none;
+    width: 100%;
     height: 100%;
+    overflow: visible;
+}
+
+
+.edit_area .page_container .page textarea:focus-visible {
+    outline: 2px solid #fff;
+}
+
+
+
+/* Page footer */
+
+.edit_area .footer {
+    height: 32px;
+    background-color: var(--bg-color-05);
+    border-top: 2px solid var(--bg-color-04);
+    overflow: hidden;
+}
+
+
+
+
+/******************************
+            Modifier tool
+*******************************/
+.h-100 {
+    height: 100% !important;
+}
+
+.mb-xl {
+    margin-bottom: 128px !important;
+}
+
+.mb-lg {
+    margin-bottom: 64px !important;
+}
+
+.mb-md {
+    margin-bottom: 32px !important;
+}
+
+.mb-sm {
+    margin-bottom: 16px !important;
+}
+
+.mb-xs {
+    margin-bottom: 8px !important;
+}
+
+.mb-0 {
+    margin-bottom: 0 !important;
+}
+
+.mr-xs {
+    margin-right: 6px !important;
+}
+
+
+
+.p-0 {
+    padding: 0 !important;
+}
+
+.pr-xs {
+    padding-right: 6px !important;
+}
+
+.pl-xs {
+    padding-left: 6px !important;
+}
+
+
+.prl-xs {
+    padding-right: 6px !important;
+    padding-left: 6px !important;
+}
+
+.prl-xxs {
+    padding-right: 4px !important;
+    padding-left: 4px !important;
+}
+
+.prl-0 {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+}
+
+
+
+
+.dashed {
+    border: 0.5px dashed #ddd;
 }
