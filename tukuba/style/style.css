@@ -23,7 +23,7 @@
 
 body {
 	font-family: "Noto sans", "Microsoft JhengHei ", "微軟正黑體", sans-serif;
-	font-weight: 100;
+	font-weight: 300;
 	background-color: var(--bg-color)
 }
 
@@ -272,7 +272,7 @@ h1 {
 
 h2 {
 	color: rgb(87, 96, 103);
-	letter-spacing: 0.15em;
+	letter-spacing: 0.008em;
 	line-height: 1.2em;
 	font-size: 22px;
 	font-weight: 300;
@@ -382,7 +382,6 @@ header ul {
 header ul.row li a {
 	color: rgb(119, 119, 119);
 	font-size: 14px;
-	font-weight: 100;
 	padding: 0 0 0 36px;
 }
 
@@ -544,7 +543,6 @@ footer {
 }
 
 .cardbox.workcard a:Hover h3 {
-	font-size: 18px;
 	font-weight: 500;
 	color: #fff;
 	opacity: 0.9;
@@ -576,21 +574,16 @@ footer {
 
 .workcard .detail_box {
 	width: 100%;
-	bottom: -50px;
+	bottom: -30px;
 	opacity: 0;
 	transition: 1s;
-	height: 0;
 }
 
 .cardbox.workcard a:Hover .detail_box {
 	bottom: 0;
 	opacity: 1;
-	height: 80px;
 }
 
-.cardbox.workcard a:Hover .detail_box.sm {
-	height: 40px;
-}
 
 
 .cardbox.workcard .more a::before {
