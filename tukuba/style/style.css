@@ -510,13 +510,15 @@ footer {
 	flex-wrap: wrap;
 	align-content: flex-end;
 	height: 300px;
-	padding: 16px;
+	padding: 4px 12px;
 	margin: 4px 0;
 	border-radius: 4px;
+	background-color: rgb(180, 180, 180);
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
 	overflow: hidden;
+	
 }
 
 .cardbox.workcard a::before {
@@ -543,17 +545,14 @@ footer {
 }
 
 .cardbox.workcard a:Hover h3 {
-	font-weight: 500;
 	color: #fff;
 	opacity: 0.9;
 }
 
 
-.workcard p {
-	color: #fff;
-}
 
 .workcard p.tag {
+	color: #fff;
 	font-size: 13px;
 	font-weight: 350;
 	padding: 4px 6px;
