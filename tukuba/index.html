@@ -39,7 +39,6 @@
 		</div>
 	</header>
 
-
 	<!-- /*******************************
 
 	..............作品卡片..............
@@ -129,6 +128,8 @@
 				<a href="#"></a>
 			</div>
 		</div>
+
+
 		<!-- Analytics -->
 		<h2>Analytics / Service Design</h2>
 		<div class="row cardbox workcard">
@@ -195,11 +196,20 @@
 </body>
 <script src="js/app.js"></script>
 <script>
+	// Function
+	var $ = function(name){
+		return document.getElementById(name)
+	}
+	var $css = function(name){
+		return document.getElementsByClassName(name)
+	}
+	var $tag = function(name){
+		return document.getElementsByTagName(name)
+	}
 
 
-	var header = document.getElementsByTagName("header")
-
-
+	// Header
+	var header = $tag("header")
 	document.addEventListener('scroll', function (e) {
 		if (window.scrollY != 0) {
 			header[0].classList.add("sm");
@@ -207,9 +217,5 @@
 			header[0].classList.remove("sm");
 		}
 	})
-
-
-
 </script>
-
 </html>
