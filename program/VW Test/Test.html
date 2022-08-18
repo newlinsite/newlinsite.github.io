@@ -12,11 +12,18 @@
 
 <body>
     <div class="container text-center p-1">
-        <div class="row">
-            <div class="col-12">
-                <label for="customRange3" class="form-label">Example range</label>
+        <div class="row m-4">
+            <div class="col-10">
                 <input id="range" type="range" class="form-range" min="1" max="10" step="01">
+            </div>
+            <div class="col-2">
+                <div id="w-value">1</div>
+            </div>
+            <div class="col-10">
                 <input id="range2" type="range" class="form-range" min="1" max="10" step="01">
+            </div>
+            <div class="col-2">
+                <div id="h-value">1</div>
             </div>
         </div>
     </div>
@@ -71,7 +78,8 @@
     var box = document.getElementById("box")
     var cont = document.getElementById("container")
     var coll = document.getElementsByClassName("coll")
-
+    var hValue = document.getElementById("h-value")
+    var wValue = document.getElementById("w-value")
 
 
     range.addEventListener('change', function (e) {
@@ -82,6 +90,7 @@
             coll[i].style.width = 100 / range.value + "%";
         }
         console.log("w = " + range.value)
+        hValue.innerHTML = range.value
     })
 
     range2.addEventListener('change', function (e) {
@@ -89,6 +98,7 @@
             coll[i].style.height = 900 / range2.value + "px";
         }
         console.log("h = " + range2.value)
+        hValue.innerHTML = range.value
     })
 </script>
 
