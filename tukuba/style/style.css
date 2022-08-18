@@ -518,7 +518,7 @@ footer {
 	background-position: center;
 	background-size: cover;
 	overflow: hidden;
-	
+
 }
 
 .cardbox.workcard a::before {
@@ -529,7 +529,7 @@ footer {
 	top: 0;
 	left: 0;
 	background: #000;
-	background: linear-gradient(5deg, #000000ee 0%, #0000007a 40%, #00000000 60%);
+	background: linear-gradient(2deg, #000000ee 0%, #0000002a 60%, #00000000 90%);
 	opacity: 0.1;
 	transition: 0.5s;
 }

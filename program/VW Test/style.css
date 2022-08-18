@@ -1,0 +1,39 @@
+body {
+    background-color: #333;
+}
+
+* {
+    color: #888;
+}
+
+
+
+
+
+#container {
+    width: 1600px;
+    height: 900px;
+    border: 1px solid #555;
+    background-color: #000;
+    overflow-y: auto;
+}
+
+
+#box {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 100px;
+    width: 100px;
+    /* background-color: #666; */
+    border-radius: 24px;
+    transition: 0.8s;
+}
+
+.coll {
+    border: 2px solid #888;
+    background-color: #999;
+    height: 900px;
+    width: 100%;
+}
