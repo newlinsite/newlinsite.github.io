@@ -11,58 +11,57 @@
 </head>
 
 <body>
-    <div class="container text-center p-1">
-        <div class="row m-4">
+    <div class="tool-bar">
+        <div class="row">
             <div class="col-10">
-                <input id="range" type="range" class="form-range" min="1" max="10" step="01">
+                <input id="rangeX" type="range" class="form-range" min="1" max="10" step="01">
             </div>
             <div class="col-2">
-                <div id="w-value">1</div>
+                <div id="valueX">1</div>
             </div>
             <div class="col-10">
-                <input id="range2" type="range" class="form-range" min="1" max="10" step="01">
+                <input id="rangeY" type="range" class="form-range" min="1" max="10" step="01">
             </div>
             <div class="col-2">
-                <div id="h-value">1</div>
+                <div id="valueY">1</div>
             </div>
         </div>
     </div>
-    <div id="container" class="container text-center">
-        <div class="row">
-            <div class="coll"></div>
-            <div class="coll"></div>
-            <div class="coll"></div>
-            <div class="coll"></div>
-            <div class="coll"></div>
-            <div class="coll"></div>
-            <div class="coll"></div>
-            <div class="coll"></div>
-            <div class="coll"></div>
-            <div class="coll"></div>
-            <div class="coll"></div>
-            <div class="coll"></div>
-            <div class="coll"></div>
-            <div class="coll"></div>
-            <div class="coll"></div>
-            <div class="coll"></div>
-            <div class="coll"></div>
-            <div class="coll"></div>
-            <div class="coll"></div>
-            <div class="coll"></div>
-            <div class="coll"></div>
-            <div class="coll"></div>
-            <div class="coll"></div>
-            <div class="coll"></div>
-            <div class="coll"></div>
-            <div class="coll"></div>
-            <div class="coll"></div>
-            <div class="coll"></div>
-            <div class="coll"></div>
-            <div class="coll"></div>
-            <div class="coll"></div>
-            <div class="coll"></div>
+    <div id="views-box" class="text-center">
+        <div class="row booxbox">
+            <div class="boox img01"></div>
+            <div class="boox img01"></div>
+            <div class="boox img02"></div>
+            <div class="boox img03"></div>
+            <div class="boox img01"></div>
+            <div class="boox img01"></div>
+            <div class="boox img02"></div>
+            <div class="boox img02"></div>
+            <div class="boox img01"></div>
+            <div class="boox img01"></div>
+            <div class="boox img01"></div>
+            <div class="boox img03"></div>
+            <div class="boox img03"></div>
+            <div class="boox img01"></div>
+            <div class="boox img01"></div>
+            <div class="boox img01"></div>
+            <div class="boox img01"></div>
+            <div class="boox img01"></div>
+            <div class="boox img01"></div>
+            <div class="boox img01"></div>
+            <div class="boox img02"></div>
+            <div class="boox img02"></div>
+            <div class="boox img03"></div>
+            <div class="boox img01"></div>
+            <div class="boox img02"></div>
+            <div class="boox img03"></div>
+            <div class="boox img01"></div>
+            <div class="boox img01"></div>
+            <div class="boox img01"></div>
+            <div class="boox img03"></div>
+            <div class="boox img01"></div>
+            <div class="boox img01"></div>
         </div>
-        <div id="box"></div>
     </div>
 
 
@@ -72,34 +71,54 @@
 </body>
 <script src="../bootstrap-5.2.0-dist/js/bootstrap.js"></script>
 <script>
+    var viewsBox = document.getElementById("views-box")
+    var boox = document.getElementsByClassName("boox")
 
-    var range = document.getElementById("range")
-    var range2 = document.getElementById("range2")
-    var box = document.getElementById("box")
-    var cont = document.getElementById("container")
-    var coll = document.getElementsByClassName("coll")
-    var hValue = document.getElementById("h-value")
-    var wValue = document.getElementById("w-value")
+    var rangeX = document.getElementById("rangeX")
+    var rangeY = document.getElementById("rangeY")
+    var valueY = document.getElementById("valueY")
+    var valueX = document.getElementById("valueX")
 
+    console.log(viewsBox.clientWidth, viewsBox.clientHeight)
 
-    range.addEventListener('change', function (e) {
-        box.style.width = range.value * 10 + "px";
-        box.style.height = range.value * 10 + "px";
-        box.style.transform = "translate(-50%, -40%) rotate(" + range.value * 20 + "deg)"
-        for (var i = 0; i < coll.length; i++) {
-            coll[i].style.width = 100 / range.value + "%";
+    function setBooxXY(XorY, value) {
+        if (XorY == "X") {
+            for (var i = 0; i < boox.length; i++) {
+                boox[i].style.width = value
+            }
+
+        } else {
+            for (var i = 0; i < boox.length; i++) {
+                boox[i].style.height = value
+            }
         }
-        console.log("w = " + range.value)
-        wValue.innerHTML = range.value
+
+    }
+
+
+    //Londing
+    setBooxXY("X", "100%")
+    setBooxXY("Y", viewsBox.clientHeight + "px")
+
+    //Listerner
+    rangeX.addEventListener('change', function (e) {
+        setBooxXY("X", 100 / rangeX.value + "%")
+        valueX.innerHTML = rangeX.value
+
+        // 等比連動
+        setBooxXY("Y", viewsBox.clientHeight / rangeX.value + "px")
+        valueY.innerHTML = rangeX.value
+
     })
 
-    range2.addEventListener('change', function (e) {
-        for (var i = 0; i < coll.length; i++) {
-            coll[i].style.height = 900 / range2.value + "px";
-        }
-        console.log("h = " + range2.value)
-        hValue.innerHTML = range2.value
+    rangeY.addEventListener('change', function (e) {
+        setBooxXY("Y", viewsBox.clientHeight / rangeY.value + "px")
+        valueY.innerHTML = rangeY.value
     })
+
+
+
+
 </script>
 
 </html>
