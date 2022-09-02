@@ -335,24 +335,25 @@
     // 測試鍵盤快捷鍵
     window.addEventListener("keydown", torandomTest, false);
     function torandomTest(e) {
-        var keyID = e.code;
-        if (keyID === 'KeyQ') {
-            bgm[1].play()
-        };
-        if (keyID === 'KeyW') {
-            bgm[1].stop()
-        };
-        if (keyID === 'KeyE') {
-            bgm[1].fadeStop()
-        };
-        if (keyID === 'KeyR') {
-            bgm[1].fadeLowPass(2000, -40, 4)
-        }
-        if (keyID === 'KeyT') {
-            bgm[1].fadeLowPass(22050, 0)
-        }
-        if (keyID === 'KeyY') {
-
+        // var keyID = e.code;
+        // if (keyID === 'KeyQ') {
+        //     bgm[1].play()
+        // };
+        // if (keyID === 'KeyW') {
+        //     bgm[1].stop()
+        // };
+        // if (keyID === 'KeyE') {
+        //     bgm[1].fadeStop()
+        // };
+        // if (keyID === 'KeyR') {
+        //     bgm[1].fadeLowPass(2000, -40, 4)
+        // }
+        // if (keyID === 'KeyT') {
+        //     bgm[1].fadeLowPass(22050, 0)
+        // }
+        if (keyID === 'KeyM') {
+            musicAllStop()
+            bgm[2].play();
         }
 
     }
