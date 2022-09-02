@@ -1210,11 +1210,6 @@ var Qlist_0s_Name = [
 ]
 
 
-var Qlist_1s_Name = [
-    "default",
-    "Cora",
-    "中華一番"
-]
 
 
 
@@ -1224,3 +1219,8 @@ var Qlist_1s = [
     Qlist_1_ch
 ]
 
+var Qlist_1s_Name = [
+    "default",
+    "Cora",
+    "中華一番"
+]
