@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OBS</title>
+</head>
+<style>
+    body {
+        background-color: rgb(8, 244, 141);
+    }
+
+    h1,
+    .words {
+        position: absolute;
+        color: #fff
+    }
+
+    h1,
+    .words {
+        bottom: 100px;
+        left: 0px;
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 16px 32px;
+        border-radius: 0 16px 16px 0;
+        box-shadow: 1px 0px 12px #000;
+    }
+
+    p {
+        margin: 0
+    }
+
+    .words {
+        /* color: #333; */
+    }
+</style>
+
+<body id="body">
+    <!-- <h1 id="h1">13222</h1> -->
+    <div class="words" contenteditable></div>
+</body>
+
+<script>
+
+    var body = document.getElementById("body")
+
+
+
+    window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
+    recognition.interimResults = true;
+    recognition.lang = 'cmn-Hant-TW';
+
+    let p = document.createElement('p');
+    const words = document.querySelector('.words');
+    words.appendChild(p);
+
+    recognition.addEventListener('result', e => {
+        console.log(e); //log speech recognition event
+        console.log(e.results);
+        // debugger; //breakpoint
+        const transcript = Array.from(e.results)
+            .map(result => result[0])
+            .map(result => result.transcript).join('');
+
+        // p.textContent = transcript; // will be overwrite
+
+        p.innerHTML = transcript;
+
+        if (e.results[0].isFinal) {
+            // p = document.createElement('p');
+            words.appendChild(p);
+        }
+    });
+    recognition.addEventListener('end', recognition.start);
+    recognition.start();
+
+
+
+
+
+
+
+</script>
+
+</html>

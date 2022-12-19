@@ -27,7 +27,9 @@ body {
 	background-color: var(--bg-color)
 }
 
-body.white {background-color: #fff}
+body.white {
+	background-color: #fff
+}
 
 a {
 	text-decoration: none;
@@ -40,8 +42,9 @@ ul {
 	margin: 0;
 }
 
-img{
+img {
 	width: 100%;
+
 }
 
 
@@ -200,9 +203,11 @@ img{
 	.col-md-3 {
 		width: 66.6666666%;
 	}
+
 	.col-md-8 {
 		width: 12.5%;
 	}
+
 	.md-hidden {
 		visibility: hidden;
 		height: 0;
@@ -247,15 +252,6 @@ img{
 		height: 0;
 	}
 }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -507,6 +503,12 @@ footer {
 
 }
 
+
+
+
+
+
+
 .cardbox.workcard a::before {
 	content: '';
 	width: 100%;
@@ -623,15 +625,16 @@ footer {
 *******************************/
 
 
-.article img{
+.article img {
 	margin: 64px 0;
 }
 
 
-.article h2{
+.article h2 {
 	margin-top: 64px;
 }
-.article p.text-line-lg{
+
+.article p.text-line-lg {
 	line-height: 35px;
 }
 
@@ -646,18 +649,19 @@ footer {
 *******************************/
 
 
-.index-flow .arrow{
+.index-flow .arrow {
 	display: flex;
-	flex-direction: column ;
+	flex-direction: column;
 }
 
-.index-flow .arrow::before,.index-flow .arrow::after{
+.index-flow .arrow::before,
+.index-flow .arrow::after {
 	content: '';
 	position: absolute;
-	left: 50%;	
+	left: 50%;
 }
 
-.index-flow .arrow::before{
+.index-flow .arrow::before {
 	width: 4px;
 	height: 98%;
 	top: 0;
@@ -665,7 +669,7 @@ footer {
 	border-radius: 10px;
 }
 
-.index-flow .arrow::after{
+.index-flow .arrow::after {
 	width: 10px;
 	height: 10px;
 	bottom: 0;
@@ -674,12 +678,12 @@ footer {
 	transform: rotate(45deg) translateX(-6px);
 }
 
-.index-flow .flowbox{
+.index-flow .flowbox {
 	color: #333;
 	font-size: 15px;
 	display: inline-block;
 	padding: 8px 12px;
-	border: 1px solid #aaa ;
+	border: 1px solid #aaa;
 	border-radius: 4px;
 	margin: 8px 4px;
 }
@@ -766,6 +770,7 @@ footer {
 .mb-xxs {
 	margin-bottom: 8px;
 }
+
 .mtb-md {
 	margin-top: 32px;
 	margin-bottom: 32px;
@@ -773,19 +778,19 @@ footer {
 
 
 .pl-lg {
-	padding-left:64px;
+	padding-left: 64px;
 }
 
 .pl-md {
-	padding-left:32px;
+	padding-left: 32px;
 }
 
 .pr-lg {
-	padding-right:64px;
+	padding-right: 64px;
 }
 
 .pr-md {
-	padding-right:32px;
+	padding-right: 32px;
 }
 
 .pm-0 {
@@ -812,6 +817,3 @@ footer {
 	height: 0;
 	visibility: hidden;
 }
-
-
-

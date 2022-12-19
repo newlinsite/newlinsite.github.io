@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #333;
+
+        }
+
+        #body.m-none {
+            cursor: none;
+        }
+
+
+        #container {
+            height: 910px;
+            width: 1030px;
+            background-image: url(UC8000.png);
+            margin: 40px auto;
+            position: relative;
+        }
+
+
+
+        #sliderbox {
+            height: 60px;
+            width: 200px;
+            background-color: #252424cd;
+            border: 4px solid #707070;
+            border-radius: 12px;
+            position: absolute;
+            top: 138px;
+            left: 30px;
+            display: none;
+        }
+
+        #sliderbox.show {
+            display: block;
+        }
+
+        #sliderbox input {
+            width: 80%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-60%, -50%);
+        }
+
+        #sliderbox #gainBox,
+        #gainBoxOutside {
+            color: #7E7E7E;
+            font-family: Noto Sans;
+            font-size: 16px;
+            position: absolute;
+            top: 50%;
+            right: 8px;
+            transform: translate(0, -50%);
+        }
+
+        #gainBoxOutside {
+            font-size: 12px;
+            left: 108px;
+            top: 200px;
+        }
+
+        /* #gainBoxOutside.before {
+            content: "+";
+        } */
+
+        #trigger {
+            height: 28px;
+            width: 28px;
+            /* background-color: rgba(176, 176, 176, 0.102); */
+            position: absolute;
+            top: 162px;
+            left: 100px;
+        }
+    </style>
+</head>
+
+<body id="body">
+    <div id="container">
+        <div id="gainBoxOutside"></div>
+        <!-- <svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" id="gainVol">
+            <g id="Gain_Vol." data-name="Gain Vol." transform="translate(-2152.015 230.463)">
+                <circle id="gainVolContainer" cx="12" cy="12" r="12" transform="translate(2154.515 -227.963)"
+                    fill="none" stroke="#404044" stroke-linecap="round" stroke-width="5" stroke-dasharray="58 200" />
+                <circle id="gainVolContainer-2" data-name="Container" cx="12" cy="12" r="12"
+                    transform="translate(2154.515 -227.963)" fill="none" stroke="#1e1e1e" stroke-linecap="round"
+                    stroke-width="3" stroke-dasharray="58 200" />
+                <circle id="gainVolValue" cx="12" cy="12" r="12" transform="translate(2154.515 -227.963)" fill="none"
+                    stroke="#02f9ff" stroke-linecap="round" stroke-width="3" stroke-dasharray="35 200" />
+            </g>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" id="gainBTN">
+            <g id="Gain_BTN" data-name="Gain BTN" transform="translate(-2161.22 221.355)">
+                <circle id="Ellipse_374" data-name="Ellipse 374" cx="9" cy="9" r="9"
+                    transform="translate(2161.22 -221.355)" />
+                <circle id="Ellipse_379" data-name="Ellipse 379" cx="7" cy="7" r="7"
+                    transform="translate(2163.646 -219.355)" fill="#454545" />
+                <circle id="Ellipse_380" data-name="Ellipse 380" cx="8" cy="8" r="8"
+                    transform="translate(2162.22 -220.355)" fill="#656565" />
+                <g id="Ellipse_381" data-name="Ellipse 381" transform="translate(2165.646 -217.355)" fill="none"
+                    stroke="#919191" stroke-width="1">
+                    <circle cx="5" cy="5" r="5" stroke="none" />
+                    <circle cx="5" cy="5" r="4.5" fill="none" />
+                </g>
+                <circle id="Ellipse_382" data-name="Ellipse 382" cx="7" cy="7" r="7"
+                    transform="translate(2163.22 -219.355)" fill="#7e7e7e" />
+                <circle id="Ellipse_394" data-name="Ellipse 394" cx="1" cy="1" r="1"
+                    transform="translate(2165.22 -208.355)" fill="#fff" />
+            </g>
+        </svg> -->
+
+        <div id="trigger"></div>
+        <div id="sliderbox">
+            <input type="range" min="0" max="20" value="12" id="gainRange">
+            <div id="gainBox"></div>
+        </div>
+
+    </div>
+</body>
+<script>
+    var body = document.getElementById("body")
+    var container = document.getElementById("container")
+    var gainRange = document.getElementById("gainRange")
+    var gainBox = document.getElementById("gainBox")
+    var gainBoxOutside = document.getElementById("gainBoxOutside")
+    var trigger = document.getElementById("trigger")
+    var sliderbox = document.getElementById("sliderbox")
+
+    //定義初始 GAIN
+    var gainValue = gainRange.value
+    gainBox.innerHTML = (gainValue)
+    gainBoxOutside.innerHTML = (gainRange.value)
+
+
+    //滑鼠位置調整 Slider
+    mouseMove = function (e) {
+        console.log(gainValue, gainValue * 1 + e.pageX * 0.1 - container.offsetLeft * 0.1 - 10)
+        gainRange.value = gainValue * 1 + e.pageX * 0.1 - container.offsetLeft * 0.1 - 10
+        gainBox.innerHTML = (gainRange.value)
+        gainBoxOutside.innerHTML = (gainRange.value)
+
+    }
+
+    trigger.addEventListener('mousedown', function () {
+        sliderbox.classList.add("show");
+        body.classList.add("m-none");
+        document.addEventListener('mousemove', mouseMove)
+        console.log(window)
+    })
+
+    body.addEventListener('mouseup', function () {
+        sliderbox.classList.remove("show");
+        body.classList.remove("m-none");
+        document.removeEventListener('mousemove', mouseMove)
+        gainValue = gainRange.value //為了讓下次調整時可以從目前這個數值開始，開Slider數值帶入GAIN
+    })
+
+
+    // Slider 變動更動 Gain 的文字
+    gainRange.addEventListener('change', function () {
+        gainBox.innerHTML = (gainRange.value)
+        gainBoxOutside.innerHTML = (gainRange.value)
+    })
+
+
+    var screenWidth = screen.width;
+    console.log(screenWidth)
+</script>
+
+</html>

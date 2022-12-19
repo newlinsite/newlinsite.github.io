@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/reset.css">
+    <title>UC3430 protoype</title>
+</head>
+<style>
+    * {
+        position: relative;
+        box-sizing: border-box;
+    }
+
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+    }
+
+    body {
+        background-color: #000000;
+        display: flex;
+    }
+
+    .container {
+        background-color: #ffffff1b;
+        margin: auto;
+        max-width: 1200px;
+        width: 680px;
+        height: 400px;
+        border-radius: 16px;
+        padding: 24px;
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .row>* {
+        margin: 12px
+    }
+
+    .col {}
+
+    .col-4 {
+        width: 25%;
+    }
+
+    .screen {
+        position: relative;
+        /* width: 64px; */
+        /* height: 36px; */
+        width: 80px;
+        height: 45px;
+        border: 2px #000000 solid;
+        background-color: rgba(0, 0, 0, 0.8);
+        border-radius: 4px;
+    }
+
+    .screen .upper,
+    .screen .downer {
+        position: absolute;
+        border-radius: 3px;
+    }
+
+    .screen .upper {
+        background-color: #133535bd;
+        border: 1px solid #1D4653;
+    }
+
+    .screen .downer {
+        background-color: #0d2c4ebf;
+        border: 1px solid #355C7A;
+    }
+
+    .screen .num {
+        font-family: "Noto sans", "Microsoft JhengHei ", "微軟正黑體", sans-serif;
+        font-weight: 500;
+        font-size: 8px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .screen .upper .num {
+        color: #36EAEA;
+    }
+
+    .screen .downer .num {
+        color: #0090FF;
+    }
+</style>
+
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="screen">
+                    <div class="downer" style=" width: 100%; height: 100%; top: 0; left: 0;">
+                        <div class="num">1</div>
+                    </div>
+                    <div class="upper " style=" width: 40%; height: 40%;   bottom: 6px; right: 6px;">
+                        <div class="num">2</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

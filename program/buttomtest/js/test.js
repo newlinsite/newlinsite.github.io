@@ -98,7 +98,7 @@ var sessionNum = 1
 
 
 
-//   模式 
+//   模式 ( defalt mode 放在)
 
 // var test_mode = 0
 document.getElementById("testmode").innerHTML = "Mode = " + test_mode;
@@ -107,16 +107,24 @@ document.getElementById("testmode").innerHTML = "Mode = " + test_mode;
 
 
 
-// --------------------------------- 鍵盤快捷鍵----------------------------
+// -------------------------------------------------------------
+//
+//---------鍵盤
+//
+// -------------------------------------------------------------
 
 if (test_mode == 0) {
+
+    //------------------------------
+    // 測試的模式 : 手動全開模式
+    //------------------------------
 
     document.addEventListener("keydown", keydownEvent, false);
 
     function keydownEvent(e) {
         var keyID = e.code;
 
-        // 換測試項目
+        // 換測試項目 (換UI上的圖片)
         if (keyID === "Digit0") {
             testType.classList = "buttonBox test01"
         }
@@ -163,7 +171,7 @@ if (test_mode == 0) {
 
 
 
-        // 偵測 LOG
+        // 偵測 LOG 紀錄用戶動作 (按下)
         if (keyID === "NumpadMultiply") {
             var now = new Date();
             console.log(+ now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds() + " - 4 - keydown")
@@ -185,6 +193,9 @@ if (test_mode == 0) {
             console.log(+ now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds() + " - f - keydown")
 
         }
+
+        // 給研究員換 Session 紀錄用
+
         if (keyID === "KeyI") {
             var now = new Date();
             console.log(+ now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds() + " - --- Task " + taskNum + " --- - ")
@@ -198,10 +209,9 @@ if (test_mode == 0) {
     }
 
 
-
     document.addEventListener("keyup", keyupEvent, false);
     function keyupEvent(e) {
-        // 偵測 LOG
+        // 偵測 LOG 紀錄用戶動作 (按起)
         var keyID = e.code;
         if (keyID === "NumpadMultiply") {
             var now = new Date();
@@ -223,10 +233,14 @@ if (test_mode == 0) {
             var now = new Date();
             console.log(+ now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds() + " - f - keyup")
         }
-
     }
 
 } else {
+
+
+    //------------------------------
+    // 測試的模式一 真的邏輯模式
+    //------------------------------
 
     // 變數
 
