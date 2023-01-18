@@ -11,43 +11,53 @@ var $tag = function (name) {
 
 
 
-//--------------------------------
-//
-//			GTM
-//
-//--------------------------------
-
-
-var header = $tag("header")
 
 
 
 
 //--------------------------------
 //
-//			Header
+//			Header/footer
 //
 //--------------------------------
 
 var header = $tag("header")
+var footer = $tag("footer")
 
 // input Header
+var headerHtml = '\
+			<div class="container row flex-align-end">\
+				<img src="image/logo.png" alt="" class="logo">\
+				<ul class="row flex-jus-end">\
+					<li class=""><a href="#">Works</a></li>\
+					<li class=""><a href="#">Blog</a></li>\
+					<li class=""><a href="#">About</a></li>\
+				</ul>\
+				<div class="sidebar row flex-dir-col">\
+					<a class="" href="index.html">home</a>\
+					<a class="block now" href="index.html">Works</a>\
+				</div>\
+			</div>'
 
-var a = '\
-<div class="container row flex-align-end">\
-	<img src="image/logo.png" alt="" class="logo">\
-	<ul class="row flex-jus-end">\
-		<li class=""><a href="#">Works</a></li>\
-		<li class=""><a href="#">Blog</a></li>\
-		<li class=""><a href="#">About</a></li>\
-	</ul>\
-	<div class="sidebar row flex-dir-col">\
-		<a class="" href="index.html">home</a>\
-		<a class="block now" href="index.html">Works</a>\
-	</div>\
-</div>'
+header[0].innerHTML = headerHtml;
 
-header[0].innerHTML = a;
+
+// input footer
+var footerHtml = '\
+	<div class="container">123\
+	</div>'
+
+footer[0].innerHTML = footerHtml;
+
+
+
+
+
+
+
+
+
+
 
 
 
