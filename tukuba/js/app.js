@@ -12,35 +12,57 @@ var $tag = function (name) {
 
 
 
-//--------------------------------
+//--------------------------------------------
 //
-//			input name , work image
+//		input name , work image
 //
-//--------------------------------
+//--------------------------------------------
 
-
-
-var workname = [
-	"portfolio",
-	//----------------------
-	"All-in-One Streaming Studio Solution Application.",
-	"Text-to-Speech AI Application",
-	"Future Training Room",
-	"uvc",
-	"Design system"
-]
-
-var workname_xs = [
-	"portfolio",
+var worknameBox = [
+	"home",
 	//----------------------
 	"d_uc",
 	"d_tts",
 	"d_ftr",
 	"d_uvc",
-	"d_ds"
-
+	"d_ds",
+	//----------------------
+	"d_so",
+	"d_ofweb",
+	"d_game",
+	"d_wweb",
+	"d_kud",
+	//----------------------
+	"d_wall",
+	"v_vis",
+	"v_ino",
+	"v_3d"
 ]
 
+var worknameBoxFull = [
+	"portfolio",
+	//----------------------
+	"All-in-One Streaming Studio </br> Solution Application.",
+	"Text-to-Speech </br> AI Application",
+	"Future Training Room",
+	"Virtual USB Video Streaming </br>Windows Tool",
+	"Design system",
+	//----------------------
+	"SO!Eyewear Website",
+	"Official Website Optimization ",
+	"Gaming KVM Application",
+	"Chunlin Official Website",
+	"Creator-oriented </br>e-commerce platform",
+	//----------------------
+	"Road Construction </br>Noise Control System",
+	"VIS / Visual Design",
+	"Infographic Design",
+	"3D Render"
+]
+
+
+//查找作品順序
+var workNumber=worknameBox.indexOf(workName)
 
 
 
@@ -52,8 +74,8 @@ if (workNumber == 0) {
 	var h3 = $tag("h3")
 	var link = $tag("a")
 	for (let i = 0; i < h3.length; i++) {
-		h3[i].innerHTML = workname[i + 1];
-		link[i].href = workname_xs[i + 1] + ".html"
+		h3[i].innerHTML = worknameBoxFull[i + 1];
+		link[i].href = worknameBox[i + 1] + ".html"
 	}
 }
 
@@ -62,11 +84,11 @@ if (workNumber == 0) {
 //	input work name and image
 //--------------------
 if (workNumber > 0) {
-	$tag("title")[0].innerHTML = workname[workNumber]
-	$tag("h1")[0].innerHTML = workname[workNumber]
+	$tag("title")[0].innerHTML = worknameBoxFull[workNumber].replace('</br>', '')
+	$tag("h1")[0].innerHTML = worknameBoxFull[workNumber]
 	var img = $tag("img")
 	for (let i = 0; i < img.length; i++) {
-		img[i].src = "image/" + workname_xs[workNumber] + i + ".png"
+		img[i].src = "image/" + worknameBox[workNumber] + i + ".png"
 	}
 }
 
@@ -87,14 +109,14 @@ var footer = $tag("footer")
 // input Header
 var headerHtml = '\
 			<div class="container row flex-align-end">\
-				<img src="image/logo.png" alt="" class="logo">\
+				<a href="index.html"><img src="image/logo.png" alt="" class="logo"></a>\
 				<ul class="row flex-jus-end">\
-					<li class=""><a href="#">Works</a></li>\
-					<li class=""><a href="about.html">Blog</a></li>\
-					<li class=""><a href="about.html">About</a></li>\
+					<li><a href="index.html">Works</a></li>\
+					<!-- <li><a href="about.html">Blog</a></li> -->\
+					<li><a href="about.html">Resume</a></li>\
 				</ul>\
 				<div class="sidebar row flex-dir-col">\
-					<a class="" href="index.html">home</a>\
+					<a href="index.html">home</a>\
 					<a class="block now" href="index.html">Works</a>\
 				</div>\
 			</div>'
