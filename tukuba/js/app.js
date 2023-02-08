@@ -50,7 +50,7 @@ var worknameBoxFull = [
 	//----------------------
 	"SO!Eyewear Website",
 	"Official Website Optimization ",
-	"Gaming KVM Application",
+	"Gaming KVM Adapter Application",
 	"Chunlin Official Website",
 	"Creator-oriented </br>e-commerce platform",
 	//----------------------
@@ -62,9 +62,10 @@ var worknameBoxFull = [
 
 
 //查找作品順序
-var workNumber=worknameBox.indexOf(workName)
+console.log(workName)
+var workNumber = worknameBox.indexOf(workName)
 
-
+console.log(workNumber)
 
 
 //--------------------
