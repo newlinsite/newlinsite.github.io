@@ -76,7 +76,7 @@ if (workNumber == 0) {
 	let link = $tag("a")
 	for (let i = 0; i < h3.length; i++) {
 		h3[i].innerHTML = worknameBoxFull[i + 1];
-		link[i].href = worknameBox[i + 1] + ".html"
+		link[i].href = worknameBox[i + 1] + ".html#img01"
 	}
 }
 
