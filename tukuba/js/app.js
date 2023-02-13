@@ -72,8 +72,8 @@ console.log(workNumber)
 //	input index work name/link
 //--------------------
 if (workNumber == 0) {
-	var h3 = $tag("h3")
-	var link = $tag("a")
+	let h3 = $tag("h3")
+	let link = $tag("a")
 	for (let i = 0; i < h3.length; i++) {
 		h3[i].innerHTML = worknameBoxFull[i + 1];
 		link[i].href = worknameBox[i + 1] + ".html"
@@ -87,12 +87,16 @@ if (workNumber == 0) {
 if (workNumber > 0) {
 	$tag("title")[0].innerHTML = worknameBoxFull[workNumber].replace('</br>', '')
 	$tag("h1")[0].innerHTML = worknameBoxFull[workNumber]
-	var img = $tag("img")
+	let img = $tag("img")
 	for (let i = 0; i < img.length; i++) {
-		img[i].src = "image/" + worknameBox[workNumber] + i + ".png"
+		let imgType = ".png"
+		if (img[i].alt == "svg") {
+			imgType = ".svg"
+		}
+		img[i].src = "image/" + worknameBox[workNumber] + i + imgType
+		console.log(img[i].src)
 	}
 }
-
 
 
 
@@ -116,10 +120,10 @@ var headerHtml = '\
 					<!-- <li><a href="about.html">Blog</a></li> -->\
 					<li><a href="about.html">Resume</a></li>\
 				</ul>\
-				<div class="sidebar row flex-dir-col">\
+				<!--<div class="sidebar row flex-dir-col">\
 					<a href="index.html">home</a>\
 					<a class="block now" href="index.html">Works</a>\
-				</div>\
+				</div>-->\
 			</div>'
 
 header[0].innerHTML = headerHtml;
