@@ -92,6 +92,8 @@ if (workNumber > 0) {
 		let imgType = ".png"
 		if (img[i].alt == "svg") {
 			imgType = ".svg"
+		} else if (img[i].alt == "gif") {
+			imgType = ".gif"
 		}
 		img[i].src = "image/" + worknameBox[workNumber] + i + imgType
 		console.log(img[i].src)

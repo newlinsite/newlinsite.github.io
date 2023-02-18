@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>number_up</title>
+    <style>
+        @import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
+
+        @font-face {
+            font-family: 'Material Symbols Outlined';
+            font-style: normal;
+            font-weight: 400;
+            src: url(https://fonts.gstatic.com/s/materialsymbolsoutlined/v76/kJF4BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY40KH8nGzv3fz_VFU22ZZLsYEpzC_1ver5Y0.woff2) format('woff2');
+        }
+
+        .body,
+        html {
+            width: 100%;
+            height: 100%;
+            background-color: #333333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .container {
+            background-color: #515151;
+            padding: 12px;
+            border-radius: 20px;
+            box-shadow: 0 0 12px #0000004a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .numBox {
+            background-color: #7e7e7e;
+            width: 200px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+        }
+
+        .numBox #num {
+            color: #333;
+            font-family: "Noto sans", "Microsoft JhengHei ", "微軟正黑體", sans-serif;
+            font-weight: 800;
+            font-size: 28px;
+        }
+
+        .iconBtnBox {}
+
+        .iconBtnBox .iconBtn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Material Symbols Outlined';
+            color: #a8a8a8;
+            font-size: 32px;
+            margin: 4px;
+            width: 32px;
+            height: 32px;
+            background-color: #48484800;
+            border-radius: 4px;
+            transition: 0.6s;
+        }
+
+        .iconBtnBox .iconBtn:hover {
+            color: #bababa;
+            background-color: #484848;
+        }
+
+        input {
+            position: fixed;
+            bottom: 8px;
+            right: 8px;
+            background-color: #484848;
+            width: 100px;
+            height: 24px;
+        }
+
+        input#inputDelayTime {
+            bottom: 44px;
+        }
+
+        input#maxNum {
+            bottom: 86px;
+        }
+
+        input#minNum {
+            bottom: 120px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="numBox">
+            <p id="num">0</p>
+        </div>
+        <div class="iconBtnBox">
+            <a href="#" id="uper" class="iconBtn">arrow_drop_up</a>
+            <a href="#" id="down" class="iconBtn">arrow_drop_down</a>
+        </div>
+        <input id="maxNum" type="number" value="9">
+        <input id="minNum" type="number" value="0">
+        <input id="inputChangeTime" type="number" value="100">
+        <input id="inputDelayTime" type="number" value="500">
+    </div>
+
+
+
+
+
+</body>
+<script>
+
+    // Function
+    var $ = function (name) {
+        return document.getElementById(name)
+    }
+    var $css = function (name) {
+        return document.getElementsByClassName(name)
+    }
+    var $tag = function (name) {
+        return document.getElementsByTagName(name)
+    }
+
+
+    var num = $("num")
+    var uper = $("uper")
+    var dowm = $("dowm")
+    var inputChangeTime = $("inputChangeTime")
+    var maxNum = $("maxNum")
+    var minNum = $("minNum")
+
+    var number = 0
+    var changeTime = inputChangeTime.value
+    var firstDelayTime = inputDelayTime.value
+    var isNumAdd = 0
+
+
+
+
+
+    //--------------------------------
+
+    //增減數字器
+
+    //--------------------------------
+    var numchanger = function (i = 1) {
+        if (i > 0) {
+            if (number == maxNum.valueAsNumber) {
+                number = minNum.valueAsNumber
+            } else {
+                number = number + i
+            }
+        } else {
+            if (number == minNum.valueAsNumber) {
+                number = maxNum.valueAsNumber
+            } else {
+                number = number + i
+            }
+        }
+        num.innerHTML = number
+    }
+
+
+
+    //--------------------------------
+
+    //長按增加數字
+
+    //--------------------------------
+    function addNumber() {
+        numchanger()
+        let startAddDelay = setTimeout(
+            function () {
+                isNumAdd = 1
+                //長按不停+ ----------------
+                let adding = setInterval(function () {
+                    numchanger()
+                }, changeTime)
+                //關掉長按不停+ ----------------
+                //關閉的功能函數
+                var stopAdd = function () {
+                    clearInterval(adding)
+                    console.log("Stop adding, Numer = ", number)
+                    uper.removeEventListener("mouseup", stopAdd);
+                }
+                //偵測關閉訊號
+                uper.addEventListener("mouseup", stopAdd)
+            }
+            , firstDelayTime
+        )
+        //關掉長按的Delay ----------------
+        //關閉的功能函數
+        let stopDelay = function () {
+            clearTimeout(startAddDelay)
+            if (isNumAdd == 0) {
+                console.log("Stop Delay, Numer = ", number)
+            }
+            uper.removeEventListener("mouseup", stopDelay);
+            isNumAdd = 0
+        }
+        //停止延遲
+        uper.addEventListener("mouseup", stopDelay)
+    }
+
+
+
+    //--------------------------------
+
+    //長按增加數字
+
+    //--------------------------------
+    function subNumber() {
+        numchanger(-1)
+        let startAddDelay = setTimeout(
+            function () {
+                isNumAdd = 1
+                //長按不停+ ----------------
+                let adding = setInterval(function () {
+                    numchanger(-1)
+                }, changeTime)
+                //關掉長按不停+ ----------------
+                //關閉的功能函數
+                var stopAdd = function () {
+                    clearInterval(adding)
+                    console.log("Stop adding, Numer = ", number)
+                    down.removeEventListener("mouseup", stopAdd);
+                }
+                //偵測關閉訊號
+                down.addEventListener("mouseup", stopAdd)
+            }
+            , firstDelayTime
+        )
+        //關掉長按的Delay ----------------
+        //關閉的功能函數
+        let stopDelay = function () {
+            clearTimeout(startAddDelay)
+            if (isNumAdd == 0) {
+                console.log("Stop Delay, Numer = ", number)
+            }
+            down.removeEventListener("mouseup", stopDelay);
+            isNumAdd = 0
+        }
+        //停止延遲
+        down.addEventListener("mouseup", stopDelay)
+    }
+
+
+
+
+
+
+
+
+    ///偵測區
+
+    uper.addEventListener("mousedown", addNumber)
+    down.addEventListener("mousedown", subNumber)
+
+    inputChangeTime.addEventListener("change", function () {
+        changeTime = inputChangeTime.value;
+        console.log("-----------------------------------")
+        console.log("DelayTime = ", firstDelayTime)
+        console.log("changeTime = ", changeTime)
+        console.log("-----------------------------------")
+
+
+    })
+
+    inputDelayTime.addEventListener("change", function () {
+        firstDelayTime = inputDelayTime.value;
+        console.log("-----------------------------------")
+        console.log("DelayTime = ", firstDelayTime)
+        console.log("changeTime = ", changeTime)
+        console.log("-----------------------------------")
+    })
+
+
+
+
+    console.log("-----------------------------------")
+    console.log("DelayTime = ", firstDelayTime)
+    console.log("changeTime = ", changeTime)
+    console.log("-----------------------------------")
+
+
+
+</script>
+
+</html>

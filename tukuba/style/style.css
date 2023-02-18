@@ -787,10 +787,24 @@ footer {
 	transition: 0.3s;
 }
 
-.article .icon-btn:hover {
+.icon-btn:hover {
 	background-color: #f0e6ba;
 	color: #363636;
 }
+
+
+.article .move-by-scroll-box {
+	overflow: hidden;
+}
+
+.article .move-by-scroll {
+	position: absolute;
+	padding: 0;
+	margin: 0;
+	right: 16px;
+}
+
+
 
 /***************************************
 ******************************************
@@ -840,7 +854,6 @@ footer {
 		transform: scale(1);
 	}
 }
-
 
 
 
@@ -998,6 +1011,25 @@ footer {
 .f-white {
 	color: white !important;
 }
+
+.f-radius-sm {
+	border-radius: 8px !important;
+}
+
+.f-radius-md {
+	border-radius: 16px !important;
+}
+
+.f-radius-shadow-sm {
+	box-shadow: 0 0 8px #00000008 !important;
+}
+
+.f-radius-shadow-md {
+	box-shadow: 0 0 16px #00000013 !important;
+}
+
+
+
 
 .dashed {
 	border: 0.5px dashed #ddd;
