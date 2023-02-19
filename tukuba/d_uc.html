@@ -2,7 +2,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width initial-scale=1.0,user-scalable=0,maximum-scale=1.5">
 	<title></title>
-	<script>workName="d_uc"</script>
+	<script>workName = "d_uc"</script>
 	<link rel="stylesheet" href="style/reset.css">
 	<link rel="stylesheet" href="style/style.css">
 	<link rel="icon" type="image/png" href="web_icon.png" />
@@ -26,12 +26,32 @@
 	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PMLJXPC" height="0" width="0"
 			style="display:none;visibility:hidden"></iframe></noscript>
 	<!-- End Google Tag Manager (noscript) -->
-	<header></header>
+	<header>
+		<div class="container">
+			<a href="index.html">
+				<div class="logo">
+					<div></div>
+				</div>
+			</a>
+			<ul class="row flex-jus-end">
+				<li><a href="index.html">Works</a></li>
+				<li><a href="about.html">Resume</a></li>
+			</ul>
+		</div>
+	</header>
+	<div id="sidebar" class="row flex-dir-col">
+		<div class="row flex-dir-col">
+			<a class="mt-xl" href="index.html">Home</a>
+			<a id="nextwork" class="icon" href="#">chevron_right<div id="nextwork-describe"></div></a>
+			<a id="lastwork" class="icon" href="#">chevron_left<div id="lastwork-describe"></div></a>
+		</div>
+		<a href="#">Top</a>
+	</div>
 	<!-- /**Title************************************************************/ -->
-	<div class="container mt-xl">
+	<div class="container mt-llg">
 		<h1></h1>
 		<div class="row">
-			<div class="col-6 col-sm-1 pr-lg">
+			<div class="col-6 col-sm-12 pr-lg">
 				<p>2020 - 2021</p>
 				<h3>Partner : Product manager, RD Team.</h3>
 				<p>
@@ -42,9 +62,9 @@
 					professional video, obtained <strong>the highest sales volume</strong> that year, and won many
 					international awards.
 				</p>
-				<img style="max-width: 300px;">
+				<img style="max-width: 300px;" class="mb-md">
 			</div>
-			<div class="col-6 col-sm-1">
+			<div class="col-6 col-sm-12">
 				<img>
 			</div>
 		</div>
