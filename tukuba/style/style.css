@@ -954,9 +954,12 @@ footer {
 }
 
 .article img.left {
-	margin-left: 0
+	margin-left: 0;
 }
 
+.article img.right {
+	margin-right: 0;
+}
 
 .article .session {
 	color: #5C5C5C;
