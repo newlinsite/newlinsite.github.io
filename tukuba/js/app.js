@@ -32,11 +32,15 @@ var worknameBox = [
 	"d_game",
 	"d_wweb",
 	"d_kud",
-	//----------------------
 	"d_wall",
+	//----------------------
 	"v_vis",
 	"v_ino",
-	"v_3d"
+	"v_3d",
+	//----------------------
+	"c_party",
+	"c_test",
+	"c_an"
 ]
 
 var worknameBoxFull = [
@@ -53,11 +57,15 @@ var worknameBoxFull = [
 	"Gaming KVM Adapter Application",
 	"Chunlin Official Website",
 	"Creator-oriented </br>e-commerce platform",
-	//----------------------
 	"Road Construction </br>Noise Control System",
+	//----------------------
 	"VIS / Visual Design",
 	"Infographic Design",
-	"3D Render"
+	"3D Render",
+	//----------------------
+	"Party Game",
+	"Prototypes",
+	"The interactive animation<br>for a marketing campaign"
 ]
 
 
@@ -73,12 +81,43 @@ console.log(workNumber)
 //--------------------
 if (workNumber == 0) {
 	let h3 = $tag("h3")
-	let link = $tag("a")
+	let link = $css("card-link")
 	for (let i = 0; i < h3.length; i++) {
 		h3[i].innerHTML = worknameBoxFull[i + 1];
 		link[i].href = worknameBox[i + 1] + ".html#img01"
+		link[i].style = "background-image: url(image/cover_" + worknameBox[i + 1] + ".png);"
 	}
+
+
 }
+
+
+//--------------------
+//	input cover me interact
+try {
+	let coverMe = $("cover-me")
+
+	let scrollX = document.documentElement.scrollTop / 60 - 80
+	let scrollY = document.documentElement.scrollTop / 10 - 100
+	let rotate = document.documentElement.scrollTop / 100
+	let x = 0
+	coverMe.style = "transform: translate(" + scrollX + "px," + scrollY + "px) "
+	window.addEventListener("mousemove", function (e) {
+		x = (e.x + e.y) / 30
+		coverMe.style = "filter: hue-rotate(" + x + "deg);transform: translate(" + scrollX + "px," + scrollY + "px) rotate(" + rotate + "deg);"
+	})
+	window.addEventListener("scroll", function (e) {
+		scrollX = document.documentElement.scrollTop / 60 - 80
+		scrollY = document.documentElement.scrollTop / 10 - 100
+		rotate = document.documentElement.scrollTop / 100
+		coverMe.style = "filter: hue-rotate(" + x + "deg);transform: translate(" + scrollX + "px," + scrollY + "px) rotate(" + rotate + "deg);"
+	})
+} catch {
+	console.log("There is no coverme")
+}
+
+
+
 
 
 //--------------------
@@ -87,6 +126,8 @@ if (workNumber == 0) {
 if (workNumber > 0) {
 	$tag("title")[0].innerHTML = worknameBoxFull[workNumber].replace('</br>', '')
 	$tag("h1")[0].innerHTML = worknameBoxFull[workNumber]
+
+	//input image
 	let img = $tag("img")
 	for (let i = 0; i < img.length; i++) {
 		let imgType = ".png"
@@ -96,10 +137,9 @@ if (workNumber > 0) {
 			imgType = ".gif"
 		}
 		img[i].src = "image/" + worknameBox[workNumber] + i + imgType
-		console.log(img[i].src)
 	}
 
-	//導入 side bar
+	//input side bar
 	try {
 		$("sidebar").classList.add("row")
 		$("sidebar").classList.add("flex-dir-col")
@@ -121,13 +161,37 @@ if (workNumber > 0) {
 		$("nextwork-describe").innerHTML = worknameBoxFull[workNumber + 1]
 		$("lastwork-describe").innerHTML = worknameBoxFull[workNumber - 1]
 	} catch {
-		console.log("There is not side bar")
+		console.log("It's no side bar here")
 	}
-
 }
 
-
-
+//--------------------
+//	input .imgbox.fold 
+//--------------------
+try {
+	var imgboxFold = $css("imgbox fold")
+	// var imgboxUnfold = $css("imgbox unfold")
+	var imgFold = $css("img-fold")
+	var imgFoldSingal = [1, 1]
+	console.log(imgboxFold)
+	for (let i = 0; i < imgboxFold.length; i++) {
+		imgboxFold[i].addEventListener("click", function () {
+			if (imgFoldSingal[i] == 1) {
+				imgboxFold[i].style = "height:" + imgFold[i].clientHeight + "px"
+				imgboxFold[i].classList.add("unfolded")
+				imgboxFold[i].classList.remove("folded")
+				imgFoldSingal[i] = 0
+			} else {
+				imgboxFold[i].style = "height: 480px"
+				imgboxFold[i].classList.add("folded")
+				imgboxFold[i].classList.remove("unfolded")
+				imgFoldSingal[i] = 1
+			}
+		})
+	}
+} catch {
+	console.log("no fold image")
+}
 
 
 

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1200" height="675" viewBox="0 0 1200 675">
+  <defs>
+    <radialGradient id="radial-gradient" cx="0.841" cy="0.368" r="0.2" gradientTransform="translate(0 -0.192) scale(1 1.403)" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#37c2e2" stop-opacity="0"/>
+      <stop offset="0.117" stop-color="#37c2e2" stop-opacity="0"/>
+      <stop offset="0.456" stop-color="#37c2e2" stop-opacity="0.016"/>
+      <stop offset="1" stop-color="#37c2e2"/>
+    </radialGradient>
+  </defs>
+  <rect id="mask_07" width="1200" height="675" opacity="0.85" fill="url(#radial-gradient)"/>
+</svg>

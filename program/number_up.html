@@ -80,24 +80,25 @@
         }
 
         input {
-            position: fixed;
-            bottom: 8px;
-            right: 8px;
             background-color: #484848;
             width: 100px;
             height: 24px;
         }
 
-        input#inputDelayTime {
-            bottom: 44px;
+        .name {
+            color: #808080;
+            font-family: "Noto sans", "Microsoft JhengHei ", "微軟正黑體", sans-serif;
+            font-size: 8px;
+            margin: 12px 0 4px 4px;
         }
 
-        input#maxNum {
-            bottom: 86px;
-        }
-
-        input#minNum {
-            bottom: 120px;
+        .row {
+            position: fixed;
+            bottom: 50%;
+            right: 32px;
+            display: flex;
+            flex-direction: column;
+            transform: translateY(50%);
         }
     </style>
 </head>
@@ -113,10 +114,18 @@
             <a href="#" id="uper" class="iconBtn">arrow_drop_up</a>
             <a href="#" id="down" class="iconBtn">arrow_drop_down</a>
         </div>
-        <input id="maxNum" type="number" value="9">
-        <input id="minNum" type="number" value="0">
-        <input id="inputChangeTime" type="number" value="100">
-        <input id="inputDelayTime" type="number" value="500">
+        <div class="row">
+            <div class="name">Max Number</div>
+            <input id="maxNum" type="number" value="9">
+            <div class="name">Min Number</div>
+            <input id="minNum" type="number" value="0">
+            <div class="name">Hold Delay Time</div>
+            <input id="inputDelayTime" type="number" value="500">
+            <div class="name">+ 1 Time</div>
+            <input id="inputChangeTime" type="number" value="100">
+        </div>
+
+
     </div>
 
 
