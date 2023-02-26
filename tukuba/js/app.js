@@ -170,7 +170,6 @@ if (workNumber > 0) {
 //--------------------
 try {
 	var imgboxFold = $css("imgbox fold")
-	// var imgboxUnfold = $css("imgbox unfold")
 	var imgFold = $css("img-fold")
 	var imgFoldSingal = [1, 1]
 	console.log(imgboxFold)
