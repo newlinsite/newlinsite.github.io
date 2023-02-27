@@ -72,8 +72,7 @@ var worknameBoxFull = [
 //查找作品順序
 
 var workNumber = worknameBox.indexOf(workName)
-console.log(workName)
-console.log(workNumber)
+console.log(workNumber, workName)
 
 
 //--------------------
@@ -129,7 +128,8 @@ if (workNumber > 0) {
 
 	//input image
 	let img = $tag("img")
-	for (let i = 0; i < img.length; i++) {
+
+	for (let i = 0; i < img.length - 2; i++) {
 		let imgType = ".png"
 		if (img[i].alt == "svg") {
 			imgType = ".svg"
@@ -172,7 +172,6 @@ try {
 	var imgboxFold = $css("imgbox fold")
 	var imgFold = $css("img-fold")
 	var imgFoldSingal = [1, 1]
-	console.log(imgboxFold)
 	for (let i = 0; i < imgboxFold.length; i++) {
 		imgboxFold[i].addEventListener("click", function () {
 			if (imgFoldSingal[i] == 1) {
@@ -226,8 +225,30 @@ header[0].innerHTML = headerHtml;
 
 // input footer
 var footerHtml = '\
-	<div class="container">123\
-	</div>'
+			<div class="container">\
+			<div class="session-border pt-sm pb-sm">\
+				<div class="row flex-jus-c">\
+					<div class="col-3 col-md-4 col-xsm-12 text-xsm-center">\
+						<h2 style="font-size:16px">林新翔 / LIN SIN-SIANG</h2>\
+						<h5 style="font-size:15px">UI/UX Designer</h5>\
+					</div>\
+					<div class="col-5 col-md-4 col-xsm-12 row-xsm flex-xsm-jus-c">\
+						<div class="row flex-align-c">\
+							<img src="image/icon_email.png">\
+							<p class="mb-xxs">newslining@gmail.com</p>\
+						</div>\
+						<a class="row flex-align-c" href="https://www.linkedin.com/in/sin-siang-lin/" target="_blank">\
+							<img src="image/icon_linkedin-rect.png">\
+							<p>linkedin sin-siang-lin</p>\
+						</a>\
+					</div>\
+					<div class="col-4 col-xsm-12 text-xsm-center mt-sm-sm">\
+						<a href="about.html" class="btn">Recume <span class="icon"> arrow_forward</span>\
+						</a>\
+					</div>\
+				</div>\
+			</div>\
+			</div>'
 
 footer[0].innerHTML = footerHtml;
 
