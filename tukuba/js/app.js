@@ -129,7 +129,7 @@ if (workNumber > 0) {
 	//input image
 	let img = $tag("img")
 
-	for (let i = 0; i < img.length - 2; i++) {
+	for (let i = 0; i < img.length; i++) {
 		let imgType = ".png"
 		if (img[i].alt == "svg") {
 			imgType = ".svg"
