@@ -520,6 +520,7 @@ p.center {
 .imgbox.folded::after,
 .imgbox.unfolded::after {
 	content: "expand_more";
+	cursor: pointer;
 	display: flex;
 	justify-content: center;
 	align-items: center;

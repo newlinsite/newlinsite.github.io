@@ -189,15 +189,14 @@ window.onload = function () {
             bgm[0].fadeStop()
             console.log("fade stop")
         })
-        var filterTag = 0
+        let isFilterEnabled = false
         mucBtn[3].addEventListener("click", function () {
-            if (filterTag == 0) {
+            isFilterEnabled = !isFilterEnabled
+            if (isFilterEnabled) {
                 bgm[0].fadeLowPass(500, -40, 0)
-                filterTag = 1
                 console.log("fliter")
             } else {
                 bgm[0].fadeLowPass(22050, 0)
-                filterTag = 0
                 console.log("close fliter")
             }
         })
