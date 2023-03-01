@@ -1,5 +1,6 @@
 
 
+import pandas as pd
 
 price= 50
 count_t=3600
@@ -16,3 +17,5 @@ for buy in range(1,3600):
         print(expectedValue)
         break
     expectedValue_last=expectedValue
+
+

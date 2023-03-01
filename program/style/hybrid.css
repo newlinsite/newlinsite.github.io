@@ -1,0 +1,255 @@
+/* 客製互動動畫 */
+
+.ahwcontainer * {
+	position: relative;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+    
+}
+.ahwcontainer a {
+    text-decoration: none;
+}
+
+.ahwcontainer video{
+	height: auto;
+}
+
+.ahwcontainer{
+	max-width: 1440px;
+	/* max-width: 85%; */
+    width: 100%;
+	height: 100%;
+	margin: 0px auto;}
+
+.ahw_box{
+	width: 100%;
+}
+
+
+
+
+.ahw_box .ahw_main_mask{
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 99%;
+	background-color: #37c3e2c7;
+	opacity: 0.95;
+	transition: 1s;
+}
+
+.ahw_box .ahw_main_mask::after{
+	display: inline-block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform:translate(-50%,-50%);
+	content: 'Click Me!';
+	font-size: 25px;
+	color: #fff;
+	font-weight:800;
+	font-family: "Noto sans", "Microsoft JhengHei ", "微軟正黑體", sans-serif;
+	border: 2px solid #fff;
+	border-radius: 6px;
+	padding: 10px 36px;
+	animation-name: click_animation;
+	animation-duration: 10s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count:infinite;
+	box-shadow:0 0 20px rgba(0, 0, 0, 0.212)
+}
+
+
+.ahw_box .ahw_main_mask:hover{
+	opacity: 0;
+}
+.ahw_main_mask_hidden{
+	display:none;
+}
+@keyframes click_animation {
+	0%  {top: 28%;left: 38%;opacity: 0;}
+	5%  {top: 28%;left: 38%;opacity: 1;}
+	26% {top: 28%;left: 38%;opacity: 1;}
+	30% {top: 28%;left: 38%;opacity: 0;}
+	/* ----------- */
+	31% {top: 70%;left: 52%;opacity: 0;}
+	35% {top: 70%;left: 52%;opacity: 1;}
+	56% {top: 70%;left: 52%;opacity: 1;}
+	60% {top: 70%;left: 52%;opacity: 0;}
+	/* ----------- */
+	61% {top: 50%;left: 65%;opacity: 0;}
+	65% {top: 50%;left: 65%;opacity: 1;}
+	96% {top: 50%;left: 65%;opacity: 1;}
+	100% {top: 50%;left: 65%;opacity: 0;}
+  }
+
+
+
+
+
+
+.ahw_box img,.ahw_box svg{
+	width: 100%;
+	height: 99% !important;
+	position: absolute;
+	left: 0;
+	top:0;
+}
+.ahw_show{
+	opacity: 1;
+	transition: 1s;
+}
+.ahw_hidden{
+	opacity: 0;
+	transition: 1s;
+}
+
+.ahw_box .hoverbox{
+	position: absolute;
+	width: 16%;
+	height: 18%;
+}
+
+
+/* 
+.ahw_box .hoverbox::before{
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform:translate(-50%,-50%);
+	width: 200px;
+	height:200px;
+	background-color: #000000;
+	border-radius: 50%;
+	opacity: 0;
+	transition: 0.8s;
+	filter: blur(4px);
+}
+.ahw_box .hoverbox::after{
+	content: "Click Me";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform:translate(-50%,-50%);
+	color: #084576;
+	font-family: "Noto sans", "Microsoft JhengHei ", "微軟正黑體", sans-serif;
+	font-size: 24px;
+	font-weight: 600;
+	opacity: 0;
+	transition: 0.8s;
+}
+ */
+
+
+
+
+.ahw_box .h01{
+	top: 18%;
+	left: 32%;
+}
+.ahw_box .h02{
+	top: 62%;
+	left: 70%;
+}
+.ahw_box .h03{
+	top: 60%;
+	left: 43%;
+}
+.ahw_box .h04{
+	top: 18%;
+	left: 52%;
+}
+
+.ahw_box .h05{
+	top:62%;
+	left: 8%;
+}
+.ahw_box .h06{
+	top: 42%;
+	left: 56%
+}
+.ahw_box .h07{
+	top: 30%;
+	left: 75%;
+}
+.ahw_box .h08{
+	top: 40%;
+	left: 32%;
+}
+
+
+
+
+.namebox{
+	display:inline-block;
+	left: 50%;
+	top:80%;
+	color:#fff;
+	padding: 8px 32px;
+	font-size : 15px;
+	text-align: center;
+	font-family: "Noto sans", "Microsoft JhengHei ", "微軟正黑體", sans-serif;
+	background-color: #084576f5;
+	border-radius: 4px;
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.27);
+	opacity:0;
+	transform:translate(-50%,-10px);
+	transition: 1s;
+}
+
+.ahw_box .hoverbox:hover .namebox{
+	opacity:1;
+	transform:translate(-50%,0);
+}
+/* ----------- */
+.ahw_box .hoverbox:hover::before{
+	opacity:0.15;
+}
+.ahw_box .hoverbox:hover::after{
+	opacity:1;
+}
+
+
+
+@media only screen and (max-width: 1200px) {
+    .ahw_box .hoverbox{
+        display:block;
+        position: relative;
+        width: 100%;
+        height: auto;
+        margin: 32px 0 0 0;
+        border-bottom: 2px solid #084576;
+    }
+    .ahw_box .h01,
+    .ahw_box .h02,
+    .ahw_box .h03,
+    .ahw_box .h04,
+    .ahw_box .h05,
+    .ahw_box .h06,
+    .ahw_box .h07,
+    .ahw_box .h08{
+        top:0;
+        left: 0;
+    }
+    .ahw_box .hoverbox>div{
+        opacity: 1;
+    }
+    .namebox{
+        display: block;
+        font-size: 24px;
+        font-weight: 500;
+        color: #084576;
+        background-color: rgba(255, 255, 255, 0);
+        box-shadow: none;
+    }
+    .ahw_box svg{
+        display: none;
+    }
+    .ahw_box .hoverbox:hover .namebox{
+        transform:translate(-50%,-10px);
+    }
+	.ahw_box .ahw_main_mask{
+		display:none;
+	}
+	}

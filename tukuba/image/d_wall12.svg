@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="606.708" height="162.747" viewBox="0 0 606.708 162.747">
+  <g id="d_wall12" transform="translate(-572.541 -7773.956)">
+    <path id="パス_20654" data-name="パス 20654" d="M3.914-27.056H14.592v5.092H10.64V1.824h3.952V6.916H3.914ZM599.944,6.916V1.824H603.9V-21.964h-3.952v-5.092h10.678V6.916Z" transform="translate(568.627 7806.489)" fill="#ffdb4f"/>
+    <text id="隔音" transform="translate(757.623 7790.957)" fill="#707070" font-size="16" font-family="YuGothicUI-Regular, Yu Gothic UI" letter-spacing="0.1em"><tspan x="0" y="0">隔音</tspan></text>
+    <text id="Sound_insulation" data-name="Sound insulation" transform="translate(718.29 7816.022)" fill="#707070" font-size="14" font-family="SegoeUI, Segoe UI" letter-spacing="0.1em"><tspan x="0" y="0">Sound insulation</tspan></text>
+    <text id="吸音" transform="translate(981.94 7790.957)" fill="#707070" font-size="16" font-family="YuGothicUI-Regular, Yu Gothic UI" letter-spacing="0.1em"><tspan x="0" y="0">吸音</tspan></text>
+    <text id="Sound_absorption" data-name="Sound absorption" transform="translate(938.607 7816.022)" fill="#707070" font-size="14" font-family="SegoeUI, Segoe UI" letter-spacing="0.1em"><tspan x="0" y="0">Sound absorption</tspan></text>
+    <rect id="長方形_1156" data-name="長方形 1156" width="21" height="1" transform="translate(868.3 7794.723)" fill="#707070"/>
+    <rect id="長方形_1157" data-name="長方形 1157" width="1" height="21" transform="translate(878.3 7784.723)" fill="#707070"/>
+    <rect id="長方形_1158" data-name="長方形 1158" width="3" height="25" transform="translate(877.3 7861.723)" fill="#ffdb4f"/>
+    <path id="パス_18632" data-name="パス 18632" d="M493.1,2284.3l-8.8,15.3-8.9-15.3Z" transform="translate(394 5602.423)" fill="#ffdb4f"/>
+    <text id="DEVELOPMENT" transform="translate(829.957 7932.703)" fill="#ffdb4f" font-size="14" font-family="SegoeUI, Segoe UI" letter-spacing="0.1em"><tspan x="0" y="0">DEVELOPMENT</tspan></text>
+  </g>
+</svg>

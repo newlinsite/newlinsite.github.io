@@ -32,11 +32,15 @@ var worknameBox = [
 	"d_game",
 	"d_wweb",
 	"d_kud",
-	//----------------------
 	"d_wall",
+	//----------------------
 	"v_vis",
 	"v_ino",
-	"v_3d"
+	"v_3d",
+	//----------------------
+	"c_party",
+	"c_test",
+	"c_an"
 ]
 
 var worknameBoxFull = [
@@ -53,19 +57,22 @@ var worknameBoxFull = [
 	"Gaming KVM Adapter Application",
 	"Chunlin Official Website",
 	"Creator-oriented </br>e-commerce platform",
-	//----------------------
 	"Road Construction </br>Noise Control System",
+	//----------------------
 	"VIS / Visual Design",
 	"Infographic Design",
-	"3D Render"
+	"3D Render",
+	//----------------------
+	"Party Game",
+	"Prototypes",
+	"The interactive animation<br>for a marketing campaign"
 ]
 
 
 //查找作品順序
-console.log(workName)
-var workNumber = worknameBox.indexOf(workName)
 
-console.log(workNumber)
+var workNumber = worknameBox.indexOf(workName)
+console.log(workNumber, workName)
 
 
 //--------------------
@@ -73,21 +80,55 @@ console.log(workNumber)
 //--------------------
 if (workNumber == 0) {
 	let h3 = $tag("h3")
-	let link = $tag("a")
+	let link = $css("card-link")
 	for (let i = 0; i < h3.length; i++) {
 		h3[i].innerHTML = worknameBoxFull[i + 1];
 		link[i].href = worknameBox[i + 1] + ".html#img01"
+		link[i].style = "background-image: url(image/cover_" + worknameBox[i + 1] + ".png);"
 	}
+
+
 }
 
 
 //--------------------
-//	input work name and image
+//	input cover me interact
+try {
+	let coverMe = $("cover-me")
+
+	let scrollX = document.documentElement.scrollTop / 60 - 80
+	let scrollY = document.documentElement.scrollTop / 10 - 100
+	let rotate = document.documentElement.scrollTop / 100
+	let x = 0
+	coverMe.style = "transform: translate(" + scrollX + "px," + scrollY + "px) "
+	window.addEventListener("mousemove", function (e) {
+		x = (e.x + e.y) / 30
+		coverMe.style = "filter: hue-rotate(" + x + "deg);transform: translate(" + scrollX + "px," + scrollY + "px) rotate(" + rotate + "deg);"
+	})
+	window.addEventListener("scroll", function (e) {
+		scrollX = document.documentElement.scrollTop / 60 - 80
+		scrollY = document.documentElement.scrollTop / 10 - 100
+		rotate = document.documentElement.scrollTop / 100
+		coverMe.style = "filter: hue-rotate(" + x + "deg);transform: translate(" + scrollX + "px," + scrollY + "px) rotate(" + rotate + "deg);"
+	})
+} catch {
+	console.log("There is no coverme")
+}
+
+
+
+
+
+//--------------------
+//	input work name , image , next/last work
 //--------------------
 if (workNumber > 0) {
 	$tag("title")[0].innerHTML = worknameBoxFull[workNumber].replace('</br>', '')
 	$tag("h1")[0].innerHTML = worknameBoxFull[workNumber]
+
+	//input image
 	let img = $tag("img")
+
 	for (let i = 0; i < img.length; i++) {
 		let imgType = ".png"
 		if (img[i].alt == "svg") {
@@ -96,9 +137,61 @@ if (workNumber > 0) {
 			imgType = ".gif"
 		}
 		img[i].src = "image/" + worknameBox[workNumber] + i + imgType
-		console.log(img[i].src)
+	}
+
+	//input side bar
+	try {
+		$("sidebar").classList.add("row")
+		$("sidebar").classList.add("flex-dir-col")
+		$("sidebar").innerHTML = '<div class="row flex-dir-col">\
+				<a class="mt-xl" href="index.html">Home</a>\
+				<a id="nextwork" class="icon" href="#">chevron_right<div id="nextwork-describe"></div></a>\
+				<a id="lastwork" class="icon" href="#">chevron_left<div id="lastwork-describe"></div></a>\
+			</div>\
+			<a href="#">Top</a>'
+
+		//導入上下一個作品按鈕連結
+		if (workNumber == 1) {
+			$("lastwork").classList.add("hidden")
+		} else if (workNumber == worknameBox.length) {
+			$("nextwork").classList.add("hidden")
+		}
+		$("nextwork").href = worknameBox[workNumber + 1] + ".html#img01"
+		$("lastwork").href = worknameBox[workNumber - 1] + ".html#img01"
+		$("nextwork-describe").innerHTML = worknameBoxFull[workNumber + 1]
+		$("lastwork-describe").innerHTML = worknameBoxFull[workNumber - 1]
+	} catch {
+		console.log("It's no side bar here")
 	}
 }
+
+//--------------------
+//	input .imgbox.fold 
+//--------------------
+try {
+	var imgboxFold = $css("imgbox fold")
+	var imgFold = $css("img-fold")
+	var imgFoldSingal = [1, 1]
+	for (let i = 0; i < imgboxFold.length; i++) {
+		imgboxFold[i].addEventListener("click", function () {
+			if (imgFoldSingal[i] == 1) {
+				imgboxFold[i].style = "height:" + imgFold[i].clientHeight + "px"
+				imgboxFold[i].classList.add("unfolded")
+				imgboxFold[i].classList.remove("folded")
+				imgFoldSingal[i] = 0
+			} else {
+				imgboxFold[i].style = "height: 480px"
+				imgboxFold[i].classList.add("folded")
+				imgboxFold[i].classList.remove("unfolded")
+				imgFoldSingal[i] = 1
+			}
+		})
+	}
+} catch {
+	console.log("no fold image")
+}
+
+
 
 
 
@@ -115,17 +208,16 @@ var footer = $tag("footer")
 
 // input Header
 var headerHtml = '\
-			<div class="container row flex-align-end">\
-				<a href="index.html"><img src="image/logo.png" alt="" class="logo"></a>\
+			<div class="container">\
+				<a href="index.html">\
+					<div class="logo">\
+						<div></div>\
+					</div>\
+				</a>\
 				<ul class="row flex-jus-end">\
 					<li><a href="index.html">Works</a></li>\
-					<!-- <li><a href="about.html">Blog</a></li> -->\
 					<li><a href="about.html">Resume</a></li>\
 				</ul>\
-				<!--<div class="sidebar row flex-dir-col">\
-					<a href="index.html">home</a>\
-					<a class="block now" href="index.html">Works</a>\
-				</div>-->\
 			</div>'
 
 header[0].innerHTML = headerHtml;
@@ -133,8 +225,30 @@ header[0].innerHTML = headerHtml;
 
 // input footer
 var footerHtml = '\
-	<div class="container">123\
-	</div>'
+			<div class="container">\
+			<div class="session-border pt-sm pb-sm">\
+				<div class="row flex-jus-c">\
+					<div class="col-3 col-md-4 col-xsm-12 text-xsm-center">\
+						<h2 style="font-size:16px">林新翔 / LIN SIN-SIANG</h2>\
+						<h5 style="font-size:15px">UI/UX Designer</h5>\
+					</div>\
+					<div class="col-5 col-md-4 col-xsm-12 row-xsm flex-xsm-jus-c">\
+						<div class="row flex-align-c">\
+							<img src="image/icon_email.png">\
+							<p class="mb-xxs">newslining@gmail.com</p>\
+						</div>\
+						<a class="row flex-align-c" href="https://www.linkedin.com/in/sin-siang-lin/" target="_blank">\
+							<img src="image/icon_linkedin-rect.png">\
+							<p>linkedin sin-siang-lin</p>\
+						</a>\
+					</div>\
+					<div class="col-4 col-xsm-12 text-xsm-center mt-sm-sm">\
+						<a href="about.html" class="btn">Recume <span class="icon"> arrow_forward</span>\
+						</a>\
+					</div>\
+				</div>\
+			</div>\
+			</div>'
 
 footer[0].innerHTML = footerHtml;
 
@@ -142,13 +256,21 @@ footer[0].innerHTML = footerHtml;
 
 
 // Header smaller
-
+var LastScrollY = 0
 document.addEventListener('scroll', function (e) {
-	if (window.scrollY != 0) {
+	let scrollY = window.scrollY
+	if (scrollY == 0) {
+		header[0].classList.remove("sm");
+		header[0].classList.remove("md");
+	} else if (scrollY > LastScrollY) {
+		header[0].classList.remove("md");
 		header[0].classList.add("sm");
 	} else {
 		header[0].classList.remove("sm");
+		header[0].classList.add("md");
 	}
+
+	LastScrollY = scrollY
 })
 
 

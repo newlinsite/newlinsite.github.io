@@ -1,10 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="648" height="100.401" viewBox="0 0 648 100.401">
-  <g id="d_wall5" transform="translate(0 1.355)">
-    <g id="グループ_2262" data-name="グループ 2262">
-      <text id="_" data-name="[                                                        ]" transform="translate(0 36.645)" fill="#ffdb4f" font-size="38" font-family="Muli-Black, Muli" font-weight="800"><tspan x="0" y="0" xml:space="preserve">[                                                        ]</tspan></text>
-    </g>
-    <text id="_2" data-name="＞" transform="translate(386.343 27.963)" fill="#929293" font-size="19.57" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">＞</tspan></text>
-    <text id="_3" data-name="＞" transform="translate(233.028 27.963)" fill="#929293" font-size="19.57" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">＞</tspan></text>
+<svg xmlns="http://www.w3.org/2000/svg" width="639.768" height="100.134" viewBox="0 0 639.768 100.134">
+  <g id="d_wall5" transform="translate(-3.914 1.088)">
+    <path id="パス_20651" data-name="パス 20651" d="M3.914-27.056H14.592v5.092H10.64V1.824h3.952V6.916H3.914ZM633,6.916V1.824h3.952V-21.964H633v-5.092h10.678V6.916Z" transform="translate(0 36.645)" fill="#ffdb4f"/>
+    <text id="_" data-name="＞" transform="translate(386.343 27.963)" fill="#929293" font-size="19.57" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">＞</tspan></text>
+    <text id="_2" data-name="＞" transform="translate(233.028 27.963)" fill="#929293" font-size="19.57" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">＞</tspan></text>
     <text id="聲音和視覺" transform="translate(271.442 50.644)" fill="#717071" font-size="17" font-family="YuGothicUI-Regular, Yu Gothic UI" letter-spacing="0.1em"><tspan x="0" y="0">聲音和視覺</tspan></text>
     <text id="溝通" transform="translate(157.299 16.912)" fill="#717071" font-size="17" font-family="YuGothicUI-Regular, Yu Gothic UI" letter-spacing="0.1em"><tspan x="0" y="0">溝通</tspan></text>
     <text id="方便性" transform="translate(144.512 49.273)" fill="#717071" font-size="17" font-family="YuGothicUI-Regular, Yu Gothic UI" letter-spacing="0.1em"><tspan x="0" y="0">方便性</tspan></text>

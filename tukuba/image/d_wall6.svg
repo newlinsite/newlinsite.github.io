@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="595.688" height="44.655" viewBox="0 0 595.688 44.655">
+  <g id="d_wall6" transform="translate(-334.837 -3779.286)">
+    <path id="パス_20652" data-name="パス 20652" d="M3.914-27.056H14.592v5.092H10.64V1.824h3.952V6.916H3.914ZM588.924,6.916V1.824h3.952V-21.964h-3.952v-5.092H599.6V6.916Z" transform="translate(330.923 3812.912)" fill="#ffdb4f"/>
+    <text id="暫時性聽力損失" transform="translate(425.678 3796.287)" fill="#7a7a7a" font-size="16" font-family="MicrosoftJhengHeiRegular, Microsoft JhengHei"><tspan x="0" y="0">暫時性聽力損失</tspan></text>
+    <text id="Temporary_threshold_shift_TTS" data-name="Temporary threshold shift , TTS" transform="translate(393.027 3820.941)" fill="#7a7a7a" font-size="13" font-family="MicrosoftJhengHeiRegular, Microsoft JhengHei"><tspan x="0" y="0">Temporary threshold shift , TTS</tspan></text>
+    <text id="Permanent_threshold_shift_PTS" data-name="Permanent threshold shift , PTS" transform="translate(685.553 3820.939)" fill="#7a7a7a" font-size="13" font-family="MicrosoftJhengHeiRegular, Microsoft JhengHei"><tspan x="0" y="0">Permanent threshold shift , PTS</tspan></text>
+    <text id="永久性聽力損失" transform="translate(710.712 3796.286)" fill="#7a7a7a" font-size="16" font-family="MicrosoftJhengHeiRegular, Microsoft JhengHei"><tspan x="0" y="0">永久性聽力損失</tspan></text>
+  </g>
+</svg>
