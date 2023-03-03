@@ -380,9 +380,11 @@ h1 {
 
 h2 {
 	color: var(--text-color);
-	letter-spacing: 0.008em;
+	max-width: 1000px;
+	/* letter-spacing: 0.00em; */
+	line-height: 1.3em;
 	font-size: 24px;
-	font-weight: 300;
+	font-weight: 400;
 	margin: 12px 0;
 }
 
