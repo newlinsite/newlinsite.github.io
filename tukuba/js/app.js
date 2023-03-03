@@ -226,7 +226,7 @@ header[0].innerHTML = headerHtml;
 // input footer
 var footerHtml = '\
 			<div class="container">\
-			<div class="session-border pt-sm pb-sm">\
+			<div class="session-border pt-md pb-md">\
 				<div class="row flex-jus-c">\
 					<div class="col-3 col-md-4 col-xsm-12 text-xsm-center">\
 						<h2 style="font-size:16px">林新翔 / LIN SIN-SIANG</h2>\

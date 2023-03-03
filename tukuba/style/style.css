@@ -787,6 +787,7 @@ header.sm .logo:hover>div {
 	top: 0;
 	left: calc(50vw - 600px - 64px - 1%);
 	height: 100%;
+	padding-bottom: 64px;
 }
 
 #sidebar a {
@@ -889,7 +890,6 @@ header.sm .logo:hover>div {
 
 footer {
 	background-color: var(--aug-light-color);
-	/* padding: 32px; */
 	margin-top: 124px;
 }
 

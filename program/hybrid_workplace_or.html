@@ -12,30 +12,79 @@
     <div id="demo" class="demo"></div>
     <div class="container">
         <div class="ahw_box">
-            <img src="image/mask_00.png" alt="" id="mask00" class="">
-            <img src="image/mask_01.png" alt="" id="mask01" class="hidden">
-            <img src="image/mask_02.png" alt="" id="mask02" class="hidden">
-            <img src="image/mask_03.png" alt="" id="mask03" class="hidden">
-            <img src="image/mask_04.png" alt="" id="mask04" class="hidden">
-            <img src="image/mask_05.png" alt="" id="mask05" class="hidden">
-            <img src="image/mask_06.png" alt="" id="mask06" class="hidden">
+            <img src="image/mask_00.png" alt="" id="mask00" class=" ">
+            <img src="image/mask_01.png" alt="" id="mask01" class="mask hidden">
+            <img src="image/mask_02.png" alt="" id="mask02" class="mask hidden">
+            <img src="image/mask_03.png" alt="" id="mask03" class="mask hidden">
+            <img src="image/mask_04.png" alt="" id="mask04" class="mask hidden">
+            <img src="image/mask_05.png" alt="" id="mask05" class="mask hidden">
+            <img src="image/mask_06.png" alt="" id="mask06" class="mask hidden">
             <div class="hoverbox h01">
-                <div class="namebox">Portable Video Capture</div>
+                <div class="namebox">
+                    <img src="image/hy05.jpg" alt="">
+                    <h2>Flex Working</h2>
+                    <h3>Professional On-the-go Video Capture & Livestreaming Solutions</h3>
+                    <p>
+                        As smaller companies transition their workforces to adaptive models, single-person production
+                        studios for on-the-go flex workers are becoming essential tools.
+                    </p>
+                </div>
             </div>
             <div class="hoverbox h02">
-                <div class="namebox">Conference Rooms</div>
+                <div class="namebox">
+                    <img src="image/hy05.jpg" alt="">
+                    <h2>Conference Rooms</h2>
+                    <h3>Collaborative Remote Participant-enabled Conference Room Solutions</h3>
+                    <p>
+                        Conference room equipment needs to ensure that remote participants are fully accommodated with a
+                        level of inclusivity
+                    </p>
+                </div>
             </div>
             <div class="hoverbox h03">
-                <div class="namebox">Server Room</div>
+                <div class="namebox">
+                    <img src="image/hy05.jpg" alt="">
+                    <h2>Server Room</h2>
+                    <h3>Secure, Remote Access IT Infrastructure Management Solutions</h3>
+                    <p>
+                        For any workplace setup, ATEN over IP solutions offer smooth, secure remote access to all
+                        devices in corporate server rooms.
+                    </p>
+                </div>
             </div>
             <div class="hoverbox h04">
-                <div class="namebox">Desktop Workstations</div>
+                <div class="namebox">
+                    <img src="image/hy04.jpg" alt="">
+                    <h2>
+                        Desktop Workstations</h2>
+                    <h3>Agile, Ergonomic, & Adaptive Desktop Workstation Solutions</h3>
+                    <p>
+                        In order to create a smarter and more ergonomic environment for an increasingly adaptive
+                        workforce, it is now necessary to future-proof workstation
+                    </p>
+                </div>
             </div>
             <div class="hoverbox h05">
-                <div class="namebox">Studio</div>
+                <div class="namebox">
+                    <img src="image/hy05.jpg" alt="">
+                    <h2>Studio</h2>
+                    <h3>Pro-level Content Creation & Livestreaming Solutions</h3>
+                    <p>
+                        The ever-increasing importance of dynamic video content to engage strategic partners in all
+                        aspects of the hybrid landscape has made in-house studios a valuable commodity.
+                    </p>
+                </div>
             </div>
             <div class="hoverbox h06">
-                <div class="namebox">Huddle Space</div>
+                <div class="namebox">
+                    <img src="image/hy06.jpg" alt="">
+                    <h2>Huddle Space</h2>
+                    <h3>Streamlined, Impromptu Communication BYOD Meeting Solutions</h3>
+                    <p>
+                        The implementation of thriving meeting spaces for impromptu team interactions is the key to
+                        productivity and results in the new hybrid work environment.
+                    </p>
+                </div>
             </div>
             <video width="100%" autoplay muted loop>
                 <source src="image/Main_001.mp4" type="video/mp4">
@@ -52,52 +101,21 @@
     <script>
 
 
-
-        // for (let i = 1; i < 2; i++) {
-        //     var target_mask01 = document.getElementById("mask" + i);
-        // }
-        // document.getElementById("demo").innerHTML = 4;
-
-        var target_mask_list = [];
-        for (let i = 1; i < 3; i++) {
-            target_mask_list.push("target_mask0" + i)
+        var target = document.getElementsByClassName("hoverbox")
+        var mask = document.getElementsByClassName("mask")
+        console.log(mask[0])
+        for (let i = 0; i < target.length; i++) {
+            target[i].addEventListener("mouseover", function () {
+                mask[i].classList.add("show")
+                mask[i].classList.remove("hidden")
+            }, false);
+            target[i].addEventListener("mouseout", function () {
+                mask[i].classList.add("hidden")
+                mask[i].classList.remove("show")
+            }, false);
         }
-        document.getElementById("demo").innerHTML = target_mask_list[0];
 
 
-        var target = document.querySelectorAll(".hoverbox");
-        var target_mask01 = document.getElementById("mask01");
-        var target_mask02 = document.getElementById("mask02");
-        var target_mask03 = document.getElementById("mask03");
-        var target_mask04 = document.getElementById("mask04");
-        var target_mask05 = document.getElementById("mask05");
-        var target_mask06 = document.getElementById("mask06");
-
-        target[0].addEventListener("mouseover", mOver01, false);
-        target[0].addEventListener("mouseout", mOut01, false);
-        target[1].addEventListener("mouseover", mOver02, false);
-        target[1].addEventListener("mouseout", mOut02, false);
-        target[2].addEventListener("mouseover", mOver03, false);
-        target[2].addEventListener("mouseout", mOut03, false);
-        target[3].addEventListener("mouseover", mOver04, false);
-        target[3].addEventListener("mouseout", mOut04, false);
-        target[4].addEventListener("mouseover", mOver05, false);
-        target[4].addEventListener("mouseout", mOut05, false);
-        target[5].addEventListener("mouseover", mOver06, false);
-        target[5].addEventListener("mouseout", mOut06, false);
-
-        function mOver01() { target_mask01.setAttribute("class", "show") }
-        function mOut01() { target_mask01.setAttribute("class", "hidden") }
-        function mOver02() { target_mask02.setAttribute("class", "show") }
-        function mOut02() { target_mask02.setAttribute("class", "hidden") }
-        function mOver03() { target_mask03.setAttribute("class", "show") }
-        function mOut03() { target_mask03.setAttribute("class", "hidden") }
-        function mOver04() { target_mask04.setAttribute("class", "show") }
-        function mOut04() { target_mask04.setAttribute("class", "hidden") }
-        function mOver05() { target_mask05.setAttribute("class", "show") }
-        function mOut05() { target_mask05.setAttribute("class", "hidden") }
-        function mOver06() { target_mask06.setAttribute("class", "show") }
-        function mOut06() { target_mask06.setAttribute("class", "hidden") }
 
     </script>
 

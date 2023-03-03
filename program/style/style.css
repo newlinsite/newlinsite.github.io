@@ -12,8 +12,15 @@
 *******************************/
 
  /*import Noto sans TC*/
+
  @import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
 
+ @font-face {
+ 	font-family: 'Material Symbols Outlined';
+ 	font-style: normal;
+ 	font-weight: 400;
+ 	src: url(https://fonts.gstatic.com/s/materialsymbolsoutlined/v76/kJF4BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY40KH8nGzv3fz_VFU22ZZLsYEpzC_1ver5Y0.woff2) format('woff2');
+ }
 
  /******************************
            Page
@@ -31,6 +38,7 @@
  	font-weight: 400;
  	color: #333;
  	background-color: #C7C7C7;
+ 	overflow: hidden;
  }
 
  a {
@@ -88,13 +96,13 @@
  }
 
  .ahw_box .hoverbox.h01 {
- 	top: 55%;
- 	left: 6%;
+ 	top: 58%;
+ 	left: 4%;
  }
 
  .ahw_box .hoverbox.h02 {
- 	top: 12%;
- 	left: 32%;
+ 	top: 10%;
+ 	left: 28%;
  }
 
  .ahw_box .hoverbox.h03 {
@@ -103,41 +111,91 @@
  }
 
  .ahw_box .hoverbox.h04 {
- 	top: 60%;
- 	left: 43%;
+ 	top: 55%;
+ 	left: 41%;
  }
 
  .ahw_box .hoverbox.h05 {
- 	top: 30%;
- 	left: 52%;
+ 	top: 35%;
+ 	left: 54%;
  }
 
  .ahw_box .hoverbox.h06 {
- 	top: 58%;
- 	left: 70%;
+ 	top: 55%;
+ 	left: 67%;
  }
 
  .namebox {
- 	display: inline-block;
+ 	display: flex;
+ 	flex-wrap: wrap;
  	left: 50%;
  	top: 80%;
  	color: #fff;
- 	padding: 8px 32px;
- 	font-size: 15px;
- 	text-align: center;
+ 	padding: 12px;
+ 	width: 300px;
+ 	height: 0;
+ 	overflow: hidden;
  	font-family: "Noto sans", "Microsoft JhengHei ", "微軟正黑體", sans-serif;
- 	background-color: #084576f5;
+ 	background-color: #ffffffb9;
  	border-radius: 4px;
- 	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.27);
+ 	box-shadow: 0 3px 20px rgba(0, 0, 0, 0.118);
  	opacity: 0;
  	transform: translate(-50%, -10px);
  	transition: 1s;
+ 	border: 1px solid #9a9a9a;
+
  }
+
+ .namebox h2 {
+ 	font-size: 18px;
+ 	font-weight: 600;
+ 	width: 100%;
+ 	margin: 8px 0 4px 0;
+ 	color: #303030;
+ }
+
+ .namebox h3 {
+ 	margin: 0;
+ 	font-weight: 500;
+ 	font-size: 12px;
+ 	color: #3f3f3f;
+ }
+
+ .namebox p {
+ 	margin: 4px 0;
+ 	font-weight: 250;
+ 	font-size: 12px;
+ 	color: #353535;
+ }
+
+ .namebox img {
+ 	width: 100%;
+ 	height: auto;
+ 	position: relative;
+ }
+
 
  .ahw_box .hoverbox:hover .namebox {
  	opacity: 1;
  	transform: translate(-50%, 0);
+ 	height: 360px;
  }
+
+ .namebox::after {
+ 	content: "start";
+ 	font-family: 'Material Symbols Outlined';
+ 	position: absolute;
+ 	right: 14px;
+ 	top: 16px;
+ 	width: 12px;
+ 	height: 12px;
+ 	color: #536fb6;
+ 	font-size: 24px;
+ 	z-index: 10000;
+ 	font-weight: 500;
+ }
+
+
 
 
  /******************************
