@@ -55,11 +55,28 @@
 
  h1 {
      color: var(--pri-color);
-     font-size: 100px;
+     font-size: 80px;
      font-weight: 500;
-     letter-spacing: 0.2em;
      margin: 16px 0;
+     line-height: 1.2;
+     margin-bottom: 64px;
+     border: 2px solid #065366;
+     border-radius: 12px;
+     padding: 24px
  }
+
+ h1 span {
+     font-size: 28px;
+     letter-spacing: 0.2em;
+     position: absolute;
+     bottom: -48px;
+     left: 50%;
+     transform: translateX(-50%);
+     color: var(--pri-color);
+
+
+ }
+
 
  p {
      color: var(--text-color);
@@ -132,8 +149,8 @@
  }
 
  .time_btn {
-     width: 50px;
-     height: 50px;
+     width: 54px;
+     height: 54px;
      color: var(--ter-color);
      border-radius: 50%;
      background-color: rgba(255, 255, 255, 0.115);
@@ -577,7 +594,7 @@
 
  @media screen and (max-width: 480px) {
      h1 {
-         font-size: 80px;
+         font-size: 60px;
      }
 
      p {
@@ -589,7 +606,7 @@
      }
 
      #question span {
-         font-size: 20px;
+         font-size: 16px;
      }
 
      .gametype_01 #question {
@@ -598,8 +615,11 @@
 
 
 
-     .question_input_box {
+     .question_input_box,
+     #hotkey,
+     .input_rule {
          margin: 4px 0;
+         display: none;
      }
 
 
@@ -608,4 +628,5 @@
          width: 70px;
          height: 70px;
      }
+
  }

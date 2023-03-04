@@ -14,7 +14,7 @@
 <body class="gametype_00">
     <div id="container" class="home">
         <div id="home" class="flex-c">
-            <h1 id="game_name">比手</br>畫腳</h1>
+            <h1 id="game_name">比手</br>畫腳</br><span>START</span></h1>
             <div class="time_btns flex-c">
                 <div class="time_btn flex-c"></div>
                 <div class="time_btn flex-c active"></div>
@@ -34,7 +34,7 @@
                 <div class="side_btn" id="bg_clear">Clear</div>
                 <input type="file" id="imageInput" name="file">
             </div>
-            <p>Please upload .txt and a line is a question</p>
+            <p class="input_rule">Please upload .txt and a line is a question</p>
         </div>
         <div class="question_box flex-c">
             <div id="question"></div>
@@ -478,7 +478,12 @@
                 time_btnActiver(i);
                 TimerResetNum = i;
             }
-            time_btn[i].innerHTML = timerResetSecList[i];
+            if (i == 0) {
+                time_btn[i].innerHTML = timerResetSecList[i];
+            } else {
+                time_btn[i].innerHTML = timerResetSecList[i] + "s";
+            }
+
         }
     }
 
@@ -502,14 +507,14 @@
     // 遊戲模式設定
     function setGameType() {
         if (gameType == 0) {
-            game_name.innerHTML = "比手</br>畫腳"
+            game_name.innerHTML = "比手</br>畫腳</br><span>START</span>"
             changeQList(Qlist_0_00)
             body.classList.remove("gametype_01")
             body.classList.add("gametype_00")
             inputTimerResetSec("mode_00")
         }
         else {
-            game_name.innerHTML = "快問</br>快答"
+            game_name.innerHTML = "比手</br>畫腳</br><span>START</span>"
             changeQList(Qlist_1_01)
             body.classList.remove("gametype_00")
             body.classList.add("gametype_01")

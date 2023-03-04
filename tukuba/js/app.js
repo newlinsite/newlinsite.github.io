@@ -30,19 +30,42 @@ var worknameBox = [
 	"d_so",
 	"d_ofweb",
 	"d_game",
-	"d_wweb",
-	"d_kud",
-	"d_wall",
+	// "d_kud",
+	// "d_wall",
 	//----------------------
 	"v_vis",
 	"v_ino",
 	"v_3d",
+	"d_wweb",
 	//----------------------
 	"c_party",
 	"c_test",
 	"c_an"
 ]
-
+var worknameBoxTag = [
+	["home"],
+	//----------------------
+	["Scenario Definition", "Design Library", "Pad UI"],
+	["AI Interact Design", "Website", "B2B Solution"],
+	["Scenario Definition", "Control System Design"],
+	["d_uvc"],
+	["d_ds"],
+	//----------------------
+	["d_so"],
+	["User Research", "Re-design", "User Journey Map"],
+	["d_game"],
+	// ["d_kud"],
+	// ["d_wall"],
+	//----------------------
+	["v_vis"],
+	["v_ino00", "v_ino"],
+	["v_3d"],
+	["Google Analytics", "Website", "SEO"],
+	//----------------------
+	["c_party"],
+	["c_test"],
+	["c_an"]
+]
 var worknameBoxFull = [
 	"portfolio",
 	//----------------------
@@ -55,13 +78,13 @@ var worknameBoxFull = [
 	"SO!Eyewear Website",
 	"Official Website Optimization ",
 	"Gaming KVM Adapter Application",
-	"Chunlin Official Website",
-	"Creator-oriented </br>e-commerce platform",
-	"Road Construction </br>Noise Control System",
+	// "Creator-oriented </br>e-commerce platform",
+	// "Road Construction </br>Noise Control System",
 	//----------------------
 	"VIS / Visual Design",
 	"Infographic Design",
 	"3D Render",
+	"Chunlin Official Website",
 	//----------------------
 	"Party Game",
 	"Prototypes",
@@ -81,10 +104,16 @@ console.log(workNumber, workName)
 if (workNumber == 0) {
 	let h3 = $tag("h3")
 	let link = $css("card-link")
+	let tagBox = $css("detail_box")
 	for (let i = 0; i < h3.length; i++) {
 		h3[i].innerHTML = worknameBoxFull[i + 1];
 		link[i].href = worknameBox[i + 1] + ".html#img01"
 		link[i].style = "background-image: url(image/cover_" + worknameBox[i + 1] + ".png);"
+		let tag = ""
+		for (let j = 0; j < worknameBoxTag[i + 1].length; j++) {
+			tag = tag + "<p class=\"tag\">" + worknameBoxTag[i + 1][j]; +"</p>"
+		}
+		tagBox[i].innerHTML = tag
 	}
 
 

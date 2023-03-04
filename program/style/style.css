@@ -90,51 +90,52 @@
  .ahw_box .hoverbox {
  	position: absolute;
  	z-index: 1100;
- 	width: 21%;
- 	height: 28%;
- 	/* background-color:rgba(0, 0, 0, 0.03); */
+ 	width: 14%;
+ 	height: 16%;
+ 	cursor: pointer;
+ 	/* background-color: rgba(0, 0, 0, 0.03); */
  }
 
  .ahw_box .hoverbox.h01 {
- 	top: 58%;
- 	left: 4%;
+ 	top: 67%;
+ 	left: 8%;
  }
 
  .ahw_box .hoverbox.h02 {
- 	top: 10%;
- 	left: 28%;
+ 	top: 19%;
+ 	left: 33%;
  }
 
  .ahw_box .hoverbox.h03 {
- 	top: 35%;
- 	left: 32%;
+ 	top: 42%;
+ 	left: 34%;
  }
 
  .ahw_box .hoverbox.h04 {
- 	top: 55%;
- 	left: 41%;
+ 	top: 62%;
+ 	left: 46%;
  }
 
  .ahw_box .hoverbox.h05 {
- 	top: 35%;
- 	left: 54%;
+ 	top: 44%;
+ 	left: 60%;
  }
 
  .ahw_box .hoverbox.h06 {
- 	top: 55%;
- 	left: 67%;
+ 	top: 64%;
+ 	left: 71%;
  }
 
  .namebox {
  	display: flex;
  	flex-wrap: wrap;
  	left: 50%;
- 	top: 80%;
+ 	top: 65%;
  	color: #fff;
  	padding: 12px;
- 	width: 300px;
- 	height: 0;
- 	overflow: hidden;
+ 	width: 260px;
+ 	height: 120px;
+ 	/* overflow: hidden; */
  	font-family: "Noto sans", "Microsoft JhengHei ", "微軟正黑體", sans-serif;
  	background-color: #ffffffb9;
  	border-radius: 4px;
@@ -143,6 +144,7 @@
  	transform: translate(-50%, -10px);
  	transition: 1s;
  	border: 1px solid #9a9a9a;
+ 	z-index: 1200;
 
  }
 
@@ -178,18 +180,26 @@
  .ahw_box .hoverbox:hover .namebox {
  	opacity: 1;
  	transform: translate(-50%, 0);
- 	height: 360px;
+ 	height: 320px;
  }
 
  .namebox::after {
- 	content: "start";
+ 	content: "";
  	font-family: 'Material Symbols Outlined';
+ 	/* background-color: #fff; */
+ 	background-image: url(../image/next.svg);
+ 	background-repeat: no-repeat;
+ 	background-position: center;
+ 	background-size: cover;
  	position: absolute;
- 	right: 14px;
- 	top: 16px;
- 	width: 12px;
- 	height: 12px;
- 	color: #536fb6;
+
+ 	display: inline-block;
+ 	right: 50%;
+ 	top: -36px;
+ 	width: 72px;
+ 	height: 72px;
+ 	transform: translateX(50%);
+ 	color: #ffffff;
  	font-size: 24px;
  	z-index: 10000;
  	font-weight: 500;
