@@ -32,15 +32,16 @@ var worknameBox = [
 	"d_game",
 	// "d_kud",
 	// "d_wall",
+	// "d_wweb",
 	//----------------------
 	"v_vis",
 	"v_ino",
 	"v_3d",
-	"d_wweb",
 	//----------------------
 	"c_party",
 	"c_test",
-	"c_an"
+	"c_an",
+	""
 ]
 var worknameBoxTag = [
 	["home"],
@@ -51,20 +52,21 @@ var worknameBoxTag = [
 	["d_uvc"],
 	["d_ds"],
 	//----------------------
-	["d_so"],
+	["d_so", "SEO"],
 	["User Research", "Re-design", "User Journey Map"],
 	["d_game"],
 	// ["d_kud"],
 	// ["d_wall"],
+	// ["Google Analytics", "Website"],
 	//----------------------
 	["v_vis"],
 	["v_ino00", "v_ino"],
 	["v_3d"],
-	["Google Analytics", "Website", "SEO"],
 	//----------------------
 	["c_party"],
 	["c_test"],
-	["c_an"]
+	["c_an"],
+	""
 ]
 var worknameBoxFull = [
 	"portfolio",
@@ -80,15 +82,16 @@ var worknameBoxFull = [
 	"Gaming KVM Adapter Application",
 	// "Creator-oriented </br>e-commerce platform",
 	// "Road Construction </br>Noise Control System",
+	// "Chunlin Official Website",
 	//----------------------
 	"VIS / Visual Design",
 	"Infographic Design",
 	"3D Render",
-	"Chunlin Official Website",
 	//----------------------
 	"Party Game",
 	"Prototypes",
-	"The interactive animation<br>for a marketing campaign"
+	"The interactive animation</br>for a marketing campaign",
+	""
 ]
 
 

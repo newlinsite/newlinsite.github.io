@@ -613,7 +613,19 @@
          font-size: 40px;
      }
 
+     .Qlist_btns {
+         margin-bottom: 68px;
+     }
 
+     .Qlist_btn {
+         padding: 6px 10px;
+         font-size: 15px;
+     }
+
+     .time_btns {
+         margin-top: 0px;
+         margin-bottom: 0px;
+     }
 
      .question_input_box,
      #hotkey,
