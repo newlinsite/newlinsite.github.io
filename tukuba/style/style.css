@@ -380,16 +380,20 @@ h1 {
 
 h2 {
 	color: var(--text-color);
-	max-width: 1000px;
-	/* letter-spacing: 0.00em; */
-	line-height: 1.3em;
-	font-size: 24px;
+	line-height: 1.5em;
+	font-size: 23px;
 	font-weight: 400;
 	margin: 12px 0;
 }
 
+h2.box {
+	font-size: 17px;
+	padding: 4px 12px;
+	background-color: var(--aug-light-color);
+}
+
 h2.hightlight {
-	font-weight: 400;
+	font-weight: 500;
 }
 
 
@@ -455,6 +459,8 @@ p strong {
 }
 
 p.highlight {
+	font-size: 16px;
+	line-height: 2;
 	padding: 24px;
 	border: 1px solid var(--aug-color);
 }
@@ -515,7 +521,7 @@ p.center {
 .imgbox.unfolded {
 	height: 480px;
 	background-color: rgb(255, 255, 255);
-	margin-bottom: 32px;
+	margin-bottom: 100px;
 	transition: 1s;
 }
 
@@ -950,6 +956,8 @@ footer {
 }
 
 .workcard h3 {
+	font-weight: 600;
+	letter-spacing: -0.03em;
 	transition: 0.4s;
 	opacity: 0.65;
 	width: 100%;
@@ -987,6 +995,7 @@ footer {
 	bottom: -30px;
 	opacity: 0;
 	transition: 1s;
+	max-width: 400px;
 }
 
 .cardbox.workcard a:Hover .detail_box {
@@ -1045,6 +1054,15 @@ footer {
 	align-items: flex-start;
 	position: relative;
 
+}
+
+.article P {
+	max-width: 1000px;
+}
+
+.article h2,
+.article h3 {
+	max-width: 1000px;
 }
 
 .article img {
@@ -1232,6 +1250,9 @@ footer {
 	margin-bottom: 4px !important;
 }
 
+.mb-0 {
+	margin-bottom: 0px !important;
+}
 
 .mr-xl {
 	margin-right: 128px !important;

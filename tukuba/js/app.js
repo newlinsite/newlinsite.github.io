@@ -46,9 +46,9 @@ var worknameBox = [
 var worknameBoxTag = [
 	["home"],
 	//----------------------
-	["Scenario Definition", "Design Library", "Pad UI"],
+	["Scenario Definition", "Software PRD", "iPad UI Design", "Design Library"],
 	["AI Interact Design", "Website", "B2B Solution"],
-	["Scenario Definition", "Control System Design"],
+	["Scenario Definition", "IoT Control System Design"],
 	["d_uvc"],
 	["d_ds"],
 	//----------------------
@@ -71,8 +71,8 @@ var worknameBoxTag = [
 var worknameBoxFull = [
 	"portfolio",
 	//----------------------
-	"All-in-One Streaming Studio </br> Solution Application.",
-	"Text-to-Speech </br> AI Application",
+	"All-in-One Streaming Studio </br> Solution Application",
+	"Text-to-Speech </br> AI Solution",
 	"Future Training Room",
 	"Virtual USB Video Streaming </br>Windows Tool",
 	"Design system",
