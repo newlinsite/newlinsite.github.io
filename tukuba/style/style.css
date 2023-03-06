@@ -14,9 +14,7 @@
 ******************************************
 ******************************************
 
-
 			Page
-
 
 ******************************************
 ******************************************
@@ -32,7 +30,7 @@ html {
 }
 
 body {
-	font-family: "Noto sans", "Microsoft JhengHei ", "微軟正黑體", sans-serif;
+	font-family: "Noto sans", "Microsoft JhengHei", "微軟正黑體", sans-serif;
 	font-weight: 300;
 	background-color: var(--bg-color)
 }
@@ -1254,6 +1252,7 @@ footer {
 	margin-bottom: 0px !important;
 }
 
+
 .mr-xl {
 	margin-right: 128px !important;
 }
@@ -1274,6 +1273,9 @@ footer {
 	margin-right: 8px !important;
 }
 
+.mr-0 {
+	margin-right: 0 !important;
+}
 
 
 .ml-xl {
@@ -1294,9 +1296,11 @@ footer {
 
 .ml-xs {
 	margin-left: 8px !important;
-	transform: translate();
 }
 
+.ml-0 {
+	margin-left: 0 !important;
+}
 
 
 
