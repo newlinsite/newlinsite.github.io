@@ -5,35 +5,61 @@ var lastBtn = $("lastBtn")
 var nextBtnHights = []
 
 
+// console.log(scrollSession[6]])
 
 function createNextBtn() {
-    for (i = 0; i < scrollSession.length; i++) {
-        if (window.scrollY > scrollSession[i].offsetTop) {
-            let j = i + 2
-            lastBtn.href = "#img0" + i
-            nextBtn.href = "#img0" + j
+    for (i = 0; i <= nextBtnHights.length; i++) {
+        if (window.scrollY + 1 < nextBtnHights[i]) {
+            let j = i - 2
+            console.log(i, j, window.scrollY + 1, nextBtnHights[i])
+            lastBtn.href = "#img0" + j
+            nextBtn.href = "#img0" + i
             lastBtn.classList.remove("hidden")
             nextBtn.classList.remove("hidden")
-            if (i == 0) {
+            if (i == 1) {
                 lastBtn.classList.add("hidden")
             }
-            if (i == scrollSession.length - 2) {
+            if (i == scrollSession.length) {
                 nextBtn.classList.add("hidden")
             }
             break;
-        } else {
-            break;
         }
+        // lastBtn.href = "#img0" + scrollSession.length
     }
 }
 
 
+
+// function createNextBtn() {
+//     for (i = 0; i < scrollSession.length; i++) {
+//         if (window.scrollY > scrollSession[i].offsetTop) {
+//             let j = i + 2
+//             lastBtn.href = "#img0" + i
+//             nextBtn.href = "#img0" + j
+//             lastBtn.classList.remove("hidden")
+//             nextBtn.classList.remove("hidden")
+//             if (i == 0) {
+//                 lastBtn.classList.add("hidden")
+//             }
+//             if (i == scrollSession.length - 2) {
+//                 nextBtn.classList.add("hidden")
+//             }
+//         } else {
+//             break;
+//         }
+//     }
+// }
+
+
 window.onload = function () {
-    // nextBtn.href = "#img01"
-    createNextBtn()
+    //建立高度表
     for (let i = 0; i < scrollSession.length; i++) {
         nextBtnHights.push(scrollSession[i].offsetTop)
     }
+    //將高度列表最後加入一個偵測用的假數字
+    nextBtnHights.push(scrollSession[scrollSession.length - 1].offsetTop + 100)
+
+    createNextBtn()
     window.addEventListener("scroll", function () {
         createNextBtn()
     })

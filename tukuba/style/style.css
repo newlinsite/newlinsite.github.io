@@ -1122,11 +1122,12 @@ footer {
 	width: 42px;
 	height: 42px;
 	transition: 0.3s;
+	box-shadow: 0 2px 24px #0000004b;
 }
 
 .article .icon-btn:hover {
-	background-color: #f0e6ba;
-	color: #363636;
+	background-color: var(--sec-color);
+	color: #ffffff;
 }
 
 
