@@ -30,93 +30,49 @@
 	<!-- /**Title************************************************************/ -->
 	<div class="container" style="max-width: 1500px;">
 		<h1 class="hidden"></h1>
-		<div class="row">
-			<div class="col-6 col-sm-12 pr-lg">
-			</div>
-			<div class="col-6 col-sm-12">
-			</div>
-		</div>
+		<div id="sidebar" class="lg"></div>
 		<!-- /**************************************************************/ -->
 		<div class="article">
 
-			<img id="img01" style="max-width: 1500px;" class="pt-md mt-xl mb-xs">
-			<div class="row w-100">
-				<div class="col">
-					<h6 class="gray">3d Max, V-ray, Photoshop</h6>
-				</div>
-				<a href="#img02" class="icon-btn animation-in">arrow_downward</a>
-			</div>
-
-			<img id="img02" style=" max-width: 1500px;" class="pt-md mt-xl mb-xs">
-			<div class="row w-100">
-				<div class="col">
-					<h6 class="gray">3d Max, V-ray, Photoshop</h6>
-				</div>
-				<a href="#img01" class="icon-btn">arrow_upward</a>
-				<a href="#img03" class="icon-btn">arrow_downward</a>
-			</div>
+			<img id="img00" style="max-width: 1500px;" class="scrollSession pt-md mt-xl mb-xs">
+			<h6 class="gray">3d Max, V-ray, Photoshop</h6>
 
 
-			<img id="img03" style=" max-width: 1500px;" class="pt-md mt-xl mb-xs">
-			<div class="row w-100">
-				<div class="col">
-					<h6 class="gray">3d Max, V-ray, Photoshop</h6>
-				</div>
-				<a href="#img02" class="icon-btn">arrow_upward</a>
-				<a href="#img04" class="icon-btn">arrow_downward</a>
-			</div>
+			<img id="img01" style=" max-width: 1500px;" class="scrollSession pt-md mt-xl mb-xs">
+			<h6 class="gray">3d Max, V-ray, Photoshop</h6>
 
 
-			<img id="img04" style="max-width: 1500px;" class="pt-md mt-xl mb-xs">
-			<div class="row w-100">
-				<div class="col">
-					<h6 class="gray">3d Max, V-ray, Photoshop</h6>
-				</div>
-				<a href="#img03" class="icon-btn">arrow_upward</a>
-				<a href="#img05" class="icon-btn animation-in">arrow_downward</a>
-			</div>
+			<img id="img02" style=" max-width: 1500px;" class="scrollSession pt-md mt-xl mb-xs">
+			<h6 class="gray">3d Max, V-ray, Photoshop</h6>
 
 
-			<div class="move-by-scroll-box">
-				<img id="img05" style=" max-width: 1500px;" class="pt-md mt-xl mb-xs">
+			<img id="img03" style="max-width: 1500px;" class="scrollSession pt-md mt-xl mb-xs">
+			<h6 class="gray">3d Max, V-ray, Photoshop</h6>
+
+			<div id="img04" class="scrollSession move-by-scroll-box pt-md mt-xl mb-xs">
+				<img style=" max-width: 1500px;" class="mb-xs">
 				<img style="width: 14%; bottom: 40%;" class="move-by-scroll f-radius-md " alt="gif">
-				<img style="width: 14%; bottom: 60%;" class="move-by-scroll f-radius-md " alt="gif">
+				<img style="width: 14%; bottom: 65%;" class="move-by-scroll f-radius-md " alt="gif">
 			</div>
-			<div class="row w-100">
-				<div class="col">
-					<h6 class="gray">3d Max, V-ray, Photoshop</h6>
-				</div>
-				<a href="#img04" class="icon-btn">arrow_upward</a>
-				<a href="#img06" class="icon-btn">arrow_downward</a>
-			</div>
+			<h6 class="gray">3d Max, V-ray, Photoshop</h6>
 
 
-			<div class="move-by-scroll-box">
-				<img id="img06" style=" max-width: 1500px;" class="pt-md mt-xl mb-xs">
-				<iframe width="60%" height="60%" style=" bottom: 24px;" class="move-by-scroll"
+			<div id="img05" class="scrollSession move-by-scroll-box pt-md mt-xl mb-xs">
+				<img style=" max-width: 1500px;" class="mb-xs">
+				<iframe width="60%" height="60%" style=" bottom: 32px;" class="move-by-scroll"
 					src="https://www.youtube.com/embed/wK7eU07037c" title="YouTube video player" frameborder="0"
 					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 					allowfullscreen></iframe>
 			</div>
-			<div class="row w-100">
-				<div class="col">
-					<h6 class="gray">3d Max, V-ray, Photoshop</h6>
-				</div>
-				<a href="#img05" class="icon-btn">arrow_upward</a>
-				<a href="#img07" class="icon-btn">arrow_downward</a>
-			</div>
+			<h6 class="gray">Illustrator, After Effects</h6>
 
 
+			<img id="img06" style=" max-width: 1500px;" class="scrollSession pt-md mt-xl mb-xs">
+			<h6 class="gray">3d Max, V-ray, Photoshop</h6>
 
 
-			<img id="img07" style=" max-width: 1500px;" class="pt-md mt-xl mb-xs">
-			<div class="row w-100">
-				<div class="col">
-					<h6 class="gray">3d Max, V-ray, Photoshop</h6>
-				</div>
-				<a href="#img06" class="icon-btn">arrow_upward</a>
-				<a href="#img08" class="icon-btn">arrow_downward</a>
-			</div>
+			<a id="lastBtn" class="icon-btn po-fixed hidden" style="bottom: 5%;right: 24px;">arrow_upward</a>
+			<a id="nextBtn" class="icon-btn po-fixed hidden" style="bottom: 5%;right: 76px;">arrow_downward</a>
 
 		</div>
 	</div>
@@ -124,5 +80,6 @@
 
 </body>
 <script src="js/app.js"></script>
+<script src="js/image_nexter.js"></script>
 
 </html>

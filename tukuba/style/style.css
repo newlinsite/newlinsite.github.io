@@ -698,8 +698,13 @@ header ul.row li a {
 	font-size: 14px;
 	font-weight: 400;
 	padding: 0 8px 0 24px;
+	transition: 0.5s
 }
 
+header ul.row li a:hover {
+	color: var(--sec-color);
+
+}
 
 
 
@@ -792,9 +797,13 @@ header.sm .logo:hover>div {
 	justify-content: space-around;
 	z-index: 1000;
 	top: 0;
-	left: calc(50vw - 600px - 64px - 1%);
+	left: calc(50vw - 600px - 64px - 2%);
 	height: 100%;
 	padding-bottom: 64px;
+}
+
+#sidebar.lg {
+	left: 8px;
 }
 
 #sidebar a {
@@ -819,23 +828,40 @@ header.sm .logo:hover>div {
 	writing-mode: horizontal-tb;
 }
 
+
 #sidebar #nextwork-describe,
 #sidebar #lastwork-describe {
-	width: 160px;
-	min-height: 56px;
+	/* width: 200px; */
+	/* min-height: 56px; */
 	position: absolute;
-	top: 0;
+	top: 50%;
 	left: 38px;
 	font-family: "Noto sans", "Microsoft JhengHei ", "微軟正黑體", sans-serif;
-	background-color: var(--aug-color);
-	padding: 12px;
-	font-size: 12px;
-	color: #fff;
-	border-radius: 4px;
-	box-shadow: 0 0 8px #00000023;
+	background-color: var(--aug-light-color);
+	border: 1px solid var(--aug-color);
+	border-radius: 8px;
+	box-shadow: 0 0 24px #00000043;
 	opacity: 0;
-	transition: 0.35s;
-	transform: translateX(-80px) scaleX(40%);
+	transition: 0.8s;
+	transform: translate(-20px, -50%);
+	overflow: hidden;
+	width: 0;
+}
+
+
+#sidebar a img {
+	width: 120px;
+}
+
+#sidebar a span {
+	position: absolute;
+	bottom: 12px;
+	left: 128px;
+	width: 110px;
+	font-size: 13px;
+	letter-spacing: 0;
+	font-weight: normal;
+	color: var(--text-color);
 }
 
 #sidebar a:hover {
@@ -845,8 +871,8 @@ header.sm .logo:hover>div {
 #sidebar a:hover>#nextwork-describe,
 #sidebar a:hover>#lastwork-describe {
 	opacity: 1;
-	transform: translateX(0px) scale(100%);
-
+	transform: translate(0px, -50%);
+	width: 240px;
 }
 
 
@@ -1188,12 +1214,20 @@ footer {
 }
 
 .hidden {
-	display: none;
+	display: none !important;
 }
 
 .w-100 {
 	width: 100%
 }
+
+.po-fixed {
+	position: fixed;
+}
+
+
+
+
 
 
 .mt-xxl {

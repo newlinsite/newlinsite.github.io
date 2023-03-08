@@ -49,23 +49,23 @@ var worknameBoxTag = [
 	["Scenario Definition", "Software PRD", "iPad UI Design", "Design Library"],
 	["AI Interact Design", "Website", "B2B Solution"],
 	["Scenario Definition", "IoT Control System Design"],
-	["d_uvc"],
-	["d_ds"],
+	["Window AP Design", "Streaming", "UI Flow"],
+	["UI Library", "APP icon", "interaction flow library"],
 	//----------------------
-	["d_so", "SEO"],
+	["Website", "Frond-end", "SEO", "Google Analysis"],
 	["User Research", "Re-design", "User Journey Map"],
-	["d_game"],
+	["Gaming", "First Use", " Tutorial"],
 	// ["d_kud"],
 	// ["d_wall"],
 	// ["Google Analytics", "Website"],
 	//----------------------
-	["v_vis"],
-	["v_ino00", "v_ino"],
-	["v_3d"],
+	["Visual System", "Poster", "Illustration", "Animations"],
+	["Infographic", "Flow", "Scenario Illustration"],
+	["3D max", "V-ray", "Industral Design"],
 	//----------------------
-	["c_party"],
-	["c_test"],
-	["c_an"],
+	["JavaScript", "Web Audio API"],
+	["JavaScript", "Usability test Tools"],
+	["JavaScript", "After Effects"],
 	""
 ]
 var worknameBoxFull = [
@@ -110,7 +110,7 @@ if (workNumber == 0) {
 	let tagBox = $css("detail_box")
 	for (let i = 0; i < h3.length; i++) {
 		h3[i].innerHTML = worknameBoxFull[i + 1];
-		link[i].href = worknameBox[i + 1] + ".html#img01"
+		link[i].href = worknameBox[i + 1] + ".html#img00"
 		link[i].style = "background-image: url(image/cover_" + worknameBox[i + 1] + ".png);"
 		let tag = ""
 		for (let j = 0; j < worknameBoxTag[i + 1].length; j++) {
@@ -188,10 +188,11 @@ if (workNumber > 0) {
 		} else if (workNumber == worknameBox.length) {
 			$("nextwork").classList.add("hidden")
 		}
-		$("nextwork").href = worknameBox[workNumber + 1] + ".html#img01"
-		$("lastwork").href = worknameBox[workNumber - 1] + ".html#img01"
-		$("nextwork-describe").innerHTML = worknameBoxFull[workNumber + 1]
-		$("lastwork-describe").innerHTML = worknameBoxFull[workNumber - 1]
+		$("nextwork").href = worknameBox[workNumber + 1] + ".html#img00"
+		$("lastwork").href = worknameBox[workNumber - 1] + ".html#img00"
+		$("nextwork-describe").innerHTML = '<img src="image/cover_' + worknameBox[workNumber + 1] + '.png">' + "<span>" + worknameBoxFull[workNumber + 1] + "</span>"
+		$("lastwork-describe").innerHTML = '<img src="image/cover_' + worknameBox[workNumber - 1] + '.png">' + "<span>" + worknameBoxFull[workNumber - 1] + "</span>"
+		// $("lastwork-describe").innerHTML = worknameBoxFull[workNumber - 1]
 	} catch {
 		console.log("It's no side bar here")
 	}
