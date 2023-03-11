@@ -111,7 +111,7 @@ if (workNumber == 0) {
 	for (let i = 0; i < h3.length; i++) {
 		h3[i].innerHTML = worknameBoxFull[i + 1];
 		link[i].href = worknameBox[i + 1] + ".html#img00"
-		link[i].style = "background-image: url(image/cover_" + worknameBox[i + 1] + ".png);"
+		link[i].style = "background-image: url(../image/cover_" + worknameBox[i + 1] + ".png);"
 		let tag = ""
 		for (let j = 0; j < worknameBoxTag[i + 1].length; j++) {
 			tag = tag + "<p class=\"tag\">" + worknameBoxTag[i + 1][j]; +"</p>"
@@ -125,6 +125,7 @@ if (workNumber == 0) {
 
 //--------------------
 //	input cover me interact
+//--------------------
 try {
 	let coverMe = $("cover-me")
 
@@ -168,7 +169,7 @@ if (workNumber > 0) {
 		} else if (img[i].alt == "gif") {
 			imgType = ".gif"
 		}
-		img[i].src = "image/" + worknameBox[workNumber] + i + imgType
+		img[i].src = "../image/" + worknameBox[workNumber] + i + imgType
 	}
 
 	//input side bar
@@ -190,8 +191,8 @@ if (workNumber > 0) {
 		}
 		$("nextwork").href = worknameBox[workNumber + 1] + ".html#img00"
 		$("lastwork").href = worknameBox[workNumber - 1] + ".html#img00"
-		$("nextwork-describe").innerHTML = '<img src="image/cover_' + worknameBox[workNumber + 1] + '.png">' + "<span>" + worknameBoxFull[workNumber + 1] + "</span>"
-		$("lastwork-describe").innerHTML = '<img src="image/cover_' + worknameBox[workNumber - 1] + '.png">' + "<span>" + worknameBoxFull[workNumber - 1] + "</span>"
+		$("nextwork-describe").innerHTML = '<img src="../image/cover_' + worknameBox[workNumber + 1] + '.png">' + "<span>" + worknameBoxFull[workNumber + 1] + "</span>"
+		$("lastwork-describe").innerHTML = '<img src="../image/cover_' + worknameBox[workNumber - 1] + '.png">' + "<span>" + worknameBoxFull[workNumber - 1] + "</span>"
 		// $("lastwork-describe").innerHTML = worknameBoxFull[workNumber - 1]
 	} catch {
 		console.log("It's no side bar here")
@@ -235,12 +236,10 @@ try {
 //			Header/footer
 //
 //--------------------------------
-
-var header = $tag("header")
-var footer = $tag("footer")
-
 // input Header
-var headerHtml = '\
+try {
+	var header = $tag("header")
+	var headerHtml = '\
 			<div class="container">\
 				<a href="index.html">\
 					<div class="logo">\
@@ -252,12 +251,33 @@ var headerHtml = '\
 					<li><a href="about.html">Resume</a></li>\
 				</ul>\
 			</div>'
+	header[0].innerHTML = headerHtml;
 
-header[0].innerHTML = headerHtml;
 
+	// Header smaller
+	var LastScrollY = 0
+	document.addEventListener('scroll', function (e) {
+		let scrollY = window.scrollY
+		if (scrollY == 0) {
+			header[0].classList.remove("sm");
+			header[0].classList.remove("md");
+		} else if (scrollY > LastScrollY) {
+			header[0].classList.remove("md");
+			header[0].classList.add("sm");
+		} else {
+			header[0].classList.remove("sm");
+			header[0].classList.add("md");
+		}
+		LastScrollY = scrollY
+	})
+} catch {
+	console.log("noheader")
+}
 
 // input footer
-var footerHtml = '\
+try {
+	var footer = $tag("footer")
+	var footerHtml = '\
 			<div class="container">\
 			<div class="session-border pt-md pb-md">\
 				<div class="row flex-jus-c">\
@@ -267,11 +287,11 @@ var footerHtml = '\
 					</div>\
 					<div class="col-5 col-md-4 col-xsm-12 row-xsm flex-xsm-jus-c">\
 						<div class="row flex-align-c">\
-							<img src="image/icon_email.png">\
+							<img src="../image/icon_email.png">\
 							<p class="mb-xxs">newslining@gmail.com</p>\
 						</div>\
 						<a class="row flex-align-c" href="https://www.linkedin.com/in/sin-siang-lin/" target="_blank">\
-							<img src="image/icon_linkedin-rect.png">\
+							<img src="../image/icon_linkedin-rect.png">\
 							<p>linkedin sin-siang-lin</p>\
 						</a>\
 					</div>\
@@ -282,29 +302,10 @@ var footerHtml = '\
 				</div>\
 			</div>\
 			</div>'
-
-footer[0].innerHTML = footerHtml;
-
-
-
-
-// Header smaller
-var LastScrollY = 0
-document.addEventListener('scroll', function (e) {
-	let scrollY = window.scrollY
-	if (scrollY == 0) {
-		header[0].classList.remove("sm");
-		header[0].classList.remove("md");
-	} else if (scrollY > LastScrollY) {
-		header[0].classList.remove("md");
-		header[0].classList.add("sm");
-	} else {
-		header[0].classList.remove("sm");
-		header[0].classList.add("md");
-	}
-
-	LastScrollY = scrollY
-})
+	footer[0].innerHTML = footerHtml;
+} catch {
+	console.log("nofooter")
+}
 
 
 
