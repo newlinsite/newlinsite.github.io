@@ -301,7 +301,12 @@ try {
 					</div>\
 				</div>\
 			</div>\
-			</div>'
+			</div>\
+			<div id="loadingMask" class="">\
+			<svg viewBox="25 25 50 50">\
+				<circle cx="50" cy="50" r="20"></circle>\
+			</svg>\
+		</div>'
 	footer[0].innerHTML = footerHtml;
 } catch {
 	console.log("nofooter")
@@ -310,4 +315,12 @@ try {
 
 
 
+
+
+
+//Loading
+
+window.onload = function () {
+	$("loadingMask").classList.add("over")
+}
 
