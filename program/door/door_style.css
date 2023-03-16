@@ -4,16 +4,13 @@ html {
     width: 100%;
     margin: 0;
     padding: 0;
+    background-color: #000000;
 }
 
-
-
-:root {
-    --door-w: 300px;
-    --door-h: 440px;
-    --door-s: 30px;
+* {
+    box-sizing: border-box;
+    transition: 3s;
 }
-
 
 
 
@@ -21,9 +18,29 @@ html {
 
 
 .door_container {
-    height: 100%;
-    width: 100%;
+    height: 900px;
+    width: 1200px;
     background-color: #444;
+    transform-style: preserve-3d;
+    perspective: 8000px;
+    margin: auto;
+
+}
+
+
+
+
+/******************************
+
+		門的樣式
+
+*******************************/
+
+
+:root {
+    --door-w: 260px;
+    --door-h: 360px;
+    --door-s: 30px;
 }
 
 
@@ -35,12 +52,13 @@ html {
     left: 50%;
     transform: translate3d(-50%, -50%, 0px) rotateX(-20deg) rotateY(20deg);
     transform-style: preserve-3d;
-    transition: 0.3s;
+    transition: 3s;
 }
 
-
-.door_container .door .face {
-    background-color: #474747;
+.door_container .door .face,
+.door_container .door:before,
+.door_container a {
+    background-color: #2a2827;
     border-radius: 8px;
     display: flex;
     align-items: center;
@@ -49,39 +67,307 @@ html {
     height: 100%;
     position: absolute;
     backface-visibility: inherit;
+    transition: .5s;
+    color: #818181;
+    font-size: 50px;
+    font-family: noto sans;
 }
 
 
+.door_container a {
+    transform: translateZ(calc(var(--door-s)*0.6));
+    opacity: 0;
+}
+
+/* 門 */
+.door_container .door .opener {
+    background-color: #484141;
+    border: 6px solid #242322;
+    width: calc(var(--door-w)*0.97);
+    height: calc(var(--door-h)*0.97);
+    position: absolute;
+    top: 50%;
+    right: 0%;
+    transform: translate3d(-4px, -50%, calc(var(--door-s)*0.505)) rotateY(0deg);
+}
+
+/* 門正面、門框 */
 .door_container .door .front {
-    transform: translateZ(calc(var(--door-s)/2));
-    /* width: var(--door-w);
-    height: var(--door-h); */
+    background-color: #101010;
+    border: 10px solid #3a3635;
+    transform: translateZ(calc(var(--door-s)*0.5));
 }
 
-.door_container .door .back {
-    background-color: #2f3234;
-    transform: rotateY(180deg) translateZ(calc(var(--door-s)/2));
-    /* width: var(--door-w);
-    height: var(--door-h); */
+
+/* 厚度 */
+.door_container .door .naka_0 {
+    background-color: #4a4340;
+    transform: translateZ(calc(var(--door-s)*0.375));
 }
 
-.door_container .door .back02 {
-    background-color: #71777b;
-    transform: translateZ(calc(var(--door-s)/3));
-    /* width: var(--door-w);
-    height: var(--door-h); */
+.door_container .door .naka_1 {
+    transform: translateZ(calc(var(--door-s)*0.25));
 }
 
-.door_container .door .back03 {
-    background-color: #2f3234;
-    transform: rotateY(180deg) translateZ(0);
-    /* width: var(--door-w);
-    height: var(--door-h); */
+.door_container .door .naka_2 {
+    transform: translateZ(calc(var(--door-s)*0.125));
 }
 
-.door_container .door .back04 {
-    background-color: #2f3234;
-    transform: rotateY(180deg) translateZ(calc(var(--door-s)/3));
-    /* width: var(--door-w);
-    height: var(--door-h); */
+.door_container .door .naka_3 {
+    transform: translateZ(0);
+}
+
+.door_container .door .naka_4 {
+    transform: rotateY(180deg) translateZ(calc(var(--door-s)*0.125));
+}
+
+.door_container .door .naka_5 {
+    transform: rotateY(180deg) translateZ(calc(var(--door-s)*0.25));
+}
+
+.door_container .door .naka_6 {
+    transform: rotateY(180deg) translateZ(calc(var(--door-s)*0.375));
+}
+
+.door_container .door:before {
+    content: '';
+    background-color: #1b1817;
+    transform: rotateY(180deg) translateZ(calc(var(--door-s)*0.5));
+}
+
+
+
+
+
+
+
+/******************************
+
+        門的互動樣式
+
+*******************************/
+
+
+.door_container .door .opener:hover {
+    background-color: #494646;
+}
+
+.door_container .gotofront {
+    /* z-index: 1000; */
+}
+
+.door_container .gotofront .opener:hover {
+    background-color: #484141;
+    transform: translate3d(0%, -50%, calc(var(--door-s)*1.45)) rotateY(13deg);
+}
+
+
+
+
+/******************************
+
+		各門的位置 
+
+*******************************/
+
+
+/* **********************  view 0  **********************  */
+
+.door_container.view0 .d01 {
+    top: 60%;
+    left: 55%;
+}
+
+.door_container.view0 .d01 .door {
+    transform: translate3d(-50%, -50%, 800px) rotateX(-18deg) rotateY(15deg) scale(1);
+}
+
+
+.door_container.view0 .d02 {
+    top: 50%;
+    left: 85%;
+}
+
+.door_container.view0 .d02 .door {
+    transform: translate3d(-50%, -50%, 600px) rotateX(5deg) rotateY(-30deg) scale(0.5);
+}
+
+.door_container.view0 .d03 {
+    top: 25%;
+    left: 70%;
+}
+
+.door_container.view0 .d03 .door {
+    transform: translate3d(-50%, -50%, 400px) rotateX(-25deg) rotateY(-30deg) scale(0.35);
+}
+
+
+.door_container.view0 .d04 {
+    top: 20%;
+    left: 35%;
+}
+
+.door_container.view0 .d04 .door {
+    transform: translate3d(-50%, -50%, 200px) rotateX(10deg) rotateY(-15deg) scale(0.25);
+}
+
+
+
+.door_container.view0 .d05 {
+    top: 30%;
+    left: 20%;
+}
+
+.door_container.view0 .d05 .door {
+    transform: translate3d(-50%, -50%, 500px) rotateX(-20deg) rotateY(20deg) scale(0.5);
+}
+
+
+
+/* **********************   view 1  **********************  */
+
+.door_container.view1 .d02 {
+    top: 60%;
+    left: 55%;
+}
+
+.door_container.view1 .d02 .door {
+    transform: translate3d(-50%, -50%, 800px) rotateX(-18deg) rotateY(15deg) scale(1);
+}
+
+
+.door_container.view1 .d03 {
+    top: 50%;
+    left: 85%;
+}
+
+.door_container.view1 .d03 .door {
+    transform: translate3d(-50%, -50%, 600px) rotateX(5deg) rotateY(-30deg) scale(0.5);
+}
+
+.door_container.view1 .d04 {
+    top: 25%;
+    left: 70%;
+}
+
+.door_container.view1 .d04 .door {
+    transform: translate3d(-50%, -50%, 400px) rotateX(-25deg) rotateY(-30deg) scale(0.35);
+}
+
+
+.door_container.view1 .d05 {
+    top: 20%;
+    left: 35%;
+}
+
+.door_container.view1 .d05 .door {
+    transform: translate3d(-50%, -50%, 200px) rotateX(10deg) rotateY(-15deg) scale(0.25);
+}
+
+
+
+.door_container.view1 .d01 {
+    top: 30%;
+    left: 20%;
+}
+
+.door_container.view1 .d01 .door {
+    transform: translate3d(-50%, -50%, 500px) rotateX(-20deg) rotateY(20deg) scale(0.5);
+}
+
+
+
+
+/******************************
+
+		動畫
+
+*******************************/
+
+
+
+
+.an_box {
+    position: absolute;
+    transform-style: preserve-3d;
+    animation-name: floating;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease;
+}
+
+.gotofront.an_box {
+    /* animation-name: floating02; */
+    /* animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease; */
+}
+
+@keyframes floating {
+    0% {
+        transform: translate(0, 0) rotateX(0deg) rotateY(0deg);
+        ;
+    }
+
+    50% {
+        transform: translate(0, 0px) rotateX(-5deg) rotateY(-5deg);
+    }
+
+    100% {
+        transform: translate(0, 0) rotateX(0deg) rotateY(0deg);
+        ;
+    }
+}
+
+@keyframes floating02 {
+    0% {
+        transform: translate(0, 0) rotateX(0deg) rotateY(0deg);
+        ;
+    }
+
+    50% {
+        transform: translate(0, 40px) rotateZ(-5deg) rotateY(12deg);
+    }
+
+    100% {
+        transform: translate(0, 0) rotateX(0deg) rotate(0deg);
+        ;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/***************************************
+******************************************
+******************************************
+
+
+            Modifier tool
+
+
+******************************************
+******************************************
+
+*****************************************/
+.mouse-link {
+    cursor: pointer;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.w-100 {
+    width: 100%
+}
+
+.po-fixed {
+    position: fixed;
 }

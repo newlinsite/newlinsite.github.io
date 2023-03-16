@@ -12,15 +12,40 @@
 
 <body>
 
-    <div class="door_container">
-        <div class="door d01">
-            <div class="face front"></div>
-            <div class="face back"></div>
-            <div class="face back02"></div>
-            <div class="face back03"></div>
-            <div class="face back04"></div>
-
+    <div class="door_container view0">
+        <div class="an_box d01  gotofront" style="animation-delay: 0s; animation-duration: 14s;">
+            <div class="door">
+                <a class="door_link" href="#"></a>
+                <div class="face opener">1</div>
+                <div class="face front"></div>
+            </div>
         </div>
+        <div class="an_box d02" style="animation-delay: 0.3s; animation-duration: 12s;">
+            <div class="door">
+                <a class="door_link" href="#"></a>
+                <div class="face opener">2</div>
+                <div class="face front"></div>
+            </div>
+        </div>
+        <div class="an_box d03" style="animation-delay: 0.5s; animation-duration: 16s;">
+            <div class="door">
+                <div class="face opener">3</div>
+                <div class="face front"></div>
+            </div>
+        </div>
+        <div class="an_box d04" style="animation-delay: 0.7s; animation-duration: 20s;">
+            <div class="door">
+                <div class="face opener">4</div>
+                <div class="face front"></div>
+            </div>
+        </div>
+        <div class="an_box d05" style="animation-delay: 0.4s; animation-duration: 32s;">
+            <div class="door">
+                <div class="face opener">5</div>
+                <div class="face front"></div>
+            </div>
+        </div>
+    </div>
 
     </div>
 
@@ -44,9 +69,86 @@
 
 
 
+    var an_boxs = $css("an_box")
+    var doorContainer = $css("door_container")[0]
+    var doorLink = $css("door_link")
+    var ViewChanger = function (i) {
+        //設定所有門位置，透過 CSS
+        for (let j = 0; j < an_boxs.length; j++) {
+            doorContainer.classList.remove("view" + j)
+        }
+        doorContainer.classList.add("view" + i)
 
-    var door = $css("door")
-    console.log(door)
+        //定義最上層物件
+        for (let p = 0; p < an_boxs.length; p++) {
+            an_boxs[p].classList.remove("gotofront")
+        }
+        an_boxs[i].classList.add("gotofront")
+
+
+        //取消最上層物件連結
+        for (let q = 0; q < doorLink.length; q++) {
+            doorLink[q].classList.add("hidden")
+        }
+        doorLink[i].classList.remove("hidden")
+    }
+
+
+
+
+
+
+
+
+
+    // ------------------------
+    //
+    // loading
+    //
+    // ------------------------
+
+
+
+    // Create the door's nake 
+    var naka = []
+    var doors = $css("door")
+    for (let j = 0; j < doors.length; j++) {
+        for (let i = 0; i < 7; i++) {
+            naka[i] = document.createElement('div');
+            naka[i].setAttribute('class', 'face naka_' + i);
+            doors[j].appendChild(naka[i]);
+        }
+    }
+
+
+
+    // 設定各門的點擊切換 View 功能
+    for (let i = 0; i < an_boxs.length; i++) {
+        an_boxs[i].addEventListener("click", function () { ViewChanger(i) })
+    }
+
+
+
+    // 設定下方按鈕的點擊切換 View 功能
+
+
+
+
+    //隱藏連結
+
+    for (let i = 1; i < doorLink.length; i++) {
+        doorLink[i].classList.add("hidden")
+        console.log(i)
+    }
+
+
+
+
+
+
+
+    // var door = $css("door")
+    // console.log(door)
     // window.addEventListener("mousemove", function (e) {
     //     let roX = e.x / 1.2
     //     let roY = e.y / 1.2
