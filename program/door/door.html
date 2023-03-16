@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="door_style.css">
+    <title>Door</title>
+
+</head>
+
+<body>
+
+    <div class="door_container">
+        <div class="door d01">
+            <div class="face front"></div>
+            <div class="face back"></div>
+            <div class="face back02"></div>
+            <div class="face back03"></div>
+            <div class="face back04"></div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+</body>
+<script>
+
+    // Function
+    var $ = function (name) {
+        return document.getElementById(name)
+    }
+    var $css = function (name) {
+        return document.getElementsByClassName(name)
+    }
+    var $tag = function (name) {
+        return document.getElementsByTagName(name)
+    }
+
+
+
+
+    var door = $css("door")
+    console.log(door)
+    // window.addEventListener("mousemove", function (e) {
+    //     let roX = e.x / 1.2
+    //     let roY = e.y / 1.2
+    //     door[0].style = "transform: translate(-50%, -50%) rotateY(" + roX + "deg) rotateX(" + roY + "deg);"
+    //     console.log(e.x, e.y)
+    // })
+
+
+
+
+
+</script>
+
+</html>

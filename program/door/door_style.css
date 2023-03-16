@@ -1,0 +1,87 @@
+body,
+html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+:root {
+    --door-w: 300px;
+    --door-h: 440px;
+    --door-s: 30px;
+}
+
+
+
+
+
+
+
+.door_container {
+    height: 100%;
+    width: 100%;
+    background-color: #444;
+}
+
+
+.door_container .door {
+    width: var(--door-w);
+    height: var(--door-h);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0px) rotateX(-20deg) rotateY(20deg);
+    transform-style: preserve-3d;
+    transition: 0.3s;
+}
+
+
+.door_container .door .face {
+    background-color: #474747;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: inherit;
+}
+
+
+.door_container .door .front {
+    transform: translateZ(calc(var(--door-s)/2));
+    /* width: var(--door-w);
+    height: var(--door-h); */
+}
+
+.door_container .door .back {
+    background-color: #2f3234;
+    transform: rotateY(180deg) translateZ(calc(var(--door-s)/2));
+    /* width: var(--door-w);
+    height: var(--door-h); */
+}
+
+.door_container .door .back02 {
+    background-color: #71777b;
+    transform: translateZ(calc(var(--door-s)/3));
+    /* width: var(--door-w);
+    height: var(--door-h); */
+}
+
+.door_container .door .back03 {
+    background-color: #2f3234;
+    transform: rotateY(180deg) translateZ(0);
+    /* width: var(--door-w);
+    height: var(--door-h); */
+}
+
+.door_container .door .back04 {
+    background-color: #2f3234;
+    transform: rotateY(180deg) translateZ(calc(var(--door-s)/3));
+    /* width: var(--door-w);
+    height: var(--door-h); */
+}
