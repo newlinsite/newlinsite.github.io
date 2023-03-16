@@ -40,7 +40,7 @@ html {
 :root {
     --door-w: 260px;
     --door-h: 360px;
-    --door-s: 30px;
+    --door-s: 40px;
 }
 
 
@@ -67,7 +67,7 @@ html {
     height: 100%;
     position: absolute;
     backface-visibility: inherit;
-    transition: .5s;
+    transition: 1.5s;
     color: #818181;
     font-size: 50px;
     font-family: noto sans;
@@ -79,8 +79,8 @@ html {
 /* 門 */
 .door_container .door .opener,
 .door_container .door a {
-    background-color: #484141;
-    border: 6px solid #242322;
+    background-color: #31302e;
+    border: 2px solid #222121;
     width: calc(var(--door-w)*0.97);
     height: calc(var(--door-h)*0.97);
     position: absolute;
@@ -154,6 +154,7 @@ html {
 
 .door_container .door .opener:hover {
     background-color: #494646;
+
 }
 
 .door_container .gotofront {
@@ -161,8 +162,11 @@ html {
 }
 
 .door_container .gotofront .door:hover>.opener {
-    background-color: #484141;
+    background-color: #242221;
+    border-top: 6px solid #3a3939;
+    border-left: 6px solid #2c2b2b;
     transform: translate3d(0%, -50%, calc(var(--door-s)*1.45)) rotateY(13deg);
+
 }
 
 .door_container .gotofront .door:hover>a {
@@ -185,7 +189,7 @@ html {
 }
 
 .door_container.view0 .d01 .door {
-    transform: translate3d(-50%, -50%, 800px) rotateX(-18deg) rotateY(15deg) scale(1);
+    transform: translate3d(-50%, -50%, 800px) rotateX(10deg) rotateY(-20deg) scale(1);
 }
 
 
@@ -290,7 +294,9 @@ html {
 
 *******************************/
 
-
+.door_container.view0 .d01 .door:hover {
+    transform: translate3d(-50%, -50%, 800px) rotateX(-30deg) rotateY(20deg) scale(1);
+}
 
 
 .an_box {
@@ -316,7 +322,7 @@ html {
     }
 
     50% {
-        transform: translate(0, 0px) rotateX(-5deg) rotateY(-5deg);
+        transform: translate(0, 0px) rotateX(15deg) rotateY(5deg);
     }
 
     100% {
