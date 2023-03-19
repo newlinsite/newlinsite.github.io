@@ -11,44 +11,96 @@
 </head>
 
 <body>
+    <div class="doormain_container">
+        <div class="door_container">
+            <div class="an_box p0" style="animation-delay: 0s; animation-duration: 20s;">
+                <div class="door">
+                    <a class="door_link" href="#"></a>
+                    <div class="face opener">0</div>
+                    <div class="face front"></div>
+                </div>
+            </div>
+            <div class="an_box p1" style="animation-delay: 0.3s; animation-duration: 12s;">
+                <div class="door">
+                    <a class="door_link" href="#"></a>
+                    <div class="face opener">1</div>
+                    <div class="face front"></div>
+                </div>
+            </div>
+            <div class="an_box p2" style="animation-delay: 0.5s; animation-duration: 16s;">
+                <div class="door">
+                    <a class="door_link" href="#"></a>
+                    <div class="face opener">2</div>
+                    <div class="face front"></div>
+                </div>
+            </div>
+            <div class="an_box p3" style="animation-delay: 1.7s; animation-duration: 20s;">
+                <div class="door">
+                    <a class="door_link" href="#"></a>
+                    <div class="face opener">3</div>
+                    <div class="face front"></div>
+                </div>
+            </div>
+            <div class="an_box p4" style="animation-delay: 2.6s; animation-duration: 48s;">
+                <div class="door">
+                    <a class="door_link" href="#"></a>
+                    <div class="face opener">4</div>
+                    <div class="face front"></div>
+                </div>
+            </div>
+            <div class="an_box p5" style="animation-delay: 2.8s; animation-duration: 26s;">
+                <div class="door">
+                    <a class="door_link" href="#"></a>
+                    <div class="face opener">5</div>
+                    <div class="face front"></div>
+                </div>
+            </div>
+            <div class="an_box p6" style="animation-delay: 2.5s; animation-duration: 29s;">
+                <div class="door">
+                    <a class="door_link" href="#"></a>
+                    <div class="face opener">6</div>
+                    <div class="face front"></div>
+                </div>
+            </div>
+            <div class="an_box p7" style="animation-delay: 1.25s; animation-duration: 36s;">
+                <div class="door">
+                    <a class="door_link" href="#"></a>
+                    <div class="face opener">7</div>
+                    <div class="face front"></div>
+                </div>
+            </div>
+        </div>
+        <div class="door_btns">
+            <div class="door_arr last"></div>
+            <div class="door_arr next"></div>
+            <div>
+                <div class="door_btn"></div>
+            </div>
+            <div>
+                <div class="door_btn"></div>
+            </div>
+            <div>
+                <div class="door_btn"></div>
+            </div>
+            <div>
+                <div class="door_btn"></div>
+            </div>
+            <div>
+                <div class="door_btn"></div>
+            </div>
+            <div>
+                <div class="door_btn"></div>
+            </div>
+            <div>
+                <div class="door_btn"></div>
+            </div>
+            <div>
+                <div class="door_btn"></div>
+            </div>
+        </div>
 
-    <div class="door_container view0">
-        <div class="an_box d01  gotofront" style="animation-delay: 0s; animation-duration: 20s;">
-            <div class="door">
-                <a class="door_link" href="#"></a>
-                <div class="face opener"></div>
-                <div class="face front"></div>
-            </div>
-        </div>
-        <!-- <div class="an_box d02" style="animation-delay: 0.3s; animation-duration: 12s;">
-            <div class="door">
-                <a class="door_link" href="#"></a>
-                <div class="face opener">2</div>
-                <div class="face front"></div>
-            </div>
-        </div> -->
-        <!-- <div class="an_box d03" style="animation-delay: 0.5s; animation-duration: 16s;">
-            <div class="door">
-                <div class="face opener">3</div>
-                <div class="face front"></div>
-            </div>
-        </div>
-        <div class="an_box d04" style="animation-delay: 0.7s; animation-duration: 20s;">
-            <div class="door">
-                <div class="face opener">4</div>
-                <div class="face front"></div>
-            </div>
-        </div>
-        <div class="an_box d05" style="animation-delay: 0.4s; animation-duration: 32s;">
-            <div class="door">
-                <div class="face opener">5</div>
-                <div class="face front"></div>
-            </div>
-        </div> -->
     </div>
-
     </div>
-
 
 
 
@@ -71,33 +123,26 @@
 
     var an_boxs = $css("an_box")
     var doorContainer = $css("door_container")[0]
-    var doorLink = $css("door_link")
-    var ViewChanger = function (i) {
+    var whoIsInTheFront = 0
+    var placeChanger = function (i) {
         //設定所有門位置，透過 CSS
         for (let j = 0; j < an_boxs.length; j++) {
-            doorContainer.classList.remove("view" + j)
+            let placeNum = j - i
+            if (placeNum >= 0) {
+                an_boxs[j].className = "an_box p" + placeNum
+            } else {
+                placeNum = j - i + an_boxs.length
+                an_boxs[j].className = "an_box p" + placeNum
+            }
         }
-        doorContainer.classList.add("view" + i)
 
-        //定義最上層物件
-        for (let p = 0; p < an_boxs.length; p++) {
-            an_boxs[p].classList.remove("gotofront")
+        whoIsInTheFront = i
+        if (whoIsInTheFront > 7) {
+            whoIsInTheFront = 0
+        } else if (whoIsInTheFront < 0) {
+            whoIsInTheFront = 7
         }
-        an_boxs[i].classList.add("gotofront")
-
-
-        //取消最上層物件連結
-        for (let q = 0; q < doorLink.length; q++) {
-            doorLink[q].classList.add("hidden")
-        }
-        doorLink[i].classList.remove("hidden")
     }
-
-
-
-
-
-
 
 
 
@@ -122,43 +167,28 @@
 
 
 
-    // 設定各門的Over開門 View 功能
-
-
-    // for (let i = 0; i < doorLink.length; i++) {
-    //     doorLink[i].addEventListener("mouseover", function () {
-
-    //     })
-    //     doorLink[i].addEventListener("mouseout", function () {
-
-    //     })
-    // }
 
 
 
 
 
-    // 設定各門的點擊切換 View 功能
+    // 設定各門的點擊切換 place 功能
     for (let i = 0; i < an_boxs.length; i++) {
-        an_boxs[i].addEventListener("click", function () { ViewChanger(i) })
+        an_boxs[i].addEventListener("click", function () { placeChanger(i) })
     }
 
 
 
     // 設定下方按鈕的點擊切換 View 功能
-
-
-
-
-    //隱藏連結
-
-    for (let i = 1; i < doorLink.length; i++) {
-        doorLink[i].classList.add("hidden")
-        console.log(i)
+    var doorBtn = $css("door_btn")
+    for (let i = 0; i < doorBtn.length; i++) {
+        doorBtn[i].addEventListener("click", function () { placeChanger(i) })
     }
 
-
-
+    //Next Last 功能
+    var doorArr = $css("door_arr")
+    doorArr[1].addEventListener("click", function () { placeChanger(whoIsInTheFront + 1) })
+    doorArr[0].addEventListener("click", function () { placeChanger(whoIsInTheFront - 1) })
 
 
 
