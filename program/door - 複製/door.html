@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="door_style.css">
+    <title>Door</title>
+
+</head>
+
+<body>
+    <div class="doormain_container">
+        <div class="door_container">
+            <img class="d_pep01" src="d_pep01.png" alt="">
+            <div class="an_box p0" style="animation-delay: 0s; animation-duration: 20s;">
+                <div class="door">
+                    <div class="door_name">MEETING ROOM</div>
+                    <div class="face"></div>
+                    <a class="door_link" href="#"></a>
+                    <div class="face opener" style=" background-image: url('d01.png')"></div>
+                    <div class="face front"></div>
+                </div>
+            </div>
+            <div class="an_box p1" style="animation-delay: 0.3s; animation-duration: 12s;">
+                <div class="door">
+                    <div class="door_name">SERVER ROOM</div>
+                    <a class="door_link" href="#"></a>
+                    <div class="face opener" style=" background-image: url('d00.png')"></div>
+                    <div class="face front"></div>
+                </div>
+            </div>
+            <div class="an_box p2" style="animation-delay: 0.5s; animation-duration: 16s;">
+                <div class="door">
+                    <div class="door_name">CONTROL ROOM</div>
+                    <a class="door_link" href="#"></a>
+                    <div class="face opener" style=" background-image: url('d00.png')"></div>
+                    <div class="face front"></div>
+                </div>
+            </div>
+            <div class="an_box p3" style="animation-delay: 1.7s; animation-duration: 20s;">
+                <div class="door">
+                    <a class="door_link" href="#"></a>
+                    <div class="face opener" style=" background-image: url('d00.png')"></div>
+                    <div class="face front"></div>
+                </div>
+            </div>
+            <div class="an_box p4" style="animation-delay: 2.6s; animation-duration: 48s;">
+                <div class="door">
+                    <a class="door_link" href="#"></a>
+                    <div class="face opener" style=" background-image: url('d00.png')"></div>
+                    <div class="face front"></div>
+                </div>
+            </div>
+            <div class="an_box p5" style="animation-delay: 2.8s; animation-duration: 26s;">
+                <div class="door">
+                    <a class="door_link" href="#"></a>
+                    <div class="face opener" style=" background-image: url('d00.png')"></div>
+                    <div class="face front"></div>
+                </div>
+            </div>
+            <div class="an_box p6" style="animation-delay: 2.5s; animation-duration: 29s;">
+                <div class="door">
+                    <a class="door_link" href="#"></a>
+                    <div class="face opener" style=" background-image: url('d00.png')"></div>
+                    <div class="face front"></div>
+                </div>
+            </div>
+            <div class="an_box p7" style="animation-delay: 1.25s; animation-duration: 36s;">
+                <div class="door">
+                    <div class="door_name">PERSONAL VIDEO</div>
+                    <div class="face opener" style=" background-image: url('d00.png')"></div>
+                    <div class="face front"></div>
+                </div>
+            </div>
+        </div>
+        <div class="door_btns">
+            <div class="door_arr last"></div>
+            <div class="door_arr next"></div>
+            <div>
+                <div class="door_btn"></div>
+            </div>
+            <div>
+                <div class="door_btn"></div>
+            </div>
+            <div>
+                <div class="door_btn"></div>
+            </div>
+            <div>
+                <div class="door_btn"></div>
+            </div>
+            <div>
+                <div class="door_btn"></div>
+            </div>
+            <div>
+                <div class="door_btn"></div>
+            </div>
+            <div>
+                <div class="door_btn"></div>
+            </div>
+            <div>
+                <div class="door_btn"></div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+
+
+
+</body>
+<script>
+
+    // Function
+    var $ = function (name) {
+        return document.getElementById(name)
+    }
+    var $css = function (name) {
+        return document.getElementsByClassName(name)
+    }
+    var $tag = function (name) {
+        return document.getElementsByTagName(name)
+    }
+
+
+
+    var an_boxs = $css("an_box")
+    var doorContainer = $css("door_container")[0]
+    var whoIsInTheFront = 0
+    var placeChanger = function (i) {
+        //設定所有門位置，透過 CSS
+        for (let j = 0; j < an_boxs.length; j++) {
+            let placeNum = j - i
+            if (placeNum >= 0) {
+                an_boxs[j].className = "an_box p" + placeNum
+            } else {
+                placeNum = j - i + an_boxs.length
+                an_boxs[j].className = "an_box p" + placeNum
+            }
+        }
+
+        whoIsInTheFront = i
+        if (whoIsInTheFront > 7) {
+            whoIsInTheFront = 0
+        } else if (whoIsInTheFront < 0) {
+            whoIsInTheFront = 7
+        }
+    }
+
+
+
+    // ------------------------
+    //
+    // loading
+    //
+    // ------------------------
+
+
+
+    // Create the door's nake 
+    var naka = []
+    var doors = $css("door")
+    for (let j = 0; j < doors.length; j++) {
+        for (let i = 0; i < 3; i++) {
+            naka[i] = document.createElement('div');
+            naka[i].setAttribute('class', 'face naka_' + i);
+            doors[j].appendChild(naka[i]);
+        }
+    }
+
+
+
+
+
+
+
+
+    // 設定各門的點擊切換 place 功能
+    for (let i = 0; i < an_boxs.length; i++) {
+        an_boxs[i].addEventListener("click", function () { placeChanger(i) })
+    }
+
+
+
+    // 設定下方按鈕的點擊切換 View 功能
+    var doorBtn = $css("door_btn")
+    for (let i = 0; i < doorBtn.length; i++) {
+        doorBtn[i].addEventListener("click", function () { placeChanger(i) })
+    }
+
+    //Next Last 功能
+    var doorArr = $css("door_arr")
+    doorArr[1].addEventListener("click", function () { placeChanger(whoIsInTheFront + 1) })
+    doorArr[0].addEventListener("click", function () { placeChanger(whoIsInTheFront - 1) })
+
+
+
+
+    // var door = $css("door")
+    // console.log(door)
+    // window.addEventListener("mousemove", function (e) {
+    //     let roX = e.x / 1.2
+    //     let roY = e.y / 1.2
+    //     door[0].style = "transform: translate(-50%, -50%) rotateY(" + roX + "deg) rotateX(" + roY + "deg);"
+    //     console.log(e.x, e.y)
+    // })
+
+
+
+
+
+</script>
+
+</html>
