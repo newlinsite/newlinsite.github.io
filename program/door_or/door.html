@@ -13,64 +13,59 @@
 <body>
     <div class="doormain_container">
         <div class="door_container">
-            <img class="d_pep01" src="d_pep01.png" alt="">
             <div class="an_box p0" style="animation-delay: 0s; animation-duration: 20s;">
                 <div class="door">
-                    <div class="door_name">MEETING ROOM</div>
-                    <div class="face"></div>
                     <a class="door_link" href="#"></a>
-                    <div class="face opener" style=" background-image: url('d01.png')"></div>
+                    <div class="face opener">0</div>
                     <div class="face front"></div>
                 </div>
             </div>
             <div class="an_box p1" style="animation-delay: 0.3s; animation-duration: 12s;">
                 <div class="door">
-                    <div class="door_name">SERVER ROOM</div>
                     <a class="door_link" href="#"></a>
-                    <div class="face opener" style=" background-image: url('d00.png')"></div>
+                    <div class="face opener">1</div>
                     <div class="face front"></div>
                 </div>
             </div>
             <div class="an_box p2" style="animation-delay: 0.5s; animation-duration: 16s;">
                 <div class="door">
-                    <div class="door_name">CONTROL ROOM</div>
                     <a class="door_link" href="#"></a>
-                    <div class="face opener" style=" background-image: url('d00.png')"></div>
+                    <div class="face opener">2</div>
                     <div class="face front"></div>
                 </div>
             </div>
             <div class="an_box p3" style="animation-delay: 1.7s; animation-duration: 20s;">
                 <div class="door">
                     <a class="door_link" href="#"></a>
-                    <div class="face opener" style=" background-image: url('d00.png')"></div>
+                    <div class="face opener">3</div>
                     <div class="face front"></div>
                 </div>
             </div>
             <div class="an_box p4" style="animation-delay: 2.6s; animation-duration: 48s;">
                 <div class="door">
                     <a class="door_link" href="#"></a>
-                    <div class="face opener" style=" background-image: url('d00.png')"></div>
+                    <div class="face opener">4</div>
                     <div class="face front"></div>
                 </div>
             </div>
             <div class="an_box p5" style="animation-delay: 2.8s; animation-duration: 26s;">
                 <div class="door">
                     <a class="door_link" href="#"></a>
-                    <div class="face opener" style=" background-image: url('d00.png')"></div>
+                    <div class="face opener">5</div>
                     <div class="face front"></div>
                 </div>
             </div>
             <div class="an_box p6" style="animation-delay: 2.5s; animation-duration: 29s;">
                 <div class="door">
                     <a class="door_link" href="#"></a>
-                    <div class="face opener" style=" background-image: url('d00.png')"></div>
+                    <div class="face opener">6</div>
                     <div class="face front"></div>
                 </div>
             </div>
             <div class="an_box p7" style="animation-delay: 1.25s; animation-duration: 36s;">
                 <div class="door">
-                    <div class="door_name">PERSONAL VIDEO</div>
-                    <div class="face opener" style=" background-image: url('d00.png')"></div>
+                    <a class="door_link" href="#"></a>
+                    <div class="face opener">7</div>
                     <div class="face front"></div>
                 </div>
             </div>
@@ -163,7 +158,7 @@
     var naka = []
     var doors = $css("door")
     for (let j = 0; j < doors.length; j++) {
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < 7; i++) {
             naka[i] = document.createElement('div');
             naka[i].setAttribute('class', 'face naka_' + i);
             doors[j].appendChild(naka[i]);
