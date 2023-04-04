@@ -962,7 +962,22 @@ header.sm .logo:hover>div {
 
 
 	#sidebar {
-		justify-content: end;
+		height: 50px;
+		width: 100%;
+		background-color: var(--aug-black-color);
+		top: auto;
+		left: 0;
+		bottom: 0px;
+		flex-direction: row;
+		/* justify-content: end; */
+	}
+
+	#sidebar .flex-dir-col {
+		flex-direction: row;
+	}
+
+	#sidebar .mt-xl {
+		margin-top: 6px !important;
 	}
 
 	#sidebar a {
@@ -970,14 +985,41 @@ header.sm .logo:hover>div {
 		color: #ffffff;
 		background-color: var(--aug-black-color);
 		border: 0;
-		margin: 4px 0;
+		margin: 6px 8px;
+		height: 48px;
+		-webkit-writing-mode: horizontal-tb;
+		writing-mode: horizontal-tb;
+		font-size: 28px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	#sidebar a#nextwork,
+	#sidebar a#lastwork {
+		font-size: 36px;
+	}
+
+	#sidebar a#nextwork {
+		order: 2;
+	}
+
+	#sidebar a#lastwork {
+		order: 1;
+		margin-left: 20px;
 	}
 
 	#sidebar>a:last-child {
-		margin: 24px 0 12px 0;
+		font-size: 16px;
 	}
 
 
+
+	#sidebar a:hover>#nextwork-describe,
+	#sidebar a:hover>#lastwork-describe {
+		top: -110%;
+		left: -200%;
+	}
 
 }
 

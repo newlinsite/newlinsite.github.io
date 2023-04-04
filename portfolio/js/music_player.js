@@ -211,7 +211,8 @@ window.onload = function () {
         console.log("no music btn")
     }
 
-
+    //Loading
+    $("loadingMask").classList.add("over")
 }
 
 
