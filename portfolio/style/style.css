@@ -30,7 +30,7 @@ html {
 }
 
 body {
-	font-family: "Noto sans", "Microsoft JhengHei", "微軟正黑體", sans-serif;
+	font-family: "Noto sans TC", "Noto sans", "Microsoft JhengHei", "微軟正黑體", sans-serif;
 	font-weight: 300;
 	background-color: var(--bg-color)
 }

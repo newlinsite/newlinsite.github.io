@@ -1,0 +1,322 @@
+/******************************
+			import
+*******************************/
+@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
+
+@font-face {
+    font-family: 'Material Symbols Outlined';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/materialsymbolsoutlined/v76/kJF4BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY40KH8nGzv3fz_VFU22ZZLsYEpzC_1ver5Y0.woff2) format('woff2');
+}
+
+/*****************************************
+******************************************
+******************************************
+
+			Page
+
+******************************************
+******************************************
+******************************************/
+
+* {
+    position: relative;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Noto sans TC", "Noto sans", "Microsoft JhengHei", "微軟正黑體", sans-serif;
+    font-weight: 300;
+    background-color: var(--bg-color)
+}
+
+body.white {
+    background-color: #fff
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-color)
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+
+/*****************************************
+******************************************
+******************************************
+
+
+			layout
+
+******************************************
+******************************************
+******************************************/
+
+.container {
+    max-width: 1200px;
+    padding: 0 8px;
+    margin-top: 32px;
+    margin: 0px auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -4px;
+}
+
+.row>* {
+    padding: 0 4px;
+}
+
+.flex-dir-col {
+    flex-direction: column
+}
+
+.flex-align-c {
+    align-items: center;
+}
+
+.flex-align-end {
+    align-items: end;
+}
+
+
+.flex-jus-c {
+    justify-content: center;
+}
+
+.flex-jus-end {
+    justify-content: end;
+}
+
+
+.flex-dir-row-rev {
+    flex-direction: row-reverse
+}
+
+
+
+
+
+
+
+.col {
+    flex: 1 0 0%;
+}
+
+
+
+
+.col-1 {
+    width: 8.33333333%;
+}
+
+.col-2 {
+    width: 16.66666667%;
+}
+
+.col-3 {
+    width: 25%;
+}
+
+.col-4 {
+    width: 33.33333333%;
+}
+
+.col-5 {
+    width: 41.66666667%;
+}
+
+.col-6 {
+    width: 50%;
+}
+
+
+.col-7 {
+    width: 58.33333333%;
+}
+
+.col-8 {
+    width: 66.66666667%;
+}
+
+.col-9 {
+    width: 75%;
+}
+
+.col-10 {
+    width: 83.33333333%;
+}
+
+.col-11 {
+    width: 91.66666667%;
+}
+
+.col-12 {
+    width: 100%;
+}
+
+
+@media only screen and (max-width: 1200px) {
+    .container {
+        padding: 0 16px;
+        max-width: 1024px;
+    }
+
+    .col-lg-12 {
+        width: 100%;
+    }
+
+    .col-lg-6 {
+        width: 50%;
+    }
+
+    .col-lg-5 {
+        width: 41.66666667%;
+    }
+
+    .col-lg-4 {
+        width: 33.33333333%;
+    }
+
+    .col-lg-3 {
+        width: 25%;
+    }
+}
+
+@media (max-width: 1024px) {
+
+
+    .col-md-12 {
+        width: 100%;
+    }
+
+    .col-md-8 {
+        width: 66.6666666%;
+    }
+
+    .col-md-6 {
+        width: 50%;
+    }
+
+    .col-md-4 {
+        width: 33.33333333%;
+    }
+
+
+
+    .md-hidden {
+        visibility: hidden;
+        height: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .col-sm-12 {
+        width: 100%;
+    }
+
+    .col-sm-9 {
+        width: 75%;
+        ;
+    }
+
+    .col-sm-8 {
+        width: 66.6666666%;
+    }
+
+    .col-sm-7 {
+        width: 58.33333333%;
+    }
+
+    .col-sm-6 {
+        width: 50%;
+    }
+
+    .col-sm-5 {
+        width: 41.66666667%;
+    }
+
+    .col-sm-4 {
+        width: 33.33333333%;
+    }
+
+    .col-sm-3 {
+        width: 25%;
+    }
+
+
+    .sm-hidden {
+        visibility: hidden !important;
+        height: 0 !important;
+        width: 0 !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .col-xsm-12 {
+        width: 100%;
+    }
+
+    .col-xsm-6 {
+        width: 50%;
+    }
+
+    .row-xsm {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -4px;
+    }
+
+    .flex-xsm-align-c {
+        align-items: center;
+    }
+
+    .flex-xsm-align-end {
+        align-items: end;
+    }
+
+
+    .flex-xsm-jus-c {
+        justify-content: center;
+    }
+
+    .flex-xsm-jus-end {
+        justify-content: end;
+    }
+
+
+    .text-xsm-center {
+        text-align: center;
+    }
+
+
+}
+
+@media (max-width: 480px) {
+
+    .col-xs-12 {
+        width: 100%;
+    }
+
+    .col-xs-6 {
+        width: 50%;
+    }
+
+    .xs-hidden {
+        visibility: hidden;
+        height: 0;
+    }
+}
