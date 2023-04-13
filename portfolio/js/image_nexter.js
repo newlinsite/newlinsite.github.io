@@ -42,5 +42,10 @@ window.onload = function () {
         createNextBtn()
     })
     nextBtn.classList.remove("hidden")
+
+
+
+    //Loading
+    $("loadingMask").classList.add("over")
 }
 

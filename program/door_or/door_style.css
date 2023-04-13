@@ -53,8 +53,7 @@ html {
 :root {
     --door-w: 0.16%;
     --door-h: 0.4%;
-    --door-s: 10px;
-
+    --door-s: 40px;
 }
 
 
@@ -120,8 +119,8 @@ html {
 .door_container .door .face,
 .door_container .door:before,
 .door_container a {
-    background-color: #c8fdff;
-    border-radius: 2px;
+    background-color: #202125;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -133,7 +132,6 @@ html {
     color: #818181;
     font-size: 50px;
     font-family: noto sans;
-
 }
 
 
@@ -151,25 +149,14 @@ html {
 .door_container .door .opener,
 .door_container .door a {
     background-color: #242e36;
-    border: 2px solid #6af9fd;
-    width: 98%;
-    height: 98%;
+    border: 2px solid #0e1010;
+    width: 97%;
+    height: 97%;
     position: absolute;
     top: 50%;
     right: 0%;
-    transform: translate3d(-3px, -50%, calc(var(--door-s)*0.505)) rotateY(0deg);
+    transform: translate3d(-4px, -50%, calc(var(--door-s)*0.505)) rotateY(0deg);
 }
-
-.door_container .door .opener {
-    /* background-color: rgb(180, 180, 180); */
-    background-image: url(door_0.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-}
-
-
-
 
 .door_container .door a {
     background-color: #29273b;
@@ -182,10 +169,9 @@ html {
 
 /* 門正面、門框 */
 .door_container .door .front {
-    background-color: #1a1a31;
-    border: 5px solid #6af9fd;
+    background-color: #242427;
+    border: 10px solid #35363a;
     transform: translateZ(calc(var(--door-s)*0.5));
-    box-shadow: 0 0 120px #6af8fd1d;
 }
 
 
@@ -196,7 +182,7 @@ html {
 /************* 厚度 *****************/
 
 .door_container .door .naka_0 {
-    background-color: #edf5f9;
+    background-color: #40474a;
     transform: translateZ(calc(var(--door-s)*0.375));
 }
 
@@ -226,9 +212,8 @@ html {
 
 .door_container .door:before {
     content: '';
-    background-color: #29cff0;
+    background-color: #181821;
     transform: rotateY(180deg) translateZ(calc(var(--door-s)*0.5));
-    box-shadow: 0 0 36px #6af8fd4e;
 }
 
 
@@ -256,10 +241,9 @@ html {
 
 .door_container .p0 .door:hover>.opener {
     background-color: #212124;
-    border-top: 6px solid #acfcff;
-    border-left: 6px solid #85fbff;
-    transform: translate3d(0%, -50%, calc(var(--door-s)*5)) rotateY(20deg);
-    box-shadow: 0 0 200px #6af8fd;
+    border-top: 6px solid #323535;
+    border-left: 6px solid #2b2c2c;
+    transform: translate3d(0%, -50%, calc(var(--door-s)*1.45)) rotateY(13deg);
 
 }
 
@@ -268,11 +252,9 @@ html {
 }
 
 
-
-
 /* 臨時 */
 .door_container .p0 .door:hover {
-    transform: translate3d(-50%, -50%, 800px) rotateX(-20deg) rotateY(10deg) scale(1);
+    transform: translate3d(-50%, -50%, 800px) rotateX(-30deg) rotateY(20deg) scale(1);
 }
 
 
