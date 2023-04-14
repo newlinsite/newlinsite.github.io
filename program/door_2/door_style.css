@@ -13,6 +13,7 @@ html {
     max-width: 1440px;
     margin: auto;
     position: relative;
+    overflow: hidden;
 }
 
 .doormain_container * {
@@ -27,7 +28,7 @@ html {
     width: 100%;
     padding-top: 60%;
     transform-style: preserve-3d;
-    perspective: 4000px;
+    perspective: 700px;
     margin: auto;
     position: relative;
     background-image: url("d_Landing_page_background.jpg");
@@ -38,11 +39,11 @@ html {
 
 .door_container .d_pep01 {
     position: absolute;
-    top: 54%;
-    left: 40%;
+    top: 46%;
+    left: 45%;
     width: 7%;
-    transform: translate3d(0%, 0%, 1100px);
-    animation-name: floating01;
+    transform: translate3d(0%, 0%, 600px)scale(0.32);
+    /* animation-name: floating01; */
     animation-duration: 28s;
     animation-iteration-count: infinite;
     animation-timing-function: ease;
@@ -87,7 +88,7 @@ html {
 .an_box {
     position: absolute;
     transform-style: preserve-3d;
-    animation-name: floating02;
+    /* animation-name: floating02; */
     /* animation-duration: 5s; */
     animation-iteration-count: infinite;
     animation-timing-function: ease;
@@ -195,9 +196,9 @@ html {
     width: 102%;
     height: 102%;
     position: absolute;
-    top: 50%;
-    right: 0%;
-    transform: translate3d(0px, -50%, calc(var(--door-s)*0.6)) rotateY(0deg);
+    top: 0%;
+    left: 0%;
+    transform: translate3d(0%, 0%, 2px) rotateY(0deg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -213,7 +214,7 @@ html {
     display: none;
     /* background-color: #cb131c; */
     transform: translate3d(1px, -50%, calc(var(--door-s)*1)) rotateY(0deg);
-    /* opacity: 0.5; */
+    opacity: 0;
 }
 
 
@@ -420,19 +421,40 @@ html {
 }
 
 .door_container .p0 .door:hover>.opener {
-    transform: translate3d(10%, -50%, calc(var(--door-s)*30)) rotateY(40deg);
+    transform: translate3d(100%, 0%, 40px) rotateY(60deg);
+    /* right: -150%; */
+    /* left: 200%; */
     opacity: 0.9;
+    width: 60%;
 
 }
+
+
+
 
 .door_container .p0 .door:hover>a {
-    transform: translate3d(10%, -50%, calc(var(--door-s)*33)) rotateY(40deg);
+    /* transform: translate3d(46%, -47%, calc(var(--door-s)*23)) rotateY(60deg); */
 }
+
 
 
 /* 臨時 */
+/* 臨時 */
+/* 臨時 */
+/* 臨時 */
+/* 臨時 */
+/* 臨時 */
+/* 臨時 */
+/* 臨時 */
+/* 臨時 */
+.door_container .p0 .door {
+    transform: translate3d(-50%, -50%, 360px) rotateX(-100deg) rotateY(30deg) scale(0.5) !important;
+
+}
+
+/* 臨時 */
 .door_container .p0 .door:hover {
-    transform: translate3d(-50%, -50%, 800px) rotateX(-15deg) rotateY(7deg) scale(1);
+    transform: translate3d(-50%, -50%, 360px) rotateX(-10deg) rotateY(30deg) scale(0.5);
 
 }
 
@@ -469,47 +491,47 @@ html {
 
 
 .door_container .p0 {
-    top: 48%;
+    top: 49%;
     left: 50%;
 }
 
 .door_container .p0 .door {
-    transform: translate3d(-50%, -50%, 1000px) rotateX(8deg) rotateY(-12deg) scale(1);
+    transform: translate3d(-50%, -50%, 410px) rotateX(0deg) rotateY(0deg) scale(0.55);
 }
 
 
 
 .door_container .p1 {
-    top: 57%;
-    left: 68%;
+    top: 48%;
+    left: 58%;
 }
 
 .door_container .p1 .door {
-    transform: translate3d(-50%, -50%, 900px) rotateX(-6deg) rotateY(10deg) rotateX(-5deg) scale(0.6);
+    transform: translate3d(-50%, -50%, 400px) rotateX(0deg) rotateY(15deg) scale(0.32);
 }
 
 
 
 .door_container .p2 {
-    top: 46%;
-    left: 84%;
+    top: 40%;
+    left: 70%;
 }
 
 .door_container .p2 .door {
-    transform: translate3d(-50%, -50%, 700px) rotateX(-25deg) rotateY(-30deg) scale(0.3);
+    transform: translate3d(-50%, -50%, 250px) rotateX(5deg) rotateY(-60deg) scale(0.32);
     opacity: 0.9;
 }
 
 
 
 .door_container .p3 {
-    top: 25%;
-    left: 70%;
+    top: 26%;
+    left: 76%;
 
 }
 
 .door_container .p3 .door {
-    transform: translate3d(-50%, -50%, 500px) rotateX(10deg) rotateY(-15deg) scale(0.25);
+    transform: translate3d(-50%, -50%, 30px) rotateX(5deg) rotateY(-35deg) scale(0.32);
     opacity: 0.8;
 }
 
@@ -521,7 +543,7 @@ html {
 }
 
 .door_container .p4 .door {
-    transform: translate3d(-50%, -50%, 400px) rotateX(-2deg) rotateY(2deg) scale(0.2);
+    transform: translate3d(-50%, -50%, 30px) rotateX(-2deg) rotateY(2deg) scale(0.32);
     opacity: 0.8;
 }
 
@@ -533,24 +555,24 @@ html {
 }
 
 .door_container .p5 .door {
-    transform: translate3d(-50%, -50%, 500px) rotateX(-5deg) rotateY(6deg) scale(0.1);
+    transform: translate3d(-50%, -50%, 30px) rotateX(-5deg) rotateY(6deg) scale(0.32);
     opacity: 0.7;
 }
 
 
 
 .door_container .p6 {
-    top: 35%;
-    left: 16%;
+    top: 48%;
+    left: 42%;
 }
 
 .door_container .p6 .door {
-    transform: translate3d(-50%, -50%, 500px) rotateX(4deg) rotateY(2deg) scale(0.2);
+    transform: translate3d(-50%, -50%, 400px) rotateX(0deg) rotateY(-15deg) scale(0.32);
     opacity: 0.9;
 }
 
 
-
+/* 
 .door_container .p7 {
     top: 54%;
     left: 26%;
@@ -558,10 +580,10 @@ html {
 
 
 .door_container .p7 .door {
-    transform: translate3d(-50%, -50%, 800px) rotateX(-10deg) rotateY(1deg) scale(0.6);
+    transform: translate3d(-50%, -50%, 100px) rotateX(-10deg) rotateY(1deg) scale(0.32);
 }
 
-
+ */
 
 
 
