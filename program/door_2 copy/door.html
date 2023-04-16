@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="door_style.css">
+    <title>Door</title>
+
+</head>
+
+<body>
+    <div class="doormain_container">
+        <div class="door_container">
+            <img class="d_man" src="d_pep01.png" alt="">
+            <div class="an_box p0">
+                <div class="door">
+                    <a class="face door_link" href="#"></a>
+                    <div class="face opener_body">
+                        <div class="face opener"></div>
+                        <div class="door_name">AI Voice</div>
+                    </div>
+                    <div class="face front" style=" background-image: url('d01.png')"></div>
+                </div>
+            </div>
+            <div class="an_box p1">
+                <div class="door">
+                    <a class="face door_link" href="#"></a>
+                    <div class="face opener_body">
+                        <div class="face opener"></div>
+                        <div class="door_name">Elevated</br>Meeting</br>Rooms</div>
+                    </div>
+                    <div class="face front"></div>
+                </div>
+            </div>
+            <div class="an_box p2">
+                <div class="door">
+                    <a class="face door_link" href="#"></a>
+                    <div class="face opener_body">
+                        <div class="face opener"></div>
+                        <div class="door_name">Future</br>Workstations</div>
+                    </div>
+                    <div class="face front"></div>
+                </div>
+            </div>
+            <div class="an_box p3">
+                <div class="door">
+                    <a class="face door_link" href="#"></a>
+                    <div class="face opener_body">
+                        <div class="face opener"></div>
+                        <div class="door_name">Pro-level</br>Game</br>Streaming</div>
+                    </div>
+                    <div class="face front"></div>
+                </div>
+            </div>
+            <div class="an_box p4">
+                <div class="door">
+                    <a class="face door_link" href="#"></a>
+                    <div class="face opener_body">
+                        <div class="face opener"></div>
+                        <div class="door_name">Agile</br>Control</br>Rooms</div>
+                    </div>
+                    <div class="face front"></div>
+                </div>
+            </div>
+            <div class="an_box p5">
+                <div class="door">
+                    <a class="face door_link" href="#"></a>
+                    <div class="face opener_body">
+                        <div class="face opener"></div>
+                        <div class="door_name">Efficient</br>Data</br>Centers</div>
+                    </div>
+                    <div class="face front"></div>
+                </div>
+            </div>
+            <div class="an_box p6">
+                <div class="door">
+                    <a class="face door_link" href="#"></a>
+                    <div class="face opener_body">
+                        <div class="face opener"></div>
+                        <div class="door_name">Smart</br>Manufacturing</div>
+                    </div>
+                    <div class="face front"></div>
+                </div>
+            </div>
+            <div class="an_box p7">
+                <div class="door">
+                    <a class="face door_link" href="#"></a>
+                    <div class="face opener_body">
+                        <div class="face opener"></div>
+                        <div class="door_name">Smooth</br>Air Traffic</br>Control</div>
+                    </div>
+                    <div class="face front"></div>
+                </div>
+            </div>
+        </div>
+        <div class="door_btns">
+            <div class="door_arr last"></div>
+            <div class="door_arr next"></div>
+            <div>
+                <div class="door_btn"></div>
+            </div>
+            <div>
+                <div class="door_btn"></div>
+            </div>
+            <div>
+                <div class="door_btn"></div>
+            </div>
+            <div>
+                <div class="door_btn"></div>
+            </div>
+            <div>
+                <div class="door_btn"></div>
+            </div>
+            <div>
+                <div class="door_btn"></div>
+            </div>
+            <div>
+                <div class="door_btn"></div>
+            </div>
+            <div>
+                <div class="door_btn"></div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+
+
+
+</body>
+<script>
+
+    // Function
+    var $ = function (name) {
+        return document.getElementById(name)
+    }
+    var $css = function (name) {
+        return document.getElementsByClassName(name)
+    }
+    var $tag = function (name) {
+        return document.getElementsByTagName(name)
+    }
+
+
+
+    var an_boxs = $css("an_box")
+    var doorContainer = $css("door_container")[0]
+    var whoIsInTheFront = 0
+    var placeChanger = function (i) {
+        //設定所有門位置，透過 CSS
+        for (let j = 0; j < an_boxs.length; j++) {
+            let placeNum = j - i
+            if (placeNum >= 0) {
+                an_boxs[j].className = "an_box p" + placeNum
+            } else {
+                placeNum = j - i + an_boxs.length
+                an_boxs[j].className = "an_box p" + placeNum
+            }
+        }
+
+        whoIsInTheFront = i
+        if (whoIsInTheFront > an_boxs.length) {
+            whoIsInTheFront = 0
+        } else if (whoIsInTheFront < 0) {
+            whoIsInTheFront = an_boxs.length
+        }
+    }
+
+
+
+    // ------------------------
+    //
+    // loading
+    //
+    // ------------------------
+
+
+
+    // Create the door's nake 
+    var naka = []
+    var doors = $css("door")
+    for (let j = 0; j < doors.length; j++) {
+        for (let i = 0; i < 3; i++) {
+            naka[i] = document.createElement('div');
+            naka[i].setAttribute('class', 'face naka_' + i);
+            doors[j].appendChild(naka[i]);
+        }
+    }
+
+
+
+
+
+
+
+
+    // 設定各門的點擊切換 place 功能
+    for (let i = 0; i < an_boxs.length; i++) {
+        an_boxs[i].addEventListener("click", function () { placeChanger(i) })
+    }
+
+
+
+    // 設定下方按鈕的點擊切換 View 功能
+    var doorBtn = $css("door_btn")
+    for (let i = 0; i < doorBtn.length; i++) {
+        doorBtn[i].addEventListener("click", function () { placeChanger(i) })
+    }
+
+    //Next Last 功能
+    var doorArr = $css("door_arr")
+    doorArr[1].addEventListener("click", function () { placeChanger(whoIsInTheFront + 1) })
+    doorArr[0].addEventListener("click", function () { placeChanger(whoIsInTheFront - 1) })
+
+
+
+
+    // var door = $css("door")
+    // console.log(door)
+    // window.addEventListener("mousemove", function (e) {
+    //     let roX = e.x / 1.2
+    //     let roY = e.y / 1.2
+    //     door[0].style = "transform: translate(-50%, -50%) rotateY(" + roX + "deg) rotateX(" + roY + "deg);"
+    //     console.log(e.x, e.y)
+    // })
+
+
+
+
+
+</script>
+
+</html>

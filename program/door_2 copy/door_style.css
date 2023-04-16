@@ -1,0 +1,678 @@
+body,
+html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+}
+
+
+
+.doormain_container {
+    max-width: 1440px;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.doormain_container * {
+    box-sizing: border-box;
+    transition: 1s;
+}
+
+
+
+
+.door_container {
+    width: 100%;
+    padding-top: 60%;
+    transform-style: preserve-3d;
+    perspective: 700px;
+    margin: auto;
+    position: relative;
+    background-image: url("d_Landing_page_background.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.door_container .d_man {
+    position: absolute;
+    top: 46%;
+    left: 45%;
+    width: 7%;
+    transform: translate3d(0%, 0%, 600px)scale(0.32);
+    animation-name: floating01;
+    animation-duration: 28s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease;
+}
+
+@keyframes floating01 {
+    0% {
+        transform: translate3d(0%, 0%, 1100px);
+        ;
+    }
+
+    50% {
+        transform: translate3d(12%, -10%, 1100px);
+    }
+
+    100% {
+        transform: translate3d(0%, 0%, 1100px);
+        ;
+    }
+}
+
+
+
+
+/******************************
+******************************
+
+
+		浮動框
+
+
+******************************
+*******************************/
+
+:root {
+    --door-w: 0.1%;
+    --door-h: 0.32%;
+    --door-s: 2px;
+}
+
+
+.an_box {
+    position: absolute;
+    transform-style: preserve-3d;
+    animation-name: floating02;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease;
+    width: var(--door-w);
+    height: var(--door-h);
+}
+
+
+
+@keyframes floating02 {
+    0% {
+        transform: translate(0, 0) rotateX(0deg) rotateY(0deg);
+        ;
+    }
+
+    50% {
+        transform: translate(20%, -1000%) rotateX(2deg) rotateY(1deg);
+    }
+
+    100% {
+        transform: translate(0, 0) rotateX(0deg) rotateY(0deg);
+        ;
+    }
+}
+
+
+
+
+
+
+
+/******************************
+******************************
+
+
+		門的樣式
+
+
+ ******************************
+*******************************/
+
+
+
+
+/* ******** 門 ********* */
+
+.door_container .door {
+    width: 10000%;
+    height: 10000%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0px) rotateX(-20deg) rotateY(20deg);
+    transform-style: preserve-3d;
+    display: flex;
+    justify-content: center;
+}
+
+.door_container .door .face,
+.door_container .door:before {
+    border-radius: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: inherit;
+}
+
+
+/* ******** 開門區 ********* */
+
+.door_container .door .opener_body,
+.door_container .door .opener,
+.door_container .door a {
+    top: 0%;
+    left: 0%;
+    transform: translate3d(0%, 0%, calc(var(--door-s)*1.1)) rotateY(0deg);
+}
+
+
+.door_container .door .opener_body {
+    width: 200%;
+}
+
+.door_container .door .opener {
+    width: 50%;
+    /* box-shadow: 0 0 50px inset #1121cc6a; */
+    background-image: url('d00.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    font-size: 8px;
+    opacity: 0.75;
+}
+
+
+.door_container .door a {
+    /* display: none; */
+    /* background-color: #cb131c; */
+    transform: translate3d(0, 0, calc(var(--door-s)*1)) rotateY(0deg);
+    /* opacity: 0.8; */
+}
+
+/* ******** Name ********* */
+.door_container .door .door_name {
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    color: #fff;
+    font-family: "Noto sans", "Microsoft JhengHei", "微軟正黑體", sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    letter-spacing: 0.1em;
+    text-align: center;
+    transform: translate(-50%, -50%);
+}
+
+.door_container .door:hover .door_name {
+    font-size: 18px;
+    opacity: 0.5;
+}
+
+
+
+
+
+/* ********* 門正面、門框 ********* */
+
+.door_container .door .front {
+    /* 門內 */
+    background-color: #0008ff1f;
+    box-shadow: 0 0 24px inset #41a9ff;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    /* 內門框 */
+    border: 3px solid #c4abe88e;
+    transform: translateZ(calc(var(--door-s)*0.5));
+    overflow: hidden;
+    opacity: 0;
+}
+
+/* 門內 Swirl */
+.door_container .door .front::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 240%;
+    height: 200%;
+    background-image: url(sw001.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    animation-name: swirl;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    opacity: 0.1;
+
+}
+
+@keyframes swirl {
+    0% {
+        transform: rotate(0deg);
+        ;
+    }
+
+    100% {
+        transform: rotate(360deg);
+        ;
+    }
+}
+
+
+
+
+/************* 厚度 *****************/
+
+.door_container .door .naka_0 {
+    transform: translateZ(calc(var(--door-s)*0.375));
+    /* box-shadow: 0 0 30px #00ffffa6; */
+}
+
+.door_container .door .naka_1 {
+    transform: translateZ(calc(var(--door-s)*0.25));
+    box-shadow: 0 0 8px #c332eba4;
+}
+
+.door_container .door:before {
+    content: '';
+    transform: rotateY(180deg) translateZ(calc(var(--door-s)*0.5));
+    /* box-shadow: 0 0 18px #0df5f5; */
+}
+
+
+
+/* *************** 門的互動 *************** */
+
+.door_container .door:hover>.naka_1 {
+    box-shadow: 0 0 80px #c496ffb9;
+}
+
+
+
+
+
+
+
+
+/******************************
+
+        p0 樣式
+
+*******************************/
+
+.door_container .p0 .door .opener {
+    opacity: 1;
+}
+
+.door_container .p0 .door .front {
+    opacity: 0.4;
+}
+
+/* 開門互動 */
+
+.door_container .p0 .door:hover {
+    transform: translate3d(-50%, -50%, 380px) rotateX(-10deg) rotateY(15deg) scale(0.5);
+}
+
+.door_container .p0 .door:hover .opener_body {
+    transform: translate3d(0%, 0%, calc(var(--door-s)*1.1)) rotateY(90deg) scaleX(0.5);
+    opacity: 0.9;
+}
+
+
+.door_container .p0 .door:hover>.front {
+    opacity: 1;
+}
+
+
+.door_container .p0 .door:hover>.naka_1 {
+    box-shadow: 0 0 120px #0df5f5;
+}
+
+
+
+
+
+
+
+/* 炫光圓圈 */
+.door_container .p0 .door .naka_1::after,
+.door_container .p0 .door .naka_1::before {
+    content: "";
+    width: 5%;
+    height: 3%;
+    border-radius: 50%;
+    border: 0px solid #00ffff;
+    position: absolute;
+    transition: 1s;
+    opacity: 0.6;
+}
+
+.door_container .p0 .door .naka_1::before {
+    transition: 1.5s;
+}
+
+
+.door_container .p0 .door:hover>.naka_1::before {
+    border: 2px solid #00ffff;
+    width: 275%;
+    height: 165%;
+    opacity: 0.1;
+}
+
+.door_container .p0 .door:hover>.naka_1::after {
+    border: 2px solid #00ffff;
+    width: 300%;
+    height: 180%;
+    opacity: 0.06;
+}
+
+
+
+
+/************* p0 的 HOVER 眩光(包在厚度) *****************/
+
+.door_container .p0 .door .naka_2 {
+    content: "";
+    width: 220%;
+    height: 120%;
+    /* background-color: #fff; */
+    position: absolute;
+    top: 10%;
+    left: -42%;
+    background-image: url("door_light.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    animation-name: Lighting01;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease;
+    transition: 1.5s;
+    opacity: 0;
+}
+
+.door_container .p0 .door:hover>.naka_2 {
+    opacity: 1;
+    top: 9%;
+    left: -44%;
+}
+
+
+
+
+
+@keyframes Lighting01 {
+    0% {
+        transform: rotate(0) translate3d(0%, -30%, calc(var(--door-s)*0.9))
+    }
+
+    50% {
+        transform: rotate(30deg) translate3d(-22%, -7%, calc(var(--door-s)*0.9));
+    }
+
+    100% {
+        transform: rotate(0) translate3d(0%, -30%, calc(var(--door-s)*0.9));
+        ;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/******************************
+******************************
+
+
+
+		各位置參數 
+
+
+******************************
+*******************************/
+
+
+
+.door_container .p0 {
+    top: 51%;
+    left: 50%;
+    animation-delay: 0s;
+    animation-duration: 50s;
+}
+
+.door_container .p0 .door {
+    transform: translate3d(-50%, -50%, 380px) rotateX(0deg) rotateY(0deg) scale(0.58);
+}
+
+
+
+.door_container .p1 {
+    top: 48%;
+    left: 58%;
+    animation-delay: 0.3s;
+    animation-duration: 35s;
+}
+
+.door_container .p1 .door {
+    transform: translate3d(-50%, -50%, 400px) rotateX(0deg) rotateY(15deg) scale(0.32);
+}
+
+
+
+.door_container .p2 {
+    top: 40%;
+    left: 70%;
+    animation-delay: 0.5s;
+    animation-duration: 16s;
+}
+
+.door_container .p2 .door {
+    transform: translate3d(-50%, -50%, 250px) rotateX(5deg) rotateY(-60deg) scale(0.32);
+    opacity: 0.9;
+}
+
+
+
+.door_container .p3 {
+    top: 26%;
+    left: 76%;
+    animation-delay: 1.7s;
+    animation-duration: 14s;
+}
+
+.door_container .p3 .door {
+    transform: translate3d(-50%, -50%, 30px) rotateX(5deg) rotateY(-35deg) scale(0.32);
+    opacity: 0.8;
+}
+
+
+
+.door_container .p4 {
+    top: 13%;
+    left: 44%;
+    animation-delay: 2.6s;
+    animation-duration: 20s;
+}
+
+.door_container .p4 .door {
+    transform: translate3d(-50%, -50%, 30px) rotateX(-2deg) rotateY(2deg) scale(0.32);
+    opacity: 0.8;
+}
+
+
+
+.door_container .p5 {
+    top: 20%;
+    left: 30%;
+    animation-delay: 2.8s;
+    animation-duration: 30s;
+}
+
+.door_container .p5 .door {
+    transform: translate3d(-50%, -50%, 30px) rotateX(-5deg) rotateY(6deg) scale(0.32);
+    opacity: 0.9;
+}
+
+
+
+.door_container .p6 {
+    top: 48%;
+    left: 42%;
+    animation-delay: 2.5s;
+    animation-duration: 40s;
+}
+
+.door_container .p6 .door {
+    transform: translate3d(-50%, -50%, 400px) rotateX(0deg) rotateY(-15deg) scale(0.32);
+}
+
+
+
+.door_container .p7 {
+    top: 54%;
+    left: 26%;
+}
+
+
+.door_container .p7 .door {
+    transform: translate3d(-50%, -50%, 100px) rotateX(-10deg) rotateY(1deg) scale(0.32);
+}
+
+
+
+
+
+/***************************************
+******************************************
+
+
+
+            Button
+
+
+
+******************************************
+*****************************************/
+
+
+
+.doormain_container .door_btns {
+    width: 95%;
+    height: 25%;
+    padding: 1% 28%;
+    margin: 0 auto;
+    position: absolute;
+    bottom: 1.5%;
+    left: 50%;
+    transform: translateX(-50%);
+    /* background-color: #3141529a; */
+    border-radius: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.doormain_container .door_btns>div {
+    width: 24%;
+    height: 48%;
+    padding: 6px;
+
+}
+
+.doormain_container .door_btns .door_arr {
+    background-color: #1ebcd1;
+    width: 48px;
+    height: 48px;
+    position: absolute;
+    border-radius: 50%;
+    box-shadow: 0 0 20px#0dd5f8;
+    border: 1px solid #00ffff3b;
+    opacity: 0.8;
+}
+
+.doormain_container .door_btns .door_arr.last {
+    left: 23%;
+}
+
+.doormain_container .door_btns .door_arr.next {
+    right: 23%;
+}
+
+.doormain_container .door_btns .door_btn {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    background-color: #025564cb;
+    border: 1px solid #00ffff5d;
+    opacity: 0.5;
+    cursor: pointer;
+    box-shadow: 0 0 20px#0dd5f8;
+}
+
+.doormain_container .door_btns .door_btn:hover,
+.doormain_container .door_btns .door_arr:hover {
+    opacity: 0.85;
+    border: 1px solid #00ffffc0;
+    box-shadow: 0 0 50px#0dd5f8;
+}
+
+
+@media (max-width: 768px) {
+    .doormain_container .door_btns .door_btn {
+        width: 25%;
+        height: 50%;
+        padding: 6px;
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .doormain_container .door_btns>div {
+        width: 50%;
+        height: 100%;
+        padding: 6px;
+    }
+}
+
+
+
+
+
+
+
+
+
+/***************************************
+******************************************
+
+
+
+            Modifier tool
+
+
+
+******************************************
+*****************************************/
+.mouse-link {
+    cursor: pointer;
+}
+
+.hidden {
+    display: none !important;
+}
