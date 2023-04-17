@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="door_style.css">
     <title>Door</title>
-
 </head>
 
 <body>
@@ -31,17 +30,17 @@
                         <div class="face opener"></div>
                         <div class="door_name">Elevated</br>Meeting</br>Rooms</div>
                     </div>
-                    <div class="face front"></div>
+                    <div class="face front" style=" background-image: url('d02.png')"></div>
                 </div>
             </div>
-            <div class="an_box p2">
+            <div class=" an_box p2">
                 <div class="door">
                     <a class="face door_link" href="#"></a>
                     <div class="face opener_body">
                         <div class="face opener"></div>
                         <div class="door_name">Future</br>Workstations</div>
                     </div>
-                    <div class="face front"></div>
+                    <div class="face front" style=" background-image: url('d03.png')"></div>
                 </div>
             </div>
             <div class="an_box p3">
@@ -51,7 +50,7 @@
                         <div class="face opener"></div>
                         <div class="door_name">Pro-level</br>Game</br>Streaming</div>
                     </div>
-                    <div class="face front"></div>
+                    <div class="face front" style=" background-image: url('d04.png')"></div>
                 </div>
             </div>
             <div class="an_box p4">
@@ -61,7 +60,7 @@
                         <div class="face opener"></div>
                         <div class="door_name">Agile</br>Control</br>Rooms</div>
                     </div>
-                    <div class="face front"></div>
+                    <div class="face front" style=" background-image: url('d05.png')"></div>
                 </div>
             </div>
             <div class="an_box p5">
@@ -71,7 +70,7 @@
                         <div class="face opener"></div>
                         <div class="door_name">Efficient</br>Data</br>Centers</div>
                     </div>
-                    <div class="face front"></div>
+                    <div class="face front" style=" background-image: url('d06.png')"></div>
                 </div>
             </div>
             <div class="an_box p6">
@@ -79,9 +78,9 @@
                     <a class="face door_link" href="#"></a>
                     <div class="face opener_body">
                         <div class="face opener"></div>
-                        <div class="door_name">Smart</br>Manufacturing</div>
+                        <div class="door_name" style="font-size: 14px;">Smart</br>Manufacturing</div>
                     </div>
-                    <div class="face front"></div>
+                    <div class="face front" style=" background-image: url('d07.png')"></div>
                 </div>
             </div>
             <div class="an_box p7">
@@ -91,36 +90,76 @@
                         <div class="face opener"></div>
                         <div class="door_name">Smooth</br>Air Traffic</br>Control</div>
                     </div>
-                    <div class="face front"></div>
+                    <div class="face front" style=" background-image: url('d08.png')"></div>
                 </div>
             </div>
         </div>
         <div class="door_btns">
-            <div class="door_arr last"></div>
-            <div class="door_arr next"></div>
+            <div class="door_arr last"><span>chevron_left</span></div>
+            <div class="door_arr next"><span>chevron_right</span></div>
             <div>
-                <div class="door_btn"></div>
+                <div class="door_btn">
+                    <div class="btn_st active">
+                        <div class="btn_bg" style="background-image: url('btn01.png')"></div>
+                        <span>AI Voice</span>
+                    </div>
+                </div>
             </div>
             <div>
-                <div class="door_btn"></div>
+                <div class="door_btn">
+                    <div class="btn_st">
+                        <div class="btn_bg" style="background-image: url('btn02.png')"></div>
+                        <span>Elevated</br>Meeting Rooms</span>
+                    </div>
+                </div>
             </div>
             <div>
-                <div class="door_btn"></div>
+                <div class="door_btn">
+                    <div class="btn_st">
+                        <div class="btn_bg" style="background-image: url('btn03.png')"></div>
+                        <span>Future</br>Workstations</span>
+                    </div>
+                </div>
             </div>
             <div>
-                <div class="door_btn"></div>
+                <div class="door_btn">
+                    <div class="btn_st">
+                        <div class="btn_bg" style="background-image: url('btn04.png')"></div>
+                        <span>Pro-level</br>Game Streaming</span>
+                    </div>
+                </div>
             </div>
             <div>
-                <div class="door_btn"></div>
+                <div class="door_btn">
+                    <div class="btn_st">
+                        <div class="btn_bg" style="background-image: url('btn05.png')"></div>
+                        <span>Agile</br>Control Rooms</span>
+                    </div>
+                </div>
             </div>
             <div>
-                <div class="door_btn"></div>
+                <div class="door_btn">
+                    <div class="btn_st">
+                        <div class="btn_bg" style="background-image: url('btn06.png')"></div>
+                        <span>Efficient</br>Data Centers</span>
+                    </div>
+                </div>
             </div>
             <div>
-                <div class="door_btn"></div>
+                <div class="door_btn">
+                    <div class="btn_st">
+                        <div class="btn_bg" style="background-image: url('btn07.png')"></div>
+                        <span>Smart</br>Manufacturing</span>
+                    </div>
+                </div>
             </div>
             <div>
-                <div class="door_btn"></div>
+                <div class="door_btn">
+                    <div class="btn_st">
+                        <div class="btn_bg" style="background-image: url('btn08.png')"></div>
+                        <span>Smooth</br>Air Traffic</span>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -147,9 +186,16 @@
 
 
     var an_boxs = $css("an_box")
+    var doorBtn = $css("door_btn")
+
+    var btnState = $css("btn_st")
+    // var btnStateActive = $css("active")
     var doorContainer = $css("door_container")[0]
     var whoIsInTheFront = 0
     var placeChanger = function (i) {
+        if (i < 0) {
+            i = an_boxs.length - 1
+        }
         //設定所有門位置，透過 CSS
         for (let j = 0; j < an_boxs.length; j++) {
             let placeNum = j - i
@@ -161,12 +207,20 @@
             }
         }
 
+
+        btnState[i].classList.add("active")
+        btnState[whoIsInTheFront].classList.remove("active")
+
+
+        //紀錄當前誰在 p0
         whoIsInTheFront = i
-        if (whoIsInTheFront > an_boxs.length) {
+
+        if (whoIsInTheFront > an_boxs.length - 1) {
             whoIsInTheFront = 0
         } else if (whoIsInTheFront < 0) {
             whoIsInTheFront = an_boxs.length
         }
+        // console.log(whoIsInTheFront)
     }
 
 
@@ -205,7 +259,7 @@
 
 
     // 設定下方按鈕的點擊切換 View 功能
-    var doorBtn = $css("door_btn")
+
     for (let i = 0; i < doorBtn.length; i++) {
         doorBtn[i].addEventListener("click", function () { placeChanger(i) })
     }
