@@ -9,6 +9,21 @@ html {
 
 
 
+/******************************
+******************************
+******************************
+
+
+
+		Door start
+
+
+
+******************************
+******************************
+*******************************/
+
+
 @font-face {
     font-family: 'Material Symbols Outlined';
     font-style: normal;
@@ -44,34 +59,55 @@ html {
     background-size: cover;
 }
 
+
+
 .door_container .d_man {
     position: absolute;
     top: 49%;
-    left: 44%;
+    left: 44.2%;
     width: 7%;
-    transform: translate3d(0%, 0%, 420px)scale(0.7);
-    /* animation-name: floating01; */
-    animation-duration: 28s;
+    transform: translate3d(0%, 0%, 420px) scale(0.5);
+    animation-name: floating01;
+    animation-duration: 43s;
+    animation-delay: 2s;
     animation-iteration-count: infinite;
     animation-timing-function: ease;
 }
 
 @keyframes floating01 {
     0% {
-        transform: translate3d(0%, 0%, 420px);
-        ;
+        transform: translate3d(0, 0, 420px) rotateX(0deg) rotateY(0deg) scale(0.5);
+
     }
 
     50% {
-        transform: translate3d(12%, -10%, 420px);
+        transform: translate3d(5%, -30%, 420px) rotateX(2deg) rotateY(1deg) scale(0.5);
     }
 
     100% {
-        transform: translate3d(0%, 0%, 420px);
-        ;
+        transform: translate3d(0, 0, 420px) rotateX(0deg) rotateY(0deg) scale(0.5);
+
     }
 }
 
+@keyframes floating03 {
+    0% {
+        transform: translate3d(0%, 0%, 420px) scale(0.7);
+
+
+    }
+
+    50% {
+        transform: translate3d(12%, -10%, 420px) scale(0.7);
+
+    }
+
+    100% {
+        transform: translate3d(0%, 0%, 420px) scale(0.7);
+
+
+    }
+}
 
 
 
@@ -88,7 +124,7 @@ html {
 :root {
     --door-w: 0.1%;
     --door-h: 0.32%;
-    --door-s: 2px;
+    --door-s: 8px;
 }
 
 
@@ -96,11 +132,12 @@ html {
     position: absolute;
     transform-style: preserve-3d;
     animation-name: floating02;
-    animation-duration: 5s;
+    animation-duration: 20s;
     animation-iteration-count: infinite;
     animation-timing-function: ease;
     width: var(--door-w);
     height: var(--door-h);
+    transition: 1.6s;
 }
 
 
@@ -152,7 +189,6 @@ html {
     transform-style: preserve-3d;
     display: flex;
     justify-content: center;
-    /* transition: 0.5s; */
 }
 
 .door_container .door .face,
@@ -175,7 +211,7 @@ html {
 .door_container .door a {
     top: 0%;
     left: 0%;
-    transform: translate3d(0%, 0%, calc(var(--door-s)*1.1)) rotateY(0deg);
+    transform: translate3d(0%, 0%, calc(var(--door-s)*0.51)) rotateY(0deg);
     transition: 2s;
 }
 
@@ -197,25 +233,39 @@ html {
 
 .door_container .door a {
     /* background-color: #cb131c; */
-    transform: translate3d(0, 0, calc(var(--door-s)*1)) rotateY(0deg);
+    transform: translate3d(0, 0, calc(var(--door-s)*0.51)) rotateY(0deg);
     /* opacity: 0.8; */
 }
 
 
+/* ******** 名字 ********* */
 
-/* ******** Name ********* */
+.door_container .door .door_name_out {
+    width: 200%;
+    position: absolute;
+    font-family: "Noto sans", "Microsoft JhengHei", "微軟正黑體", sans-serif;
+    color: #fff;
+    font-size: 15px;
+    top: 103%;
+    text-align: center;
+    opacity: 0;
+}
+
+
+
+
 .door_container .door .door_name {
     position: absolute;
     top: 50%;
     left: 25%;
-    color: #90c8ff;
+    color: #e3f1ff;
     font-family: "Noto sans", "Microsoft JhengHei", "微軟正黑體", sans-serif;
     font-weight: 300;
     font-size: 15px;
     letter-spacing: 0.1em;
     text-align: center;
     transform: translate(-50%, -50%);
-    opacity: 0.7;
+    opacity: 0.9;
 }
 
 .door_container .door:hover .door_name {
@@ -231,7 +281,7 @@ html {
 .door_container .door .front {
     /* 門內 */
     background-color: #0008ff1f;
-    box-shadow: 0 0 24px insetrgba(2, 61, 109, 0.879)8;
+    box-shadow: 0 0 24px inset rgba(2, 61, 109, 0.879);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -280,26 +330,68 @@ html {
 
 .door_container .door .naka_0 {
     transform: translateZ(calc(var(--door-s)*0.375));
-    /* box-shadow: 0 0 30px #00ffffa6; */
+
+    box-shadow: 0 0 8px #c332eba4;
+    /* border-top: 1px solid #03aee272; */
+    border: 2px solid #5ad8ff9d;
 }
 
 .door_container .door .naka_1 {
     transform: translateZ(calc(var(--door-s)*0.25));
-    box-shadow: 0 0 8px #c332eba4;
+    border-top: 1px solid #03aee272;
+    border-bottom: 1px solid #e4bcff72;
+}
+
+.door_container .door .naka_2 {
+    transform: translateZ(calc(var(--door-s)*0.125));
+    border-top: 1px solid #03aee243;
+    border-bottom: 1px solid #e4bcff72;
+}
+
+.door_container .door .naka_3 {
+    transform: translateZ(calc(var(--door-s)*0));
+    border-top: 1px solid #03aee272;
+    border-bottom: 1px solid #e4bcff72;
+}
+
+
+.door_container .door .naka_4 {
+    transform: translateZ(calc(var(--door-s)*-0.125));
+    border-top: 1px solid #03aee272;
+    border-bottom: 1px solid #e4bcff72;
+}
+
+.door_container .door .naka_5 {
+    transform: translateZ(calc(var(--door-s)*-0.25));
+    border-top: 1px solid #03aee272;
+    border-bottom: 1px solid #e4bcff72;
+}
+
+.door_container .door .naka_5 {
+    transform: translateZ(calc(var(--door-s)*-0.375));
+    border-top: 1px solid #03aee272;
+    border-bottom: 1px solid #e4bcff72;
+    border-right: 1px solid #e4bcff72;
+    border-left: 1px solid #e4bcff72;
 }
 
 .door_container .door:before {
     content: '';
     transform: rotateY(180deg) translateZ(calc(var(--door-s)*0.5));
-    /* box-shadow: 0 0 18px #0df5f5; */
+    border: 1px solid #e4bcff72;
+    box-shadow: 0 0 8px #c332eba4;
+    background-color: #0b05625e;
 }
+
+
+
 
 
 
 /* *************** 門的互動 *************** */
 
-.door_container .door:hover>.naka_1 {
-    box-shadow: 0 0 80px #c496ffb9;
+.door_container .door:hover>.naka_5 {
+    box-shadow: 0 0 110px #bb87ff;
 }
 
 
@@ -333,18 +425,19 @@ html {
 
 
 /* 開門互動 */
-
-.door_container .p0 .door:hover {
-    transform: translate3d(-50%, -50%, 380px) rotateX(-10deg) rotateY(15deg) scale(0.5);
+/* .door_container .p0 .door:hover { */
+.door_container .p0 .door {
+    transform: translate3d(-50%, -50%, 380px) rotateX(-10deg) rotateY(15deg) scale(0.5) !important;
 }
 
-.door_container .p0 .door:hover .opener_body {
+/* .door_container .p0 .door:hover .opener_body  */
+.door_container .p0 .door .opener_body {
     transform: translate3d(0%, 0%, calc(var(--door-s)*1.1)) rotateY(90deg) scaleX(0.5);
     opacity: 0.9;
 }
 
-
-.door_container .p0 .door:hover>.front {
+/* .door_container .p0 .door:hover>.front */
+.door_container .p0 .door>.front {
     opacity: 1;
 }
 
@@ -355,11 +448,61 @@ html {
 
 
 /* 名字 */
-.door_container .p0 .door:hover .door_name {
-    opacity: 0.3;
+/* .door_container .p0 .door:hover .door_name */
+.door_container .p0 .door .door_name {
+    opacity: 0.1;
+}
+
+.door_container .p0 .door .door_name_out {
+    opacity: 0.9;
 }
 
 
+
+/************* p0 的 HOVER 眩光(包在厚度) *****************/
+
+.door_container .p0 .door .door_light {
+    content: "";
+    width: 220%;
+    height: 120%;
+    /* background-color: #fff; */
+    position: absolute;
+    top: 10%;
+    left: -42%;
+    background-image: url("door_light.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    animation-name: Lighting01;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease;
+    transition: 1.5s;
+    opacity: 0;
+}
+
+.door_container .p0 .door>.door_light {
+    opacity: 1;
+    top: 0%;
+    left: -44%;
+}
+
+
+
+@keyframes Lighting01 {
+    0% {
+        transform: rotate(0) translate3d(0%, -30%, calc(var(--door-s)*0.505))
+    }
+
+    50% {
+        transform: rotate(30deg) translate3d(-22%, -7%, calc(var(--door-s)*0.505));
+    }
+
+    100% {
+        transform: rotate(0) translate3d(0%, -30%, calc(var(--door-s)*0.505));
+        ;
+    }
+}
 
 
 
@@ -380,7 +523,22 @@ html {
     transition: 1.5s;
 }
 
+/* 炫光圓圈 p0  */
+.door_container .p0 .door>.naka_1::before {
+    border: 2px solid #00ffff;
+    width: 245%;
+    height: 145%;
+    opacity: 0.1;
+}
 
+.door_container .p0 .door>.naka_1::after {
+    border: 2px solid #00ffff;
+    width: 210%;
+    height: 130%;
+    opacity: 0.06;
+}
+
+/* 炫光圓圈 門 hover 互動 */
 .door_container .p0 .door:hover>.naka_1::before {
     border: 2px solid #00ffff;
     width: 275%;
@@ -395,55 +553,6 @@ html {
     opacity: 0.06;
 }
 
-
-
-
-/************* p0 的 HOVER 眩光(包在厚度) *****************/
-
-.door_container .p0 .door .naka_2 {
-    content: "";
-    width: 220%;
-    height: 120%;
-    /* background-color: #fff; */
-    position: absolute;
-    top: 10%;
-    left: -42%;
-    background-image: url("door_light.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    animation-name: Lighting01;
-    animation-duration: 20s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease;
-    transition: 1.5s;
-    opacity: 0;
-}
-
-.door_container .p0 .door:hover>.naka_2 {
-    opacity: 1;
-    top: 0%;
-    left: -44%;
-}
-
-
-
-
-
-@keyframes Lighting01 {
-    0% {
-        transform: rotate(0) translate3d(0%, -30%, calc(var(--door-s)*0.9))
-    }
-
-    50% {
-        transform: rotate(30deg) translate3d(-22%, -7%, calc(var(--door-s)*0.9));
-    }
-
-    100% {
-        transform: rotate(0) translate3d(0%, -30%, calc(var(--door-s)*0.9));
-        ;
-    }
-}
 
 
 
@@ -473,8 +582,6 @@ html {
 .door_container .p0 {
     top: 50%;
     left: 50%;
-    animation-delay: 0s;
-    animation-duration: 40s;
 }
 
 .door_container .p0 .door {
@@ -486,8 +593,6 @@ html {
 .door_container .p1 {
     top: 50%;
     left: 58%;
-    animation-delay: 0.3s;
-    animation-duration: 26s;
 }
 
 .door_container .p1 .door {
@@ -499,13 +604,10 @@ html {
 .door_container .p2 {
     top: 40%;
     left: 70%;
-    animation-delay: 0.5s;
-    animation-duration: 16s;
 }
 
 .door_container .p2 .door {
     transform: translate3d(-50%, -50%, 250px) rotateX(5deg) rotateY(15deg) scale(0.32);
-    opacity: 0.9;
 }
 
 
@@ -513,13 +615,10 @@ html {
 .door_container .p3 {
     top: 20%;
     left: 72%;
-    animation-delay: 1.7s;
-    animation-duration: 14s;
 }
 
 .door_container .p3 .door {
-    transform: translate3d(-50%, -50%, 30px) rotateX(5deg) rotateY(150deg) scale(0.32);
-    opacity: 0.8;
+    transform: translate3d(-50%, -50%, 30px) rotateX(0deg) rotateY(20deg) scale(0.32);
 }
 
 
@@ -527,13 +626,11 @@ html {
 .door_container .p4 {
     top: 15%;
     left: 52%;
-    animation-delay: 2.6s;
-    animation-duration: 20s;
 }
 
 .door_container .p4 .door {
-    transform: translate3d(-50%, -50%, 30px) rotateX(-2deg) rotateY(180deg) scale(0.32);
-    opacity: 0.8;
+    transform: translate3d(-50%, -50%, 30px) rotateX(-2deg) rotateY(0deg) scale(0.32);
+
 }
 
 
@@ -541,14 +638,13 @@ html {
 .door_container .p5 {
     top: 20%;
     left: 30%;
-    animation-delay: 2.8s;
-    animation-duration: 30s;
 }
 
 .door_container .p5 .door {
-    transform: translate3d(-50%, -50%, 30px) rotateX(-5deg) rotateY(150deg) scale(0.32);
-    opacity: 0.9;
+    transform: translate3d(-50%, -50%, 30px) rotateX(0deg) rotateY(-20deg) scale(0.32);
+
 }
+
 
 
 .door_container .p6 {
@@ -556,20 +652,19 @@ html {
     left: 30%;
 }
 
-
 .door_container .p6 .door {
-    transform: translate3d(-50%, -50%, 220px) rotateX(-5deg) rotateY(60deg) scale(0.32);
+    transform: translate3d(-50%, -50%, 220px) rotateX(-5deg) rotateY(-15deg) scale(0.32);
 }
+
+
 
 .door_container .p7 {
     top: 50%;
     left: 42%;
-    animation-delay: 2.5s;
-    animation-duration: 32s;
 }
 
 .door_container .p7 .door {
-    transform: translate3d(-50%, -50%, 400px) rotateX(0deg) rotateY(15deg) scale(0.32);
+    transform: translate3d(-50%, -50%, 400px) rotateX(0deg) rotateY(-15deg) scale(0.32);
 }
 
 
@@ -654,7 +749,6 @@ html {
     border: 2px solid #2200ff21;
     box-shadow: 0 0 8px#c485fa62;
     position: relative;
-
     cursor: pointer;
     transition: 0.2s;
 }
@@ -721,46 +815,126 @@ html {
 
 
 
-@media (max-width: 768px) {
-    .doormain_container .door_btns .door_btn {
-        width: 25%;
-        height: 50%;
-        padding: 6px;
-        display: none;
-    }
-}
-
-@media (max-width: 480px) {
-    .doormain_container .door_btns>div {
-        width: 50%;
-        height: 100%;
-        padding: 6px;
-    }
-}
-
-
-
-
-
-
-
-
 
 /***************************************
 ******************************************
 
 
 
-            Modifier tool
+           RWD
 
 
 
 ******************************************
 *****************************************/
-.mouse-link {
-    cursor: pointer;
+
+@media (max-width: 1200px) {
+    .doormain_container .door_btns .door_btn .btn_st span {
+        font-size: 12px;
+    }
 }
 
-.hidden {
-    display: none !important;
+@media (max-width: 1200px) {
+    .doormain_container .door_btns .door_btn {
+        display: none;
+    }
 }
+
+
+@media (max-width: 768px) {}
+
+@media (max-width: 700px) {
+    .door_container {
+        padding-top: 135%;
+    }
+
+    .door_container .d_man {
+        width: 13%;
+        top: 57%;
+        left: 38%;
+    }
+
+    :root {
+        --door-w: 0.225%;
+        --door-s: 2px;
+    }
+
+    .door_container .door .door_name_out {
+
+        font-size: 12px;
+
+    }
+
+    .door_container .door .door_name {
+        color: #e0f0ff;
+        font-size: 10px;
+        opacity: 0.8;
+    }
+
+
+
+    .doormain_container .door_btns {
+        height: 16%;
+    }
+
+
+    /******************************
+            各位置參數 
+    *******************************/
+
+    .door_container .p0 {
+        top: 54%;
+        left: 49.2%;
+    }
+
+    .door_container .p1 {
+        top: 53%;
+        left: 64%;
+    }
+
+    .door_container .p2 {
+        top: 40%;
+        left: 70%;
+    }
+
+    .door_container .p3 {
+        top: 20%;
+        left: 72%;
+    }
+
+    .door_container .p4 {
+        top: 15%;
+        left: 52%;
+    }
+
+    .door_container .p5 {
+        top: 20%;
+        left: 30%;
+    }
+
+    .door_container .p6 {
+        top: 40%;
+        left: 28%;
+    }
+
+    .door_container .p7 {
+        top: 53%;
+        left: 36%;
+    }
+
+
+
+    /* 按鈕 */
+    .doormain_container .door_btns .door_arr.last {
+        left: 8%;
+    }
+
+    .doormain_container .door_btns .door_arr.next {
+        right: 8%;
+    }
+
+}
+
+
+
+@media (max-width: 480px) {}
