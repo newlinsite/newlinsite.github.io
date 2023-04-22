@@ -287,7 +287,7 @@
         for (let i = 0; i < mucBtn.length; i++) {
             mucBtn[i].addEventListener("click", function () {
                 if (bgm[i].playingTag == 1) {
-                    bgm[i].fadeStop(0.5)
+                    bgm[i].fadeStop(1)
                     mucBtn[i].classList.remove("playing")
                     for (let j = 0; j < mucBtn.length; j++) {
                         mucBtn[j].classList.remove("op5")
@@ -295,7 +295,7 @@
                     console.log("stop Now")
                     text.innerHTML = ""
                 } else {
-                    musicAllStop(0.5)
+                    musicAllStop(1)
                     for (let j = 0; j < mucBtn.length; j++) {
                         mucBtn[j].classList.remove("playing")
                         mucBtn[j].classList.add("op5")
