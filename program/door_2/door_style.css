@@ -9,6 +9,28 @@ html {
 
 
 
+/******************************
+******************************
+******************************
+
+
+
+		Door start
+
+
+
+******************************
+******************************
+*******************************/
+
+
+@font-face {
+    font-family: 'Material Symbols Outlined';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/materialsymbolsoutlined/v76/kJF4BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY40KH8nGzv3fz_VFU22ZZLsYEpzC_1ver5Y0.woff2) format('woff2');
+}
+
 .doormain_container {
     max-width: 1440px;
     margin: auto;
@@ -37,34 +59,55 @@ html {
     background-size: cover;
 }
 
-.door_container .d_pep01 {
+
+
+.door_container .d_man {
     position: absolute;
-    top: 46%;
-    left: 45%;
+    top: 49%;
+    left: 44.2%;
     width: 7%;
-    transform: translate3d(0%, 0%, 600px)scale(0.32);
-    /* animation-name: floating01; */
-    animation-duration: 28s;
+    transform: translate3d(0%, 0%, 420px) scale(0.5);
+    animation-name: floating01;
+    animation-duration: 43s;
+    animation-delay: 2s;
     animation-iteration-count: infinite;
     animation-timing-function: ease;
 }
 
 @keyframes floating01 {
     0% {
-        transform: translate3d(0%, 0%, 1100px);
-        ;
+        transform: translate3d(0, 0, 420px) rotateX(0deg) rotateY(0deg) scale(0.5);
+
     }
 
     50% {
-        transform: translate3d(12%, -10%, 1100px);
+        transform: translate3d(5%, -30%, 420px) rotateX(2deg) rotateY(1deg) scale(0.5);
     }
 
     100% {
-        transform: translate3d(0%, 0%, 1100px);
-        ;
+        transform: translate3d(0, 0, 420px) rotateX(0deg) rotateY(0deg) scale(0.5);
+
     }
 }
 
+@keyframes floating03 {
+    0% {
+        transform: translate3d(0%, 0%, 420px) scale(0.7);
+
+
+    }
+
+    50% {
+        transform: translate3d(12%, -10%, 420px) scale(0.7);
+
+    }
+
+    100% {
+        transform: translate3d(0%, 0%, 420px) scale(0.7);
+
+
+    }
+}
 
 
 
@@ -80,20 +123,21 @@ html {
 
 :root {
     --door-w: 0.1%;
-    --door-h: 0.28%;
-    --door-s: 2px;
+    --door-h: 0.32%;
+    --door-s: 8px;
 }
 
 
 .an_box {
     position: absolute;
     transform-style: preserve-3d;
-    /* animation-name: floating02; */
-    /* animation-duration: 5s; */
+    animation-name: floating02;
+    animation-duration: 20s;
     animation-iteration-count: infinite;
     animation-timing-function: ease;
     width: var(--door-w);
     height: var(--door-h);
+    transition: 1.6s;
 }
 
 
@@ -105,7 +149,7 @@ html {
     }
 
     50% {
-        transform: translate(0, 3%) rotateX(4deg) rotateY(3deg);
+        transform: translate(20%, -800%) rotateX(2deg) rotateY(1deg);
     }
 
     100% {
@@ -133,6 +177,8 @@ html {
 
 
 
+/* ******** 門 ********* */
+
 .door_container .door {
     width: 10000%;
     height: 10000%;
@@ -146,8 +192,7 @@ html {
 }
 
 .door_container .door .face,
-.door_container .door:before,
-.door_container a {
+.door_container .door:before {
     border-radius: 2%;
     display: flex;
     align-items: center;
@@ -156,49 +201,29 @@ html {
     height: 100%;
     position: absolute;
     backface-visibility: inherit;
-    /* transition: 1.5s; */
 }
 
 
+/* ******** 開門區 ********* */
 
-
-/******************************
-
-		門各層的樣式
-
-*******************************/
-
-
-
-
-/* Text */
-.door_container .door .door_name {
-    position: absolute;
-    top: 104%;
-    color: #fff;
-    font-family: "Noto sans", "Microsoft JhengHei", "微軟正黑體", sans-serif;
-    font-weight: 300;
-    font-size: 13px;
-    letter-spacing: 0.1em;
-}
-
-.door_container .door:hover>.door_name {
-    font-size: 15px;
-    top: 108%;
-}
-
-
-
-/* 門 */
+.door_container .door .opener_body,
 .door_container .door .opener,
 .door_container .door a {
-    box-shadow: 0 0 50px inset #00ffff;
-    width: 102%;
-    height: 102%;
-    position: absolute;
     top: 0%;
     left: 0%;
-    transform: translate3d(0%, 0%, 2px) rotateY(0deg);
+    transform: translate3d(0%, 0%, calc(var(--door-s)*0.51)) rotateY(0deg);
+    transition: 2s;
+}
+
+
+.door_container .door .opener_body {
+    width: 200%;
+}
+
+.door_container .door .opener {
+    width: 50%;
+    /* box-shadow: 0 0 50px inset #1121cc6a; */
+    background-image: url('d00.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -206,30 +231,68 @@ html {
     opacity: 0.75;
 }
 
-
-
-
-
 .door_container .door a {
-    display: none;
     /* background-color: #cb131c; */
-    transform: translate3d(1px, -50%, calc(var(--door-s)*1)) rotateY(0deg);
+    transform: translate3d(0, 0, calc(var(--door-s)*0.51)) rotateY(0deg);
+    /* opacity: 0.8; */
+}
+
+
+/* ******** 名字 ********* */
+
+.door_container .door .door_name_out {
+    width: 200%;
+    position: absolute;
+    font-family: "Noto sans", "Microsoft JhengHei", "微軟正黑體", sans-serif;
+    color: #fff;
+    font-size: 15px;
+    top: 103%;
+    text-align: center;
     opacity: 0;
 }
 
 
-/* 門正面、門框 */
+
+
+.door_container .door .door_name {
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    color: #e3f1ff;
+    font-family: "Noto sans", "Microsoft JhengHei", "微軟正黑體", sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    letter-spacing: 0.1em;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    opacity: 0.9;
+}
+
+.door_container .door:hover .door_name {
+    font-size: 18px;
+}
+
+
+
+
+
+/* ********* 門正面、門框 ********* */
+
 .door_container .door .front {
     /* 門內 */
     background-color: #0008ff1f;
-    box-shadow: 0 0 24px inset #043d6b;
+    box-shadow: 0 0 24px inset rgba(2, 61, 109, 0.879);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     /* 內門框 */
-    border: 2px solid #00f7ffb4;
+    border: 3px solid #e2e4fcd1;
     transform: translateZ(calc(var(--door-s)*0.5));
     overflow: hidden;
+    opacity: 0;
 }
 
-/* 門內Swirl */
+/* 門內 Swirl */
 .door_container .door .front::after {
     content: "";
     display: inline-block;
@@ -263,56 +326,142 @@ html {
 
 
 
-
-
-
 /************* 厚度 *****************/
 
 .door_container .door .naka_0 {
-
     transform: translateZ(calc(var(--door-s)*0.375));
-    box-shadow: 0 0 30px #00ffffa6;
+
+    box-shadow: 0 0 8px #c332eba4;
+    /* border-top: 1px solid #03aee272; */
+    border: 2px solid #5ad8ff9d;
 }
 
 .door_container .door .naka_1 {
     transform: translateZ(calc(var(--door-s)*0.25));
-    box-shadow: 0 0 8px #0df5f5;
+    border-top: 1px solid #03aee272;
+    border-bottom: 1px solid #e4bcff72;
 }
 
-
-
-/*.door_container .door .naka_2 {
+.door_container .door .naka_2 {
     transform: translateZ(calc(var(--door-s)*0.125));
+    border-top: 1px solid #03aee243;
+    border-bottom: 1px solid #e4bcff72;
 }
 
 .door_container .door .naka_3 {
-    transform: translateZ(0);
+    transform: translateZ(calc(var(--door-s)*0));
+    border-top: 1px solid #03aee272;
+    border-bottom: 1px solid #e4bcff72;
 }
 
+
 .door_container .door .naka_4 {
-    transform: rotateY(180deg) translateZ(calc(var(--door-s)*0.125));
+    transform: translateZ(calc(var(--door-s)*-0.125));
+    border-top: 1px solid #03aee272;
+    border-bottom: 1px solid #e4bcff72;
 }
 
 .door_container .door .naka_5 {
-    transform: rotateY(180deg) translateZ(calc(var(--door-s)*0.25));
+    transform: translateZ(calc(var(--door-s)*-0.25));
+    border-top: 1px solid #03aee272;
+    border-bottom: 1px solid #e4bcff72;
 }
 
-.door_container .door .naka_6 {
-    transform: rotateY(180deg) translateZ(calc(var(--door-s)*0.375));
-} */
+.door_container .door .naka_5 {
+    transform: translateZ(calc(var(--door-s)*-0.375));
+    border-top: 1px solid #03aee272;
+    border-bottom: 1px solid #e4bcff72;
+    border-right: 1px solid #e4bcff72;
+    border-left: 1px solid #e4bcff72;
+}
 
 .door_container .door:before {
     content: '';
-    /* background-color: #139dc7; */
-
     transform: rotateY(180deg) translateZ(calc(var(--door-s)*0.5));
-    box-shadow: 0 0 18px #0df5f5;
+    border: 1px solid #e4bcff72;
+    box-shadow: 0 0 8px #c332eba4;
+    background-color: #0b05625e;
 }
 
 
-/************* HOVER 眩光(包在厚度) *****************/
 
-.door_container .p0 .door .naka_2 {
+
+
+
+/* *************** 門的互動 *************** */
+
+.door_container .door:hover>.naka_5 {
+    box-shadow: 0 0 110px #bb87ff;
+}
+
+
+
+
+
+
+
+
+/******************************
+
+        p0 樣式
+
+*******************************/
+
+
+
+.door_container .p0 .door .opener {
+    opacity: 1;
+}
+
+.door_container .p0 .door .front {
+    opacity: 0.4;
+}
+
+
+.door_container .p0 .door .door_name {
+    color: #dbe5ff;
+    opacity: 1;
+}
+
+
+/* 開門互動 */
+/* .door_container .p0 .door:hover { */
+.door_container .p0 .door {
+    transform: translate3d(-50%, -50%, 380px) rotateX(-10deg) rotateY(15deg) scale(0.5) !important;
+}
+
+/* .door_container .p0 .door:hover .opener_body  */
+.door_container .p0 .door .opener_body {
+    transform: translate3d(0%, 0%, calc(var(--door-s)*1.1)) rotateY(90deg) scaleX(0.5);
+    opacity: 0.9;
+}
+
+/* .door_container .p0 .door:hover>.front */
+.door_container .p0 .door>.front {
+    opacity: 1;
+}
+
+
+.door_container .p0 .door:hover>.naka_1 {
+    box-shadow: 0 0 120px #0df5f5;
+}
+
+
+/* 名字 */
+/* .door_container .p0 .door:hover .door_name */
+.door_container .p0 .door .door_name {
+    opacity: 0.1;
+}
+
+.door_container .p0 .door .door_name_out {
+    opacity: 0.9;
+}
+
+
+
+/************* p0 的 HOVER 眩光(包在厚度) *****************/
+
+.door_container .p0 .door .door_light {
     content: "";
     width: 220%;
     height: 120%;
@@ -332,31 +481,32 @@ html {
     opacity: 0;
 }
 
-@keyframes Lighting01 {
-    0% {
-        transform: rotate(0) translate3d(0%, -30%, calc(var(--door-s)*0.9))
-    }
-
-    50% {
-        transform: rotate(30deg) translate3d(-22%, -7%, calc(var(--door-s)*0.9));
-    }
-
-    100% {
-        transform: rotate(0) translate3d(0%, -30%, calc(var(--door-s)*0.9));
-        ;
-    }
-}
-
-.door_container .p0 .door:hover>.naka_2 {
+.door_container .p0 .door>.door_light {
     opacity: 1;
-    top: 9%;
+    top: 0%;
     left: -44%;
 }
 
 
 
+@keyframes Lighting01 {
+    0% {
+        transform: rotate(0) translate3d(0%, -30%, calc(var(--door-s)*0.505))
+    }
+
+    50% {
+        transform: rotate(30deg) translate3d(-22%, -7%, calc(var(--door-s)*0.505));
+    }
+
+    100% {
+        transform: rotate(0) translate3d(0%, -30%, calc(var(--door-s)*0.505));
+        ;
+    }
+}
 
 
+
+/* 炫光圓圈 */
 .door_container .p0 .door .naka_1::after,
 .door_container .p0 .door .naka_1::before {
     content: "";
@@ -369,13 +519,26 @@ html {
     opacity: 0.6;
 }
 
-
-
 .door_container .p0 .door .naka_1::before {
     transition: 1.5s;
 }
 
+/* 炫光圓圈 p0  */
+.door_container .p0 .door>.naka_1::before {
+    border: 2px solid #00ffff;
+    width: 245%;
+    height: 145%;
+    opacity: 0.1;
+}
 
+.door_container .p0 .door>.naka_1::after {
+    border: 2px solid #00ffff;
+    width: 210%;
+    height: 130%;
+    opacity: 0.06;
+}
+
+/* 炫光圓圈 門 hover 互動 */
 .door_container .p0 .door:hover>.naka_1::before {
     border: 2px solid #00ffff;
     width: 275%;
@@ -400,80 +563,6 @@ html {
 
 
 
-/******************************
-
-        門的互動樣式
-
-*******************************/
-
-
-.door_container .door .opener:hover {
-    background-color: #464749;
-
-}
-
-.door_container .p0 .door a {
-    display: inline-block;
-}
-
-.door_container .p0 .door .opener {
-    opacity: 1;
-}
-
-.door_container .p0 .door:hover>.opener {
-    transform: translate3d(100%, 0%, 40px) rotateY(60deg);
-    /* right: -150%; */
-    /* left: 200%; */
-    opacity: 0.9;
-    width: 60%;
-
-}
-
-
-
-
-.door_container .p0 .door:hover>a {
-    /* transform: translate3d(46%, -47%, calc(var(--door-s)*23)) rotateY(60deg); */
-}
-
-
-
-/* 臨時 */
-/* 臨時 */
-/* 臨時 */
-/* 臨時 */
-/* 臨時 */
-/* 臨時 */
-/* 臨時 */
-/* 臨時 */
-/* 臨時 */
-.door_container .p0 .door {
-    transform: translate3d(-50%, -50%, 360px) rotateX(-100deg) rotateY(30deg) scale(0.5) !important;
-
-}
-
-/* 臨時 */
-.door_container .p0 .door:hover {
-    transform: translate3d(-50%, -50%, 360px) rotateX(-10deg) rotateY(30deg) scale(0.5);
-
-}
-
-.door_container .p0 .door:hover>.front::after {
-    opacity: 0.6;
-}
-
-.door_container .p0 .door:hover>.naka_1 {
-    box-shadow: 0 0 120px #0df5f5;
-}
-
-
-
-.door_container .door:hover>.naka_1 {
-    box-shadow: 0 0 80px #0df5f5;
-}
-
-
-
 
 
 
@@ -491,18 +580,18 @@ html {
 
 
 .door_container .p0 {
-    top: 49%;
+    top: 50%;
     left: 50%;
 }
 
 .door_container .p0 .door {
-    transform: translate3d(-50%, -50%, 410px) rotateX(0deg) rotateY(0deg) scale(0.55);
+    transform: translate3d(-50%, -50%, 380px) rotateX(0deg) rotateY(0deg) scale(0.58);
 }
 
 
 
 .door_container .p1 {
-    top: 48%;
+    top: 50%;
     left: 58%;
 }
 
@@ -518,33 +607,30 @@ html {
 }
 
 .door_container .p2 .door {
-    transform: translate3d(-50%, -50%, 250px) rotateX(5deg) rotateY(-60deg) scale(0.32);
-    opacity: 0.9;
+    transform: translate3d(-50%, -50%, 250px) rotateX(5deg) rotateY(15deg) scale(0.32);
 }
 
 
 
 .door_container .p3 {
-    top: 26%;
-    left: 76%;
-
+    top: 20%;
+    left: 72%;
 }
 
 .door_container .p3 .door {
-    transform: translate3d(-50%, -50%, 30px) rotateX(5deg) rotateY(-35deg) scale(0.32);
-    opacity: 0.8;
+    transform: translate3d(-50%, -50%, 30px) rotateX(0deg) rotateY(20deg) scale(0.32);
 }
 
 
 
 .door_container .p4 {
-    top: 13%;
-    left: 44%;
+    top: 15%;
+    left: 52%;
 }
 
 .door_container .p4 .door {
-    transform: translate3d(-50%, -50%, 30px) rotateX(-2deg) rotateY(2deg) scale(0.32);
-    opacity: 0.8;
+    transform: translate3d(-50%, -50%, 30px) rotateX(-2deg) rotateY(0deg) scale(0.32);
+
 }
 
 
@@ -555,35 +641,36 @@ html {
 }
 
 .door_container .p5 .door {
-    transform: translate3d(-50%, -50%, 30px) rotateX(-5deg) rotateY(6deg) scale(0.32);
-    opacity: 0.7;
+    transform: translate3d(-50%, -50%, 30px) rotateX(0deg) rotateY(-20deg) scale(0.32);
+
 }
 
 
 
 .door_container .p6 {
-    top: 48%;
-    left: 42%;
+    top: 40%;
+    left: 30%;
 }
 
 .door_container .p6 .door {
-    transform: translate3d(-50%, -50%, 400px) rotateX(0deg) rotateY(-15deg) scale(0.32);
-    opacity: 0.9;
+    transform: translate3d(-50%, -50%, 220px) rotateX(-5deg) rotateY(-15deg) scale(0.32);
 }
 
 
-/* 
+
 .door_container .p7 {
-    top: 54%;
-    left: 26%;
+    top: 50%;
+    left: 42%;
 }
-
 
 .door_container .p7 .door {
-    transform: translate3d(-50%, -50%, 100px) rotateX(-10deg) rotateY(1deg) scale(0.32);
+    transform: translate3d(-50%, -50%, 400px) rotateX(0deg) rotateY(-15deg) scale(0.32);
 }
 
- */
+
+
+
+
 
 
 
@@ -604,18 +691,18 @@ html {
 .doormain_container .door_btns {
     width: 95%;
     height: 25%;
-    padding: 1% 28%;
+    padding: 1% 22%;
     margin: 0 auto;
     position: absolute;
     bottom: 1.5%;
     left: 50%;
     transform: translateX(-50%);
-    /* background-color: #3141529a; */
     border-radius: 12px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    font-family: "Noto sans", "Microsoft JhengHei", "微軟正黑體", sans-serif;
 }
 
 .doormain_container .door_btns>div {
@@ -626,62 +713,104 @@ html {
 }
 
 .doormain_container .door_btns .door_arr {
-    background-color: #1ebcd1;
+    font-family: 'Material Symbols Outlined';
+    color: #d498d7;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0c02641b;
     width: 48px;
     height: 48px;
     position: absolute;
     border-radius: 50%;
-    box-shadow: 0 0 20px#0dd5f8;
-    border: 1px solid #00ffff3b;
+    box-shadow: 0 0 8px#c485fa62;
+    border: 2px solid #2200ff21;
     opacity: 0.8;
+    cursor: pointer;
 }
 
 .doormain_container .door_btns .door_arr.last {
-    left: 23%;
+    left: 18%;
 }
 
+
 .doormain_container .door_btns .door_arr.next {
-    right: 23%;
+    right: 18%;
 }
+
+
 
 .doormain_container .door_btns .door_btn {
     width: 100%;
     height: 100%;
     border-radius: 8px;
-    background-color: #025564cb;
-    border: 1px solid #00ffff5d;
-    opacity: 0.5;
+    background-color: #0c02641b;
+    border: 2px solid #2200ff21;
+    box-shadow: 0 0 8px#c485fa62;
+    position: relative;
     cursor: pointer;
-    box-shadow: 0 0 20px#0dd5f8;
+    transition: 0.2s;
 }
 
-.doormain_container .door_btns .door_btn:hover,
-.doormain_container .door_btns .door_arr:hover {
+.doormain_container .door_btns .door_btn .btn_st {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.doormain_container .door_btns .door_btn .btn_st span {
+    color: #ffffff;
+    font-size: 15px;
+    text-align: center;
+    font-weight: 500;
+    z-index: 1000;
+}
+
+.doormain_container .door_btns .door_btn .btn_st .btn_bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.25;
+}
+
+
+/* 按鈕狀態 互動 */
+
+.doormain_container .door_btns .door_arr:hover,
+.doormain_container .door_btns .door_btn:hover {
+    color: #fff;
     opacity: 0.85;
-    border: 1px solid #00ffffc0;
-    box-shadow: 0 0 50px#0dd5f8;
+    background-color: #0c026460;
+    border: 2px solid #2d139fca;
+    box-shadow: 0 0 20px#c385fa91;
 }
 
-
-@media (max-width: 768px) {
-    .doormain_container .door_btns>div {
-        width: 25%;
-        height: 50%;
-        padding: 6px;
-    }
+.doormain_container .door_btns .door_btn:hover span,
+.doormain_container .door_btns .door_btn .btn_st.active span {
+    opacity: 0;
 }
 
-@media (max-width: 480px) {
-    .doormain_container .door_btns>div {
-        width: 50%;
-        height: 100%;
-        padding: 6px;
-    }
+.doormain_container .door_btns .door_btn:hover .btn_bg {
+    opacity: 0.9;
 }
 
 
 
+.doormain_container .door_btns .door_btn .btn_st.active {
+    border: 3px solid #410b839f;
+    box-shadow: 0 0 28px#c385fac2;
+}
 
+.doormain_container .door_btns .door_btn .btn_st.active .btn_bg {
+    opacity: 1;
+}
 
 
 
@@ -692,16 +821,120 @@ html {
 
 
 
-            Modifier tool
+           RWD
 
 
 
 ******************************************
 *****************************************/
-.mouse-link {
-    cursor: pointer;
+
+@media (max-width: 1200px) {
+    .doormain_container .door_btns .door_btn .btn_st span {
+        font-size: 12px;
+    }
 }
 
-.hidden {
-    display: none !important;
+@media (max-width: 1200px) {
+    .doormain_container .door_btns .door_btn {
+        display: none;
+    }
 }
+
+
+@media (max-width: 768px) {}
+
+@media (max-width: 700px) {
+    .door_container {
+        padding-top: 135%;
+    }
+
+    .door_container .d_man {
+        width: 13%;
+        top: 57%;
+        left: 38%;
+    }
+
+    :root {
+        --door-w: 0.225%;
+        --door-s: 2px;
+    }
+
+    .door_container .door .door_name_out {
+
+        font-size: 12px;
+
+    }
+
+    .door_container .door .door_name {
+        color: #e0f0ff;
+        font-size: 10px;
+        opacity: 0.8;
+    }
+
+
+
+    .doormain_container .door_btns {
+        height: 16%;
+    }
+
+
+    /******************************
+            各位置參數 
+    *******************************/
+
+    .door_container .p0 {
+        top: 54%;
+        left: 49.2%;
+    }
+
+    .door_container .p1 {
+        top: 53%;
+        left: 64%;
+    }
+
+    .door_container .p2 {
+        top: 40%;
+        left: 70%;
+    }
+
+    .door_container .p3 {
+        top: 20%;
+        left: 72%;
+    }
+
+    .door_container .p4 {
+        top: 15%;
+        left: 52%;
+    }
+
+    .door_container .p5 {
+        top: 20%;
+        left: 30%;
+    }
+
+    .door_container .p6 {
+        top: 40%;
+        left: 28%;
+    }
+
+    .door_container .p7 {
+        top: 53%;
+        left: 36%;
+    }
+
+
+
+    /* 按鈕 */
+    .doormain_container .door_btns .door_arr.last {
+        left: 8%;
+    }
+
+    .doormain_container .door_btns .door_arr.next {
+        right: 8%;
+    }
+
+}
+
+
+
+@media (max-width: 480px) {}

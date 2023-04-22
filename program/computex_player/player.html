@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="#">
+    <title>Player</title>
+</head>
+<style>
+    * {
+        position: relative;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: "Noto sans TC", "Noto sans", "Microsoft JhengHei", "微軟正黑體", sans-serif;
+        font-weight: 300;
+        background-color: var(--bg-color)
+    }
+
+    body,
+    html {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: #000000;
+    }
+
+    .comp-player_container {
+        max-width: 1440px;
+        width: 100%;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+
+    }
+
+    .comp-player_container .row {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 20px;
+    }
+
+    .comp-player_container .row>* {
+        padding: 6px;
+    }
+
+    .comp-player_container .col-1-1 {
+        width: 100%;
+    }
+
+    .comp-player_container .col-1-4 {
+        width: 25%;
+    }
+
+    .comp-player_container .play_img {
+        width: 100%;
+        padding-top: 60%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        border-radius: 8px;
+        transform: scale(1);
+        box-shadow: 0px 0px 2px #0d022600;
+
+        border: 3px solid #0d022600;
+        transition: 1s;
+        opacity: 0.9;
+    }
+
+    .comp-player_container .play_img.playing {
+        /* opacity: 0.5; */
+        transform: scale(1);
+        box-shadow: 0px 0px 40px #0d0226, 0px 0px 12px #af61eeb9;
+        border: 3px solid #0d0226bc;
+        opacity: 1;
+        z-index: 1000;
+    }
+</style>
+
+
+
+
+<body>
+
+    <div class="comp-player_container">
+        <div class="row">
+            <div class="col-1-4">
+                <div class="play_img" style="background-image: url(scenerio_1.jpg);"></div>
+            </div>
+            <div class="col-1-4">
+                <div class="play_img" style="background-image: url(scenerio_2.jpg);"></div>
+            </div>
+            <div class="col-1-4">
+                <div class="play_img" style="background-image: url(scenerio_3.jpg);"></div>
+            </div>
+            <div class="col-1-4">
+                <div class="play_img" style="background-image: url(scenerio_4.jpg);"></div>
+            </div>
+            <div class="col-1-4">
+                <div class="play_img" style="background-image: url(scenerio_5.jpg);"></div>
+            </div>
+            <div class="col-1-4">
+                <div class="play_img" style="background-image: url(scenerio_6.jpg);"></div>
+            </div>
+            <div class="col-1-4">
+                <div class="play_img" style="background-image: url(scenerio_7.jpg);"></div>
+            </div>
+            <div class="col-1-4">
+                <div class="play_img" style="background-image: url(scenerio_8.jpg);"></div>
+            </div>
+        </div>
+    </div>
+    <audio class="bgm" src="stay-humble.wav"></audio>
+    <audio class="bgm" src="../../music/bgm_logos-1.mp3"></audio>
+    <audio class="bgm" src="../../music/bgm_BrandNewToy.mp3"></audio>
+    <audio class="bgm" src="../../music/bgm_cut-to-the-chase.mp3"></audio>
+    <audio class="bgm" src="../../music/ch_good.mp3"></audio>
+    <audio class="bgm" src="../../music/bgm_logos-2.wav"></audio>
+    <audio class="bgm" src="../../music/bgm_NewCity.mp3"></audio>
+    <audio class="bgm" src="../../music/ui_03.mp3"></audio>
+</body>
+<script>
+
+
+    // ******************************
+    // 
+    //      音樂撥放器
+    //      - 
+    //      - 
+    //
+    // ******************************
+    // Function
+    var $ = function (name) {
+        return document.getElementById(name)
+    }
+    var $css = function (name) {
+        return document.getElementsByClassName(name)
+    }
+    var $tag = function (name) {
+        return document.getElementsByTagName(name)
+    }
+
+
+    window.onload = function () {
+
+        // Fix up prefixing
+        window.AudioContext = window.AudioContext || window.webkitAudioContext;
+        var ctx = new AudioContext();
+
+        // BGM 長音樂
+
+        var music = function (num) {
+            this.source = ctx.createMediaElementSource(bgmSource[num]);
+            this.gainCode = ctx.createGain();
+            this.lowPassCode = ctx.createBiquadFilter();
+            this.source.connect(this.gainCode).connect(this.lowPassCode).connect(ctx.destination);
+
+            // option
+            this.playingTag = 0
+            this.lowPassCode.type = 'lowpass';
+            this.lowPassCode.frequency.value = 22050;
+
+            // function
+            this.play = function () {
+                if (this.playingTag === 0) { // 如果尚未在播放
+                    this.playingTag = 1
+                    bgmSource[num].play()
+                    bgmSource[num].addEventListener('ended', function () {
+                        this.stop();
+                    }.bind(this));
+                }
+            }
+            this.fadePlay = function (gain = 1, fadeTime = 1, startGain = 0) {
+                this.play();
+                this.gainCode.gain.value = startGain
+                this.gainCode.gain.linearRampToValueAtTime(gain, ctx.currentTime + fadeTime);
+            }
+            this.stop = function () {
+                this.playingTag = 0
+                bgmSource[num].pause()
+                bgmSource[num].currentTime = 0;
+            }
+            this.fadeStop = function (fadeTime = 1) {
+                if (this.playingTag == 1) {
+                    this.playingTag = 0
+                    let tempGain = this.gainCode.gain.value
+                    this.gainCode.gain.linearRampToValueAtTime(0, ctx.currentTime + fadeTime);
+                    setTimeout(() => {
+                        if (this.playingTag == 1) {
+                            this.gainCode.gain.linearRampToValueAtTime(tempGain, ctx.currentTime + 0.5);
+                            console.log("replay")
+                        }
+                        else {
+                            this.stop()
+                            this.gainCode.gain.value = tempGain
+                        }
+                    }, fadeTime * 1000 + 100);
+                }
+            }
+            this.fadeLowPass = function (frequency = 22050, gain = -40, fadeTime = 1) {
+                this.lowPassCode.frequency.linearRampToValueAtTime(frequency, ctx.currentTime + fadeTime);
+            }
+        }
+
+
+        // 帶入聲音
+        bgmSource = document.getElementsByClassName("bgm");
+        var bgm = []
+        for (let i = 0; i < bgmSource.length; i++) {
+            bgm[i] = new music(i)
+        }
+
+
+        // 全部停止
+        function musicAllStop(fadeTime = 1) {
+            for (let i = 0; i < bgmSource.length; i++) {
+                bgm[i].fadeStop(fadeTime)
+            }
+        }
+
+
+        // 鍵盤快捷鍵
+        window.addEventListener("keydown", torandomTest, false);
+        function torandomTest(e) {
+            var keyID = e.code;
+            if (keyID === 'KeyQ') {
+                bgm[0].play()
+            }
+            if (keyID === 'KeyW') {
+                musicAllStop(1)
+            }
+        }
+
+        // 按鈕
+
+        var mucBtn = $css("play_img")
+        for (let i = 0; i < mucBtn.length; i++) {
+            mucBtn[i].addEventListener("click", function () {
+                if (bgm[i].playingTag == 1) {
+                    bgm[i].fadeStop(0.5)
+                    mucBtn[i].classList.remove("playing")
+                    console.log("stop Now")
+                } else {
+                    musicAllStop(0.5)
+                    for (let j = 0; j < mucBtn.length; j++) {
+                        mucBtn[j].classList.remove("playing")
+                    }
+
+                    bgm[i].play(0)
+                    mucBtn[i].classList.add("playing")
+
+                    console.log("play", i)
+                }
+            })
+
+        }
+
+
+
+        // ******************************
+        // 其他功能
+        // ******************************
+
+
+        // 錯誤提示
+        function onError() {
+            console.log("error")
+        }
+    }
+
+</script>
+
+</html>
