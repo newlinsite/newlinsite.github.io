@@ -77,10 +77,23 @@
     .comp-player_container .play_img.playing {
         /* opacity: 0.5; */
         transform: scale(1);
-        box-shadow: 0px 0px 40px #0d0226, 0px 0px 12px #af61eeb9;
-        border: 3px solid #0d0226bc;
+        box-shadow: 0px 0px 22px #af61eeca, 0px 0px 40px #170248;
+        border: 3px solid #5f31cdbc;
         opacity: 1;
         z-index: 1000;
+    }
+
+    .comp-player_container .play_img.op5 {
+        opacity: 0.5;
+    }
+
+    #text {
+        position: fixed;
+        bottom: 10%;
+        font-size: 24px;
+        color: #fff;
+        width: 100%;
+        text-align: center;
     }
 </style>
 
@@ -117,6 +130,7 @@
             </div>
         </div>
     </div>
+    <div id="text"></div>
     <audio class="bgm" src="stay-humble.wav"></audio>
     <audio class="bgm" src="bgm_logos-1.mp3"></audio>
     <audio class="bgm" src="bgm_BrandNewToy.mp3"></audio>
@@ -148,6 +162,30 @@
     }
 
 
+    // var textBox = [
+    //     "AI Voice",
+    //     "Meeting Rooms",
+    //     "Workstations",
+    //     "Workstations",
+    //     "Workstations",
+    //     "Workstations",
+    //     "Workstations",
+    //     "Workstations"
+    // ]
+    var textBox = [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+    ]
+
+    var text = $("text")
+    text.innerHTML = ""
+
     window.onload = function () {
 
         // Fix up prefixing
@@ -173,6 +211,10 @@
                     this.playingTag = 1
                     bgmSource[num].play()
                     bgmSource[num].addEventListener('ended', function () {
+                        text.innerHTML = ""
+                        for (let j = 0; j < mucBtn.length; j++) {
+                            mucBtn[j].classList.remove("op5")
+                        }
                         this.stop();
                     }.bind(this));
                 }
@@ -238,24 +280,31 @@
             }
         }
 
-        // 按鈕
 
+
+        // 按鈕
         var mucBtn = $css("play_img")
         for (let i = 0; i < mucBtn.length; i++) {
             mucBtn[i].addEventListener("click", function () {
                 if (bgm[i].playingTag == 1) {
                     bgm[i].fadeStop(0.5)
                     mucBtn[i].classList.remove("playing")
+                    for (let j = 0; j < mucBtn.length; j++) {
+                        mucBtn[j].classList.remove("op5")
+                    }
                     console.log("stop Now")
+                    text.innerHTML = ""
                 } else {
                     musicAllStop(0.5)
                     for (let j = 0; j < mucBtn.length; j++) {
                         mucBtn[j].classList.remove("playing")
+                        mucBtn[j].classList.add("op5")
                     }
 
                     bgm[i].play(0)
                     mucBtn[i].classList.add("playing")
-
+                    mucBtn[i].classList.remove("op5")
+                    text.innerHTML = textBox[i]
                     console.log("play", i)
                 }
             })
