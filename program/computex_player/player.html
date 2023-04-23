@@ -65,13 +65,21 @@
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
-        border-radius: 8px;
+        border-radius: 16px;
         transform: scale(1);
         box-shadow: 0px 0px 2px #0d022600;
 
         border: 3px solid #0d022600;
         transition: 1s;
         opacity: 0.9;
+    }
+
+    .comp-player_container .play_name {
+        width: 100%;
+        color: #fff;
+        text-align: center;
+        font-size: 16px;
+        padding: 8px 0 16px 0;
     }
 
     .comp-player_container .play_img.playing {
@@ -100,13 +108,11 @@
         position: fixed;
         left: 24px;
         top: 20px;
-        font-size: 24px;
+        font-size: 20px;
         color: #fff;
         border: 1px solid #ffffffb6;
         border-radius: 8px;
         padding: 8px 16px;
-
-
     }
 
     /******************************
@@ -132,12 +138,19 @@
     #langMask #en,
     #langMask #ch {
         color: #fff;
-        font-size: 48px;
-        padding: 12px 36px;
-        border: 2px solid#ffffffb7;
+        font-size: 54px;
+        text-align: center;
+        width: 200px;
+        height: 200px;
+        border: 2px solid#ffffff9e;
+        background: #1e1e1e95;
         font-weight: 500;
         border-radius: 12px;
         margin: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 24px #000000;
     }
 
     #langMask.close {
@@ -190,27 +203,35 @@
         <div class="row">
             <div class="col-1-4">
                 <div class="play_img" style="background-image: url(scenerio_1.jpg);"></div>
+                <div class="play_name">AI Voice</div>
             </div>
             <div class="col-1-4">
                 <div class="play_img" style="background-image: url(scenerio_2.jpg);"></div>
+                <div class="play_name">Meeting Rooms</div>
             </div>
             <div class="col-1-4">
                 <div class="play_img" style="background-image: url(scenerio_3.jpg);"></div>
+                <div class="play_name">Workstations</div>
             </div>
             <div class="col-1-4">
                 <div class="play_img" style="background-image: url(scenerio_4.jpg);"></div>
+                <div class="play_name">Game Streaming</div>
             </div>
             <div class="col-1-4">
                 <div class="play_img" style="background-image: url(scenerio_5.jpg);"></div>
+                <div class="play_name">Control Rooms</div>
             </div>
             <div class="col-1-4">
                 <div class="play_img" style="background-image: url(scenerio_6.jpg);"></div>
+                <div class="play_name">Data Centers</div>
             </div>
             <div class="col-1-4">
                 <div class="play_img" style="background-image: url(scenerio_7.jpg);"></div>
+                <div class="play_name">Smart Manufacturing</div>
             </div>
             <div class="col-1-4">
                 <div class="play_img" style="background-image: url(scenerio_8.jpg);"></div>
+                <div class="play_name">Air Traffic Control</div>
             </div>
         </div>
     </div>
@@ -218,32 +239,40 @@
         <div class="row">
             <div class="col-1-4">
                 <div class="play_img" style="background-image: url(scenerio_1.jpg);"></div>
+                <div class="play_name">AI Voice</div>
             </div>
             <div class="col-1-4">
                 <div class="play_img" style="background-image: url(scenerio_2.jpg);"></div>
+                <div class="play_name">Meeting Rooms</div>
             </div>
             <div class="col-1-4">
                 <div class="play_img" style="background-image: url(scenerio_3.jpg);"></div>
+                <div class="play_name">Workstations</div>
             </div>
             <div class="col-1-4">
                 <div class="play_img" style="background-image: url(scenerio_4.jpg);"></div>
+                <div class="play_name">Game Streaming</div>
             </div>
             <div class="col-1-4">
                 <div class="play_img" style="background-image: url(scenerio_5.jpg);"></div>
+                <div class="play_name">Control Rooms</div>
             </div>
             <div class="col-1-4">
                 <div class="play_img" style="background-image: url(scenerio_6.jpg);"></div>
+                <div class="play_name">Data Centers</div>
             </div>
             <div class="col-1-4">
                 <div class="play_img" style="background-image: url(scenerio_7.jpg);"></div>
+                <div class="play_name">Smart Manufacturing</div>
             </div>
             <div class="col-1-4">
                 <div class="play_img" style="background-image: url(scenerio_8.jpg);"></div>
+                <div class="play_name">Air Traffic Control</div>
             </div>
         </div>
     </div>
     <div id="text"></div>
-    <div id="back">Langage</div>
+    <div id="back">EN / CN</div>
     <div id="langMask">
         <div id="en">EN</div>
         <div id="ch">CH</div>
