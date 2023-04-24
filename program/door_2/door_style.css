@@ -63,48 +63,30 @@ html {
 
 .door_container .d_man {
     position: absolute;
-    top: 49%;
-    left: 44.2%;
-    width: 7%;
-    transform: translate3d(0%, 0%, 420px) scale(0.5);
+    top: 47.5%;
+    left: 45.5%;
+    width: 5%;
+    transform: translate3d(0%, 0%, 500px) scale(0.5);
     animation-name: floating01;
     animation-duration: 43s;
     animation-delay: 2s;
     animation-iteration-count: infinite;
     animation-timing-function: ease;
+    opacity: 0.9;
 }
 
 @keyframes floating01 {
     0% {
-        transform: translate3d(0, 0, 420px) rotateX(0deg) rotateY(0deg) scale(0.5);
+        transform: translate3d(0, 0, 500px) rotateX(0deg) rotateY(0deg) scale(0.5);
 
     }
 
     50% {
-        transform: translate3d(5%, -30%, 420px) rotateX(2deg) rotateY(1deg) scale(0.5);
+        transform: translate3d(8%, -15%, 500px) rotateX(2deg) rotateY(1deg) scale(0.5);
     }
 
     100% {
-        transform: translate3d(0, 0, 420px) rotateX(0deg) rotateY(0deg) scale(0.5);
-
-    }
-}
-
-@keyframes floating03 {
-    0% {
-        transform: translate3d(0%, 0%, 420px) scale(0.7);
-
-
-    }
-
-    50% {
-        transform: translate3d(12%, -10%, 420px) scale(0.7);
-
-    }
-
-    100% {
-        transform: translate3d(0%, 0%, 420px) scale(0.7);
-
+        transform: translate3d(0, 0, 500px) rotateX(0deg) rotateY(0deg) scale(0.5);
 
     }
 }
@@ -505,8 +487,9 @@ html {
 }
 
 
-
-/* 炫光圓圈 */
+/******************************
+******************************
+炫光圓圈
 .door_container .p0 .door .naka_1::after,
 .door_container .p0 .door .naka_1::before {
     content: "";
@@ -523,7 +506,7 @@ html {
     transition: 1.5s;
 }
 
-/* 炫光圓圈 p0  */
+炫光圓圈 p0 
 .door_container .p0 .door>.naka_1::before {
     border: 2px solid #00ffff;
     width: 245%;
@@ -538,7 +521,7 @@ html {
     opacity: 0.06;
 }
 
-/* 炫光圓圈 門 hover 互動 */
+炫光圓圈 門 hover 互動
 .door_container .p0 .door:hover>.naka_1::before {
     border: 2px solid #00ffff;
     width: 275%;
@@ -554,6 +537,8 @@ html {
 }
 
 
+******************************
+*******************************/
 
 
 
