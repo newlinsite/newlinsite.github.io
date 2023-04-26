@@ -128,69 +128,49 @@
         top: 0;
         left: 0;
         background-color: #000000cb;
+        background-image: url(bg.jpg);
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        background-size: 122%;
         z-index: 3000;
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: 0.8s;
+        transition: 1.2s;
+        padding-top: 12%;
     }
 
     #langMask #en,
     #langMask #ch {
-        color: #fff;
-        font-size: 54px;
+        color: #ffffffc3;
+        font-size: 84px;
         text-align: center;
-        width: 200px;
-        height: 200px;
-        border: 2px solid#ffffff9e;
+        width: 280px;
+        height: 280px;
+        border: 4px solid#4b116858;
         background: #1e1e1e95;
-        font-weight: 500;
-        border-radius: 12px;
-        margin: 36px;
+        font-weight: 400;
+        border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 0 24px #000000;
+        box-shadow: 0 0 80px #ff92e69c, 0 0 24px #000000;
+
+    }
+
+    #langMask #ch {
+        margin-left: 16%
+    }
+
+    #langMask #en {
+        margin-right: 16%
     }
 
     #langMask.close {
         opacity: 0;
         z-index: -10;
-    }
-
-
-
-    /******************************
-
-		loadingMask 
-
-    *******************************/
-    #loadingMask {
-        height: 100vh;
-        width: 100vw;
-        position: fixed;
-        top: 0;
-        left: 0;
-        background-color: #000000;
-        z-index: 4000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: 0.8s;
-    }
-
-    #loadingMask::after {
-        content: "Start";
-        color: #fff;
-        font-size: 24px;
-        /* padding: 12px 26px; */
-        /* border: 2px solid#fff; */
-        /* border-radius: 12px; */
-    }
-
-    #loadingMask.over {
-        opacity: 0;
-        z-index: -10;
+        background-position: 50% 60%;
+        background-size: 200%;
     }
 </style>
 
@@ -277,7 +257,6 @@
         <div id="en">EN</div>
         <div id="ch">CH</div>
     </div>
-    <div id="loadingMask"></div>
     <audio class="bgm" src="stay-humble.wav"></audio>
     <audio class="bgm" src="bgm_logos-1.mp3"></audio>
     <audio class="bgm" src="bgm_BrandNewToy.mp3"></audio>
@@ -300,13 +279,7 @@
 <script>
 
 
-    // ******************************
-    // 
-    //      音樂撥放器
-    //      - 
-    //      - 
-    //
-    // ******************************
+
     // Function
     var $ = function (name) {
         return document.getElementById(name)
@@ -319,25 +292,6 @@
     }
 
 
-    var textBox = [
-        "AI Voice",
-        "Meeting Rooms",
-        "Workstations",
-        "Workstations",
-        "Workstations",
-        "Workstations",
-        "Workstations",
-        "Workstations",
-        // ------------------------
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-    ]
     var textBox = [
         "",
         "",
@@ -369,180 +323,242 @@
 
 
 
+    // ******************************
+    // 
+    //      音樂撥放器
+    //      - 
+    //      - 
+    //
+    // ******************************
 
 
 
 
 
-    // 點擊載入聲音
 
-    $("loadingMask").addEventListener("click", function () {
-
-        // Fix up prefixing
-        window.AudioContext = window.AudioContext || window.webkitAudioContext;
-        var ctx = new AudioContext();
-
-        // BGM 長音樂
-
-        var music = function (num) {
-            this.source = ctx.createMediaElementSource(bgmSource[num]);
-            this.gainCode = ctx.createGain();
-            this.lowPassCode = ctx.createBiquadFilter();
-            this.source.connect(this.gainCode).connect(this.lowPassCode).connect(ctx.destination);
-
-            // option
-            this.playingTag = 0
-            this.lowPassCode.type = 'lowpass';
-            this.lowPassCode.frequency.value = 22050;
-
-            // function
-            this.play = function () {
-                if (this.playingTag === 0) { // 如果尚未在播放
-                    this.playingTag = 1
-                    bgmSource[num].play()
-                    bgmSource[num].addEventListener('ended', function () {
-                        text.innerHTML = ""
-                        for (let j = 0; j < mucBtn.length; j++) {
-                            mucBtn[j].classList.remove("op5")
-                        }
-                        this.stop();
-                    }.bind(this));
-                }
-            }
-            this.fadePlay = function (gain = 1, fadeTime = 1, startGain = 0) {
-                this.play();
-                this.gainCode.gain.value = startGain
-                this.gainCode.gain.linearRampToValueAtTime(gain, ctx.currentTime + fadeTime);
-            }
-            this.stop = function () {
-                this.playingTag = 0
-                bgmSource[num].pause()
-                bgmSource[num].currentTime = 0;
-            }
-            this.fadeStop = function (fadeTime = 1) {
-                if (this.playingTag == 1) {
-                    this.playingTag = 0
-                    let tempGain = this.gainCode.gain.value
-                    this.gainCode.gain.linearRampToValueAtTime(0, ctx.currentTime + fadeTime);
-                    setTimeout(() => {
-                        if (this.playingTag == 1) {
-                            this.gainCode.gain.linearRampToValueAtTime(tempGain, ctx.currentTime + 0.5);
-                            console.log("replay")
-                        }
-                        else {
-                            this.stop()
-                            this.gainCode.gain.value = tempGain
-                        }
-                    }, fadeTime * 1000 + 100);
-                }
-            }
-            this.fadeLowPass = function (frequency = 22050, gain = -40, fadeTime = 1) {
-                this.lowPassCode.frequency.linearRampToValueAtTime(frequency, ctx.currentTime + fadeTime);
-            }
-        }
+    // Fix up prefixing
+    window.AudioContext = window.AudioContext || window.webkitAudioContext;
+    var ctx = new AudioContext();
 
 
-        // 帶入聲音
-        bgmSource = document.getElementsByClassName("bgm");
-        var bgm = []
-        for (let i = 0; i < bgmSource.length; i++) {
-            bgm[i] = new music(i)
-        }
+    // BGM 長音樂
 
+    var music = function (num) {
+        this.source = ctx.createMediaElementSource(bgmSource[num]);
+        this.gainCode = ctx.createGain();
+        this.lowPassCode = ctx.createBiquadFilter();
+        this.source.connect(this.gainCode).connect(this.lowPassCode).connect(ctx.destination);
 
-        // 全部停止
-        function musicAllStop(fadeTime = 1) {
-            for (let i = 0; i < bgmSource.length; i++) {
-                bgm[i].fadeStop(fadeTime)
-            }
-        }
+        // option
+        this.playingTag = 0
+        this.lowPassCode.type = 'lowpass';
+        this.lowPassCode.frequency.value = 22050;
 
-
-
-        // 鍵盤快捷鍵
-        window.addEventListener("keydown", torandomTest, false);
-        function torandomTest(e) {
-            var keyID = e.code;
-            if (keyID === 'KeyQ') {
-                bgm[0].play()
-            }
-            if (keyID === 'KeyA') {
-                bgm[1].play()
-            }
-            if (keyID === 'KeyW') {
-                musicAllStop(1)
-            }
-        }
-        $("loadingMask").classList.add("over")
-
-
-        // ******************************
-        // 選擇語言缺換按鈕
-        // ******************************
-        var mucBtn = $css("play_img")
-
-        function btnPlayFunctionInputer() {
-            for (let i = 0; i < mucBtn.length; i++) {
-                mucBtn[i].addEventListener("click", function () {
-                    //如果點的按鈕播放中，停止播放並恢復按鈕狀態
-                    if (bgm[i].playingTag == 1) {
-                        bgm[i].fadeStop(1)
-                        mucBtn[i].classList.remove("playing")
-                        for (let j = 0; j < mucBtn.length; j++) {
-                            mucBtn[j].classList.remove("op5")
-                        }
-                        console.log("stop Now")
-                        text.innerHTML = ""
-                    } else {
-                        //播放前把所有狀態回復原狀，停止所有播放音樂
-                        musicAllStop(1)
-                        for (let j = 0; j < mucBtn.length; j++) {
-                            mucBtn[j].classList.remove("playing")
-                            mucBtn[j].classList.add("op5")
-                        }
-
-                        bgm[i].play(0)
-                        mucBtn[i].classList.add("playing")
-                        mucBtn[i].classList.remove("op5")
-                        text.innerHTML = textBox[i]
-                        console.log("play", i)
+        // function
+        this.play = function () {
+            if (this.playingTag === 0) { // 如果尚未在播放
+                this.playingTag = 1
+                bgmSource[num].play()
+                bgmSource[num].addEventListener('ended', function () {
+                    text.innerHTML = ""
+                    for (let j = 0; j < mucBtn.length; j++) {
+                        mucBtn[j].classList.remove("op5")
                     }
-                })
+                    this.stop();
+                }.bind(this));
             }
         }
-        btnPlayFunctionInputer()
+        this.fadePlay = function (gain = 1, fadeTime = 1, startGain = 0) {
+            this.play();
+            this.gainCode.gain.value = startGain
+            this.gainCode.gain.linearRampToValueAtTime(gain, ctx.currentTime + fadeTime);
+        }
+        this.stop = function () {
+            this.playingTag = 0
+            bgmSource[num].pause()
+            bgmSource[num].currentTime = 0;
+        }
+        this.fadeStop = function (fadeTime = 1) {
+            if (this.playingTag == 1) {
+                this.playingTag = 0
+                let tempGain = this.gainCode.gain.value
+                this.gainCode.gain.linearRampToValueAtTime(0, ctx.currentTime + fadeTime);
+                setTimeout(() => {
+                    if (this.playingTag == 1) {
+                        this.gainCode.gain.linearRampToValueAtTime(tempGain, ctx.currentTime + 0.5);
+                        console.log("replay")
+                    }
+                    else {
+                        this.stop()
+                        this.gainCode.gain.value = tempGain
+                    }
+                }, fadeTime * 1000 + 100);
+            }
+        }
+        this.fadeLowPass = function (frequency = 22050, gain = -40, fadeTime = 1) {
+            this.lowPassCode.frequency.linearRampToValueAtTime(frequency, ctx.currentTime + fadeTime);
+        }
+    }
 
-        $("en").addEventListener("click", function () {
-            $("langMask").classList.add("close")
-            $("en_btns").style = "display: flex;"
-            $("cn_btns").style = "display: none;"
-        })
-        $("ch").addEventListener("click", function () {
-            $("langMask").classList.add("close")
-            $("en_btns").style = "display: none;"
-            $("cn_btns").style = "display: flex;"
-        })
 
-        $("back").addEventListener("click", function () {
+    // 帶入聲音
+    bgmSource = document.getElementsByClassName("bgm");
+    var bgm = []
+    for (let i = 0; i < bgmSource.length; i++) {
+        bgm[i] = new music(i)
+    }
+
+
+    // 全部停止
+    function musicAllStop(fadeTime = 1) {
+        for (let i = 0; i < bgmSource.length; i++) {
+            bgm[i].fadeStop(fadeTime)
+        }
+    }
+
+
+
+    // 鍵盤快捷鍵
+    window.addEventListener("keydown", torandomTest, false);
+    function torandomTest(e) {
+        var keyID = e.code;
+        if (keyID === 'KeyQ') {
+            bgm[0].play()
+        }
+        if (keyID === 'KeyA') {
+            bgm[1].play()
+        }
+        if (keyID === 'KeyW') {
             musicAllStop(1)
-            for (let j = 0; j < mucBtn.length; j++) {
-                mucBtn[j].classList.remove("playing")
-                mucBtn[j].classList.remove("op5")
-            }
-
-            $("langMask").classList.remove("close")
-            text.innerHTML = ""
-        })
-
-        // ******************************
-        // 其他功能
-        // ******************************
-
-        // 錯誤提示
-        function onError() {
-            console.log("error")
         }
+    }
+
+
+    // ******************************
+    // 選擇語言缺換按鈕
+    // ******************************
+    var mucBtn = $css("play_img")
+
+    function btnPlayFunctionInputer() {
+        for (let i = 0; i < mucBtn.length; i++) {
+            mucBtn[i].addEventListener("click", function () {
+                //如果點的按鈕播放中，停止播放並恢復按鈕狀態
+                if (bgm[i].playingTag == 1) {
+                    bgm[i].fadeStop(1)
+                    mucBtn[i].classList.remove("playing")
+                    for (let j = 0; j < mucBtn.length; j++) {
+                        mucBtn[j].classList.remove("op5")
+                    }
+                    console.log("stop Now")
+                    text.innerHTML = ""
+                } else {
+                    //播放前把所有狀態回復原狀，停止所有播放音樂
+                    musicAllStop(1)
+                    for (let j = 0; j < mucBtn.length; j++) {
+                        mucBtn[j].classList.remove("playing")
+                        mucBtn[j].classList.add("op5")
+                    }
+
+                    bgm[i].play(0)
+                    mucBtn[i].classList.add("playing")
+                    mucBtn[i].classList.remove("op5")
+                    text.innerHTML = textBox[i]
+                    console.log("play", i)
+                }
+            })
+        }
+    }
+
+    var isAnyOneClick = false
+    btnPlayFunctionInputer()
+
+    $("en").addEventListener("click", function () {
+        $("langMask").classList.add("close")
+        $("en_btns").style = "display: flex;"
+        $("cn_btns").style = "display: none;"
+        isAnyOneClick = false
+        isInThisTimeAnyoneClick()
     })
+    $("ch").addEventListener("click", function () {
+        $("langMask").classList.add("close")
+        $("en_btns").style = "display: none;"
+        $("cn_btns").style = "display: flex;"
+        isAnyOneClick = false
+        isInThisTimeAnyoneClick()
+    })
+
+    var backTolangage = function () {
+        musicAllStop(1)
+        for (let j = 0; j < mucBtn.length; j++) {
+            mucBtn[j].classList.remove("playing")
+            mucBtn[j].classList.remove("op5")
+        }
+        $("langMask").classList.remove("close")
+        text.innerHTML = ""
+        clearInterval(repeater);
+    }
+
+    $("back").addEventListener("click", backTolangage)
+
+
+    // ******************************
+    // 自動回選語言頁
+    // ******************************
+
+
+
+    document.addEventListener('click', function () {
+        // 用戶點擊時啟動 AudioContext 對象
+        // 紀錄Click
+        isAnyOneClick = true
+        console.log()
+        ctx.resume().then(() => {
+            console.log('AudioContext On', "isAnyOneClick=" + isAnyOneClick);
+        });
+    });
+
+
+
+
+    var repeater = null
+    function isInThisTimeAnyoneClick() {
+        clearInterval(repeater);
+        repeater = setInterval(function () {
+            console.log("check", "isAnyOneClick=" + isAnyOneClick)
+            if (isAnyOneClick == false) {
+                clearInterval(repeater);
+                backTolangage()
+            } else {
+                isAnyOneClick = false
+            }
+        }, 600000);
+    }
+
+
+    window.addEventListener("keydown", torandomTest, false);
+    function torandomTest(e) {
+        var keyID = e.code;
+        if (keyID === 'KeyQ') {
+            console.log("isAnyOneClick=" + isAnyOneClick);
+        };
+    }
+
+
+
+
+    // ******************************
+    // 其他功能
+    // ******************************
+
+
+
+
+
+    // 錯誤提示
+    function onError() {
+        console.log("error")
+    }
+    // })
 
 </script>
 
