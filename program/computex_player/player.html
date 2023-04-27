@@ -281,7 +281,7 @@
 
 
     // Function
-    var $ = function (name) {
+    var $id = function (name) {
         return document.getElementById(name)
     }
     var $css = function (name) {
@@ -312,7 +312,7 @@
         ""
     ]
 
-    var text = $("text")
+    var text = $id("text")
     text.innerHTML = ""
 
 
@@ -472,17 +472,17 @@
     var isAnyOneClick = false
     btnPlayFunctionInputer()
 
-    $("en").addEventListener("click", function () {
-        $("langMask").classList.add("close")
-        $("en_btns").style = "display: flex;"
-        $("cn_btns").style = "display: none;"
+    $id("en").addEventListener("click", function () {
+        $id("langMask").classList.add("close")
+        $id("en_btns").style = "display: flex;"
+        $id("cn_btns").style = "display: none;"
         isAnyOneClick = false
         isInThisTimeAnyoneClick()
     })
-    $("ch").addEventListener("click", function () {
-        $("langMask").classList.add("close")
-        $("en_btns").style = "display: none;"
-        $("cn_btns").style = "display: flex;"
+    $id("ch").addEventListener("click", function () {
+        $id("langMask").classList.add("close")
+        $id("en_btns").style = "display: none;"
+        $id("cn_btns").style = "display: flex;"
         isAnyOneClick = false
         isInThisTimeAnyoneClick()
     })
@@ -493,12 +493,12 @@
             mucBtn[j].classList.remove("playing")
             mucBtn[j].classList.remove("op5")
         }
-        $("langMask").classList.remove("close")
+        $id("langMask").classList.remove("close")
         text.innerHTML = ""
         clearInterval(repeater);
     }
 
-    $("back").addEventListener("click", backTolangage)
+    $id("back").addEventListener("click", backTolangage)
 
 
     // ******************************
@@ -518,6 +518,12 @@
     });
 
 
+    document.addEventListener('click', function () {
+        // 用戶點擊時啟動 AudioContext 對象
+        ctx.resume().then(() => {
+            console.log('AudioContext On', "isAnyOneClick=" + isAnyOneClick);
+        });
+    });
 
 
     var repeater = null
@@ -558,7 +564,7 @@
     function onError() {
         console.log("error")
     }
-    // })
+
 
 </script>
 
