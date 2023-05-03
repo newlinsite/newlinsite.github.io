@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=5">
+    <!-- <link rel="stylesheet" href="style/reset.css"> -->
+    <link rel="stylesheet" href="style/hybrid.css">
+</head>
+
+<body>
+    <div class="ahwcontainer">
+        <div class="ahw_box">
+            <video id="ahw_video" width="100%" poster="image/000_Main_1500.jpg" muted loop>
+                <source id="ahw_source" src="image/000_Main_19.mp4" type="video/mp4">
+                Your browser does not support HTML video.
+            </video>
+            <svg id="mask" class="ahw_hidden" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" width="1200" height="675" viewBox="0 0 1200 675">
+                <defs>
+                    <radialGradient id="radial-gradient" cx="0.841" cy="0.368" r="0.2"
+                        gradientTransform="translate(0 -0.192) scale(1 1.403)" gradientUnits="objectBoundingBox">
+                        <stop offset="0" stop-color="#37c2e2" stop-opacity="0" />
+                        <stop offset="0.117" stop-color="#37c2e2" stop-opacity="0" />
+                        <stop offset="0.456" stop-color="#37c2e2" stop-opacity="0.016" />
+                        <stop offset="1" stop-color="#37c2e2" />
+                    </radialGradient>
+                </defs>
+                <rect id="mask" width="1200" height="675" opacity="0.85" fill="url(#radial-gradient)" />
+            </svg>
+            <a href="#" class="mobile_detect hoverbox h01">
+                <div class="namebox">Conference Room</div>
+            </a>
+            <a href="#" class="mobile_detect hoverbox h02">
+                <div class="namebox">Huddle Space</div>
+            </a>
+            <a href="#" class="mobile_detect hoverbox h03">
+                <div class="namebox">Desktop Workstations</div>
+            </a>
+            <a href="#" class="mobile_detect hoverbox h04">
+                <div class="namebox">Portable Connectivity</div>
+            </a>
+            <a href="#" class="mobile_detect hoverbox h05">
+                <div class="namebox">Portable Video Capture</div>
+            </a>
+            <a href="#" class="mobile_detect hoverbox h06">
+                <div class="namebox">Studio</div>
+            </a>
+            <a href="#" class="mobile_detect hoverbox h07">
+                <div class="namebox">Work from Home</div>
+            </a>
+            <a href="#" class="mobile_detect hoverbox h08">
+                <div class="namebox">Server Room</div>
+            </a>
+            <div class="ahw_main_mask"></div>
+        </div>
+    </div>
+
+
+    <script>
+
+
+        // 使手機板行動版不載入影片
+        var videoLocation = document.getElementById("ahw_video");
+        window.onload = addAutoplay();
+        function addAutoplay() {
+            if (window.innerWidth > 1200) {
+                videoLocation.setAttribute("autoplay", "");
+            } else {
+                videoLocation.setAttribute("preload", "none");
+            };
+        }
+        // 使大螢幕載入 2560 影片
+        var videoSource = document.getElementById("ahw_source");
+        window.onload = video_2560();
+        function video_2560() {
+            if (window.innerWidth > 1500) {
+                videoSource.setAttribute("src", "../ATEN Scenario_AME/000_Main_2560.mp4");
+            }
+        }
+
+        // 滑鼠未進入時 click me Mask
+        var ClickMe = document.querySelector(".ahw_main_mask");
+        ClickMe.addEventListener("mouseover", Cl_mOver, false);
+        function Cl_mOver() {
+            setTimeout(function () { ClickMe.setAttribute("class", "ahw_main_mask_hidden") }, 1000)
+        }
+
+
+
+
+
+        // 定義 各觸動區域
+        var target = document.querySelectorAll(".hoverbox");
+
+        // 定義 mask.svg
+        var mask = document.getElementById("mask");
+        var svg_attr = document.getElementById("radial-gradient");
+
+        // 將所有 hoverbox 加入 hover 功能
+        for (i = 0; i < 8; i++) {
+            target[i].addEventListener("mouseover", mOver, false);
+            target[i].addEventListener("mouseout", mOut, false);
+        }
+        function mOver() { mask.setAttribute("class", "ahw_show"); }
+        function mOut() { mask.setAttribute("class", "ahw_hidden") }
+
+        // 更換各 hoverbox 聚光燈中心
+        for (i = 1; i < 9; i++) {
+            target[i - 1].addEventListener("mouseover", this['svgcenter0' + i], false);
+            target[i - 1].addEventListener("mouseout", mOut, false);
+        }
+
+        function svgcenter01() { svg_attr.setAttribute("cx", 0.413); svg_attr.setAttribute("cy", 0.273); }
+        function svgcenter02() { svg_attr.setAttribute("cx", 0.804); svg_attr.setAttribute("cy", 0.708); }
+        function svgcenter03() { svg_attr.setAttribute("cx", 0.500); svg_attr.setAttribute("cy", 0.683); }
+        function svgcenter04() { svg_attr.setAttribute("cx", 0.666); svg_attr.setAttribute("cy", 0.337); }
+        function svgcenter05() { svg_attr.setAttribute("cx", 0.181); svg_attr.setAttribute("cy", 0.672); }
+        function svgcenter06() { svg_attr.setAttribute("cx", 0.693); svg_attr.setAttribute("cy", 0.483); }
+        function svgcenter07() { svg_attr.setAttribute("cx", 0.841); svg_attr.setAttribute("cy", 0.368); }
+        function svgcenter08() { svg_attr.setAttribute("cx", 0.429); svg_attr.setAttribute("cy", 0.525); }
+
+
+        // target[0].addEventListener("mouseover", mOver01, false);
+        // target[0].addEventListener("mouseout", mOut01, false);
+        // target[1].addEventListener("mouseover", mOver02, false);
+        // target[1].addEventListener("mouseout", mOut02, false);
+        // target[2].addEventListener("mouseover", mOver03, false);
+        // target[2].addEventListener("mouseout", mOut03, false);
+        // target[3].addEventListener("mouseover", mOver04, false);
+        // target[3].addEventListener("mouseout", mOut04, false);
+        // target[4].addEventListener("mouseover", mOver05, false);
+        // target[4].addEventListener("mouseout", mOut05, false);
+        // target[5].addEventListener("mouseover", mOver06, false);
+        // target[5].addEventListener("mouseout", mOut06, false);
+        // target[6].addEventListener("mouseover", mOver07, false);
+        // target[6].addEventListener("mouseout", mOut07, false);
+        // target[7].addEventListener("mouseover", mOver08, false);
+        // target[7].addEventListener("mouseout", mOut08, false);
+
+        // function mOver01() { target_mask01.setAttribute("class", "ahw_show") }
+        // function mOut01() { target_mask01.setAttribute("class", "ahw_hidden") }
+        // function mOver02() { target_mask02.setAttribute("class", "ahw_show") }
+        // function mOut02() { target_mask02.setAttribute("class", "ahw_hidden") }
+        // function mOver03() { target_mask03.setAttribute("class", "ahw_show") }
+        // function mOut03() { target_mask03.setAttribute("class", "ahw_hidden") }
+        // function mOver04() { target_mask04.setAttribute("class", "ahw_show") }
+        // function mOut04() { target_mask04.setAttribute("class", "ahw_hidden") }
+        // function mOver05() { target_mask05.setAttribute("class", "ahw_show") }
+        // function mOut05() { target_mask05.setAttribute("class", "ahw_hidden") }
+        // function mOver06() { target_mask06.setAttribute("class", "ahw_show") }
+        // function mOut06() { target_mask06.setAttribute("class", "ahw_hidden") }
+        // function mOver07() { target_mask07.setAttribute("class", "ahw_show");}
+        // function mOut07() { target_mask07.setAttribute("class", "ahw_hidden") }
+        // function mOver08() { target_mask08.setAttribute("class", "ahw_show") }
+        // function mOut08() { target_mask08.setAttribute("class", "ahw_hidden") }
+
+
+    </script>
+
+</body>
+
+</html>

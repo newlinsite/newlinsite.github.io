@@ -11,7 +11,7 @@ function createNextBtn() {
     for (i = 0; i <= nextBtnHights.length; i++) {
         if (window.scrollY + 1 < nextBtnHights[i]) {
             let j = i - 2
-            console.log(i, j, window.scrollY + 1, nextBtnHights[i])
+            // console.log(i, j, window.scrollY + 1, nextBtnHights[i])
             lastBtn.href = "#img0" + j
             nextBtn.href = "#img0" + i
             lastBtn.classList.remove("hidden")

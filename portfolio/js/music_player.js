@@ -80,9 +80,8 @@ function playSound(num, gain = 1) {
 
 
 
-// BGM 長音樂
-var texxt = function () { console.log("suuu") }
 
+// BGM 長音樂
 var music = function (num) {
     this.source = ctx.createMediaElementSource(bgmSource[num]);
     this.gainCode = ctx.createGain();
