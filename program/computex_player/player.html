@@ -508,6 +508,7 @@
         $id("cn_btns").style = "display: none;"
         isAnyOneClick = false
         isInThisTimeAnyoneClick()
+        $tag("body"[0]).requestFullscreen()
     })
     $id("ch").addEventListener("click", function () {
         $id("langMask").classList.add("close")
@@ -548,12 +549,12 @@
     });
 
 
-    document.addEventListener('click', function () {
-        // 用戶點擊時啟動 AudioContext 對象
-        ctx.resume().then(() => {
-            console.log('AudioContext On', "isAnyOneClick=" + isAnyOneClick);
-        });
-    });
+    // document.addEventListener('click', function () {
+    //     // 用戶點擊時啟動 AudioContext 對象
+    //     ctx.resume().then(() => {
+    //         console.log('AudioContext On', "isAnyOneClick=" + isAnyOneClick);
+    //     });
+    // });
 
 
     var repeater = null
