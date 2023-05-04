@@ -23,6 +23,7 @@
 * {
 	position: relative;
 	box-sizing: border-box;
+	transition: 0.3s;
 }
 
 html {
@@ -50,6 +51,9 @@ ul {
 	margin: 0;
 }
 
+span.g-icon {
+	font-family: "Material Symbols Outlined"
+}
 
 
 
@@ -67,6 +71,7 @@ ul {
 
 
 	--text-color: rgb(14, 26, 34);
+	--text-light-color: rgb(132, 144, 151);
 	/* --warn-color: #EA0F0F; */
 }
 
@@ -457,6 +462,7 @@ p strong {
 }
 
 p.highlight {
+	min-width: 80%;
 	font-size: 16px;
 	line-height: 2;
 	padding: 24px;
@@ -817,10 +823,12 @@ header.md .logo:hover>div {
 
 
 header.sm {
-	height: 24px;
+	height: 20px;
 	background: #f8f8f8ea;
 	box-shadow: 0 1px 0 #00000010;
+	opacity: 0;
 }
+
 
 header.sm .logo {
 	margin: 4px;

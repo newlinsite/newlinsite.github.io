@@ -1,0 +1,154 @@
+.container {
+    max-width: 850px;
+}
+
+header .container {
+    max-width: 100%;
+}
+
+p {
+    font-size: 19px;
+    letter-spacing: 0.05em;
+    line-height: 1.628em;
+    margin: 24px 0;
+}
+
+p.highlight {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.828em;
+    border-radius: 8px;
+}
+
+
+p.date {
+    font-size: 16px;
+    color: var(--text-light-color);
+    /* font-weight: 500; */
+    letter-spacing: 0.02em;
+    margin: 8px 0;
+}
+
+
+.article hr {
+    height: 6px;
+    width: 80%;
+    border-width: 0px;
+    margin: 32px auto;
+}
+
+.article hr.lg {
+    background-image: url(../image/icon/separator.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 84px auto;
+}
+
+
+
+
+.article h2 {
+    font-size: 26px;
+    margin: 28px 0;
+}
+
+.article h3 {
+    font-size: 21px;
+    margin: 0px 0 28px 0;
+}
+
+
+.article img {
+    width: auto;
+    max-width: 100%;
+    margin: 0;
+}
+
+.article a {
+    border-bottom: 1px solid var(--aug-color);
+}
+
+.article p img {
+    height: 32px;
+    margin: 0 6px;
+    transform: translate(0, 25%);
+}
+
+.article a:hover {
+    color: rgb(72, 123, 173);
+}
+
+
+
+.article h6 {
+    color: #5C5C5C;
+    font-size: 16;
+    font-weight: 600;
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 16px 0 8px 0;
+    background-color: #EBEBEB;
+    margin: 16px 0;
+}
+
+
+
+.article span.number {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1em;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--aug-black-color);
+    border-radius: 28px;
+    margin: 2px 8px;
+    padding: 6px 9px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.blog_header {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--aug-light-color);
+    border-top: 1px solid var(--aug-light-color);
+}
+
+
+.iconbox {
+    height: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.iconbox img {
+    width: 26px;
+    opacity: 0.5;
+    margin: 0 8px;
+    cursor: pointer;
+}
+
+.iconbox .divider {
+    height: 24px;
+    width: 2px;
+    background-color: var(--aug-light-color);
+    margin: 0 8px
+}
+
+.iconbox img:hover {
+    opacity: 0.8;
+}

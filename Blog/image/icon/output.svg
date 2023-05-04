@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <g id="output" transform="translate(-1008 -315)">
+    <rect id="Rectangle_6665" data-name="Rectangle 6665" width="48" height="48" transform="translate(1008 315)" fill="#ededed" opacity="0"/>
+    <g id="output-2" data-name="output" transform="translate(1008 367) rotate(-90)">
+      <path id="Path_20741" data-name="Path 20741" d="M46,24l-8-8v6H20v4H38v6M10,38V10a4,4,0,0,1,4-4H30a4,4,0,0,1,4,4v8H30V10H14V38H30V30h4v8a4,4,0,0,1-4,4H14A4,4,0,0,1,10,38Z"/>
+    </g>
+  </g>
+</svg>

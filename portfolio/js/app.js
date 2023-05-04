@@ -18,6 +18,11 @@ var $tag = function (name) {
 //
 //--------------------------------------------
 
+
+//--------------------
+//	定義是哪個作品
+//--------------------
+
 var worknameBox = [
 	"home",
 	//----------------------
@@ -96,13 +101,25 @@ var worknameBoxFull = [
 
 
 //查找作品順序
+try {
+	var workNumber = worknameBox.indexOf(workName)
+	console.log(workNumber, workName)
 
-var workNumber = worknameBox.indexOf(workName)
-console.log(workNumber, workName)
+} catch {
+	console.log("There is not work page")
+}
+
+
+
+
+
+
+
+
 
 
 //--------------------
-//	input index work name/link
+//	input INDEX work name/link
 //--------------------
 if (workNumber == 0) {
 	let h3 = $tag("h3")
@@ -118,8 +135,6 @@ if (workNumber == 0) {
 		}
 		tagBox[i].innerHTML = tag
 	}
-
-
 }
 
 
@@ -317,10 +332,19 @@ try {
 
 
 
+//--------------------------------
+//
+//			Loading
+//
+//--------------------------------
 
-//Loading
 
 window.onload = function () {
-	$("loadingMask").classList.add("over")
+	try {
+		$("loadingMask").classList.add("over")
+	} catch {
+		console.log("no Loading Mask")
+	}
+
 }
 
