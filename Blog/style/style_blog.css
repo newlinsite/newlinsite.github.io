@@ -10,7 +10,7 @@ p {
     font-size: 19px;
     letter-spacing: 0.05em;
     line-height: 1.628em;
-    margin: 24px 0;
+    margin: 14px 0;
 }
 
 p.highlight {
@@ -29,6 +29,12 @@ p.date {
     margin: 8px 0;
 }
 
+.article p.imgtext {
+    text-align: center;
+    font-size: 18px;
+    width: 100%;
+    margin-top: 4px;
+}
 
 .article hr {
     height: 6px;
@@ -49,24 +55,25 @@ p.date {
 
 .article h2 {
     font-size: 26px;
-    margin: 28px 0;
+    margin: 40px 0 16px 0;
 }
 
 .article h3 {
     font-size: 21px;
-    margin: 0px 0 28px 0;
+    margin: 20px 0 8px 0;
 }
 
 
 .article img {
     width: auto;
     max-width: 100%;
-    margin: 0;
+    margin: 8px 0;
 }
 
 .article a {
     border-bottom: 1px solid var(--aug-color);
 }
+
 
 .article p img {
     height: 32px;
@@ -107,9 +114,63 @@ p.date {
     padding: 6px 9px;
 }
 
+/* ------------------------
+
+table 
+
+------------------------ */
 
 
 
+.tg {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    text-align: center;
+}
+
+
+.tg th,
+.tg td {
+    border: 1px solid #343434;
+    font-size: 18px;
+    padding: 8px 5px;
+    word-break: normal;
+    overflow: hidden;
+    font-weight: normal;
+}
+
+.tg th {
+    padding: 4px;
+    background-color: #232323;
+    color: #9b9b9b;
+    vertical-align: top
+}
+
+
+.tg .style-row {
+    background-color: #232323;
+    color: #9b9b9b;
+    vertical-align: middle
+}
+
+
+
+.tg .style-01 {
+    background-color: #656565;
+    border-bottom: 1px solid #585858;
+    color: #ffffff;
+    vertical-align: middle
+}
+
+
+
+.tg .style-02 {
+    font-size: 20px;
+    background-color: #787878;
+    color: #000000;
+    vertical-align: middle
+}
 
 
 
