@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body,
+    html {
+        background-color: #181819;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    .container {
+        width: 100%;
+        height: 100%;
+    }
+
+
+    #light {
+        width: 200px;
+        height: 200px;
+        background-color: #fbfaec;
+        box-shadow: 0 0 240px #fbfaec55;
+        border-radius: 50%;
+        transition: 0.1s;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    #light_bg,
+    #light_upper {
+        position: absolute;
+        border-radius: 50%;
+        width: 200px;
+        height: 200px;
+        box-shadow: inset -6px -6px 58px #ffffff31;
+        border: 8px solid #00000062;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    #light_bg {
+        background-color: #000000;
+    }
+
+    #light_upper {
+        box-shadow: inset -3px -3px 40px #00000069;
+        border: 4px solid #32323258;
+    }
+
+    .inputBox {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        width: 200px;
+        left: 20px;
+        top: 20px;
+        color: #878784;
+        font-size: 14px;
+        background-color: #0a0a0e;
+        padding: 16px;
+        border-radius: 12px;
+        border: 2px solid #000;
+        box-shadow: 0 0 16px #0000007e;
+    }
+
+    .inputBox button {
+        margin: 4px
+    }
+
+    input {
+        background-color: #323232;
+        font-size: 16px;
+        padding: 4px;
+        border: 1px solid #000;
+        color: #fff;
+    }
+
+    .inputBox p {
+        margin: 12px 0 4px 0;
+    }
+
+    .inputBox button {
+        background-color: #12141d;
+        font-size: 14px;
+        padding: 8px;
+        border-radius: 8px;
+        border: 1px solid #042541;
+        color: #fff;
+        transition: 0.6s;
+    }
+
+    .inputBox button.default {
+        background-color: #12141d00;
+        font-size: 14px;
+        padding: 8px;
+        border-radius: 8px;
+        border: 1px solid #303030;
+        color: #fff;
+        transition: 0.6s;
+    }
+
+    .inputBox button:hover {
+        background-color: #000000;
+        border: 1px solid #158ced;
+        cursor: pointer;
+    }
+
+    #toast {
+        position: fixed;
+        bottom: 10%;
+        left: 50%;
+        color: #7e7e7e;
+        background-color: #0a0a0e;
+        padding: 16px 32px;
+        border-radius: 12px;
+        box-shadow: 0 0 16px #0000007e;
+        transform: translate(-50%, 0);
+        transition: 1.5s;
+    }
+
+    #toast span {
+        color: #c5c5c5;
+    }
+
+    #toast.hidden {
+        transform: translate(-50%, 20px);
+        opacity: 0;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div id="light_bg"></div>
+        <div id="light"></div>
+        <div id="light_upper"></div>
+        <div class="inputBox">
+            <p>暗 的毫秒</p>
+            <input type="number" id="light_0_s" value="800" placeholder="Enter light_0_s in ms">
+            <p>亮 的毫秒</p>
+            <input type="number" id="light_1_s" value="600" placeholder="Enter light_1_s in ms">
+            <p>過度 的毫秒</p>
+            <input type="number" id="light_transition_s" value="300" placeholder="Enter light_1_s in ms">
+            <script src="jscolor-example\jscolor.js"></script>
+            <p>Color:</p>
+            <input value="#3399FF80" data-jscolor="{}" id="colorPicker">
+            <p></p>
+            <button id="default_01" class="default">1000, 2000 , 800</button>
+            <button id="default_02" class="default">500 , 500 , 400</button>
+            <button id="default_03" class="default">200 , 1000 , 200</button>
+            <p></p>
+            <button id="start">Start</button>
+            <button id="stop">Stop</button>
+        </div>
+        <div id="toast" class="hidden">Start</div>
+    </div>
+</body>
+
+<script>
+
+    // Function
+    var $ = function (name) {
+        return document.getElementById(name)
+    }
+    var $css = function (name) {
+        return document.getElementsByClassName(name)
+    }
+    var $tag = function (name) {
+        return document.getElementsByTagName(name)
+    }
+
+
+    var value = $("light");
+    var counter = 0;
+    var maxFlashes = 10000; // 閃爍次數
+    var timeoutId;
+    var light_0_s = $("light_0_s").value;
+    var light_1_s = $("light_1_s").value;
+    var light_transition = $("light_transition_s").value + "ms"
+    var colorPicker = $("colorPicker");
+    var light_color = "#ffffff"
+
+
+    //燈色
+    colorPicker.addEventListener("change", (event) => {
+        light_color = colorPicker.value
+        light.style['background-color'] = light_color
+        light.style['box-shadow'] = "0 0 250px " + light_color.substring(0, 7) + "55"
+    });
+
+
+
+    //燈閃爍
+    function flash() {
+        light_0_s = $("light_0_s").value;
+        light_1_s = $("light_1_s").value;
+        light.style['transition'] = $("light_transition_s").value + "ms"
+        if (counter >= maxFlashes) {
+            return; // 達到指定的閃爍次數就停止
+        }
+
+        light.style['opacity'] = "1" // 燈亮
+        light.style['box-shadow'] = "0 0 250px " + light_color.substring(0, 7) + "55"
+        console.log("1");
+        counter++;
+        timeoutId = setTimeout(function () {
+            light.style['opacity'] = "0" // 燈暗
+            light.style['box-shadow'] = "0 0 40px " + light_color.substring(0, 7) + "55"
+            console.log("0");
+            // 再次呼叫 flash 來開始下一次的閃爍
+            timeoutId = setTimeout(flash, light_0_s); // 燈暗持續X毫秒
+        }, light_1_s); // 燈亮持續X毫秒
+    }
+
+
+    // 初始呼叫 flash 來開始閃爍
+    $("start").addEventListener("click", function () {
+        clearTimeout(timeoutId);
+        counter = 0;
+        flash();
+
+        //toast
+        $("toast").innerHTML = "Start Flashing !!!! Light: <span>" + $("light_1_s").value + "</span>, Dark: <span>" + $("light_0_s").value + "</span>, Transition: <span>" + $("light_transition_s").value + "</span>"
+        $("toast").classList.remove("hidden")
+        setTimeout(function () { $("toast").classList.add("hidden") }, 5000)
+
+    });
+
+    $("stop").addEventListener("click", function () {
+        clearTimeout(timeoutId);
+        light.style['opacity'] = "0" //關燈
+    });
+
+    $("default_01").addEventListener("click", function () {
+        $("light_0_s").value = 1000
+        $("light_1_s").value = 2000
+        $("light_transition_s").value = 800
+
+    });
+    $("default_02").addEventListener("click", function () {
+        $("light_0_s").value = 500
+        $("light_1_s").value = 500
+        $("light_transition_s").value = 400
+
+    });
+    $("default_03").addEventListener("click", function () {
+        $("light_0_s").value = 200
+        $("light_1_s").value = 1000
+        $("light_transition_s").value = 200
+
+    });
+
+</script>
+
+
+
+
+</html>
