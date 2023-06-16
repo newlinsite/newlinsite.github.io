@@ -263,7 +263,7 @@ try {
 				</a>\
 				<ul class="row flex-jus-end">\
 					<li><a href="index.html">Works</a></li>\
-					<li><a href="about.html">Resume</a></li>\
+					<li><a href="about_jp.html">Resume</a></li>\
 				</ul>\
 			</div>'
 	header[0].innerHTML = headerHtml;
@@ -311,7 +311,7 @@ try {
 						</a>\
 					</div>\
 					<div class="col-4 col-xsm-12 text-xsm-center mt-sm-sm">\
-						<a href="about.html" class="btn">Recume <span class="icon"> arrow_forward</span>\
+						<a href="about_jp.html" class="btn">Recume <span class="icon"> arrow_forward</span>\
 						</a>\
 					</div>\
 				</div>\
