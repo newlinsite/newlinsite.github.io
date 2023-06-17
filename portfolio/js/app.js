@@ -337,7 +337,11 @@ try {
 //			Loading
 //
 //--------------------------------
-
+try {
+	$("loadingMask").classList.add("over")
+} catch {
+	console.log("no Loading Mask")
+}
 
 window.onload = function () {
 	try {
