@@ -4,63 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="point_css.css">
     <title>Document</title>
 </head>
-<style>
-    /******************************
-           Page
-*******************************/
-    * {
-        position: relative;
-        -webkit-box-sizing: border-box;
-        box-sizing: border-box;
-    }
-
-    a {
-        text-decoration: none;
-    }
-
-    ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    body,
-    html {
-        width: 100%;
-        height: 100%;
-        font-family: "Noto sans TC", "Microsoft JhengHei ", "微軟正黑體", sans-serif;
-        overflow: hidden;
-        margin: 0;
-        background-color: #111111;
-    }
-
-    .point_container {
-        background-color: #2f2f2f;
-        width: 80%;
-        padding-top: 40%;
-        margin: auto;
-    }
-
-
-    .point_container .point {
-        position: absolute;
-        border-radius: 50%;
-        transform: translate(-50%, -50);
-        transition: 0.5s;
-    }
-
-    .point_container .point:hover {
-        transform: scale(12);
-    }
-</style>
 
 <body>
-    <div class="point_container"></div>
+    <div class="point_container">
+
+    </div>
 </body>
-
-
 <script>
     var $ = function (name) {
         return document.getElementById(name)
@@ -94,8 +46,6 @@
     }
 
 
-
-
     var pointsData = [
         { name: 'point1', position: { x: 50, y: 50 }, color: '#FF0000' },
         { name: 'point2', position: { x: 40, y: 10 }, color: '#FF0000' },
@@ -108,6 +58,9 @@
         var data = pointsData[i];
         new Point(data.name, data.position, data.color);
     }
+
+
+
 
 </script>
 

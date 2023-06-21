@@ -165,9 +165,7 @@
         <div id="toast" class="hidden">Start</div>
     </div>
 </body>
-
 <script>
-
     // Function
     var $ = function (name) {
         return document.getElementById(name)
@@ -190,15 +188,12 @@
     var colorPicker = $("colorPicker");
     var light_color = "#ffffff"
 
-
     //燈色
     colorPicker.addEventListener("change", (event) => {
         light_color = colorPicker.value
         light.style['background-color'] = light_color
         light.style['box-shadow'] = "0 0 250px " + light_color.substring(0, 7) + "55"
     });
-
-
 
     //燈閃爍
     function flash() {
@@ -221,7 +216,6 @@
             timeoutId = setTimeout(flash, light_0_s); // 燈暗持續X毫秒
         }, light_1_s); // 燈亮持續X毫秒
     }
-
 
     // 初始呼叫 flash 來開始閃爍
     $("start").addEventListener("click", function () {
