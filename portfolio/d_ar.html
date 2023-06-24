@@ -1,0 +1,354 @@
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width initial-scale=1.0,user-scalable=0,maximum-scale=1.5">
+	<title></title>
+	<script>workName = "d_ar"</script>
+	<link rel="stylesheet" href="style/reset.css">
+	<link rel="stylesheet" href="style/style.css">
+	<link rel="icon" type="image/png" href="web_icon.png" />
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-114514958-1"></script>
+	<!-- Google Tag Manager -->
+	<!-- <script>
+			(function (w, d, s, l, i) {
+				w[l] = w[l] || []; w[l].push({
+					'gtm.start':
+						new Date().getTime(), event: 'gtm.js'
+				}); var f = d.getElementsByTagName(s)[0],
+					j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+						'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+			})(window, document, 'script', 'dataLayer', 'GTM-PMLJXPC');
+	</script> -->
+	<!-- End Google Tag Manager -->
+</head>
+<style>
+	.interact_container_out {
+		width: 100%;
+	}
+
+	.interact_container {
+		width: 100%;
+		padding-top: 60%;
+		background-image: url(../image/d_ar_icon_bg.png);
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
+		overflow: hidden;
+	}
+
+	.interact_container * {
+		transition: 0s;
+		position: relative;
+		pointer-events: none;
+	}
+
+	.interact_container img,
+	.interact_container #crop,
+	.interact_container #ui {
+		width: auto;
+		position: absolute;
+		margin: 0;
+		max-width: none;
+	}
+
+	.interact_container #crop,
+	.interact_container #ui {
+		width: 20.5%;
+		height: 66%;
+		bottom: 19%;
+		left: 32%;
+		overflow: hidden;
+		border-radius: 5%;
+		transform: translateX(70%);
+		transform-style: preserve-3d;
+		perspective: 700px;
+
+	}
+
+	#hand {
+		bottom: -4%;
+		left: 32%;
+		width: 50%;
+		transform: translateX(-12%);
+	}
+
+	#arrHint {
+		opacity: 1;
+		transition: 1s;
+		animation: moveLeftRight 1.5s ease-in-out infinite;
+
+	}
+
+	#arr {
+		transform: rotateX(240deg);
+		transform-style: preserve-3d;
+		perspective: 700px;
+	}
+
+	@keyframes moveLeftRight {
+		0% {
+			transform: translateX(0);
+		}
+
+		50% {
+			transform: translateX(20%);
+		}
+
+		100% {
+			transform: translateX(0);
+		}
+	}
+
+
+	.an-breathe {
+		animation-name: breathe;
+		animation-duration: 2s;
+		animation-iteration-count: infinite;
+	}
+
+	.an-moveLeftRight2 {
+		animation-name: moveLeftRight2;
+		animation-duration: 2s;
+		animation-iteration-count: infinite;
+	}
+
+	.an-scale {
+		animation-name: scale;
+		animation-duration: 2s;
+		animation-iteration-count: infinite;
+	}
+
+	@keyframes breathe {
+
+		0%,
+		100% {
+			opacity: 0.8;
+		}
+
+		50% {
+			opacity: 0.2;
+		}
+	}
+
+
+	@keyframes moveLeftRight2 {
+		0% {
+			transform: translate(0);
+		}
+
+		50% {
+			transform: translate(20%, -20%);
+		}
+
+		100% {
+			transform: translate(0);
+		}
+	}
+
+	@keyframes scale {
+		0% {
+			transform: scale(1);
+		}
+
+		50% {
+			transform: scale(0.9);
+		}
+
+		100% {
+			transform: scale(1);
+		}
+	}
+
+
+
+	.crop_move img {
+		width: 100%;
+	}
+
+	.crop_move .hover_line {
+		position: absolute;
+		width: 50%;
+		padding-top: 50%;
+		border: 1px solid #16d0ff;
+		border-radius: 50%;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		transition: 0.5s;
+		cursor: pointer;
+		box-shadow: 0 0 16px #16d0ff;
+	}
+
+	.crop_move .hover_line:hover {
+		width: 105%;
+		padding-top: 105%;
+	}
+
+	.crop_move .iconhover,
+	.crop_move .shopinfo {
+		position: absolute;
+		border-radius: 50%;
+		transition: 0.5s;
+		pointer-events: auto;
+		transform: translate(-50%, -50%) scale(2);
+	}
+
+	.crop_move .iconhover {
+		z-index: 10;
+		top: 50%;
+		left: 50%;
+	}
+
+	.crop_move .shopinfo {
+		width: 160%;
+		bottom: -230%;
+		right: -170%;
+		border-radius: 0;
+		transform: translate(-80%, -80%) scale(0.5);
+		opacity: 0;
+	}
+
+	.crop_move .hover_line:hover .shopinfo {
+		transform: translate(-50%, -50%) scale(2);
+		opacity: 1;
+	}
+
+
+
+	.crop_move .hover_line:hover .iconhover {
+		transform: translate(-50%, -50%) scale(1.35);
+	}
+</style>
+
+<body>
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PMLJXPC" height="0" width="0"
+			style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
+	<header></header>
+	<div id="sidebar" class="lg"></div>
+	<!-- /**Title************************************************************/ -->
+	<div class="container mt-llg" style="max-width: 1500px;">
+		<div class="interact_container_out">
+			<div class="interact_container">
+
+				<div id="crop">
+					<img style="top:-14%; left:-150%; width: 390%; " left="20" alt="no" class="crop_move"
+						src="../image/d_ar_icon_phone_bg.png">
+					<div class="crop_move line" style="top:40%;left: 60%; width: 25%;" left="60">
+						<div class="hover_line">
+							<img alt="no" class="iconhover" src="..//image/d_ar_icon_food.png">
+						</div>
+					</div>
+					<div class="crop_move line" style="top:39%;left: 150%; width: 25%;" left="150">
+						<div class="hover_line">
+							<img alt="no" class="iconhover" src="..//image/d_ar_icon_food.png">
+							<img alt="no" class="shopinfo" src="..//image/d_ar_shop_open01.png">
+						</div>
+					</div>
+					<div class="crop_move line" style="top:54%;left: 140%; width: 25%;" left="250">
+						<div class="hover_line">
+							<img alt="no" class="iconhover" src="../image/d_ar_icon_cloth.png">
+						</div>
+					</div>
+
+
+
+
+
+					<img style="top:-4.5%;left: 150%; width: 80%; opacity: 0.6; " left="255" alt="no"
+						class="an-breathe crop_move" src="../image/d_ar_aim_bg.png">
+					<img style="top:18%;left: 160%; width: 90%;" left="295" alt="no" class="crop_move"
+						src="../image/d_ar_aim_d.png">
+					<img style="top:27%;left: 140%; width: 32%;" left="285" alt="no" class="an-scale crop_move"
+						src="../image/d_ar_icon_aim.png">
+
+				</div>
+				<div id="ui">
+					<img id="arrHint" style="top:28%;right: 4%;width: 28%;" alt="no" src="../image/d_ar_icon_arr2.png">
+					<img style="bottom: -8%;left: 40%; width: 45%;" left="280" alt="no" src="../image/d_ar_icon_arr.png"
+						id="arr">
+				</div>
+				<img style="top:12px;left: 12px;" alt="no" src="../image/d_ar_icon_food.png">
+				<img style="top:12px;left: 12px;" alt="no" src="../image/d_ar_icon_food.png">
+				<img style="top:12px;left: 12px;" alt="no" src="../image/d_ar_icon_food.png">
+				<img id="hand" alt="no" src="../image/d_ar_hand.png">
+			</div>
+		</div>
+
+
+
+
+		<h1></h1>
+		<div class="row">
+			<div class="col-6 col-sm-12 pr-lg">
+				<p>2020 - 2021</p>
+				<h3>Partner : Product manager, RD Team.</h3>
+			</div>
+			<div class="col-6 col-sm-12">
+				<img class="w-100">
+			</div>
+		</div>
+		<!-- /**************************************************************/ -->
+		<div class="article">
+			</p>
+			<div class="session"></div>
+
+
+			<p>
+
+			</p>
+
+			<img class="left">
+		</div>
+	</div>
+	<footer></footer>
+
+</body>
+<script src="js/app.js"></script>
+<script>
+	var hand = $("hand")
+	var crop = $("crop")
+	var ui = $("ui")
+	var arrHint = $("arrHint")
+	var arr = $("arr")
+	var targetX = 65;  // replace with your target's x position
+	var targetY = 100;  // replace with your target's y position
+	var cropImage = $css('crop_move');
+
+
+	document.addEventListener("mousemove", function (e) {
+		let mouseX = e.clientX; //滑鼠的X座標
+		let mouseY = e.clientY; //滑鼠的Y座標
+		let mouseXPercent = (mouseX / window.innerWidth) * 100;
+		let mouseYPercent = (mouseY / window.innerHeight) * 100;
+
+
+		// 將鼠標的位置設為手和裁切框的中心	
+
+		hand.style.left = mouseXPercent - ((hand.offsetWidth / window.innerWidth) * 50) + '%';
+		crop.style.left = mouseXPercent - ((hand.offsetWidth / window.innerWidth) * 50) + '%';
+		ui.style.left = mouseXPercent - ((hand.offsetWidth / window.innerWidth) * 50) + '%';
+
+		// 判斷手的位置是否超過了視窗寬度的80%，如果是，則隱藏arrHint
+		if (mouseX > window.innerWidth * 0.60) {
+			arrHint.style.opacity = '0';
+		} else {
+			arrHint.style.opacity = '1';
+		}
+
+		// rotate the arrow to point at the target
+		// var angle = Math.atan2(targetY - mouseY, targetX - mouseX) * (180 / Math.PI);
+
+		var angle = Math.atan2(targetX - mouseXPercent, targetY - mouseYPercent * 0.4) * (180 / Math.PI);
+		arr.style.transform = `rotateY(${-angle}deg) rotateZ(${angle * 2}deg) rotateX(${80 - Math.abs(angle) - 1.25}deg)`;
+		// 調整 crop 內部圖片的位置，使其相對於 crop 移動
+
+
+		for (let i = 0; i < cropImage.length; i++) {
+			let num = Number(cropImage[i].getAttribute('left'));
+			cropImage[i].style.left = num - mouseXPercent * 3.45 + '%';
+		}
+	})
+</script>
+
+</html>

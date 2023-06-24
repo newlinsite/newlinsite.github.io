@@ -35,7 +35,7 @@ var worknameBox = [
 	"d_so",
 	"d_ofweb",
 	"d_game",
-	// "d_kud",
+	"d_ar",
 	// "d_wall",
 	// "d_wweb",
 	//----------------------
@@ -60,7 +60,7 @@ var worknameBoxTag = [
 	["Website", "Frond-end", "SEO", "Google Analysis"],
 	["User Research", "Re-design", "User Journey Map"],
 	["Gaming", "First Use", " Tutorial"],
-	// ["d_kud"],
+	["d_ar"],
 	// ["d_wall"],
 	// ["Google Analytics", "Website"],
 	//----------------------
@@ -85,7 +85,7 @@ var worknameBoxFull = [
 	"SO!Eyewear Website",
 	"Official Website Optimization ",
 	"Gaming KVM Adapter Application",
-	// "Creator-oriented </br>e-commerce platform",
+	"ar",
 	// "Road Construction </br>Noise Control System",
 	// "Chunlin Official Website",
 	//----------------------
@@ -176,15 +176,22 @@ if (workNumber > 0) {
 
 	//input image
 	let img = $tag("img")
-
+	let j = 0
 	for (let i = 0; i < img.length; i++) {
+
 		let imgType = ".png"
 		if (img[i].alt == "svg") {
 			imgType = ".svg"
 		} else if (img[i].alt == "gif") {
 			imgType = ".gif"
 		}
-		img[i].src = "../image/" + worknameBox[workNumber] + i + imgType
+		if (img[i].alt != "no") {
+			num = i - j
+			img[i].src = "../image/" + worknameBox[workNumber] + num + imgType
+		} else {
+			j++
+		}
+
 	}
 
 	//input side bar
