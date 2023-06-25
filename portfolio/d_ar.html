@@ -386,7 +386,7 @@
 	var ui = $("ui")
 	var arrHint = $("arrHint")
 	var arr = $("arr")
-	var targetX = 65;  // replace with your target's x position
+	var targetX = 75;  // replace with your target's x position
 	var targetY = 100;  // replace with your target's y position
 	var cropImage = $css('crop_move');
 	console.log(arContainer.offsetWidth)
@@ -418,7 +418,6 @@
 		var angle = Math.atan2(targetX - mouseXPercent, targetY - mouseYPercent * 0.4) * (180 / Math.PI);
 		arr.style.transform = `rotateY(${-angle}deg) rotateZ(${angle * 2}deg) rotateX(${80 - Math.abs(angle) - 1.25}deg)`;
 
-		console.log(arr.style.transform)
 
 		// 調整 crop 內部圖片的位置，使其相對於 crop 移動
 
