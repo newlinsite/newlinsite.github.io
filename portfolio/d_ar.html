@@ -36,7 +36,7 @@
 	}
 
 	.interact_container * {
-		transition: 0s;
+		transition: 0.8s ease-out;
 		position: relative;
 		pointer-events: none;
 	}
@@ -200,11 +200,17 @@
 
 	.crop_move .shopinfo {
 		width: 160%;
-		bottom: -230%;
-		right: -170%;
+		bottom: -255%;
+		right: -130%;
 		border-radius: 0;
 		transform: translate(-80%, -80%) scale(0.5);
 		opacity: 0;
+		z-index: 5;
+	}
+
+	.crop_move .shopinfo.sita {
+		bottom: -280%;
+		right: -100%;
 	}
 
 	.crop_move .hover_line:hover .shopinfo {
@@ -217,6 +223,63 @@
 	.crop_move .hover_line:hover .iconhover {
 		transform: translate(-50%, -50%) scale(1.35);
 	}
+
+
+
+
+
+
+
+
+
+
+
+	.ar02_container_out {
+		width: 100%;
+		overflow: hidden;
+	}
+
+	.ar02_container_out * {
+		transition: 1.2s ease-out;
+	}
+
+	.ar02_container {
+		width: 100%;
+		padding-top: 56%;
+		position: relative;
+	}
+
+	.ar02_container img {
+		position: absolute;
+		left: 0%;
+		top: 0%;
+		width: 100%;
+		margin: 0;
+		max-width: none;
+
+	}
+
+	.ar02_container .ar02_phone {
+		left: 5%;
+		top: 5%;
+		width: 60%;
+	}
+
+	.ar02_container .ar02_crop {
+		position: absolute;
+		left: 5%;
+		top: 6%;
+		width: 60%;
+		height: 53%;
+		border-radius: 10%;
+		overflow: hidden;
+	}
+
+	.ar02_container .ar02_crop img {
+		width: 166.6%;
+		left: -7.5%;
+		top: -5.8%;
+	}
 </style>
 
 <body>
@@ -224,7 +287,7 @@
 	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PMLJXPC" height="0" width="0"
 			style="display:none;visibility:hidden"></iframe></noscript>
 	<!-- End Google Tag Manager (noscript) -->
-	<header></header>
+	<header class="lg"></header>
 	<div id="sidebar" class="lg"></div>
 	<!-- /**Title************************************************************/ -->
 	<div class="container mt-llg" style="max-width: 1500px;">
@@ -232,11 +295,18 @@
 			<div class="interact_container">
 
 				<div id="crop">
-					<img style="top:-14%; left:-150%; width: 390%; " left="20" alt="no" class="crop_move"
+					<img style="top:-14%; left:-40%; width: 395%; " left="20" alt="no" class="crop_move"
 						src="../image/d_ar_icon_phone_bg.png">
+					<img style="top:-4.5%;left: 150%; width: 80%; opacity: 0.6; " left="255" alt="no"
+						class="an-breathe crop_move" src="../image/d_ar_aim_bg.png">
+					<img style="top:18%;left: 160%; width: 90%;" left="295" alt="no" class="crop_move"
+						src="../image/d_ar_aim_d.png">
+					<img style="top:27%;left: 140%; width: 32%;" left="285" alt="no" class="an-scale crop_move"
+						src="../image/d_ar_icon_aim.png">
 					<div class="crop_move line" style="top:40%;left: 60%; width: 25%;" left="60">
 						<div class="hover_line">
 							<img alt="no" class="iconhover" src="..//image/d_ar_icon_food.png">
+							<img alt="no" class="shopinfo" src="..//image/d_ar_shop_open03.png">
 						</div>
 					</div>
 					<div class="crop_move line" style="top:39%;left: 150%; width: 25%;" left="150">
@@ -245,60 +315,64 @@
 							<img alt="no" class="shopinfo" src="..//image/d_ar_shop_open01.png">
 						</div>
 					</div>
-					<div class="crop_move line" style="top:54%;left: 140%; width: 25%;" left="250">
+					<div class="crop_move line" style="top:43%;left: 230%; width: 25%;" left="250">
 						<div class="hover_line">
 							<img alt="no" class="iconhover" src="../image/d_ar_icon_cloth.png">
+							<img alt="no" class="shopinfo sata" src="..//image/d_ar_shop_open02.png">
 						</div>
 					</div>
-
-
-
-
-
-					<img style="top:-4.5%;left: 150%; width: 80%; opacity: 0.6; " left="255" alt="no"
-						class="an-breathe crop_move" src="../image/d_ar_aim_bg.png">
-					<img style="top:18%;left: 160%; width: 90%;" left="295" alt="no" class="crop_move"
-						src="../image/d_ar_aim_d.png">
-					<img style="top:27%;left: 140%; width: 32%;" left="285" alt="no" class="an-scale crop_move"
-						src="../image/d_ar_icon_aim.png">
-
+					<div class="crop_move line" style="top:60%;left: 310%; width: 25%;" left="320">
+						<div class="hover_line">
+							<img alt="no" class="iconhover" src="../image/d_ar_icon_bank.png">
+							<img alt="no" class="shopinfo sata" style="width: 105%;bottom: -100%;left: -80%;;"
+								src="..//image/d_ar_shop_open04.png">
+						</div>
+					</div>
 				</div>
 				<div id="ui">
 					<img id="arrHint" style="top:28%;right: 4%;width: 28%;" alt="no" src="../image/d_ar_icon_arr2.png">
-					<img style="bottom: -8%;left: 40%; width: 45%;" left="280" alt="no" src="../image/d_ar_icon_arr.png"
-						id="arr">
+					<img style="bottom: -8%;left: 35%; width: 45%; transform: rotateY(-10deg) rotateZ(5deg) rotateX(70deg)"
+						alt="no" src="../image/d_ar_icon_arr.png" id="arr">
 				</div>
-				<img style="top:12px;left: 12px;" alt="no" src="../image/d_ar_icon_food.png">
-				<img style="top:12px;left: 12px;" alt="no" src="../image/d_ar_icon_food.png">
-				<img style="top:12px;left: 12px;" alt="no" src="../image/d_ar_icon_food.png">
 				<img id="hand" alt="no" src="../image/d_ar_hand.png">
 			</div>
 		</div>
-
-
-
-
-		<h1></h1>
-		<div class="row">
-			<div class="col-6 col-sm-12 pr-lg">
-				<p>2020 - 2021</p>
-				<h3>Partner : Product manager, RD Team.</h3>
-			</div>
-			<div class="col-6 col-sm-12">
-				<img class="w-100">
-			</div>
-		</div>
+		<h1 style="display: none;"></h1>
 		<!-- /**************************************************************/ -->
 		<div class="article">
-			</p>
-			<div class="session"></div>
 
-
-			<p>
-
-			</p>
 
 			<img class="left">
+
+
+			<div class="row w-100">
+				<div class="col-4">
+					<p>123</p>
+				</div>
+				<div class="col-8 ar02_container_out_out">
+					<div class="ar02_container_out mb-lg">
+						<div class="ar02_container">
+							<img alt="no" src="../image/../image/d_ar_02_bg01.png">
+							<div class="ar02_crop">
+								<img id="ar02_bg02" alt="no" src="../image/../image/d_ar_02_bg02.png">
+							</div>
+							<img class="ar02_phone" alt="no" src="../image/../image/d_ar_02_phonecase.png">
+						</div>
+					</div>
+
+					<div class="ar02_container_out">
+						<div class="ar02_container">
+							<img alt="no" src="../image/../image/d_ar_02_bg01.png">
+							<div class="ar02_crop">
+								<img id="ar02_bg03" alt="no" src="../image/../image/d_ar_02_bg03.png">
+							</div>
+							<img class="ar02_phone" alt="no" src="../image/../image/d_ar_02_phonecase.png">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="mb-xl"></div>
+
 		</div>
 	</div>
 	<footer></footer>
@@ -306,6 +380,7 @@
 </body>
 <script src="js/app.js"></script>
 <script>
+	var arContainer = $css("interact_container")[0]
 	var hand = $("hand")
 	var crop = $("crop")
 	var ui = $("ui")
@@ -314,20 +389,24 @@
 	var targetX = 65;  // replace with your target's x position
 	var targetY = 100;  // replace with your target's y position
 	var cropImage = $css('crop_move');
+	console.log(arContainer.offsetWidth)
 
 
-	document.addEventListener("mousemove", function (e) {
+
+	var arContainerMove = function (e) {
 		let mouseX = e.clientX; //滑鼠的X座標
 		let mouseY = e.clientY; //滑鼠的Y座標
-		let mouseXPercent = (mouseX / window.innerWidth) * 100;
-		let mouseYPercent = (mouseY / window.innerHeight) * 100;
+		let arContainerP = ar02Con[0].getBoundingClientRect();
+		let mouseXPercent = (mouseX / arContainer.offsetWidth) * 100;
+		let mouseYPercent = (mouseY / arContainer.offsetHeight) * 100;
+		let mouseXPercent2 = ((mouseX - arContainerP.left + hand.offsetWidth / 5) / arContainer.offsetWidth) * 100;
 
 
 		// 將鼠標的位置設為手和裁切框的中心	
 
-		hand.style.left = mouseXPercent - ((hand.offsetWidth / window.innerWidth) * 50) + '%';
-		crop.style.left = mouseXPercent - ((hand.offsetWidth / window.innerWidth) * 50) + '%';
-		ui.style.left = mouseXPercent - ((hand.offsetWidth / window.innerWidth) * 50) + '%';
+		hand.style.left = mouseX + hand.offsetWidth / 6 - arContainerP.left + "px";
+		crop.style.left = mouseX + hand.offsetWidth / 6 - arContainerP.left + "px";
+		ui.style.left = mouseX + hand.offsetWidth / 6 - arContainerP.left + "px";
 
 		// 判斷手的位置是否超過了視窗寬度的80%，如果是，則隱藏arrHint
 		if (mouseX > window.innerWidth * 0.60) {
@@ -336,19 +415,106 @@
 			arrHint.style.opacity = '1';
 		}
 
-		// rotate the arrow to point at the target
-		// var angle = Math.atan2(targetY - mouseY, targetX - mouseX) * (180 / Math.PI);
-
 		var angle = Math.atan2(targetX - mouseXPercent, targetY - mouseYPercent * 0.4) * (180 / Math.PI);
 		arr.style.transform = `rotateY(${-angle}deg) rotateZ(${angle * 2}deg) rotateX(${80 - Math.abs(angle) - 1.25}deg)`;
-		// 調整 crop 內部圖片的位置，使其相對於 crop 移動
 
+		console.log(arr.style.transform)
+
+		// 調整 crop 內部圖片的位置，使其相對於 crop 移動
 
 		for (let i = 0; i < cropImage.length; i++) {
 			let num = Number(cropImage[i].getAttribute('left'));
-			cropImage[i].style.left = num - mouseXPercent * 3.45 + '%';
+			cropImage[i].style.left = num - 70 - mouseXPercent2 * 3.7 + '%';
 		}
-	})
+	}
+
+	arContainer.addEventListener("mouseover", function () {
+		document.addEventListener("mousemove", arContainerMove);
+	});
+
+	arContainer.addEventListener("mouseout", function () {
+		document.removeEventListener("mousemove", arContainerMove);
+	});
+
+
+
+
+
+
+
+	//session2
+
+	var ar02Con = $css("ar02_container_out")
+	var ar02_phone = $css("ar02_phone")
+	var ar02_crop = $css("ar02_crop")
+	var ar02_bg02 = $("ar02_bg02")
+	var ar02_bg03 = $("ar02_bg03")
+
+
+	var ar02Move01 = function (e) {
+		let mouseX = e.clientX; //滑鼠的X座標
+		let mouseY = e.clientY; //滑鼠的Y座標
+
+		let ar02ConP = ar02Con[0].getBoundingClientRect();
+
+
+		// 將鼠標的位置設為手和裁切框的中心	
+		ar02_phone[0].style.left = mouseX - ar02_phone[0].offsetWidth / 2 - ar02ConP.left + "px";
+		ar02_phone[0].style.top = mouseY - ar02_phone[0].offsetHeight / 2 - ar02ConP.top + "px";
+
+		ar02_crop[0].style.left = mouseX - ar02_phone[0].offsetWidth / 2 - ar02ConP.left + "px";
+		ar02_crop[0].style.top = mouseY - ar02_phone[0].offsetHeight / 2 - ar02ConP.top + 3 + "px";
+
+
+		// 調整 crop 內部圖片的位置，使其相對於 crop 移動
+		ar02_bg02.style.left = -mouseX + ar02_phone[0].offsetWidth / 2 + ar02ConP.left + "px";
+		ar02_bg02.style.top = -mouseY + ar02_phone[0].offsetHeight / 2 + ar02ConP.top + "px";
+
+	}
+
+
+	ar02Con[0].addEventListener("mouseover", function () {
+		document.addEventListener("mousemove", ar02Move01);
+
+	});
+
+	ar02Con[0].addEventListener("mouseout", function () {
+		document.removeEventListener("mousemove", ar02Move01);
+
+	});
+
+
+	var ar02Move02 = function (e) {
+		let mouseX = e.clientX; //滑鼠的X座標
+		let mouseY = e.clientY; //滑鼠的Y座標
+
+		let ar02ConP = ar02Con[1].getBoundingClientRect();
+		// 將鼠標的位置設為手和裁切框的中心	
+
+		ar02_phone[1].style.left = mouseX - ar02_phone[1].offsetWidth / 2 - ar02ConP.left + "px";
+		ar02_phone[1].style.top = mouseY - ar02_phone[1].offsetHeight / 2 - ar02ConP.top + "px";
+
+		ar02_crop[1].style.left = mouseX - ar02_phone[1].offsetWidth / 2 - ar02ConP.left + "px";
+		ar02_crop[1].style.top = mouseY - ar02_phone[1].offsetHeight / 2 - ar02ConP.top + 3 + "px";
+
+
+		// 調整 crop 內部圖片的位置，使其相對於 crop 移動
+		ar02_bg03.style.left = -mouseX + ar02_phone[1].offsetWidth / 2 + ar02ConP.left + "px";
+		ar02_bg03.style.top = -mouseY + ar02_phone[1].offsetHeight / 2 + ar02ConP.top + "px";
+
+	}
+
+
+	ar02Con[1].addEventListener("mouseover", function () {
+		document.addEventListener("mousemove", ar02Move02);
+
+	});
+
+	ar02Con[1].addEventListener("mouseout", function () {
+		document.removeEventListener("mousemove", ar02Move02);
+
+	});
+
 </script>
 
 </html>
