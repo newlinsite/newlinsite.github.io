@@ -35,7 +35,7 @@ var worknameBox = [
 	"d_so",
 	"d_ofweb",
 	"d_game",
-	"d_ar",
+	// "d_ar",
 	// "d_wall",
 	// "d_wweb",
 	//----------------------
@@ -60,7 +60,7 @@ var worknameBoxTag = [
 	["Website", "Frond-end", "SEO", "Google Analysis"],
 	["User Research", "Re-design", "User Journey Map"],
 	["Gaming", "First Use", " Tutorial"],
-	["d_ar"],
+	// ["d_ar"],
 	// ["d_wall"],
 	// ["Google Analytics", "Website"],
 	//----------------------
