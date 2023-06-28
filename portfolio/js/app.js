@@ -85,7 +85,7 @@ var worknameBoxFull = [
 	"SO!Eyewear Website",
 	"Official Website Optimization ",
 	"Gaming KVM Adapter Application",
-	"ar",
+	// "ar",
 	// "Road Construction </br>Noise Control System",
 	// "Chunlin Official Website",
 	//----------------------
