@@ -496,8 +496,8 @@ html {
 
 
 /******************************
-******************************
-炫光圓圈
+******************************/
+/* 炫光圓圈 */
 .door_container .p0 .door .naka_1::after,
 .door_container .p0 .door .naka_1::before {
     content: "";
@@ -514,26 +514,26 @@ html {
     transition: 1.5s;
 }
 
-炫光圓圈 p0 
+/* 炫光圓圈 p0  */
 .door_container .p0 .door>.naka_1::before {
     border: 2px solid #00ffff;
-    width: 245%;
-    height: 145%;
+    width: 25%;
+    height: 15%;
     opacity: 0.1;
 }
 
 .door_container .p0 .door>.naka_1::after {
     border: 2px solid #00ffff;
-    width: 210%;
-    height: 130%;
+    width: 80%;
+    height: 40%;
     opacity: 0.06;
 }
 
-炫光圓圈 門 hover 互動
+/* 炫光圓圈 門 hover 互動 */
 .door_container .p0 .door:hover>.naka_1::before {
     border: 2px solid #00ffff;
-    width: 275%;
-    height: 165%;
+    width: 255%;
+    height: 145%;
     opacity: 0.1;
 }
 
@@ -545,7 +545,7 @@ html {
 }
 
 
-******************************
+/******************************
 *******************************/
 
 
