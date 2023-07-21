@@ -235,9 +235,11 @@ span.g-icon {
 	.col-md-12 {
 		width: 100%;
 	}
+
 	.col-md-9 {
 		width: 75%;
 	}
+
 	.col-md-8 {
 		width: 66.6666666%;
 	}
@@ -245,9 +247,11 @@ span.g-icon {
 	.col-md-6 {
 		width: 50%;
 	}
+
 	.col-md-4 {
 		width: 33.33333333%;
 	}
+
 	.col-md-3 {
 		width: 25%;
 	}
@@ -597,17 +601,20 @@ p.center {
 .btn.switch.l {
 	border-radius: 0 10px 10px 0;
 }
+
 .btn.switch.c {
 	border-right: none;
 	border-radius: 0px;
 }
+
 .btn.switch.r {
 	border-right: none;
 	border-radius: 10px 0 0 10px;
 }
+
 .btn.switch.active {
 	background-color: var(--aug-light-color);
-	pointer-events: none; 
+	pointer-events: none;
 }
 
 
@@ -1362,7 +1369,7 @@ footer {
 
 
 
-.po-ab{
+.po-ab {
 	position: absolute;
 }
 

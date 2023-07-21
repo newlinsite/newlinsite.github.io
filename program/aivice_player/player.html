@@ -27,65 +27,132 @@
     }
 
     .container {
-        max-width: 1440px;
         width: 100%;
         position: fixed;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        z-index: 10;
     }
 
-    .row {
+    video {
         width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        margin: 0 20px;
+
     }
 
-    .col-1-1 {
-        width: 100%;
-    }
 
-    .col-1-4 {
-        width: 25%;
-    }
 
-    #entermask {
+    #start {
         width: 100%;
         height: 100%;
-        background-color: #a5a5a5;
-        display: none;
+        position: fixed;
+        left: 0;
+        top: 0;
+        background-color: #000000da;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 30;
+        transition: 0.5s
     }
 
-    #fullScreenBtn {
-        background-color: #545454;
-        width: 40px;
-        height: 40px;
-        position: fixed;
-        right: 12px;
-        bottom: 12px;
-        border-radius: 50% 50% 0 50%;
+    #start::after {
+        content: "Start";
+        font-size: 40px;
+        background-color: #ffffff07;
+        border: 1px solid #fff;
+        border-radius: 12px;
+        padding: 24px 60px;
+    }
+
+    .playing_mask {
+        display: fixed;
+        width: 100vw;
+        height: 100vh;
+        background-color: #000000c0;
+        z-index: 25;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        transition: 0.6s;
+    }
+
+    .playing_mask .speaker {
+        background-color: #000000;
+        width: 280px;
+        height: 280px;
+        border-radius: 50%;
+        /* background-image: url(voice01.png); */
+        border: 4px solid #ffffff97;
+        background-position: cover;
+        box-shadow: 0 0 30px #000000c4;
+        margin-bottom: 32px;
+        /* display: flex;
+        justify-content: center;
+        align-items: center; */
+    }
+
+    .playing_mask .speaker::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: 12px solid #ffffff27;
+    }
+
+    #freqCanvasBox {
+        height: 120px;
+        width: 600px;
+        /* position: fixed; */
+        /* top: 12px; */
+        /* left: 12px; */
+        /* background-color: #5876877f; */
+        border-radius: 6px;
+        /* border: 2px solid #343f4346; */
+        /* box-shadow: 0 0 8px #00162231; */
+        z-index: 20;
+    }
+
+    #freqCanvasBox .freqCanvas {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 50;
+    }
+
+    .playing_mask.op0 {
+        opacity: 0;
     }
 </style>
 
-
-
 <body>
-    <div class="container">
-        <canvas id="canvas"></canvas>
-        New
-    </div>
-    <div id="entermask"></div>
-    <div id="fullScreenBtn"></div>
-    <audio class="bgm" src="stay-humble.wav"></audio>
-    <audio class="bgm" src="bgm_logos-1.mp3"></audio>
-    <audio class="bgm" src="bgm_BrandNewToy.mp3"></audio>
-    <audio class="bgm" src="bgm_cut-to-the-chase.mp3"></audio>
-    <audio class="bgm" src="ch_good.mp3"></audio>
-    <audio class="bgm" src="bgm_logos-2.wav"></audio>
-    <audio class="bgm" src="bgm_NewCity.mp3"></audio>
-    <audio class="bgm" src="ui_03.mp3"></audio>
 
+    <div class="container">
+        <video class="bgm" src="001.mp4" loop></video>
+    </div>
+
+    <audio class="bgm" src="GOOD DESIGN_Bob+1 (少年男).wav"></audio>
+    <audio class="bgm" src="GOOD DESIGN_M03 (中年男).wav"></audio>
+    <audio class="bgm" src="GOOD DESIGN_榮俊-1 (老男生).wav"></audio>
+    <audio class="bgm" src="GOOD DESIGN_M03+2.wav"></audio>
+    <audio class="bgm" src="GOOD DESIGN_Mercury happy+1.wav"></audio>
+    <audio class="bgm" src="GOOD DESIGN_Mercury soft (中年女).wav"></audio>
+    <audio class="bgm" src="GOOD DESIGN_Mercury soft+1.wav"></audio>
+    <audio class="bgm" src="GOOD DESIGN_Mercury soft+2 (少女).wav"></audio>
+    <audio class="bgm" src="GOOD DESIGN_Mercury-1 (老女).wav"></audio>
+
+    <div id="start"></div>
+    <div class="playing_mask op0">
+        <div class="speaker"></div>
+        <div id="freqCanvasBox"></div>
+    </div>
 </body>
 <script>
 
@@ -117,59 +184,28 @@
 
 
 
+
     // Fix up prefixing
     window.AudioContext = window.AudioContext || window.webkitAudioContext;
     var ctx = new AudioContext();
 
-    const canvas = document.getElementById('canvas');
-    const ctxx = canvas.getContext('2d');
-    canvas.height = 800
-    canvas.width = 1200
-    // BGM 長音樂
 
+    // 用戶點擊播放區域時啟動 AudioContext 對象
+    $tag("body")[0].addEventListener('click', function () {
+        ctx.resume().then(() => {
+            console.log('AudioContext 已啟動');
+        });
+    });
+    var freqCanvasBox = $id("freqCanvasBox")
+
+    // BGM 長音樂
     var music = function (num) {
         this.source = ctx.createMediaElementSource(bgmSource[num]);
         this.gainCode = ctx.createGain();
+        this.gainFadeCode = ctx.createGain();
         this.lowPassCode = ctx.createBiquadFilter();
         this.analyser = ctx.createAnalyser();
-        this.source.connect(this.gainCode).connect(this.lowPassCode).connect(this.analyser).connect(ctx.destination);
-
-
-
-
-
-
-
-        // Uint8Array to receive frequency data
-        this.dataArray = new Uint8Array(this.analyser.frequencyBinCount);
-
-
-        this.draw = function () {
-            this.drawing = requestAnimationFrame(this.draw.bind(this));
-            this.analyser.getByteFrequencyData(this.dataArray);
-            // console.log(this.dataArray)
-            // 使用dataArray来更新你的视觉元素，比如文字的大小、颜色等
-
-
-            ctxx.clearRect(0, 0, canvas.width, canvas.height); // clear the canvas
-            // draw each item in dataArray as a bar on the canvas
-            for (let i = 0; i < this.dataArray.length; i++) {
-                ctxx.fillRect(i * 1, canvas.height, 1, -this.dataArray[i]);
-            }
-        }
-
-        this.stopDraw = function () {
-            cancelAnimationFrame(this.drawing);
-        }
-
-
-
-
-
-
-
-
-
+        this.source.connect(this.gainCode).connect(this.gainFadeCode).connect(this.lowPassCode).connect(this.analyser).connect(ctx.destination);
 
 
         // option
@@ -177,21 +213,30 @@
         this.lowPassCode.type = 'lowpass';
         this.lowPassCode.frequency.value = 22050;
 
-        // function
-        this.play = function () {
+
+        this.play = function (isLoop = "noloop", afterStopFunction = nothing) {
             if (this.playingTag === 0) { // 如果尚未在播放
                 this.playingTag = 1
                 bgmSource[num].play()
-                bgmSource[num].addEventListener('ended', function () {
-                    console.log("do something")
-                    this.stop();
-                }.bind(this));
+                // 播放完後的動作
+                bgmSource[num].addEventListener('ended', this.playerEndListener = function () { this.playEened(isLoop, afterStopFunction) }.bind(this));
             }
         }
+        this.playEened = function (isLoop, afterStopFunction) {
+            if (isLoop == "loop") {   // 如果設定為重複播放
+                bgmSource[num].play()
+            } else {                 // 沒有設定重複播放，則停止播放，並執行播放停止後的其他功能，並去除播放結束監聽器
+                this.stop();
+                afterStopFunction()
+                bgmSource[num].removeEventListener('ended', this.playerEndListener)
+            }
+        }.bind(this)
+
+
         this.fadePlay = function (gain = 1, fadeTime = 1, startGain = 0) {
             this.play();
-            this.gainCode.gain.value = startGain
-            this.gainCode.gain.linearRampToValueAtTime(gain, ctx.currentTime + fadeTime);
+            this.gainFadeCode.gain.value = startGain
+            this.gainFadeCode.gain.linearRampToValueAtTime(gain, ctx.currentTime + fadeTime);
         }
         this.stop = function () {
             this.playingTag = 0
@@ -201,37 +246,87 @@
         this.fadeStop = function (fadeTime = 1) {
             if (this.playingTag == 1) {
                 this.playingTag = 0
-                let tempGain = this.gainCode.gain.value
-                this.gainCode.gain.linearRampToValueAtTime(0, ctx.currentTime + fadeTime);
+                this.gainFadeCode.gain.setValueAtTime(1, ctx.currentTime);
+                this.gainFadeCode.gain.linearRampToValueAtTime(0, ctx.currentTime + fadeTime);
                 //如果在漸弱中再次 Play > 等漸弱後判斷是否 play 有則在0.5秒後回復音量
                 setTimeout(() => {
                     if (this.playingTag == 1) {
-                        this.gainCode.gain.linearRampToValueAtTime(tempGain, ctx.currentTime + 0.5);
+                        this.gainFadeCode.gain.linearRampToValueAtTime(1, ctx.currentTime + 0.5);
                         console.log("replay")
                     }
                     else {
                         this.stop()
-                        this.gainCode.gain.value = tempGain
+                        this.gainFadeCode.gain.value = 1
                     }
                 }, fadeTime * 1000 + 100);
+
             }
         }
+
+
+        this.fadeMute = function (fadeTime = 1) {
+            this.gainFadeCode.gain.setValueAtTime(1, ctx.currentTime);
+            this.gainFadeCode.gain.linearRampToValueAtTime(0, ctx.currentTime + fadeTime);
+        }
+        this.fadeUnmute = function (fadeTime = 1) {
+            this.gainFadeCode.gain.setValueAtTime(0, ctx.currentTime);
+            this.gainFadeCode.gain.linearRampToValueAtTime(1, ctx.currentTime + fadeTime);
+        }
+
+
         this.fadeLowPass = function (frequency = 22050, gain = -40, fadeTime = 1) {
             this.lowPassCode.frequency.linearRampToValueAtTime(frequency, ctx.currentTime + fadeTime);
         }
+
+
+        // 產生聲波圖
+        this.dataArray = new Uint8Array(this.analyser.frequencyBinCount);
+        this.freqCanvas = document.createElement('canvas');
+        this.freqContext = this.freqCanvas.getContext('2d');
+        this.freqCanvas.className = "freqCanvas"
+        this.freqCanvas.height = 300
+        this.freqCanvas.width = 1000
+        this.inputCanvas = function () {
+            freqCanvasBox.appendChild(this.freqCanvas);
+        }
+
+        this.draw = function () {
+            this.drawing = requestAnimationFrame(this.draw.bind(this));
+            this.analyser.getByteFrequencyData(this.dataArray);
+
+            // 使用dataArray来更新你的视觉元素，比如文字的大小、颜色等
+            this.freqContext.fillStyle = this.drawColor;
+            this.freqContext.clearRect(0, 0, this.freqCanvas.width, this.freqCanvas.height); // clear the canvas
+            for (let i = 0; i < this.dataArray.length; i++) {
+                this.freqContext.fillRect(i + this.freqCanvas.width / 2, this.freqCanvas.height / 2, 1, this.dataArray[i] / 2);
+                this.freqContext.fillRect(i + this.freqCanvas.width / 2, this.freqCanvas.height / 2, 1, -this.dataArray[i] / 2);
+                this.freqContext.fillRect(-i + this.freqCanvas.width / 2 - 1, this.freqCanvas.height / 2, 1, this.dataArray[i] / 2);
+                this.freqContext.fillRect(-i + this.freqCanvas.width / 2 - 1, this.freqCanvas.height / 2, 1, -this.dataArray[i] / 2);
+            }
+        }
+
+        this.stopDraw = function () {
+            cancelAnimationFrame(this.drawing);
+        }
+
+        // 獲取音量數值
+        this.dataArrayVol = new Uint8Array(this.analyser.frequencyBinCount);
+        this.volumeNum = function () {
+            this.volumeNuming = requestAnimationFrame(this.volumeNum.bind(this));
+            this.analyser.getByteTimeDomainData(this.dataArrayVol);
+            this.volumeNow = this.dataArrayVol[0]
+            // console.log(this.volumeNow)
+            // this.freqContext.fillStyle = this.drawColor;
+            // this.freqContext.clearRect(0, 0, this.freqCanvas.width, this.freqCanvas.height); // clear the canvas
+            // for (let i = 0; i < this.dataArray.length; i++) {
+            //     let y = this.dataArray[i] / 128.0 * (this.freqCanvas.height / 2);
+            //     this.freqContext.fillRect(i, this.freqCanvas.height / 2 - y, 1, 2 * y);
+            // }
+        }
+
+
     }
 
-
-
-
-
-
-    // 帶入聲音
-    bgmSource = document.getElementsByClassName("bgm");
-    var bgm = []
-    for (let i = 0; i < bgmSource.length; i++) {
-        bgm[i] = new music(i)
-    }
 
 
     // 全部停止
@@ -242,34 +337,88 @@
     }
 
 
+    // 載入全部聲音
+    bgmSource = document.getElementsByClassName("bgm");
+    var bgm = []
+    for (let i = 0; i < bgmSource.length; i++) {
+        bgm[i] = new music(i)
+        bgm[i].inputCanvas()
+        bgm[i].draw()
+        bgm[i].drawColor = "#ffffff88"
+    }
+    bgm[0].gainCode.gain.value = 0.3
+
+
+    var playingNowNum = 0
+    var playingConNum = 0
+
+    // 回到播影片
+    var backToVideo = function () {
+        console.log("stop", playingNowNum)
+        playingMask.classList.add("op0");
+        bgm[0].fadeUnmute()
+        playingNowNum = 0
+    }
+
+    var playingMask = $css("playing_mask")[0]
+    var speaker = $css("speaker")[0]
 
     // 鍵盤快捷鍵
     window.addEventListener("keydown", torandomTest, false);
     function torandomTest(e) {
         var keyID = e.code;
-        if (keyID === 'Numpad7') {
-            musicAllStop(1)
-            bgm[2].play()
+        isNumpad = 0
+        for (let i = 1; i < 10; i++) {
+            if (keyID === 'Numpad' + i) {
+                playingConNum = i
+                isNumpad = 1
+            }
         }
-        if (keyID === 'Numpad4') {
-            musicAllStop(1)
-            bgm[1].play()
+        if (isNumpad === 1) {
+            if (playingNowNum === 0) {                                // 沒播放 > 播放
+                console.log("play", playingConNum)
+                bgm[0].fadeMute()
+                bgm[playingConNum].play("noloop", backToVideo)
+                playingMask.classList.remove("op0");
+                speaker.style = "background - image: url(voice01.png);"
+                speaker.style = "background-image: url(voice0" + playingConNum + ".png);"
+                playingNowNum = playingConNum
+            } else if (playingConNum === playingNowNum) {             // 播放 > 按下同語音 > 停止播放
+                console.log("stop", playingConNum)
+                bgm[playingNowNum].fadeStop(0.5)
+                playingMask.classList.add("op0");
+                bgm[0].fadeUnmute()
+                playingNowNum = 0
+            }
+            else {                                            // 播放 > 按下不同語音 > 播放
+                console.log("stop", playingNowNum)
+                console.log("play", playingConNum)
+                bgm[playingNowNum].fadeStop(0.5)
+                bgm[playingConNum].play("noloop", backToVideo)
+                speaker.style = "background-image: url(voice0" + playingConNum + ".png);"
+                playingNowNum = playingConNum
+            }
         }
-        if (keyID === 'Numpad1') {
-            musicAllStop(1)
-            bgm[0].play()
-        }
-        if (keyID === 'KeyQ') {
-            musicAllStop(1)
+
+        if (keyID === 'Numpad0') {
+            if (playingNowNum > 0) {
+                console.log("stop", playingNowNum)
+                bgm[playingNowNum].fadeStop(0.5)
+                playingMask.classList.add("op0");
+                bgm[0].fadeUnmute()
+                playingNowNum = 0
+            }
         }
         if (keyID === 'KeyA') {
-            bgm[0].draw()
-
-        }
-        if (keyID === 'KeyF') {
-            bgm[0].stopDraw()
+            bgm[0].play()
         }
 
+        if (keyID === 'KeyQ') {
+            musicAllStop(0.1)
+        }
+        ctx.resume().then(() => {
+            console.log('AudioContext 已啟動');
+        });
     }
 
 
@@ -280,10 +429,16 @@
     // 其他功能
     // ******************************
 
+    var start = $id("start")
 
-    $id("fullScreenBtn").addEventListener("click", function () {
+
+    start.addEventListener("click", function () {
         if (!document.fullscreenElement) {
             $tag("body")[0].requestFullscreen()
+            start.style.opacity = 0
+            start.style.zIndex = 0
+            start.style.c
+            bgm[0].play()
         }
         else {
             document.exitFullscreen()
@@ -296,24 +451,25 @@
         console.log("error")
     }
 
+
+    function nothing() {
+        console.log("nothing")
+    }
+
+
+
+
     // var myInterval = setInterval(function () {
-    //     console.log(bgm[0].gainCode.gain.value);
+    //     console.log(bgm[0].gainCode.gain.value, bgm[0].gainFadeCode.gain.value);
     // }, 200);
 
 
-
-    // chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
-    //     try {
-    //         const result = await asyncFunction(request);
-    //         sendResponse(result);
-    //     } catch (error) {
-    //         // handle the error
-    //         console.error(error);
-    //     }
-    //     return true;  // Will respond asynchronously.
-    // });
+    //start chrome.exe --disable-web-security --user-data-dir="C:/ChromeDevSession"
 
 
 </script>
+
+
+
 
 </html>
