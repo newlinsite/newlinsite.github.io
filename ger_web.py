@@ -62,11 +62,6 @@ index_df = index_df.drop_duplicates(subset=['articleNo']).reset_index(drop=True)
 
 
 
-
-
-
-
-
 #-------------爬ing----------------------------
 
 df = pd.DataFrame()

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VK DEMO Page</title>
+    <link rel="stylesheet" href="element/css.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="scene" style="background-image: url(element/background_dark.png);"></div>
+        <div class="scene" style="background-image: url(element/background.png);"></div>
+        <div class="scene" style="background-image: url(element/people.png);"></div>
+        <div id="projector">
+            <div class="board"></div>
+            <div class="boardupper"></div>
+            <div class="boardowner"></div>
+        </div>
+        <div class="screen_container">
+            <div id="screen">
+                <div class="content">
+                    <div class="screenMask">
+                        <img class="slide" style="animation-delay: 30s;" src="element/slide01.png" alt="">
+                        <img class="slide" style="animation-delay: 20s;" src="element/slide02.png" alt="">
+                        <img class="slide" style="animation-delay: 10s;" src="element/slide03.png" alt="">
+                        <img class="slide" style="animation-delay: 0s;" src="element/slide04.png" alt="">
+                    </div>
+                </div>
+                <div class="content">
+                    <video src="element/video.mp4" autoplay loop muted class="blur-light"></video>
+                    <div class="screenMask">
+                        <video src="element/video.mp4" autoplay loop muted></video>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div id="messageContainer">
+        </div>
+    </div>
+</body>
+<script src="element/js.js"></script>
+
+</html>
