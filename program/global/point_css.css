@@ -22,17 +22,87 @@
         width: 100%;
         height: 100%;
         font-family: "Noto sans TC", "Microsoft JhengHei ", "微軟正黑體", sans-serif;
-        overflow: hidden;
+        /* overflow: hidden; */
         margin: 0;
-        background-color: #111111;
+        background-color: #F5F8FA;
+    }
+
+    .container {
+        max-width: 1400px;
+        margin: auto;
+    }
+
+
+
+
+    .point_container_out {
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+
+    }
+
+    .point_container * {
+        transition: 1s;
     }
 
     .point_container {
-        background-color: #2f2f2f;
-        width: 80%;
+        width: 100%;
         padding-top: 40%;
-        margin: auto;
+        position: relative
     }
+
+    .point_container .mapBox {
+        width: 33.3%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .point_container .mapBox.map_america {
+        left: 16%;
+    }
+
+    .point_container .mapBox.map_asia {
+        left: 50%;
+    }
+
+    .point_container .mapBox.map_eu {
+        left: 83.3%;
+    }
+
+
+    .point_container.map-open .mapBox.map-active {
+        width: 40%;
+        left: 50%;
+        opacity: 1;
+        z-index: 10;
+    }
+
+    .point_container.map-open>.mapBox {
+        width: 10%;
+        left: 50%;
+        opacity: 0.1;
+        z-index: 5;
+    }
+
+    .point_container .map_sidebar {
+        opacity: 1;
+    }
+
+
+
+
+
+    .point_container .map_bg {
+        width: 100%;
+        /* width: 33.3%; */
+        /* position: absolute; */
+        /* top: 0; */
+        /* left: 0; */
+    }
+
+
 
 
     .point_container .point {
@@ -43,5 +113,5 @@
     }
 
     .point_container .point:hover {
-        transform: scale(12);
+        transform: scale(2);
     }
