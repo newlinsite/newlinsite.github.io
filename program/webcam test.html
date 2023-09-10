@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    html,
+    body {
+        margin: 0;
+        background-color: #000000;
+
+    }
+
+    .container {
+        margin: auto;
+        width: 100%;
+    }
+
+    video {
+        width: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0;
+        transition: 1s;
+    }
+
+
+    video:hover {
+        width: 80%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <video autoplay></video>
+    </div>
+
+</body>
+<script>
+
+    const localVideo = document.querySelector('video');
+
+
+
+    // 設備檢查
+    console.log(navigator.mediaDevices.enumerateDevices())
+
+
+    // 只取得video
+    const mediaStreamConstraints = {
+        // video: true
+
+
+        video: {
+            // facingMode:""
+            deviceId: "f5e12cfbc3677a9951e744291055555e5935f6c4ebc7d2e4c9a2abc2db5e05cd",
+            // label: "OBS Virtual Camera",
+            frameRate: 15,
+            width: 640,
+            // height: 360
+        },
+        audio: false
+        // audio: {
+        //     noiseSuppression: false,
+        //     autoGainControl: false
+        // }
+    };
+
+
+    function gotLocalMediaStream(mediaStream) {
+        const localStream = mediaStream;
+        // Older browsers may not have srcObject.
+        if ("srcObject" in localVideo) {
+            localVideo.srcObject = localStream;
+        } else {
+            // Avoid using this in new browsers, as it is going away.
+            localVideo.src = window.URL.createObjectURL(localStream);
+        }
+    }
+
+    navigator.mediaDevices
+        .getUserMedia(mediaStreamConstraints)
+        .then(gotLocalMediaStream)
+        .catch(() => { console.log('input error: ', "error"); })
+</script>
+
+</html>
