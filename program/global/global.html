@@ -9,8 +9,26 @@
 </head>
 
 <body>
-    <div class="point_container">
-
+    <div class="container">
+        <div class="point_container_out">
+            <div class="point_container">
+                <div class="mapBox map_america">
+                    <img class="map_bg" src="map_01.jpg" alt="map_america">
+                </div>
+                <div class="mapBox  map_asia">
+                    <img class="map_bg" src="map_02.jpg" alt="asia">
+                </div>
+                <div class="mapBox map_eu">
+                    <img class="map_bg" src="map_03.jpg" alt="map_eu">
+                </div>
+                <div class="map_sidebar">
+                    <div class="mapBoxbtn">america</div>
+                    <div class="mapBoxbtn">asia</div>
+                    <div class="mapBoxbtn">eu</div>
+                </div>
+                <div class="map_back">back</div>
+            </div>
+        </div>
     </div>
 </body>
 <script>
@@ -24,11 +42,13 @@
         return document.getElementsByTagName(name)
     }
 
+
+
     var pointContainer = $css("point_container")[0];
+    var mapBoxes = Array.from($css('mapBox'));
 
 
-
-    var Point = function (name, position, color) {
+    var Point = function (name, continent, position, color) {
         // Create a new div element
         this.point = document.createElement("div");
 
@@ -42,23 +62,57 @@
         this.point.setAttribute('data-name', name);
 
         // Add the new point to the point container
-        pointContainer.appendChild(this.point);
+        mapBoxes[continent].appendChild(this.point);
     }
 
 
     var pointsData = [
-        { name: 'point1', position: { x: 50, y: 50 }, color: '#FF0000' },
-        { name: 'point2', position: { x: 40, y: 10 }, color: '#FF0000' },
-        { name: 'point3', position: { x: 40, y: 20 }, color: '#d48344' },
-        { name: 'point3', position: { x: 15, y: 40 }, color: '#452454' },
-        { name: 'point3', position: { x: 12, y: 21 }, color: '#344554' }
+        { name: 'point1', continent: 1, position: { x: 50, y: 50 }, color: '#FF0000', },
+        { name: 'point2', continent: 1, position: { x: 40, y: 10 }, color: '#FF0000', },
+        { name: 'point3', continent: 2, position: { x: 40, y: 20 }, color: '#d48344', },
+        { name: 'point3', continent: 2, position: { x: 15, y: 40 }, color: '#452454', },
+        { name: 'point3', continent: 0, position: { x: 12, y: 21 }, color: '#344554', }
     ];
 
     for (var i = 0; i < pointsData.length; i++) {
         var data = pointsData[i];
-        new Point(data.name, data.position, data.color);
+        new Point(data.name, data.continent, data.position, data.color);
     }
 
+
+
+
+
+    //互動
+
+    var sideBarButton = Array.from($css('mapBoxbtn'));
+    var mapSidebar = $css('map_sidebar')[0];
+    var mapBack = $css('map_back')[0];
+
+    mapBoxes.forEach(function (mapBox) {
+        mapBox.addEventListener('click', function () {
+            pointContainer.classList.add('map-open');
+            mapBoxes.forEach(function (mb) { mb.classList.remove('map-active') })
+            mapBox.classList.add('map-active');
+        });
+    });
+
+
+    // Click event for sidebar button
+    for (let i = 0; i < sideBarButton.length; i++) {
+        sideBarButton[i].addEventListener('click', function () {
+            mapBoxes.forEach(function (mapBox) {
+                mapBox.classList.remove('map-active');
+            });
+            mapBoxes[i].classList.add('map-active');
+        });
+    }
+    mapBack.addEventListener('click', function () {
+        pointContainer.classList.remove('map-open');
+        mapBoxes.forEach(function (mapBox) {
+            mapBox.classList.remove('map-active');
+        });
+    })
 
 
 
