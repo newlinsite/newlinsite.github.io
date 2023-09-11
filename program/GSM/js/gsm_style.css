@@ -1,0 +1,183 @@
+* {
+    position: relative;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-color)
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+body,
+html {
+    background-color: #000;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+
+}
+
+.container {
+    width: 100%;
+    padding-top: 18.75%;
+    overflow: hidden;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.container>* {
+    width: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+
+}
+
+.container>*.hight {
+    width: auto;
+    height: 100%;
+}
+
+img {
+    transition: 0.5s;
+}
+
+img.bg {
+    opacity: 1;
+    z-index: 1000;
+}
+
+img.bg.off {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.4);
+    transition: 1s;
+}
+
+video {}
+
+
+
+
+
+
+.upperBoxs {
+    height: 100%;
+    width: 100%;
+    opacity: 1;
+    z-index: 2000;
+}
+
+.uBoxs {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #00000039;
+    transition: 0.5s;
+}
+
+.uBoxs .uBox {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 30%;
+    padding-top: 16.88%;
+    opacity: 0.73;
+    border-radius: 15px;
+    box-shadow: 0 0 32px 0 rgba(0, 0, 0, 0.69);
+    background-image: linear-gradient(154deg, #2011ab 8%, #503bcf 25%, #9736de 63%, rgba(163, 53, 224, 0.54) 79%);
+}
+
+
+
+
+
+.uBoxs .uBox.u01 {
+    left: 16%;
+}
+
+.uBoxs .uBox.u02 {
+    left: 50%;
+}
+
+.uBoxs .uBox.u03 {
+    left: 84%;
+}
+
+
+
+
+.uBoxs .uBox.u04 {
+    width: 24%;
+    padding-top: 13.5%;
+    left: 13%;
+}
+
+.uBoxs .uBox.u05 {
+    width: 8%;
+    padding-top: 16.88%;
+    left: 30%;
+}
+
+.uBoxs .uBox.u06 {
+    left: 50%;
+}
+
+.uBoxs .uBox.u07 {
+    width: 8%;
+    padding-top: 16.88%;
+    left: 70%;
+}
+
+.uBoxs .uBox.u08 {
+    width: 24%;
+    padding-top: 13.5%;
+    left: 87%;
+}
+
+
+
+.uBoxs .uBox.u09 {
+    width: 22%;
+    padding-top: 12.38%;
+    left: 78%;
+    top: 50%;
+}
+
+
+
+
+.uBoxs .uBox.u10 {
+    width: 18%;
+    padding-top: 12%;
+    left: 10%;
+    top: 50%;
+}
+
+.uBoxs .uBox.u11 {
+    width: 37.51%;
+    padding-top: 16.88%;
+    left: 50%;
+    top: 50%;
+}
+
+.uBoxs .uBox.u12 {
+    width: 26%;
+    padding-top: 14.63%;
+    left: 84%;
+    top: 50%;
+}

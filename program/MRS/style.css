@@ -1,0 +1,690 @@
+/******************************
+			import
+*******************************/
+@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
+
+@font-face {
+    font-family: 'Material Symbols Outlined';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/materialsymbolsoutlined/v76/kJF4BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY40KH8nGzv3fz_VFU22ZZLsYEpzC_1ver5Y0.woff2) format('woff2');
+}
+
+/*****************************************
+******************************************
+******************************************
+
+			Page
+
+******************************************
+******************************************
+******************************************/
+
+* {
+    position: relative;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-color)
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+span.g-icon {
+    font-family: "Material Symbols Outlined"
+}
+
+:root {
+    /* --pri-color: #eae587; */
+    --pri-color: #828278;
+    --sec-color: #65A9BF;
+    --ter-color: #f2f2ee;
+    --no-color: #B1AFAF;
+    --bg-color: #181818;
+    /* --bg-color: #fff; */
+    --aug-color: #c6c6c6;
+    --aug-light-color: #ececeb;
+    --aug-black-color: #3e3e3e;
+
+    --text-color: rgb(14, 26, 34);
+    --text-light-color: rgb(132, 144, 151);
+    /* --warn-color: #EA0F0F; */
+}
+
+
+body,
+html {
+    background-color: var(--bg-color);
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+}
+
+
+
+.container {
+    width: 1350px;
+    margin: 0 0 0 auto;
+}
+
+
+
+
+
+
+
+
+
+
+/*****************************************
+******************************************
+******************************************
+
+			Element
+
+******************************************
+******************************************
+******************************************/
+
+
+
+
+.space {
+    width: 100%;
+    padding-top: 50%;
+    /* padding-top: 56.25%; */
+    transform-style: preserve-3d;
+    perspective: 550px;
+    overflow: hidden;
+
+}
+
+.space .fullScene {
+    width: 100%;
+    height: 100%;
+    /* padding-top: 56.25%; */
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    align-self: start;
+    transition: 0.6s;
+}
+
+
+.space .bgImage {
+    height: auto;
+}
+
+.space .bgImage.d {
+    opacity: 0;
+}
+
+.space.dark .bgImage.d {
+    opacity: 1;
+}
+
+
+/*****************************************
+
+Click Point
+
+******************************************/
+
+/*****************************************
+
+fliter
+
+******************************************/
+.fliterContainer {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 200px;
+    height: 100%;
+    background-color: var(--bg-color);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    /* box-shadow: -2px 0 12px #00000057; */
+    /* opacity: 0.4; */
+}
+
+.fliterbox {
+    display: flex;
+    width: 100%;
+}
+
+.fliterbtn {
+    width: 50%;
+    height: 32px;
+    background-color: #b2b2b2;
+    margin: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.fliterbtn:hover {
+    opacity: .8;
+}
+
+
+
+
+/*****************************************
+
+Keypad
+
+******************************************/
+
+
+
+.keypad {
+    position: absolute;
+    width: 12%;
+    padding-top: 18%;
+    border-radius: 15px;
+    background-color: #ececec;
+    box-shadow: 0 0 16px #00000049;
+    border: 3px solid #c3c3c3;
+    cursor: pointer;
+}
+
+
+.keypad.k01 {
+    bottom: 4%;
+    right: 3%;
+}
+
+.keypad .btnContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 72%;
+    height: 65%;
+    background-color: #313131;
+    padding: 2px;
+    border-radius: 6px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.keypad .keypadBtn {
+    width: 50%;
+    border-radius: 4px;
+    background-color: #f0f0f0;
+    border: 1.5px solid #232323;
+    transition: 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.keypad .keypadBtn span {
+    position: absolute;
+    font-size: 14px;
+    letter-spacing: -0.02em;
+}
+
+.keypad .keypadBtn:hover {
+    opacity: 0.85;
+}
+
+
+.keypad .keypadBtn::after {
+    content: "";
+    position: absolute;
+    top: 6%;
+    left: 4%;
+    width: 22%;
+    height: 8%;
+    background-color: #ffa621;
+    border: 1px solid #7d7d7d;
+}
+
+.keypad .keypadBtn.on::after {
+    background-color: #fff;
+}
+
+.keypad .keypadBtn.x2::after {
+    width: 10%;
+    left: 2%;
+}
+
+.keypad .keypadBtn.x2 {
+    width: 100%;
+}
+
+.keypad .keypadBtn.x0 {
+    display: none;
+}
+
+.keypad .keypadBtn.press::after {
+    animation-name: keypadPress;
+    animation-duration: 0.2s;
+    animation-iteration-count: 1;
+}
+
+
+@keyframes keypadPress {
+    0% {
+        background-color: #fff;
+    }
+
+    80% {
+        background-color: #fff;
+    }
+
+
+    100% {
+        background-color: #ffa621;
+    }
+
+}
+
+
+
+/*****************************************
+
+Control Object
+
+******************************************/
+
+
+
+
+
+.mainVkObj {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    transition: 0.6s;
+}
+
+
+
+/* 預設 mainVk 物件裡面，通通都置中 */
+.mainVkObj * {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+}
+
+
+
+
+/* projector */
+
+.projector {
+    width: 25%;
+    padding-top: 14.5%;
+    transform: translate(-50%, 0);
+
+}
+
+.projector.p01 {
+    left: 50%;
+    top: 39%;
+}
+
+.projector .board {
+    width: 97%;
+    height: 98%;
+    transform: translate(-50%, 0);
+    top: 1%;
+    background-color: #f0ece6;
+    opacity: 0.75;
+    box-shadow: 0 0 12px #00000041;
+    transition: 1s;
+}
+
+.space.dark .projector .board {
+    opacity: 0.1;
+}
+
+.projector .boardupper,
+.projector .boardowner {
+    width: 100%;
+    padding-top: 1.5%;
+    transform: translate(-50%, 0);
+    box-shadow: 0 0 8px #0000006d;
+}
+
+.projector .boardupper {
+    top: 0;
+    background-color: #000000;
+}
+
+.projector .boardowner {
+    bottom: 0;
+    top: auto;
+    background-color: #1b1b1b;
+}
+
+
+
+/*  display */
+
+
+.displayContainer {
+    position: absolute;
+    left: 17%;
+    top: 31%;
+    height: 22.8%;
+    width: 32%;
+    /* background-color: #c7c1b9; */
+    transform-style: preserve-3d;
+    transform: translate3d(0%, 0%, 0px) rotateX(-2deg) rotateY(20deg) rotateZ(0.5deg);
+}
+
+
+.display {
+    width: 38%;
+    padding-top: 21.6%;
+    transform: translate(-50%, 0);
+    background-color: #131312;
+    border: 1.5px solid #2b2b28;
+    border-radius: 2px;
+    box-shadow: 4px 0px 6px #00000043;
+}
+
+
+.display.d01 {
+    left: 12%;
+    top: 20%;
+}
+
+.display.d02 {
+    left: 50%;
+    top: 20%;
+}
+
+.display.d03 {
+    left: 88%;
+    top: 20%;
+}
+
+
+
+
+.space.displayCount2 .display.d01 {
+    left: 30%;
+    top: 20%;
+}
+
+.space.displayCount2 .display.d02 {
+    left: 70%;
+    top: 20%;
+}
+
+.space.displayCount2 .display.d03 {
+    opacity: 0;
+}
+
+
+
+
+.space.led .display.led {
+    opacity: 1;
+}
+
+
+.display.led {
+    width: 113%;
+    left: 50%;
+    top: 20%;
+    opacity: 0;
+}
+
+.display.led .screen {
+    box-shadow: none;
+}
+
+.display.led .screen.l01 {
+    width: 100%;
+    height: 100%;
+    left: 50%;
+    top: 50%;
+}
+
+.display.led .screen.l02 {
+    width: 20%;
+    height: 60%;
+    left: 88%;
+    top: 50%;
+}
+
+.display.led .screen.l03 {
+    width: 12%;
+    height: 36%;
+    left: 12%;
+    top: 25%;
+}
+
+.display.led .screen.l04 {
+    width: 12%;
+    height: 36%;
+    left: 12%;
+    top: 75%;
+}
+
+
+
+
+/* Table screen */
+
+
+.displayContainer.table {
+    position: absolute;
+    left: 20%;
+    top: 55%;
+    height: 10%;
+    width: 50%;
+    transform-style: preserve-3d;
+    transform: translate3d(-0%, 5%, 0px) rotateX(-2deg) rotateY(-52deg) rotateZ(0deg);
+    /* transform: translate3d(-0%, 5%, -50px) rotateX(-2deg) rotateY(-52deg) rotateZ(0deg); */
+    /* transform: translate3d(-0%, 5%, 50px) rotateX(-2deg) rotateY(-40deg) rotateZ(0deg); */
+    /* background-color: #ffffff49; */
+}
+
+.displayContainer.table .display {
+    width: 100;
+}
+
+.screen.t01,
+.screen.t02,
+.screen.t03,
+.screen.t04,
+.screen.t05 {
+    width: 14%;
+    height: 90%;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0) rotateX(16deg) rotateY(0deg) rotateZ(0deg);
+    opacity: 0.8;
+    background-color: #b00a0a00;
+}
+
+
+
+.screen.t01 {
+    left: 0%;
+}
+
+.screen.t02 {
+    left: 20%;
+}
+
+.screen.t03 {
+    left: 42.5%;
+}
+
+.screen.t04 {
+    left: 64.8%;
+}
+
+.screen.t05 {
+    left: 86.5%;
+}
+
+
+
+.display.wb {
+    width: 17%;
+    padding-top: 10%;
+    left: 56%;
+    top: 38%;
+    background-color: #00000000;
+    border: none;
+    box-shadow: none;
+    background-image: url(wb.png);
+    background-size: cover;
+    background-position: center;
+}
+
+.display.wb .screen.w01 {
+    width: 70%;
+    height: 67%;
+    top: 39%;
+    transform: translate3d(-52%, -50%, 0) rotateX(-5deg) rotateY(0deg) rotateZ(1deg);
+}
+
+
+
+/* screen */
+
+.screen {
+    width: 97%;
+    height: 94%;
+    box-shadow: 0 0 12px #00000041;
+    transition: 0.2s;
+    background-color: #1c1c1c;
+
+}
+
+.screen .content {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.screen .content video,
+.screen .content img {
+    width: 100%;
+    opacity: 0.9;
+}
+
+.screen .content img.slide {
+    animation-name: slideAn;
+    opacity: 0;
+    animation-duration: 40s;
+    animation-iteration-count: infinite;
+}
+
+
+
+
+@keyframes slideAn {
+    0% {
+        opacity: 0.9;
+    }
+
+    25% {
+        opacity: 0.9;
+    }
+
+    26% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*****************************************
+
+   Message
+
+******************************************/
+
+
+
+#messageContainer {
+    position: fixed;
+    width: 10%;
+    top: 16px;
+    right: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+#messageContainer .messageBox {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 54px;
+    margin: 6px 0;
+    background-color: #000000ca;
+    border-radius: 6px;
+    border: 1px solid #ffffff35;
+    box-shadow: 0 0 8px #000000af;
+    overflow: hidden;
+    animation-fill-mode: forwards;
+}
+
+
+@keyframes fadein {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeout {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        height: 0px;
+        margin: 0;
+        border: none;
+    }
+}
