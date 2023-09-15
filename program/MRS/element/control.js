@@ -455,10 +455,10 @@ screen02.input(source01)
 screen03.input(source03)
 
 
-screenVp01.input(source01)
+screenVp01.input(source03)
 screenVp02.input(source02)
-screenVp03.input(source01)
-screenVp04.input(source02)
+screenVp03.input(source04)
+screenVp04.input(source04)
 
 
 screenT01.input(source02)
@@ -682,6 +682,11 @@ action[9] = () => {
 var act01obj = $css("act01obj")
 
 var vpLayoutTag = 0
+var vpLoyoutOrder = [0, 0, 0, 0]
+
+
+
+
 
 
 var vpSourceBox = [source01, source02, source03, source04]

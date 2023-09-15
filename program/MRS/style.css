@@ -444,8 +444,8 @@ Control Object
 
 .space .display.vp {
     opacity: 1;
+    display: flex;
 
-    box-sizing: 0;
 }
 
 .space .display.vp::after {
@@ -455,10 +455,9 @@ Control Object
     height: 95%;
     top: 0;
     left: 0;
-    border: 6px solid #181818;
+    border: 6px solid #101010;
+    box-shadow: inset 0 0 6px #0000008a;
 }
-
-
 
 
 .space .display.vp .screen:after {
@@ -467,126 +466,13 @@ Control Object
 
 .space .display.vp .screen {
     box-shadow: none;
+    width: 50%;
+    height: 50%;
 }
 
 .space .display.vp .screen>* {
     transition: 0.5s;
 }
-
-
-
-
-.space .display.vp.x2>*,
-.space .display.vp.x3>*,
-.space .display.vp.x4>* {
-    width: 50%;
-    height: 50%;
-}
-
-
-
-
-
-.space .display.vp.x1 .vp01 {
-    left: 50%;
-    top: 50%;
-}
-
-.space .display.vp.x1 .vp02 {
-    left: 75%;
-    top: 50%;
-    opacity: 0;
-}
-
-.space .display.vp.x1 .vp03 {
-    left: 50%;
-    top: 75%;
-    opacity: 0;
-}
-
-.space .display.vp.x1 .vp04 {
-    left: 50%;
-    top: 50%;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-}
-
-
-
-
-
-.space .display.vp.x2 .vp01 {
-    left: 25%;
-    top: 50%;
-}
-
-.space .display.vp.x2 .vp02 {
-    left: 75%;
-    top: 50%;
-}
-
-.space .display.vp.x2 .vp03 {
-    left: 50%;
-    top: 75%;
-    opacity: 0;
-}
-
-.space .display.vp.x2 .vp04 {
-    left: 75%;
-    top: 75%;
-    opacity: 0;
-}
-
-
-
-
-
-.space .display.vp.x3 .vp01 {
-    left: 25%;
-    top: 25%;
-}
-
-.space .display.vp.x3 .vp02 {
-    left: 75%;
-    top: 25%;
-}
-
-.space .display.vp.x3 .vp03 {
-    left: 50%;
-    top: 75%;
-}
-
-.space .display.vp.x3 .vp04 {
-    left: 75%;
-    top: 75%;
-    opacity: 0;
-}
-
-
-
-
-.space .display.vp.x4 .vp01 {
-    left: 25%;
-    top: 25%;
-}
-
-.space .display.vp.x4 .vp02 {
-    left: 75%;
-    top: 25%;
-}
-
-.space .display.vp.x4 .vp03 {
-    left: 25%;
-    top: 75%;
-}
-
-.space .display.vp.x4 .vp04 {
-    left: 75%;
-    top: 75%;
-}
-
-
 
 
 
