@@ -46,7 +46,7 @@ span.g-icon {
     --sec-color: #65A9BF;
     --ter-color: #f2f2ee;
     --no-color: #B1AFAF;
-    --bg-color: #181818;
+    --bg-color: #ffffff;
     /* --bg-color: #fff; */
     --aug-color: #c6c6c6;
     --aug-light-color: #ececeb;
@@ -64,15 +64,17 @@ html {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: Noto Sans, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     margin: 0;
 }
 
 
 
 .container {
-    width: 1350px;
+    width: 1920px;
+    height: 936px;
     margin: 0 0 0 auto;
+    overflow: hidden;
 }
 
 
@@ -99,10 +101,10 @@ html {
 
 .space {
     width: 100%;
-    padding-top: 50%;
+    padding-top: 54%;
     /* padding-top: 56.25%; */
     transform-style: preserve-3d;
-    perspective: 550px;
+    perspective: 1500px;
     overflow: hidden;
 
 }
@@ -117,7 +119,7 @@ html {
     left: 0;
     top: 0;
     align-self: start;
-    transition: 0.6s;
+    transition: 1.5s;
 }
 
 
@@ -157,6 +159,7 @@ fliter
     flex-direction: column;
     /* box-shadow: -2px 0 12px #00000057; */
     /* opacity: 0.4; */
+    display: none;
 }
 
 .fliterbox {
@@ -193,19 +196,21 @@ Keypad
 
 .keypad {
     position: absolute;
-    width: 12%;
-    padding-top: 18%;
+    width: 16%;
+    padding-top: 24%;
     border-radius: 15px;
     background-color: #ececec;
     box-shadow: 0 0 16px #00000049;
     border: 3px solid #c3c3c3;
     cursor: pointer;
+    opacity: 0;
+    height: 0;
 }
 
 
 .keypad.k01 {
-    bottom: 4%;
-    right: 3%;
+    bottom: 20%;
+    left: 6%;
 }
 
 .keypad .btnContainer {
@@ -381,24 +386,22 @@ Control Object
 
 .displayContainer {
     position: absolute;
-    left: 17%;
-    top: 31%;
+    left: 6.4%;
+    top: 12%;
     height: 22.8%;
-    width: 32%;
-    /* background-color: #c7c1b9; */
+    width: 48%;
     transform-style: preserve-3d;
-    transform: translate3d(0%, 0%, 0px) rotateX(-2deg) rotateY(20deg) rotateZ(0.5deg);
+    transform: translate3d(0%, 0%, 0px) rotateX(-12deg) rotateY(36deg) rotateZ(1.0deg);
 }
 
-
 .display {
-    width: 38%;
+    width: 42%;
     padding-top: 21.6%;
     transform: translate(-50%, 0);
     background-color: #131312;
     border: 1.5px solid #2b2b28;
     border-radius: 2px;
-    box-shadow: 4px 0px 6px #00000043;
+    box-shadow: 4px 0px 6px #0000005e;
 }
 
 
@@ -419,67 +422,171 @@ Control Object
 
 
 
-
-.space.displayCount2 .display.d01 {
-    left: 30%;
+.space .display.d01 {
+    left: 28%;
     top: 20%;
 }
 
-.space.displayCount2 .display.d02 {
-    left: 70%;
+.space .display.d02,
+.space .display.vp {
+    left: 72%;
     top: 20%;
 }
 
-.space.displayCount2 .display.d03 {
+.space .display.d03 {
     opacity: 0;
 }
 
 
 
+/* VP */
 
-.space.led .display.led {
+
+.space .display.vp {
     opacity: 1;
+
+    box-sizing: 0;
+}
+
+.space .display.vp::after {
+    content: "";
+    position: absolute;
+    width: 97%;
+    height: 95%;
+    top: 0;
+    left: 0;
+    border: 6px solid #181818;
 }
 
 
-.display.led {
-    width: 113%;
-    left: 50%;
-    top: 20%;
-    opacity: 0;
-}
 
-.display.led .screen {
+
+.space .display.vp .screen:after {
     box-shadow: none;
 }
 
-.display.led .screen.l01 {
-    width: 100%;
-    height: 100%;
+.space .display.vp .screen {
+    box-shadow: none;
+}
+
+.space .display.vp .screen>* {
+    transition: 0.5s;
+}
+
+
+
+
+.space .display.vp.x2>*,
+.space .display.vp.x3>*,
+.space .display.vp.x4>* {
+    width: 50%;
+    height: 50%;
+}
+
+
+
+
+
+.space .display.vp.x1 .vp01 {
     left: 50%;
     top: 50%;
 }
 
-.display.led .screen.l02 {
-    width: 20%;
-    height: 60%;
-    left: 88%;
+.space .display.vp.x1 .vp02 {
+    left: 75%;
+    top: 50%;
+    opacity: 0;
+}
+
+.space .display.vp.x1 .vp03 {
+    left: 50%;
+    top: 75%;
+    opacity: 0;
+}
+
+.space .display.vp.x1 .vp04 {
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+
+
+
+
+.space .display.vp.x2 .vp01 {
+    left: 25%;
     top: 50%;
 }
 
-.display.led .screen.l03 {
-    width: 12%;
-    height: 36%;
-    left: 12%;
+.space .display.vp.x2 .vp02 {
+    left: 75%;
+    top: 50%;
+}
+
+.space .display.vp.x2 .vp03 {
+    left: 50%;
+    top: 75%;
+    opacity: 0;
+}
+
+.space .display.vp.x2 .vp04 {
+    left: 75%;
+    top: 75%;
+    opacity: 0;
+}
+
+
+
+
+
+.space .display.vp.x3 .vp01 {
+    left: 25%;
     top: 25%;
 }
 
-.display.led .screen.l04 {
-    width: 12%;
-    height: 36%;
-    left: 12%;
+.space .display.vp.x3 .vp02 {
+    left: 75%;
+    top: 25%;
+}
+
+.space .display.vp.x3 .vp03 {
+    left: 50%;
     top: 75%;
 }
+
+.space .display.vp.x3 .vp04 {
+    left: 75%;
+    top: 75%;
+    opacity: 0;
+}
+
+
+
+
+.space .display.vp.x4 .vp01 {
+    left: 25%;
+    top: 25%;
+}
+
+.space .display.vp.x4 .vp02 {
+    left: 75%;
+    top: 25%;
+}
+
+.space .display.vp.x4 .vp03 {
+    left: 25%;
+    top: 75%;
+}
+
+.space .display.vp.x4 .vp04 {
+    left: 75%;
+    top: 75%;
+}
+
+
 
 
 
@@ -487,21 +594,28 @@ Control Object
 /* Table screen */
 
 
-.displayContainer.table {
+.displayContainer.table,
+.displayContainer.table2 {
     position: absolute;
-    left: 20%;
-    top: 55%;
-    height: 10%;
-    width: 50%;
+    left: 5.85%;
+    top: 42.2%;
+    height: 13%;
+    width: 71.5%;
     transform-style: preserve-3d;
-    transform: translate3d(-0%, 5%, 0px) rotateX(-2deg) rotateY(-52deg) rotateZ(0deg);
-    /* transform: translate3d(-0%, 5%, -50px) rotateX(-2deg) rotateY(-52deg) rotateZ(0deg); */
-    /* transform: translate3d(-0%, 5%, 50px) rotateX(-2deg) rotateY(-40deg) rotateZ(0deg); */
-    /* background-color: #ffffff49; */
+    transform: translate3d(-0%, 5%, 0px) rotateX(-15deg) rotateY(-58.5deg) rotateZ(0deg);
 }
 
-.displayContainer.table .display {
-    width: 100;
+.displayContainer.table2 {
+    left: 55.6%;
+    top: 69.2%;
+    height: 13.5%;
+    width: 25.8%;
+    transform: translate3d(-0%, 5%, 0px) rotateX(0deg) rotateY(33deg) rotateZ(-6.5deg);
+}
+
+.displayContainer.table img {
+    width: auto;
+    height: 90%;
 }
 
 .screen.t01,
@@ -509,57 +623,170 @@ Control Object
 .screen.t03,
 .screen.t04,
 .screen.t05 {
-    width: 14%;
-    height: 90%;
+    width: 13%;
+    height: 80%;
     top: 50%;
     transform: translate3d(-50%, -50%, 0) rotateX(16deg) rotateY(0deg) rotateZ(0deg);
-    opacity: 0.8;
     background-color: #b00a0a00;
+    overflow: hidden;
 }
+
+
+
+.displayContainer.table .screen .content img {
+    opacity: 0.8;
+}
+
+
+.screen.tMmain {
+    left: 100%;
+    top: 50%;
+    width: 50%;
+    height: 100%;
+    transform: translate3d(-50%, -50%, 0) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+}
+
 
 
 
 .screen.t01 {
     left: 0%;
+    display: none;
 }
 
 .screen.t02 {
-    left: 20%;
+    left: 35.2%;
+    top: 48.2%;
+    width: 9.6%;
+    height: 68%;
+    transform: translate3d(-50%, -50%, 0) rotateX(14deg) rotateY(2deg) rotateZ(3deg);
 }
 
 .screen.t03 {
-    left: 42.5%;
+    left: 51.8%;
+    top: 52.2%;
+    width: 10%;
+    height: 74%;
+    transform: translate3d(-50%, -50%, 0) rotateX(11deg) rotateY(4deg) rotateZ(3deg);
 }
 
+
 .screen.t04 {
-    left: 64.8%;
+    left: 70.45%;
+    top: 53.2%;
+    width: 10.8%;
+    height: 74%;
+    transform: translate3d(-50%, -50%, 0) rotateX(12deg) rotateY(7deg) rotateZ(0.5deg);
 }
 
 .screen.t05 {
-    left: 86.5%;
+    left: 90%;
+    width: 11.2%;
+    height: 70%;
+    transform: translate3d(-50%, -50%, 0) rotateX(13deg) rotateY(9deg) rotateZ(0deg);
 }
+
+
+
+
+/* BYOD screen */
+
+
+.displayContainer.BYOD {
+    transform-style: preserve-3d;
+    box-shadow: none;
+    opacity: 0.9;
+}
+
+.displayContainer.BYOD.b01 {
+    left: 31.7%;
+    top: 47.9%;
+    height: 6.2%;
+    width: 5.8%;
+    transform: translate3d(0%, 0%, 0px) rotateX(10deg) rotateY(-30deg) rotateZ(14deg);
+}
+
+.displayContainer.BYOD.b02 {
+    left: 37.55%;
+    top: 56.45%;
+    height: 6.2%;
+    width: 5.6%;
+    transform: translate3d(0%, 0%, 0px) rotateX(10deg) rotateY(-30deg) rotateZ(14deg);
+}
+
+
+
+.displayContainer.BYOD.b03 {
+    left: 43.3%;
+    top: 64.5%;
+    height: 6.2%;
+    width: 5.4%;
+    transform: translate3d(0%, 0%, 0px) rotateX(-60deg) rotateY(0deg) rotateZ(-50deg);
+}
+
+
+.displayContainer.BYOD.b04 {
+    left: 45.5%;
+    top: 70%;
+    height: 2.55%;
+    width: 3.45%;
+    transform: translate3d(0%, 0%, 0px) rotateX(-60deg) rotateY(0deg) rotateZ(-54deg);
+}
+
+
+.displayContainer.BYOD.b05 {
+    left: 52.8%;
+    top: 77.9%;
+    height: 3.78%;
+    width: 3.8%;
+    transform: translate3d(0%, 0%, 0px) rotateX(-50deg) rotateY(0deg) rotateZ(-57deg);
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 .display.wb {
-    width: 17%;
-    padding-top: 10%;
-    left: 56%;
-    top: 38%;
-    background-color: #00000000;
+    width: 15%;
+    padding-top: 8.6%;
+    left: 55.85%;
+    top: 27.4%;
+    background-color: #cf151500;
     border: none;
     box-shadow: none;
-    background-image: url(wb.png);
-    background-size: cover;
-    background-position: center;
+    transform-style: preserve-3d;
+    transform: translate3d(-50%, -50%, 0) rotateX(-24deg) rotateY(-34deg) rotateZ(-3.4deg);
+    /* overflow: hidden; */
 }
 
 .display.wb .screen.w01 {
-    width: 70%;
-    height: 67%;
-    top: 39%;
-    transform: translate3d(-52%, -50%, 0) rotateX(-5deg) rotateY(0deg) rotateZ(1deg);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    transform: translate3d(-50%, 0%, 0) rotateX(10deg) rotateY(0deg) rotateZ(0deg);
+    background-color: #000000;
 }
+
+.screen::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 5px #02071fd1;
+}
+
 
 
 
@@ -687,4 +914,304 @@ Control Object
         margin: 0;
         border: none;
     }
+}
+
+
+
+
+/*****************************************
+
+   action Menu Boxs
+
+******************************************/
+
+
+.actionMenuBoxs {
+    background-color: #fff;
+    width: 320px;
+    position: absolute;
+    bottom: 24px;
+    left: 16px;
+    padding: 16px 0;
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    box-shadow: 0 0 20px #041b4148;
+    transition: 0.8s;
+    opacity: 0;
+    transform: translate(-200px, 0);
+}
+
+.actionMenuBoxs.active {
+    opacity: 1;
+    transform: translate(0, 0);
+
+}
+
+
+.actionMenuBoxs * {
+    transition: 0.8s;
+}
+
+
+.actionMenuBoxs .actionMenu .name {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0 24px;
+    margin: 2px 0;
+    background-color: #fff;
+    border-top: 1px solid #00000021;
+    cursor: pointer;
+}
+
+.actionMenuBoxs .actionMenu .name:hover {
+    background-color: #d4d4d4;
+}
+
+.actionMenuBoxs .actionMenu .name::after {
+    content: "";
+    height: 100%;
+    background-color: #00CBFF;
+    width: 8px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    transition: 1s;
+}
+
+
+.actionMenuBoxs .actionMenu .name p {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.actionMenuBoxs .actionMenu .name img {
+    height: 36px;
+    width: 36px;
+    margin-right: 8px;
+
+}
+
+.actionMenuBoxs .actionMenu .describe {
+    color: #053763;
+    overflow: hidden;
+    margin: 0 0 0 32px;
+    height: 0;
+    font-size: 14px;
+}
+
+
+
+.actionMenuBoxs .actionMenu.active .name {
+    height: auto;
+    background-color: #00ccff11;
+}
+
+.actionMenuBoxs .actionMenu.active .name::after {
+    opacity: 1;
+}
+
+
+.actionMenuBoxs .actionMenu.active .describe {
+    height: 90px;
+    padding-bottom: 8px;
+
+}
+
+
+
+
+
+
+/*****************************************
+
+   Flow Menu Boxs
+
+******************************************/
+
+
+
+.flowMenuBoxs {
+    background-color: #000;
+    /* width: 480px; */
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    padding: 8px 4px;
+    border-radius: 32px;
+    box-shadow: 0 0 20px #041b4148;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    transition: 0.8s;
+    box-shadow: 0 0 16px #0000008f;
+}
+
+.flowMenuBoxs .flowMenu {
+    font-size: 16px;
+    margin: 0 4px;
+    padding: 12px 24px;
+    color: #fff;
+    background-color: rgb(0, 0, 0);
+    text-align: center;
+    border-radius: 50px;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+
+.flowMenuBoxs .flowMenu:hover {
+    background-color: rgb(42, 42, 42);
+}
+
+.flowMenuBoxs .flowMenu.active {
+    background-color: #00CBFF;
+    color: #000000d6;
+}
+
+
+
+
+
+
+/*****************************************
+
+   Flow Menu Boxs
+
+******************************************/
+
+
+.action01Container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.action01Container>* {
+    position: absolute;
+}
+
+.action01Container .a01 {
+    left: 52.5%;
+    top: 81%;
+}
+
+.action01Container .a02 {
+    left: 45.1%;
+    top: 71.5%;
+}
+
+.action01Container .a03 {
+    left: 41%;
+    top: 59.7%;
+}
+
+.action01Container .a04 {
+    left: 28.5%;
+    top: 56%;
+}
+
+
+
+
+
+.action03Container {
+    height: 100%;
+    width: 600px;
+    background-color: #ffffff;
+    background: linear-gradient(to left, rgb(223, 223, 223) 0%, rgba(223, 223, 223, 0.95) 100%);
+    position: absolute;
+    top: 0;
+    right: 0;
+    box-shadow: -4px 0 8px #0000002a;
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: 1.8s;
+    transform: translateX(100%);
+    opacity: 0.5;
+}
+
+.action03Container.active {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+
+.action03Container h2 {
+    text-align: center;
+}
+
+
+
+.action03Container .a03Display01 {
+    width: 416px;
+    height: 234px;
+    border: 10px solid #1a1a1a;
+    border-radius: 4px;
+}
+
+.action03Container .a03Display01>img {
+    width: 72px;
+    position: absolute;
+    opacity: 0.65;
+    cursor: pointer;
+    transition: 0.8s;
+    transform: scale(0.85);
+}
+
+.action03Container .a03Display01>img:hover {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.action03Container .a03Display01>img.a01 {
+    right: 2px;
+    top: 2px;
+}
+
+.action03Container .a03Display01>img.a02 {
+    right: 2px;
+    top: 60px;
+}
+
+.action03Container .a03Display01>img.a03 {
+    left: 2px;
+    bottom: 2px;
+}
+
+.action03Container .a03Display01>img.a04 {
+    right: 2px;
+    bottom: 2px;
+}
+
+
+.action03Container .a03Display02 {
+    position: absolute;
+    left: 50%;
+    top: 66%;
+    transform: translate(-50%, 0);
+    width: 177.2px;
+    height: 99.67px;
+}
+
+
+.action03Container .a03Display01 .screen,
+.action03Container .a03Display02 .screen {
+    width: 100%;
+    height: 100%;
+
+}
+
+.action03Container .screen img {
+    transition: 0.5s;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }

@@ -57,6 +57,7 @@ img {
 img.bg {
     opacity: 1;
     z-index: 1000;
+    transition: 2s;
 }
 
 img.bg.off {
@@ -65,18 +66,78 @@ img.bg.off {
     transition: 1s;
 }
 
-video {}
+video {
+    transition: 0.6s;
+}
 
 
 
 
 
+
+video.video {
+    /* background-color: #ffffff6a; */
+    z-index: 5000;
+    left: 88%;
+    top: 50%;
+    height: 70%;
+    width: auto;
+    box-shadow: 0 0 8px #0000009a;
+    border: 6px solid #1e167bb5;
+    border-radius: 8px;
+    transition: 1.2s;
+    transform: translate(-50%, -50%) scale(0.4);
+    opacity: 0;
+}
+
+video.video.show {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+
+
+
+.videoMo {
+    width: 3%;
+    height: 5%;
+    border: 1px solid #ffffff00;
+    z-index: 2000;
+    position: absolute;
+    left: auto;
+    top: auto;
+    transform: translate(0, 0);
+    right: 0;
+    bottom: 0;
+    opacity: 0.1;
+}
+
+.videoMoBox {
+    position: absolute;
+    left: 80%;
+    top: 50%;
+    height: 80%;
+    width: 30%;
+    border: 1px solid #ffffff00;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+
+
+
+
+
+
+
+
+/* upper */
 
 .upperBoxs {
     height: 100%;
     width: 100%;
     opacity: 1;
     z-index: 2000;
+
 }
 
 .uBoxs {
@@ -85,9 +146,29 @@ video {}
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: #00000039;
-    transition: 0.5s;
+    background-color: #00000020;
+    transition: 0.6s;
 }
+
+.uBoxs.off {
+    background-color: #00000000;
+}
+
+.uBoxs.off .uBox {
+    background-color: #15115b00;
+}
+
+.uBoxs.off .uBox::after {
+    background-image: linear-gradient(154deg, #170b8700 8%, #3a25b100 25%, #28078200 63%, rgba(80, 7, 120, 0) 79%);
+    box-shadow: 0 0 32px 0 rgba(0, 0, 0, 0);
+}
+
+.uBoxs.quick .uBox {
+    transition: 0s;
+}
+
+
+
 
 .uBoxs .uBox {
     position: absolute;
@@ -96,88 +177,108 @@ video {}
     transform: translate(-50%, -50%);
     width: 30%;
     padding-top: 16.88%;
-    opacity: 0.73;
+    background-color: #15115b;
+    border-radius: 2px;
+    transition: 1.6s;
+    /* opacity: 0.73;
     border-radius: 15px;
     box-shadow: 0 0 32px 0 rgba(0, 0, 0, 0.69);
-    background-image: linear-gradient(154deg, #2011ab 8%, #503bcf 25%, #9736de 63%, rgba(163, 53, 224, 0.54) 79%);
+    background-image: linear-gradient(154deg, #170b87 8%, #3a25b1 25%, #280782 63%, rgba(80, 7, 120, 0.54) 79%); */
 }
 
 
+
+.uBoxs .uBox::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 103%;
+    height: 106%;
+    transform: translate(-50%, -50%);
+    opacity: 0.6;
+    border-radius: 10px;
+    box-shadow: 0 0 32px 0 rgba(0, 0, 0, 0.69);
+    /* background-color: #ffffff7e; */
+    background-image: linear-gradient(154deg, #170b87 8%, #3a25b1 25%, #280782 63%, rgba(80, 7, 120, 0.54) 79%);
+    transition: 0.4s;
+}
 
 
 
 .uBoxs .uBox.u01 {
-    left: 16%;
-}
-
-.uBoxs .uBox.u02 {
     left: 50%;
 }
 
+
+
+
+
+
+.uBoxs .uBox.u02 {
+    width: 22%;
+    padding-top: 12.38%;
+    left: 12%;
+}
+
 .uBoxs .uBox.u03 {
-    left: 84%;
+
+    left: 50%;
 }
 
 
 
 
 .uBoxs .uBox.u04 {
-    width: 24%;
-    padding-top: 13.5%;
-    left: 13%;
+    width: 22%;
+    padding-top: 12.38%;
+    left: 12%;
 }
 
 .uBoxs .uBox.u05 {
-    width: 8%;
-    padding-top: 16.88%;
-    left: 30%;
-}
-
-.uBoxs .uBox.u06 {
     left: 50%;
 }
 
+.uBoxs .uBox.u06 {
+    width: 22%;
+    padding-top: 12.38%;
+    left: 88%;
+}
+
+
+
+
+
 .uBoxs .uBox.u07 {
-    width: 8%;
-    padding-top: 16.88%;
-    left: 70%;
+    left: 16%;
 }
 
 .uBoxs .uBox.u08 {
-    width: 24%;
-    padding-top: 13.5%;
-    left: 87%;
+    left: 50%;
 }
 
-
-
 .uBoxs .uBox.u09 {
-    width: 22%;
-    padding-top: 12.38%;
-    left: 78%;
-    top: 50%;
+    left: 84%;
 }
 
 
 
 
 .uBoxs .uBox.u10 {
-    width: 18%;
-    padding-top: 12%;
-    left: 10%;
-    top: 50%;
+    width: 22%;
+    padding-top: 12.38%;
+    left: 12%;
 }
 
 .uBoxs .uBox.u11 {
     width: 37.51%;
     padding-top: 16.88%;
     left: 50%;
-    top: 50%;
+    opacity: 0;
 }
 
 .uBoxs .uBox.u12 {
-    width: 26%;
-    padding-top: 14.63%;
-    left: 84%;
-    top: 50%;
+    width: 22%;
+    padding-top: 12.38%;
+    left: 88%;
 }

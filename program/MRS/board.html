@@ -11,10 +11,8 @@
 <body>
     <div class="container">
         <div class="space dark">
-            <!-- <div class="fullScene bgImage"></div> -->
             <video class="fullScene bgImage" src="element/space.mp4"></video>
             <video class="fullScene bgImage d" src="element/space_d.mp4"></video>
-            <!-- <div class="fullScene people" style="background-image: url(element/people.png);"></div> -->
             <div class="displayContainer">
                 <div class="display d01 mainVkObj">
                     <div class="screen"><span></span></div>
@@ -25,25 +23,67 @@
                 <div class="display d03 mainVkObj">
                     <div class="screen"><span></span></div>
                 </div>
-                <div class="display led mainVkObj">
-                    <div class="screen l01"><span></span></div>
-                    <div class="screen l02"><span></span></div>
-                    <div class="screen l03"><span></span></div>
-                    <div class="screen l04"><span></span></div>
+                <div class="display vp mainVkObj x0">
+                    <div class="screen vp01"><span></span></div>
+                    <div class="screen vp02"><span></span></div>
+                    <div class="screen vp03"><span></span></div>
+                    <div class="screen vp04"><span></span></div>
                 </div>
             </div>
             <div class="displayContainer table">
-                <!-- <div class="display d01 mainVkObj"> -->
                 <div class="screen mainVkObj t01"><span></span></div>
                 <div class="screen mainVkObj t02"><span></span></div>
                 <div class="screen mainVkObj t03"><span></span></div>
                 <div class="screen mainVkObj t04"><span></span></div>
                 <div class="screen mainVkObj t05"><span></span></div>
-                <!-- </div> -->
+            </div>
+            <div class="displayContainer table2">
+                <div class="screen mainVkObj tMmain"><span></span></div>
             </div>
             <div class="display wb mainVkObj">
                 <div class="screen w01"><span></span></div>
             </div>
+
+            <div class="displayContainer BYOD b01">
+                <div class="screen mainVkObj"><span></span></div>
+            </div>
+            <div class="displayContainer BYOD b02">
+                <div class="screen mainVkObj"><span></span></div>
+            </div>
+            <div class="displayContainer BYOD b03">
+                <div class="screen mainVkObj"><span></span></div>
+            </div>
+            <div class="displayContainer BYOD b04">
+                <div class="screen mainVkObj"><span></span></div>
+            </div>
+            <div class="displayContainer BYOD b05">
+                <div class="screen mainVkObj"><span></span></div>
+            </div>
+
+            <div class="action01Container">
+                <img class="act01obj a01" src="element/action01_img01.png" alt="">
+                <img class="act01obj a02" src="element/action01_img02.png" alt="">
+                <img class="act01obj a03" src="element/action01_img03.png" alt="">
+                <img class="act01obj a04" src="element/action01_img04.png" alt="">
+            </div>
+
+            <div class="action03Container">
+                <h2>Touch Back and<br>
+                    Control with Touch Screen</h2>
+                <img src="element/action03_img06.png" alt="">
+                <div class="a03Display01">
+                    <div class="screen"><span></span></div>
+                    <img class="act03obj a01" src="element/action03_img02.png" alt="">
+                    <img class="act03obj a02" src="element/action03_img03.png" alt="" style="opacity: 0;">
+                    <img class="act03obj a03" src="element/action03_img04.png" alt="">
+                    <img class="act03obj a04" src="element/action03_img05.png" alt="">
+                </div>
+                <img src="element/action03_img01.png" alt="">
+                <div class="a03Display02">
+                    <div class="screen"><span></span></div>
+                </div>
+            </div>
+
             <div id="messageContainer">
             </div>
             <div class="keypad k01">
@@ -59,15 +99,118 @@
                 </div>
             </div>
         </div>
-        <div class="fliterContainer">
-            <div class="fliterbox">
-                <div class="fliterbtn q1">2</div>
-                <div class="fliterbtn q1">3</div>
-                <div class="fliterbtn q1">LED</div>
+        <div class="flowMenuBoxs">
+            <div class="flowMenu active">Turn on</div>
+            <div class="flowMenu">Round Table</div>
+            <div class="flowMenu">Video Conference</div>
+            <div class="flowMenu">Exit</div>
+        </div>
+        <div class="actionMenuBoxs active">
+            <div class="actionMenu">
+                <div class="name">
+                    <img src="element/icon_share.png" alt="">
+                    <p>Local Content Sharing</p>
+                </div>
+                <div class="describe">
+                    All attendees are allow to quickly share content with their personal
+                    devices.
+                </div>
             </div>
-            <div class="fliterbox">
-                <div class="fliterbtn q2">WD On</div>
-                <div class="fliterbtn q2">WD No</div>
+        </div>
+        <div class="actionMenuBoxs">
+            <div class="actionMenu">
+                <div class="name">
+                    <img src="element/icon_share.png" alt="">
+                    <p>Local Content Sharing</p>
+                </div>
+                <div class="describe">
+                    All attendees are allow to quickly share content with their personal
+                    devices.
+                </div>
+            </div>
+            <div class="actionMenu ">
+                <div class="name">
+                    <img src="element/icon_share.png" alt="">
+                    <p>Enviromental Control</p>
+                </div>
+                <div class="describe">
+                    All attendees are allow to quickly share content with their personal
+                    devices.
+                </div>
+            </div>
+            <div class="actionMenu">
+                <div class="name">
+                    <img src="element/icon_share.png" alt="">
+                    <p>Touch-back</p>
+                </div>
+                <div class="describe">
+                    Through the US series products, remote computers can be controlled through the electronic
+                    whiteboard, making conference discussions more interactive.
+                </div>
+            </div>
+            <div class="actionMenu">
+                <div class="name">
+                    <img src="element/icon_share.png" alt="">
+                    <p>Flexiable A/V Distritbution</p>
+                </div>
+                <div class="describe">
+                    All attendees are allow to quickly share content with their personal
+                    devices.
+                </div>
+            </div>
+        </div>
+        <div class="actionMenuBoxs">
+            <div class="actionMenu">
+                <div class="name">
+                    <img src="element/icon_share.png" alt="">
+                    <p>Local Content Sharing</p>
+                </div>
+                <div class="describe">
+                    All attendees are allow to quickly share content with their personal
+                    devices.
+                </div>
+            </div>
+            <div class="actionMenu">
+                <div class="name">
+                    <img src="element/icon_share.png" alt="">
+                    <p>Enviromental Control</p>
+                </div>
+                <div class="describe">
+                    All attendees are allow to quickly share content with their personal
+                    devices.
+                </div>
+            </div>
+            <div class="actionMenu">
+                <div class="name">
+                    <img src="element/icon_share.png" alt="">
+                    <p>Touch-back</p>
+                </div>
+                <div class="describe">
+                    All attendees are allow to quickly share content with their personal
+                    devices.
+                </div>
+            </div>
+            <div class="actionMenu">
+                <div class="name">
+                    <img src="element/icon_share.png" alt="">
+                    <p>Flexiable A/V Distritbution</p>
+                </div>
+                <div class="describe">
+                    All attendees are allow to quickly share content with their personal
+                    devices.
+                </div>
+            </div>
+        </div>
+        <div class="actionMenuBoxs">
+            <div class="actionMenu">
+                <div class="name">
+                    <img src="element/icon_share.png" alt="">
+                    <p>Local Content Sharing</p>
+                </div>
+                <div class="describe">
+                    All attendees are allow to quickly share content with their personal
+                    devices.
+                </div>
             </div>
         </div>
     </div>

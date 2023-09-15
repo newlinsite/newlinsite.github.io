@@ -209,17 +209,6 @@ var screenContent01 = new vkObject($css("content")[1])
 
 
 
-var keypadBtnElements = $css("keypadBtn")
-var keypadBtns = []
-
-for (let i = 0; i < keypadBtnElements.length; i++) {
-    keypadBtns.push(new vkObject(keypadBtnElements[i]))
-}
-
-
-
-
-
 
 //  ----------------------- 
 //
@@ -228,37 +217,10 @@ for (let i = 0; i < keypadBtnElements.length; i++) {
 //  -----------------------
 
 
-
 // 先把影片關掉
 screenContent01.disappear()
 
-
-
-//buttom
-keypadBtns[0].object.addEventListener("click", () => {
-    keypadBtns[0].onToggle()
-    toggle(lightTag, () => { lightOn() }, () => { lightOff() })
-})
-keypadBtns[1].object.addEventListener("click", () => {
-    keypadBtns[1].press()
-    toggle(projector.upCloseTag,
-        () => {
-            projector.upClose()
-            delay(screen.disappear, 0)
-        },
-        () => {
-            projector.disUpClose()
-            delay(screen.appear, 1200)
-        })
-})
-keypadBtns[2].object.addEventListener("click", () => { keypadBtns[2].press() })
-keypadBtns[3].object.addEventListener("click", () => { keypadBtns[3].press() })
-keypadBtns[4].object.addEventListener("click", () => { keypadBtns[4].press() })
-keypadBtns[5].object.addEventListener("click", () => { keypadBtns[5].press() })
-keypadBtns[6].object.addEventListener("click", () => { keypadBtns[6].press() })
-
-
-
+lightOn()
 
 // 鍵盤快捷鍵
 window.addEventListener("keydown", keyboardListener, false);
@@ -275,24 +237,20 @@ function keyboardListener(e) {
             () => {
                 projector.upClose()
                 delay(screen.disappear, 0)
-                new message("Porjector Off").add()
             },
             () => {
                 projector.disUpClose()
                 delay(screen.appear, 1200)
-                new message("Porjector On").add()
             })
     }
 
-
     if (keyID === 'KeyA') {
         screen.appearToggle()
-        toggle(screen.appearTag, new message("Screen Off").add, new message("Screen On").add)
+
     }
 
     if (keyID === 'KeyZ') {
         projector.upCloseToggle()
-        toggle(screen.upCloseTag, new message("Projector Off").add, new message("Projector On").add)
     }
 
     // content switch
@@ -301,12 +259,10 @@ function keyboardListener(e) {
             () => {
                 screenContent00.appear()
                 screenContent01.disappear()
-                new message("Show Slide").add()
             },
             () => {
                 screenContent00.disappear()
                 screenContent01.appear()
-                new message("Show Video").add()
             })
     }
 
@@ -319,7 +275,6 @@ function keyboardListener(e) {
         delay(screen.appear, 1200)
         screenContent00.disappear()
         screenContent01.appear()
-        new message("Video mode").add()
     }
 
     // meeting mode
@@ -330,7 +285,6 @@ function keyboardListener(e) {
         delay(screen.appear, 1200)
         screenContent00.appear()
         screenContent01.disappear()
-        new message("Meeting mode").add()
     }
 
     // nobody mode
@@ -338,10 +292,8 @@ function keyboardListener(e) {
         people.disappear()
         lightOff()
         projector.upClose()
-
         delay(screen.disappear, 0)
         screen.disappear()
-        new message("Leave mode").add()
     }
 }
 

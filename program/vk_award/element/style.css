@@ -95,8 +95,8 @@ html {
 
 .space {
     width: 100%;
-    padding-top: 50%;
-    /* padding-top: 56.25%; */
+    /* padding-top: 50%; */
+    padding-top: 56.25%;
 }
 
 .space .fullScene {
@@ -113,11 +113,11 @@ html {
 
 
 .space .bgImage {
-    background-image: url(element/background.png);
+    background-image: url(background.png);
 }
 
 .space.dark .bgImage {
-    background-image: url(element/background_dark.png);
+    background-image: url(background_dark.png);
 }
 
 
