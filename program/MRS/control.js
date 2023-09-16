@@ -120,6 +120,8 @@ var vkObject = function (object) {
 
     // define
     this.object = object
+    this.tag = 0
+
 
     // Appear, Opacity
     this.appearTag = 1
@@ -409,6 +411,9 @@ var screenVp01 = new vkObject($css("screen")[3])
 var screenVp02 = new vkObject($css("screen")[4])
 var screenVp03 = new vkObject($css("screen")[5])
 var screenVp04 = new vkObject($css("screen")[6])
+var screenVps = [screenVp01, screenVp02, screenVp03, screenVp04]
+
+
 
 var screenT01 = new vkObject($css("screen")[7])
 var screenT02 = new vkObject($css("screen")[8])
@@ -431,13 +436,35 @@ var screenBYOD05 = new vkObject($css("screen")[18])
 
 
 
-var shareImage = "element/Share default.png"
-var source01 = "element/video.mp4"
-var source02 = "element/slide01.png"
-var source03 = "element/slide02.png"
-var source04 = "element/slide03.png"
+var shareImage = "element/06.png"
+
+var source00 = "element/00.png"
 
 
+var source01 = "element/01.png"
+var source02 = "element/02.png"
+var source03 = "element/03.png"
+var source04 = "element/04.png"
+var source05 = "element/05.png"
+var source06 = "element/06.png"
+
+var source07 = "element/07.png"
+
+var source08 = "element/08.png"
+var source09 = "element/09.png"
+var source10 = "element/10.png"
+var source11 = "element/11.png"
+var source12 = "element/12.png"
+var source13 = "element/13.png"
+var source14 = "element/14.png"
+
+var source15 = "element/15.png"
+var source16 = "element/16.png"
+var source17 = "element/17.png"
+var source18 = "element/18.png"
+var source19 = "element/19.png"
+var source20 = "element/20.png"
+var source21 = "element/21.png"
 
 
 
@@ -450,44 +477,44 @@ var source04 = "element/slide03.png"
 //  -----------------------
 
 
-screen01.input(source02)
-screen02.input(source01)
-screen03.input(source03)
+screen01.input(source00)
+screen02.input(source00)
+screen03.input(source00)
 
 
-screenVp01.input(source03)
+screenVp01.input(source01)
 screenVp02.input(source02)
-screenVp03.input(source04)
+screenVp03.input(source03)
 screenVp04.input(source04)
 
 
-screenT01.input(source02)
-screenT02.input(source02)
-screenT03.input(source02)
-screenT04.input(source02)
-screenT05.input(source02)
-screenTMain.input(source02)
+screenT01.input(source00)
+screenT02.input(source00)
+screenT03.input(source00)
+screenT04.input(source00)
+screenT05.input(source00)
+screenTMain.input(source00)
 
 
 
-screenT01.disappear()
-screenT02.disappear()
-screenT03.disappear()
-screenT04.disappear()
-screenT05.disappear()
-screenTMain.disappear()
+// screenT01.disappear()
+// screenT02.disappear()
+// screenT03.disappear()
+// screenT04.disappear()
+// screenT05.disappear()
+// screenTMain.disappear()
 
 
-screenBYOD01.input(source02)
-screenBYOD02.input(source02)
-screenBYOD03.input(source02)
-screenBYOD04.input(source02)
-screenBYOD05.input(source02)
+screenBYOD01.input(source00)
+screenBYOD02.input(source00)
+screenBYOD03.input(source00)
+screenBYOD04.input(source00)
+screenBYOD05.input(source00)
 
-screenW01.input(source02)
+screenW01.input(source00)
 // whiteBoard.disappear()
-screenForA301.input(source02)
-screenForA302.input(source02)
+screenForA301.input(source00)
+screenForA302.input(source00)
 
 
 
@@ -532,6 +559,8 @@ var actionMenuLen = actionMenu.length
 
 
 
+
+
 //  總關閉功能 -------------------------------
 
 
@@ -553,8 +582,23 @@ var actionMenuAllOff = () => {
 }
 
 var actionAreaAllOff = () => {
-    $css("action03Container")[0].classList.remove("active")
 
+    //a1
+    $css("actionContainer")[0].classList.remove("active")
+    $css("vp")[0].classList.remove("active")
+
+    //a3
+    $css("action03Container")[0].classList.remove("active")
+    screenForA3reset()
+
+    //a7
+    $css("actionContainer")[1].classList.remove("active")
+    screenForA7reset()
+
+    //a4 a5 a6
+    ipad[0].classList.remove("active")
+    ipad[1].classList.remove("active")
+    ipad[2].classList.remove("active")
 }
 
 
@@ -597,20 +641,18 @@ for (let i = 0; i < actionMenuLen; i++) {
 }
 
 
+//-----------------------
+//
+//  左側 Ation 按鈕 客製功能
+//
+//-----------------------
 
-//  左側按鈕 功能
 
 var action = []
 
 
-for (let i = 0; i < actionMenuLen; i++) {
-    action[i] = () => {
-        actionMenu[i].classList.add("active")
-        test(i)
-    }
-}
-
 action[0] = () => {
+
     bgVideoUpAnyway()
 }
 
@@ -618,12 +660,40 @@ action[0] = () => {
 
 
 action[1] = () => {
-    screenVp04.input(shareImage)
+    $css("actionContainer")[0].classList.add("active")
+    $css("vp")[0].classList.add("active")
 
+    bgVideoDownAnyway()
+    screen01.input(source01)
+    screen02.input(source00)
+    screenT02.input(source00)
+    screenT03.input(source00)
+    screenT04.input(source00)
+    screenT05.input(source00)
+    screenTMain.input(source00)
+    screenBYOD01.input(source05)
+    screenBYOD02.input(source04)
+    screenBYOD03.input(source03)
+    screenBYOD04.input(source02)
+    screenBYOD05.input(source01)
+    screenW01.input(source00)
 }
 
 action[2] = () => {
-
+    bgVideoDownAnyway()
+    screen01.input(source01)
+    screen02.input(source07)
+    screenT02.input(source00)
+    screenT03.input(source00)
+    screenT04.input(source00)
+    screenT05.input(source00)
+    screenTMain.input(source00)
+    screenBYOD01.input(source00)
+    screenBYOD02.input(source00)
+    screenBYOD03.input(source00)
+    screenBYOD04.input(source00)
+    screenBYOD05.input(source00)
+    screenW01.input(source00)
 }
 
 
@@ -631,34 +701,69 @@ action[2] = () => {
 
 action[3] = () => {
     $css("action03Container")[0].classList.add("active")
+
+    bgVideoDownAnyway()
+    screen01.input(source01)
+    screen02.input(source07)
+    screenT02.input(source00)
+    screenT03.input(source00)
+    screenT04.input(source00)
+    screenT05.input(source00)
+    screenTMain.input(source00)
+    screenBYOD01.input(source00)
+    screenBYOD02.input(source00)
+    screenBYOD03.input(source00)
+    screenBYOD04.input(source00)
+    screenBYOD05.input(source00)
+    screenW01.input(source09)
+    screenForA301.input(source09)
+    screenForA302.input(source09)
 }
 
 
 action[4] = () => {
+    ipad[0].classList.add("active")
+
+    bgVideoUpAnyway()
+    screen01.input(source01)
+    screen02.input(source07)
+    screenT02.input(source12)
+    screenT03.input(source12)
+    screenT04.input(source12)
+    screenT05.input(source12)
+    screenTMain.input(source00)
+    screenBYOD01.input(source00)
+    screenBYOD02.input(source00)
+    screenBYOD03.input(source00)
+    screenBYOD04.input(source00)
+    screenBYOD05.input(source00)
+    screenW01.input(source09)
+    screenForA301.input(source09)
+    screenForA302.input(source09)
 
 }
 
 
 
 action[5] = () => {
-
+    ipad[1].classList.add("active")
 }
 
 action[6] = () => {
-
+    ipad[2].classList.add("active")
 }
 
 action[7] = () => {
-
+    $css("actionContainer")[1].classList.add("active")
+    screenW01.input(source21)
 }
+
+
+
+
+
 
 action[8] = () => {
-
-}
-
-
-
-action[9] = () => {
 
 }
 
@@ -680,81 +785,35 @@ action[9] = () => {
 
 
 var act01obj = $css("act01obj")
+var vpLayout = 0
 
-var vpLayoutTag = 0
-var vpLoyoutOrder = [0, 0, 0, 0]
+screenVp01.object.remove()
+screenVp02.object.remove()
+screenVp03.object.remove()
+screenVp04.object.remove()
 
 
-
-
-
-
-var vpSourceBox = [source01, source02, source03, source04]
-
-var vpLayoutSwitchUp = (sourceNum) => {
-    if (vpLayoutTag == 0) {
-        screenVp01.input(vpSourceBox[sourceNum])
-        vp.removeCss("x0")
-        vp.addCss("x1")
-        vpLayoutTag = 1
-    } else if (vpLayoutTag == 1) {
-        screenVp02.input(vpSourceBox[sourceNum])
-        vp.removeCss("x1")
-        vp.addCss("x2")
-        vpLayoutTag = 2
-    } else if (vpLayoutTag == 2) {
-        screenVp03.input(vpSourceBox[sourceNum])
-        vp.removeCss("x2")
-        vp.addCss("x3")
-        vpLayoutTag = 3
-    } else if (vpLayoutTag == 3) {
-        screenVp04.input(vpSourceBox[sourceNum])
-        vp.removeCss("x3")
-        vp.addCss("x4")
-        vpLayoutTag = 4
-    }
+for (let i = 0; i < act01obj.length; i++) {
+    act01obj[i].addEventListener("click", () => {
+        let j = i + 1
+        toggle(screenVps[i].tag, () => {
+            vp.object.appendChild(screenVps[i].object)
+            screenVps[i].tag = 1
+            vpLayout = vpLayout + 1
+            act01obj[i].src = "element/action01_img0" + j + "_off.png"
+        }, () => {
+            screenVps[i].object.remove()
+            screenVps[i].tag = 0
+            vpLayout = vpLayout - 1
+            act01obj[i].src = "element/action01_img0" + j + ".png"
+        })
+        if (vpLayout > 1) {
+            vp.removeCss("l0")
+        } else {
+            vp.addCss("l0")
+        }
+    })
 }
-
-var vpLayoutSwitchDown = (sourceNum) => {
-    if (vpLayoutTag == 4) {
-        screenVp01.input(vpSourceBox[sourceNum])
-        vp.removeCss("x4")
-        vp.addCss("x3")
-        vpLayoutTag = 3
-    } else if (vpLayoutTag == 3) {
-        screenVp02.input(vpSourceBox[sourceNum])
-        vp.removeCss("x3")
-        vp.addCss("x2")
-        vpLayoutTag = 2
-    } else if (vpLayoutTag == 2) {
-        screenVp03.input(vpSourceBox[sourceNum])
-        vp.removeCss("x2")
-        vp.addCss("x1")
-        vpLayoutTag = 1
-    } else if (vpLayoutTag == 1) {
-
-    }
-}
-
-
-
-
-
-act01obj[0].addEventListener("click", () => {
-    vpLayoutSwitchUp(0)
-})
-
-act01obj[1].addEventListener("click", () => {
-    vpLayoutSwitchUp(1)
-})
-
-act01obj[2].addEventListener("click", () => {
-    vpLayoutSwitchUp(2)
-})
-
-act01obj[3].addEventListener("click", () => {
-    vpLayoutSwitchDown(2)
-})
 
 
 //  -----------------------
@@ -789,8 +848,18 @@ act03obj[1].addEventListener("click", () => {
     }
 })
 
-var act03slide = [source02, source03, source04]
+var screenForA3reset = () => {
+    A3ScreenSize = 1
+    screenForA301.source.style.transform = 'translate(-50%,-50%) scale(' + A3ScreenSize + ')'
+    screenForA302.source.style.transform = 'translate(-50%,-50%) scale(' + A3ScreenSize + ')'
+    screenW01.source.style.transform = 'translate(-50%,-50%) scale(' + A3ScreenSize + ')'
+    screenBYOD01.source.style.transform = 'translate(-50%,-50%) scale(' + A3ScreenSize + ')'
+}
+
+
+
 var act03slideNum = 1
+var act03slide = [source09, source10, source11, source08]
 
 act03obj[2].addEventListener("click", () => {
     act03slideNum = act03slideNum - 1
@@ -814,6 +883,63 @@ act03obj[3].addEventListener("click", () => {
 
 
 
+
+//  -----------------------
+//
+// Action area  7
+//
+//  -----------------------
+
+
+
+
+
+var act07obj = $css("act07obj")
+var act07objTag = [0, 0, 0]
+var act07CameraP = [
+    'translate(-42%,-20%) scale(' + 3.5 + ')',
+    'translate(-100%,-40%) scale(' + 4 + ')',
+    'translate(-120%,-80%) scale(' + 4 + ')']
+
+
+for (let i = 0; i < act07obj.length; i++) {
+    act07obj[i].addEventListener("click", () => {
+
+        toggle(act07objTag[i], () => {
+
+            for (let j = 0; j < act07obj.length; j++) {
+                act07obj[j].src = "element/action07_img0" + j + ".png"
+                act07objTag[j] = 0
+            }
+            act07obj[i].src = "element/action07_img0" + i + "_off.png"
+            act07objTag[i] = 1
+
+            screenW01.source.style.transform = act07CameraP[i]
+        }, () => {
+            act07obj[i].src = "element/action07_img0" + i + ".png"
+            screenW01.source.style.transform = 'translate(-50%,-50%) scale(' + 1 + ')'
+            act07objTag[i] = 0
+        })
+
+    })
+}
+
+var screenForA7reset = () => {
+    for (let j = 0; j < act07obj.length; j++) {
+        act07obj[j].src = "element/action07_img0" + j + ".png"
+        act07objTag[j] = 0
+    }
+    screenW01.source.style.transform = 'translate(-50%,-50%) scale(' + 1 + ')'
+}
+
+
+//  ----------------------- 
+//
+//  /iPad
+//
+//  -----------------------
+var ipad = $css("ipad")
+var ipadBtns = $css("ipadBtn")
 
 //  ----------------------- 
 //

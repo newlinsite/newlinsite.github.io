@@ -23,6 +23,7 @@
 * {
     position: relative;
     box-sizing: border-box;
+    z-index: 10;
 }
 
 a {
@@ -75,6 +76,9 @@ html {
     height: 936px;
     margin: 0 0 0 auto;
     overflow: hidden;
+    background-image: url(element/bg.png);
+    background-position: center;
+    background-size: cover;
 }
 
 
@@ -182,6 +186,56 @@ fliter
 .fliterbtn:hover {
     opacity: .8;
 }
+
+
+/*****************************************
+
+iPad
+
+******************************************/
+
+
+.ipad {
+    background-image: url(element/ipad_bg.png);
+    background-position: center;
+    background-size: cover;
+    width: 548px;
+    height: 380px;
+    position: absolute;
+    right: 20px;
+    bottom: 126px;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    padding: 48px;
+    opacity: 0;
+    transform: translate(500px, 0);
+    transition: 1s;
+    box-shadow: 0 0 40pxrgba(0, 0, 0, 0.719)2;
+    border-radius: 28px;
+}
+
+.ipad.active {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+
+.ipad .ipadBtn {
+    width: 130px;
+    height: 130px;
+    background-image: url(element/ipad_bg_btn.png);
+    background-position: center;
+    background-size: cover;
+    margin: 4px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.ipad .ipadBtn:hover {
+    opacity: 0.8;
+}
+
 
 
 
@@ -396,7 +450,7 @@ Control Object
 
 .display {
     width: 42%;
-    padding-top: 21.6%;
+    padding-top: 22.5%;
     transform: translate(-50%, 0);
     background-color: #131312;
     border: 1.5px solid #2b2b28;
@@ -435,43 +489,6 @@ Control Object
 
 .space .display.d03 {
     opacity: 0;
-}
-
-
-
-/* VP */
-
-
-.space .display.vp {
-    opacity: 1;
-    display: flex;
-
-}
-
-.space .display.vp::after {
-    content: "";
-    position: absolute;
-    width: 97%;
-    height: 95%;
-    top: 0;
-    left: 0;
-    border: 6px solid #101010;
-    box-shadow: inset 0 0 6px #0000008a;
-}
-
-
-.space .display.vp .screen:after {
-    box-shadow: none;
-}
-
-.space .display.vp .screen {
-    box-shadow: none;
-    width: 50%;
-    height: 50%;
-}
-
-.space .display.vp .screen>* {
-    transition: 0.5s;
 }
 
 
@@ -673,18 +690,19 @@ Control Object
     box-shadow: inset 0 0 5px #02071fd1;
 }
 
-
+.display.wb img {
+    transition: 2.5s;
+}
 
 
 /* screen */
 
 .screen {
     width: 97%;
-    height: 94%;
+    height: 96%;
     box-shadow: 0 0 12px #00000041;
     transition: 0.2s;
     background-color: #1c1c1c;
-
 }
 
 .screen .content {
@@ -696,6 +714,7 @@ Control Object
 .screen .content video,
 .screen .content img {
     width: 100%;
+    height: 100%;
     opacity: 0.9;
 }
 
@@ -965,42 +984,153 @@ Control Object
 
 /*****************************************
 
-   Flow Menu Boxs
+   action01,action07
 
 ******************************************/
 
 
-.action01Container {
+.actionContainer {
     position: absolute;
-    left: 0;
-    top: 0;
+    left: 0%;
+    top: 0%;
     width: 100%;
     height: 100%;
+    transition: 1s;
+    transform: translate(20px, 0);
+    opacity: 0;
+    z-index: 5;
+
 }
 
-.action01Container>* {
+.actionContainer.active {
+    transform: translate(0px, 0);
+    opacity: 1;
+    z-index: 10;
+}
+
+
+
+.actionContainer>* {
     position: absolute;
+    cursor: pointer;
+    transition: 0.8s;
+    opacity: 0.85;
+    transform: scale(0.9);
 }
 
-.action01Container .a01 {
+.actionContainer>*:hover {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.actionContainer .a11 {
     left: 52.5%;
     top: 81%;
 }
 
-.action01Container .a02 {
+.actionContainer .a12 {
     left: 45.1%;
     top: 71.5%;
 }
 
-.action01Container .a03 {
+.actionContainer .a13 {
     left: 41%;
     top: 59.7%;
 }
 
-.action01Container .a04 {
+.actionContainer .a14 {
     left: 28.5%;
     top: 56%;
 }
+
+
+
+
+.actionContainer .a71 {
+    left: 78%;
+    top: 70%;
+}
+
+.actionContainer .a72 {
+    left: 47%;
+    top: 71%;
+}
+
+.actionContainer .a73 {
+    left: 37.5%;
+    top: 61%;
+}
+
+
+
+/* VP */
+
+
+.space .display.vp {
+    opacity: 0;
+    padding-top: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 210px;
+}
+
+.space .display.vp.active {
+    opacity: 1;
+}
+
+
+
+.space .display.vp.l0 {
+    background-image: url(element/06.png);
+    background-size: cover;
+}
+
+.space .display.vp.l0 .screen {
+    width: 100%;
+    height: 100%;
+}
+
+.space .display.vp::after {
+    content: "";
+    position: absolute;
+    width: 98%;
+    height: 95%;
+    top: 0;
+    left: 0;
+    border: 5px solid #101010;
+    box-shadow: inset 0 0 6px #0000008a;
+    z-index: 20;
+}
+
+
+.space .display.vp .screen:after {
+    box-shadow: none;
+}
+
+.space .display.vp .screen {
+    box-shadow: none;
+    width: 50%;
+    height: 50%;
+    overflow: hidden;
+}
+
+.space .display.vp .screen>* {
+    transition: 0.5s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1057,22 +1187,22 @@ Control Object
     transform: scale(1);
 }
 
-.action03Container .a03Display01>img.a01 {
+.action03Container .a03Display01>img.a31 {
     right: 2px;
     top: 2px;
 }
 
-.action03Container .a03Display01>img.a02 {
+.action03Container .a03Display01>img.a32 {
     right: 2px;
     top: 60px;
 }
 
-.action03Container .a03Display01>img.a03 {
+.action03Container .a03Display01>img.a33 {
     left: 2px;
     bottom: 2px;
 }
 
-.action03Container .a03Display01>img.a04 {
+.action03Container .a03Display01>img.a34 {
     right: 2px;
     bottom: 2px;
 }
