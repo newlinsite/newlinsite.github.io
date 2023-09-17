@@ -47,7 +47,7 @@ span.g-icon {
     --sec-color: #65A9BF;
     --ter-color: #f2f2ee;
     --no-color: #B1AFAF;
-    --bg-color: #ffffff;
+    --bg-color: #000000;
     /* --bg-color: #fff; */
     --aug-color: #c6c6c6;
     --aug-light-color: #ececeb;
@@ -76,9 +76,6 @@ html {
     height: 936px;
     margin: 0 0 0 auto;
     overflow: hidden;
-    background-image: url(element/bg.png);
-    background-position: center;
-    background-size: cover;
 }
 
 
@@ -124,6 +121,7 @@ html {
     top: 0;
     align-self: start;
     transition: 1.5s;
+
 }
 
 
@@ -137,6 +135,19 @@ html {
 
 .space.dark .bgImage.d {
     opacity: 1;
+}
+
+
+.space .fullScene {
+    background-image: url(element/bg.png);
+    background-position: center;
+    background-size: cover;
+}
+
+.space.dark .fullScene {
+    background-image: url(element/bgd.png);
+    background-position: center;
+    background-size: cover;
 }
 
 
@@ -250,20 +261,27 @@ Keypad
 
 .keypad {
     position: absolute;
-    width: 16%;
-    padding-top: 24%;
+    width: 14.5%;
+    padding-top: 22%;
     border-radius: 15px;
     background-color: #ececec;
     box-shadow: 0 0 16px #00000049;
     border: 3px solid #c3c3c3;
-    cursor: pointer;
     opacity: 0;
-    height: 0;
+    transform: translate(-200%, 0);
+    transition: 1.5s;
+}
+
+.keypad.on {
+    opacity: 1;
+    transform: translate(0, 0);
+
 }
 
 
+
 .keypad.k01 {
-    bottom: 20%;
+    bottom: 18%;
     left: 6%;
 }
 
@@ -290,12 +308,14 @@ Keypad
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .keypad .keypadBtn span {
     position: absolute;
-    font-size: 14px;
+    font-size: 15px;
     letter-spacing: -0.02em;
+    text-align: center;
 }
 
 .keypad .keypadBtn:hover {
@@ -329,6 +349,20 @@ Keypad
 
 .keypad .keypadBtn.x0 {
     display: none;
+
+}
+
+.keypad .keypadBtn.disable {
+    cursor: default;
+    color: #989898;
+    opacity: 0.95;
+}
+
+
+
+
+.keypad .keypadBtn.disable:hover {
+    opacity: 1;
 }
 
 .keypad .keypadBtn.press::after {
@@ -955,6 +989,11 @@ Control Object
     box-shadow: 0 0 16px #0000008f;
 }
 
+.flowMenuBoxs.off {
+    opacity: 0;
+    transform: translate(-50%, -50%);
+}
+
 .flowMenuBoxs .flowMenu {
     font-size: 16px;
     margin: 0 4px;
@@ -998,14 +1037,18 @@ Control Object
     transition: 1s;
     transform: translate(20px, 0);
     opacity: 0;
-    z-index: 5;
-
+    /* z-index: 5; */
+    pointer-events: none;
 }
 
 .actionContainer.active {
     transform: translate(0px, 0);
     opacity: 1;
-    z-index: 10;
+    /* z-index: 10; */
+}
+
+.actionContainer.active>* {
+    pointer-events: all;
 }
 
 
@@ -1114,10 +1157,7 @@ Control Object
     width: 50%;
     height: 50%;
     overflow: hidden;
-}
-
-.space .display.vp .screen>* {
-    transition: 0.5s;
+    transition: 0s;
 }
 
 
@@ -1128,10 +1168,94 @@ Control Object
 
 
 
+.action02Container {
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+    transition: 1s;
+    transform: translate(0, -8%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.action02Container.active {
+    transform: translate(0, 0);
+    opacity: 1;
+}
+
+.action02Container.active input {
+    pointer-events: all;
+}
+
+.action02Container .action02Co2,
+.action02Container .action02Air {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    animation-name: co2;
+    animation-duration: 20s;
+    animation-iteration-count: 10;
+    opacity: 0;
+    transition: 0.6s;
+}
+
+.action02Container .action02Air {
+    background-color: #fff;
+    background: linear-gradient(to bottom, #1e5799 0%, #2989d880 50%, #7dbae800 100%);
+    height: 30%;
+    opacity: 0.5;
+}
 
 
 
 
+.action02Container .action02Slider {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.95);
+    background-color: #fffffff1;
+    box-shadow: 0 0 32px #000000c0;
+    border: 4px solid #ebebeb;
+    border-radius: 60px;
+    padding: 12px 35px;
+    display: flex;
+    justify-content: center;
+    transition: 0.8s;
+}
+
+.action02Container .action02Slider:hover {
+    background-color: #fffffff8;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.action02Container .action02Slider input {
+    width: 80%;
+    width: 200px;
+    margin: 0 24px;
+}
+
+
+
+
+@keyframes co2 {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(0, -20%);
+    }
+
+
+    100% {
+        transform: translate(0, 0);
+    }
+
+}
 
 
 
@@ -1230,4 +1354,196 @@ Control Object
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* share */
+
+.sharebtn {
+    position: absolute;
+    font-weight: 400;
+    right: 36px;
+    top: 36px;
+    color: #fff;
+    border: 1px solid #ffffffa5;
+    border-radius: 60px;
+    padding: 10px 24px;
+    background-color: #ffffff00;
+    transition: 0.5s;
+    cursor: pointer;
+    box-shadow: 0 0 16px #0000004e;
+}
+
+.sharebtn:hover {
+    background-color: #ffffff49;
+    border: 1px solid #ffffff;
+    box-shadow: 0 0 16px #00000092;
+}
+
+
+
+
+.shareContainer {
+    content: "";
+    background-color: #0000005b;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: 1s;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.shareContainer.on {
+    opacity: 1;
+    pointer-events: all;
+}
+
+
+.shareContainer .shareContent {
+    width: 50%;
+    height: 100%;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 64px;
+    overflow-y: scroll;
+    transition: 1s;
+    transform: translate(100%, 0);
+    opacity: 0.5;
+}
+
+.shareContainer.on .shareContent {
+    transform: translate(0, 0);
+    opacity: 1;
+}
+
+.shareContainer img {
+    width: 100%;
+}
+
+.shareContainer .shareBlack {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.shareContainer img.openQrcord {
+    cursor: pointer;
+}
+
+.shareContainer img.qrcord {
+    position: absolute;
+    top: 98px;
+    right: 110px;
+    width: 240px;
+    height: 240px;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.shareContainer img.qrcord.on {
+    opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+.back {
+    position: absolute;
+    top: 36px;
+    left: 36px;
+    width: 50px;
+    height: 50px;
+    background-image: url(element/back.png);
+    transition: 0.4s;
+    opacity: 0.8;
+}
+
+.back:hover {
+    opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.loadingMask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    pointer-events: none;
+    transition: 1s;
+}
+
+.loadingMask::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    animation: spin-stretch 2s ease infinite;
+    width: 5em;
+    height: 6em;
+    border: 10px solid transparent;
+    border-top-color: #1a9fd8;
+    border-bottom-color: #1a9fd8;
+    border-radius: 50%;
+    animation: spin-stretch 2s ease infinite;
+}
+
+@keyframes spin-stretch {
+    50% {
+        transform: translate(-50%, -50%) rotate(360deg) scale(0.4, 0.33);
+        border-width: 10px;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(720deg) scale(1, 1);
+        border-width: 10px;
+    }
+}
+
+
+.loadingMask.off {
+    opacity: 0;
+}
+
+.loadingMask.z0 {
+    z-index: 0;
 }

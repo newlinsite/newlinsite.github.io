@@ -393,6 +393,8 @@ var space = $css("space")[0]
 
 
 // 建立keypad
+var keypad = new vkObject($css("keypad")[0])
+
 var keypadBtnElements = $css("keypadBtn")
 var keypadBtns = []
 for (let i = 0; i < keypadBtnElements.length; i++) {
@@ -519,13 +521,10 @@ screenForA302.input(source00)
 
 
 
-lightOn()
-
-
-
-
-
-
+window.onload = () => {
+    delay(() => { $css("loadingMask")[0].classList.add("off") }, 1000, 15)
+    delay(() => { $css("loadingMask")[0].classList.add("z0") }, 3000, 16)
+}
 
 
 
@@ -539,8 +538,38 @@ lightOn()
 //
 //  -------------------------------------------------------------------------
 //  -------------------------------------------------------------------------
+//  ----------------------- 
+//
+//  share   Connection Diagram
+//
+//  -----------------------
+
+var sharebtn = $css("sharebtn")[0]
+var shareContainer = $css("shareContainer")[0]
+var openQrcord = $css("openQrcord")[0]
+var closeQrcord = $css("closeQrcord")[0]
+var qrcord = $css("qrcord")[0]
+var shareContent = $css("shareContent")[0]
+var shareBlack = $css("shareBlack")[0]
 
 
+sharebtn.addEventListener("click", () => {
+    shareContainer.classList.add("on")
+})
+
+shareBlack.addEventListener("click", () => {
+    shareContainer.classList.remove("on")
+})
+
+openQrcord.addEventListener("click", () => {
+    qrcord.classList.add("on")
+})
+
+
+
+closeQrcord.addEventListener("click", () => {
+    qrcord.classList.remove("on")
+})
 
 //  ----------------------- 
 //
@@ -583,9 +612,12 @@ var actionMenuAllOff = () => {
 
 var actionAreaAllOff = () => {
 
-    //a1
+    //a1    
     $css("actionContainer")[0].classList.remove("active")
     $css("vp")[0].classList.remove("active")
+
+    //a2
+    $css("action02Container")[0].classList.remove("active")
 
     //a3
     $css("action03Container")[0].classList.remove("active")
@@ -602,27 +634,31 @@ var actionAreaAllOff = () => {
 }
 
 
-//  上方按鈕 狀態改變
+//  上方 flowMenu 按鈕 狀態改變&功能
+
+var flowMenuAction = (i) => {
+    flowMenuAllOff()
+    actionBoxsAllOff()
+    actionMenuAllOff()
+    actionAreaAllOff()
+    flowMenu[i].classList.add("active")
+    actionBoxs[i].classList.add("active")
+    if (i == 0) {
+        j = 0
+    } else if (i == 1) {
+        j = 1
+    } else if (i == 2) {
+        j = 5
+    } else if (i == 3) {
+        j = 8
+    }
+    action[j]()
+    actionMenu[j].classList.add("active")
+}
 
 for (let i = 0; i < flowMenuLen; i++) {
     flowMenu[i].addEventListener("click", () => {
-        flowMenuAllOff()
-        actionBoxsAllOff()
-        actionMenuAllOff()
-        actionAreaAllOff()
-        flowMenu[i].classList.add("active")
-        actionBoxs[i].classList.add("active")
-        if (i == 0) {
-            j = 0
-        } else if (i == 1) {
-            j = 1
-        } else if (i == 2) {
-            j = 5
-        } else if (i == 3) {
-            j = 9
-        }
-        action[j]()
-        actionMenu[j].classList.add("active")
+        flowMenuAction(i)
     })
 }
 
@@ -653,36 +689,10 @@ var action = []
 
 action[0] = () => {
 
-    bgVideoUpAnyway()
-}
-
-
-
-
-action[1] = () => {
-    $css("actionContainer")[0].classList.add("active")
-    $css("vp")[0].classList.add("active")
-
+    delay(lightOn, 0, 10)
     bgVideoDownAnyway()
     screen01.input(source01)
     screen02.input(source00)
-    screenT02.input(source00)
-    screenT03.input(source00)
-    screenT04.input(source00)
-    screenT05.input(source00)
-    screenTMain.input(source00)
-    screenBYOD01.input(source05)
-    screenBYOD02.input(source04)
-    screenBYOD03.input(source03)
-    screenBYOD04.input(source02)
-    screenBYOD05.input(source01)
-    screenW01.input(source00)
-}
-
-action[2] = () => {
-    bgVideoDownAnyway()
-    screen01.input(source01)
-    screen02.input(source07)
     screenT02.input(source00)
     screenT03.input(source00)
     screenT04.input(source00)
@@ -699,9 +709,44 @@ action[2] = () => {
 
 
 
+action[1] = () => {
+    $css("actionContainer")[0].classList.add("active")
+    $css("vp")[0].classList.add("active")
+
+    delay(lightOn, 0, 10)
+    bgVideoDownAnyway()
+    screen01.input(source01)
+    screen02.input(source00)
+    screenBYOD01.input(source05)
+    screenBYOD02.input(source04)
+    screenBYOD03.input(source03)
+    screenBYOD04.input(source02)
+    screenBYOD05.input(source01)
+    screenW01.input(source00)
+}
+
+action[2] = () => {
+    $css("action02Container")[0].classList.add("active")
+    delay(lightOn, 0, 10)
+    bgVideoDownAnyway()
+    screen01.input(source01)
+    screen02.input(source07)
+    screenBYOD01.input(source00)
+    screenBYOD02.input(source00)
+    screenBYOD03.input(source00)
+    screenBYOD04.input(source00)
+    screenBYOD05.input(source00)
+    screenW01.input(source00)
+}
+
+
+
+
 action[3] = () => {
     $css("action03Container")[0].classList.add("active")
 
+
+    delay(lightOn, 0, 10)
     bgVideoDownAnyway()
     screen01.input(source01)
     screen02.input(source07)
@@ -723,7 +768,10 @@ action[3] = () => {
 
 action[4] = () => {
     ipad[0].classList.add("active")
+    ipadBtns[0].style.backgroundImage = "url(element/actionIpadBtn_img" + 0 + "_on.png)"
 
+
+    delay(lightOn, 0, 10)
     bgVideoUpAnyway()
     screen01.input(source01)
     screen02.input(source07)
@@ -738,23 +786,57 @@ action[4] = () => {
     screenBYOD04.input(source00)
     screenBYOD05.input(source00)
     screenW01.input(source09)
-    screenForA301.input(source09)
-    screenForA302.input(source09)
-
 }
 
 
 
 action[5] = () => {
     ipad[1].classList.add("active")
+    ipadBtns[3].style.backgroundImage = "url(element/actionIpadBtn_img" + 3 + "_on.png)"
+
+    delay(lightOn, 0, 10)
+    bgVideoDownAnyway()
+    screen01.input(source17)
+    screen02.input(source18)
+    screenBYOD01.input(source00)
+    screenBYOD02.input(source00)
+    screenBYOD03.input(source00)
+    screenBYOD04.input(source00)
+    screenBYOD05.input(source00)
+    screenW01.input(source14)
+
+
 }
 
 action[6] = () => {
     ipad[2].classList.add("active")
+    ipadBtns[6].style.backgroundImage = "url(element/actionIpadBtn_img" + 6 + "_on.png)"
+
+
+    delay(lightOn, 0, 10)
+    bgVideoDownAnyway()
+    screen01.input(source17)
+    screen02.input(source18)
+    screenBYOD01.input(source00)
+    screenBYOD02.input(source00)
+    screenBYOD03.input(source00)
+    screenBYOD04.input(source00)
+    screenBYOD05.input(source00)
+    screenW01.input(source14)
 }
 
 action[7] = () => {
     $css("actionContainer")[1].classList.add("active")
+
+    delay(lightOn, 0, 10)
+    bgVideoDownAnyway()
+    screen01.input(source17)
+    screen02.input(source18)
+    screenBYOD01.input(source00)
+    screenBYOD02.input(source00)
+    screenBYOD03.input(source00)
+    screenBYOD04.input(source00)
+    screenBYOD05.input(source00)
     screenW01.input(source21)
 }
 
@@ -764,7 +846,22 @@ action[7] = () => {
 
 
 action[8] = () => {
+    delay(lightOff, 1500, 10)
 
+    bgVideoDownAnyway()
+    screen01.input(source00)
+    screen02.input(source00)
+    screenT02.input(source00)
+    screenT03.input(source00)
+    screenT04.input(source00)
+    screenT05.input(source00)
+    screenTMain.input(source00)
+    screenBYOD01.input(source00)
+    screenBYOD02.input(source00)
+    screenBYOD03.input(source00)
+    screenBYOD04.input(source00)
+    screenBYOD05.input(source00)
+    screenW01.input(source00)
 }
 
 
@@ -814,6 +911,60 @@ for (let i = 0; i < act01obj.length; i++) {
         }
     })
 }
+
+//  -----------------------
+//
+// Action area  2
+//
+//  -----------------------
+
+var act02C02 = $css("action02Co2")
+var act02Slider = $id("action02Slider")
+var action02Air = $css("action02Air")[0]
+
+
+act02Slider.addEventListener("change", (e) => {
+    let value = e.target.value
+    if (value == 0) {
+        act02C02[1].style.opacity = 0
+        act02C02[2].style.opacity = 0
+        act02C02[3].style.opacity = 0
+        act02C02[4].style.opacity = 0
+        action02Air.style.opacity = 0.5
+        action02Air.style.height = "30%"
+    } else if (value == 1) {
+        act02C02[1].style.opacity = 1
+        act02C02[2].style.opacity = 0
+        act02C02[3].style.opacity = 0
+        act02C02[4].style.opacity = 0
+        action02Air.style.opacity = 0.5
+        action02Air.style.height = "40%"
+    } else if (value == 2) {
+        act02C02[1].style.opacity = 1
+        act02C02[2].style.opacity = 1
+        act02C02[3].style.opacity = 0
+        act02C02[4].style.opacity = 0
+        action02Air.style.opacity = 0.6
+        action02Air.style.height = "60%"
+    } else if (value == 3) {
+        act02C02[1].style.opacity = 1
+        act02C02[2].style.opacity = 1
+        act02C02[3].style.opacity = 1
+        act02C02[4].style.opacity = 0
+        action02Air.style.opacity = 0.8
+        action02Air.style.height = "70%"
+    } else if (value == 4) {
+        act02C02[1].style.opacity = 1
+        act02C02[2].style.opacity = 1
+        act02C02[3].style.opacity = 1
+        act02C02[4].style.opacity = 1
+        action02Air.style.opacity = 1
+        action02Air.style.height = "85%"
+    }
+
+})
+
+
 
 
 //  -----------------------
@@ -882,13 +1033,87 @@ act03obj[3].addEventListener("click", () => {
 
 
 
-
-
 //  -----------------------
 //
-// Action area  7
+// Action area  4 5 6
 //
 //  -----------------------
+
+
+var ipadBtns = $css("ipadBtn")
+var ipadBtnsAlloff = () => {
+    for (let i = 0; i < ipadBtns.length; i++) {
+        ipadBtns[i].style.backgroundImage = "url(element/actionIpadBtn_img" + i + ".png)"
+    }
+}
+
+for (let i = 0; i < ipadBtns.length; i++) {
+    ipadBtns[i].addEventListener("click", () => {
+        ipadBtnsAlloff()
+        ipadBtns[i].style.backgroundImage = "url(element/actionIpadBtn_img" + i + "_on.png)"
+        ipadBtnsAction[i]()
+    })
+}
+
+
+var ipadBtnsAction = []
+
+
+
+
+ipadBtnsAction[0] = () => {
+    bgVideoUpAnyway()
+    screenT02.input(source12)
+    screenT03.input(source12)
+    screenT04.input(source12)
+    screenT05.input(source12)
+}
+ipadBtnsAction[1] = () => {
+    bgVideoUpAnyway()
+    screenT02.input(source12)
+    screenT03.input(source13)
+    screenT04.input(source12)
+    screenT05.input(source13)
+}
+ipadBtnsAction[2] = () => {
+    bgVideodownAnyway()
+}
+
+
+
+
+ipadBtnsAction[3] = () => {
+    screen01.input(source17)
+    screen02.input(source18)
+    screenW01.input(source14)
+}
+
+ipadBtnsAction[4] = () => {
+    screen01.input(source17)
+    screen02.input(source18)
+    screenW01.input(source15)
+}
+
+ipadBtnsAction[5] = () => {
+    screen01.input(source17)
+    screen02.input(source18)
+    screenW01.input(source16)
+}
+
+
+
+ipadBtnsAction[6] = () => {
+    screen01.input(source17)
+    screen02.input(source18)
+    screenW01.input(source14)
+}
+ipadBtnsAction[7] = () => {
+    screen01.input(source19)
+    screen02.input(source20)
+    screenW01.input(source16)
+}
+
+
 
 
 
@@ -948,38 +1173,25 @@ var ipadBtns = $css("ipadBtn")
 //  -----------------------
 
 
+
 keypadBtns[0].object.addEventListener("click", () => {
     keypadBtns[0].onToggle()
-    toggle(lightTag, lightOn, lightOff)
+    keypad.off()
+    $css("flowMenuBoxs")[0].classList.remove("off")
+    flowMenuAction(0)
 })
 keypadBtns[1].object.addEventListener("click", () => {
     keypadBtns[1].press()
-    screen01.input(source01)
-    vp01.input(source01)
+    keypad.off()
+    $css("flowMenuBoxs")[0].classList.remove("off")
+    flowMenuAction(1)
 })
 keypadBtns[2].object.addEventListener("click", () => {
     keypadBtns[2].press()
-    screen01.input(source02)
-    vp01.input(source02)
+    keypad.off()
+    $css("flowMenuBoxs")[0].classList.remove("off")
+    flowMenuAction(2)
 })
-keypadBtns[3].object.addEventListener("click", () => {
-    keypadBtns[3].press()
-    screen01.input(source03)
-    vp01.input(source03)
-})
-keypadBtns[4].object.addEventListener("click", () => {
-    keypadBtns[4].onToggle()
-    bgVideoToggle()
-})
-keypadBtns[5].object.addEventListener("click", () => {
-    keypadBtns[5].press()
-    screenW01.input(source01)
-})
-keypadBtns[6].object.addEventListener("click", () => {
-    keypadBtns[6].press()
-    screenW01.input(source03)
-})
-
 
 
 
