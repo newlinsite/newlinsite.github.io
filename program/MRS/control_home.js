@@ -46,7 +46,7 @@ toggle = (tag, do1, do0) => {
 var mouseMask = $css("mouseMask")[0]
 
 document.addEventListener("mousemove", (e) => {
-    let gradient = "radial-gradient(circle at " + e.x + "px " + e.y + "px , #00000000 0%, #00000000 6%, #00000088 40%, #000000 100%)"
+    let gradient = "radial-gradient(circle at " + e.x + "px " + e.y + "px , #00000000 0%, #00000000 10%, #00000088 40%, #000000 100%)"
     mouseMask.style.background = gradient
 })
 

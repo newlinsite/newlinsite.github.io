@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body,
+        html {
+            height: 100%;
+            width: 100%;
+            background-color: #a8a8a8;
+            margin: 0;
+
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* 添加一些基本的CSS樣式，使輸入框和按鍵看起來更好 */
+        input {
+            width: 40%;
+            font-size: 80px;
+            text-align: center;
+        }
+
+        .container>* {
+            margin: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <input type="text" id="numberInput" value="000" readonly>
+    </div>
+
+
+    <script>
+        var number = 0;
+        var isLongPressing = false;
+        var interval;
+
+        var isPressing = false
+
+        // 更新輸入框的數字
+
+        function updateNumber() {
+            document.getElementById("numberInput").value = padNumber(number);
+        }
+        function padNumber(num) {
+            var numStr = num.toString();
+            while (numStr.length < 3) {
+                numStr = "0" + numStr;
+            }
+            return numStr;
+        }
+
+
+
+
+
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "ArrowUp") {
+                if (isPressing == false) {
+                    isPressing = true;
+                    enterPress = setTimeout(() => {
+                        interval = setInterval(function () {
+                            isLongPressing = true;
+                            number = (number + 10) % 255;
+                            updateNumber();
+                        }, 200);
+                    }, 1000)
+                }
+            }
+            if (event.key === "ArrowDown") {
+                if (isPressing == false) {
+                    isPressing = true;
+                    enterPress = setTimeout(() => {
+                        interval = setInterval(function () {
+                            isLongPressing = true;
+                            number = (number - 10) % 255;
+                            if (number < 0) {
+                                number = number + 255
+                            }
+                            updateNumber();
+                        }, 200);
+                    }, 1000)
+                }
+            }
+        });
+
+
+        setInterval(console.log(1), 10)
+        document.addEventListener("keyup", function (event) {
+            if (event.key === "ArrowUp") {
+                if (isLongPressing == false) {
+                    number = (number + 1) % 255;
+                    updateNumber();
+                }
+                isPressing = false;
+                isLongPressing = false;
+                clearInterval(interval);
+                clearTimeout(enterPress);
+            }
+            if (event.key === "ArrowDown") {
+                if (isLongPressing == false) {
+                    number = (number - 1) % 255;
+                    if (number < 0) {
+                        number = number + 256
+                    }
+                    updateNumber();
+                }
+                isPressing = false;
+                isLongPressing = false;
+                clearInterval(interval);
+                clearTimeout(enterPress);
+            }
+        });
+
+        function padNumber(num) {
+            var numStr = num.toString();
+            while (numStr.length < 3) {
+                numStr = "0" + numStr;
+            }
+            return numStr;
+        }
+
+
+    </script>
+</body>
+
+</html>

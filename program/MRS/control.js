@@ -74,10 +74,12 @@ delay = (doSomething, delayTime, num = 0) => {
 var lightTag = 0
 lightOn = () => {
     space.classList.remove("dark")
+    $css("container")[0].classList.add("on")
     lightTag = 1
 }
 lightOff = () => {
     space.classList.add("dark")
+    $css("container")[0].classList.remove("on")
     lightTag = 0
 }
 
@@ -229,14 +231,14 @@ var vkObject = function (object) {
 //  -------------------------------------------------------------------
 
 
-var bgVideo = $css("bgImage")[0]
-var bgVideo_d = $css("bgImage")[1]
+var bgVideo = $css("bgVideo")[1]
+var bgVideo_d = $css("bgVideo")[0]
 var bgVideoTag = 0
 var bgVideoIngTag = 0
 
 bgVideo.addEventListener('timeupdate', function () {
     if (bgVideoTag == 0) {
-        if (bgVideo.currentTime >= 4) {
+        if (bgVideo.currentTime >= 4 && bgVideo.currentTime <= 5) {
             bgVideo.pause();
             bgVideo_d.pause();
             bgVideoIngTag = 0
@@ -451,6 +453,7 @@ var source05 = "element/05.png"
 var source06 = "element/06.png"
 
 var source07 = "element/07.png"
+var source07 = "element/video.mp4"
 
 var source08 = "element/08.png"
 var source09 = "element/09.png"
@@ -499,12 +502,12 @@ screenTMain.input(source00)
 
 
 
-// screenT01.disappear()
-// screenT02.disappear()
-// screenT03.disappear()
-// screenT04.disappear()
-// screenT05.disappear()
-// screenTMain.disappear()
+screenT01.disappear()
+screenT02.disappear()
+screenT03.disappear()
+screenT04.disappear()
+screenT05.disappear()
+screenTMain.disappear()
 
 
 screenBYOD01.input(source00)
@@ -755,7 +758,7 @@ action[3] = () => {
     screenT04.input(source00)
     screenT05.input(source00)
     screenTMain.input(source00)
-    screenBYOD01.input(source00)
+    screenBYOD01.input(source09)
     screenBYOD02.input(source00)
     screenBYOD03.input(source00)
     screenBYOD04.input(source00)
@@ -921,7 +924,7 @@ for (let i = 0; i < act01obj.length; i++) {
 var act02C02 = $css("action02Co2")
 var act02Slider = $id("action02Slider")
 var action02Air = $css("action02Air")[0]
-
+var action02Air02 = $css("action02Air")[1]
 
 act02Slider.addEventListener("change", (e) => {
     let value = e.target.value
@@ -932,6 +935,8 @@ act02Slider.addEventListener("change", (e) => {
         act02C02[4].style.opacity = 0
         action02Air.style.opacity = 0.5
         action02Air.style.height = "30%"
+        action02Air.style.animationDuration = "15s"
+        action02Air02.style.opacity = 0.1
     } else if (value == 1) {
         act02C02[1].style.opacity = 1
         act02C02[2].style.opacity = 0
@@ -939,6 +944,8 @@ act02Slider.addEventListener("change", (e) => {
         act02C02[4].style.opacity = 0
         action02Air.style.opacity = 0.5
         action02Air.style.height = "40%"
+        action02Air.style.animationDuration = "10s"
+        action02Air02.style.opacity = 0.2
     } else if (value == 2) {
         act02C02[1].style.opacity = 1
         act02C02[2].style.opacity = 1
@@ -946,6 +953,8 @@ act02Slider.addEventListener("change", (e) => {
         act02C02[4].style.opacity = 0
         action02Air.style.opacity = 0.6
         action02Air.style.height = "60%"
+        action02Air.style.animationDuration = "8s"
+        action02Air02.style.opacity = 0.4
     } else if (value == 3) {
         act02C02[1].style.opacity = 1
         act02C02[2].style.opacity = 1
@@ -953,6 +962,8 @@ act02Slider.addEventListener("change", (e) => {
         act02C02[4].style.opacity = 0
         action02Air.style.opacity = 0.8
         action02Air.style.height = "70%"
+        action02Air.style.animationDuration = "5s"
+        action02Air02.style.opacity = 0.5
     } else if (value == 4) {
         act02C02[1].style.opacity = 1
         act02C02[2].style.opacity = 1
@@ -960,6 +971,8 @@ act02Slider.addEventListener("change", (e) => {
         act02C02[4].style.opacity = 1
         action02Air.style.opacity = 1
         action02Air.style.height = "85%"
+        action02Air.style.animationDuration = "2.5s"
+        action02Air02.style.opacity = 0.7
     }
 
 })
@@ -1076,7 +1089,7 @@ ipadBtnsAction[1] = () => {
     screenT05.input(source13)
 }
 ipadBtnsAction[2] = () => {
-    bgVideodownAnyway()
+    bgVideoDownAnyway()
 }
 
 

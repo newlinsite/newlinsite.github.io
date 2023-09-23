@@ -1,10 +1,5 @@
 
 
-
-
-
-
-
 //  -------------------------------------------------------------------
 //
 //  功能
@@ -26,14 +21,16 @@ var $tag = function (name) {
 // Delay
 // ------------------------
 
-// 創造容器
+// 創造延遲容器
 var delayContainer = []
+//0~9 給功能用
+//10~24給影片轉場用
+//25~29 自由使用
 for (let i = 0; i < 30; i++) {
     delayContainer.push({ id: null })
 }
 //delay fuction
 delay = (doSomething, delayTime, num = 0) => {
-    // console.log("delay start", num)
     //如 delay 執行中則取消此 delay 後不動作
     if (delayContainer[num].id !== null) {
         clearTimeout(delayContainer[num].id);
@@ -45,10 +42,11 @@ delay = (doSomething, delayTime, num = 0) => {
         delayContainer[num].id = setTimeout(() => {
             doSomething()
             delayContainer[num].id = null
-            // console.log("delay over", num)
         }, delayTime);
     }
 }
+
+
 
 
 //  -------------------------------------------------------------------
@@ -57,27 +55,37 @@ delay = (doSomething, delayTime, num = 0) => {
 // 
 //  -------------------------------------------------------------------
 
-
-
-
-var media = function (object, type = "img", delayContainer = 10, muted = true, stop = true, loop = false) {
+var media = function (object, type = "img", videoWidth = 100, delayContainer = 10, muted = "muted", stop = "stop", loop = "unloop") {
 
     // define
     this.object = object
 
-    if (type == "video") {
-        this.object.muted = muted;
-        this.object.loop = loop;
+    this.object.addEventListener('error', () => {
+        console.log(this.object.src, 'Can not this media', "turn to default");
+        if (type == "video") {
+            this.object.src = "element/vbg.mp4"
+        } else {
+            this.object.src = "element/ibg.jpg"
+        }
+    });
+
+
+    //新增 CSS
+    this.cssTag = 0
+    this.addCss = (style) => {
+        this.object.classList.add(style)
+    }
+    this.removeCss = (style) => {
+        this.object.classList.remove(style)
     }
 
-    // on, Opacity
+    // 開關
     this.onTag = 1
     this.on = () => {
         this.object.style.opacity = 1
         this.onTag = 1
-
         if (type == "video") {
-            delay(() => { console.log("stop") }, 0, delayContainer)
+            delay(() => { console.log("stop display None") }, 0, delayContainer)
             this.object.style.display = "block"
             this.object.play()
         }
@@ -86,45 +94,46 @@ var media = function (object, type = "img", delayContainer = 10, muted = true, s
         this.object.style.opacity = 0
         this.onTag = 0
         if (type == "video") {
-            if (stop) {
+            if (stop == "stop") {
                 this.object.currentTime = 0
             }
             this.object.pause()
             delay(() => {
                 this.object.style.display = "none"
-            }, 500, delayContainer)
+            }, 1000, delayContainer)
         }
     }
 
+    //影片屬性
+    if (type == "video") {
+        if (muted == "muted") {
+            this.object.muted = muted;
+        }
+        if (loop == "loop") {
+            this.object.loop = loop;
+        }
+        if (videoWidth == "height100") {
+            this.object.style.height = "100%"
+            this.object.style.width = "auto"
+        } else {
+            this.object.style.width = videoWidth + "%"
+        }
+    }
+
+    //影片播放結束接圖片功能
     if (type == "video") {
         if (loop == false) {
             this.object.addEventListener('ended', () => {
                 this.object.style.opacity = 0
                 delay(() => {
                     offAll()
-                    imgs[0].on()
-                    imgs[0].removeCss("off")
+                    imgs[videoStopTo].on()
+                    imgs[videoStopTo].removeCss("off")
                 }, 400, 1)
-
             });
         }
     }
-
-
-
-
-    this.coverHight = () => {
-        this.object.classList.add("hight")
-    }
-
-    this.addCss = (style) => {
-        this.object.classList.add(style)
-    }
-    this.removeCss = (style) => {
-        this.object.classList.remove(style)
-    }
 }
-
 
 
 
@@ -135,48 +144,55 @@ var media = function (object, type = "img", delayContainer = 10, muted = true, s
 
 
 // 設備檢查
-console.log(navigator.mediaDevices.enumerateDevices())
+try {
+    console.log(navigator.mediaDevices.enumerateDevices())
+} catch {
+    console.log("error Find Stream Desive")
+}
 
-var stream = new media($css('video')[0], "img")
 
+
+// 導入Stream容器
+var stream = $css('deviceStream')
+
+var streamBox = []
+streamBox[0] = new media($css('deviceStreamBox')[0])
+streamBox[1] = new media($css('deviceStreamBox')[1])
+streamBox[2] = new media($css('deviceStreamBox')[2])
+var streamScaleTag = 0
 
 // 內容資訊
 var streamContent = {
-    // video: true,
     video: {
-        // facingMode:"",
-        deviceId: "211e90fa43a235fd801c6e6fb78739d773272e171dd0d7c307ed5b9189ce20a8",
-        // deviceId: "f73bf817f735b26605625c2c16852e304c8c383400a10be14829242e32eb8a72",
+        deviceId: "f73bf817f735b26605625c2c16852e304c8c383400a10be14829242e32eb8a72",
         frameRate: 30,
-        // width: 640,
-        // height: 360
     },
     audio: false
-    // audio: {
-    //     noiseSuppression: false,
-    //     autoGainControl: false
-    // }
 };
 
-function gotStream(streamContent) {
-
-    // Older browsers may not have srcObject.
-    if ("srcObject" in stream.object) {
-        stream.object.srcObject = streamContent;
-    } else {
-        // Avoid using this in new browsers, as it is going away.
-        stream.object.src = window.URL.createObjectURL(streamContent);
+try {
+    function gotStream(streamContent) {
+        // Older browsers may not have srcObject.
+        if ("srcObject" in stream[0]) {
+            stream[0].srcObject = streamContent;
+            stream[1].srcObject = streamContent;
+            stream[2].srcObject = streamContent;
+        } else {
+            // Avoid using this in new browsers, as it is going away.
+            stream[0].src = window.URL.createObjectURL(streamContent);
+            stream[1].src = window.URL.createObjectURL(streamContent);
+            stream[2].src = window.URL.createObjectURL(streamContent);
+        }
     }
+
+    navigator.mediaDevices
+        .getUserMedia(streamContent)
+        .then(gotStream)
+        .catch(() => { console.log('input error: ', "error"); })
+
+} catch {
+    console.log("error Got Stream")
 }
-
-navigator.mediaDevices
-    .getUserMedia(streamContent)
-    .then(gotStream)
-    .catch(() => { console.log('input error: ', "error"); })
-
-
-
-
 
 //  -------------------------------------------------------------------
 //
@@ -196,17 +212,21 @@ imgs[5] = new media($tag("img")[5], "img")
 imgs[6] = new media($tag("img")[6], "img")
 
 var videos = []
-videos[0] = new media($tag("video")[0], "video", 11, false, true)
-videos[1] = new media($tag("video")[1], "video", 12, false, true)
-videos[2] = new media($tag("video")[2], "video", 13, false, true)
-videos[3] = new media($tag("video")[3], "video", 14, false, true)
-videos[4] = new media($tag("video")[4], "video", 15, false, true)
-videos[5] = new media($tag("video")[5], "video", 16, false, true)
-videos[6] = new media($tag("video")[6], "video", 17, false, true)
-videos[7] = new media($tag("video")[7], "video", 18, false, true)
-videos[8] = new media($tag("video")[8], "video", 19, false, true)
-videos[9] = new media($tag("video")[9], "video", 20, false, true)
-videos[10] = new media($tag("video")[10], "video", 21, false, true)
+videos[0] = new media($tag("video")[0], "video", 100, 11, "muted", "stop", "unloop")
+videos[1] = new media($tag("video")[1], "video", 100, 12, "muted", "stop", "unloop")
+videos[2] = new media($tag("video")[2], "video", 100, 13, "muted", "stop", "unloop")
+videos[3] = new media($tag("video")[3], "video", 100, 14, "muted", "stop", "unloop")
+videos[4] = new media($tag("video")[4], "video", 100, 15, "muted", "stop", "unloop")
+videos[5] = new media($tag("video")[5], "video", 100, 16, "muted", "stop", "unloop")
+videos[6] = new media($tag("video")[6], "video", 100, 17, "muted", "stop", "unloop")
+videos[7] = new media($tag("video")[7], "video", 100, 18, "muted", "stop", "unloop")
+videos[8] = new media($tag("video")[8], "video", 100, 19, "muted", "stop", "unloop")
+videos[9] = new media($tag("video")[9], "video", 100, 20, "muted", "stop", "unloop")
+videos[10] = new media($tag("video")[10], "video", "height100", 21, "muted", "stop", "unloop")
+
+
+
+
 
 var uppers = []
 uppers[0] = new media($css("uBoxs")[0], "upper")
@@ -252,10 +272,6 @@ var upperTo = (upperNum = null, time = 0) => {
 
 
 
-
-
-
-
 //  -------------------------------------------------------------------
 //
 //  進場
@@ -268,7 +284,7 @@ offAllUpper()
 offAll()
 imgs[0].on()
 imgs[0].removeCss("off")
-
+var videoStopTo = 0
 
 
 // 鍵盤快捷鍵
@@ -276,12 +292,48 @@ window.addEventListener("keydown", keyboardListener, false);
 
 function keyboardListener(e) {
     var keyID = e.code;
+
+    // 影片結尾視覺圖切換
+    if (keyID === 'KeyA') {
+        videoStopTo = 0
+    }
+    if (keyID === 'KeyS') {
+        videoStopTo = 1
+    }
+    if (keyID === 'KeyD') {
+        videoStopTo = 2
+    }
+    if (keyID === 'KeyF') {
+        videoStopTo = 3
+    }
+    if (keyID === 'KeyG') {
+        videoStopTo = 4
+    }
+    if (keyID === 'KeyH') {
+        videoStopTo = 5
+    }
+    if (keyID === 'KeyJ') {
+        videoStopTo = 6
+    }
+
+
+
+    // 圖片
+
+
+    if (keyID === 'Space') {
+        offAll()
+        imgs[0].on()
+        imgs[0].removeCss("off")
+    }
+
+
     if (keyID === 'KeyZ') {
         offAll()
         imgs[0].on()
         imgs[0].removeCss("off")
-
     }
+
     if (keyID === 'KeyX') {
         offAll()
         imgs[1].on()
@@ -311,16 +363,12 @@ function keyboardListener(e) {
 
 
 
-
+    // 影片
 
     if (keyID === 'KeyQ') {
         offAll()
         videos[0].on()
     }
-
-
-
-
 
     if (keyID === 'Digit1') {
         offAll()
@@ -371,7 +419,9 @@ function keyboardListener(e) {
 
 
     //Upper
-
+    if (keyID === 'Numpad0') {
+        upperTo()
+    }
     if (keyID === 'Numpad2') {
         upperTo()
     }
@@ -397,76 +447,66 @@ function keyboardListener(e) {
 
 
 
-
     //stream
 
     if (keyID === 'KeyP') {
-        if (streamShow == 0) {
-            stream.addCss("show")
-            streamShow = 1
+        if (streamBox[0].cssTag == 0) {
+            streamBox[0].addCss("show")
+            streamBox[0].cssTag = 1
         } else {
-            stream.removeCss("show")
-            streamShow = 0
+            streamBox[0].removeCss("show")
+            streamBox[0].cssTag = 0
         }
-
     }
 
 
-    if (keyID === 'ArrowRight') {
-        streamLeft = streamLeft + 1
-        stream.object.style.left = streamLeft + "%"
-        videoMoBox.style.left = streamLeft + "%"
-    }
-    if (keyID === 'ArrowLeft') {
-        streamLeft = streamLeft - 1
-        stream.object.style.left = streamLeft + "%"
-        videoMoBox.style.left = streamLeft + "%"
-    }
-
-    if (keyID === 'ArrowUp') {
-        streamTop = streamTop - 1
-        stream.object.style.top = streamTop + "%"
-        videoMoBox.style.top = streamTop + "%"
-    }
-
-    if (keyID === 'ArrowDown') {
-        streamTop = streamTop + 1
-        stream.object.style.top = streamTop + "%"
-        videoMoBox.style.top = streamTop + "%"
-    }
-
-    if (keyID === 'Equal') {
-        streamH = streamH + 1
-        stream.object.style.height = streamH + "%"
-        videoMoBox.style.height = streamH + "%"
-    }
-
-    if (keyID === 'Minus') {
-        streamH = streamH - 1
-        stream.object.style.height = streamH + "%"
-        videoMoBox.style.height = streamH + "%"
+    if (keyID === 'BracketLeft') {
+        if (streamBox[1].cssTag == 0) {
+            streamBox[1].addCss("show")
+            streamBox[1].cssTag = 1
+        } else {
+            streamBox[1].removeCss("show")
+            streamBox[1].cssTag = 0
+        }
     }
 
     if (keyID === 'BracketRight') {
-        streamLeft = 88
-        stream.object.style.left = streamLeft + "%"
-        videoMoBox.style.left = streamLeft + "%"
+        if (streamBox[2].cssTag == 0) {
+            streamBox[2].addCss("show")
+            streamBox[2].cssTag = 1
+        } else {
+            streamBox[2].removeCss("show")
+            streamBox[2].cssTag = 0
+        }
     }
 
-    if (keyID === 'BracketLeft') {
-        streamLeft = 12
-        stream.object.style.left = streamLeft + "%"
-        videoMoBox.style.left = streamLeft + "%"
+
+
+
+
+    //---------------------
+
+    if (keyID === 'KeyL') {
+        if (streamScaleTag == 0) {
+            for (let i = 0; i < stream.length; i++) {
+                stream[i].style.width = "132%"
+                stream[i].style.top = "39%"
+                stream[i].style.left = "43%"
+            }
+
+
+            streamScaleTag = 1
+        } else {
+            for (let i = 0; i < stream.length; i++) {
+                stream[i].style.width = ""
+                stream[i].style.top = ""
+                stream[i].style.left = ""
+            }
+
+            streamScaleTag = 0
+        }
     }
-
-
 }
 
 
-var videoMoBox = $css("videoMoBox")[0]
-var streamLeft = 80
-var streamTop = 50
-var streamH = 70
-
-var streamShow = 0
 
