@@ -5,6 +5,10 @@ html {
     margin: 0;
     padding: 0;
     background-color: #000000;
+    background-image: url("d_Landing_page_background.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 @font-face {
@@ -36,6 +40,7 @@ html {
     margin: auto;
     position: relative;
     overflow: hidden;
+
 }
 
 .doormain_container * {
@@ -53,10 +58,10 @@ html {
     perspective: 700px;
     margin: auto;
     position: relative;
-    background-image: url("d_Landing_page_background.jpg");
+    /* background-image: url("d_Landing_page_background.jpg");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: cover;
+    background-size: cover; */
 }
 
 
