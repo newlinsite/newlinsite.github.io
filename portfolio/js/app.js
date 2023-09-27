@@ -43,6 +43,9 @@ var worknameBox = [
 	"v_ino",
 	"v_3d",
 	//----------------------
+	"c_auto_tag",
+	"c_demo",
+	"c_auto-matome",
 	"c_party",
 	"c_test",
 	"c_an",
@@ -71,6 +74,9 @@ var worknameBoxTag = [
 	["JavaScript", "Web Audio API"],
 	["JavaScript", "Usability test Tools"],
 	["JavaScript", "After Effects"],
+	["JavaScript", "Web Audio API"],
+	["JavaScript", "Usability test Tools"],
+	["JavaScript", "After Effects"],
 	""
 ]
 var worknameBoxFull = [
@@ -93,6 +99,10 @@ var worknameBoxFull = [
 	"Infographic Design",
 	"3D Render",
 	//----------------------
+
+	"Experimentation, and Visualization of Structuring Unstructured Data",
+	"DEMO ROOM",
+	"auto-matome",
 	"Party Game",
 	"Prototypes",
 	"The interactive animation</br>for a marketing campaign",
