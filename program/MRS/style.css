@@ -67,6 +67,7 @@ html {
     overflow: hidden;
     font-family: Noto Sans, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     margin: 0;
+
 }
 
 
@@ -74,12 +75,19 @@ html {
 .container {
     width: 1920px;
     height: 936px;
-    margin: 0 0 0 auto;
-    overflow: hidden;
+    height: 100%;
+    margin: 0 auto;
+    /* background-image: url(element/bg_off.png); */
+    /* background-size: cover; */
+    /* overflow: hidden; */
+    /* transition: 1.5s; */
 }
 
 
-
+/* .container.on {
+    background-image: url(element/bg_on.png);
+    background-size: cover;
+} */
 
 
 
@@ -107,7 +115,7 @@ html {
     transform-style: preserve-3d;
     perspective: 1500px;
     overflow: hidden;
-
+    /* opacity: 0.8; */
 }
 
 .space .fullScene {
@@ -139,15 +147,15 @@ html {
 
 
 .space .fullScene {
-    background-image: url(element/bg.png);
-    background-position: center;
-    background-size: cover;
+    /* background-image: url(element/bg.png); */
+    /* background-position: center; */
+    /* background-size: cover; */
 }
 
 .space.dark .fullScene {
-    background-image: url(element/bgd.png);
-    background-position: center;
-    background-size: cover;
+    /* background-image: url(element/bgd.png); */
+    /* background-position: center; */
+    /* background-size: cover; */
 }
 
 
@@ -492,6 +500,15 @@ Control Object
     box-shadow: 4px 0px 6px #0000005e;
 }
 
+.space.dark .display {
+    background-color: #000000;
+    border: 1.5px solid #000000;
+}
+
+.space.dark .screen {
+    background-color: #000000 !important;
+}
+
 
 .display.d01 {
     left: 12%;
@@ -595,7 +612,7 @@ Control Object
     left: 35.2%;
     top: 48.2%;
     width: 9.6%;
-    height: 68%;
+    height: 65%;
     transform: translate3d(-50%, -50%, 0) rotateX(14deg) rotateY(2deg) rotateZ(3deg);
 }
 
@@ -603,7 +620,7 @@ Control Object
     left: 51.8%;
     top: 52.2%;
     width: 10%;
-    height: 74%;
+    height: 65%;
     transform: translate3d(-50%, -50%, 0) rotateX(11deg) rotateY(4deg) rotateZ(3deg);
 }
 
@@ -612,14 +629,14 @@ Control Object
     left: 70.45%;
     top: 53.2%;
     width: 10.8%;
-    height: 74%;
+    height: 70%;
     transform: translate3d(-50%, -50%, 0) rotateX(12deg) rotateY(7deg) rotateZ(0.5deg);
 }
 
 .screen.t05 {
     left: 90%;
     width: 11.2%;
-    height: 70%;
+    height: 67%;
     transform: translate3d(-50%, -50%, 0) rotateX(13deg) rotateY(9deg) rotateZ(0deg);
 }
 
@@ -748,8 +765,11 @@ Control Object
 .screen .content video,
 .screen .content img {
     width: 100%;
-    height: 100%;
     opacity: 0.9;
+}
+
+.screen .content img {
+    height: 100%;
 }
 
 .screen .content img.slide {
@@ -1197,7 +1217,7 @@ Control Object
     width: 100%;
     animation-name: co2;
     animation-duration: 20s;
-    animation-iteration-count: 10;
+    animation-iteration-count: 10000;
     opacity: 0;
     transition: 0.6s;
 }
@@ -1206,9 +1226,39 @@ Control Object
     background-color: #fff;
     background: linear-gradient(to bottom, #1e5799 0%, #2989d880 50%, #7dbae800 100%);
     height: 30%;
-    opacity: 0.5;
+    opacity: 0;
 }
 
+.action02Container .action02Air.a01 {
+    animation-name: aircon;
+    animation-duration: 15s;
+    animation-iteration-count: 10000;
+}
+
+
+
+@keyframes aircon {
+    0% {
+        transform: translate(0, 0);
+        opacity: 0;
+    }
+
+    10% {
+        transform: translate(0, -5%);
+        opacity: 1;
+    }
+
+    /* 90% {
+        transform: translate(0, -45%);
+        opacity: 0.8;
+    } */
+
+    100% {
+        transform: translate(0, -100%);
+        opacity: 0;
+    }
+
+}
 
 
 
