@@ -72,7 +72,6 @@
         this.pagesName = []
         this.pages = []
         this.Name = "Slide"
-
         for (let i = 1; i < pageLen + 1; i++) {
             this.pagesName[i] = this.Name + i
             this.pages[i] = new Image();
@@ -91,7 +90,7 @@
                         this.pages[i].style.display = "none"
                     }
                     this.pages[i].onerror = () => {
-                        //都找不到就放棄
+                        this.pages[i] = null
                     }
                 }
             };
@@ -105,12 +104,22 @@
 
 
 
+
+
+
         //簡報控制
 
         this.firstPage = 0
         this.nowPage = 0
-        this.pagesOK = $css("ppt" + pptNum)
+        // this.pagesOK = $css("ppt" + this.pptNum)
         this.openTag = 0
+
+
+        this.pagesOKCreate = () => {
+            this.pagesOK = this.pages.filter(item => item !== null);
+        }
+
+
 
         this.videoPlay = (video) => {
             if (video.tagName == "VIDEO") {
@@ -165,11 +174,16 @@
             }
         }
 
+
     }
 
 
 
     var ppt01 = new ppt(1, 10)
+
+    window.onload = function () {
+        ppt01.pagesOKCreate()
+    }
 
 
 
@@ -191,6 +205,14 @@
         if (keyID === 'ArrowDown') {
             ppt01.next()
         }
+
+        t(ppt01.nowPage)
+
+        t(ppt01.pagesOK[0].src)
+        t(ppt01.pagesOK[1].src)
+        t(ppt01.pagesOK[2].src)
+        t(ppt01.pagesOK[3].src)
+
     }
 
 </script>
