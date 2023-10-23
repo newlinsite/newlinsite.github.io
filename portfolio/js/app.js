@@ -44,8 +44,8 @@ var worknameBox = [
 	"v_3d",
 	//----------------------
 	"c_auto_tag",
-	"c_demo",
 	"c_auto-matome",
+	"c_demo",
 	"c_party",
 	"c_test",
 	"c_an",
@@ -71,8 +71,8 @@ var worknameBoxTag = [
 	["Infographic", "Flow", "Scenario Illustration"],
 	["3D max", "V-ray", "Industral Design"],
 	//----------------------
-	["JavaScript", "Web Audio API"],
-	["JavaScript", "Usability test Tools"],
+	["python", "AI", "data"],
+	["python", "AI"],
 	["JavaScript", "After Effects"],
 	["JavaScript", "Web Audio API"],
 	["JavaScript", "Usability test Tools"],
@@ -100,11 +100,11 @@ var worknameBoxFull = [
 	"3D Render",
 	//----------------------
 
-	"Experimentation, and Visualization of Structuring Unstructured Data",
-	"DEMO ROOM",
-	"auto-matome",
+	"Experimentation of Structuring  <br> Unstructured Data,	and Visualization",
+	"Automated Tool for Interview Transcript <br>and Summary Generation",
+	"Overcoming Costly On-Site Demos: <br>Virtual Demo Room Solution for Pro AV Sales",
 	"Party Game",
-	"Prototypes",
+	"Prototypes and Tools",
 	"The interactive animation</br>for a marketing campaign",
 	""
 ]
