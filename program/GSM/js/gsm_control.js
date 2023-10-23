@@ -98,6 +98,7 @@ var media = function (object, type = "img", videoWidth = 100, delayContainer = 1
                 this.object.currentTime = 0
             }
             this.object.pause()
+            //一秒之後在淡出，為了讓影片有淡出效果
             delay(() => {
                 this.object.style.display = "none"
             }, 1000, delayContainer)
@@ -122,7 +123,8 @@ var media = function (object, type = "img", videoWidth = 100, delayContainer = 1
 
     //影片播放結束接圖片功能
     if (type == "video") {
-        if (loop == false) {
+
+        if (loop != "loop") {
             this.object.addEventListener('ended', () => {
                 this.object.style.opacity = 0
                 delay(() => {
@@ -201,6 +203,11 @@ try {
 //  -------------------------------------------------------------------
 
 
+var textBox = new media($css("textBox")[0], "img")
+
+textBox.object.innerHTML = textBoxTest
+
+
 
 var imgs = []
 imgs[0] = new media($tag("img")[0], "img")
@@ -212,17 +219,17 @@ imgs[5] = new media($tag("img")[5], "img")
 imgs[6] = new media($tag("img")[6], "img")
 
 var videos = []
-videos[0] = new media($tag("video")[0], "video", 100, 11, "muted", "stop", "unloop")
-videos[1] = new media($tag("video")[1], "video", 100, 12, "muted", "stop", "unloop")
-videos[2] = new media($tag("video")[2], "video", 100, 13, "muted", "stop", "unloop")
-videos[3] = new media($tag("video")[3], "video", 100, 14, "muted", "stop", "unloop")
-videos[4] = new media($tag("video")[4], "video", 100, 15, "muted", "stop", "unloop")
-videos[5] = new media($tag("video")[5], "video", 100, 16, "muted", "stop", "unloop")
-videos[6] = new media($tag("video")[6], "video", 100, 17, "muted", "stop", "unloop")
-videos[7] = new media($tag("video")[7], "video", 100, 18, "muted", "stop", "unloop")
-videos[8] = new media($tag("video")[8], "video", 100, 19, "muted", "stop", "unloop")
-videos[9] = new media($tag("video")[9], "video", 100, 20, "muted", "stop", "unloop")
-videos[10] = new media($tag("video")[10], "video", "height100", 21, "muted", "stop", "unloop")
+videos[0] = new media($tag("video")[0], "video", 100, 11, "unmuted", "stop", "unloop")
+videos[1] = new media($tag("video")[1], "video", 100, 12, "unmuted", "stop", "unloop")
+videos[2] = new media($tag("video")[2], "video", 100, 13, "unmuted", "stop", "unloop")
+videos[3] = new media($tag("video")[3], "video", 100, 14, "unmuted", "stop", "unloop")
+videos[4] = new media($tag("video")[4], "video", 100, 15, "unmuted", "stop", "unloop")
+videos[5] = new media($tag("video")[5], "video", 100, 16, "unmuted", "stop", "unloop")
+videos[6] = new media($tag("video")[6], "video", 100, 17, "unmuted", "stop", "unloop")
+videos[7] = new media($tag("video")[7], "video", 100, 18, "unmuted", "stop", "unloop")
+videos[8] = new media($tag("video")[8], "video", 100, 19, "unmuted", "stop", "unloop")
+videos[9] = new media($tag("video")[9], "video", 100, 20, "unmuted", "stop", "unloop")
+videos[10] = new media($tag("video")[10], "video", "height100", 21, "unmuted", "stop", "unloop")
 
 
 
@@ -272,6 +279,17 @@ var upperTo = (upperNum = null, time = 0) => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 //  -------------------------------------------------------------------
 //
 //  進場
@@ -292,6 +310,22 @@ window.addEventListener("keydown", keyboardListener, false);
 
 function keyboardListener(e) {
     var keyID = e.code;
+
+
+
+
+    if (keyID === 'KeyT') {
+        if (textBox.cssTag == 0) {
+            textBox.addCss("show")
+            textBox.cssTag = 1
+        } else {
+            textBox.removeCss("show")
+            textBox.cssTag = 0
+        }
+
+    }
+
+
 
     // 影片結尾視覺圖切換
     if (keyID === 'KeyA') {
@@ -419,30 +453,30 @@ function keyboardListener(e) {
 
 
     //Upper
-    if (keyID === 'Numpad0') {
-        upperTo()
-    }
-    if (keyID === 'Numpad2') {
-        upperTo()
-    }
-    if (keyID === 'Numpad3') {
-        upperTo(0)
-    }
-    if (keyID === 'Numpad4') {
-        upperTo(1)
-    }
-    if (keyID === 'Numpad5') {
-        upperTo(2)
-    }
-    if (keyID === 'Numpad6') {
-        upperTo(3)
-    }
-    if (keyID === 'Numpad7') {
-        upperTo(4)
-    }
-    if (keyID === 'Numpad8') {
-        upperTo()
-    }
+    // if (keyID === 'Numpad0') {
+    //     upperTo()
+    // }
+    // if (keyID === 'Numpad2') {
+    //     upperTo()
+    // }
+    // if (keyID === 'Numpad3') {
+    //     upperTo(0)
+    // }
+    // if (keyID === 'Numpad4') {
+    //     upperTo(1)
+    // }
+    // if (keyID === 'Numpad5') {
+    //     upperTo(2)
+    // }
+    // if (keyID === 'Numpad6') {
+    //     upperTo(3)
+    // }
+    // if (keyID === 'Numpad7') {
+    //     upperTo(4)
+    // }
+    // if (keyID === 'Numpad8') {
+    //     upperTo()
+    // }
 
 
 

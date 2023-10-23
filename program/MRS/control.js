@@ -1192,6 +1192,7 @@ keypadBtns[0].object.addEventListener("click", () => {
     keypad.off()
     $css("flowMenuBoxs")[0].classList.remove("off")
     flowMenuAction(0)
+
 })
 keypadBtns[1].object.addEventListener("click", () => {
     keypadBtns[1].press()
