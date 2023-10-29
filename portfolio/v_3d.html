@@ -34,7 +34,17 @@
 		<!-- /**************************************************************/ -->
 		<div class="article">
 
-			<img id="img00" style="max-width: 1500px;" class="scrollSession pt-md mt-xl mb-xs">
+			<!-- <img id="img00" style="max-width: 1500px;" class="scrollSession pt-md mt-xl mb-xs"> -->
+
+
+			<div id="img00" class="scrollSession move-by-scroll-box pt-md mt-xl mb-xs">
+				<img style=" max-width: 1500px;" class="mb-xs">
+				<video id="v_01" style=" right: 16px; bottom: 5%;" class="v_vis_v" src="../image/v_3d_01.mp4"></video>
+			</div>
+
+
+
+
 			<h6 class="gray">3d Max, V-ray, Photoshop</h6>
 
 			<img id="img01" style=" max-width: 1500px;" class="scrollSession pt-md mt-xl mb-xs">
@@ -73,5 +83,22 @@
 </body>
 <script src="js/app.js"></script>
 <script src="js/image_nexter.js"></script>
+<script>
+	var v_01 = $("v_01")
+	var v_01Tag = 0
+	var img01 = $("img00")
+	img01.addEventListener('click', function (e) {
+		if (v_01Tag == 0) {
+			v_01.play()
+			v_01Tag = 1
+		} else {
+			v_01.pause()
+			v_01Tag = 0
+		}
+
+	})
+
+
+</script>
 
 </html>

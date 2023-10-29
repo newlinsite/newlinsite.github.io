@@ -1759,3 +1759,31 @@ footer {
 		padding-bottom: 4px !important;
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ---------------------------- */
+
+.v_vis_v {
+	position: absolute;
+	width: 24%;
+	border: 5px solid #728A9B;
+	border-radius: 8px;
+	transition: 1s;
+}
+
+.v_vis_v:hover {
+	width: 50%;
+}
