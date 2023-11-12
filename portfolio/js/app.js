@@ -49,7 +49,7 @@ var worknameBox = [
 	"c_party",
 	"c_test",
 	"c_an",
-	""
+	"d_wall"
 ]
 var worknameBoxTag = [
 	["home"],
@@ -106,7 +106,7 @@ var worknameBoxFull = [
 	"Party Game",
 	"Prototypes and Tools",
 	"The interactive animation</br>for a marketing campaign",
-	""
+	"Nosice control system"
 ]
 
 
