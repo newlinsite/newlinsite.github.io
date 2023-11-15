@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="js/gsm_style.css">
+    <link rel="stylesheet" href="js/16-3_style.css">
 </head>
 <style>
 
@@ -41,8 +41,12 @@
         <audio class="bgm" src="element\voice\001.wav"></audio>
         <audio class="bgm" src="element\voice\002.wav"></audio>
         <audio class="bgm" src="element\voice\003.wav"></audio>
+        <audio class="bgm" src="element\voice\004.wav"></audio>
+        <audio class="bgm" src="element\voice\005.wav"></audio>
         <div class="playing_mask op0">
-            <div class="speaker"></div>
+            <!-- <div class="speaker"> -->
+            <img src="voice01.png" alt="" class="speaker">
+            <!-- </div> -->
             <div id="freqCanvasBox"></div>
         </div>
 
@@ -66,31 +70,14 @@
         </div>
 
         <div class="upperBoxs">
-            <div class="uBoxs">
-                <div class="uBox window"></div>
-            </div>
-            <div class="uBoxs">
-                <div class="uBox window left sm"></div>
-                <div class="uBox window"></div>
-            </div>
-            <div class="uBoxs">
-                <div class="uBox window left sm"></div>
-                <div class="uBox window"></div>
-                <div class="uBox window right sm"></div>
-            </div>
-            <div class="uBoxs">
-                <div class="uBox window left"></div>
-                <div class="uBox window"></div>
-                <div class="uBox window right "></div>
-            </div>
-            <div class="uBoxs">
-                <div class="uBox window left sm"></div>
-                <div class="uBox window right sm"></div>
-            </div>
+            <div class="uBox window left sm off"></div>
+            <div class="uBox window off"></div>
+            <div class="uBox window right sm off"></div>
         </div>
     </div>
+    <div class="pptNum"></div>
 </body>
-<script src="js/text.js"></script>
-<script src="js/gsm_control.js"></script>
+<script src="js/16-3_text.js"></script>
+<script src="js/16-3_control.js"></script>
 
 </html>
