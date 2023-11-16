@@ -46,13 +46,13 @@ for (let i = 0; i < 30; i++) {
 delay = (doSomething, delayTime, num = 0, cancelDalay = true) => {
 
     if (delayContainer[num].id !== null) {
-        if (cancelDalay) {   //如 delay 執行中則取消此 delay 後不動作
+        //如 delay 執行中則取消此 delay 後不動作
+        if (cancelDalay) {
             clearTimeout(delayContainer[num].id);
             delayContainer[num].id = null
             console.log("clear delay", num)
         }
         //如 cancelDalay =/= true ，則 delay 執行中不動作
-
     }
     //執行 delay 動作
     else {
@@ -692,16 +692,16 @@ uppers[2] = new media($css("uBox")[2], "upper")
 
 
 var pptNum = new media($css("pptNum")[0], "")
-// t(pptNum)
-// pptNum.addCss("tempShow")
 var ppts = []
 
 ppts.push(new ppt(1, 19, pptName01))
 ppts.push(new ppt(2, 5, pptName02))
+ppts.push(new ppt(3, 1, pptName03))
 
 window.onload = function () {
     ppts[0].pagesOKCreate()
     ppts[1].pagesOKCreate()
+    ppts[2].pagesOKCreate()
 }
 
 var pptNow = 0

@@ -27,6 +27,7 @@ var logoOnShadow = 1
 
 var pptName01 = "投影片"
 var pptName02 = "Slide"
+var pptName03 = "Slide"
 
 
 

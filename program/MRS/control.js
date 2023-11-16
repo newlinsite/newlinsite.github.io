@@ -64,6 +64,11 @@ delay = (doSomething, delayTime, num = 0) => {
     }
 }
 
+//delay 紀錄
+//
+
+
+
 
 
 
@@ -114,7 +119,15 @@ var timer = setInterval(executeSeconds, 10);
 //  創立控制單體
 //  - 包含一些動作以及狀態
 //  - 包含常用 Toggle 功能
-//
+//  
+//  --- 顯示 (透明度)
+//  --- 高度
+//  --- 開關 (自由樣式)
+//  --- 自動樣式與標籤*3
+//  --- 訊源導入
+//  --- 
+
+
 //  -------------------------------------------------------------------
 //  -------------------------------------------------------------------
 
@@ -187,7 +200,9 @@ var vkObject = function (object) {
     this.removeCss = (style) => {
         this.object.classList.remove(style)
     }
-
+    this.tag01 = 0
+    this.tag02 = 0
+    this.tag03 = 0
 
 
     this.input = (link) => {
@@ -1304,3 +1319,21 @@ function keyboardListener(e) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+//-------------------------------------------------------------------------
+
+
+actionMenuAllOff()
+actionAreaAllOff()
+actionMenu[1].classList.add("active")
+action[1]()
