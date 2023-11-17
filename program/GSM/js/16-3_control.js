@@ -381,18 +381,29 @@ var ppt = function (pptNum, pageLen = 20, name = "Slide") {
 
 
 
-// Fix up prefixing
+
+
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 var ctx = new AudioContext();
 
 
 // 用戶點擊播放區域時啟動 AudioContext 對象
 $tag("body")[0].addEventListener('click', function () {
+    window.AudioContext = window.AudioContext || window.webkitAudioContext;
+    var ctx = new AudioContext();
     ctx.resume().then(() => {
         console.log('AudioContext 已啟動');
     });
+
+
 });
+
+
+
 var freqCanvasBox = $id("freqCanvasBox")
+
+
+
 
 // BGM 長音樂
 var music = function (num) {
@@ -532,6 +543,9 @@ function musicAllStop(fadeTime = 1) {
 }
 
 
+
+
+
 // 載入全部聲音
 bgmSource = document.getElementsByClassName("bgm");
 var bgm = []
@@ -541,6 +555,9 @@ for (let i = 0; i < bgmSource.length; i++) {
     bgm[i].draw()
     bgm[i].drawColor = "#ffffff88"
 }
+
+
+
 
 
 
@@ -694,9 +711,9 @@ uppers[2] = new media($css("uBox")[2], "upper")
 var pptNum = new media($css("pptNum")[0], "")
 var ppts = []
 
-ppts.push(new ppt(1, 19, pptName01))
-ppts.push(new ppt(2, 5, pptName02))
-ppts.push(new ppt(3, 1, pptName03))
+ppts.push(new ppt(1, pptPage01, pptName01))
+ppts.push(new ppt(2, pptPage02, pptName02))
+ppts.push(new ppt(3, pptPage03, pptName03))
 
 window.onload = function () {
     ppts[0].pagesOKCreate()

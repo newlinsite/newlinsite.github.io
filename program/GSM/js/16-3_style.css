@@ -318,12 +318,12 @@ video {
 }
 
 .playing_mask .speaker {
-    background-color: #000000;
+    background-color: #00000067;
     width: 40%;
     height: 40%;
     border-radius: 50%;
     /* background-image: url(../element/voice/001.png); */
-    border: 8px solid #ffffff97;
+    border: 8px solid #ffffff81;
     background-size: cover;
     box-shadow: 0 0 30px #000000c4;
     margin-bottom: 32px;
