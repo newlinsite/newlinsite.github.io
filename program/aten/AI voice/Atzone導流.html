@@ -1,0 +1,52 @@
+<!-- AI Voice -->
+<div id="aivoiceInputText"></div>
+<div id="aivoiceMessage">
+    <!-- <a id="aivoiceLinkText" href="#">測試</a>-->
+    <div class="products">
+        <ul>
+            {% for item in line_items %}
+            <li class="itemsNameForAiVoice">{{item.name}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<script>
+    var aivoiceMessage = document.getElementById("aivoiceMessage")
+    var aivoiceLinkText = document.getElementById("aivoiceLinkText")
+    var aivoiceInputText = document.getElementById("aivoiceInputText")
+    var itemsNameForAiVoice = document.getElementsByClassName("itemsNameForAiVoice")
+    var orderNum = "{{ order.name }}"
+    var aivoiceLink = "https://www.aivoice.com.tw/atzone/#/main/setting/general" + "#" + orderNum
+    aivoiceInputText.innerHTML = itemsNameForAiVoice[0].innerText
+    for (let i = 0; i < itemsNameForAiVoice.length; i++) {
+        if (itemsNameForAiVoice[i].innerText.includes("商品3")) {
+            aivoiceMessage.style = "display: block"
+            aivoiceLinkText.href = aivoiceLink
+
+            console.log("------------------------", orderNum)
+        }
+        console.log("------------------------", orderNum, itemsNameForAiVoice[i].innerText)
+    }   
+</script>
+<!-- AI Voice -->
+
+
+
+
+
+
+
+
+<!-- -------------------------- -->
+{% for item in line_items %}
+{% if item.title contains '耳機' %}
+{% assign earphone_found = true %}
+{% endif %}
+{% endfor %}
+
+{% if earphone_found %}
+<H4>感謝您購買優聲學，如此訂單尚未申請開通，請點以下連結開通此筆訂單的服務</H4>
+<a href="https://www.aivoice.com.tw/atzone_dev/#/main/setting/general#{{ name }}" target="_blank"
+    style="font-size: 18px;    padding: 8px 16px;    color: #fff;    letter-spacing: 1px;  background-color: #3cc8ff;    border-radius: 4px;">開通優聲學</a>
+{% endif %}
+<!-- -------------------------- -->
