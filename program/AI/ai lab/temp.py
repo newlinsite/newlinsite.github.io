@@ -96,7 +96,7 @@ def plotPrint(x, y, w, b):
   plt.ylim([-50, 200])
   plt.legend()               #新增圖例
   plt.show()
-  print(lineCostsssComputer(x, y, w, b))
+  print("cost:",f"{lineCostsssComputer(x, y, w, b): .3f}")
 
 
 # 新增互動 Slider spyder 不能用...
@@ -104,12 +104,7 @@ def plotPrint(x, y, w, b):
 #interact(plotPrint,x=x, y=y , w=(-100, 100, 1), b=(-100, 100, 1))
 
 
-plotPrint(x, y, 9.124, 28.011)
-
-
-
-
-
+plotPrint(x, y, -5, 100)
 
 
 
@@ -282,7 +277,19 @@ plt.show()
 
 #最後檢查
 plotPrint(x, y, 9.124, 28.011)
-plotPrint(x, y, 9.142, 27.886)
+
+
+
+
+
+
+#方程式看看
+ax = np.arange(-1000, 1000)
+ay =  10*ax**4  + 100*ax**3 + ax**2 + ax + 24
+
+plt.plot(ax, ay, color="blue", label="預測線")
+plt.show()
+
 
 
 

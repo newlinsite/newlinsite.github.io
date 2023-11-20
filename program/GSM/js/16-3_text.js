@@ -33,7 +33,7 @@ var logoOnShadow = 1
 
 // PPT 的圖片/影片檔案開頭 ------------------------------
 
-var pptName01 = "投影片"
+var pptName01 = "Museum來賓參訪_"
 var pptName02 = "Slide"
 var pptName03 = "Slide"
 
