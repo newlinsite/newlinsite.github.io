@@ -29,11 +29,17 @@ var test = function (print = "test") {
 // toggle
 // ------------------------
 
-toggle = (tag, do1, do0) => {
+toggle = (tag, do1, do0, autoSwitchTag = true) => {
     if (tag === 0) {
         do1()
+        if (autoSwitchTag) {
+            return 1;
+        }
     } else {
         do0()
+        if (autoSwitchTag) {
+            return 0;
+        }
     }
 }
 
@@ -42,7 +48,7 @@ toggle = (tag, do1, do0) => {
 // Delay
 // ------------------------
 
-// 創造容器
+// 創造 Delay 容器
 var delayContainer = []
 for (let i = 0; i < 20; i++) {
     delayContainer.push({ id: null })
@@ -71,14 +77,18 @@ delay = (doSomething, delayTime, num = 0, cancelDalay = true) => {
 //delay 紀錄
 //
 
+
 // ------------------------
 // 影片計時器
 // ------------------------
 
+var videoTimeFull = 120
+var videoTimeRefresh = 0.01
 var videoTime = 0
+
 function executeSeconds() {
-    if (videoTime < 140) {
-        videoTime = videoTime + 0.01
+    if (videoTime < videoTimeFull + videoTimeRefresh) {
+        videoTime = videoTime + videoTimeRefresh
     } else {
         videoTime = 0
     }
@@ -86,7 +96,7 @@ function executeSeconds() {
 }
 
 // 啟動影片計時器
-var timer = setInterval(executeSeconds, 10);
+var timer = setInterval(executeSeconds, videoTimeRefresh * 1000);
 
 
 //  -------------------------------------------------------------------
@@ -132,19 +142,22 @@ var VkObject = function (object) {
         this.appearTag = opacity
     }
 
-    // Up and Down
-    this.upCloseTag = 0
-    this.upClose = (position = "0.8%") => {
-        this.object.style.paddingTop = position
-        this.upCloseTag = 1
+
+    // hidden
+    this.hiddenTag = 0
+    this.hidden = () => {
+        this.object.style.display = "none"
+        this.hiddenTag = 1
     }
-    this.disUpClose = (position = "14.5%") => {
-        this.object.style.paddingTop = position
-        this.upCloseTag = 0
+    this.disHidden = () => {
+        this.object.style.display = ""
+        this.hiddenTag = 0
     }
-    this.upCloseToggle = () => {
-        toggle(this.upCloseTag, this.upClose, this.disUpClose)
+    this.hiddenToggle = () => {
+        toggle(this.hiddenTag, this.hidden, this.disHidden)
     }
+
+
 
     // On and Off
     this.onTag = 0
@@ -176,13 +189,22 @@ var VkObject = function (object) {
     this.removeCss = (style) => {
         this.object.classList.remove(style)
     }
+
     this.tag01 = 0
     this.tag02 = 0
     this.tag03 = 0
 
 
+    // 新增視訊
     this.input = (source) => {
-        this.object.replaceChild(source, this.object.firstChild);
+        try {
+            this.source = source.cloneNode(true);
+            this.object.replaceChild(this.source, this.object.firstChild);
+            this.source.currentTime = videoTime
+        } catch {
+            test("input error")
+        }
+
     }
 
 
@@ -191,7 +213,6 @@ var VkObject = function (object) {
 
 
 var Media = function (link) {
-
     if (link.includes(".png") || link.includes(".jpg") || link.includes(".gif")) {
         type = "img"
     } else if (link.includes(".mp4") || link.includes(".mov")) {
@@ -204,58 +225,43 @@ var Media = function (link) {
     this.source.autoplay = true;
     this.source.loop = true;
     this.source.muted = true;
-    this.source.currentTime = videoTime
 }
 
 
-var VM = function () {
-    this.source = []
-    this.input = (source) => {
-        this.source.push(source)
-    }
+var VP01 = function (source = []) {
+    // source 換
+    // layput
+}
 
-    this.out = []
-    this.output = (oNum, iNum) => {
-        this.out[oNum] = this.source[iNum].cloneNode(true);
-    }
+var VP02 = function (source = []) {
+    //
+    //
+}
+
+var VW = function (source = []) {
+    // 跑馬燈 文字 位置 顏色 跑速度 Marquee
+    // 背景
+    // Source
+    // 各 Source 大小 位置 裁切
 }
 
 
 
 
 
+///---------------------------------
+//
+//
+//      環境架設
+//
+//
+///---------------------------------
 
 
+var media = []
+media[0] = new Media("element/01.png")
+media[1] = new Media("element/video.mp4")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var s01 = new Media("element/01.png")
-var s02 = new Media("element/video.mp4")
-
-var VM01 = new VM()
-
-VM01.input(s01.source)
-VM01.input(s02.source)
-VM01.output(0, 0)
-VM01.output(1, 1)
-
-test(VM01.out)
 
 var display = []
 display[0] = new VkObject($css("display")[0])
@@ -265,24 +271,48 @@ display[1] = new VkObject($css("display")[1])
 
 
 
-// display[0].input(VM01.out[0])
-display[1].input(VM01.out[1])
+///---------------------------------
+//
+//
+//      進場
+//
+//
+///---------------------------------
+
+
+display[1].input(media[1].source)
 
 
 
+///---------------------------------
+//
+//
+//      互動
+//
+//
+///---------------------------------
 
 window.addEventListener("keydown", keyboardListener, false);
 
 function keyboardListener(e) {
     var keyID = e.code;
     if (keyID === 'KeyQ') {
-        VM01.output(0, 0)
-        display[0].input(VM01.out[0])
-        test("Q")
+
+        display[1].tag01 = toggle(display[1].tag01,
+            () => { display[1].input(media[0].source) },
+            () => { display[1].input(media[1].source) })
+
     }
     if (keyID === 'KeyA') {
-        VM01.output(0, 1)
-        display[0].input(VM01.out[0])
-        test("A")
+        display[1].hiddenToggle()
+    }
+
+    if (keyID === 'KeyW') {
+        display[0].input(media[0].source)
+
+    }
+    if (keyID === 'KeyS') {
+        display[0].input(media[1].source)
+
     }
 }
