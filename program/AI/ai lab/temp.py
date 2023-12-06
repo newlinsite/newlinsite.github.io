@@ -74,8 +74,9 @@ def lineCostsssComputer(x, y, w, b):
 
 
 
-
-
+y_p  = x*w + b
+cost = (y_p - y)**2
+costs = lineCostComputer(x, y, w, b).mean()
 
 # 畫預設線與原始資料圖表 的功能 --------------------------------------------------
 
@@ -283,14 +284,24 @@ plotPrint(x, y, 9.124, 28.011)
 
 
 
-#方程式看看
-ax = np.arange(-1000, 1000)
-ay =  10*ax**4  + 100*ax**3 + ax**2 + ax + 24
+#看看方程式
+ax = np.arange(-90, 90,0.1)
 
+
+ay = 0.001*ax**5 + ax**3 + 10*ax**2 + ax
+ay = 2*ax**3 - 3*ax**2 - 12*ax - 3
+ay = ax**2 + 2*ax + 1
+
+plt.xlim([-2, 3])          #最大最小值
+plt.ylim([-25, 5])
+
+plt.axhline(y=0)#x軸
+plt.axvline(x=0)#y軸
 plt.plot(ax, ay, color="blue", label="預測線")
 plt.show()
 
-
-
+#解方程式
+np.roots([1,2,1]) # x**2 + 2x + 1
+np.roots([2,1])   # 2x +1
 
 

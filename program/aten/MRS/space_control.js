@@ -225,6 +225,26 @@ var VM = function () {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var s01 = new Media("element/01.png")
 var s02 = new Media("element/video.mp4")
 
