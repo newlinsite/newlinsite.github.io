@@ -1,0 +1,966 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="360" height="360" viewBox="0 0 360 360">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="パス_460" data-name="パス 460" d="M15.719,45.181l-.241,1.21.628-1.31-.045-.345Z" transform="translate(-15.478 -44.737)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient" cx="208.434" cy="30.716" r="130.586" gradientTransform="matrix(2.636, 0, 0, -1, 73.173, 297.725)" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#f7f8f8"/>
+      <stop offset="0.428" stop-color="#e1e2e2"/>
+      <stop offset="1" stop-color="#c9caca"/>
+    </radialGradient>
+    <clipPath id="clip-path-2">
+      <rect id="長方形_563" data-name="長方形 563" width="307.143" height="327.448" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-path-3">
+      <path id="パス_462" data-name="パス 462" d="M165.966,8.619l-1.518,1.742c-5.655,1.377-13.194,3.22-18.843,4.61l-3,3.6-8.769.923-.931,3.367,1.716.35-.23,1.95L128.2,23.709l-2.522,2.017,2.743,1.66-4.136-1,1.275-2.645-.056-1.8-1.188,2.3-2.814,1.442-.259,2.558-2,2.667-.8,2.551,4.514.2-.372,2.54-.74-2.291-2.193.463-2.34,3.944-5.4,3.768-3.494-1.567,2.032.288,3.762-2.045,2.366-2.765-.39-2.039,3.356-6.059L120,25.425l2.857-3.265-4.722-.151-2.846,3.111-3.666,2.266.568,1.419L110.2,31.348l1.268,2.259-1.46,2.591-1.241-2.191c-2.286-.546-5.323-1.322-7.607-1.89l-1,2.4-2.217.773,1.061-1.029-4.512.434-2.386,1.364-.165-1.8-9.2,4.265-1.709,1.754-1.471-.154.771-2.159,1.941-.426.149-2.115-1.856-.439-.308,1.475L78.11,39.075l-.3,1.469-1.584,2.108-1.275-.867-4.768,2.953-1.2,2.846-1.408-1.3-1.85.337.063,1.428-.753,1.622-1.551-1.633L65.9,43.5l.86-3.793c1.54.873,3.666,1.9,5.243,2.7l1.76-1.419,1.876-2.462a70.05,70.05,0,0,1-3.238-6.8l.94-.151-.4-.622-2.244.406.3-1.248,1.029.236,1.549-1.212-.5-1.172-1.477.9L73.178,27.5l-.762-.022-2.153,1.751,1.154-1.473-3.4,2.611,3.726-3.244-1.635.463-2.781,2.1-4.84,2.425c-2.988,2.442-6.827,5.87-9.751,8.39L51,42.28l-3.358,3.013L42.6,50.5l-2.455,2.471-2.357,2.191-3.327,4.484-3,5.74.287,1.729,3.944-4.7c-1.767,3.657-3.748,8.706-5.346,12.439l.024.818.7-.546.927-1.4,2.206-2,2.6-4.5,4.563-5.366.223-2.384,5.263-7.057,5.065-4.474L54.233,45l2.431-1.352-.221,2.1-8.4,7.7-2.738,4.914-.8,3.271,6.137-2.084-.608.813.613,1.7-2.184.337-1.025.923-3.906.818-.862,1.916-.105.9.455-.223-1.284,2.342-1.43,1.774-.7-1.84-4.448,7.3-.555.584-.357.18-.784,1.246-.649-.695.152.368-4.526,2.371.346.109-.4.782.033-2.543-1.8,1.324.755-1.252.118-2.17.615-.931.308-.466,1.881-2.765,1.907-3.886-1.878,1.805-2.083,3.091-2.712,6.792-.767.847-.708-.031-.417.733-1.93,1.751L20,86.909l-.346.283.024.68-1.711,1.457L16.895,91.74l-1.07,1.542.047.25-.637.4.181-.78-.069-.374L14.513,95.3l-.708.987v-.651l-.512.483-.37,1.3-.156.209-.087,2.26-1.342,5.054L9.121,111.5l-1.306-.668-.111.459-.363.771-.294,1.319-.827,3.03-.733,3.167-.965,4.252-.35,1.752.011.172-.751,4,.472.105-.258,2.416.7-2.1h.582l.463-1.587.4-.541.755-2.7.41-2.458L9.95,115.9l.791-3.111.967-1.763.581,1.364L14.505,109l.639.015-.073,2.54-.265,3.264.334,2.725.425,2.164.606,1.747-.2,3.354-.493,1.117-.024.417.216-.294.6-.686.816-2.378-.1-1.4.5-1.012.548,1.725.341-.365-.461-2.837-.637-1.408c.094-.412.189-.825.283-1.235l-.435-.61-.359-1.19.2-3.066.069-1.243-.165-1.092.755-2.5,1.005-1.529.091,1.7L18.4,111.1l1.181,1.787-.194,1.769.6,1.752-.708,4.88.011,3.011.122,2.041.59.786-.791,2.411.323,1.275.428.742.952-.314.428-3.559.905.345-.515-3.36.845-4.978.871.468.281-1.2.8-.475,1.97,1-1,1.914,2.113-3.059,1.558-.394-.709-2.239,2.823-7.659,1.027-.927.791-2.279,2.1-3.013,1.952-.022-1.348.45.515,1.009,1.074.025-1.542,2.262.3,2.494,4.584-2.487-1.72-.477.492-2.074,1.976-1.629c-.042.154-.087.31-.129.464l2.754-1.547.782.446-1.123,1.116-.934.047.568,1.718-1.7,2.318-.845-.345-.448.7,4.12,7.217-.582,3.461-4.695,1.366-2.536-1.758-.163-1.33-7.46,3.04.622.854L25.2,122.751l.831-.2-.054,7.739,1.542,1.863.931-1.335,1.009-.307,1.464,1.758,1.214-.107,1.188-1.781.771.493.883-.608-3.18,13.517-1.056,1.763-2.008,1.495-2.135-1.573-3.011,1.869-2.251-1.8-.454-1.477-1.292-.664-.171-1.326-2.318.394-.68,2.079-.029,2.142-1.736.813c-1.662-2.852-3.554-6.834-4.985-9.811l1.047-3.184.693-4.4-.947-.813a70.6,70.6,0,0,0-6.329,6.021l-.122-.938-.394.448-.056-1.881-2,9.958-.6,6.433c-.41,4-.5,9.357-.7,13.37.376,9.3,1.371,21.679,2.5,30.914l1.482,8.009,2.48,9.92L8.5,216.39l1.069-1.263,1.466-3.692,1.907,4.189,1.088.214,1.865,3.686,3.759,11.7,4.236,6.71c2.139,4.461,5.339,10.233,7.652,14.605,2.09,4.6,5.27,10.549,7.585,15.043l7.42,9.112,1.918,2.484,1.658,2.093,4,4.895,5.967,5.471,5.393,5.446,4.234,3.209a30.956,30.956,0,0,1,1.87-2.716c-1.312-2.982-2.636-7.133-3.683-10.219l-3.59-6.2.769-1.633-2.393-4.225-2.948-3.561c-.4-3.948-.463-9.241-.53-13.207-2.95-5.136-6.582-12.155-9.325-17.4.078-5.156.615-12.015,1.025-17.152l3.752-5.936.708-9.8.644-9.5-8.907,3.051-6.487-10.979-1.776-1.23-2.126-6.966-1.669-2.592c-2.928-10.564-3.051-11.311-6.219-30.41l1.705,5.967,1-4.767-.452,3.989c4.893,19.072,6.772,23.789,13,39.408l1.847,1.694c2.892-2.19,6.865-4.951,9.822-7.053l1.19-2.542,1.669-1.145,1.4.209.738-2.667,3.458-3.543.522-3.8.327,1.112,2.173-4.14-1.625-4.6-3.242-2.6-.74-5.283-3.216,5.43-4.524.867-.619-6.212-.421,3.94L48.883,151l2.923-1.876,5.575,9.312,3.485-.111,4.548,3.614c4.116.212,9.606.484,13.724.689l1.595,4.091,3.63,2.665,1.471-.169-2.663,1.564,3.405,4,1.714-.9,1.807-3.267c.034,4.858.321,11.333.464,16.187l5.551,12.43,5.2,8.008,2.4-2,.443-3.021,1.225-4.7.483-9.862c3.545-3.884,8.378-8.962,11.988-12.784l.045-2.017,6.495-1.014,2.923-2.188,6.745,12.5-.29,3.447,1.217,1.979,2.271-.858,2.157-2.953,1.23,3.385.795,6.877,1.4,5.979,1.382-1.6,1.439,10.128,3.889,5.058,1.283,3.532,1.346,3.654,4.942,2.83-2.391-8.6-6.288-5.8-1.428-2.384-1.444-3.61c-.033-.624-.063-1.25-.1-1.876l2.859-7.267-.082,1.836,8.956,6.527.493,3.5,8.846-7.7.074-5.783-7.939-12.708.775-2.933,4.383-3.935,4.831.6-1.154.5.873,2.251,1.546-2.933,14.076-5.546c3.839-5.261,8.964-12.271,12.806-17.53l-4.109-1.2,3.3-2.337-4.475-3.253,4.232.773-5.885-8.831,8.093-6.71-9.127-1.041-2.529-2.95,7.83-5.421,2.923.637-2.449,5.029,6.594-3.882,2.738,1.653-1.145,3.8,3.191.827.307,9.56,4.675-.791,2.063-4.249-4.484-8.421c2.99-3.478,6.919-8.164,9.882-11.663l1.553,1.509,3.5-1.058c5.751-12.447,6.135-13.39,12.566-29.146l-5.91-3.679-3.073,1.517-.98-1.845-3.472-1.861c4.084-3.962,9.417-9.361,13.394-13.428h10.159l1.64-1.147,4.815.96L251.21,64.9l6.542-1.049-1.644-1.68,3.14-4.976,4.94-1.8,1.393,4.22L269,53.744l2.56.243-1.48.463.435,3.416c-2.1,3.131-5.114,7.157-7.338,10.2L261.155,75.6l1.339,6.709,3.8,7.442c2.571-5.036,5.76-11.868,8.1-17.015l-1.469-3.626-2.814-1.322,1.489-5.932,3.714-1.408.711,2.008,2.213-2.286,3.893,1.584c2-2.413,4.474-5.783,6.368-8.281l3.567.711.1-1.137-5.586-5.78,3.079-1.981-1.165-3.019,1.861,1.981,2.846.256,2.144,2.311,4.457,1.558L298.065,44.3l1.9.385.466-1.778-3.744-2.551-3.469-.657,1.722,2.186-3-2.38c-4.339-2.239-10.159-5.152-14.524-7.338l-8.771-1.879,2.456,3.793-1.787.236-2.946-2.164c-3.623-.283-8.456-.653-12.08-.931l-.965-2.295-1.93-1.079-9.152.051-4.483-3.291c-4.381-.885-10.223-2.052-14.605-2.926l-1.02,1.865,1.306,1.959-2.572,1.176-2.621-1.029-2.425.439-2.707-.675-1.693.492-1.685,2.24-3.113-1.6-.662-5.477-2.333-2.23-5.638.582-1.381,1.442L191.1,21.5l-2.464-1.088,1.495-.8c-3.813-.127-8.9-.3-12.712-.428l-9.132,2.38c4.051-2.177,9.439-5.107,13.479-7.3l.786-1.352-3.34-3.069-4.5-.423-.443,1.413-2.326-.147,2.039-1.468-4.011-.581,2.777-.769-3.69-.6Z" transform="translate(-0.25 -7.255)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-2" cx="0.528" cy="0.405" r="0.737" gradientTransform="matrix(0.976, 0, 0, -1, 0, 2.145)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-5">
+      <path id="パス_464" data-name="パス 464" d="M12.632,44.547l-.285.617.588-1.074Z" transform="translate(-12.347 -44.09)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-3" cx="232.29" cy="48.412" r="201.2" gradientTransform="matrix(1.827, 0, 0, -1, 31.521, 460.836)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-7">
+      <path id="パス_466" data-name="パス 466" d="M14.366,41.307l-.247.4-.2.753.385-.86.2-.443Z" transform="translate(-13.914 -41.158)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-4" cx="228.811" cy="43.999" r="165.862" gradientTransform="matrix(2.23, 0, 0, -1, 53.137, 388.146)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-9">
+      <path id="パス_468" data-name="パス 468" d="M11.272,47.684l.036.015.571-1.083Z" transform="translate(-11.272 -46.615)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-5" cx="227.917" cy="43.775" r="199.553" gradientTransform="matrix(1.782, 0, 0, -1, 26.314, 448.526)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-11">
+      <path id="パス_470" data-name="パス 470" d="M14.355,41.528l-.76,1.408.938-1.633-.013-.1Z" transform="translate(-13.595 -41.205)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-6" cx="143.153" cy="33.065" r="124.85" gradientTransform="matrix(1.845, 0, 0, -1, 22.226, 292.025)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-13">
+      <path id="パス_472" data-name="パス 472" d="M14.569,41.485l-.129.169-.2.385.588-.833.185-.37.62-1.016Z" transform="translate(-14.241 -39.82)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-7" cx="95.53" cy="26.927" r="97.393" gradientTransform="matrix(1.592, 0, 0, -1, 10.985, 230.062)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-15">
+      <path id="パス_474" data-name="パス 474" d="M54.534,3.68l-1,.608L49.474,6.743,55.6,3.113ZM58.3,1.509l.02-.011.034-.02ZM59.987.587,58.323,1.5,55.6,3.113l3.108-1.654L60.7.25Z" transform="translate(-49.474 -0.25)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-8" cx="6.163" cy="20.257" r="33.279" gradientTransform="matrix(0.578, 0, 0, -1, -3.371, 100.727)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-17">
+      <path id="パス_476" data-name="パス 476" d="M13.358,47.016l-.143.484-.463.726.018-.232-1.293,2.574-.2.718L10.239,53.3l.261-.258L9.655,54.5l-.365.824-.08.343-.278.566,1.518-2.206.981-2.037,1.145-2.609,1.377-2.469.624-1.511-.3.259.287-.51Z" transform="translate(-8.933 -45.153)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-9" cx="25.28" cy="4.517" r="19.497" gradientTransform="matrix(1.963, 0, 0, -1, 2.764, 44.311)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-19">
+      <path id="パス_478" data-name="パス 478" d="M33.439,21.921l1.388-.742-.209-.274Z" transform="translate(-33.439 -20.905)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-10" cx="70.804" cy="92.578" r="212.685" gradientTransform="matrix(0.732, 0, 0, -1, -11.714, 569.985)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-21">
+      <path id="パス_480" data-name="パス 480" d="M69.244,3.68l.845-.337-.8-.089Z" transform="translate(-69.244 -3.254)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-11" cx="39.403" cy="295.708" r="506.803" gradientTransform="matrix(0.504, 0, 0, -1, -73.658, 1508.473)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-23">
+      <path id="パス_482" data-name="パス 482" d="M75.217,1.409l-1.163.786-1.595.332-.122.463,2.251-.5,1.547-1.165Z" transform="translate(-72.338 -1.329)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-12" cx="7.291" cy="78.056" r="130.171" gradientTransform="matrix(0.437, 0, 0, -1, -19.45, 391.627)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-25">
+      <path id="パス_484" data-name="パス 484" d="M55.586,19.892l1.183,1.693L56.6,19.348Z" transform="translate(-55.586 -19.348)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-13" cx="49.109" cy="43.308" r="96.594" gradientTransform="matrix(1.891, 0, 0, -1, 75.969, 261.398)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-27">
+      <path id="パス_486" data-name="パス 486" d="M68.11,3.468l2.148.067.218-.394.991-.169-.136-.452Z" transform="translate(-68.11 -2.521)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-14" cx="10.538" cy="125.627" r="213.061" gradientTransform="matrix(0.302, 0, 0, -1, -25.692, 636.77)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-29">
+      <path id="パス_488" data-name="パス 488" d="M70.817,2.506l-.466.8.446.22,2.3-.708.425-1.165Z" transform="translate(-70.351 -1.653)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-15" cx="9.883" cy="68.89" r="115.409" gradientTransform="matrix(0.591, 0, 0, -1, -16.477, 346.603)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-31">
+      <path id="パス_490" data-name="パス 490" d="M66.448,3.265l.854.2,1.386-.68Z" transform="translate(-66.448 -2.786)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-16" cx="17.132" cy="186.539" r="317.568" gradientTransform="matrix(0.304, 0, 0, -1, -37.467, 947.846)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-33">
+      <path id="パス_492" data-name="パス 492" d="M72.9.723l-2.975,1.3,1.009.247L72.648,1.7l.258-.742L74.676.538Z" transform="translate(-69.921 -0.538)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-17" cx="6.748" cy="75.533" r="124.584" gradientTransform="matrix(0.365, 0, 0, -1, -16.947, 376.486)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-35">
+      <path id="パス_494" data-name="パス 494" d="M68.37,2.413,69.257,3l2.676-.862-1.047-.5Z" transform="translate(-68.37 -1.635)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-18" cx="9.794" cy="94.826" r="158.819" gradientTransform="matrix(0.382, 0, 0, -1, -21.518, 476.973)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-37">
+      <path id="パス_496" data-name="パス 496" d="M126,11.512l2.845,1.654,3.938-.5-.31-1.016-3.035-.2-.223-.584Z" transform="translate(-125.999 -10.863)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-19" cx="-10.268" cy="48.73" r="93.785" gradientTransform="matrix(0.34, 0, 0, -1, -22.253, 267.147)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-39">
+      <path id="パス_498" data-name="パス 498" d="M123.5,14.426l-1.419,1.223,2.892-.025,2.986.57-1.776-1.7-3.817-1.761Z" transform="translate(-122.085 -12.733)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-20" cx="-10.641" cy="31.473" r="62.459" gradientTransform="matrix(0.589, 0, 0, -1, -15.503, 175.949)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-41">
+      <path id="パス_500" data-name="パス 500" d="M64.306,2.721l.448.386,1.99-.526L64.311,3.668l1.268.423.925-.9,3.082-.747-.466-.537Z" transform="translate(-64.306 -1.906)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-21" cx="8.004" cy="58.84" r="98.925" gradientTransform="matrix(0.414, 0, 0, -1, -12.954, 296.669)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-43">
+      <path id="パス_502" data-name="パス 502" d="M124.534,11.2l-4.365-1.515-1.108,2.088,1.446,1.684,1.8.8,1.034-1.119,2.8-.223,1.263.865,1.459-.327L128,12.532l1.544.142.858-1.036L124.262,9.66Z" transform="translate(-119.061 -9.66)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-22" cx="-5.034" cy="24.858" r="46.929" gradientTransform="matrix(0.406, 0, 0, -1, -11.315, 134.627)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-45">
+      <path id="パス_504" data-name="パス 504" d="M152.374,18.165l1.62,2.061,1.107-.539.945.1,1.629-1.286-2.014-1.117Z" transform="translate(-152.374 -17.379)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-23" cx="-22.165" cy="35.29" r="75.911" gradientTransform="matrix(0.537, 0, 0, -1, -24.146, 207.932)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-47">
+      <path id="パス_506" data-name="パス 506" d="M66.127,15.624l2.338-.435-.766-1.05Z" transform="translate(-66.127 -14.138)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-24" cx="16.664" cy="71.559" r="145.418" gradientTransform="matrix(0.635, 0, 0, -1, -18.706, 406.256)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-49">
+      <path id="パス_508" data-name="パス 508" d="M72.727,10.662c-3.512,1.914-8.158,4.532-11.65,6.48l-1.422,1.749-2.211,1.322-1.635,1.631-1.939,1.27-1.01,2.2,1.172,1.82,3.5-.034.822-4.417,2.346-2,3.819-3.093,4.842-2.9L77.449,11.7,83.534,8.79c-3.244.55-7.567,1.308-10.807,1.872" transform="translate(-52.859 -8.79)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-25" cx="2.055" cy="6.327" r="11.782" gradientTransform="matrix(0.598, 0, 0, -1, -1.257, 33.972)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-51">
+      <path id="パス_510" data-name="パス 510" d="M94.337,4.841,90.792,8.092l3.429-.542.991.37,3.719-1-1.41-2-1.437.02.764-.532Z" transform="translate(-90.792 -4.406)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-26" cx="-0.71" cy="33.634" r="58.616" gradientTransform="matrix(0.453, 0, 0, -1, -11.071, 173.321)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-53">
+      <path id="パス_512" data-name="パス 512" d="M90.862,2.343,89.52,3.477l-1.493.43L86.666,5.247l.5.815,2.32.125,1.085,1.7,5.2.123.767-2.54-2.464.3,1.344-1-1.322-.586,1.335-1.266L93.815,1.22Z" transform="translate(-86.666 -1.22)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-27" cx="0.173" cy="19.105" r="31.813" gradientTransform="matrix(0.688, 0, 0, -1, -4.967, 95.769)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-55">
+      <path id="パス_514" data-name="パス 514" d="M56.452,4.074l-1.7,1.306-.345-.218L52.875,6.456,54,6.548a7.125,7.125,0,0,0-1.593.579,6.911,6.911,0,0,0-.764,1l1.346-.842c-1.114,1.254-1.123,1.417-1.127,1.471a11.946,11.946,0,0,0,1.665-.434l1.5-.943,3.251-2.347L58.2,4.257l-2.97,1.466,1.444-1.8c-.074.049-.145.1-.218.151" transform="translate(-51.645 -3.923)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-28" cx="9.831" cy="25.816" r="44.675" gradientTransform="matrix(0.729, 0, 0, -1, -3.829, 132.466)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-57">
+      <path id="パス_516" data-name="パス 516" d="M31.208,23.963l.813-.769-.14-.085Z" transform="translate(-31.208 -23.109)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-29" cx="125.892" cy="105.386" r="252.876" gradientTransform="matrix(1.051, 0, 0, -1, 3.575, 668.337)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-59">
+      <path id="パス_518" data-name="パス 518" d="M34.384,21.262l.376.053.874-1.021Z" transform="translate(-34.384 -20.293)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-30" cx="77.253" cy="93.168" r="211.56" gradientTransform="matrix(0.817, 0, 0, -1, -9.126, 569.115)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-61">
+      <path id="パス_520" data-name="パス 520" d="M30.8,24.332l-.16.386,1.37-1.42Z" transform="translate(-30.637 -23.298)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-31" cx="75.455" cy="63.162" r="152.122" gradientTransform="matrix(1.037, 0, 0, -1, 1.504, 401.543)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-63">
+      <path id="パス_522" data-name="パス 522" d="M32.561,23.046l.04-.209-.171.018-.8.791,1.43-.666L33.7,22Z" transform="translate(-31.63 -22.001)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-32" cx="49.017" cy="55.957" r="131.326" gradientTransform="matrix(0.794, 0, 0, -1, -5.7, 349.503)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-65">
+      <path id="パス_524" data-name="パス 524" d="M31.81,22.967l.181.209q.588-.691,1.181-1.379Z" transform="translate(-31.81 -21.797)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-33" cx="74.294" cy="67.046" r="156.719" gradientTransform="matrix(1.012, 0, 0, -1, 0.508, 417.634)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-67">
+      <path id="パス_526" data-name="パス 526" d="M15.875,39.213l-.194.394.23-.365.241-.187-.06-.1Z" transform="translate(-15.681 -38.957)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-34" cx="276.652" cy="94.392" r="332.697" gradientTransform="matrix(1.377, 0, 0, -1, 22.739, 790.706)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-69">
+      <path id="パス_528" data-name="パス 528" d="M31.172,23.16l-.4.448.746-.515Z" transform="translate(-30.777 -23.093)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-35" cx="138.256" cy="174.824" r="419.331" gradientTransform="matrix(0.691, 0, 0, -1, -23.137, 1108.454)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-71">
+      <path id="パス_530" data-name="パス 530" d="M20.812,40.063l-.394.562-.129.112-.3.488-.359.767-.082-.112L19,42.926l-.261.464-.151.3-1.341,2.157-.366.689,1-1.428-.127.276-2.44,4.379L17,46.81l-.042.183-2.1,4.042.659-.383L13.149,55.71l-.06.065-.12.127-.278.073.1-.506-.827,1.72.283-.258-.934,2.025-.668.934-.214.513.187.194-.154.259-.042.532.57-.695-.753,1.479-.775.92-1.2,2.32,2.219-2.6.007.624,1.005-.88.3-1.373L13.7,57.838l-.171-.952.856-2.42.033.446,2.585-7.382.5-.586,2.547-4.263-.844.421.062-.154.553-.827.04-.272.073.013,1.589-2.313Z" transform="translate(-8.267 -39.548)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-36" cx="10.853" cy="2.329" r="8.354" gradientTransform="matrix(1.95, 0, 0, -1, 1.075, 19.773)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-73">
+      <path id="パス_532" data-name="パス 532" d="M35.137,20.4l0,.243.786-.544Z" transform="translate(-35.135 -20.102)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-37" cx="121.181" cy="175.5" r="397.049" gradientTransform="matrix(0.693, 0, 0, -1, -24.929, 1069.418)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-75">
+      <path id="パス_534" data-name="パス 534" d="M37.437,19.045l.067.668.047-.031,1.19-.978Z" transform="translate(-37.437 -18.704)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-38" cx="69.778" cy="97.208" r="214.226" gradientTransform="matrix(0.773, 0, 0, -1, -11.804, 582)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-77">
+      <path id="パス_536" data-name="パス 536" d="M47.745,23.188l2.487-1.17-.669-1.029Z" transform="translate(-47.745 -20.989)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-39" cx="29.073" cy="42.705" r="98.268" gradientTransform="matrix(0.884, 0, 0, -1, -4.038, 263.215)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-79">
+      <path id="パス_538" data-name="パス 538" d="M37.315,19.508l-.9.8,1.557-.929Z" transform="translate(-36.419 -19.377)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-40" cx="59.659" cy="104.244" r="232.628" gradientTransform="matrix(0.597, 0, 0, -1, -17.116, 629.357)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-81">
+      <path id="パス_540" data-name="パス 540" d="M36.258,19.78l-.354.472.677-.506Z" transform="translate(-35.904 -19.746)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-41" cx="138.601" cy="189.98" r="426.895" gradientTransform="matrix(0.748, 0, 0, -1, -24.26, 1152.393)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-83">
+      <path id="パス_542" data-name="パス 542" d="M50.458,8.956l-1.074.381-.871.838-1.945,1.477,1.473-.459-1.366,1.319,1.241-.646,2.1-1.656-.009-.178L51.2,8.715Z" transform="translate(-46.569 -8.715)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-42" cx="16.068" cy="30.595" r="56.907" gradientTransform="matrix(0.819, 0, 0, -1, -3.291, 164.153)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-85">
+      <path id="パス_544" data-name="パス 544" d="M57.647,5.686l-3.808,3-.359-.232,3.773-2.861c-.479.12-.746.678-1.306.628a2.854,2.854,0,0,1,.278-.343l1.156-.7-1.527.415L53.249,7.4,52.117,8.719q-1.317,1-2.612,2.019l2-.678.287.374L48.318,12.15l.161.762-1.564,1.194h-.967c-.689.929-1.611,2.164-2.3,3.091a118.23,118.23,0,0,1,10.038-7.2l.66-.065L51.776,11.7l1.615-.5L55.33,9.385l.684-1.226,3.077-2.981Z" transform="translate(-43.647 -5.178)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-43" cx="5.164" cy="10.199" r="17.978" gradientTransform="matrix(0.778, 0, 0, -1, -1.137, 52.927)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-87">
+      <path id="パス_546" data-name="パス 546" d="M146.674,157.867l.156,3.117.762-1.112.024-2.757-1.475-1.584Z" transform="translate(-146.141 -155.53)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-44" cx="-71.995" cy="-27.539" r="39.622" gradientTransform="matrix(3.697, 0, 0, -1, 484.894, 16.613)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-89">
+      <path id="パス_548" data-name="パス 548" d="M118.8,130.775l2.023.3.354,1.384,3.822.183-.165.978-4.009.16,1.767,3.314,1.883-2.1,1.513,2.181,7.209,3.409,1.212,3.844-2.536,2.42,4.263-.43,1.867,2.171,4.087-.368,2.015-2.607,3.57.586,2.672,3.559,5.364,1.934-5.606-8.506,1.758-.214-3.552-2.848-.791-2.44c-4.035-1.9-9.453-4.368-13.506-6.231l-3.9,1.475-2.054,2.284-1.8-1.618-.682-3.392-1.7-1.417Z" transform="translate(-118.803 -128.785)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-45" cx="-1.533" cy="-4.437" r="9.432" gradientTransform="matrix(0.621, 0, 0, -1, -2.215, 8.191)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-91">
+      <path id="パス_550" data-name="パス 550" d="M131.733,49.3l-.956.14-.1,4.875,1.188,2.718c.439,4.488.9,10.486,1.283,14.981l1.025-2.52,1.713,2.1L133.7,64.812l1.918-2.884,2.4,1.881c-2.052-5.125-4.88-11.921-6.992-17.022Z" transform="translate(-130.679 -46.787)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-46" cx="-10.641" cy="1.867" r="8.564" gradientTransform="matrix(3.436, 0, 0, -1, 78.624, 19.23)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-93">
+      <path id="パス_552" data-name="パス 552" d="M133.042,67.678l-1.972-.546-.323,1.707-.992,1.283L130.885,73l1.747-1.379-1.7-1.662,3.4-.134,3.008,1.684.43-1.859,4.41-2.161-1.148-2.943-3.567.2-3.329-3.43Z" transform="translate(-129.755 -61.314)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-47" cx="-6.155" cy="1.775" r="18.489" gradientTransform="matrix(0.941, 0, 0, -1, -1.123, 37.003)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-95">
+      <path id="パス_554" data-name="パス 554" d="M144.213,136.665l.394-2.164-.588-.134-3.068-2.943Z" transform="translate(-140.951 -131.424)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-48" cx="-26.474" cy="-20.31" r="41.227" gradientTransform="matrix(1.434, 0, 0, -1, 30.341, 33.974)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-97">
+      <path id="パス_556" data-name="パス 556" d="M144.2,135.251l-4.174,1.362-2.3.073,3.71,1.66,2.545-1.535.974-1.315.323-2.115Z" transform="translate(-137.726 -133.381)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-49" cx="-12.039" cy="-22.152" r="43.517" gradientTransform="matrix(0.657, 0, 0, -1, -11.332, 34.431)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-99">
+      <path id="パス_558" data-name="パス 558" d="M115.121,132.668l1.462,1.19.648-.766,4.129,1.292L118.2,131.65Z" transform="translate(-115.121 -131.65)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-50" cx="-8.001" cy="-39.087" r="79.038" gradientTransform="matrix(0.438, 0, 0, -1, -18.806, 64.831)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-101">
+      <path id="パス_560" data-name="パス 560" d="M117.028,143.278l2.393-.013-.04-1.125Z" transform="translate(-117.028 -142.141)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-51" cx="-22.306" cy="-110.666" r="189.951" gradientTransform="matrix(0.475, 0, 0, -1, -46.548, 122.355)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-103">
+      <path id="パス_562" data-name="パス 562" d="M121.661,82.941l2.665-1.827,1.085.57,1.074-1.538-4.064-.811Z" transform="translate(-121.661 -79.335)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-52" cx="-12.807" cy="-3.312" r="59.912" gradientTransform="matrix(0.748, 0, 0, -1, -11.546, 101.776)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-105">
+      <path id="パス_564" data-name="パス 564" d="M106.226,110.25l1.977,3.338-.377-3.378Z" transform="translate(-106.226 -110.21)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-53" cx="-17.082" cy="-20.118" r="63.967" gradientTransform="matrix(1.708, 0, 0, -1, 69.023, 75.5)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-107">
+      <path id="パス_566" data-name="パス 566" d="M104.219,139.316l-1.981-.8-1.337,1.339,5.588.152-1.546-1.631Z" transform="translate(-100.901 -138.376)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-54" cx="-4.317" cy="-72.997" r="132.483" gradientTransform="matrix(0.292, 0, 0, -1, -23.198, 93.713)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-109">
+      <path id="パス_568" data-name="パス 568" d="M105.209,132.466l-.7,5,1.4,1.284-.526,3.478,2.317.141.836-6.747,1.566,3.869,1.25,1.061,1.524-1.061-1.277-1.711.464-1.1-2.255-2.812,4.506-2.019-1.669-.644-2.676.644-2.445-3.242,6.168.062,1.876-1.181-7.144-.891Z" transform="translate(-104.511 -126.596)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-55" cx="-2.774" cy="-6.194" r="13.701" gradientTransform="matrix(1.427, 0, 0, -1, 7.319, 12.402)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-111">
+      <path id="パス_570" data-name="パス 570" d="M139.77,71.134l.695,1.6-3.345,6.877-2.311.9.325-1.707-3.57,5.587-1.529-.432-9.154,3.7L117.962,91.1l.256,1.8,1.348-1.384,1.346,5.528,2.685-4.764-.8-1.85-1.66-.894,9.934-2.342.686,3.579,2.494-2.431-.14-2.088,4.116-.532.729,1.437,1.713-2.4-.269,1.6,2.092-1.863,2.168-12.305-1.183-2.357L143.5,67.8Z" transform="translate(-117.962 -67.8)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-56" cx="-2.063" cy="0.307" r="7.388" gradientTransform="matrix(1.096, 0, 0, -1, 0.766, 13.982)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-113">
+      <path id="パス_572" data-name="パス 572" d="M144.647,137.713l1.6-.279-.889-1.147-.94-1.4Z" transform="translate(-144.417 -134.883)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-57" cx="-56.361" cy="-39.829" r="76.35" gradientTransform="matrix(1.548, 0, 0, -1, 78.459, 58.483)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-115">
+      <path id="パス_574" data-name="パス 574" d="M108.144,112.6l2.534,3.06-.793,2.984,1.049.9,1.163-4.916-2.743-2.117Z" transform="translate(-108.144 -112.51)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-58" cx="-9.425" cy="-10.255" r="30.721" gradientTransform="matrix(1.779, 0, 0, -1, 38.675, 35.073)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-117">
+      <path id="パス_576" data-name="パス 576" d="M115.092,126.743l-.08,4.815,1.542,1.557,1.315-2.594-1.117-1.645c.022-.591.044-1.186.063-1.781l.639-.963-.181-1.373Z" transform="translate(-115.012 -124.757)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-59" cx="-17.401" cy="-11.289" r="25.853" gradientTransform="matrix(2.925, 0, 0, -1, 140.576, 24.199)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-119">
+      <path id="パス_578" data-name="パス 578" d="M124.548,178.1l1.547,1.805,3.512-5.167-2.333.789-1.794-1Z" transform="translate(-124.548 -174.535)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-60" cx="-13.246" cy="-34.364" r="40.211" gradientTransform="matrix(1.062, 0, 0, -1, 2.77, 4.028)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-121">
+      <path id="パス_580" data-name="パス 580" d="M149.152,156.533l-6.407-5.052-.06-3.166,2.471-3.3-8.568-2.123,0,2.208-4.579.432-2.228,4.978-4.483-2.358c-3.79,3.635-8.82,8.506-12.6,12.158l-9.666,3.077-2.4,3.178-.845-1.761-.7,11.327,3.1,6.8,1.713,4.706-1.027,2.026,2.774,1.62c3.389-.684,7.91-1.586,11.3-2.266l.8-1.29,8.517-3.109,6.787,1.417,3.14,4.8,4.118-4.281-2.442,4.582,2.485-1.892.942,5.333,3.189,3.3,2.563-.49,1.722.62,5.016-1.482,7.585-8.809,4.156-6.3,2.262-8.788-1.823-3.719-.435-2.743-1.257.426-.916-5.232-3.138-2.275-.19-8.145-2.3-1.283-1.192-8.22c-2.188,4.543-5.163,10.571-7.387,15.093" transform="translate(-99.088 -141.44)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-61" cx="-0.303" cy="-2.203" r="3.82" gradientTransform="matrix(0.823, 0, 0, -1, -0.462, 2.505)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-123">
+      <path id="パス_582" data-name="パス 582" d="M102.211,120.793l5.852-5.219-.169-2.028-.7-.62Z" transform="translate(-102.211 -112.925)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-62" cx="-4.527" cy="-9.263" r="27.463" gradientTransform="matrix(1.344, 0, 0, -1, 10.911, 31.162)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-125">
+      <path id="パス_584" data-name="パス 584" d="M17.2,43.865l-.657,1.058-.822,3.088,1.341-2.048.619-2.184Z" transform="translate(-15.717 -43.778)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-63" cx="66.562" cy="12.418" r="51.052" gradientTransform="matrix(2.16, 0, 0, -1, 16.884, 117.207)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-127">
+      <path id="パス_586" data-name="パス 586" d="M16.6,78.191l1.956.847.864-2.19Z" transform="translate(-16.6 -76.849)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-64" cx="45.693" cy="-3.396" r="98.682" gradientTransform="matrix(0.777, 0, 0, -1, -2.385, 171.75)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-129">
+      <path id="パス_588" data-name="パス 588" d="M150.382,151.837l.336,1.172,1.943-1.807-1.823-.706c-.152.446-.3.894-.455,1.341" transform="translate(-150.382 -150.496)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-65" cx="-49.98" cy="-56.134" r="85.996" gradientTransform="matrix(1.103, 0, 0, -1, 12.297, 43.327)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-131">
+      <path id="パス_590" data-name="パス 590" d="M19.827,43.771l1.279-1.292,1.043-1.711Z" transform="translate(-19.827 -40.769)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-66" cx="52.956" cy="19.324" r="71.972" gradientTransform="matrix(1.293, 0, 0, -1, 4.538, 168.861)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-133">
+      <path id="パス_592" data-name="パス 592" d="M167.393,32.265l3.784.189-3.129-1.506-1.595-.111Z" transform="translate(-166.453 -30.837)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-67" cx="-30.279" cy="47.038" r="133.677" gradientTransform="matrix(0.342, 0, 0, -1, -42.05, 335.947)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-135">
+      <path id="パス_594" data-name="パス 594" d="M7.388,73,7.943,76.8l.753-.593.678-2.65.056-.66-.065-.082Z" transform="translate(-7.388 -72.819)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-68" cx="71.245" cy="-0.032" r="54.216" gradientTransform="matrix(1.951, 0, 0, -1, 6.241, 98.026)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-137">
+      <path id="パス_596" data-name="パス 596" d="M23.794,36.9l-.321.626.443-.626Z" transform="translate(-23.473 -36.899)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-69" cx="262.799" cy="103.911" r="345.18" gradientTransform="matrix(1.414, 0, 0, -1, 39.827, 832.467)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-139">
+      <path id="パス_598" data-name="パス 598" d="M23.04,39.874l-.72,1.742,2.093-1.834Z" transform="translate(-22.32 -39.781)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-70" cx="56.575" cy="32.611" r="117.815" gradientTransform="matrix(0.876, 0, 0, -1, -2.397, 278.38)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-141">
+      <path id="パス_600" data-name="パス 600" d="M11.584,77.971l2.594.771L11.965,76.8Z" transform="translate(-11.584 -76.803)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-71" cx="53.164" cy="-3.792" r="111.423" gradientTransform="matrix(0.748, 0, 0, -1, -2.045, 194.009)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-143">
+      <path id="パス_602" data-name="パス 602" d="M150.677,170.275l.464-.279-.486,3.042-1.611,2.355-2.487,1.967.733,1.29-2.351,2.177,1.791-.249,3.284-3.048,1.264-.526,2.482-2.888-2.351.327.579-2.155-1.121.481.668-1.116-.4-3.394Z" transform="translate(-144.939 -168.258)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-72" cx="-11.792" cy="-13.786" r="17.192" gradientTransform="matrix(1.425, 0, 0, -1, 12.667, 3.534)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-145">
+      <path id="パス_604" data-name="パス 604" d="M144.373,179.22l-2.988,1.451-4.506,2.975,2.322,1.321,6.819-4.947.04.552,1.332-1.607,3-2.159.833-1.631-1.469.845.789-1.564Z" transform="translate(-136.879 -174.456)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-73" cx="-6.231" cy="-17.554" r="20.557" gradientTransform="matrix(0.733, 0, 0, -1, -4.627, 2.086)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-147">
+      <path id="パス_606" data-name="パス 606" d="M159.791,153.478l-1.965.934q-.514,1.241-1.039,2.467l3.59-1.7,1.179-1.473,2.166-1.956-1.945-1.259Z" transform="translate(-156.787 -150.496)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-74" cx="-18.096" cy="-22.093" r="33.846" gradientTransform="matrix(0.92, 0, 0, -1, -3.261, 17.053)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-149">
+      <path id="パス_608" data-name="パス 608" d="M7.017,70.292,6.575,71.6v.664L6.132,74.2l.457-.35.526-1.137.842-3.387-.813-.758Z" transform="translate(-6.132 -68.567)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-75" cx="80.992" cy="1.347" r="38.361" gradientTransform="matrix(3.086, 0, 0, -1, 12.718, 72.099)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-151">
+      <path id="パス_610" data-name="パス 610" d="M4.686,71.678l.454-.991-.5-.082Z" transform="translate(-4.639 -70.606)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-76" cx="300.617" cy="3.627" r="201.543" gradientTransform="matrix(2.141, 0, 0, -1, 19.183, 371.894)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-153">
+      <path id="パス_612" data-name="パス 612" d="M8.045,66.39l-.688,1.188L7.23,69.627l1.226-4.376Z" transform="translate(-7.23 -65.251)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-77" cx="118.912" cy="3.109" r="49.386" gradientTransform="matrix(3.568, 0, 0, -1, 27.466, 95.563)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-155">
+      <path id="パス_614" data-name="パス 614" d="M118.039,122.572h0l0,0Zm-1.687-5.375-4.285,2.5-.493-1.794-3.213,4.582,2.533-2.034.6.833-.063-1.01,1.272,3.146,2.817.971.882-.414.412-2.692.742,2.572.114-1.515.368.23.132-4.107-.6-.209.5-.5-.68-1.116-1.313-1.368Z" transform="translate(-108.361 -115.272)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-78" cx="-3.838" cy="-8.462" r="23.703" gradientTransform="matrix(0.929, 0, 0, -1, -1.419, 25.961)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-157">
+      <path id="パス_616" data-name="パス 616" d="M22.459,31.386l-1.15,1.466L22.6,31.22Zm.136-.165,1.869-2.262,1.194-1.518,1.079-1.475Z" transform="translate(-21.309 -25.965)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-79" cx="22.158" cy="12.325" r="31.377" gradientTransform="matrix(1.269, 0, 0, -1, 1.914, 81.42)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-159">
+      <path id="パス_618" data-name="パス 618" d="M37.961,149.83l-1.776,1.39.931,3.178,2.679,4.114.756,3.6L45.5,169.6l2.295,1.039,1.094-.927c-2.369-5.892-5.116-13.909-7.064-19.953l1.088.969-2.754-5.967-.083-.1-1.82-.795Z" transform="translate(-36.185 -143.865)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-80" cx="7.343" cy="-4.819" r="8.071" gradientTransform="matrix(2.107, 0, 0, -1, 5.721, 4.965)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-161">
+      <path id="パス_620" data-name="パス 620" d="M105.66,138.79l2.257,1.315,1.375-.065,7.485-1.491Z" transform="translate(-105.66 -138.549)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-81" cx="-2.946" cy="-76.683" r="138.808" gradientTransform="matrix(0.14, 0, 0, -1, -14.828, 97.788)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-163">
+      <path id="パス_622" data-name="パス 622" d="M112.87,114.4l1.148-1.939-2.832-.952Z" transform="translate(-111.186 -111.507)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-82" cx="-15.106" cy="-24.315" r="74.723" gradientTransform="matrix(1.021, 0, 0, -1, 1.506, 86.566)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-165">
+      <path id="パス_624" data-name="パス 624" d="M112.816,116.718l-.06-1.1.443.949-.412-3.313-1.56-.383Z" transform="translate(-111.227 -112.876)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-83" cx="-21.731" cy="-18.946" r="56.236" gradientTransform="matrix(1.948, 0, 0, -1, 97.052, 63.856)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-167">
+      <path id="パス_626" data-name="パス 626" d="M109.707,113.187l.96-.776,1.225,1.308.082-1.384-1.95-.927Z" transform="translate(-109.707 -111.407)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-84" cx="-17.695" cy="-30.344" r="93.491" gradientTransform="matrix(1.02, 0, 0, -1, 1.758, 108.466)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-169">
+      <path id="パス_628" data-name="パス 628" d="M105.891,97.368l1.783,4.434,1.936-5.016-.864-3.538Z" transform="translate(-105.891 -93.248)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-85" cx="-8.92" cy="-4.347" r="25.261" gradientTransform="matrix(2.3, 0, 0, -1, 67.149, 37.01)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-171">
+      <path id="パス_630" data-name="パス 630" d="M108.44,135.5l1.226,1.085,1.041-2.395Z" transform="translate(-108.44 -134.19)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-86" cx="-16.667" cy="-46.544" r="90.228" gradientTransform="matrix(1.056, 0, 0, -1, 4.859, 70.166)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-173">
+      <path id="パス_632" data-name="パス 632" d="M113.374,139.2l-.541.718-2.507,1.274-.561,1.872,2.326-.747,5.542-3.708Z" transform="translate(-109.766 -138.605)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-87" cx="-5.11" cy="-26.814" r="48.497" gradientTransform="matrix(0.566, 0, 0, -1, -10.977, 34.117)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-175">
+      <path id="パス_634" data-name="パス 634" d="M89.346,130.729l-1.286.57,1.014.236,1.268,1.72,1.248.513.127-1.188-2.5-2.445Z" transform="translate(-88.06 -130.134)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-88" cx="-0.225" cy="-28.648" r="59.461" gradientTransform="matrix(0.994, 0, 0, -1, -0.281, 50.29)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-177">
+      <path id="パス_636" data-name="パス 636" d="M97.439,147.721l.051-1.157,2.3.956.125-5.444-2.95-1.713-.914-3.811-1.718-.909.376-1.781c-4.563-3.616-10.605-8.485-15.141-12.131l-3.628-.737c7.946,10.132,10.818,13.648,21.5,26.727" transform="translate(-75.938 -120.994)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-89" cx="0.883" cy="-3.275" r="8.084" gradientTransform="matrix(1.115, 0, 0, -1, 0.66, 8.078)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-179">
+      <path id="パス_638" data-name="パス 638" d="M58.743,116.815l-.249.452.064,2.7.622,2.266,1.063-.51,1.687-1.186L60,115.812l-1.237-.388Z" transform="translate(-58.494 -115.424)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-90" cx="15.371" cy="-11.362" r="31.711" gradientTransform="matrix(1.983, 0, 0, -1, 30.362, 34.652)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-181">
+      <path id="パス_640" data-name="パス 640" d="M107.069,103.652l-.3,6.065-1.107-.976.279,3.563,2.028,1.21.695,2.266,1.986.016,1.079,1.235.321-1.8,3.347,3.18-.789-2.551.923-1.027-.885.441-2.716-1.324-1.116.778-1.176-2.063.178-2.652,1.059-.3.294-6.511-2.511-.354Z" transform="translate(-105.667 -102.852)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-91" cx="-3.319" cy="-3.509" r="13.885" gradientTransform="matrix(1.577, 0, 0, -1, 11.197, 18.104)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-183">
+      <path id="パス_642" data-name="パス 642" d="M111.48,113.357l-1.486,4.6,1.856-4.787Z" transform="translate(-109.994 -113.168)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-92" cx="-21.886" cy="-15.316" r="45.134" gradientTransform="matrix(2.58, 0, 0, -1, 169.846, 51.028)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-185">
+      <path id="パス_644" data-name="パス 644" d="M89.186,136.307l1.644,1.821-.083.6,10.765,2.289.6-.337L107.812,142l-2.07-2.464-2.257-1.874L90.22,135.685Z" transform="translate(-89.186 -135.685)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-93" cx="-0.154" cy="-18.074" r="34.206" gradientTransform="matrix(0.339, 0, 0, -1, -5.741, 25.741)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-187">
+      <path id="パス_646" data-name="パス 646" d="M95.777,101.227l-4.544,1.709.945,2.471,1.263.377.419-.571,1.725-1.137,1.116-1.867-.811-1.533Z" transform="translate(-91.233 -100.676)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-94" cx="-1.203" cy="-9.917" r="42.297" gradientTransform="matrix(0.934, 0, 0, -1, -1.989, 56.693)" xlink:href="#radial-gradient"/>
+    <clipPath id="clip-path-189">
+      <path id="パス_648" data-name="パス 648" d="M97.539,129.963l.1,2.567L93.933,130.8l-1.39.842-.2,2.533.749,1.379-.3.762.76,2.143.74-.657,1.272,4.365,3.16-.036.348,1.635,5.335-.285.7,1.66,2.988-1.42.544,1.119,4.762-12.6L111.98,131l.2-1.152-1.248-3.567,2.7-1.063-.985-1.281,2.4-.64-5.491-4.209c-3.626,3.236-8.41,7.608-12.009,10.874" transform="translate(-92.34 -119.089)" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient-95" cx="-0.378" cy="-3.227" r="8.295" gradientTransform="matrix(1.147, 0, 0, -1, 1.088, 8.554)" xlink:href="#radial-gradient"/>
+  </defs>
+  <g id="earth1" transform="translate(-314 -334)">
+    <circle id="earth" cx="180" cy="180" r="180" transform="translate(314 334)" fill="#fff" opacity="0.43"/>
+    <g id="map" transform="translate(320.653 348.4)">
+      <g id="グループ_991" data-name="グループ 991" transform="translate(28.079 81.158)" clip-path="url(#clip-path)">
+        <rect id="長方形_562" data-name="長方形 562" width="0.628" height="1.654" transform="translate(0)" fill="url(#radial-gradient)"/>
+      </g>
+      <g id="グループ_993" data-name="グループ 993" clip-path="url(#clip-path-2)">
+        <path id="パス_461" data-name="パス 461" d="M15.682,47.051a.439.439,0,0,1-.143-.024.452.452,0,0,1-.3-.519l.241-1.21a.419.419,0,0,1,.085-.187l.343-.446a.453.453,0,0,1,.809.22l.044.345a.449.449,0,0,1-.042.252l-.626,1.312a.455.455,0,0,1-.41.258" transform="translate(12.397 36.217)" fill="#ccc"/>
+      </g>
+      <g id="グループ_995" data-name="グループ 995" transform="translate(0.454 13.161)" clip-path="url(#clip-path-3)">
+        <rect id="長方形_564" data-name="長方形 564" width="300.182" height="293.036" transform="translate(0 0)" fill="url(#radial-gradient-2)"/>
+      </g>
+      <g id="グループ_997" data-name="グループ 997" clip-path="url(#clip-path-2)">
+        <path id="パス_463" data-name="パス 463" d="M69.92,300.948a.449.449,0,0,1-.274-.093l-4.234-3.209-5.442-5.49L54.017,286.7l-5.709-7.041-1.919-2.485-7.412-9.105c-.559-1.063-1.108-2.117-1.678-3.213-2.03-3.9-4.334-8.323-5.97-11.93-.619-1.166-1.313-2.462-2.037-3.806-1.9-3.534-4.049-7.54-5.609-10.792l-4.211-6.661a.5.5,0,0,1-.049-.105l-3.759-11.7-1.736-3.425-.871-.171a.456.456,0,0,1-.327-.256L11.264,212.8l-1.074,2.7a.446.446,0,0,1-.076.125l-1.067,1.263a.432.432,0,0,1-.423.154.457.457,0,0,1-.348-.288l-1.789-4.844-2.493-9.969L2.505,193.9C1.384,184.709.379,172.269,0,162.925c.06-1.245.111-2.567.161-3.937.125-3.287.254-6.687.542-9.5l.6-6.431,2.012-10a.447.447,0,0,1,.189-.285.45.45,0,0,1-.107-.343l.212-2.014-.076-.018a.453.453,0,0,1-.345-.526l.751-4-.018-.06a.419.419,0,0,1,.009-.116l.348-1.752,1.7-7.432.831-3.048.29-1.3.4-.864.08-.374a.456.456,0,0,1,.648-.3l.838.428L11.113,105l1.332-5.025.074-2.164a.463.463,0,0,1,.089-.254l.105-.14.346-1.221a.466.466,0,0,1,.127-.2l.51-.483a.456.456,0,0,1,.492-.085l.02.009.1-.138.813-2.456a.421.421,0,0,1,.461-.31.452.452,0,0,1,.381.259l.762-1.1,1.029-2.335a.452.452,0,0,1,.12-.16l1.544-1.319L19.4,87.41a.456.456,0,0,1,.167-.366l.272-.223,1.68-3.258a.476.476,0,0,1,.1-.127l1.876-1.7.381-.669a.518.518,0,0,1,.412-.23l.5.022.57-.629,2.681-6.714,2.128-3.178L32.1,68.455a.449.449,0,0,1,.581-.04.436.436,0,0,1,.107.109c.434-1.034.869-2.057,1.3-3.042L32.3,67.613a.452.452,0,0,1-.795-.218l-.287-1.729a.456.456,0,0,1,.045-.285l3-5.74L37.628,55.1l2.411-2.253,2.442-2.46,5.041-5.2,3.38-3.035,1.714-1.754c.925-.8,1.91-1.66,2.93-2.551,2.351-2.054,4.782-4.178,6.859-5.872l4.922-2.48,2.71-2.057a.433.433,0,0,1,.151-.074l1.633-.464a.454.454,0,0,1,.522.221.448.448,0,0,1,.053.176.488.488,0,0,1,.236-.058l.762.022a.456.456,0,0,1,.414.3.452.452,0,0,1-.094.459l.484,1.147a.454.454,0,0,1-.14.533L72.67,30.783l.4-.073a.46.46,0,0,1,.461.2l.4.62a.453.453,0,0,1,.034.43.462.462,0,0,1-.343.265l-.366.058A64.2,64.2,0,0,0,76.24,38.5a.454.454,0,0,1-.033.5l-1.876,2.462-1.836,1.5a.459.459,0,0,1-.49.051l-1.352-.678c-1.1-.553-2.333-1.17-3.378-1.738l-.726,3.2a.463.463,0,0,1-.042.112l-2.26,4.25.867.912.425-.916-.056-1.319a.456.456,0,0,1,.372-.466l1.849-.337a.454.454,0,0,1,.39.114l.932.865.945-2.25a.452.452,0,0,1,.18-.21L74.919,41.6a.454.454,0,0,1,.5.009l.916.626,1.263-1.682.274-1.368a.464.464,0,0,1,.1-.2l2.083-2.525.285-1.368a.452.452,0,0,1,.2-.288.438.438,0,0,1,.348-.06l1.856.441a.452.452,0,0,1,.346.473l-.149,2.113a.451.451,0,0,1-.354.41l-1.7.376-.492,1.379.678.071,1.555-1.6a.444.444,0,0,1,.134-.1l9.2-4.265a.46.46,0,0,1,.415.02.451.451,0,0,1,.227.352l.1,1.094L94.477,34.5a.435.435,0,0,1,.181-.058l4.514-.434a.457.457,0,0,1,.455.263.467.467,0,0,1,.042.209l.359-.125.922-2.213a.462.462,0,0,1,.53-.267l2.3.577c1.794.452,3.726.938,5.3,1.313a.463.463,0,0,1,.29.218l.842,1.491.942-1.669-1.143-2.035a.45.45,0,0,1,.036-.5l1.825-2.338-.472-1.176a.451.451,0,0,1,.183-.553l3.61-2.233L118,21.906a.464.464,0,0,1,.348-.147l4.72.151a.453.453,0,0,1,.328.751l-2.774,3.173-.437,2.347a.435.435,0,0,1-.049.136l-3.274,5.916.357,1.878a.459.459,0,0,1-.1.381l-2.366,2.765a.476.476,0,0,1-.129.1l-3.585,1.948,1.021.457,5.109-3.565,2.293-3.86a.436.436,0,0,1,.2-.18l-1.036-.045a.457.457,0,0,1-.352-.194.448.448,0,0,1-.06-.4l.8-2.549a.458.458,0,0,1,.069-.136l1.925-2.565.249-2.435a.455.455,0,0,1,.245-.359l2.683-1.373,1.119-2.168a.449.449,0,0,1,.5-.234.455.455,0,0,1,.354.428l.058,1.8a.468.468,0,0,1-.045.21l-1.03,2.139.749.18-.243-.147a.453.453,0,0,1-.218-.359.448.448,0,0,1,.169-.383l2.522-2.019a.446.446,0,0,1,.386-.087l5.691,1.341.123-1.03-1.31-.267a.453.453,0,0,1-.347-.564l.931-3.369a.452.452,0,0,1,.388-.33l8.586-.9,2.886-3.463a.439.439,0,0,1,.239-.149c5.606-1.379,13.065-3.206,18.705-4.575l1.422-1.635a.447.447,0,0,1,.16-.118l3.1-1.364a.439.439,0,0,1,.256-.031l3.69.6a.453.453,0,0,1,.047.883l-.693.192,1.872.27a.451.451,0,0,1,.365.308.44.44,0,0,1,.341-.109l4.5.421a.471.471,0,0,1,.267.118l3.338,3.069a.456.456,0,0,1,.085.562l-.784,1.352a.467.467,0,0,1-.176.171c-3.01,1.636-6.768,3.679-10.165,5.515l5.486-1.43a.613.613,0,0,1,.131-.015l12.712.428a.454.454,0,0,1,.2.853l-.678.365,1.5.664,5.23-.591,1.266-1.324a.457.457,0,0,1,.283-.138l5.638-.581a.464.464,0,0,1,.359.123l2.331,2.228a.452.452,0,0,1,.138.274l.633,5.237,2.56,1.313,1.457-1.936a.451.451,0,0,1,.236-.163l1.691-.49a.452.452,0,0,1,.236-.005l2.612.653,2.329-.425a.442.442,0,0,1,.247.024l2.442.96,1.914-.873L221.965,24a.448.448,0,0,1-.02-.468l1.02-1.867a.451.451,0,0,1,.486-.227l.336.067c4.341.867,10,2,14.27,2.861a.434.434,0,0,1,.18.08l4.361,3.2,9-.051c.058.034.154.02.223.058l1.93,1.081a.444.444,0,0,1,.2.22l.86,2.039,2.351.181c3.129.239,6.652.51,9.452.729a.45.45,0,0,1,.232.087l2.8,2.055.894-.118-2.066-3.193a.455.455,0,0,1,.009-.5.466.466,0,0,1,.468-.187l8.769,1.881a.388.388,0,0,1,.109.038l.174.085c4.25,2.13,10.07,5.045,14.353,7.255l.626.5a.458.458,0,0,1,.053-.132.465.465,0,0,1,.474-.21l3.469.657a.486.486,0,0,1,.171.071l3.743,2.551a.453.453,0,0,1,.183.49l-.464,1.778a.449.449,0,0,1-.528.33l-1.056-.212,1.4,3.274a.453.453,0,0,1-.087.488.447.447,0,0,1-.481.118L295.4,47.445a.453.453,0,0,1-.183-.12l-2.026-2.182-2.674-.241a.45.45,0,0,1-.288-.14l-.272-.29.328.854a.452.452,0,0,1-.178.544l-2.614,1.682,5.2,5.382a.449.449,0,0,1,.125.354l-.1,1.139a.456.456,0,0,1-.181.323.445.445,0,0,1-.359.082l-3.287-.655-1.208,1.6c-1.618,2.155-3.452,4.6-5,6.466a.453.453,0,0,1-.519.131l-3.61-1.468-2,2.066a.442.442,0,0,1-.423.127.454.454,0,0,1-.332-.292l-.555-1.571L272.187,62.4l-1.342,5.341,2.478,1.165a.46.46,0,0,1,.229.239l1.466,3.626a.453.453,0,0,1-.007.357c-1.426,3.138-5.069,11.082-8.1,17.033a.474.474,0,0,1-.809,0l-3.8-7.442a.381.381,0,0,1-.042-.118l-1.339-6.707a.461.461,0,0,1,.007-.2l2.025-7.538a.467.467,0,0,1,.071-.149l1.524-2.077c1.914-2.6,4.076-5.544,5.709-7.969l-.412-3.247a.442.442,0,0,1,.036-.243l-.423-.04-3.274,5.622a.457.457,0,0,1-.439.221.45.45,0,0,1-.383-.308l-1.248-3.775-4.354,1.586-2.865,4.541,1.391,1.424a.455.455,0,0,1-.252.766l-6.544,1.047A.468.468,0,0,1,251,65.3a.454.454,0,0,1,.1-.53l.776-.727-3.759-.749-1.482,1.036a.458.458,0,0,1-.259.082h-9.969c-3.65,3.73-8.735,8.886-12.822,12.868l2.924,1.569a.452.452,0,0,1,.187.187l.773,1.455,2.678-1.322a.459.459,0,0,1,.441.022l5.91,3.681a.455.455,0,0,1,.18.557c-6.436,15.77-6.821,16.712-12.572,29.164a.456.456,0,0,1-.281.243l-3.5,1.058a.447.447,0,0,1-.446-.109l-1.2-1.17-2.638,3.12c-2.264,2.685-4.7,5.571-6.732,7.939l4.339,8.147a.457.457,0,0,1,.007.412l-2.061,4.249a.46.46,0,0,1-.334.25l-4.675.791a.46.46,0,0,1-.363-.1.454.454,0,0,1-.167-.336l-.3-9.221-2.863-.742a.451.451,0,0,1-.319-.57l1.041-3.467-2.2-1.332-6.358,3.744a.448.448,0,0,1-.539-.058.453.453,0,0,1-.1-.532l2.2-4.51-2.164-.472-7.256,5.023,2.086,2.431,8.951,1.021a.454.454,0,0,1,.238.8l-7.781,6.451,5.66,8.49a.453.453,0,0,1,0,.5.463.463,0,0,1-.461.2l-2.271-.415,2.865,2.083a.453.453,0,0,1-.005.737l-2.534,1.794,3.207.932a.454.454,0,0,1,.239.7l-12.806,17.53a.451.451,0,0,1-.2.154l-13.92,5.486-1.468,2.783a.455.455,0,0,1-.825-.047l-.871-2.251a.459.459,0,0,1,.036-.4l-3.14-.386-4.129,3.7-.689,2.614,7.833,12.539a.459.459,0,0,1,.071.247l-.076,5.782a.453.453,0,0,1-.156.337l-8.846,7.7a.465.465,0,0,1-.457.083.455.455,0,0,1-.29-.361l-.466-3.307-8.8-6.415-.025-.02-2.028,5.158.089,1.7,1.415,3.541L149,209.12l6.241,5.76a.446.446,0,0,1,.129.21l2.391,8.6a.453.453,0,0,1-.158.481.444.444,0,0,1-.5.034l-4.943-2.83a.451.451,0,0,1-.2-.238l-2.607-7.12-3.846-5.005a.436.436,0,0,1-.091-.212l-1.3-9.138-.729.845a.459.459,0,0,1-.452.145.454.454,0,0,1-.334-.339l-1.4-5.978-.8-6.928-.913-2.485-1.658,2.268a.453.453,0,0,1-.207.156l-2.269.86a.449.449,0,0,1-.548-.187l-1.217-1.979a.466.466,0,0,1-.065-.274l.278-3.313-6.431-11.922-2.5,1.872a.474.474,0,0,1-.2.085l-6.119.956-.036,1.636a.456.456,0,0,1-.125.3l-2.24,2.373c-3.189,3.372-6.8,7.188-9.631,10.288l-.473,9.7-1.239,4.793-.434,2.972a.453.453,0,0,1-.16.283l-2.4,2a.481.481,0,0,1-.359.1.444.444,0,0,1-.31-.2l-5.2-8.009L90.35,187.18a.42.42,0,0,1-.04-.171c-.044-1.468-.1-3.084-.16-4.758-.114-3.309-.234-6.712-.283-9.724l-.978,1.767a.44.44,0,0,1-.187.181l-1.713.9a.449.449,0,0,1-.557-.107l-3.4-3.995a.456.456,0,0,1,.114-.686l1.123-.66-3.6-2.643a.457.457,0,0,1-.154-.2l-1.489-3.817-2.367-.118c-3.634-.181-7.784-.388-11.062-.559a.441.441,0,0,1-.258-.1L62.3,160.08l.7,5.014,3.1,2.484a.467.467,0,0,1,.145.2l1.627,4.6a.452.452,0,0,1-.027.363l-2.175,4.14a.449.449,0,0,1-.446.241l-.036-.005-.317,2.306a.448.448,0,0,1-.123.254l-3.378,3.463-.709,2.552a.461.461,0,0,1-.5.327l-1.223-.18-1.42.974-1.137,2.431a.466.466,0,0,1-.149.176l-2.206,1.562c-2.527,1.783-5.392,3.808-7.6,5.482a.455.455,0,0,1-.581-.025l-1.847-1.7a.454.454,0,0,1-.116-.169c-6.135-15.378-8.056-20.2-12.775-38.516a.464.464,0,0,1-.341.174.652.652,0,0,1-.2-.04c2.162,12.936,2.583,14.7,5.118,23.841l1.631,2.534a.365.365,0,0,1,.053.114l2.081,6.816,1.645,1.137a.524.524,0,0,1,.132.143l6.3,10.66,8.557-2.928a.463.463,0,0,1,.423.069.449.449,0,0,1,.176.39l-1.352,19.3a.459.459,0,0,1-.069.21l-3.692,5.84c-.372,4.679-.927,11.661-1.012,16.9l.856,1.64c2.574,4.931,5.776,11.066,8.4,15.649a.452.452,0,0,1,.062.218l.013.8c.065,3.826.145,8.581.5,12.225l2.861,3.458,2.438,4.29a.448.448,0,0,1,.015.415l-.669,1.419,3.472,6,.6,1.745c.951,2.841,2.03,6.065,3.109,8.517a.456.456,0,0,1-.042.441c-.181.263-.392.548-.611.844a16.379,16.379,0,0,0-1.234,1.829.445.445,0,0,1-.3.23.422.422,0,0,1-.1.011M20.267,231.232l4.207,6.66c1.576,3.282,3.723,7.276,5.617,10.8.722,1.348,1.42,2.643,2.052,3.837,1.638,3.608,3.935,8.02,5.961,11.911.57,1.1,1.119,2.152,1.627,3.137L47.1,276.61l3.579,4.582,4,4.889L60.6,291.5l5.41,5.462,3.775,2.857c.3-.49.677-.992,1.039-1.484.158-.212.31-.419.45-.615-1.061-2.458-2.11-5.587-3.037-8.359l-.559-1.662-3.554-6.123a.451.451,0,0,1-.018-.419l.671-1.419L62.5,275.721l-2.9-3.5a.445.445,0,0,1-.1-.243c-.374-3.7-.455-8.546-.521-12.439l-.011-.686c-2.629-4.584-5.807-10.676-8.365-15.578l-.909-1.74a.476.476,0,0,1-.053-.218c.08-5.317.649-12.458,1.027-17.182a.438.438,0,0,1,.069-.207l3.69-5.838,1.3-18.5-8.26,2.828a.449.449,0,0,1-.539-.2L40.484,191.33l-1.693-1.17a.46.46,0,0,1-.176-.241l-2.108-6.91-1.635-2.54a.4.4,0,0,1-.056-.123c-2.935-10.591-3.059-11.336-6.23-30.455a.455.455,0,0,1,.348-.515.45.45,0,0,1,.535.317l1.2,4.2.626-2.975a.461.461,0,0,1,.515-.354.453.453,0,0,1,.379.5l-.441,3.908c4.858,18.939,6.741,23.674,12.926,39.176l1.491,1.37c2.179-1.636,4.907-3.565,7.329-5.272l2.106-1.493,1.137-2.433a.455.455,0,0,1,.154-.181l1.671-1.145a.451.451,0,0,1,.323-.074l1,.149.631-2.279a.471.471,0,0,1,.112-.2l3.354-3.44.5-3.654a.454.454,0,0,1,.885-.065l.011.034,1.56-2.972-1.518-4.292-3.142-2.514a.456.456,0,0,1-.165-.292l-.561-4-2.556,4.314a.448.448,0,0,1-.3.214l-4.526.869a.455.455,0,0,1-.535-.4l-.207-2.072a.454.454,0,0,1-.337.207.459.459,0,0,1-.477-.319l-3.967-12.878a.45.45,0,0,1,.187-.515l2.926-1.876a.437.437,0,0,1,.348-.06.444.444,0,0,1,.285.209l5.437,9.081,3.218-.1a.4.4,0,0,1,.3.1l4.436,3.523c3.255.169,7.336.372,10.916.551l2.661.132a.452.452,0,0,1,.4.287l1.549,3.967,3.38,2.484,1.293-.151a.452.452,0,0,1,.483.307.457.457,0,0,1-.2.535l-2.2,1.292,2.819,3.309,1.272-.671L89.9,170.59a.456.456,0,0,1,.51-.22.45.45,0,0,1,.341.435c.025,3.383.167,7.465.3,11.414.058,1.642.112,3.227.156,4.673l5.517,12.349,4.889,7.518,1.878-1.56.417-2.85,1.237-4.749.468-9.767a.451.451,0,0,1,.118-.285c2.852-3.124,6.516-7,9.749-10.418l2.123-2.246.042-1.841a.456.456,0,0,1,.385-.437l6.38-1,2.834-2.119a.433.433,0,0,1,.368-.08.449.449,0,0,1,.3.227l6.745,12.5a.449.449,0,0,1,.051.252l-.276,3.3.943,1.533,1.794-.68,2.079-2.845a.454.454,0,0,1,.793.112l1.228,3.389.82,6.979,1.185,5.06.8-.927a.455.455,0,0,1,.795.232l.4,2.786,2.843-7.226a.447.447,0,0,1,.515-.278.455.455,0,0,1,.359.463l-.071,1.593,8.76,6.386a.448.448,0,0,1,.181.3l.377,2.667,8.064-7.021.071-5.446-7.87-12.594a.466.466,0,0,1-.054-.357l.775-2.933a.456.456,0,0,1,.136-.221l4.383-3.935a.439.439,0,0,1,.359-.112l4.831.6a.453.453,0,0,1,.125.865l-.753.328.354.916,1.083-2.05a.443.443,0,0,1,.234-.21l13.952-5.5,12.347-16.9-3.489-1.016a.453.453,0,0,1-.136-.805l2.786-1.972-3.964-2.881a.453.453,0,0,1-.151-.546.463.463,0,0,1,.5-.268l3.178.582-5.294-7.94a.455.455,0,0,1,.089-.6l7.275-6.032L189,128.264a.453.453,0,0,1-.292-.156l-2.529-2.948a.453.453,0,0,1,.085-.669l7.833-5.421a.462.462,0,0,1,.354-.071l2.921.637a.454.454,0,0,1,.31.642l-1.789,3.677,5.3-3.12a.458.458,0,0,1,.464,0l2.738,1.653a.455.455,0,0,1,.2.521l-1.009,3.351,2.736.708a.456.456,0,0,1,.339.426l.29,9.042,3.933-.666,1.859-3.831-4.377-8.216a.457.457,0,0,1,.056-.51c2.072-2.407,4.592-5.4,6.93-8.167l2.952-3.494a.456.456,0,0,1,.323-.16.423.423,0,0,1,.339.129l1.361,1.322,3.048-.922c5.62-12.169,6.068-13.254,12.327-28.587l-5.372-3.345L227.478,81.5a.456.456,0,0,1-.6-.194l-.914-1.722-3.349-1.8a.451.451,0,0,1-.1-.724c4.2-4.075,9.595-9.546,13.383-13.419a.456.456,0,0,1,.325-.136h10.018l1.522-1.065a.447.447,0,0,1,.348-.073l4.815.96a.455.455,0,0,1,.221.776l-.337.316,4.214-.673-1.03-1.054a.458.458,0,0,1-.06-.561l3.14-4.974a.444.444,0,0,1,.229-.185l4.938-1.8a.448.448,0,0,1,.352.016.458.458,0,0,1,.234.267L265.9,58.72l2.915-5a.461.461,0,0,1,.434-.223l2.562.243a.454.454,0,0,1,.091.885l-1.116.348.386,3.039a.461.461,0,0,1-.073.308c-1.654,2.469-3.871,5.484-5.827,8.144L263.8,68.469l-1.976,7.353,1.306,6.54,3.369,6.594c2.884-5.716,6.193-12.926,7.6-16.026l-1.326-3.28L270.122,68.4a.456.456,0,0,1-.249-.522l1.491-5.93a.455.455,0,0,1,.278-.314l3.714-1.408a.453.453,0,0,1,.588.272l.466,1.319,1.707-1.762a.453.453,0,0,1,.5-.1l3.583,1.459c1.489-1.816,3.224-4.125,4.762-6.175L288.34,53.4a.452.452,0,0,1,.452-.171l3.07.611.038-.428-5.442-5.631a.453.453,0,0,1,.08-.7l2.768-1.78-1.03-2.674a.453.453,0,0,1,.753-.473l1.743,1.854,2.674.241a.45.45,0,0,1,.292.143l2.07,2.228,3.38,1.181-1.335-3.122a.45.45,0,0,1,.065-.464.445.445,0,0,1,.441-.158l1.482.3.276-1.054-3.4-2.317-2.188-.414.972,1.235a.453.453,0,0,1-.639.635l-3-2.382c-4.205-2.159-10.023-5.072-14.27-7.2l-.122-.062-7.645-1.638,1.861,2.875a.454.454,0,0,1-.323.7l-1.785.236a.469.469,0,0,1-.328-.083L266.412,32.8c-2.779-.22-6.241-.484-9.321-.718l-2.627-.2a.455.455,0,0,1-.385-.276l-.905-2.152-1.689-.945-9.033.051a.381.381,0,0,1-.272-.089l-4.4-3.231c-4.256-.86-9.862-1.979-14.17-2.839l-.009,0-.727,1.332,1.154,1.732a.452.452,0,0,1-.189.664L221.263,27.3a.444.444,0,0,1-.354.009l-2.5-.981-2.3.417a.48.48,0,0,1-.19-.005l-2.591-.646-1.428.414-1.595,2.121a.46.46,0,0,1-.57.131l-3.113-1.6a.456.456,0,0,1-.243-.35l-.644-5.315-2.063-1.972-5.265.542-1.264,1.322a.462.462,0,0,1-.276.138l-5.515.624a.454.454,0,0,1-.236-.038l-2.464-1.088a.452.452,0,0,1-.031-.813l.013-.007-10.965-.37L168.606,22.2a.451.451,0,0,1-.537-.272.456.456,0,0,1,.207-.566c4.013-2.155,9.337-5.049,13.365-7.24l.539-.927-2.959-2.719-3.978-.374-.332,1.063a.456.456,0,0,1-.463.317l-2.326-.145a.455.455,0,0,1-.236-.822l1.128-.811-2.9-.419a.454.454,0,0,1-.058-.887l.787-.218-1.518-.249L166.444,9.2l-1.449,1.667a.464.464,0,0,1-.234.143c-5.607,1.362-13.065,3.187-18.7,4.572l-2.908,3.49a.452.452,0,0,1-.3.161l-8.461.889-.718,2.6,1.241.254a.451.451,0,0,1,.359.5l-.232,1.95a.453.453,0,0,1-.189.317.438.438,0,0,1-.365.071l-5.97-1.406-1.841,1.475,2.186,1.322a.454.454,0,0,1-.341.829l-4.134-1a.452.452,0,0,1-.3-.637l.831-1.725a.455.455,0,0,1-.185.176l-2.592,1.328-.238,2.315a.458.458,0,0,1-.087.225l-1.954,2.605-.6,1.912,3.926.176a.454.454,0,0,1,.328.163.459.459,0,0,1,.1.356l-.372,2.538a.452.452,0,0,1-.412.385.44.44,0,0,1-.47-.31l-.613-1.9-1.6.336-2.24,3.775a.432.432,0,0,1-.129.14l-5.4,3.77a.462.462,0,0,1-.446.042l-3.494-1.571a.453.453,0,0,1-.25-.539.462.462,0,0,1,.5-.323l1.881.268,3.557-1.934,2.17-2.534-.348-1.825a.445.445,0,0,1,.049-.3l3.318-5.994.446-2.4a.447.447,0,0,1,.105-.216l2.224-2.543-3.556-.114-2.707,2.959a.432.432,0,0,1-.1.078l-3.342,2.066.426,1.065a.455.455,0,0,1-.062.446l-1.8,2.306,1.121,2a.451.451,0,0,1,0,.444l-1.462,2.591a.471.471,0,0,1-.789,0l-1.141-2.017c-1.542-.368-3.4-.836-5.121-1.27l-1.919-.481-.849,2.039a.447.447,0,0,1-.268.254L98.3,35.92a.454.454,0,0,1-.464-.755l.131-.127-3.128.3-2.3,1.317a.453.453,0,0,1-.677-.352l-.107-1.157-8.541,3.96L81.568,40.8a.431.431,0,0,1-.372.134l-1.473-.152a.453.453,0,0,1-.379-.6l.771-2.159a.458.458,0,0,1,.328-.29l1.611-.354.1-1.393-1.029-.243-.214,1.02a.439.439,0,0,1-.094.2l-2.081,2.525-.272,1.359a.448.448,0,0,1-.083.181L76.8,43.128a.453.453,0,0,1-.619.1l-1.03-.7L70.752,45.25l-1.139,2.714a.454.454,0,0,1-.323.267.438.438,0,0,1-.4-.111l-1.241-1.15-1.237.227.044,1.032a.438.438,0,0,1-.042.21l-.753,1.622a.447.447,0,0,1-.337.256.441.441,0,0,1-.4-.134L63.365,48.55a.453.453,0,0,1-.071-.526L65.68,43.54l.845-3.733a.454.454,0,0,1,.666-.3c1.121.633,2.581,1.366,3.87,2.01l1.094.55,1.533-1.234L75.3,38.694c-1.132-2.015-2.311-4.706-3.113-6.587a.467.467,0,0,1-.016-.314l-1.194.216a.469.469,0,0,1-.41-.134.462.462,0,0,1-.112-.419l.3-1.248a.455.455,0,0,1,.542-.336l.818.187,1.1-.864-.154-.368-1.027.626a.454.454,0,0,1-.6-.122.523.523,0,0,1-.04-.069l-.648.526a.455.455,0,0,1-.6-.029A.363.363,0,0,1,70.1,29.7l-1.6,1.23a.453.453,0,0,1-.573-.7l.559-.486-.677.512L62.9,32.726c-1.981,1.631-4.406,3.75-6.752,5.8-1.021.893-2.006,1.754-2.906,2.529L51.528,42.8l-3.376,3.033L40.669,53.5,38.3,55.7l-3.273,4.423-2.89,5.546.1.606,3.311-3.946a.453.453,0,0,1,.755.488c-1.214,2.513-2.507,5.631-3.757,8.648-.435,1.05-.86,2.074-1.263,3.026l.537-.809,2.226-2.037L36.614,67.2l4.514-5.323.21-2.24a.462.462,0,0,1,.089-.23l5.263-7.055,5.129-4.543,2.262-2.888a.464.464,0,0,1,.136-.116l2.431-1.352a.454.454,0,0,1,.671.444L57.1,46a.461.461,0,0,1-.145.287l-8.343,7.656-2.672,4.8-.59,2.409,5.352-1.82a.453.453,0,0,1,.51.7l-.461.619.53,1.471a.452.452,0,0,1-.357.6l-2.048.314-.927.834a.466.466,0,0,1-.21.107l-3.679.771L43.3,66.5a.453.453,0,0,1,.319.664L42.34,69.5l-1.475,1.843a.468.468,0,0,1-.425.163.455.455,0,0,1-.354-.287l-.37-.972-3.966,6.511-.613.66a.43.43,0,0,1-.125.094l-.243.122-.717,1.139a.454.454,0,0,1-.715.067l-.132-.142-3.759,1.97a.47.47,0,0,1-.049.221l-.4.782a.453.453,0,0,1-.858-.21l.022-1.633-1.063.782a.453.453,0,0,1-.657-.6l.7-1.154.042-.78-1.018,2.556a.405.405,0,0,1-.083.136l-.769.847a.459.459,0,0,1-.354.149l-.434-.018-.279.492a.406.406,0,0,1-.089.112l-1.869,1.694L20.6,87.322a.463.463,0,0,1-.116.141l-.172.142.016.455a.454.454,0,0,1-.16.359L18.54,89.812l-1.029,2.315-1,1.462.011.065a.451.451,0,0,1-.207.468l-.635.4a.464.464,0,0,1-.18.063l-.352,1.063a.452.452,0,0,1-.062.122l-.708.985a.448.448,0,0,1-.508.167.665.665,0,0,1-.063-.025l-.241.851a.483.483,0,0,1-.073.147l-.073.1-.082,2.121L11.98,105.26l-2.226,6.587a.464.464,0,0,1-.259.276.457.457,0,0,1-.377-.016l-.811-.414-.352.766-.261,1.226-.833,3.05-2.028,9.083.007.112-.678,3.681.045.011a.455.455,0,0,1,.33.3h.252l.368-1.261a.5.5,0,0,1,.071-.143l.352-.473.733-2.618.4-2.411,3.022-7.1.769-3.044a.375.375,0,0,1,.042-.105l.967-1.763a.449.449,0,0,1,.419-.236.456.456,0,0,1,.4.276l.249.584,1.752-2.678a.435.435,0,0,1,.39-.207l.639.016a.46.46,0,0,1,.319.141.455.455,0,0,1,.123.325l-.071,2.54-.268,3.287.332,2.632.421,2.133.588,1.684.007.025.475-.96a.436.436,0,0,1,.441-.25.474.474,0,0,1,.1.02l-.147-.913-.613-1.353a.457.457,0,0,1-.029-.287l.238-1.039-.316-.443a.41.41,0,0,1-.065-.132l-.361-1.19a.443.443,0,0,1-.018-.161l.267-4.3-.163-1a.444.444,0,0,1,.015-.2l.756-2.5a.41.41,0,0,1,.054-.118l1.005-1.527a.456.456,0,0,1,.5-.189.449.449,0,0,1,.332.414l.093,1.7-.308,4.085,1.1,1.654a.465.465,0,0,1,.073.3l-.185,1.669.566,1.656a.437.437,0,0,1,.022.21l-.708,4.882.015,2.944.112,1.878.508.678a.452.452,0,0,1,.069.412l-.749,2.286.274,1.088.212.368.328-.109.394-3.273a.454.454,0,0,1,.216-.334.467.467,0,0,1,.4-.036l.178.069-.4-2.589a.5.5,0,0,1,0-.147l.847-4.978a.453.453,0,0,1,.66-.323l.35.189.147-.626a.449.449,0,0,1,.21-.288l.8-.475a.457.457,0,0,1,.437-.013l1.856.942.649-.94a.447.447,0,0,1,.261-.181l1.09-.278-.562-1.778a.453.453,0,0,1,.005-.294l2.825-7.661a.417.417,0,0,1,.122-.18l.94-.849.753-2.17a.53.53,0,0,1,.056-.111l2.106-3.011a.453.453,0,0,1,.366-.194l1.95-.024h.005a.454.454,0,0,1,.143.885l-.847.283.152.3.8.016a.456.456,0,0,1,.394.247.451.451,0,0,1-.029.463l-1.444,2.123.2,1.664,3.011-1.635-.639-.176a.454.454,0,0,1-.319-.542l.492-2.074a.459.459,0,0,1,.152-.245l1.976-1.629a.447.447,0,0,1,.537-.031.728.728,0,0,1,.082.067L44.1,100.1a.449.449,0,0,1,.448,0l.782.448a.452.452,0,0,1,.094.715L44.3,102.382a.455.455,0,0,1-.3.132l-.339.016.379,1.154a.449.449,0,0,1-.063.41l-1.7,2.318a.455.455,0,0,1-.537.152l-.5-.2-.1.149,3.984,6.977a.452.452,0,0,1,.053.3l-.579,3.461a.458.458,0,0,1-.321.361l-4.7,1.366a.452.452,0,0,1-.385-.062l-2.536-1.76a.45.45,0,0,1-.192-.317l-.091-.74-6.373,2.6.279.386a.453.453,0,0,1-.083.62l-3.57,2.846a.451.451,0,0,1,.049.207l-.056,7.576,1.058,1.275.59-.845a.463.463,0,0,1,.241-.176l1.009-.3a.448.448,0,0,1,.479.145L31.317,132l.762-.065,1.067-1.6a.453.453,0,0,1,.62-.131l.521.332.633-.437a.453.453,0,0,1,.7.477L32.44,144.089a.47.47,0,0,1-.053.129l-1.056,1.762a.477.477,0,0,1-.118.131L29.205,147.6a.455.455,0,0,1-.541,0l-1.89-1.388-2.748,1.7a.45.45,0,0,1-.522-.031l-2.251-1.8a.458.458,0,0,1-.151-.221l-.4-1.292L19.583,144a.45.45,0,0,1-.243-.346l-.109-.858-1.584.268-.573,1.752-.029,2.075a.459.459,0,0,1-.261.4l-1.736.811a.455.455,0,0,1-.584-.183c-1.575-2.7-3.334-6.369-4.748-9.315l-.254-.526a.453.453,0,0,1-.02-.337l1.045-3.184.635-4.075-.464-.4a72.728,72.728,0,0,0-5.99,5.738.453.453,0,0,1-.472.123.458.458,0,0,1-.312-.374l-.013-.1a.6.6,0,0,1-.114,0L2.2,143.193l-.6,6.387c-.287,2.785-.415,6.168-.539,9.442-.051,1.373-.1,2.7-.161,3.9.377,9.285,1.381,21.693,2.494,30.838l1.479,7.98,2.473,9.9,1.5,4.065.517-.611,1.44-3.625a.451.451,0,0,1,.41-.285h.011a.452.452,0,0,1,.414.265l1.81,3.977.86.169a.458.458,0,0,1,.317.241l1.863,3.688Zm132.483-10.564,3.842,2.2-2.061-7.411-6.193-5.716a.428.428,0,0,1-.082-.1l-1.428-2.384-1.11-2.763.577,4.056,3.817,4.967a.436.436,0,0,1,.065.122ZM53.475,159.687h0a.455.455,0,0,1,.45.408l.568,5.718,3.837-.735,3.113-5.254a.451.451,0,0,1,.27-.207l-.8-.633-3.318.105a.461.461,0,0,1-.4-.221l-5.334-8.909L49.62,151.4l3.218,10.44.185-1.743a.456.456,0,0,1,.452-.406M10.36,137.856l.174.361c1.344,2.8,3,6.262,4.506,8.895l1.1-.515.027-1.859a.425.425,0,0,1,.022-.134l.68-2.079a.456.456,0,0,1,.356-.307l2.318-.394a.446.446,0,0,1,.346.083.457.457,0,0,1,.18.308l.138,1.09,1.079.555a.449.449,0,0,1,.227.268l.414,1.342,1.89,1.511,2.738-1.7a.452.452,0,0,1,.508.02l1.867,1.371,1.667-1.241.974-1.624,2.9-12.318a.457.457,0,0,1-.419-.036l-.4-.254-.942,1.411a.453.453,0,0,1-.337.2l-1.214.107a.458.458,0,0,1-.388-.161L29.5,131.234l-.571.172-.838,1.206a.455.455,0,0,1-.354.194.437.437,0,0,1-.368-.163l-1.542-1.863a.45.45,0,0,1-.105-.294l.051-7.159-.267.065a.453.453,0,0,1-.39-.795l.7-.561a.454.454,0,0,1-.519-.648l.789-1.509-1.339-.678-.421.249-.238,1.014a.452.452,0,0,1-.254.31.457.457,0,0,1-.4-.015l-.317-.169-.727,4.283.506,3.287a.454.454,0,0,1-.163.421.462.462,0,0,1-.446.073l-.365-.14-.359,2.984a.448.448,0,0,1-.308.376l-.952.314a.452.452,0,0,1-.535-.2l-.428-.742a.454.454,0,0,1-.045-.116l-.323-1.275a.458.458,0,0,1,.007-.252l.717-2.188-.446-.6a.445.445,0,0,1-.091-.245l-.12-2.039-.011-2.344a.44.44,0,0,1-.118.256l-.343.365a.441.441,0,0,1-.43.131.447.447,0,0,1-.332-.3l-.132-.417.063.938a.454.454,0,0,1-.024.178l-.815,2.377a.461.461,0,0,1-.089.152l-.789.949a.453.453,0,0,1-.519.16.457.457,0,0,1-.3-.452l.024-.415a.413.413,0,0,1,.038-.161l.463-1.041.19-3.184-.577-1.66-.441-2.226-.339-2.757.263-3.356.054-1.948-2,3.068a.477.477,0,0,1-.421.2.456.456,0,0,1-.377-.272l-.214-.508-.492.894-.776,3.057L7.578,123.27,7.2,125.623l-.764,2.747a.477.477,0,0,1-.074.149l-.352.475L5.564,130.5a.451.451,0,0,1-.434.327H4.875l-.593,1.791a.452.452,0,0,1-.174.232.454.454,0,0,1,.109.281l.029.994a.372.372,0,0,1,.1.018.451.451,0,0,1,.316.361,71.571,71.571,0,0,1,5.714-5.363.453.453,0,0,1,.584.007l.947.815a.451.451,0,0,1,.152.414l-.691,4.4Zm6.42-15.406-.058.985.105-.307Zm1.179-4.61.573,1.27a.49.49,0,0,1,.034.114l.461,2.837,0,.015,0-.581.7-4.838-.562-1.649a.427.427,0,0,1-.024-.2l.178-1.607-1.092-1.649a.45.45,0,0,1-.074-.285l.319-4.182-.015-.268-.214.325-.708,2.34.152.991-.258,4.323.314,1.041.392.548a.455.455,0,0,1,.074.366Zm10.135,1.1L26.114,121.8l3.189-2.542-.366-.5-.02-.029Zm9.254-2.413,2.191,1.52,4.216-1.228.508-3.021-4.04-7.073-.02-.04-3.623,1.965a.453.453,0,0,1-.666-.345l-.3-2.494a.459.459,0,0,1,.076-.31l1.07-1.573-.238-.005a.456.456,0,0,1-.394-.247l-.517-1.01a.4.4,0,0,1-.031-.082l-1.865,2.669-.769,2.22a.466.466,0,0,1-.125.187l-.945.853-2.73,7.409.6,1.9,6.843-2.788a.464.464,0,0,1,.4.029.45.45,0,0,1,.22.336Zm3.8-11.17a.366.366,0,0,1,.083.025l.519.21,1.353-1.845-.493-1.5a.458.458,0,0,1,0-.27l-.822.463a.455.455,0,0,1-.432.007l-1.23,1.016-.356,1.5,1.3.361a.444.444,0,0,1,.082.031m3.167-4.336-1.114.626.579-.029.577-.573ZM28.629,78.474a.441.441,0,0,1,.207.051.45.45,0,0,1,.247.408l-.011.913L32.592,78a.455.455,0,0,1,.756-.472l.249.267.472-.747a.459.459,0,0,1,.18-.163l.287-.143.5-.528,4.388-7.226a.463.463,0,0,1,.428-.216.45.45,0,0,1,.383.29l.419,1.1L41.589,69l.838-1.538a.462.462,0,0,1-.107-.348l.105-.9a.474.474,0,0,1,.036-.134l.862-1.914a.453.453,0,0,1,.321-.258l3.786-.795.934-.842a.454.454,0,0,1,.236-.112l1.638-.252-.426-1.183a.509.509,0,0,1-.025-.127l-4.931,1.676a.46.46,0,0,1-.454-.1.449.449,0,0,1-.132-.443l.8-3.269a.437.437,0,0,1,.044-.114l2.738-4.913a.421.421,0,0,1,.089-.114l8.272-7.588.111-1.059-1.587.882-2.264,2.877-5.119,4.533-5.125,6.885-.21,2.257a.461.461,0,0,1-.105.252l-4.563,5.364L34.8,72.157a.391.391,0,0,1-.087.109l-2.206,2-.854,1.319a.456.456,0,0,1-.1.107l-.7.544a.459.459,0,0,1-.47.054.453.453,0,0,1-.261-.4l-.025-.818a.471.471,0,0,1,.036-.192c.386-.905.8-1.887,1.221-2.906l-.437.893-2.767,4.109-.1,1.81.3-.225a.451.451,0,0,1,.27-.089m2.251-7.585-.027.025-2.019,3.019-.377.947,1.68-2.467Zm91.7-36.6.038.12.018-.116ZM71.536,30.857l-.033.136.35-.063Zm101.91-20.351.7.044.221-.709Z" transform="translate(0 5.703)" fill="#ccc"/>
+      </g>
+      <g id="グループ_999" data-name="グループ 999" transform="translate(22.399 79.985)" clip-path="url(#clip-path-5)">
+        <rect id="長方形_566" data-name="長方形 566" width="0.588" height="1.074" transform="translate(0 0)" fill="url(#radial-gradient-3)"/>
+      </g>
+      <g id="グループ_1001" data-name="グループ 1001" clip-path="url(#clip-path-2)">
+        <path id="パス_465" data-name="パス 465" d="M12.551,45.821a.455.455,0,0,1-.412-.644l.285-.615.336-.519a.454.454,0,0,1,.776.468l-.588,1.074a.452.452,0,0,1-.4.236" transform="translate(9.848 35.691)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1003" data-name="グループ 1003" transform="translate(25.242 74.665)" clip-path="url(#clip-path-7)">
+        <rect id="長方形_568" data-name="長方形 568" width="0.584" height="1.303" transform="translate(0 0)" fill="url(#radial-gradient-4)"/>
+      </g>
+      <g id="グループ_1005" data-name="グループ 1005" clip-path="url(#clip-path-2)">
+        <path id="パス_467" data-name="パス 467" d="M14.118,43.117a.443.443,0,0,1-.152-.027.454.454,0,0,1-.285-.546l.2-.753a.471.471,0,0,1,.051-.116l.43-.617a.453.453,0,0,1,.747.492l-.582,1.3a.454.454,0,0,1-.414.268" transform="translate(11.125 33.305)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1007" data-name="グループ 1007" transform="translate(20.449 84.565)" clip-path="url(#clip-path-9)">
+        <rect id="長方形_570" data-name="長方形 570" width="0.608" height="1.083" transform="translate(0)" fill="url(#radial-gradient-5)"/>
+      </g>
+      <g id="グループ_1009" data-name="グループ 1009" clip-path="url(#clip-path-2)">
+        <path id="パス_469" data-name="パス 469" d="M11.512,48.355a.474.474,0,0,1-.171-.033l-.036-.015a.454.454,0,0,1-.225-.646l.61-1.069a.454.454,0,0,1,.795.437l-.571,1.083a.453.453,0,0,1-.4.241" transform="translate(8.973 37.747)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1011" data-name="グループ 1011" transform="translate(24.663 74.751)" clip-path="url(#clip-path-11)">
+        <rect id="長方形_572" data-name="長方形 572" width="0.938" height="1.731" transform="translate(0)" fill="url(#radial-gradient-6)"/>
+      </g>
+      <g id="グループ_1013" data-name="グループ 1013" clip-path="url(#clip-path-2)">
+        <path id="パス_471" data-name="パス 471" d="M13.8,43.594a.444.444,0,0,1-.221-.058.453.453,0,0,1-.178-.611l.92-1.72a.438.438,0,0,1,.481-.241.448.448,0,0,1,.372.39.8.8,0,0,1-.044.381l-.936,1.633a.453.453,0,0,1-.394.227" transform="translate(10.865 33.341)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1015" data-name="グループ 1015" transform="translate(25.835 72.238)" clip-path="url(#clip-path-13)">
+        <rect id="長方形_574" data-name="長方形 574" width="1.393" height="2.219" transform="translate(0 0)" fill="url(#radial-gradient-7)"/>
+      </g>
+      <g id="グループ_1017" data-name="グループ 1017" clip-path="url(#clip-path-2)">
+        <path id="パス_473" data-name="パス 473" d="M14.445,42.7a.455.455,0,0,1-.4-.662l.372-.62,1.043-1.635a.454.454,0,0,1,.769.481l-.789,1.353-.622.891a.449.449,0,0,1-.37.192" transform="translate(11.39 32.215)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1019" data-name="グループ 1019" transform="translate(89.752 0.454)" clip-path="url(#clip-path-15)">
+        <rect id="長方形_576" data-name="長方形 576" width="11.224" height="6.493" transform="translate(0 0)" fill="url(#radial-gradient-8)"/>
+      </g>
+      <g id="グループ_1021" data-name="グループ 1021" clip-path="url(#clip-path-2)">
+        <path id="パス_475" data-name="パス 475" d="M49.677,7.4a.454.454,0,0,1-.234-.842L54.5,3.5l.02-.013,1.05-.559,2.672-1.584.038-.025.005,0L60.707.044a.454.454,0,0,1,.43.8L59.143,2.05,56.021,3.714,49.908,7.336a.446.446,0,0,1-.23.063" transform="translate(40.074 0)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1023" data-name="グループ 1023" transform="translate(16.206 81.913)" clip-path="url(#clip-path-17)">
+        <rect id="長方形_578" data-name="長方形 578" width="5.646" height="11.082" transform="translate(0)" fill="url(#radial-gradient-9)"/>
+      </g>
+      <g id="グループ_1025" data-name="グループ 1025" clip-path="url(#clip-path-2)">
+        <path id="パス_477" data-name="パス 477" d="M9.137,56.892a.454.454,0,0,1-.408-.653l.278-.566.047-.247.392-.9.55-.956a.442.442,0,0,1,.045-.274l1.03-2.01.172-.635,1.326-2.654a.449.449,0,0,1,.272-.23l.16-.25.127-.425a.517.517,0,0,1,.053-.116l1.2-1.863a.567.567,0,0,1,.816.671l-.624,1.509-1.39,2.5-1.136,2.589-.989,2.052L9.51,56.7a.452.452,0,0,1-.374.2" transform="translate(7.069 36.557)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1027" data-name="グループ 1027" transform="translate(60.662 37.924)" clip-path="url(#clip-path-19)">
+        <rect id="長方形_580" data-name="長方形 580" width="1.388" height="1.016" transform="translate(0)" fill="url(#radial-gradient-10)"/>
+      </g>
+      <g id="グループ_1029" data-name="グループ 1029" clip-path="url(#clip-path-2)">
+        <path id="パス_479" data-name="パス 479" d="M33.643,22.58a.454.454,0,0,1-.3-.8l1.179-1.02a.459.459,0,0,1,.345-.107.454.454,0,0,1,.314.176l.209.274a.453.453,0,0,1-.145.675l-1.39.744a.452.452,0,0,1-.214.054" transform="translate(27.02 16.815)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1031" data-name="グループ 1031" transform="translate(125.617 5.903)" clip-path="url(#clip-path-21)">
+        <rect id="長方形_582" data-name="長方形 582" width="0.845" height="0.426" fill="url(#radial-gradient-11)"/>
+      </g>
+      <g id="グループ_1033" data-name="グループ 1033" clip-path="url(#clip-path-2)">
+        <path id="パス_481" data-name="パス 481" d="M69.449,4.337a.454.454,0,0,1-.452-.5l.044-.426a.447.447,0,0,1,.165-.308.486.486,0,0,1,.336-.1l.8.089a.453.453,0,0,1,.12.871l-.845.339a.457.457,0,0,1-.169.033" transform="translate(56.17 2.446)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1035" data-name="グループ 1035" transform="translate(131.23 2.411)" clip-path="url(#clip-path-23)">
+        <rect id="長方形_584" data-name="長方形 584" width="3.799" height="1.66" transform="translate(0 0)" fill="url(#radial-gradient-12)"/>
+      </g>
+      <g id="グループ_1037" data-name="グループ 1037" clip-path="url(#clip-path-2)">
+        <path id="パス_483" data-name="パス 483" d="M72.54,3.646a.454.454,0,0,1-.327-.138.448.448,0,0,1-.111-.43l.122-.464a.451.451,0,0,1,.346-.328l1.506-.314,1.088-.735a.449.449,0,0,1,.216-.076l.92-.08a.447.447,0,0,1,.463.29.452.452,0,0,1-.151.524L75.064,3.06a.463.463,0,0,1-.174.08l-2.251.5a.6.6,0,0,1-.1.009M74.792,2.7h0Z" transform="translate(58.688 0.879)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1039" data-name="グループ 1039" transform="translate(100.84 35.099)" clip-path="url(#clip-path-25)">
+        <rect id="長方形_586" data-name="長方形 586" width="1.183" height="2.237" fill="url(#radial-gradient-13)"/>
+      </g>
+      <g id="グループ_1041" data-name="グループ 1041" clip-path="url(#clip-path-2)">
+        <path id="パス_485" data-name="パス 485" d="M56.972,22.241a.456.456,0,0,1-.372-.194l-1.183-1.691a.455.455,0,0,1,.158-.66l1.02-.544a.453.453,0,0,1,.666.366l.165,2.237a.457.457,0,0,1-.454.486" transform="translate(45.05 15.549)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1043" data-name="グループ 1043" transform="translate(123.56 4.573)" clip-path="url(#clip-path-27)">
+        <rect id="長方形_588" data-name="長方形 588" width="3.356" height="1.014" transform="translate(0 0)" fill="url(#radial-gradient-14)"/>
+      </g>
+      <g id="グループ_1045" data-name="グループ 1045" clip-path="url(#clip-path-2)">
+        <path id="パス_487" data-name="パス 487" d="M70.461,4.192h-.015L68.3,4.125a.454.454,0,0,1-.114-.889L71.4,2.289a.456.456,0,0,1,.564.307l.134.452a.456.456,0,0,1-.359.575l-.773.132-.112.2a.455.455,0,0,1-.4.234" transform="translate(55.246 1.849)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1047" data-name="グループ 1047" transform="translate(127.625 2.999)" clip-path="url(#clip-path-29)">
+        <rect id="長方形_590" data-name="長方形 590" width="3.167" height="1.872" fill="url(#radial-gradient-15)"/>
+      </g>
+      <g id="グループ_1049" data-name="グループ 1049" clip-path="url(#clip-path-2)">
+        <path id="パス_489" data-name="パス 489" d="M71,4.182a.472.472,0,0,1-.2-.045l-.446-.22a.458.458,0,0,1-.234-.276.451.451,0,0,1,.042-.359l.464-.8a.456.456,0,0,1,.256-.2l2.7-.853a.453.453,0,0,1,.562.588l-.425,1.163a.45.45,0,0,1-.292.278l-2.3.709a.481.481,0,0,1-.134.02m.323-1.092-.045.078,1.671-.515.033-.087Z" transform="translate(57.071 1.143)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1051" data-name="グループ 1051" transform="translate(120.544 5.054)" clip-path="url(#clip-path-31)">
+        <rect id="長方形_592" data-name="長方形 592" width="2.24" height="0.68" transform="translate(0 0)" fill="url(#radial-gradient-16)"/>
+      </g>
+      <g id="グループ_1053" data-name="グループ 1053" clip-path="url(#clip-path-2)">
+        <path id="パス_491" data-name="パス 491" d="M67.506,4.124a.394.394,0,0,1-.1-.013l-.854-.2a.452.452,0,0,1,.009-.883L68.8,2.545a.454.454,0,0,1,.3.851l-1.386.68a.448.448,0,0,1-.2.047" transform="translate(53.893 2.064)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1055" data-name="グループ 1055" transform="translate(126.845 0.976)" clip-path="url(#clip-path-33)">
+        <rect id="長方形_594" data-name="長方形 594" width="4.755" height="1.734" fill="url(#radial-gradient-17)"/>
+      </g>
+      <g id="グループ_1057" data-name="グループ 1057" clip-path="url(#clip-path-2)">
+        <path id="パス_493" data-name="パス 493" d="M71.134,2.928a.446.446,0,0,1-.109-.013l-1.009-.247a.453.453,0,0,1-.074-.856l2.977-1.3a.418.418,0,0,1,.134-.034L74.831.29a.459.459,0,0,1,.5.376.454.454,0,0,1-.343.517l-1.527.361-.176.506A.451.451,0,0,1,73,2.333l-1.718.573a.491.491,0,0,1-.143.022M72.852,1.9h0Z" transform="translate(56.72 0.234)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1059" data-name="グループ 1059" transform="translate(124.031 2.966)" clip-path="url(#clip-path-35)">
+        <rect id="長方形_596" data-name="長方形 596" width="3.563" height="1.361" transform="translate(0 0)" fill="url(#radial-gradient-18)"/>
+      </g>
+      <g id="グループ_1061" data-name="グループ 1061" clip-path="url(#clip-path-2)">
+        <path id="パス_495" data-name="パス 495" d="M69.46,3.651a.453.453,0,0,1-.249-.074L68.325,3a.454.454,0,0,1,.116-.813L70.957,1.4a.467.467,0,0,1,.328.024l1.047.5a.454.454,0,0,1-.056.842l-2.676.86a.467.467,0,0,1-.14.022" transform="translate(55.458 1.128)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1063" data-name="グループ 1063" transform="translate(228.577 19.707)" clip-path="url(#clip-path-37)">
+        <rect id="長方形_598" data-name="長方形 598" width="6.783" height="2.304" transform="translate(0)" fill="url(#radial-gradient-19)"/>
+      </g>
+      <g id="グループ_1065" data-name="グループ 1065" clip-path="url(#clip-path-2)">
+        <path id="パス_497" data-name="パス 497" d="M129.047,13.825a.427.427,0,0,1-.229-.063l-2.843-1.653a.453.453,0,0,1,.138-.836l3.215-.649a.447.447,0,0,1,.515.285l.116.308,2.747.185a.451.451,0,0,1,.4.319l.31,1.018a.459.459,0,0,1-.054.379.45.45,0,0,1-.323.2l-3.938.5a.293.293,0,0,1-.056,0m-1.584-1.9,1.678.978,3.253-.414-.062-.2-2.723-.18a.458.458,0,0,1-.4-.294l-.083-.223Z" transform="translate(102.375 8.639)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1067" data-name="グループ 1067" transform="translate(221.477 23.099)" clip-path="url(#clip-path-39)">
+        <rect id="長方形_600" data-name="長方形 600" width="5.878" height="3.46" fill="url(#radial-gradient-20)"/>
+      </g>
+      <g id="グループ_1069" data-name="グループ 1069" clip-path="url(#clip-path-2)">
+        <path id="パス_499" data-name="パス 499" d="M128.167,16.85a.439.439,0,0,1-.085-.007l-2.941-.562-2.848.027a.427.427,0,0,1-.43-.294.456.456,0,0,1,.129-.5l1.116-.961-.911-1.359a.453.453,0,0,1,.566-.664l3.817,1.762a.476.476,0,0,1,.123.083l1.776,1.7a.452.452,0,0,1-.312.78m-2.986-1.477a.451.451,0,0,1,.085.007l1.477.283-.611-.586-2.282-1.052.236.352a.455.455,0,0,1-.082.6l-.481.414,1.654-.015Z" transform="translate(99.187 10.163)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1071" data-name="グループ 1071" transform="translate(116.659 3.458)" clip-path="url(#clip-path-41)">
+        <rect id="長方形_602" data-name="長方形 602" width="5.281" height="2.184" transform="translate(0 0)" fill="url(#radial-gradient-21)"/>
+      </g>
+      <g id="グループ_1073" data-name="グループ 1073" clip-path="url(#clip-path-2)">
+        <path id="パス_501" data-name="パス 501" d="M65.783,4.747a.439.439,0,0,1-.143-.024L64.372,4.3a.453.453,0,0,1-.308-.408.449.449,0,0,1,.267-.435l.067-.029-.185-.161a.454.454,0,0,1,.221-.791l4.815-.815a.462.462,0,0,1,.419.151l.464.537a.45.45,0,0,1,.089.434.455.455,0,0,1-.325.3L66.935,3.8l-.836.815a.452.452,0,0,1-.316.129" transform="translate(52.149 1.348)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1075" data-name="グループ 1075" transform="translate(215.991 17.525)" clip-path="url(#clip-path-43)">
+        <rect id="長方形_604" data-name="長方形 604" width="11.336" height="4.604" transform="translate(0 0)" fill="url(#radial-gradient-22)"/>
+      </g>
+      <g id="グループ_1077" data-name="グループ 1077" clip-path="url(#clip-path-2)">
+        <path id="パス_503" data-name="パス 503" d="M122.506,14.919a.442.442,0,0,1-.185-.04l-1.794-.8a.469.469,0,0,1-.16-.118l-1.448-1.684a.454.454,0,0,1-.056-.508l1.108-2.088a.451.451,0,0,1,.55-.216l3.637,1.259-.138-.782a.453.453,0,0,1,.586-.51l6.132,1.976a.454.454,0,0,1,.21.72l-.854,1.038a.441.441,0,0,1-.392.163l-.359-.033.053.058a.455.455,0,0,1-.232.753l-1.457.327a.467.467,0,0,1-.357-.069l-1.128-.775-2.467.2-.914.989a.452.452,0,0,1-.334.145M120.99,13.29l1.4.63.815-.88a.455.455,0,0,1,.3-.143l2.8-.223a.421.421,0,0,1,.292.078l1.1.753.492-.111-.327-.348a.456.456,0,0,1-.076-.51.462.462,0,0,1,.45-.252l1.306.12.278-.337-4.78-1.54.142.8a.456.456,0,0,1-.152.425.45.45,0,0,1-.444.083l-4-1.386-.782,1.471Z" transform="translate(96.726 7.661)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1079" data-name="グループ 1079" transform="translate(276.424 31.528)" clip-path="url(#clip-path-45)">
+        <rect id="長方形_606" data-name="長方形 606" width="5.301" height="2.846" transform="translate(0 0)" fill="url(#radial-gradient-23)"/>
+      </g>
+      <g id="グループ_1081" data-name="グループ 1081" clip-path="url(#clip-path-2)">
+        <path id="パス_505" data-name="パス 505" d="M154.2,20.885a.455.455,0,0,1-.356-.174l-1.62-2.061a.454.454,0,0,1,.25-.722l3.289-.787a.453.453,0,0,1,.325.045l2.014,1.119a.447.447,0,0,1,.23.359.453.453,0,0,1-.171.394l-1.629,1.286a.454.454,0,0,1-.327.094l-.818-.083-.989.483a.43.43,0,0,1-.2.047m-.825-2.239.956,1.215.776-.377a.462.462,0,0,1,.243-.044l.766.076.951-.751-1.264-.7Z" transform="translate(123.847 13.944)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1083" data-name="グループ 1083" transform="translate(119.962 25.648)" clip-path="url(#clip-path-47)">
+        <rect id="長方形_608" data-name="長方形 608" width="2.338" height="1.486" fill="url(#radial-gradient-24)"/>
+      </g>
+      <g id="グループ_1085" data-name="グループ 1085" clip-path="url(#clip-path-2)">
+        <path id="パス_507" data-name="パス 507" d="M66.33,16.28a.455.455,0,0,1-.312-.784l1.575-1.484a.448.448,0,0,1,.354-.122.462.462,0,0,1,.325.183l.764,1.05a.455.455,0,0,1-.281.713l-2.34.434a.42.42,0,0,1-.083.009m1.511-1.255-.08.074.116-.022Z" transform="translate(53.632 11.307)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1087" data-name="グループ 1087" transform="translate(95.892 15.946)" clip-path="url(#clip-path-49)">
+        <rect id="長方形_610" data-name="長方形 610" width="30.675" height="18.339" transform="translate(0 0)" fill="url(#radial-gradient-25)"/>
+      </g>
+      <g id="グループ_1089" data-name="グループ 1089" clip-path="url(#clip-path-2)">
+        <path id="パス_509" data-name="パス 509" d="M54.235,27.785a.454.454,0,0,1-.381-.207L52.68,25.76a.463.463,0,0,1-.031-.437l1.012-2.2a.45.45,0,0,1,.163-.19l1.941-1.266,1.56-1.573,2.23-1.35,1.373-1.687a.453.453,0,0,1,.132-.109l2.852-1.6c2.933-1.64,6.183-3.46,8.8-4.887a.47.47,0,0,1,.14-.047l.971-.171c3.1-.541,6.908-1.206,9.84-1.7a.453.453,0,0,1,.27.856L77.849,12.31l-.04.015-8.087,2.984-4.766,2.863-3.768,3.057-2.211,1.894-.795,4.258a.453.453,0,0,1-.441.37l-3.5.034Zm-.657-2.308.9,1.4,2.879-.029.755-4.049a.452.452,0,0,1,.151-.261l2.344-2,3.828-3.1,4.894-2.935,8.144-3.011L80.6,9.992c-2.211.383-4.568.795-6.616,1.152l-.9.156c-2.605,1.42-5.822,3.22-8.726,4.846L61.578,17.7l-1.368,1.682a.457.457,0,0,1-.12.1l-2.211,1.322-1.546,1.564-1.9,1.254ZM77.653,11.9h0Z" transform="translate(42.83 6.952)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1091" data-name="グループ 1091" transform="translate(164.707 7.993)" clip-path="url(#clip-path-51)">
+        <rect id="長方形_612" data-name="長方形 612" width="8.138" height="3.686" fill="url(#radial-gradient-26)"/>
+      </g>
+      <g id="グループ_1093" data-name="グループ 1093" clip-path="url(#clip-path-2)">
+        <path id="パス_511" data-name="パス 511" d="M90.994,8.75a.454.454,0,0,1-.307-.787l3.547-3.251a.441.441,0,0,1,.227-.112l2.513-.437a.449.449,0,0,1,.5.274.455.455,0,0,1,.029.234l.216,0a.456.456,0,0,1,.379.192l1.41,2a.457.457,0,0,1-.252.7l-3.719,1a.465.465,0,0,1-.3-.024l-.853-.317-3.313.524a.465.465,0,0,1-.071.005M94.425,7.3a.427.427,0,0,1,.158.029l.856.317,2.952-.793-.9-1.277-1.2.02h-.007a.452.452,0,0,1-.432-.316l0,0-1.107.192L92.411,7.613l1.943-.307a.465.465,0,0,1,.071-.005" transform="translate(73.711 3.382)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1095" data-name="グループ 1095" transform="translate(157.222 2.213)" clip-path="url(#clip-path-53)">
+        <rect id="長方形_614" data-name="長方形 614" width="9.869" height="6.792" transform="translate(0 0)" fill="url(#radial-gradient-27)"/>
+      </g>
+      <g id="グループ_1097" data-name="グループ 1097" clip-path="url(#clip-path-2)">
+        <path id="パス_513" data-name="パス 513" d="M95.971,8.668H95.96l-5.2-.123a.448.448,0,0,1-.372-.209l-.96-1.506-2.088-.112a.448.448,0,0,1-.363-.216l-.5-.815a.453.453,0,0,1,.067-.559l1.361-1.342a.469.469,0,0,1,.192-.112l1.4-.4L90.772,2.2a.509.509,0,0,1,.132-.078L93.859,1a.466.466,0,0,1,.49.112L95.96,2.8a.462.462,0,0,1,.125.325.447.447,0,0,1-.143.317l-.84.8.7.31a.453.453,0,0,1,.105.764l.776-.094a.43.43,0,0,1,.4.16.451.451,0,0,1,.087.423L96.4,8.347a.453.453,0,0,1-.434.321M91.024,7.645l4.611.109L96.1,6.21l-1.774.214a.438.438,0,0,1-.475-.281A.455.455,0,0,1,94,5.611l.724-.541L94.113,4.8a.449.449,0,0,1-.263-.337.454.454,0,0,1,.134-.406L94.989,3.1,93.9,1.954l-2.6.989L90.013,4.026a.446.446,0,0,1-.165.091l-1.382.4L87.443,5.522l.185.3,2.081.112a.447.447,0,0,1,.359.209Z" transform="translate(70.353 0.791)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1099" data-name="グループ 1099" transform="translate(93.69 7.117)" clip-path="url(#clip-path-55)">
+        <rect id="長方形_616" data-name="長方形 616" width="6.636" height="4.836" transform="translate(0 0)" fill="url(#radial-gradient-28)"/>
+      </g>
+      <g id="グループ_1101" data-name="グループ 1101" clip-path="url(#clip-path-2)">
+        <path id="パス_515" data-name="パス 515" d="M52.068,9.415a.456.456,0,0,1-.452-.483.558.558,0,0,1,.038-.187.462.462,0,0,1-.129-.094.453.453,0,0,1-.056-.566c.63-.956.827-1.088.893-1.132a2.253,2.253,0,0,1,.285-.163.456.456,0,0,1,.142-.479l1.535-1.293a.458.458,0,0,1,.537-.034l.074.047,1.684-1.279a.454.454,0,0,1,.61.659l-.167.209L58.2,4.056a.453.453,0,0,1,.651.356l.085.778a.454.454,0,0,1-.185.417L55.5,7.954l-.024.016-1.5.943a.42.42,0,0,1-.112.051,11.378,11.378,0,0,1-1.736.446.332.332,0,0,1-.06,0M53.637,7.4a.452.452,0,0,1-.1.4c-.147.165-.272.308-.379.434.116-.034.247-.071.392-.112l1.435-.905,2.425-1.751-1.774.876a.455.455,0,0,1-.555-.122.5.5,0,0,1-.087-.176.439.439,0,0,1-.274-.071l-.063-.04-.439.372.031,0a.454.454,0,0,1,.122.876c-.2.074-.4.132-.608.189-.042.009-.082.02-.122.031m1.6.19h0Z" transform="translate(41.842 2.99)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1103" data-name="グループ 1103" transform="translate(56.615 41.922)" clip-path="url(#clip-path-57)">
+        <rect id="長方形_618" data-name="長方形 618" width="0.813" height="0.854" transform="translate(0 0)" fill="url(#radial-gradient-29)"/>
+      </g>
+      <g id="グループ_1105" data-name="グループ 1105" clip-path="url(#clip-path-2)">
+        <path id="パス_517" data-name="パス 517" d="M31.412,24.618a.452.452,0,0,1-.356-.735l.673-.853a.462.462,0,0,1,.591-.107l.138.083a.45.45,0,0,1,.216.339.455.455,0,0,1-.138.379l-.813.769a.456.456,0,0,1-.312.123" transform="translate(25.203 18.611)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1107" data-name="グループ 1107" transform="translate(62.377 36.814)" clip-path="url(#clip-path-59)">
+        <rect id="長方形_620" data-name="長方形 620" width="1.25" height="1.021" transform="translate(0 0)" fill="url(#radial-gradient-30)"/>
+      </g>
+      <g id="グループ_1109" data-name="グループ 1109" clip-path="url(#clip-path-2)">
+        <path id="パス_519" data-name="パス 519" d="M34.962,21.972c-.02,0-.04,0-.062,0l-.376-.053a.451.451,0,0,1-.376-.33.457.457,0,0,1,.16-.477l1.25-.969a.453.453,0,0,1,.622.653l-.874,1.021a.461.461,0,0,1-.345.158" transform="translate(27.789 16.317)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1111" data-name="グループ 1111" transform="translate(55.579 42.265)" clip-path="url(#clip-path-61)">
+        <rect id="長方形_622" data-name="長方形 622" width="1.37" height="1.42" transform="translate(0 0)" fill="url(#radial-gradient-31)"/>
+      </g>
+      <g id="グループ_1113" data-name="グループ 1113" clip-path="url(#clip-path-2)">
+        <path id="パス_521" data-name="パス 521" d="M30.841,25.376a.447.447,0,0,1-.249-.074.452.452,0,0,1-.171-.551l.16-.386a.47.47,0,0,1,.123-.172l1.212-1.036a.454.454,0,0,1,.622.66l-1.371,1.42a.451.451,0,0,1-.327.14" transform="translate(24.739 18.763)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1115" data-name="グループ 1115" transform="translate(57.381 39.912)" clip-path="url(#clip-path-63)">
+        <rect id="長方形_624" data-name="長方形 624" width="2.072" height="1.645" transform="translate(0 0)" fill="url(#radial-gradient-32)"/>
+      </g>
+      <g id="グループ_1117" data-name="グループ 1117" clip-path="url(#clip-path-2)">
+        <path id="パス_523" data-name="パス 523" d="M31.833,24.3a.451.451,0,0,1-.372-.194.457.457,0,0,1,.053-.582l.8-.791a.451.451,0,0,1,.272-.129l.169-.018c.022,0,.038,0,.062,0l.782-.717a.453.453,0,0,1,.686.582l-.642.98a.473.473,0,0,1-.187.161l-1.43.668a.477.477,0,0,1-.192.042" transform="translate(25.547 17.708)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1119" data-name="グループ 1119" transform="translate(57.707 39.542)" clip-path="url(#clip-path-65)">
+        <rect id="長方形_626" data-name="長方形 626" width="1.362" height="1.379" transform="translate(0 0)" fill="url(#radial-gradient-33)"/>
+      </g>
+      <g id="グループ_1121" data-name="グループ 1121" clip-path="url(#clip-path-2)">
+        <path id="パス_525" data-name="パス 525" d="M32.2,23.833a.449.449,0,0,1-.339-.154l-.185-.209a.459.459,0,0,1-.112-.33.451.451,0,0,1,.158-.312l1.362-1.172a.453.453,0,0,1,.639.639q-.59.686-1.176,1.377a.454.454,0,0,1-.343.161Z" transform="translate(25.693 17.541)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1123" data-name="グループ 1123" transform="translate(28.447 70.673)" clip-path="url(#clip-path-67)">
+        <rect id="長方形_628" data-name="長方形 628" width="0.472" height="0.649" fill="url(#radial-gradient-34)"/>
+      </g>
+      <g id="グループ_1125" data-name="グループ 1125" clip-path="url(#clip-path-2)">
+        <path id="パス_527" data-name="パス 527" d="M15.883,40.264a.439.439,0,0,1-.221-.058.454.454,0,0,1-.185-.6l.194-.394.279-.348a.453.453,0,0,1,.729.054l.06.1a.452.452,0,0,1-.107.6l-.178.138-.187.3a.455.455,0,0,1-.385.212" transform="translate(12.562 31.513)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1127" data-name="グループ 1127" transform="translate(55.833 41.893)" clip-path="url(#clip-path-69)">
+        <rect id="長方形_630" data-name="長方形 630" width="0.746" height="0.515" transform="translate(0)" fill="url(#radial-gradient-35)"/>
+      </g>
+      <g id="グループ_1129" data-name="グループ 1129" clip-path="url(#clip-path-2)">
+        <path id="パス_529" data-name="パス 529" d="M30.982,24.266a.453.453,0,0,1-.341-.753l.392-.45a.468.468,0,0,1,.259-.147l.35-.065a.453.453,0,0,1,.341.818l-.742.517a.474.474,0,0,1-.259.08" transform="translate(24.853 18.597)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1131" data-name="グループ 1131" transform="translate(14.997 71.745)" clip-path="url(#clip-path-71)">
+        <rect id="長方形_632" data-name="長方形 632" width="13.261" height="25.864" transform="translate(0)" fill="url(#radial-gradient-36)"/>
+      </g>
+      <g id="グループ_1133" data-name="グループ 1133" clip-path="url(#clip-path-2)">
+        <path id="パス_531" data-name="パス 531" d="M8.47,66.069a.453.453,0,0,1-.4-.662l1.2-2.318.829-1.005.136-.272a.468.468,0,0,1-.056-.254l.042-.53a.464.464,0,0,1,.044-.165.45.45,0,0,1-.044-.428l.212-.513.72-1.027.6-1.323a.446.446,0,0,1,.007-.376l.825-1.72a.455.455,0,0,1,.553-.234l.018.007,1.7-3.608a.527.527,0,0,1-.105-.074.452.452,0,0,1-.087-.537l.45-.869a.451.451,0,0,1,.011-.419l1.558-2.8a.458.458,0,0,1,0-.423l.365-.689,1.76-2.926.542-1.032a.445.445,0,0,1,.232-.21l.2-.428.325-.535A.417.417,0,0,1,20.2,40.6l.129-.111.317-.481a.469.469,0,0,1,.109-.107l.717-.513a.452.452,0,0,1,.582.044.457.457,0,0,1,.056.581l-1.593,2.313-.034.044,0,.025a.346.346,0,0,1-.022.085.462.462,0,0,1,.138.1.457.457,0,0,1,.056.542L18.1,47.381l-.49.581-2.56,7.3a.445.445,0,0,1-.288.281L14.2,57.129l.149.833a.457.457,0,0,1-.053.3l-1.872,3.28-.287,1.308A.445.445,0,0,1,12,63.1l-1,.878a.463.463,0,0,1-.484.073.5.5,0,0,1-.074-.044l-1.62,1.9a.453.453,0,0,1-.346.16M11.7,62.758h0Zm-.856-.172a.446.446,0,0,1,.2.145l.247-.216.268-1.23a.525.525,0,0,1,.049-.129l1.825-3.2-.142-.789a.459.459,0,0,1,.018-.232l.18-.506a.447.447,0,0,1-.2.111l-.241.065-.174.363a.453.453,0,0,1-.011.354l-.934,2.025-.746,1.094a.614.614,0,0,1,.263.074.456.456,0,0,1,.156.586Z" transform="translate(6.527 31.994)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1135" data-name="グループ 1135" transform="translate(63.739 36.467)" clip-path="url(#clip-path-73)">
+        <rect id="長方形_634" data-name="長方形 634" width="0.786" height="0.544" transform="translate(0 0)" fill="url(#radial-gradient-37)"/>
+      </g>
+      <g id="グループ_1137" data-name="グループ 1137" clip-path="url(#clip-path-2)">
+        <path id="パス_533" data-name="パス 533" d="M35.339,21.3a.465.465,0,0,1-.212-.053.456.456,0,0,1-.241-.4l0-.243a.454.454,0,0,1,.292-.421l.784-.3a.453.453,0,0,1,.419.8l-.786.544a.455.455,0,0,1-.258.08" transform="translate(28.401 16.161)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1139" data-name="グループ 1139" transform="translate(67.915 33.931)" clip-path="url(#clip-path-75)">
+        <rect id="長方形_636" data-name="長方形 636" width="1.304" height="1.009" transform="translate(0)" fill="url(#radial-gradient-38)"/>
+      </g>
+      <g id="グループ_1141" data-name="グループ 1141" clip-path="url(#clip-path-2)">
+        <path id="パス_535" data-name="パス 535" d="M37.707,20.37a.462.462,0,0,1-.2-.047.457.457,0,0,1-.25-.361l-.065-.668a.451.451,0,0,1,.336-.483l1.3-.341a.445.445,0,0,1,.519.232.452.452,0,0,1-.116.555l-1.19.98a.325.325,0,0,1-.051.036l-.049.029a.443.443,0,0,1-.236.067" transform="translate(30.275 15.023)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1143" data-name="グループ 1143" transform="translate(86.615 38.077)" clip-path="url(#clip-path-77)">
+        <rect id="長方形_638" data-name="長方形 638" width="2.487" height="2.199" transform="translate(0)" fill="url(#radial-gradient-39)"/>
+      </g>
+      <g id="グループ_1145" data-name="グループ 1145" clip-path="url(#clip-path-2)">
+        <path id="パス_537" data-name="パス 537" d="M47.948,23.845a.452.452,0,0,1-.35-.742l1.818-2.2a.422.422,0,0,1,.377-.163.456.456,0,0,1,.354.2l.669,1.03a.45.45,0,0,1,.056.372.456.456,0,0,1-.243.287L48.141,23.8a.448.448,0,0,1-.192.042m1.774-1.887-.134.163.183-.087Z" transform="translate(38.667 16.882)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1147" data-name="グループ 1147" transform="translate(66.068 35.152)" clip-path="url(#clip-path-79)">
+        <rect id="長方形_640" data-name="長方形 640" width="1.557" height="0.929" fill="url(#radial-gradient-40)"/>
+      </g>
+      <g id="グループ_1149" data-name="グループ 1149" clip-path="url(#clip-path-2)">
+        <path id="パス_539" data-name="パス 539" d="M36.623,20.964a.453.453,0,0,1-.3-.793l.894-.8a.452.452,0,0,1,.214-.107l.66-.132a.454.454,0,0,1,.321.834l-1.557.931a.448.448,0,0,1-.232.063" transform="translate(29.446 15.571)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1151" data-name="グループ 1151" transform="translate(65.134 35.822)" clip-path="url(#clip-path-81)">
+        <rect id="長方形_642" data-name="長方形 642" width="0.677" height="0.506" transform="translate(0 0)" fill="url(#radial-gradient-41)"/>
+      </g>
+      <g id="グループ_1153" data-name="グループ 1153" clip-path="url(#clip-path-2)">
+        <path id="パス_541" data-name="パス 541" d="M36.108,20.91a.459.459,0,0,1-.321-.132.453.453,0,0,1-.042-.593l.354-.472a.459.459,0,0,1,.314-.18l.323-.034a.445.445,0,0,1,.47.285.452.452,0,0,1-.149.53l-.677.506a.458.458,0,0,1-.272.091" transform="translate(29.026 15.872)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1155" data-name="グループ 1155" transform="translate(84.482 15.81)" clip-path="url(#clip-path-83)">
+        <rect id="長方形_644" data-name="長方形 644" width="4.633" height="3.797" transform="translate(0 0)" fill="url(#radial-gradient-42)"/>
+      </g>
+      <g id="グループ_1157" data-name="グループ 1157" clip-path="url(#clip-path-2)">
+        <path id="パス_543" data-name="パス 543" d="M46.88,13.169a.454.454,0,0,1-.316-.78l.1-.093a.454.454,0,0,1-.163-.8l1.945-1.479.833-.8a.439.439,0,0,1,.161-.1l1.829-.626a.453.453,0,0,1,.475.735L50.677,10.4a.456.456,0,0,1-.172.368l-2.1,1.658a.619.619,0,0,1-.073.047l-1.243.644a.472.472,0,0,1-.209.051m1.678-2.1a.353.353,0,0,1,.044.047L49.76,10.2a.451.451,0,0,1,.116-.267l.016-.018-.06.022-.8.769Z" transform="translate(37.709 6.892)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1159" data-name="グループ 1159" transform="translate(79.181 9.393)" clip-path="url(#clip-path-85)">
+        <rect id="長方形_646" data-name="長方形 646" width="15.444" height="12.019" transform="translate(0 0)" fill="url(#radial-gradient-43)"/>
+      </g>
+      <g id="グループ_1161" data-name="グループ 1161" clip-path="url(#clip-path-2)">
+        <path id="パス_545" data-name="パス 545" d="M43.852,17.853a.454.454,0,0,1-.365-.726l2.3-3.089a.455.455,0,0,1,.365-.181h.813l1.214-.927-.1-.483a.453.453,0,0,1,.243-.5l1.2-.593a.453.453,0,0,1-.093-.769q1.3-1.023,2.62-2.023l1.061-1.254a.58.58,0,0,1,.085-.078l2.6-1.807a.443.443,0,0,1,.14-.063l1.529-.414A.445.445,0,0,1,58,5.2a.416.416,0,0,1,.034.138l1.108-.388a.453.453,0,0,1,.466.753L56.582,8.641l-.653,1.17a.42.42,0,0,1-.085.111l-1.937,1.814a.447.447,0,0,1-.178.1l-1.616.5a.449.449,0,0,1-.464-.123c-1.825,1.232-3.761,2.632-7.518,5.546a.458.458,0,0,1-.278.094m2.529-3.089-.214.287.379-.287ZM49.039,12.6l.06.279c.532-.381,1.018-.722,1.488-1.045Zm2.825-2.767a.457.457,0,0,1,.207.151l.285.376a.458.458,0,0,1,.089.234l1.2-.78a.44.44,0,0,1,.2-.071l.66-.067a.426.426,0,0,1,.232.038l.437-.41.649-1.166a.455.455,0,0,1,.082-.105l.187-.181L54.325,9.245a.459.459,0,0,1-.528.025l-.359-.232a.456.456,0,0,1-.209-.365.465.465,0,0,1,.016-.132l-.581.677-.8.619m1.9-1.894-.218.254,1.6-1.214Z" transform="translate(35.331 4.013)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1163" data-name="グループ 1163" transform="translate(265.117 282.15)" clip-path="url(#clip-path-87)">
+        <rect id="長方形_648" data-name="長方形 648" width="1.475" height="5.453" fill="url(#radial-gradient-44)"/>
+      </g>
+      <g id="グループ_1165" data-name="グループ 1165" clip-path="url(#clip-path-2)">
+        <path id="パス_547" data-name="パス 547" d="M147.032,161.64a.491.491,0,0,1-.123-.016.455.455,0,0,1-.328-.414l-.154-3.117-.524-2.259a.452.452,0,0,1,.23-.5.446.446,0,0,1,.544.092l1.473,1.584a.44.44,0,0,1,.122.31l-.022,2.759a.467.467,0,0,1-.08.254l-.764,1.11a.452.452,0,0,1-.374.2m.131-4.361.158.691.033.644.009-1.119Z" transform="translate(118.772 126.416)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1167" data-name="グループ 1167" transform="translate(215.523 233.631)" clip-path="url(#clip-path-89)">
+        <rect id="長方形_650" data-name="長方形 650" width="36.912" height="22.909" transform="translate(0)" fill="url(#radial-gradient-45)"/>
+      </g>
+      <g id="グループ_1169" data-name="グループ 1169" clip-path="url(#clip-path-2)">
+        <path id="パス_549" data-name="パス 549" d="M155.919,152.348a.451.451,0,0,1-.154-.025l-5.363-1.934a.442.442,0,0,1-.209-.154l-2.565-3.412-3.124-.513-1.847,2.393a.451.451,0,0,1-.319.172l-4.089.37a.436.436,0,0,1-.385-.154l-1.713-1.994-4.026.406a.444.444,0,0,1-.457-.263.451.451,0,0,1,.1-.517L134.1,144.5l-1.067-3.385L126,137.788a.466.466,0,0,1-.18-.151l-1.186-1.711-1.5,1.673a.464.464,0,0,1-.392.147.459.459,0,0,1-.346-.238l-1.767-3.314a.455.455,0,0,1,.383-.668l3.643-.145.018-.109-3.311-.158a.458.458,0,0,1-.419-.343l-.279-1.092-1.723-.254a.452.452,0,0,1-.1-.869l5.072-1.99a.458.458,0,0,1,.457.073l1.7,1.417a.473.473,0,0,1,.154.259l.653,3.245,1.352,1.215,1.751-1.948a.44.44,0,0,1,.178-.122l3.9-1.473a.428.428,0,0,1,.35.011l3.285,1.508c3.416,1.564,7.207,3.3,10.224,4.724a.464.464,0,0,1,.238.272l.751,2.309,3.445,2.765a.455.455,0,0,1-.229.805l-1.03.125,5.2,7.893a.454.454,0,0,1-.379.7m-5.081-2.767,3.953,1.424-4.855-7.365a.463.463,0,0,1-.033-.443.451.451,0,0,1,.357-.258l.688-.083-2.712-2.175a.461.461,0,0,1-.147-.214l-.733-2.255c-2.984-1.406-6.69-3.1-10.037-4.637l-3.113-1.428-3.625,1.368-1.979,2.2a.452.452,0,0,1-.64.034l-1.8-1.618a.449.449,0,0,1-.142-.245l-.651-3.238-1.373-1.141-3.235,1.268.336.049a.454.454,0,0,1,.376.337l.27,1.059,3.487.165a.461.461,0,0,1,.332.169.454.454,0,0,1,.094.361l-.165.98a.449.449,0,0,1-.428.376l-3.289.132,1.123,2.1,1.449-1.618a.444.444,0,0,1,.366-.149.451.451,0,0,1,.345.194l1.444,2.083,7.1,3.358a.447.447,0,0,1,.238.272l1.212,3.844a.448.448,0,0,1-.12.464l-1.578,1.508,2.948-.3a.453.453,0,0,1,.388.156l1.714,2,3.661-.332,1.892-2.449a.456.456,0,0,1,.432-.169l3.572.584a.458.458,0,0,1,.288.176Z" transform="translate(96.516 104.643)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1171" data-name="グループ 1171" transform="translate(237.067 84.877)" clip-path="url(#clip-path-91)">
+        <rect id="長方形_652" data-name="長方形 652" width="7.344" height="25.229" transform="translate(0 0)" fill="url(#radial-gradient-46)"/>
+      </g>
+      <g id="グループ_1173" data-name="グループ 1173" clip-path="url(#clip-path-2)">
+        <path id="パス_551" data-name="パス 551" d="M133.353,72.673a.46.46,0,0,1-.069-.005.453.453,0,0,1-.383-.41c-.112-1.328-.232-2.786-.357-4.3-.287-3.5-.61-7.454-.918-10.6L130.467,54.7a.458.458,0,0,1-.038-.19l.1-4.875a.453.453,0,0,1,.388-.439l.446-.065-.564-2.021a.454.454,0,0,1,.856-.3l1.029,2.484c1.983,4.787,4.231,10.212,5.965,14.546a.454.454,0,0,1-.7.526l-2.014-1.582-1.527,2.295,2.115,6.576a.452.452,0,0,1-.782.424l-1.228-1.506-.738,1.81a.45.45,0,0,1-.419.283M131.338,54.43l1.148,2.627a.455.455,0,0,1,.036.138c.31,3.167.637,7.164.927,10.691.067.822.132,1.629.2,2.407l.31-.764a.455.455,0,0,1,.354-.276.446.446,0,0,1,.419.16l.192.238-1.446-4.5a.448.448,0,0,1,.054-.392l1.919-2.883a.45.45,0,0,1,.3-.2.463.463,0,0,1,.352.091l1.067.836c-1.587-3.924-3.485-8.51-5.2-12.65l-.548.08Z" transform="translate(106.185 37.887)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1175" data-name="グループ 1175" transform="translate(235.391 111.231)" clip-path="url(#clip-path-93)">
+        <rect id="長方形_654" data-name="長方形 654" width="12.423" height="11.687" transform="translate(0)" fill="url(#radial-gradient-47)"/>
+      </g>
+      <g id="グループ_1177" data-name="グループ 1177" clip-path="url(#clip-path-2)">
+        <path id="パス_553" data-name="パス 553" d="M131.089,73.66a.431.431,0,0,1-.118-.016.453.453,0,0,1-.3-.272l-1.13-2.881a.457.457,0,0,1,.064-.443l.927-1.2.3-1.6a.457.457,0,0,1,.207-.3.452.452,0,0,1,.361-.051l1.489.414,1.005-5.87a.455.455,0,0,1,.773-.241l3.186,3.284,3.362-.185a.449.449,0,0,1,.446.288l1.148,2.941a.453.453,0,0,1-.223.571l-4.218,2.066-.379,1.651a.453.453,0,0,1-.662.294l-2.9-1.624-2.217.089.949.927a.451.451,0,0,1-.034.68l-1.749,1.379a.457.457,0,0,1-.281.1m-.613-3.26.813,2.072.864-.68-1.335-1.3a.459.459,0,0,1-.138-.356Zm4.056-.824a.453.453,0,0,1,.221.058l2.484,1.39.292-1.272a.453.453,0,0,1,.243-.3l4.036-1.979-.878-2.246-3.238.18a.436.436,0,0,1-.35-.136l-2.708-2.792-.94,5.484a.449.449,0,0,1-.205.307.442.442,0,0,1-.363.054l-1.5-.415-.23,1.223a.442.442,0,0,1-.087.192l-.321.415a.476.476,0,0,1,.125-.022l3.4-.136Z" transform="translate(105.432 49.713)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1179" data-name="グループ 1179" transform="translate(255.702 238.419)" clip-path="url(#clip-path-95)">
+        <rect id="長方形_656" data-name="長方形 656" width="3.655" height="5.241" transform="translate(0)" fill="url(#radial-gradient-48)"/>
+      </g>
+      <g id="グループ_1181" data-name="グループ 1181" clip-path="url(#clip-path-2)">
+        <path id="パス_555" data-name="パス 555" d="M144.417,137.32a.454.454,0,0,1-.385-.214l-3.264-5.241a.453.453,0,0,1,.7-.566l2.979,2.855.464.107a.454.454,0,0,1,.347.524l-.394,2.162a.446.446,0,0,1-.361.363.341.341,0,0,1-.085.009m-.965-2.861.729,1.17.105-.581-.165-.036a.453.453,0,0,1-.212-.116Z" transform="translate(114.547 106.791)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1183" data-name="グループ 1183" transform="translate(249.851 241.969)" clip-path="url(#clip-path-97)">
+        <rect id="長方形_658" data-name="長方形 658" width="7.552" height="4.965" transform="translate(0)" fill="url(#radial-gradient-49)"/>
+      </g>
+      <g id="グループ_1185" data-name="グループ 1185" clip-path="url(#clip-path-2)">
+        <path id="パス_557" data-name="パス 557" d="M141.639,139a.476.476,0,0,1-.185-.038l-3.71-1.662a.453.453,0,0,1,.171-.865l2.231-.073,3.949-1.288.994-1.72a.46.46,0,0,1,.542-.2.454.454,0,0,1,.3.5l-.323,2.117a.436.436,0,0,1-.083.2l-.974,1.317a.406.406,0,0,1-.131.118l-2.545,1.537a.445.445,0,0,1-.234.064m-1.729-1.722,1.7.76,2.266-1.368.557-.753-4.064,1.326a.423.423,0,0,1-.125.024Zm4.274-.267h0Z" transform="translate(111.922 108.385)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1187" data-name="グループ 1187" transform="translate(208.843 238.829)" clip-path="url(#clip-path-99)">
+        <rect id="長方形_660" data-name="長方形 660" width="6.239" height="2.734" transform="translate(0 0)" fill="url(#radial-gradient-50)"/>
+      </g>
+      <g id="グループ_1189" data-name="グループ 1189" clip-path="url(#clip-path-2)">
+        <path id="パス_559" data-name="パス 559" d="M121.563,135.042a.444.444,0,0,1-.136-.022l-3.84-1.2-.454.537a.452.452,0,0,1-.631.06l-1.464-1.188a.455.455,0,0,1,.143-.784l3.077-1.02a.454.454,0,0,1,.439.087l3.162,2.734a.454.454,0,0,1-.3.8m-4.129-2.2a.445.445,0,0,1,.136.022l2.045.639-1.317-1.137-2.045.678.475.386.359-.426a.449.449,0,0,1,.346-.161" transform="translate(93.519 106.975)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1191" data-name="グループ 1191" transform="translate(212.303 257.861)" clip-path="url(#clip-path-101)">
+        <rect id="長方形_662" data-name="長方形 662" width="2.393" height="1.137" fill="url(#radial-gradient-51)"/>
+      </g>
+      <g id="グループ_1193" data-name="グループ 1193" clip-path="url(#clip-path-2)">
+        <path id="パス_561" data-name="パス 561" d="M117.232,143.938a.453.453,0,0,1-.2-.862l2.353-1.137a.437.437,0,0,1,.432.02.456.456,0,0,1,.219.372l.04,1.123a.454.454,0,0,1-.125.33.449.449,0,0,1-.325.14l-2.395.014Z" transform="translate(95.071 115.516)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1195" data-name="グループ 1195" transform="translate(220.708 143.923)" clip-path="url(#clip-path-103)">
+        <rect id="長方形_664" data-name="長方形 664" width="4.824" height="3.606" transform="translate(0)" fill="url(#radial-gradient-52)"/>
+      </g>
+      <g id="グループ_1197" data-name="グループ 1197" clip-path="url(#clip-path-2)">
+        <path id="パス_563" data-name="パス 563" d="M121.865,83.6a.453.453,0,0,1-.444-.546l.76-3.6a.458.458,0,0,1,.532-.35l4.064.809a.453.453,0,0,1,.283.7l-1.072,1.538a.458.458,0,0,1-.582.141l-.845-.443-2.438,1.673a.456.456,0,0,1-.256.078m1.11-3.525-.434,2.057,1.731-1.185a.458.458,0,0,1,.466-.029l.733.385.448-.642Z" transform="translate(98.843 64.386)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1199" data-name="グループ 1199" transform="translate(192.706 199.934)" clip-path="url(#clip-path-105)">
+        <rect id="長方形_666" data-name="長方形 666" width="1.977" height="3.378" transform="translate(0 0)" fill="url(#radial-gradient-53)"/>
+      </g>
+      <g id="グループ_1201" data-name="グループ 1201" clip-path="url(#clip-path-2)">
+        <path id="パス_565" data-name="パス 565" d="M108.406,114.247a.453.453,0,0,1-.39-.223l-1.976-3.338a.453.453,0,0,1,.379-.684l1.6-.042a.468.468,0,0,1,.463.4l.377,3.378a.457.457,0,0,1-.308.481.432.432,0,0,1-.143.024m-1.192-3.358.508.856-.1-.867Z" transform="translate(86.278 89.52)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1203" data-name="グループ 1203" transform="translate(183.046 251.03)" clip-path="url(#clip-path-107)">
+        <rect id="長方形_668" data-name="長方形 668" width="5.587" height="1.631" transform="translate(0)" fill="url(#radial-gradient-54)"/>
+      </g>
+      <g id="グループ_1205" data-name="グループ 1205" clip-path="url(#clip-path-2)">
+        <path id="パス_567" data-name="パス 567" d="M106.692,140.662h-.013l-5.588-.152a.453.453,0,0,1-.308-.773l1.339-1.341a.45.45,0,0,1,.49-.1l1.66.673.515-.668a.454.454,0,0,1,.337-.178.509.509,0,0,1,.352.141l1.544,1.629a.453.453,0,0,1-.328.766m-1.841-.956.758.02-.426-.45Zm-2.681-.074,1.417.038-1.036-.419Z" transform="translate(81.942 112.451)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1207" data-name="グループ 1207" transform="translate(189.595 229.66)" clip-path="url(#clip-path-109)">
+        <rect id="長方形_670" data-name="長方形 670" width="11.053" height="15.77" transform="translate(0 0)" fill="url(#radial-gradient-55)"/>
+      </g>
+      <g id="グループ_1209" data-name="グループ 1209" clip-path="url(#clip-path-2)">
+        <path id="パス_569" data-name="パス 569" d="M107.9,143.022h-.027l-2.315-.141a.456.456,0,0,1-.421-.521l.49-3.24L104.405,138a.449.449,0,0,1-.141-.394l.7-5a.427.427,0,0,1,.051-.156l3.213-5.867a.468.468,0,0,1,.454-.232l7.142.889a.454.454,0,0,1,.185.835l-1.876,1.181c-.073.047-.122.105-.247.069l-5.245-.053,1.711,2.268,2.387-.573a.458.458,0,0,1,.27.016l1.669.644a.455.455,0,0,1,.29.41.461.461,0,0,1-.268.428l-3.969,1.78,1.887,2.353a.455.455,0,0,1,.063.461l-.363.862,1.119,1.5a.455.455,0,0,1,.083.343.45.45,0,0,1-.187.3l-1.524,1.061a.448.448,0,0,1-.553-.027l-1.248-1.059a.466.466,0,0,1-.127-.176l-.911-2.249-.622,5.012a.456.456,0,0,1-.45.4M106.107,142l1.393.085.787-6.324a.453.453,0,0,1,.871-.112l1.522,3.766.9.762.853-.593-1-1.337a.457.457,0,0,1-.054-.448l.359-.851-2.084-2.6a.454.454,0,0,1,.169-.7l3.512-1.575-.521-.2-2.54.61a.446.446,0,0,1-.47-.167l-2.135-2.834-1.821,3.323-.655,4.679,1.223,1.125a.45.45,0,0,1,.142.4Zm2.181-13.644,5.475.054.689-.434-5.577-.693Z" transform="translate(84.88 102.862)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1211" data-name="グループ 1211" transform="translate(213.997 122.997)" clip-path="url(#clip-path-111)">
+        <rect id="長方形_672" data-name="長方形 672" width="26.695" height="29.245" transform="translate(0 0)" fill="url(#radial-gradient-56)"/>
+      </g>
+      <g id="グループ_1213" data-name="グループ 1213" clip-path="url(#clip-path-2)">
+        <path id="パス_571" data-name="パス 571" d="M121.115,97.7c-.022,0-.042,0-.062,0a.451.451,0,0,1-.379-.343l-1.152-4.729-.775.8a.453.453,0,0,1-.773-.254l-.258-1.8a.455.455,0,0,1,.105-.359l2.915-3.431a.44.44,0,0,1,.176-.125l9.152-3.7a.471.471,0,0,1,.3-.016l1.2.339,3.392-5.3a.453.453,0,0,1,.827.33l-.174.9,1.381-.541,3.177-6.531-.611-1.411A.455.455,0,0,1,139.67,71l3.733-3.334a.453.453,0,0,1,.755.345l-.027,1.925,1.134,2.259a.46.46,0,0,1,.042.283l-2.17,12.3a.437.437,0,0,1-.143.259L140.9,86.9a.443.443,0,0,1-.521.058.456.456,0,0,1-.207-.241l-.646.907a.474.474,0,0,1-.4.189.454.454,0,0,1-.372-.247l-.586-1.152-3.374.435.109,1.664a.443.443,0,0,1-.134.356l-2.5,2.429a.449.449,0,0,1-.454.107.455.455,0,0,1-.308-.346l-.6-3.115L122.6,89.909l.608.327a.451.451,0,0,1,.2.218l.8,1.85a.444.444,0,0,1-.024.4l-2.683,4.766a.456.456,0,0,1-.4.23m-1.346-6.433a.539.539,0,0,1,.12.015.455.455,0,0,1,.321.33l1.074,4.412,2.012-3.568-.651-1.5-1.524-.818a.455.455,0,0,1,.112-.842l9.932-2.342a.469.469,0,0,1,.35.06.444.444,0,0,1,.2.3l.528,2.752,1.742-1.7-.125-1.879a.453.453,0,0,1,.394-.481l4.114-.532a.458.458,0,0,1,.464.245l.392.771L140.5,84.7a.453.453,0,0,1,.816.339l-.054.328,1.012-.9,2.115-12-1.119-2.222a.445.445,0,0,1-.045-.21l.011-1-2.714,2.429.564,1.3a.461.461,0,0,1-.011.379l-3.343,6.877a.46.46,0,0,1-.243.225l-2.309.9a.461.461,0,0,1-.551-.18l-2.478,3.88a.453.453,0,0,1-.506.192l-1.379-.388-8.907,3.6-2.712,3.191.1.686.7-.722a.455.455,0,0,1,.325-.136M142.692,84.7h0Z" transform="translate(95.832 54.994)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1215" data-name="グループ 1215" transform="translate(261.99 244.694)" clip-path="url(#clip-path-113)">
+        <rect id="長方形_674" data-name="長方形 674" width="1.829" height="2.83" transform="translate(0)" fill="url(#radial-gradient-57)"/>
+      </g>
+      <g id="グループ_1217" data-name="グループ 1217" clip-path="url(#clip-path-2)">
+        <path id="パス_573" data-name="パス 573" d="M144.853,138.369a.466.466,0,0,1-.278-.094.451.451,0,0,1-.174-.321l-.234-2.83a.456.456,0,0,1,.3-.466.463.463,0,0,1,.526.176l.94,1.4.871,1.121a.454.454,0,0,1-.279.726l-1.6.279a.378.378,0,0,1-.078.007m.361-1.586.049.6.366-.064Z" transform="translate(117.368 109.608)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1219" data-name="グループ 1219" transform="translate(196.186 204.106)" clip-path="url(#clip-path-115)">
+        <rect id="長方形_676" data-name="長方形 676" width="3.953" height="7.033" fill="url(#radial-gradient-58)"/>
+      </g>
+      <g id="グループ_1221" data-name="グループ 1221" clip-path="url(#clip-path-2)">
+        <path id="パス_575" data-name="パス 575" d="M111.138,120.2a.45.45,0,0,1-.3-.111l-1.047-.9a.456.456,0,0,1-.145-.461l.733-2.757L108,113.093a.453.453,0,0,1,.316-.74l1.21-.091a.438.438,0,0,1,.31.093l2.743,2.117a.455.455,0,0,1,.163.464l-1.161,4.916a.45.45,0,0,1-.3.325.411.411,0,0,1-.14.024m-.537-1.511.267.229.923-3.906-2.375-1.832-.16.011,1.974,2.384a.462.462,0,0,1,.089.406Z" transform="translate(87.838 91.393)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1223" data-name="グループ 1223" transform="translate(208.645 226.324)" clip-path="url(#clip-path-117)">
+        <rect id="長方形_678" data-name="長方形 678" width="2.857" height="8.358" fill="url(#radial-gradient-59)"/>
+      </g>
+      <g id="グループ_1225" data-name="グループ 1225" clip-path="url(#clip-path-2)">
+        <path id="パス_577" data-name="パス 577" d="M116.759,133.772a.45.45,0,0,1-.323-.134l-1.544-1.558a.451.451,0,0,1-.131-.325l.08-4.816a.455.455,0,0,1,.149-.327l2.179-1.986a.461.461,0,0,1,.461-.093.457.457,0,0,1,.294.366l.183,1.371a.446.446,0,0,1-.071.31l-.566.86-.054,1.508,1.032,1.52a.456.456,0,0,1,.029.461l-1.313,2.594a.454.454,0,0,1-.334.243.5.5,0,0,1-.071.005m-1.087-2.2.965.976.909-1.8-.965-1.422a.454.454,0,0,1-.078-.272l.064-1.781a.449.449,0,0,1,.076-.234l.544-.824-.047-.345-1.4,1.272Z" transform="translate(93.43 101.363)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1227" data-name="グループ 1227" transform="translate(225.945 316.627)" clip-path="url(#clip-path-119)">
+        <rect id="長方形_680" data-name="長方形 680" width="5.06" height="5.373" fill="url(#radial-gradient-60)"/>
+      </g>
+      <g id="グループ_1229" data-name="グループ 1229" clip-path="url(#clip-path-2)">
+        <path id="パス_579" data-name="パス 579" d="M126.3,180.565a.459.459,0,0,1-.345-.16l-1.546-1.8a.458.458,0,0,1-.094-.412l.932-3.568a.455.455,0,0,1,.259-.3.448.448,0,0,1,.4.02l1.62.9,2.142-.726a.454.454,0,0,1,.519.688l-3.512,5.161a.463.463,0,0,1-.35.2Zm-1.047-2.375,1.005,1.174,2.42-3.556-1.05.357a.462.462,0,0,1-.366-.034l-1.284-.711Z" transform="translate(101.193 141.889)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1231" data-name="グループ 1231" transform="translate(179.757 256.589)" clip-path="url(#clip-path-121)">
+        <rect id="長方形_682" data-name="長方形 682" width="68.701" height="56.566" transform="translate(0)" fill="url(#radial-gradient-61)"/>
+      </g>
+      <g id="グループ_1233" data-name="グループ 1233" clip-path="url(#clip-path-2)">
+        <path id="パス_581" data-name="パス 581" d="M148.973,198.664a.453.453,0,0,1-.154-.027l-1.605-.581-2.438.468a.453.453,0,0,1-.412-.131l-3.189-3.3a.455.455,0,0,1-.122-.236l-.813-4.6-1.892,1.442a.453.453,0,0,1-.675-.573l.907-1.705-1.858,1.932a.453.453,0,0,1-.708-.067l-3.035-4.646-6.478-1.352-8.247,3.01-.718,1.157a.464.464,0,0,1-.3.205l-1.4.279c-3.167.635-6.959,1.393-9.9,1.986a.48.48,0,0,1-.317-.053l-2.776-1.622a.455.455,0,0,1-.176-.6l.936-1.85-1.644-4.523-3.088-6.767a.463.463,0,0,1-.04-.216l.7-11.327a.454.454,0,0,1,.862-.169l.524,1.092,1.957-2.587a.445.445,0,0,1,.223-.158l9.564-3.042.544-.526c3.692-3.576,8.388-8.122,11.975-11.561a.454.454,0,0,1,.524-.074l4.055,2.133,2.032-4.537a.455.455,0,0,1,.37-.267l4.171-.392,0-1.794a.458.458,0,0,1,.174-.357.441.441,0,0,1,.388-.082l8.566,2.123a.452.452,0,0,1,.254.709l-2.376,3.178.053,2.8,5.8,4.575,1.11-2.257c1.983-4.031,4.263-8.664,6.028-12.331a.462.462,0,0,1,.479-.252.456.456,0,0,1,.379.383l1.159,8,2.1,1.176a.451.451,0,0,1,.232.385l.187,7.92,2.957,2.144a.449.449,0,0,1,.18.288l.824,4.711.758-.256a.43.43,0,0,1,.381.04.449.449,0,0,1,.212.317l.424,2.676,1.8,3.655a.468.468,0,0,1,.031.314l-2.264,8.788a.439.439,0,0,1-.062.136l-4.156,6.3a.377.377,0,0,1-.034.045l-7.583,8.811a.457.457,0,0,1-.216.138l-5.016,1.484a.444.444,0,0,1-.129.02m-1.722-1.531a.443.443,0,0,1,.152.027l1.584.573,4.746-1.4,7.478-8.688,4.1-6.208,2.2-8.552-1.751-3.568a.466.466,0,0,1-.042-.129l-.35-2.211-.749.254a.452.452,0,0,1-.591-.352l-.885-5.052-2.99-2.166a.454.454,0,0,1-.187-.356l-.185-7.888-2.07-1.157a.449.449,0,0,1-.227-.328l-.98-6.754c-1.656,3.42-3.637,7.445-5.386,11l-1.357,2.761a.454.454,0,0,1-.689.156l-6.406-5.054a.46.46,0,0,1-.174-.348l-.058-3.166a.444.444,0,0,1,.091-.279l2.059-2.756-7.342-1.82,0,1.629a.453.453,0,0,1-.41.452l-4.318.406-2.121,4.737a.455.455,0,0,1-.265.243.467.467,0,0,1-.359-.027l-4.192-2.208c-3.554,3.411-8.125,7.837-11.736,11.333l-.62.6a.458.458,0,0,1-.178.107l-9.53,3.03-2.318,3.064a.421.421,0,0,1-.406.18.46.46,0,0,1-.365-.256l-.091-.189-.584,9.471,3.055,6.7,1.723,4.74a.443.443,0,0,1-.022.359l-.833,1.645,2.259,1.317c2.915-.588,6.623-1.33,9.731-1.952l1.2-.241.7-1.123a.438.438,0,0,1,.23-.185l8.515-3.109a.483.483,0,0,1,.249-.02l6.787,1.417a.462.462,0,0,1,.288.2l2.826,4.327,3.723-3.871a.454.454,0,0,1,.727.528l-1.464,2.75.833-.635a.455.455,0,0,1,.722.281l.918,5.2,2.923,3.021,2.32-.444a.473.473,0,0,1,.087-.009m14.322-9.218h0Z" transform="translate(80.466 114.946)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1235" data-name="グループ 1235" transform="translate(185.423 204.859)" clip-path="url(#clip-path-123)">
+        <rect id="長方形_684" data-name="長方形 684" width="5.852" height="7.868" transform="translate(0 0)" fill="url(#radial-gradient-62)"/>
+      </g>
+      <g id="グループ_1237" data-name="グループ 1237" clip-path="url(#clip-path-2)">
+        <path id="パス_583" data-name="パス 583" d="M102.415,121.45a.445.445,0,0,1-.294-.109.452.452,0,0,1-.089-.588l4.98-7.868a.46.46,0,0,1,.321-.2.434.434,0,0,1,.363.109l.7.619a.456.456,0,0,1,.151.3l.171,2.032a.448.448,0,0,1-.151.376l-5.851,5.217a.457.457,0,0,1-.3.114m5.08-7.628-2.964,4.68,3.265-2.91-.134-1.624Z" transform="translate(83.008 91.73)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1239" data-name="グループ 1239" transform="translate(28.512 79.419)" clip-path="url(#clip-path-125)">
+        <rect id="長方形_686" data-name="長方形 686" width="1.959" height="4.232" transform="translate(0 0)" fill="url(#radial-gradient-63)"/>
+      </g>
+      <g id="グループ_1241" data-name="グループ 1241" clip-path="url(#clip-path-2)">
+        <path id="パス_585" data-name="パス 585" d="M15.921,48.667a.476.476,0,0,1-.185-.038.458.458,0,0,1-.254-.532l.824-3.089a.437.437,0,0,1,.053-.123l.657-1.058a.454.454,0,0,1,.3-.207l.481-.085a.463.463,0,0,1,.415.141.45.45,0,0,1,.1.428L17.7,46.288a.462.462,0,0,1-.058.125L16.3,48.462a.454.454,0,0,1-.379.2" transform="translate(12.592 35.438)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1243" data-name="グループ 1243" transform="translate(30.114 139.413)" clip-path="url(#clip-path-127)">
+        <rect id="長方形_688" data-name="長方形 688" width="2.819" height="2.19" transform="translate(0 0)" fill="url(#radial-gradient-64)"/>
+      </g>
+      <g id="グループ_1245" data-name="グループ 1245" clip-path="url(#clip-path-2)">
+        <path id="パス_587" data-name="パス 587" d="M18.759,79.695a.45.45,0,0,1-.181-.036l-1.956-.847a.454.454,0,0,1-.015-.825l2.821-1.342a.453.453,0,0,1,.617.575l-.865,2.19a.454.454,0,0,1-.421.287m-.86-1.319.61.263.27-.682Z" transform="translate(13.311 62.36)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1247" data-name="グループ 1247" transform="translate(272.811 273.018)" clip-path="url(#clip-path-129)">
+        <rect id="長方形_690" data-name="長方形 690" width="2.279" height="2.513" fill="url(#radial-gradient-65)"/>
+      </g>
+      <g id="グループ_1249" data-name="グループ 1249" clip-path="url(#clip-path-2)">
+        <path id="パス_589" data-name="パス 589" d="M150.923,153.665a.465.465,0,0,1-.122-.016.46.46,0,0,1-.314-.312l-.337-1.172a.455.455,0,0,1,.007-.274l.454-1.337a.459.459,0,0,1,.238-.267.473.473,0,0,1,.356-.013l1.823.7a.453.453,0,0,1,.147.755l-1.941,1.809a.454.454,0,0,1-.31.123m.138-1.616.094.327.871-.811-.707-.272Z" transform="translate(122.225 122.318)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1251" data-name="グループ 1251" transform="translate(35.969 73.96)" clip-path="url(#clip-path-131)">
+        <rect id="長方形_692" data-name="長方形 692" width="2.322" height="3.002" transform="translate(0 0)" fill="url(#radial-gradient-66)"/>
+      </g>
+      <g id="グループ_1253" data-name="グループ 1253" clip-path="url(#clip-path-2)">
+        <path id="パス_591" data-name="パス 591" d="M20.032,44.428a.459.459,0,0,1-.3-.112.454.454,0,0,1-.06-.619l2.32-3a.454.454,0,0,1,.747.513L21.7,42.919a.369.369,0,0,1-.065.083l-1.277,1.292a.458.458,0,0,1-.323.134" transform="translate(15.939 32.988)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1255" data-name="グループ 1255" transform="translate(301.966 55.942)" clip-path="url(#clip-path-133)">
+        <rect id="長方形_694" data-name="長方形 694" width="4.724" height="1.616" transform="translate(0 0)" fill="url(#radial-gradient-67)"/>
+      </g>
+      <g id="グループ_1257" data-name="グループ 1257" clip-path="url(#clip-path-2)">
+        <path id="パス_593" data-name="パス 593" d="M171.38,33.112l-.024,0-3.784-.189a.454.454,0,0,1-.356-.2l-.938-1.428a.452.452,0,0,1-.013-.477.473.473,0,0,1,.423-.223l1.595.109a.516.516,0,0,1,.165.044l3.128,1.509a.453.453,0,0,1-.2.862m-3.532-1.085,1.315.065-1.03-.5-.593-.042Z" transform="translate(135.31 24.902)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1259" data-name="グループ 1259" transform="translate(13.403 132.102)" clip-path="url(#clip-path-135)">
+        <rect id="長方形_696" data-name="長方形 696" width="2.043" height="3.986" transform="translate(0 0)" fill="url(#radial-gradient-68)"/>
+      </g>
+      <g id="グループ_1261" data-name="グループ 1261" clip-path="url(#clip-path-2)">
+        <path id="パス_595" data-name="パス 595" d="M8.146,77.461a.456.456,0,0,1-.45-.388l-.553-3.806a.457.457,0,0,1,.093-.347.452.452,0,0,1,.316-.171l1.976-.18a.46.46,0,0,1,.394.167.757.757,0,0,1,.165.4l-.054.664-.693,2.723a.448.448,0,0,1-.16.245l-.753.591a.441.441,0,0,1-.279.1M8.9,76.415h0Zm-.789-2.8.372,2.556.016-.013.651-2.638Z" transform="translate(5.811 59.08)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1263" data-name="グループ 1263" transform="translate(42.583 66.939)" clip-path="url(#clip-path-137)">
+        <rect id="長方形_698" data-name="長方形 698" width="0.443" height="0.626" fill="url(#radial-gradient-69)"/>
+      </g>
+      <g id="グループ_1265" data-name="グループ 1265" clip-path="url(#clip-path-2)">
+        <path id="パス_597" data-name="パス 597" d="M23.676,38.183a.453.453,0,0,1-.4-.66l.323-.628a.448.448,0,0,1,.4-.247h.12a.454.454,0,0,1,.37.715l-.443.628a.449.449,0,0,1-.37.192" transform="translate(18.906 29.836)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1267" data-name="グループ 1267" transform="translate(40.491 72.168)" clip-path="url(#clip-path-139)">
+        <rect id="長方形_700" data-name="長方形 700" width="2.094" height="1.834" transform="translate(0 0)" fill="url(#radial-gradient-70)"/>
+      </g>
+      <g id="グループ_1269" data-name="グループ 1269" clip-path="url(#clip-path-2)">
+        <path id="パス_599" data-name="パス 599" d="M22.523,42.272a.455.455,0,0,1-.419-.628l.72-1.742a.453.453,0,0,1,.388-.279l1.375-.091a.445.445,0,0,1,.448.279.456.456,0,0,1-.12.515l-2.093,1.832a.455.455,0,0,1-.3.112" transform="translate(17.968 32.183)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1271" data-name="グループ 1271" transform="translate(21.015 139.33)" clip-path="url(#clip-path-141)">
+        <rect id="長方形_702" data-name="長方形 702" width="2.594" height="1.939" transform="translate(0 0)" fill="url(#radial-gradient-71)"/>
+      </g>
+      <g id="グループ_1273" data-name="グループ 1273" clip-path="url(#clip-path-2)">
+        <path id="パス_601" data-name="パス 601" d="M14.382,79.4a.514.514,0,0,1-.129-.018l-2.6-.773a.452.452,0,0,1-.3-.575l.381-1.168a.451.451,0,0,1,.729-.2l2.213,1.939a.453.453,0,0,1-.3.795m-2.019-1.528.16.047-.136-.118Z" transform="translate(9.227 62.324)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1275" data-name="グループ 1275" transform="translate(262.937 305.24)" clip-path="url(#clip-path-143)">
+        <rect id="長方形_704" data-name="長方形 704" width="8.82" height="12.568" transform="translate(0)" fill="url(#radial-gradient-72)"/>
+      </g>
+      <g id="グループ_1277" data-name="グループ 1277" clip-path="url(#clip-path-2)">
+        <path id="パス_603" data-name="パス 603" d="M145.141,181.482a.454.454,0,0,1-.308-.787l2.09-1.93-.555-.978a.456.456,0,0,1,.112-.581l2.433-1.923,1.517-2.217.343-2.15a.412.412,0,0,1-.154-.071.45.45,0,0,1-.178-.466l.452-2.017a.5.5,0,0,1,.464-.354.456.456,0,0,1,.428.4l.4,3.394a.448.448,0,0,1-.034.234.409.409,0,0,1,.334.107.458.458,0,0,1,.143.461l-.4,1.495,1.674-.232a.467.467,0,0,1,.461.234.453.453,0,0,1-.054.513l-2.464,2.866a.474.474,0,0,1-.187.142l-1.19.5-3.225,2.991a.474.474,0,0,1-.245.116l-1.792.25c-.022,0-.044,0-.064,0m2.208-3.8.539.951a.452.452,0,0,1-.085.557l-1.292,1.194.22-.029,3.18-2.95a.425.425,0,0,1,.132-.085l1.165-.488,1.631-1.9-1.163.161a.462.462,0,0,1-.4-.151.449.449,0,0,1-.1-.415l.336-1.252-.216.092a.419.419,0,0,1-.06.125l-1.611,2.358a.451.451,0,0,1-.093.1Z" transform="translate(117.793 136.779)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1279" data-name="グループ 1279" transform="translate(248.315 316.484)" clip-path="url(#clip-path-145)">
+        <rect id="長方形_706" data-name="長方形 706" width="14.346" height="10.511" fill="url(#radial-gradient-73)"/>
+      </g>
+      <g id="グループ_1281" data-name="グループ 1281" clip-path="url(#clip-path-2)">
+        <path id="パス_605" data-name="パス 605" d="M139.407,185.622a.479.479,0,0,1-.227-.058l-2.322-1.324a.461.461,0,0,1-.23-.379.453.453,0,0,1,.207-.392l4.5-2.975,3.039-1.478,6.092-4.715a.458.458,0,0,1,.566.011.45.45,0,0,1,.118.553l-.107.209.158-.091a.454.454,0,0,1,.63.6L151,177.212a.42.42,0,0,1-.136.161l-2.955,2.126-1.3,1.562a.459.459,0,0,1-.488.145.48.48,0,0,1-.238-.18l-6.213,4.508a.442.442,0,0,1-.267.087m-1.457-1.8,1.426.811,6.582-4.777a.471.471,0,0,1,.461-.044c.011.007.024.013.038.022l.791-.956a.426.426,0,0,1,.082-.08l2.913-2.1.085-.169-.145.083a.453.453,0,0,1-.677-.423l-4.651,3.588-3.066,1.5Z" transform="translate(111.231 141.826)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1283" data-name="グループ 1283" transform="translate(284.43 273.018)" clip-path="url(#clip-path-147)">
+        <rect id="長方形_708" data-name="長方形 708" width="6.935" height="6.384" transform="translate(0)" fill="url(#radial-gradient-74)"/>
+      </g>
+      <g id="グループ_1285" data-name="グループ 1285" clip-path="url(#clip-path-2)">
+        <path id="パス_607" data-name="パス 607" d="M156.991,157.539a.456.456,0,0,1-.316-.129.451.451,0,0,1-.1-.5q.525-1.225,1.038-2.464a.447.447,0,0,1,.225-.236l1.85-.88,1.916-2.879a.454.454,0,0,1,.624-.129l1.947,1.259a.456.456,0,0,1,.058.718l-2.141,1.93-1.156,1.444a.451.451,0,0,1-.16.127l-3.592,1.7a.428.428,0,0,1-.192.045m1.391-2.589c-.169.4-.337.811-.51,1.215l2.42-1.143,1.112-1.391a.467.467,0,0,1,.051-.053l1.729-1.558-1.076-.7-1.736,2.611a.454.454,0,0,1-.183.158Zm2.2.437h0Z" transform="translate(127.439 122.318)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1287" data-name="グループ 1287" transform="translate(11.124 124.389)" clip-path="url(#clip-path-149)">
+        <rect id="長方形_710" data-name="長方形 710" width="1.825" height="5.633" transform="translate(0)" fill="url(#radial-gradient-75)"/>
+      </g>
+      <g id="グループ_1289" data-name="グループ 1289" clip-path="url(#clip-path-2)">
+        <path id="パス_609" data-name="パス 609" d="M6.336,74.858a.454.454,0,0,1-.443-.555l.444-1.934L6.327,71.8a.424.424,0,0,1,.024-.143l.425-1.255L6.9,68.737a.458.458,0,0,1,.287-.39.465.465,0,0,1,.475.091l.813.758a.455.455,0,0,1,.131.441l-.84,3.389a.541.541,0,0,1-.029.082L7.2,74.245a.462.462,0,0,1-.136.171l-.459.348a.444.444,0,0,1-.274.094m.985-1.941h0Z" transform="translate(4.788 55.619)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1291" data-name="グループ 1291" transform="translate(8.416 128.088)" clip-path="url(#clip-path-151)">
+        <rect id="長方形_712" data-name="長方形 712" width="0.501" height="1.072" transform="translate(0 0)" fill="url(#radial-gradient-76)"/>
+      </g>
+      <g id="グループ_1293" data-name="グループ 1293" clip-path="url(#clip-path-2)">
+        <path id="パス_611" data-name="パス 611" d="M4.89,72.335a.439.439,0,0,1-.085-.007.452.452,0,0,1-.366-.426l-.049-1.072a.447.447,0,0,1,.151-.357.471.471,0,0,1,.374-.111l.5.082a.453.453,0,0,1,.341.637L5.3,72.07a.452.452,0,0,1-.412.265" transform="translate(3.573 57.279)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1295" data-name="グループ 1295" transform="translate(13.116 118.373)" clip-path="url(#clip-path-153)">
+        <rect id="長方形_714" data-name="長方形 714" width="1.226" height="4.376" transform="translate(0 0)" fill="url(#radial-gradient-77)"/>
+      </g>
+      <g id="グループ_1297" data-name="グループ 1297" clip-path="url(#clip-path-2)">
+        <path id="パス_613" data-name="パス 613" d="M7.433,70.283a.539.539,0,0,1-.076-.005.455.455,0,0,1-.376-.477l.127-2.048a.442.442,0,0,1,.06-.2l.686-1.19L8.235,65.3a.454.454,0,0,1,.864.276L7.87,69.951a.455.455,0,0,1-.437.332" transform="translate(5.683 52.919)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1299" data-name="グループ 1299" transform="translate(196.58 209.117)" clip-path="url(#clip-path-155)">
+        <rect id="長方形_716" data-name="長方形 716" width="9.811" height="9.116" fill="url(#radial-gradient-78)"/>
+      </g>
+      <g id="グループ_1301" data-name="グループ 1301" clip-path="url(#clip-path-2)">
+        <path id="パス_615" data-name="パス 615" d="M115.727,125.045a.466.466,0,0,1-.149-.025l-2.819-.971a.449.449,0,0,1-.272-.258l-.749-1.854a.44.44,0,0,1-.406-.185l-.323-.448-2.159,1.736a.454.454,0,0,1-.657-.613l3.213-4.584a.435.435,0,0,1,.45-.185.455.455,0,0,1,.359.325l.337,1.226,3.51-2.046-.239-1.622a.454.454,0,0,1,.776-.379l1.313,1.368.74,1.194a.833.833,0,0,0,.176.958l-.131,4.078a.454.454,0,0,1-.421.466l-.065.867a.453.453,0,0,1-.4.417.441.441,0,0,1-.483-.327l-.171-.586-.1.651a.456.456,0,0,1-.256.341l-.882.414a.47.47,0,0,1-.192.042m-2.476-1.785,2.451.844.5-.232.374-2.454a.454.454,0,0,1,.419-.383.428.428,0,0,1,.466.327l.221.773a.518.518,0,0,1,.134-.04l.1-3.108-.287-.1a.454.454,0,0,1-.174-.749l.245-.247-.5-.815-.274-.281.078.539a.453.453,0,0,1-.22.457l-4.285,2.5a.449.449,0,0,1-.4.029.408.408,0,0,1-.049-.024l.005.011Zm-1.654-4.107-.831,1.183.047-.036a.49.49,0,0,1,.345-.1.621.621,0,0,1,.1.025.449.449,0,0,1,.6-.149.356.356,0,0,1-.022-.062Z" transform="translate(88.015 93.642)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1303" data-name="グループ 1303" transform="translate(38.657 47.104)" clip-path="url(#clip-path-157)">
+        <rect id="長方形_718" data-name="長方形 718" width="5.428" height="6.886" transform="translate(0 0)" fill="url(#radial-gradient-79)"/>
+      </g>
+      <g id="グループ_1305" data-name="グループ 1305" clip-path="url(#clip-path-2)">
+        <path id="パス_617" data-name="パス 617" d="M21.513,33.508a.454.454,0,0,1-.357-.733l1.15-1.468.007-.009.132-.16,4.138-5.25a.453.453,0,0,1,.722.548l-1.078,1.473-1.2,1.531-3.157,3.895a.453.453,0,0,1-.356.172" transform="translate(17.144 20.936)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1307" data-name="グループ 1307" transform="translate(65.644 260.988)" clip-path="url(#clip-path-159)">
+        <rect id="長方形_720" data-name="長方形 720" width="12.704" height="26.771" fill="url(#radial-gradient-80)"/>
+      </g>
+      <g id="グループ_1309" data-name="グループ 1309" clip-path="url(#clip-path-2)">
+        <path id="パス_619" data-name="パス 619" d="M48,171.293a.423.423,0,0,1-.187-.04l-2.3-1.04a.451.451,0,0,1-.19-.163l-4.949-7.481a.454.454,0,0,1-.065-.156l-.738-3.519L36.94,154.85a.477.477,0,0,1-.054-.12l-.932-3.178a.456.456,0,0,1,.154-.486L37.72,149.8l.287-5.76a.454.454,0,0,1,.214-.363.466.466,0,0,1,.421-.031l1.818.8a.451.451,0,0,1,.167.123l.083.1a.454.454,0,0,1,.063.1l2.756,5.967a.453.453,0,0,1-.571.615c2.273,6.964,4.689,13.746,6.556,18.392a.451.451,0,0,1-.127.513l-1.094.927a.455.455,0,0,1-.294.107m-1.99-1.852,1.916.869.626-.53c-2.944-7.374-6.059-16.906-6.954-19.68a.452.452,0,0,1,.183-.519.426.426,0,0,1,.183-.069l-1.977-4.283-1.1-.483-.265,5.31a.457.457,0,0,1-.172.336l-1.535,1.2.827,2.819,2.641,4.058a.46.46,0,0,1,.065.154l.737,3.519Z" transform="translate(29.255 116.92)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1311" data-name="グループ 1311" transform="translate(191.68 251.344)" clip-path="url(#clip-path-161)">
+        <rect id="長方形_722" data-name="長方形 722" width="11.117" height="1.557" transform="translate(0 0)" fill="url(#radial-gradient-81)"/>
+      </g>
+      <g id="グループ_1313" data-name="グループ 1313" clip-path="url(#clip-path-2)">
+        <path id="パス_621" data-name="パス 621" d="M108.118,140.761a.464.464,0,0,1-.229-.062l-2.255-1.315a.453.453,0,0,1,.22-.844l11.115-.241a.453.453,0,0,1,.1.9l-7.485,1.489a.4.4,0,0,1-.067.009l-1.375.065Zm1.375-.519h0Zm-2.012-.831.749.437,1.208-.058,2.376-.473Z" transform="translate(85.816 112.591)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1315" data-name="グループ 1315" transform="translate(201.705 202.287)" clip-path="url(#clip-path-163)">
+        <rect id="長方形_724" data-name="長方形 724" width="2.832" height="2.892" fill="url(#radial-gradient-82)"/>
+      </g>
+      <g id="グループ_1317" data-name="グループ 1317" clip-path="url(#clip-path-2)">
+        <path id="パス_623" data-name="パス 623" d="M113.072,115.056h0a.45.45,0,0,1-.39-.227L111,111.94a.455.455,0,0,1,.04-.515.461.461,0,0,1,.5-.145l2.83.952a.45.45,0,0,1,.281.272.456.456,0,0,1-.034.388l-1.147,1.939a.453.453,0,0,1-.392.225m-.684-2.531.688,1.179.468-.791Z" transform="translate(90.314 90.576)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1319" data-name="グループ 1319" transform="translate(201.779 204.771)" clip-path="url(#clip-path-165)">
+        <rect id="長方形_726" data-name="長方形 726" width="1.972" height="3.842" fill="url(#radial-gradient-83)"/>
+      </g>
+      <g id="グループ_1321" data-name="グループ 1321" clip-path="url(#clip-path-2)">
+        <path id="パス_625" data-name="パス 625" d="M113.02,117.376a.454.454,0,0,1-.419-.279l-1.589-3.846a.449.449,0,0,1,.074-.468.454.454,0,0,1,.452-.145l1.56.383a.457.457,0,0,1,.343.385l.412,3.314a.455.455,0,0,1-.327.493.4.4,0,0,1-.172.016.462.462,0,0,1-.234.136.48.48,0,0,1-.1.011m-.829-3.643.537,1.3-.149-1.2Z" transform="translate(90.348 91.69)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1323" data-name="グループ 1323" transform="translate(199.021 202.105)" clip-path="url(#clip-path-167)">
+        <rect id="長方形_728" data-name="長方形 728" width="2.266" height="2.311" transform="translate(0)" fill="url(#radial-gradient-84)"/>
+      </g>
+      <g id="グループ_1325" data-name="グループ 1325" clip-path="url(#clip-path-2)">
+        <path id="パス_627" data-name="パス 627" d="M112.1,114.377a.451.451,0,0,1-.332-.143l-.936-1-.631.515a.454.454,0,0,1-.733-.434l.316-1.78a.461.461,0,0,1,.238-.325.456.456,0,0,1,.4-.005l1.952.927a.455.455,0,0,1,.258.435l-.082,1.386a.453.453,0,0,1-.3.4.461.461,0,0,1-.154.027m-.432-1.58.04.042,0-.022Z" transform="translate(89.111 90.495)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1327" data-name="グループ 1327" transform="translate(192.099 169.163)" clip-path="url(#clip-path-169)">
+        <rect id="長方形_730" data-name="長方形 730" width="3.719" height="8.554" transform="translate(0 0)" fill="url(#radial-gradient-85)"/>
+      </g>
+      <g id="グループ_1329" data-name="グループ 1329" clip-path="url(#clip-path-2)">
+        <path id="パス_629" data-name="パス 629" d="M107.876,102.459a.453.453,0,0,1-.421-.285l-1.781-4.434a.452.452,0,0,1,.047-.426l2.855-4.122a.456.456,0,0,1,.455-.187.449.449,0,0,1,.359.337l.864,3.538a.444.444,0,0,1-.018.27l-1.936,5.016a.455.455,0,0,1-.421.292Zm-1.27-4.829,1.261,3.138,1.473-3.811-.591-2.42Z" transform="translate(86.004 75.711)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1331" data-name="グループ 1331" transform="translate(196.723 243.437)" clip-path="url(#clip-path-171)">
+        <rect id="長方形_732" data-name="長方形 732" width="2.268" height="2.395" fill="url(#radial-gradient-86)"/>
+      </g>
+      <g id="グループ_1333" data-name="グループ 1333" clip-path="url(#clip-path-2)">
+        <path id="パス_631" data-name="パス 631" d="M109.869,137.242a.452.452,0,0,1-.3-.114l-1.225-1.083a.457.457,0,0,1,.073-.735l2.269-1.31a.453.453,0,0,1,.642.573l-1.043,2.395a.456.456,0,0,1-.317.263.451.451,0,0,1-.1.011m-.454-1.46.287.254.243-.561Z" transform="translate(88.08 109.043)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1335" data-name="グループ 1335" transform="translate(199.129 251.446)" clip-path="url(#clip-path-173)">
+        <rect id="長方形_734" data-name="長方形 734" width="7.868" height="4.455" transform="translate(0 0)" fill="url(#radial-gradient-87)"/>
+      </g>
+      <g id="グループ_1337" data-name="グループ 1337" clip-path="url(#clip-path-2)">
+        <path id="パス_633" data-name="パス 633" d="M109.968,143.716a.468.468,0,0,1-.317-.129.458.458,0,0,1-.116-.457l.562-1.87a.441.441,0,0,1,.229-.274l2.411-1.226.477-.635a.48.48,0,0,1,.3-.178l4.26-.588a.473.473,0,0,1,.486.287.455.455,0,0,1-.172.539l-5.54,3.706a.5.5,0,0,1-.112.056l-2.328.747a.533.533,0,0,1-.14.022m.94-2.01-.258.86,1.446-.464,3.848-2.574-2.119.3-.426.566a.424.424,0,0,1-.158.131Zm1.388.807h0Z" transform="translate(89.158 112.639)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1339" data-name="グループ 1339" transform="translate(159.751 236.078)" clip-path="url(#clip-path-175)">
+        <rect id="長方形_736" data-name="長方形 736" width="3.657" height="3.634" fill="url(#radial-gradient-88)"/>
+      </g>
+      <g id="グループ_1341" data-name="グループ 1341" clip-path="url(#clip-path-2)">
+        <path id="パス_635" data-name="パス 635" d="M91.794,134.424a.469.469,0,0,1-.172-.033l-1.248-.515a.434.434,0,0,1-.192-.151l-1.168-1.584-.853-.2a.453.453,0,0,1-.08-.856l.947-.417-.051-.234a.453.453,0,0,1,.758-.421l2.5,2.445a.453.453,0,0,1,.134.372l-.127,1.188a.453.453,0,0,1-.218.341.461.461,0,0,1-.232.063m-.958-1.337.57.234.04-.366-1.667-1.631a.356.356,0,0,1-.045.024l-.142.063c.018.018.036.038.053.058Z" transform="translate(71.488 105.741)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1343" data-name="グループ 1343" transform="translate(137.76 219.497)" clip-path="url(#clip-path-177)">
+        <rect id="長方形_738" data-name="長方形 738" width="23.975" height="26.727" transform="translate(0)" fill="url(#radial-gradient-89)"/>
+      </g>
+      <g id="グループ_1345" data-name="グループ 1345" clip-path="url(#clip-path-2)">
+        <path id="パス_637" data-name="パス 637" d="M97.644,148.377a.457.457,0,0,1-.352-.167c-10.7-13.1-13.566-16.608-21.508-26.733a.46.46,0,0,1-.029-.519.472.472,0,0,1,.477-.207l3.628.737a.467.467,0,0,1,.194.091l2,1.605c4.209,3.387,9.221,7.418,13.14,10.524a.454.454,0,0,1,.161.45l-.3,1.446,1.417.751a.456.456,0,0,1,.229.294l.869,3.621,2.781,1.616a.45.45,0,0,1,.227.4l-.125,5.446a.454.454,0,0,1-.629.408l-1.7-.707-.022.508a.455.455,0,0,1-.31.412.439.439,0,0,1-.143.024m.049-2.064a.417.417,0,0,1,.174.036l1.685.7.105-4.515-2.719-1.578a.453.453,0,0,1-.214-.285l-.865-3.612-1.537-.815a.452.452,0,0,1-.232-.493l.317-1.506c-3.886-3.084-8.793-7.028-12.926-10.353l-1.91-1.535-2.313-.472c7.2,9.167,10.243,12.9,19.982,24.83a.456.456,0,0,1,.209-.332.462.462,0,0,1,.243-.071" transform="translate(61.619 98.301)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1347" data-name="グループ 1347" transform="translate(106.115 209.393)" clip-path="url(#clip-path-179)">
+        <rect id="長方形_740" data-name="長方形 740" width="3.436" height="6.814" transform="translate(0 0)" fill="url(#radial-gradient-90)"/>
+      </g>
+      <g id="グループ_1349" data-name="グループ 1349" clip-path="url(#clip-path-2)">
+        <path id="パス_639" data-name="パス 639" d="M59.383,122.9a.46.46,0,0,1-.189-.042.455.455,0,0,1-.249-.292l-.622-2.266-.078-2.816a.446.446,0,0,1,.054-.227l.194-.356.018-1.279a.455.455,0,0,1,.59-.425l1.237.386a.467.467,0,0,1,.285.261l1.93,4.729a.456.456,0,0,1-.16.542L60.707,122.3a.736.736,0,0,1-.063.038l-1.065.512a.437.437,0,0,1-.2.045m1.065-.965h0Zm-1.293-4.35.06,2.585.459,1.633.544-.261,1.359-.956-1.713-4.2-.454-.142-.011.782a.456.456,0,0,1-.056.21Z" transform="translate(47.418 93.766)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1351" data-name="グループ 1351" transform="translate(191.693 186.586)" clip-path="url(#clip-path-181)">
+        <rect id="長方形_742" data-name="長方形 742" width="9.871" height="15.562" fill="url(#radial-gradient-91)"/>
+      </g>
+      <g id="グループ_1353" data-name="グループ 1353" clip-path="url(#clip-path-2)">
+        <path id="パス_641" data-name="パス 641" d="M115.607,119.07a.45.45,0,0,1-.312-.123l-2.738-2.6-.174.969a.454.454,0,0,1-.789.218l-.945-1.081-1.78-.016a.451.451,0,0,1-.428-.321l-.646-2.1-1.879-1.121a.456.456,0,0,1-.218-.356l-.279-3.563a.453.453,0,0,1,.751-.376l.4.354.252-5.123a.448.448,0,0,1,.249-.383l1.6-.8a.44.44,0,0,1,.267-.044l2.509.354a.451.451,0,0,1,.39.468l-.294,6.513a.449.449,0,0,1-.33.414l-.751.212-.149,2.2.862,1.513.711-.493a.45.45,0,0,1,.457-.036l2.516,1.226.684-.337a.453.453,0,0,1,.539.708l-.751.833.715,2.306a.456.456,0,0,1-.194.519.463.463,0,0,1-.239.069m-3.349-4.085a.449.449,0,0,1,.312.123l2.09,1.985-.276-.893a.458.458,0,0,1,.073-.412l-2.277-1.108-.9.626a.475.475,0,0,1-.359.071.456.456,0,0,1-.294-.218l-1.176-2.063a.453.453,0,0,1-.06-.256l.18-2.652a.451.451,0,0,1,.33-.4l.744-.21.261-5.773-1.963-.276-1.232.617-.285,5.8a.453.453,0,0,1-.753.319l-.267-.236.174,2.211,1.825,1.092a.454.454,0,0,1,.2.258l.6,1.947,1.654.014a.456.456,0,0,1,.337.156l.457.522.154-.867a.449.449,0,0,1,.3-.35.429.429,0,0,1,.141-.024" transform="translate(85.822 83.53)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1355" data-name="グループ 1355" transform="translate(199.542 205.3)" clip-path="url(#clip-path-183)">
+        <rect id="長方形_744" data-name="長方形 744" width="1.856" height="4.787" transform="translate(0)" fill="url(#radial-gradient-92)"/>
+      </g>
+      <g id="グループ_1357" data-name="グループ 1357" clip-path="url(#clip-path-2)">
+        <path id="パス_643" data-name="パス 643" d="M110.2,118.615a.456.456,0,0,1-.432-.593l1.486-4.6a.453.453,0,0,1,.225-.265l.37-.187a.452.452,0,0,1,.628.566l-1.854,4.789a.452.452,0,0,1-.423.29" transform="translate(89.345 91.928)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1359" data-name="グループ 1359" transform="translate(161.794 246.149)" clip-path="url(#clip-path-185)">
+        <rect id="長方形_746" data-name="長方形 746" width="18.626" height="6.317" fill="url(#radial-gradient-93)"/>
+      </g>
+      <g id="グループ_1361" data-name="グループ 1361" clip-path="url(#clip-path-2)">
+        <path id="パス_645" data-name="パス 645" d="M108.016,142.658a.4.4,0,0,1-.1-.013l-5.533-1.275-.441.245a.421.421,0,0,1-.316.049l-10.767-2.286a.452.452,0,0,1-.356-.5l.054-.4-1.5-1.665a.449.449,0,0,1-.111-.368.456.456,0,0,1,.214-.323l1.032-.62a.467.467,0,0,1,.3-.062l13.265,1.979a.456.456,0,0,1,.221.1l2.259,1.874,2.128,2.518a.455.455,0,0,1-.346.747m-5.707-2.226a.381.381,0,0,1,.1.014l4.385,1.01-1.2-1.424-2.1-1.734-12.978-1.937-.421.254,1.274,1.415a.453.453,0,0,1,.112.365l-.025.183,10.186,2.164.443-.252a.46.46,0,0,1,.223-.058" transform="translate(72.405 110.261)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1363" data-name="グループ 1363" transform="translate(165.508 182.638)" clip-path="url(#clip-path-187)">
+        <rect id="長方形_748" data-name="長方形 748" width="5.468" height="5.109" fill="url(#radial-gradient-94)"/>
+      </g>
+      <g id="グループ_1365" data-name="グループ 1365" clip-path="url(#clip-path-2)">
+        <path id="パス_647" data-name="パス 647" d="M93.642,106.442a.444.444,0,0,1-.129-.02l-1.263-.379a.45.45,0,0,1-.294-.27l-.943-2.471a.454.454,0,0,1,.263-.588l4.309-1.62.062-.3a.455.455,0,0,1,.847-.122L97.3,102.2a.451.451,0,0,1-.011.444l-1.114,1.867a.454.454,0,0,1-.165.161l-1.633,1.076-.372.506a.454.454,0,0,1-.366.187m-.918-1.2.742.223.23-.314a.428.428,0,0,1,.116-.112l1.64-1.079.931-1.557-.281-.532-4.08,1.535Z" transform="translate(74.071 81.76)" fill="#ccc"/>
+      </g>
+      <g id="グループ_1367" data-name="グループ 1367" transform="translate(167.516 216.042)" clip-path="url(#clip-path-189)">
+        <rect id="長方形_750" data-name="長方形 750" width="22.7" height="26.047" transform="translate(0 0)" fill="url(#radial-gradient-95)"/>
+      </g>
+      <g id="グループ_1369" data-name="グループ 1369" clip-path="url(#clip-path-2)">
+        <path id="パス_649" data-name="パス 649" d="M105.306,145.794a.465.465,0,0,1-.163-.031.455.455,0,0,1-.256-.247l-.573-1.368-5.018.27a.462.462,0,0,1-.468-.359l-.27-1.273-2.788.033h-.005a.453.453,0,0,1-.435-.325l-1.074-3.679-.2.181a.462.462,0,0,1-.414.1.454.454,0,0,1-.316-.288l-.76-2.142a.455.455,0,0,1,.007-.321l.223-.562-.648-1.194a.45.45,0,0,1-.053-.252l.205-2.533a.45.45,0,0,1,.218-.35l1.388-.842a.454.454,0,0,1,.428-.024l3.03,1.417-.073-1.82a.454.454,0,0,1,.149-.356l3.059-2.779c2.99-2.718,6.286-5.714,8.954-8.1a.457.457,0,0,1,.579-.022l5.491,4.212a.45.45,0,0,1,.167.448.446.446,0,0,1-.327.348l-1.738.466.57.74a.453.453,0,0,1,.076.4.445.445,0,0,1-.27.3l-2.291.9,1.1,3.153a.45.45,0,0,1,.02.225l-.154.9,1.226,1.07a.458.458,0,0,1,.125.5l-4.764,12.6a.454.454,0,0,1-.833.036l-.347-.715-2.581,1.228a.459.459,0,0,1-.194.044m-.7-2.569a.453.453,0,0,1,.417.278l.515,1.225,2.558-1.217a.459.459,0,0,1,.6.21l.083.174,4.28-11.32-1.181-1.029a.462.462,0,0,1-.149-.419l.178-1.038-1.206-3.454a.452.452,0,0,1,.261-.571l2.137-.842-.617-.8a.452.452,0,0,1,.243-.715l1.506-.4-4.463-3.423c-2.614,2.34-5.783,5.223-8.67,7.844l-2.9,2.638.094,2.355a.454.454,0,0,1-.2.4.444.444,0,0,1-.443.033l-3.485-1.629-.983.6-.176,2.166.686,1.263a.447.447,0,0,1,.022.385l-.239.6.477,1.348.238-.209a.443.443,0,0,1,.426-.1.453.453,0,0,1,.31.308l1.177,4.035,2.815-.033c.229-.058.4.147.45.359l.267,1.259,4.949-.268Z" transform="translate(74.972 96.748)" fill="#ccc"/>
+      </g>
+    </g>
+  </g>
+</svg>
