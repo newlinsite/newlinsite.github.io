@@ -114,12 +114,12 @@
                 closeOtherSmPoint(this.from)
 
                 pointsMap[from].point.style.opacity = 0
+                pointsMap[from].pointName.classList.add("op0")
                 pointsMap[from].point.style.pointerEvents = "none"
 
                 this.point.style.opacity = 1
                 this.point.style.left = this.x;
                 this.point.style.top = this.y;
-
             }
 
         } else {
@@ -130,17 +130,6 @@
                 this.openDropdown()
             })
         }
-
-        //hover 互動
-        this.point.addEventListener("mouseover", () => {
-            this.name.classList.add('nameOpen')
-            this.point.classList.add('pointHover')
-        })
-        this.point.addEventListener("mouseout", () => {
-            this.name.classList.remove('nameOpen')
-            this.point.classList.remove('pointHover')
-        })
-
 
 
         // Add the new point to the point container
@@ -165,8 +154,17 @@
         this.nameText.textContent = name;
 
 
-        // add name tag
-        //創立地區點點顏色
+
+        //創立點點上的文字
+        this.pointName = this.nameText.cloneNode(true)
+        this.pointName.classList = "pointName"
+        this.pointName.style.left = this.x;
+        this.pointName.style.top = this.y;
+        mapEearth[continent].appendChild(this.pointName);
+
+
+
+        //創立 name tag 地區點點顏色
         this.nameTagStyleBox = []
 
         for (let i = pointType.length + 1; i > -1; i--) {
@@ -178,14 +176,11 @@
                 this.nameTagStyleTemp.classList = "tagCircle"
 
                 this.nameTagStyleBox.push(this.nameTagStyleTemp)
-
             }
         }
 
         for (let i = 0; i < this.nameTagStyleBox.length; i++) {
-
             this.nameTag.appendChild(this.nameTagStyleBox[i]);
-
         }
 
 
@@ -219,20 +214,35 @@
         }
 
 
-        //hover 互動
-        this.name.addEventListener("mouseover", () => {
+
+
+
+
+        //-----------------
+        // hover 互動
+        //-----------------
+
+        this.hoverAction = () => {
             this.name.classList.add('nameOpen')
             this.point.classList.add('pointHover')
-        })
-        this.name.addEventListener("mouseout", () => {
+            this.pointName.classList.add('showName')
+        }
+        this.hoverOutAction = () => {
             this.name.classList.remove('nameOpen')
             this.point.classList.remove('pointHover')
-        })
+            this.pointName.classList.remove('showName')
+        }
+
+        this.point.addEventListener("mouseover", this.hoverAction)
+        this.point.addEventListener("mouseout", this.hoverOutAction)
+        this.name.addEventListener("mouseover", this.hoverAction)
+        this.name.addEventListener("mouseout", this.hoverOutAction)
+
+
 
 
 
         // 選單功能
-
         this.openDropdown = (openDropdown = this) => {
             //下拉選單全關閉
             mainPoints.forEach(point => {
@@ -322,6 +332,7 @@
     closeOtherSmPoint = (from) => {
         smOtherPoints = Object.values(pointsMap).filter(point => point.from !== from && point.from !== "main");
         smOtherPoints.forEach(point => {
+
             point.point.style.opacity = 0.3
             point.point.style.left = pointsMap[point.from].x;
             point.point.style.top = pointsMap[point.from].y;
@@ -329,11 +340,13 @@
             //main point 還原
             mainPoints.forEach(point => {
                 point.point.style.opacity = 1
+                point.pointName.classList.remove("op0")
                 point.point.style.pointerEvents = "auto"
             })
 
 
         });
+
     }
 
 

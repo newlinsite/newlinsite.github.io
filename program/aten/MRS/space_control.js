@@ -204,10 +204,7 @@ var VkObject = function (object) {
         } catch {
             test("input error")
         }
-
     }
-
-
 }
 
 

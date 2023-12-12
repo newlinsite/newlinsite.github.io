@@ -35,7 +35,6 @@
 
 
 
-
     /* Container */
 
     .RBUContainer {
@@ -241,7 +240,6 @@
 
     /* Point */
 
-
     .pointContainer .point {
         position: absolute;
         border-radius: 50%;
@@ -345,6 +343,27 @@
 
 
 
+    /* Point Name */
+
+    .pointContainer .pointName {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 255);
+        position: absolute;
+        transform: translateX(-50%);
+        padding: 4px 12px;
+        margin-top: 5.5%;
+        background-color: rgba(0, 0, 0, 0.4);
+        border-radius: 4px;
+        box-shadow: 0 0 12px #00000054;
+        pointer-events: none;
+        white-space: nowrap;
+        opacity: 0;
+        z-index: 200;
+    }
+
+    .pointContainer .pointName.showName {
+        opacity: 1;
+    }
 
 
     /* Name Dropdown */
@@ -396,4 +415,17 @@
     /* 開啟時 */
     .pointContainer.map-open .mapBox.center .countryList {
         opacity: 1;
+    }
+
+
+
+
+
+
+
+    /* others */
+
+
+    .op0 {
+        opacity: 0 !important;
     }
