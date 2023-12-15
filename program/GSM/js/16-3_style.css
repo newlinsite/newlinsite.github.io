@@ -5,6 +5,7 @@
     --z-Stream-device: 4100;
     --z-upper: 3000;
     --z-text: 2000;
+    --z-bgvideo: 1000;
 }
 
 
@@ -51,7 +52,6 @@ html {
     top: 50%;
     transform: translate(-50%, -50%);
     opacity: 0;
-
 }
 
 .container>*.hight100 {
@@ -68,11 +68,20 @@ img.bg {
     transition: 2s;
 }
 
-img.bg.off {
+video.bg {
+    transition: 2s;
+    z-index: var(--z-bgvideo);
+}
+
+img.bg.off,
+video.bg.off {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1.4);
     transition: 1s;
 }
+
+
+
 
 video {
     transition: 0.6s;

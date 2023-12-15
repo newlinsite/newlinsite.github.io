@@ -198,9 +198,31 @@ var VkObject = function (object) {
     // 新增視訊
     this.input = (source) => {
         try {
-            this.source = source.cloneNode(true);
-            this.object.replaceChild(this.source, this.object.firstChild);
+            this.source = source.output.cloneNode(true);
+
+
+
+            //統一影片時間!!!!!!!!!!!!!!!!!!!!!!!
             this.source.currentTime = videoTime
+            try {
+                console.log(source.input, "vp", source.input.length)
+
+                for (let i = 0; source.input.length; i++) {
+                    // test(i)
+                    source.vpBox[i].firstChild.currentTime = videoTime
+
+                    // console.log(i, source.input[i].currentTime, videoTime)
+
+                    console.log(i, source.vpBox[i].firstChild.currentTime)
+                }
+
+
+            } catch {
+                test("media")
+            }
+
+            this.object.replaceChild(this.source, this.object.firstChild);
+
         } catch {
             test("input error")
         }
@@ -217,18 +239,118 @@ var Media = function (link) {
     } else {
         type = "div"
     }
-    this.source = document.createElement(type);
-    this.source.src = link
-    this.source.autoplay = true;
-    this.source.loop = true;
-    this.source.muted = true;
+    this.output = document.createElement(type);
+    this.output.src = link
+    this.output.autoplay = true;
+    this.output.loop = true;
+    this.output.muted = true;
 }
+
+
 
 
 var VP01 = function (source = []) {
-    // source 換
-    // layput
+
+    //把所有 source 複製進來
+    this.input = []
+    source.forEach(s => this.input.push(s.output.cloneNode(true)))
+
+    //把所有 source 外面套上 box
+    this.vpBox = []
+    for (let i = 0; i < this.input.length; i++) {
+        this.vpBox.push(document.createElement("div"))
+        this.vpBox[i].classList = "vpBox"
+        this.vpBox[i].appendChild(this.input[i])
+    }
+
+    //最後新增8個黑畫面物件
+    this.inLen = this.input.length
+    for (let i = 0; i < 8; i++) {
+        this.vpBox[this.inLen + i] = document.createElement("div")
+        this.vpBox[this.inLen + i].style.backgroundColor = "#000"
+        this.vpBox[this.inLen + i].style.width, this.vpBox[this.inLen].style.height = "100%"
+    }
+
+
+
+    //創造 輸出用物件 ---------------------------------------------------------
+    this.output = document.createElement("div")
+    this.output.classList = "vpOutput"
+
+
+    // 把 box 根據 layout 設定丟進 輸出用物件
+    this.changeLayout = (viewLayout = "single", sNum = [0, 1, 2, 3]) => {
+
+        // 清空 div 元素中的所有子元素
+        while (this.output.firstChild) {
+            this.output.removeChild(this.output.firstChild);
+        }
+
+        //避免少填物件預設填入 黑畫面 vpBox[最後] 8次
+        for (let i = 0; i < 8; i++) {
+            sNum.push(this.inLen + i)
+        }
+
+        // 所有 layout 歸零
+        for (let i = 0; i < this.vpBox.length; i++) {
+            this.vpBox[i].style.width = "100%"
+            this.vpBox[i].style.height = "100%"
+            this.vpBox[i].style.top = "0"
+            this.vpBox[i].style.left = "0"
+            this.vpBox[i].classList.remove("coverH")
+        }
+
+        // 開始換 view layout
+        if (viewLayout == "pip") {
+            this.output.appendChild(this.vpBox[sNum[0]])
+            this.output.appendChild(this.vpBox[sNum[1]])
+            this.vpBox[sNum[1]].style.width = "45%"
+            this.vpBox[sNum[1]].style.height = "45%"
+            this.vpBox[sNum[1]].style.top = "50%"
+            this.vpBox[sNum[1]].style.left = "52%"
+        } else if (viewLayout == "pbp") {
+            this.output.appendChild(this.vpBox[sNum[0]])
+            this.output.appendChild(this.vpBox[sNum[1]])
+            this.vpBox[sNum[0]].style.width = "50%"
+            this.vpBox[sNum[0]].classList.add("coverH")
+            this.vpBox[sNum[1]].style.width = "50%"
+            this.vpBox[sNum[1]].style.left = "50%"
+            this.vpBox[sNum[1]].classList.add("coverH")
+        } else if (viewLayout == "pop") {
+            this.output.appendChild(this.vpBox[sNum[0]])
+            this.output.appendChild(this.vpBox[sNum[1]])
+            this.vpBox[sNum[0]].style.width = "50%"
+            this.vpBox[sNum[0]].style.height = "50%"
+            this.vpBox[sNum[0]].style.top = "25%"
+            this.vpBox[sNum[1]].style.width = "50%"
+            this.vpBox[sNum[1]].style.height = "50%"
+            this.vpBox[sNum[1]].style.top = "25%"
+            this.vpBox[sNum[1]].style.left = "50%"
+        } else if (viewLayout == "4x") {
+            for (let i = 0; i < 4; i++) {
+                this.output.appendChild(this.vpBox[sNum[i]])
+                this.vpBox[sNum[i]].style.width = "50%"
+                this.vpBox[sNum[i]].style.height = "50%"
+            }
+            this.vpBox[sNum[1]].style.top = "0"
+            this.vpBox[sNum[1]].style.left = "50%"
+            this.vpBox[sNum[2]].style.top = "50%"
+            this.vpBox[sNum[2]].style.left = "0"
+            this.vpBox[sNum[3]].style.top = "50%"
+            this.vpBox[sNum[3]].style.left = "50%"
+        }
+        else {
+            this.output.appendChild(this.vpBox[0])
+        }
+
+    }
+
+    this.output.appendChild(this.vpBox[0])
+
 }
+
+
+
 
 var VP02 = function (source = []) {
     //
@@ -242,7 +364,11 @@ var VW = function (source = []) {
     // 各 Source 大小 位置 裁切
 }
 
-
+//上方欄生成
+//側邊主功能欄生成
+//功能 ACTION
+//     主元素: ipad keypad 右側說明欄
+//     互動元素 中間小物、環境、溫溼度
 
 
 
@@ -265,6 +391,7 @@ display[0] = new VkObject($css("display")[0])
 display[1] = new VkObject($css("display")[1])
 
 
+var vp = new VP01([media[0], media[1], media[1], media[0]])
 
 
 
@@ -277,8 +404,9 @@ display[1] = new VkObject($css("display")[1])
 ///---------------------------------
 
 
-display[1].input(media[1].source)
+display[1].input(media[1])
 
+display[0].input(vp)
 
 
 ///---------------------------------
@@ -296,8 +424,8 @@ function keyboardListener(e) {
     if (keyID === 'KeyQ') {
 
         display[1].tag01 = toggle(display[1].tag01,
-            () => { display[1].input(media[0].source) },
-            () => { display[1].input(media[1].source) })
+            () => { display[1].input(media[0]) },
+            () => { display[1].input(media[1]) })
 
     }
     if (keyID === 'KeyA') {
@@ -305,11 +433,21 @@ function keyboardListener(e) {
     }
 
     if (keyID === 'KeyW') {
-        display[0].input(media[0].source)
+
+        display[0].tag02 = toggle(display[0].tag02,
+            () => {
+                vp.changeLayout("4x")
+                display[0].input(vp)
+            },
+            () => {
+                vp.changeLayout("pbp", [0, 1])
+                display[0].input(vp)
+            })
+
 
     }
     if (keyID === 'KeyS') {
-        display[0].input(media[1].source)
-
+        vp.changeLayout("pop", [0, 1])
+        display[0].input(vp)
     }
 }

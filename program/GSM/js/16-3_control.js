@@ -167,6 +167,14 @@ var media = function (object, type = "img", videoWidth = 100, delayContainer = 1
                     offAll()
                     imgs[videoStopTo].on()
                     imgs[videoStopTo].removeCss("off")
+
+                    if (Number.isInteger(videoStopToVideo)) {
+                        videos[0].removeCss("off")
+                        videos[videoStopToVideo].on()
+                    }
+                    if (Number.isInteger(videoStopToBGM)) {
+                        bgm[videoStopToBGM].play("loop")
+                    }
                 }, 400, 1)
             });
         }
@@ -642,7 +650,9 @@ function voiceControl(e) {
 
 
 // ******************************
+
 // 其他功能
+
 // ******************************
 
 
@@ -735,7 +745,9 @@ var offAll = () => {
     }
     for (let i = 0; i < videos.length; i++) {
         videos[i].off()
+        videos[0].addCss("off")
     }
+    musicAllStop()
     textBox.removeCss("show")
     textBox.cssTag = 0
 }
@@ -787,6 +799,13 @@ offAll()
 imgs[0].on()
 imgs[0].removeCss("off")
 var videoStopTo = 0
+
+var videoStopToVideo = "none"
+var videoStopToVideo = 0 //影片播放結束播放video[0]
+var videoStopToBGM = "none"
+var videoStopToBGM = 10 //影片播放結束播放bgm[0]
+
+
 
 logoElement = ''
 if (logoOn == 1) {
@@ -897,6 +916,7 @@ function keyboardListener(e) {
     if (keyID === 'Backquote') {
         offAll()
         videos[0].on()
+        videos[0].removeCss("off")
     }
 
     if (keyID === 'Digit1') {
