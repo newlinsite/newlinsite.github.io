@@ -27,8 +27,7 @@
                     <div class="earthName">Europe / Africa</div>
                     <div class="countryList"></div>
                 </div>
-
-                <div class="map_back">back</div>
+                <div class="map_back">＜</div>
                 <img src="image/map_leber.svg" alt="" class="leber">
             </div>
 
@@ -36,6 +35,17 @@
     </div>
 </body>
 <script>
+
+    //
+    // To do list
+    // RWD
+    //
+    //
+    //
+    //
+    //
+    //
+
     var $ = function (name) {
         return document.getElementById(name)
     }
@@ -52,11 +62,13 @@
     const pointTypeColor = ["#83B41A", "#FABE00", "#00A1E9", "#920883", "#EA5405"]
     const pointStyleColorSize = [85, 80, 80, 82, 75, 50]
 
-    var Point = function (id, name, from, continent, position, type) {
+    var Point = function (id, name, from, continent, position, type, link) {
 
-        // --------------
+        // ------------------------------------------
+        //
         // 創立地球上的點點
-        // --------------
+        //
+        // ------------------------------------------
 
         // Create a new div element
         this.point = document.createElement("div");
@@ -123,8 +135,8 @@
             }
 
         } else {
-            //該點點主要點內hover時:
-            this.point.addEventListener("mouseover", () => {
+            //該點點主要點內 click 時:
+            this.point.addEventListener("click", () => {
                 closeOtherSmPoint()
                 Object.values(pointsMap).filter(point => point.from == this.id).forEach(point => { point.openSmPoint() })
                 this.openDropdown()
@@ -140,18 +152,31 @@
 
 
 
-        // --------------
+        // --------------------------------------------------------
+        //
         // 創立國家與地區列表
-        // --------------
+        //
+        // --------------------------------------------------------
 
         // Create a new div element
         this.name = document.createElement("div");
-        this.nameText = document.createElement("div");
+        this.nameText = document.createElement("a");
         this.nameTag = document.createElement("div");
         this.nameTag.classList = "nameTag"
         this.name.appendChild(this.nameText);
         this.name.appendChild(this.nameTag);
         this.nameText.textContent = name;
+
+
+        // 加入 Link
+        if (typeof link != 'undefined') {
+            link = "" + link
+            this.nameText.href = link
+            // this.nameText.href = "http://www.google.com"
+            this.nameText.style.zIndex = "9000"
+            console.log(link)
+        }
+
 
 
 
@@ -164,21 +189,20 @@
 
 
 
+        //---------------
         //創立 name tag 地區點點顏色
+        //---------------
         this.nameTagStyleBox = []
-
+        //創立
         for (let i = pointType.length + 1; i > -1; i--) {
             if (type.includes(pointType[i])) {
-
                 this.nameTagStyleTemp = document.createElement("div")
                 this.nameTagStyleTemp.style.backgroundColor = pointTypeColor[i];
-
                 this.nameTagStyleTemp.classList = "tagCircle"
-
                 this.nameTagStyleBox.push(this.nameTagStyleTemp)
             }
         }
-
+        //放入
         for (let i = 0; i < this.nameTagStyleBox.length; i++) {
             this.nameTag.appendChild(this.nameTagStyleBox[i]);
         }
@@ -186,6 +210,11 @@
 
 
 
+        //---------------
+        // 新增選單功能，並放入頁面上
+        //---------------
+
+        // 創立主點點名字，和他的下拉選單容器
         if (from == "main") {
             this.name.classList = 'mainName';
 
@@ -197,20 +226,33 @@
 
             this.nameDropdown.style.height = 0
 
+            // click > 打下拉選單
+            this.dropdownTag = 0
             this.name.addEventListener("click", () => {
-                this.openDropdown()
+                if (this.dropdownTag == 0) {
 
-                pointsMap[from]
+                    this.openDropdown()
 
-                //擴散點點
-                closeOtherSmPoint(this.from)
-                Object.values(pointsMap).filter(point => point.from == this.id).forEach(point => { point.openSmPoint() })
+                    //擴散點點
+                    closeOtherSmPoint(this.from)
+                    Object.values(pointsMap).filter(point => point.from == this.id).forEach(point => { point.openSmPoint() })
+
+                    this.dropdownTag = 1
+                } else {
+                    closeDropdown()
+                    this.dropdownTag = 0
+                }
             })
 
+
+
+
+            // 創立小點點名字        
         } else {
             this.name.classList = 'smName';
             pointsMap[from].nameDropdown.appendChild(this.name);
-            pointsMap[from].nameDropdownHieight = pointsMap[from].nameDropdownHieight + 7.5
+            //每多一個小點點(地區)下拉選單長度增加
+            pointsMap[from].nameDropdownHieight = pointsMap[from].nameDropdownHieight + 30
         }
 
 
@@ -219,9 +261,15 @@
 
 
         //-----------------
-        // hover 互動
+        //
+        // 共用互動
+        //
         //-----------------
 
+
+        //-----------------
+        // hover
+        //-----------------
         this.hoverAction = () => {
             this.name.classList.add('nameOpen')
             this.point.classList.add('pointHover')
@@ -240,15 +288,17 @@
 
 
 
+        //-----------------
         // 選單功能
+        //-----------------
+
         this.openDropdown = (openDropdown = this) => {
             //下拉選單全關閉
-            mainPoints.forEach(point => {
-                point.nameDropdown.style.height = 0
-            })
+            closeDropdown()
             //開啟選單
-            openDropdown.nameDropdown.style.height = openDropdown.nameDropdownHieight + "%"
+            openDropdown.nameDropdown.style.height = openDropdown.nameDropdownHieight + "px"
         }
+
 
     }
 
@@ -271,32 +321,39 @@
     // Set point attribute
     var pointsData = [
         // America
-        { id: "0000", name: 'point3', space: '         ', from: "main", continent: 0, position: { x: 12, y: 21 }, type: ['HQ'] },
+        { id: "0000", name: 'point3', space: '         ', from: "main", continent: 0, position: { x: 12, y: 21 }, type: ['HQ'], space2: '                             ', link: "#" },
 
 
         // Asia-Pacific / Oceania Region
-        { id: "1000", name: 'Taiwan', space: '         ', from: "main", continent: 1, position: { x: 56.5, y: 52.5 }, type: ["RBU", "SRC", "RD", "F", "HQ"] },
-        { id: "1001", name: 'New Taipei City', space: '', from: "1000", continent: 1, position: { x: 57.5, y: 50.5 }, type: ["RBU", "SRC", "RD", "F", "HQ"] },
-        { id: "1002", name: 'Koahslung', space: '      ', from: "1000", continent: 1, position: { x: 55.5, y: 53.5 }, type: ['RBU'] },
+        { id: "1000", name: 'Taiwan', space: '         ', from: "main", continent: 1, position: { x: 56.5, y: 52.5 }, type: ["RBU", "SRC", "RD", "F", "HQ"], space2: '', link: "#" },
+        { id: "1001", name: 'New Taipei City', space: '', from: "1000", continent: 1, position: { x: 57.5, y: 50.5 }, type: ["RBU", "SRC", "RD", "F", "HQ"], space2: '', link: "#" },
+        { id: "1002", name: 'Koahslung', space: '      ', from: "1000", continent: 1, position: { x: 55.5, y: 53.5 }, type: ['RBU'], space2: '         ', link: "#" },
 
-        { id: "1100", name: 'China', space: '          ', from: "main", continent: 1, position: { x: 46.0, y: 43.0 }, type: ["RBU", "SRC", "RD", "F"] },
-        { id: "1101", name: 'Beijing', space: '        ', from: "1100", continent: 1, position: { x: 51.0, y: 37.0 }, type: ["RBU", "SRC"] },
-        { id: "1102", name: 'Shanghai', space: '       ', from: "1100", continent: 1, position: { x: 53.0, y: 45.0 }, type: ["RBU", "SRC", "RD", "F"] },
-        { id: "1103", name: 'Guangzhou', space: '      ', from: "1100", continent: 1, position: { x: 49.0, y: 51.0 }, type: ["RBU", "SRC"] },
+        { id: "1100", name: 'China', space: '          ', from: "main", continent: 1, position: { x: 46.0, y: 43.0 }, type: ["RBU", "SRC", "RD", "F"], space2: '      ', link: "#" },
+        { id: "1101", name: 'Beijing', space: '        ', from: "1100", continent: 1, position: { x: 51.0, y: 37.0 }, type: ["RBU", "SRC"], space2: '                 ', link: "#" },
+        { id: "1102", name: 'Shanghai', space: '       ', from: "1100", continent: 1, position: { x: 53.0, y: 45.0 }, type: ["RBU", "SRC", "RD", "F"], space2: '      ', link: "#" },
+        { id: "1103", name: 'Guangzhou', space: '      ', from: "1100", continent: 1, position: { x: 49.0, y: 51.0 }, type: ["RBU", "SRC"], space2: '                 ', link: "#" },
 
-        { id: "1200", name: 'Japan', space: '          ', from: "main", continent: 1, position: { x: 67.5, y: 41.0 }, type: ["RBU", "SRC"] },
-        { id: "1201", name: 'Tokyo', space: '          ', from: "1200", continent: 1, position: { x: 68.5, y: 40.5 }, type: ["RBU", "SRC"] },
-        { id: "1202", name: 'Osaka', space: '          ', from: "1200", continent: 1, position: { x: 67.5, y: 43.0 }, type: ["RBU", "SRC"] },
-        { id: "1203", name: 'Kyushu', space: '         ', from: "1200", continent: 1, position: { x: 65.5, y: 44.0 }, type: ["RBU"] },
-        { id: "1204", name: 'Nagoya', space: '         ', from: "1200", continent: 1, position: { x: 63.5, y: 45.0 }, type: ["RBU"] },
+        { id: "1200", name: 'Japan', space: '          ', from: "main", continent: 1, position: { x: 67.5, y: 41.0 }, type: ["RBU", "SRC"], space2: '                 ', link: "#" },
+        { id: "1201", name: 'Tokyo', space: '          ', from: "1200", continent: 1, position: { x: 68.5, y: 40.5 }, type: ["RBU", "SRC"], space2: '                 ', link: "#" },
+        { id: "1202", name: 'Osaka', space: '          ', from: "1200", continent: 1, position: { x: 67.5, y: 43.0 }, type: ["RBU", "SRC"], space2: '                 ', link: "#" },
+        { id: "1203", name: 'Kyushu', space: '         ', from: "1200", continent: 1, position: { x: 65.5, y: 44.0 }, type: ["RBU"], space2: '                        ', link: "#" },
+        { id: "1204", name: 'Nagoya', space: '         ', from: "1200", continent: 1, position: { x: 63.5, y: 45.0 }, type: ["RBU"], space2: '                        ', link: "#" },
 
-        { id: "1300", name: 'Australia', space: '      ', from: "main", continent: 1, position: { x: 66.5, y: 83.5 }, type: ["RBU", "SRC"] },
-        { id: "1300", name: 'Indonesia', space: '      ', from: "main", continent: 1, position: { x: 52.0, y: 69.5 }, type: ["RBU"] },
+        { id: "1300", name: 'South Korea', space: '    ', from: "main", continent: 1, position: { x: 59.8, y: 42.5 }, type: ["RBU", "SRC"], space2: '                 ', link: "#" },
+        { id: "1301", name: 'Seoul', space: '          ', from: "1300", continent: 1, position: { x: 59.8, y: 42.7 }, type: ["RBU", "SRC"], space2: '                 ', link: "#" },
+        { id: "1302", name: 'Busan', space: '          ', from: "1300", continent: 1, position: { x: 60.3, y: 44.0 }, type: ["RBU", "SRC"], space2: '                 ', link: "#" },
+
+
+        { id: "1400", name: 'India', space: '          ', from: "main", continent: 1, position: { x: 31.5, y: 52.5 }, type: ["RBU"], space2: '                        ', link: "#" },
+        { id: "1500", name: 'Theiland', space: '       ', from: "main", continent: 1, position: { x: 43.5, y: 59.5 }, type: ["F"], space2: '                          ', link: "#" },
+        { id: "1600", name: 'Australia', space: '      ', from: "main", continent: 1, position: { x: 66.5, y: 83.5 }, type: ["RBU", "SRC"], space2: '                 ', link: "#" },
+        { id: "1700", name: 'Indonesia', space: '      ', from: "main", continent: 1, position: { x: 52.0, y: 69.5 }, type: ["RBU"], space2: '                        ', link: "#" },
 
 
         // Europe / Africa
-        { id: "2100", name: 'point3', space: '         ', from: "main", continent: 2, position: { x: 42.0, y: 22.0 }, type: ["RBU", "SRC", "RD", "F", "HQ"] },
-        { id: "2200", name: 'point3', space: '         ', from: "main", continent: 2, position: { x: 17.0, y: 42.0 }, type: ['HQ'] },
+        { id: "2100", name: 'point3', space: '         ', from: "main", continent: 2, position: { x: 42.0, y: 22.0 }, type: ["RBU", "SRC", "RD", "F", "HQ"], space2: '', link: "#" },
+        { id: "2200", name: 'point3', space: '         ', from: "main", continent: 2, position: { x: 17.0, y: 42.0 }, type: ['HQ'], space2: '                         ', link: "#" },
 
     ];
 
@@ -306,7 +363,7 @@
     pointsMap = {}
     for (var i = 0; i < pointsData.length; i++) {
         var data = pointsData[i];
-        var point = new Point(data.id, data.name, data.from, data.continent, data.position, data.type);
+        var point = new Point(data.id, data.name, data.from, data.continent, data.position, data.type, data.link);
         pointsMap[data.id] = point;
     }
 
@@ -322,9 +379,11 @@
 
 
 
-    ///
-    /// 功能
-    ///
+    // ------------------------------------------------------
+    //
+    // 功能
+    //
+    // ------------------------------------------------------
 
     //還原所有小點
     closeOtherSmPoint = (from) => {
@@ -341,10 +400,17 @@
                 point.pointName.classList.remove("op0")
                 point.point.style.pointerEvents = "auto"
             })
-
-
         });
+    }
 
+
+
+    //關閉所有下拉選單
+    closeDropdown = () => {
+        mainPoints.forEach(point => {
+            point.nameDropdown.style.height = 0
+            point.dropdownTag = 0
+        })
     }
 
 
@@ -352,14 +418,11 @@
 
 
 
-
-
-
-
-
-
-    //互動
-
+    // ------------------------------------------------------
+    //
+    // 互動
+    //
+    // ------------------------------------------------------
 
     var mapBack = $css('map_back')[0];
 

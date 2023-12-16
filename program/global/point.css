@@ -59,19 +59,26 @@
     .pointContainer .leber {
         position: absolute;
         top: 4%;
-        left: 3%;
+        right: 3%;
         width: 13%;
     }
 
     .pointContainer.map-open .leber {
         top: 4.5%;
-        left: 4%;
+        right: 4%;
         width: 16%;
     }
 
 
 
-    /* map */
+    /* ********************************************************************
+
+    
+    map
+
+    
+    ******************************************************************** */
+
 
     .pointContainer .mapBox {
         width: 24%;
@@ -234,11 +241,17 @@
 
 
 
+    /* ********************************************************************
+
+    
+    Point
+
+    
+    ******************************************************************** */
 
 
 
 
-    /* Point */
 
     .pointContainer .point {
         position: absolute;
@@ -258,6 +271,8 @@
         width: 4.5%;
         height: 4.5%;
     }
+
+
 
 
     .pointContainer .point .pointStyleColor {
@@ -280,26 +295,57 @@
     }
 
 
+    /* ************************************
+    
+    Point Name
+
+    ************************************ */
+
+    .pointContainer .pointName {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 255);
+        position: absolute;
+        transform: translateX(-50%);
+        padding: 4px 12px;
+        margin-top: 5.5%;
+        background-color: rgba(0, 0, 0, 0.4);
+        border-radius: 4px;
+        box-shadow: 0 0 12px #00000054;
+        pointer-events: none;
+        white-space: nowrap;
+        opacity: 0;
+        z-index: 200;
+    }
+
+    .pointContainer .mapBox.center .pointName.showName {
+        opacity: 1;
+    }
 
 
 
 
 
 
+    /* ********************************************************************
+
+    
+    countryList
+
+    
+    ******************************************************************** */
 
 
 
-    /* countryList */
     .pointContainer .mapBox .countryList {
         position: absolute;
-        left: 110%;
-        top: 0;
-        height: 100%;
+        left: 125%;
+        top: -10%;
+        height: 125%;
         width: 60%;
         display: flex;
+        justify-content: center;
         flex-direction: column;
-        flex-wrap: wrap;
-        padding: 24px 0;
+        /* flex-wrap: wrap; */
         opacity: 0;
     }
 
@@ -319,14 +365,11 @@
     }
 
     .pointContainer .mapBox .countryList .nameTag .tagCircle {
-        /* width: 20%; */
-        /* height: 20%; */
         width: 14px;
         height: 14px;
         margin: 0 2px 0 0;
         border: 1px solid #fff;
         border-radius: 50%;
-
     }
 
 
@@ -335,38 +378,28 @@
     .pointContainer .mapBox .countryList .mainName {
         font-size: 17px;
         font-weight: 600;
-        padding: 10px 20px 10px 12px;
         margin: 8px 0 2px 0;
         cursor: pointer;
     }
 
 
-
-
-    /* Point Name */
-
-    .pointContainer .pointName {
-        font-size: 14px;
-        color: rgba(255, 255, 255, 255);
-        position: absolute;
-        transform: translateX(-50%);
-        padding: 4px 12px;
-        margin-top: 5.5%;
-        background-color: rgba(0, 0, 0, 0.4);
-        border-radius: 4px;
-        box-shadow: 0 0 12px #00000054;
-        pointer-events: none;
-        white-space: nowrap;
-        opacity: 0;
-        z-index: 200;
-    }
-
-    .pointContainer .pointName.showName {
-        opacity: 1;
+    .pointContainer .mapBox .countryList .mainName a {
+        color: #191d3d;
+        display: inline-block;
+        margin: 10px 20px 10px 12px;
     }
 
 
-    /* Name Dropdown */
+
+
+
+    /* ************************************
+    
+    Name Dropdown
+
+    ************************************ */
+
+
 
     .pointContainer .mapBox .countryList .nameDropdown {
         transition: 1s;
@@ -377,12 +410,16 @@
     .pointContainer .mapBox .countryList .smName {
         font-size: 14px;
         font-weight: 300;
-        padding: 4px 10px 4px 12px;
+
         margin: 2px;
         cursor: pointer;
     }
 
-
+    .pointContainer .mapBox .countryList .smName a {
+        color: #262940;
+        display: inline-block;
+        margin: 4px 10px 4px 12px;
+    }
 
 
 
@@ -423,9 +460,53 @@
 
 
 
-    /* others */
 
 
-    .op0 {
+    /* ********************************************************************
+
+    
+    Others 
+
+    
+    ******************************************************************** */
+
+
+    .pointContainer .op0 {
         opacity: 0 !important;
+    }
+
+
+
+
+
+    /* back */
+
+
+    .pointContainer .map_back {
+        position: absolute;
+        top: 4%;
+        left: 2%;
+        padding: 4px 12px;
+        font-weight: 600;
+        font-size: 20px;
+        color: #100a2f;
+        background-color: #e8e8e8ea;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 1s;
+        opacity: 0;
+        transform: scale(1);
+        box-shadow: 0 0 4px #00000014;
+    }
+
+    .pointContainer.map-open .map_back {
+        opacity: 1;
+    }
+
+
+    .pointContainer .map_back:hover {
+        background-color: #e8e8e8ea;
+        color: #0b73c7;
+        transform: scale(1.05);
+        box-shadow: 0 0 32px #00000034;
     }
