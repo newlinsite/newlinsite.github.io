@@ -197,41 +197,39 @@ var VkObject = function (object) {
 
     // 新增視訊
     this.input = (source) => {
-        try {
+
+        if (source.deviceType == "media") {
+
             this.source = source.output.cloneNode(true);
-
-
-
-            //統一影片時間!!!!!!!!!!!!!!!!!!!!!!!
             this.source.currentTime = videoTime
-            try {
-                console.log(source.input, "vp", source.input.length)
-
-                for (let i = 0; source.input.length; i++) {
-                    // test(i)
-                    source.vpBox[i].firstChild.currentTime = videoTime
-
-                    // console.log(i, source.input[i].currentTime, videoTime)
-
-                    console.log(i, source.vpBox[i].firstChild.currentTime)
-                }
+            this.object.replaceChild(this.source, this.object.firstChild);
+        }
 
 
-            } catch {
-                test("media")
-            }
-
+        if (source.deviceType == "vp") {
+            this.source = source.output.cloneNode(true);
             this.object.replaceChild(this.source, this.object.firstChild);
 
-        } catch {
-            test("input error")
+            // 嘗試尋找物件裡面有 影片物件 的話將其時間同步
+            try {
+                this.vpVideos = this.object.querySelectorAll("video")
+                for (let i = 0; i < source.input.length; i++) {
+                    this.vpVideos[i].currentTime = videoTime
+                }
+            } catch {
+                // test("no image in vp")
+            }
         }
+
     }
 }
 
 
 
 var Media = function (link) {
+
+    this.deviceType = "media"
+
     if (link.includes(".png") || link.includes(".jpg") || link.includes(".gif")) {
         type = "img"
     } else if (link.includes(".mp4") || link.includes(".mov")) {
@@ -250,6 +248,9 @@ var Media = function (link) {
 
 
 var VP01 = function (source = []) {
+
+    this.deviceType = "vp"
+
 
     //把所有 source 複製進來
     this.input = []
@@ -340,7 +341,7 @@ var VP01 = function (source = []) {
             this.vpBox[sNum[3]].style.left = "50%"
         }
         else {
-            this.output.appendChild(this.vpBox[0])
+            this.output.appendChild(this.vpBox[sNum[0]])
         }
 
     }
