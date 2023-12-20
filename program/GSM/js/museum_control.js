@@ -157,7 +157,7 @@ var media = function (object, type = "img", videoWidth = 100, delayContainer = 1
         }
     }
 
-    //影片播放結束接圖片功能
+    //影片播放結束接圖片/影片功能
     if (type == "video") {
 
         if (loop != "loop") {
@@ -167,7 +167,7 @@ var media = function (object, type = "img", videoWidth = 100, delayContainer = 1
                     offAll()
                     imgs[videoStopTo].on()
                     imgs[videoStopTo].removeCss("off")
-
+                    //判斷是否播影片
                     if (Number.isInteger(videoStopToVideo)) {
                         videos[0].removeCss("off")
                         videos[videoStopToVideo].on()
@@ -297,7 +297,6 @@ var ppt = function (pptNum, pageLen = 20, name = "Slide") {
             pptContainers[0].appendChild(this.pages[i])
             this.pages[i].classList.add("ppt" + pptNum)
             this.pages[i].style.display = "none"
-
         }
     }
 
@@ -402,8 +401,6 @@ $tag("body")[0].addEventListener('click', function () {
     ctx.resume().then(() => {
         console.log('AudioContext 已啟動');
     });
-
-
 });
 
 
@@ -473,7 +470,6 @@ var music = function (num) {
                     this.gainFadeCode.gain.value = 1
                 }
             }, fadeTime * 1000 + 100);
-
         }
     }
 
@@ -747,7 +743,7 @@ var offAll = () => {
         videos[i].off()
         videos[0].addCss("off")
     }
-    musicAllStop()
+    musicAllStop(1.5)
     textBox.removeCss("show")
     textBox.cssTag = 0
 }
@@ -804,6 +800,14 @@ var videoStopToVideo = "none"
 var videoStopToVideo = 0 //影片播放結束播放video[0]
 var videoStopToBGM = "none"
 var videoStopToBGM = 10 //影片播放結束播放bgm[0]
+
+
+try {
+    bgm[9].gainCode.gain.value = bgmForvideo
+    bgm[10].gainCode.gain.value = bgmFor9
+} catch {
+    console.log("音量設定錯誤")
+}
 
 
 
@@ -917,6 +921,7 @@ function keyboardListener(e) {
         offAll()
         videos[0].on()
         videos[0].removeCss("off")
+        bgm[10].play("loop")
     }
 
     if (keyID === 'Digit1') {
@@ -939,7 +944,6 @@ function keyboardListener(e) {
         offAll()
         videos[5].on()
     }
-
 
     if (keyID === 'Digit6') {
         offAll()

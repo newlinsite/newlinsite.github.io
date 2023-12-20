@@ -117,11 +117,45 @@ var timer = setInterval(executeSeconds, videoTimeRefresh * 1000);
 //  -------------------------------------------------------------------
 //  -------------------------------------------------------------------
 
-var VkObject = function (object) {
+var VkObject = function (object, width = 10, objRatio = 1.77, top = "50", left = "50", deviceType = "VkObject", videoWall = false, borderSize = 1) {
 
-    // define
+
     this.object = object
-    this.tag = 0
+
+
+    // -----------------
+    //
+    // object define
+    //
+    // -----------------
+
+    this.deviceType = deviceType
+
+
+    // 長寬
+    this.object.style.width = width + "%"  // 寬比例
+    this.object.style.paddingTop = width / objRatio + "%"
+
+    // 位置
+    this.object.style.top = top + "%"
+    this.object.style.left = left + "%"
+
+    // defaut value
+
+    this.tag01 = 0
+    this.tag02 = 0
+    this.tag03 = 0
+
+
+
+
+
+
+    // -----------------
+    //
+    // 物件動作
+    //
+    // -----------------
 
 
     // Appear, Opacity
@@ -190,46 +224,88 @@ var VkObject = function (object) {
         this.object.classList.remove(style)
     }
 
-    this.tag01 = 0
-    this.tag02 = 0
-    this.tag03 = 0
 
 
-    // 新增視訊
-    this.input = (source) => {
-
-        if (source.deviceType == "media") {
-
-            this.source = source.output.cloneNode(true);
-            this.source.currentTime = videoTime
-            this.object.replaceChild(this.source, this.object.firstChild);
-        }
 
 
-        if (source.deviceType == "vp") {
-            this.source = source.output.cloneNode(true);
-            this.object.replaceChild(this.source, this.object.firstChild);
+    // -----------------
+    //
+    // display define
+    //
+    // -----------------
 
-            // 嘗試尋找物件裡面有 影片物件 的話將其時間同步
-            try {
-                this.vpVideos = this.object.querySelectorAll("video")
-                for (let i = 0; i < source.input.length; i++) {
-                    this.vpVideos[i].currentTime = videoTime
-                }
-            } catch {
-                // test("no image in vp")
+    if (this.deviceType == "display") {
+
+        this.displayBorder = width / 6 * borderSize
+        this.object.style.border = this.displayBorder + "px solid #000"
+        this.object.style.borderRadius = this.displayBorder + "px"
+        this.object.appendChild(document.createElement("span"))
+
+        // 加入電視牆隔線 ex: display[2].videoWall 3*3 = [ 3,3 ]
+        if (videoWall != false) {
+            // 直線
+            this.videoWallLineH = []
+            for (let i = 0; i < videoWall[0] - 1; i++) {
+                this.videoWallLineH[i] = document.createElement("div")
+                this.videoWallLineH[i].style.height = "100%"
+                this.videoWallLineH[i].style.width = 0.6 * this.displayBorder + "px"
+                this.videoWallLineH[i].style.backgroundColor = "#000"
+                this.videoWallLineH[i].style.top = 0
+                this.videoWallLineHP = 100 / videoWall[0] * (i + 1)
+                this.videoWallLineH[i].style.left = this.videoWallLineHP + "%"
+                this.object.appendChild(this.videoWallLineH[i])
+            }
+            // 橫線
+            this.videoWallLineW = []
+            for (let i = 0; i < videoWall[1] - 1; i++) {
+                this.videoWallLineW[i] = document.createElement("div")
+                this.videoWallLineW[i].style.width = "100%"
+                this.videoWallLineW[i].style.height = 0.6 * this.displayBorder + "px"
+                this.videoWallLineW[i].style.backgroundColor = "#000"
+                this.videoWallLineW[i].style.left = 0
+                this.videoWallLineWP = 100 / videoWall[1] * (i + 1)
+                this.videoWallLineW[i].style.top = this.videoWallLineWP + "%"
+                this.object.appendChild(this.videoWallLineW[i])
             }
         }
 
+        // 新增視訊
+        this.input = (source) => {
+
+            if (source.deviceType == "media") {
+                this.source = source.output.cloneNode(true);
+                this.source.currentTime = videoTime
+                this.object.replaceChild(this.source, this.object.firstChild);
+            }
+            if (source.deviceType == "vp") {
+                this.source = source.output.cloneNode(true);
+                this.object.replaceChild(this.source, this.object.firstChild);
+
+                // 嘗試尋找物件裡面有 影片物件 的話將其時間同步
+                try {
+                    this.vpVideos = this.object.querySelectorAll("video")
+                    for (let i = 0; i < source.input.length; i++) {
+                        this.vpVideos[i].currentTime = videoTime
+                    }
+                } catch {
+                    // test("no image in vp")
+                }
+            }
+        }
     }
+
+
 }
 
 
 
+
+
+
+
+
 var Media = function (link) {
-
     this.deviceType = "media"
-
     if (link.includes(".png") || link.includes(".jpg") || link.includes(".gif")) {
         type = "img"
     } else if (link.includes(".mp4") || link.includes(".mov")) {
@@ -239,17 +315,33 @@ var Media = function (link) {
     }
     this.output = document.createElement(type);
     this.output.src = link
+    this.output.muted = true;
+    this.output.defaultMuted = true;
     this.output.autoplay = true;
     this.output.loop = true;
-    this.output.muted = true;
 }
 
 
 
 
-var VP01 = function (source = []) {
+
+
+var VP = function (source = []) {
 
     this.deviceType = "vp"
+
+    // 新增輸出用物件 
+    this.output = document.createElement("div")
+    this.output.classList = "vpOutput"
+
+
+
+
+    //------------------------------------------------------
+    //
+    // source 前置作業
+    //
+    //------------------------------------------------------
 
 
     //把所有 source 複製進來
@@ -264,23 +356,25 @@ var VP01 = function (source = []) {
         this.vpBox[i].appendChild(this.input[i])
     }
 
-    //最後新增8個黑畫面物件
+    //最後新增 10 個黑畫面物件，用於 Source 不夠補畫面用
     this.inLen = this.input.length
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 11; i++) {
         this.vpBox[this.inLen + i] = document.createElement("div")
-        this.vpBox[this.inLen + i].style.backgroundColor = "#000"
-        this.vpBox[this.inLen + i].style.width, this.vpBox[this.inLen].style.height = "100%"
+        this.vpBox[this.inLen + i].style.backgroundColor = "#111"
+        this.vpBox[i].classList = "vpBox"
     }
 
 
+    //------------------------------------------------------
+    //
+    // 把 vpbox 根據 layout 設定丟進 輸出用物件
+    //
+    //------------------------------------------------------
 
-    //創造 輸出用物件 ---------------------------------------------------------
-    this.output = document.createElement("div")
-    this.output.classList = "vpOutput"
 
 
-    // 把 box 根據 layout 設定丟進 輸出用物件
-    this.changeLayout = (viewLayout = "single", sNum = [0, 1, 2, 3]) => {
+    // 切換 layout 功能
+    this.changeLayout = (viewLayout = "single", sNum = [0, 1, 2, 3, 4, 5, 6], vwCell = []) => {
 
         // 清空 div 元素中的所有子元素
         while (this.output.firstChild) {
@@ -301,6 +395,7 @@ var VP01 = function (source = []) {
             this.vpBox[i].classList.remove("coverH")
         }
 
+        // -----------------------------------------
         // 開始換 view layout
         if (viewLayout == "pip") {
             this.output.appendChild(this.vpBox[sNum[0]])
@@ -339,24 +434,95 @@ var VP01 = function (source = []) {
             this.vpBox[sNum[2]].style.left = "0"
             this.vpBox[sNum[3]].style.top = "50%"
             this.vpBox[sNum[3]].style.left = "50%"
+        } else if (Array.isArray(viewLayout)) { //多分割 [2,2] => 2x2分割
+
+            // 設定各視窗大小
+            this.cellW = 100 / viewLayout[0]
+            this.cellH = 100 / viewLayout[1]
+            for (let i = 0; i < 6; i++) {
+                this.output.appendChild(this.vpBox[sNum[i]])
+                this.vpBox[sNum[i]].style.width = this.cellW + "%"
+                this.vpBox[sNum[i]].style.height = this.cellH + "%"
+            }
+
+            // 設定各視窗位置
+            this.cellX = 0
+            this.cellY = this.cellH * -1
+            for (let i = 0; i < 6; i++) {
+                // 設定 X
+                if (i % (viewLayout[0]) == 0) {
+                    this.cellX = 0
+                } else {
+                    this.cellX = this.cellX + this.cellW
+                }
+                // 設定 Y
+                if (i % viewLayout[0] == 0) {
+                    this.cellY = this.cellY + this.cellH
+                }
+                this.vpBox[sNum[i]].style.left = this.cellX + "%"
+                this.vpBox[sNum[i]].style.top = this.cellY + "%"
+            }
+        } else if (viewLayout == "2x3ssm") {
+            for (let i = 0; i < 3; i++) {
+                this.output.appendChild(this.vpBox[sNum[i]])
+                this.vpBox[sNum[i]].style.width = "33.3%"
+                this.vpBox[sNum[i]].style.height = "50%"
+                this.vpBox[sNum[i]].style.left = "0"
+            }
+            this.vpBox[sNum[1]].style.top = "50%"
+            this.vpBox[sNum[2]].style.width = "66.67%"
+            this.vpBox[sNum[2]].style.height = "100%"
+            this.vpBox[sNum[2]].style.top = "0"
+            this.vpBox[sNum[2]].style.left = "33.33%"
+        } else if (viewLayout == "2x3mss") {
+            for (let i = 0; i < 3; i++) {
+                this.output.appendChild(this.vpBox[sNum[i]])
+                this.vpBox[sNum[i]].style.width = "33.3%"
+                this.vpBox[sNum[i]].style.height = "50%"
+                this.vpBox[sNum[i]].style.left = "66.67%"
+            }
+            this.vpBox[sNum[1]].style.top = "50%"
+            this.vpBox[sNum[2]].style.width = "66.67%"
+            this.vpBox[sNum[2]].style.height = "100%"
+            this.vpBox[sNum[2]].style.top = "0"
+            this.vpBox[sNum[2]].style.left = "0"
+        } else if (viewLayout == "VW") {
+
+            for (let i = vwCell.length + 1; i > 0; i--) {
+                test(i)
+                this.output.appendChild(this.vpBox[sNum[i]])
+            }
+
+            for (let i = 1; i < vwCell.length + 1; i++) {
+                this.vpBox[sNum[i]].style.width = vwCell[i - 1].w + "%"
+                this.vpBox[sNum[i]].style.height = "auto"
+                this.vpBox[sNum[i]].style.paddingTop = vwCell[i - 1].h + "%"
+                this.vpBox[sNum[i]].style.left = vwCell[i - 1].x + "%"
+                this.vpBox[sNum[i]].style.top = vwCell[i - 1].y + "%"
+
+                //裁切功能晚點做...
+                // this.input[sNum[i]].style.width = vwCell[i - 1].cropTo[0] * 10 + "%"
+                // this.input[sNum[i]].style.top = 0
+                // this.input[sNum[i]].style.left = 0
+                // this.input[sNum[i]].style.hight = "auto"
+                // this.input[sNum[i]].style.transform = "translate(0, 0)"
+
+                //跑馬燈
+
+                //時鐘
+
+            }
         }
         else {
             this.output.appendChild(this.vpBox[sNum[0]])
         }
-
     }
 
+    // 預設輸出
     this.output.appendChild(this.vpBox[0])
-
 }
 
 
-
-
-var VP02 = function (source = []) {
-    //
-    //
-}
 
 var VW = function (source = []) {
     // 跑馬燈 文字 位置 顏色 跑速度 Marquee
@@ -381,18 +547,58 @@ var VW = function (source = []) {
 //
 ///---------------------------------
 
+const space = $css("space")[0]
+
+const spaceW = space.clientWidth
+// const spaceH = space.clientHeight
+// const spaceR = spaceW / spaceH
+
 
 var media = []
 media[0] = new Media("element/01.png")
 media[1] = new Media("element/video.mp4")
 
 
+
+
+
+//-----------------------------
+// Display
+//-----------------------------
+
+//設定所有 display 屬性
+var displayAttr = [
+    { w: 20, ratio: 2.67, x: 50.0, y: 20.0, videoLine: [0, 0], borderSize: 1, name: "" },
+    { w: 15, ratio: 1.77, x: 50.0, y: 50.0, videoLine: [2, 2], borderSize: 1, name: "" },
+    { w: 20, ratio: 1.77, x: 50.0, y: 80.0, videoLine: [0, 0], borderSize: 0, name: "" }
+]
+
+
+//創立 display 並入場
 var display = []
-display[0] = new VkObject($css("display")[0])
-display[1] = new VkObject($css("display")[1])
+for (let i = 0; i < displayAttr.length; i++) {
+    display[i] = new VkObject(document.createElement("div"),
+        displayAttr[i].w, displayAttr[i].ratio,
+        displayAttr[i].x,
+        displayAttr[i].y,
+        "display",
+        displayAttr[i].videoLine,
+        displayAttr[i].borderSize)
+    display[i].object.classList = "display"
+    space.appendChild(display[i].object)
+}
 
 
-var vp = new VP01([media[0], media[1], media[1], media[0]])
+//創立 VP
+var vp = new VP([
+    media[0],
+    media[1],
+    media[1],
+    // media[0],
+    // media[1],
+    //-------------------
+    // media[0],
+    media[0]])
 
 
 
@@ -405,9 +611,17 @@ var vp = new VP01([media[0], media[1], media[1], media[0]])
 ///---------------------------------
 
 
-display[1].input(media[1])
+
+
+vp.changeLayout("VW", [0, 1, 2, 3, 4, 5], [
+    { w: 18, h: 18, x: 10, y: 10, cropTo: [12] },
+    { w: 32, h: 18, x: 50, y: 20, cropTo: [10] }
+])
 
 display[0].input(vp)
+display[1].input(media[1])
+display[2].input(media[0])
+
 
 
 ///---------------------------------
@@ -437,18 +651,17 @@ function keyboardListener(e) {
 
         display[0].tag02 = toggle(display[0].tag02,
             () => {
-                vp.changeLayout("4x")
+                vp.changeLayout("2x3mss")
                 display[0].input(vp)
             },
             () => {
-                vp.changeLayout("pbp", [0, 1])
+                vp.changeLayout("2x3ssm")
                 display[0].input(vp)
             })
 
-
     }
     if (keyID === 'KeyS') {
-        vp.changeLayout("pop", [0, 1])
+        vp.changeLayout([3, 2])
         display[0].input(vp)
     }
 }
