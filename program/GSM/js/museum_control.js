@@ -159,7 +159,6 @@ var media = function (object, type = "img", videoWidth = 100, delayContainer = 1
 
     //影片播放結束接圖片/影片功能
     if (type == "video") {
-
         if (loop != "loop") {
             this.object.addEventListener('ended', () => {
                 this.object.style.opacity = 0
@@ -386,10 +385,6 @@ var ppt = function (pptNum, pageLen = 20, name = "Slide") {
 // ******************************
 
 
-
-
-
-
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 var ctx = new AudioContext();
 
@@ -404,10 +399,7 @@ $tag("body")[0].addEventListener('click', function () {
 });
 
 
-
 var freqCanvasBox = $id("freqCanvasBox")
-
-
 
 
 // BGM 長音樂
@@ -607,26 +599,29 @@ function toStopAudio() {
 window.addEventListener("keydown", voiceControl, false);
 function voiceControl(e) {
     var keyID = e.code;
-    isNumpad = 0
-    for (let i = 1; i < 10; i++) {
-        if (keyID === 'Numpad' + i) {
-            playingConNum = i
-            isNumpad = 1
+    isVoiceControl = 0
+    var VoiceControlKey = ['Numpad0', 'Numpad1', 'Numpad2', 'Numpad3', 'Numpad4', 'Numpad5', 'Numpad6',
+        'Numpad7', 'Numpad8', 'Numpad9',
+        'KeyH', 'KeyJ', 'KeyK', 'KeyL', 'Semicolon', 'Quote']
 
+    for (let i = 1; i < VoiceControlKey.length; i++) {
+        if (keyID === VoiceControlKey[i]) {
+            playingConNum = i
+            isVoiceControl = 1
             ctx.resume().then(() => {
                 console.log('AudioContext 已啟動');
             });
         }
     }
-    if (isNumpad === 1) {
-        if (playingNowNum === 0) {                                // 沒播放 > 播放
+    if (isVoiceControl === 1) {
+        if (playingNowNum === 0) {                            // 沒播放 > 播放
             toPlayAudio()
             playingNowNum = playingConNum
-        } else if (playingConNum === playingNowNum) {             // 播放 > 按下同語音 > 停止播放
+        } else if (playingConNum === playingNowNum) {         // 播放 > 按下同語音 > 停止播放
             toStopAudio()
             playingNowNum = 0
         }
-        else {                                            // 播放 > 按下不同語音 > 播放
+        else {                                                // 播放 > 按下不同語音 > 播放
             toStopAudio()
             toPlayAudio()
             playingNowNum = playingConNum
@@ -637,6 +632,9 @@ function voiceControl(e) {
             toStopAudio()
             playingNowNum = 0
         }
+    }
+    if (keyID === 'NumpadDecimal') {
+        bgm[0].play("loop")
     }
 }
 
@@ -743,6 +741,7 @@ var offAll = () => {
         videos[i].off()
         videos[0].addCss("off")
     }
+    playingMask.classList.add("op0");
     musicAllStop(1.5)
     textBox.removeCss("show")
     textBox.cssTag = 0
@@ -799,12 +798,11 @@ var videoStopTo = 0
 var videoStopToVideo = "none"
 var videoStopToVideo = 0 //影片播放結束播放video[0]
 var videoStopToBGM = "none"
-var videoStopToBGM = 10 //影片播放結束播放bgm[0]
-
+var videoStopToBGM = 0 //影片播放結束播放bgm[0]
+bgm[0].play("loop")
 
 try {
-    bgm[9].gainCode.gain.value = bgmForvideo
-    bgm[10].gainCode.gain.value = bgmFor9
+    bgm[0].gainCode.gain.value = bgmForvideo
 } catch {
     console.log("音量設定錯誤")
 }
@@ -841,7 +839,6 @@ function keyboardListener(e) {
             textBox.removeCss("show")
             textBox.cssTag = 0
         }
-
     }
 
 
@@ -921,7 +918,7 @@ function keyboardListener(e) {
         offAll()
         videos[0].on()
         videos[0].removeCss("off")
-        bgm[10].play("loop")
+        bgm[0].play("loop")
     }
 
     if (keyID === 'Digit1') {

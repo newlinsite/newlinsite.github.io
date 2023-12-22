@@ -70,11 +70,8 @@ var pptPage03 = 1
 
 // 101影片背景音樂 音量 (0~1)
 
-var bgmForvideo = 0.4
+var bgmForvideo = 0.35
 
-// 數字鍵 "9" 背景音樂 音量 (0~1)
-
-var bgmFor9 = 0.4
 
 
 
