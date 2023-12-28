@@ -769,7 +769,8 @@ function keyboardListener(e) {
 
 
 window.addEventListener("mousemove", (e) => {
-    let x = (e.x - spaceW / 2) / spaceW
-    let y = (e.y - spaceH / 2) / spaceH
-    camera.style.transform = "rotate3d(" + -y + ", " + x + ", 0, 10deg)"
+    let x = (e.x - spaceW / 2) / spaceW * 90
+    let y = (e.y - spaceH / 2) / spaceH * 90
+    // camera.style.transform = "rotate3d(" + -y + ", " + x + ", 0, 10deg)"
+    camera.style.transform = "rotateX(" + -y + "deg) rotateY(" + x + "deg)"
 })
