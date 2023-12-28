@@ -200,7 +200,6 @@ var media = function (object, type = "img", videoWidth = 100, delayContainer = 1
 // }
 
 
-
 // // 導入Stream容器
 // var stream = $css('deviceStream')
 
@@ -968,19 +967,19 @@ function keyboardListener(e) {
 
 
 
-    //Upper
-    // if (keyID === 'Numpad2') {
+    // Upper
+    // if (keyID === 'KeyA') {
     //     upperMap()
     // }
-    // if (keyID === 'Numpad3') {
+    // if (keyID === 'KeyS') {
     //     upperMap([0, 1, 0])
 
     // }
-    // if (keyID === 'Numpad4') {
+    // if (keyID === 'KeyD') {
     //     upperMap([1, 1, 0])
 
     // }
-    // if (keyID === 'Numpad5') {
+    // if (keyID === 'KeyF') {
     //     upperMap([1, 1, 1])
     // }
 

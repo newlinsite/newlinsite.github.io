@@ -230,7 +230,7 @@ iPad
     opacity: 0;
     transform: translate(500px, 0);
     transition: 1s;
-    box-shadow: 0 0 40pxrgba(0, 0, 0, 0.719)2;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.719)2;
     border-radius: 28px;
 }
 

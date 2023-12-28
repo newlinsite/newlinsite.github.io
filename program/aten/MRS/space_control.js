@@ -7,7 +7,6 @@
 //  -------------------------------------------------------------------
 //  -------------------------------------------------------------------
 
-
 var $id = function (name) {
     return document.getElementById(name)
 }
@@ -21,7 +20,6 @@ var $tag = function (name) {
 var test = function (print = "test") {
     console.log(print)
 }
-
 
 
 
@@ -117,7 +115,7 @@ var timer = setInterval(executeSeconds, videoTimeRefresh * 1000);
 //  -------------------------------------------------------------------
 //  -------------------------------------------------------------------
 
-var VkObject = function (object, width = 10, objRatio = 1.77, top = "50", left = "50", deviceType = "VkObject", videoWall = false, borderSize = 1) {
+var VkObject = function (object, sizeRatio = [10, 1.77], position = [50, 50, 50], rotate = [0, 0, 0], deviceType = "VkObject", videoWall = false, borderSize = 1) {
 
 
     this.object = object
@@ -131,22 +129,30 @@ var VkObject = function (object, width = 10, objRatio = 1.77, top = "50", left =
 
     this.deviceType = deviceType
 
+    // 長寬 Size
+    this.width = sizeRatio[0]
+    this.height = sizeRatio[0] / sizeRatio[1]
+    this.object.style.width = this.width + "%"
+    this.object.style.paddingTop = this.height + "%"
 
-    // 長寬
-    this.object.style.width = width + "%"  // 寬比例
-    this.object.style.paddingTop = width / objRatio + "%"
 
-    // 位置
-    this.object.style.top = top + "%"
-    this.object.style.left = left + "%"
+    // 位置與旋轉
+
+    this.object.style.left = position[0] + "%"
+    this.object.style.top = position[1] + "%"
+    this.z = position[2] * spaceW / 100
+    this.object.style.transform = "translate3d(-50%, -50%, " + this.z +
+        "px) rotateX(" + rotate[0] +
+        "deg) rotateY(" + rotate[1] +
+        "deg) rotateZ(" + rotate[2] + "deg)"
+
+
 
     // defaut value
 
     this.tag01 = 0
     this.tag02 = 0
     this.tag03 = 0
-
-
 
 
 
@@ -225,9 +231,6 @@ var VkObject = function (object, width = 10, objRatio = 1.77, top = "50", left =
     }
 
 
-
-
-
     // -----------------
     //
     // display define
@@ -236,7 +239,7 @@ var VkObject = function (object, width = 10, objRatio = 1.77, top = "50", left =
 
     if (this.deviceType == "display") {
 
-        this.displayBorder = width / 6 * borderSize
+        this.displayBorder = this.width / 6 * borderSize
         this.object.style.border = this.displayBorder + "px solid #000"
         this.object.style.borderRadius = this.displayBorder + "px"
         this.object.appendChild(document.createElement("span"))
@@ -293,12 +296,7 @@ var VkObject = function (object, width = 10, objRatio = 1.77, top = "50", left =
             }
         }
     }
-
-
 }
-
-
-
 
 
 
@@ -325,7 +323,6 @@ var Media = function (link) {
 
 
 
-
 var VP = function (source = []) {
 
     this.deviceType = "vp"
@@ -333,8 +330,6 @@ var VP = function (source = []) {
     // 新增輸出用物件 
     this.output = document.createElement("div")
     this.output.classList = "vpOutput"
-
-
 
 
     //------------------------------------------------------
@@ -370,7 +365,6 @@ var VP = function (source = []) {
     // 把 vpbox 根據 layout 設定丟進 輸出用物件
     //
     //------------------------------------------------------
-
 
 
     // 切換 layout 功能
@@ -489,7 +483,6 @@ var VP = function (source = []) {
         } else if (viewLayout == "VW") {
 
             for (let i = vwCell.length + 1; i > 0; i--) {
-                test(i)
                 this.output.appendChild(this.vpBox[sNum[i]])
             }
 
@@ -508,7 +501,6 @@ var VP = function (source = []) {
                 // this.input[sNum[i]].style.transform = "translate(0, 0)"
 
                 //跑馬燈
-
                 //時鐘
 
             }
@@ -531,12 +523,35 @@ var VW = function (source = []) {
     // 各 Source 大小 位置 裁切
 }
 
+
+
 //上方欄生成
 //側邊主功能欄生成
 //功能 ACTION
 //     主元素: ipad keypad 右側說明欄
 //     互動元素 中間小物、環境、溫溼度
 //物件3D
+
+
+
+//---------------------------------
+//
+//      選單生成
+//
+//---------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -549,17 +564,87 @@ var VW = function (source = []) {
 ///---------------------------------
 
 const space = $css("space")[0]
-
+const camera = $css("camera")[0]
 const spaceW = space.clientWidth
-// const spaceH = space.clientHeight
-// const spaceR = spaceW / spaceH
+const spaceH = space.clientHeight
+const spaceR = spaceW / spaceH
+
+//創立 spaceWall 並入場
+//[空間寬度,空間高度,空間深度,空間底部平面]
+var spaceSize = [60, 27.5, 50, -25]
+
+// 定義透視程度
+var spacePerspectRate = 1
+space.style.perspective = spaceW * spacePerspectRate + "px"
+
+
+// 創立牆壁功能
+var createWall = (wallcount = 11) => {
+    var spaceWallAttr = [
+        { size: [spaceSize[0], spaceSize[0] / spaceSize[1]], xyz: [50, 50, spaceSize[3]], xyzR: [0, 0, 0], main: true },
+        //垂直牆面
+        { size: [spaceSize[2], spaceSize[2] / spaceSize[1]], xyz: [50 - spaceSize[0] / 2, 50, 0], xyzR: [0, 90, 0], main: true },
+        { size: [spaceSize[2], spaceSize[2] / spaceSize[1]], xyz: [50 + spaceSize[0] / 2, 50, 0], xyzR: [0, 90, 0], main: true },
+        //平行牆面
+        { size: [spaceSize[0], spaceSize[0] / spaceSize[2]], xyz: [50, 50 - spaceSize[1] * spaceR / 2, 0], xyzR: [90, 0, 0], main: true },
+        { size: [spaceSize[0], spaceSize[0] / spaceSize[2]], xyz: [50, 50 + spaceSize[1] * spaceR / 2, 0], xyzR: [90, 0, 0], main: true },
+        //垂直中間牆面
+        { size: [spaceSize[2], spaceSize[2] / spaceSize[1]], xyz: [50 - spaceSize[0] / 4, 50, 0], xyzR: [0, 90, 0], main: false },
+        { size: [spaceSize[2], spaceSize[2] / spaceSize[1]], xyz: [50, 50, 0], xyzR: [0, 90, 0], main: false },
+        { size: [spaceSize[2], spaceSize[2] / spaceSize[1]], xyz: [50 + spaceSize[0] / 4, 50, 0], xyzR: [0, 90, 0], main: false },
+        //平行中間牆面
+        { size: [spaceSize[0], spaceSize[0] / spaceSize[2]], xyz: [50, 50 - spaceSize[1] * spaceR / 4, 0], xyzR: [90, 0, 0], main: false },
+        { size: [spaceSize[0], spaceSize[0] / spaceSize[2]], xyz: [50, 50, 0], xyzR: [90, 0, 0], main: false },
+        { size: [spaceSize[0], spaceSize[0] / spaceSize[2]], xyz: [50, 50 + spaceSize[1] * spaceR / 4, 0], xyzR: [90, 0, 0], main: false },
+        //自訂牆面
+    ]
+
+    var spaceWall = []
+    for (let i = 0; i < wallcount; i++) {
+        spaceWall[i] = new VkObject(document.createElement("div"),
+            spaceWallAttr[i].size,
+            spaceWallAttr[i].xyz,
+            spaceWallAttr[i].xyzR,
+            "spaceWall")
+        spaceWall[i].object.classList = "spaceWall"
+        if (spaceWallAttr[i].main) {
+            spaceWall[i].object.classList.add("main")
+        }
+        camera.appendChild(spaceWall[i].object)
+    }
+}
+
+
+
+// 開始創立牆壁
+createWall()
+// createWall(5) //只創立四邊的強
+
+
+
+
+
+
+
+
+
+///---------------------------------
+//
+//
+//      設備架設
+//
+//
+///---------------------------------
+
+
+//-----------------------------
+// Media
+//-----------------------------
 
 
 var media = []
 media[0] = new Media("element/01.png")
 media[1] = new Media("element/video.mp4")
-
-
 
 
 
@@ -569,26 +654,24 @@ media[1] = new Media("element/video.mp4")
 
 //設定所有 display 屬性
 var displayAttr = [
-    { w: 20, ratio: 2.67, x: 50.0, y: 20.0, videoLine: [0, 0], borderSize: 1, name: "" },
-    { w: 15, ratio: 1.77, x: 50.0, y: 50.0, videoLine: [2, 2], borderSize: 1, name: "" },
-    { w: 20, ratio: 1.77, x: 50.0, y: 80.0, videoLine: [0, 0], borderSize: 0, name: "" }
+    { size: [20, 16 / 9], xyz: [30.0, 50.0, 0.00], xyzR: [0.00, 45.0, 0.00], videoWall: [0, 0], wallBorder: 1, name: "" },
+    { size: [20, 16 / 9], xyz: [50.0, 50.0, 0.00], xyzR: [0.00, 0.00, 0.00], videoWall: [2, 2], wallBorder: 1, name: "" },
+    { size: [20, 16 / 9], xyz: [70.0, 50.0, 0.00], xyzR: [0.00, -45.0, 0.00], videoWall: [3, 3], wallBorder: 1, name: "" }
 ]
-
 
 //創立 display 並入場
 var display = []
 for (let i = 0; i < displayAttr.length; i++) {
     display[i] = new VkObject(document.createElement("div"),
-        displayAttr[i].w, displayAttr[i].ratio,
-        displayAttr[i].x,
-        displayAttr[i].y,
+        displayAttr[i].size,
+        displayAttr[i].xyz,
+        displayAttr[i].xyzR,
         "display",
-        displayAttr[i].videoLine,
-        displayAttr[i].borderSize)
+        displayAttr[i].videoWall,
+        displayAttr[i].wallBorder)
     display[i].object.classList = "display"
-    space.appendChild(display[i].object)
+    camera.appendChild(display[i].object)
 }
-
 
 //創立 VP
 var vp = new VP([
@@ -603,6 +686,18 @@ var vp = new VP([
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 ///---------------------------------
 //
 //
@@ -610,8 +705,6 @@ var vp = new VP([
 //
 //
 ///---------------------------------
-
-
 
 
 vp.changeLayout("VW", [0, 1, 2, 3, 4, 5], [
@@ -622,6 +715,12 @@ vp.changeLayout("VW", [0, 1, 2, 3, 4, 5], [
 display[0].input(vp)
 display[1].input(media[1])
 display[2].input(media[0])
+
+
+
+
+
+
 
 
 
@@ -666,3 +765,11 @@ function keyboardListener(e) {
         display[0].input(vp)
     }
 }
+
+
+
+window.addEventListener("mousemove", (e) => {
+    let x = (e.x - spaceW / 2) / spaceW
+    let y = (e.y - spaceH / 2) / spaceH
+    camera.style.transform = "rotate3d(" + -y + ", " + x + ", 0, 10deg)"
+})

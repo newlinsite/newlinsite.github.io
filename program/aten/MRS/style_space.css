@@ -23,7 +23,7 @@
 * {
     position: relative;
     box-sizing: border-box;
-    z-index: 10;
+    color: var(--text-color)
 }
 
 a {
@@ -42,20 +42,14 @@ span.g-icon {
 }
 
 :root {
-    /* --pri-color: #eae587; */
     --pri-color: #828278;
     --sec-color: #65A9BF;
-    --ter-color: #f2f2ee;
-    --no-color: #B1AFAF;
     --bg-color: #333333;
-    /* --bg-color: #fff; */
-    --aug-color: #c6c6c6;
     --aug-light-color: #ececeb;
     --aug-black-color: #3e3e3e;
-
     --text-color: rgb(14, 26, 34);
     --text-light-color: rgb(132, 144, 151);
-    /* --warn-color: #EA0F0F; */
+    --warn-color: #EA0F0F;
 }
 
 
@@ -82,7 +76,6 @@ html {
 
 
 
-
 /*****************************************
 ******************************************
 ******************************************
@@ -98,16 +91,40 @@ html {
 
 .space {
     width: 100%;
-    padding-top: 54%;
+    padding-top: 50%;
     background-color: var(--bg-color);
-    /* padding-top: 54%;
-    transform-style: preserve-3d;
-    perspective: 1500px;
-    overflow: hidden; */
+    /* perspective-origin: 50% 50%; */
+    overflow: hidden;
 }
 
+.space>* {
+    position: absolute;
+}
 
+.space .camera {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* transform: rotate3d(0, 0, 0, 45deg); */
+    transform-style: preserve-3d;
+}
 
+.space .camera>* {
+    position: absolute;
+}
+
+.spaceWall {
+    background-color: #c4c4c408;
+    transition: 1s;
+
+}
+
+.spaceWall.main {
+    background-color: #c4c4c41a;
+    border: 1px solid #ffffff14;
+}
 
 
 /*****************************************
@@ -116,22 +133,13 @@ html {
 
 ******************************************/
 
-
 .display {
-    /* width: 160px; */
-    /* height: 90px; */
     box-sizing: content-box;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
     overflow: hidden;
 
-    /* border-radius: 4px; */
-    /* background-color: #000; */
-    /* border: 4px solid #000; */
-}
+    transition: 3s;
 
+}
 
 
 .display>* {
@@ -139,7 +147,11 @@ html {
     position: absolute;
     left: 0;
     top: 0;
+
 }
+
+
+
 
 
 /*****************************************
@@ -158,10 +170,6 @@ html {
     width: 100%;
 }
 
-.vpOutput {
-    height: 100%;
-}
-
 .vpBox>* {
     width: 100%;
     position: absolute;
@@ -173,4 +181,109 @@ html {
 .vpBox.coverH>* {
     height: 100%;
     width: auto;
+}
+
+
+
+
+
+
+/*****************************************
+
+   action Menu Boxs
+
+******************************************/
+
+
+.actionMenuBoxs {
+    background-color: #fff;
+    width: 320px;
+    position: absolute;
+    bottom: 24px;
+    left: 16px;
+    padding: 16px 0;
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    box-shadow: 0 0 20px #041b4148;
+    transition: 0.8s;
+    opacity: 0;
+    transform: translate(-200px, 0);
+}
+
+.actionMenuBoxs.active {
+    opacity: 1;
+    transform: translate(0, 0);
+
+}
+
+
+.actionMenuBoxs * {
+    transition: 0.8s;
+}
+
+
+.actionMenuBoxs .actionMenu .name {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0 24px;
+    margin: 2px 0;
+    background-color: #fff;
+    border-top: 1px solid #00000021;
+    cursor: pointer;
+}
+
+.actionMenuBoxs .actionMenu .name:hover {
+    background-color: #d4d4d4;
+}
+
+.actionMenuBoxs .actionMenu .name::after {
+    content: "";
+    height: 100%;
+    background-color: #00CBFF;
+    width: 8px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    transition: 1s;
+}
+
+
+.actionMenuBoxs .actionMenu .name p {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.actionMenuBoxs .actionMenu .name img {
+    height: 36px;
+    width: 36px;
+    margin-right: 8px;
+
+}
+
+.actionMenuBoxs .actionMenu .describe {
+    color: #053763;
+    overflow: hidden;
+    margin: 0 0 0 32px;
+    height: 0;
+    font-size: 14px;
+}
+
+
+
+.actionMenuBoxs .actionMenu.active .name {
+    height: auto;
+    background-color: #00ccff11;
+}
+
+.actionMenuBoxs .actionMenu.active .name::after {
+    opacity: 1;
+}
+
+
+.actionMenuBoxs .actionMenu.active .describe {
+    height: 90px;
+    padding-bottom: 8px;
 }
