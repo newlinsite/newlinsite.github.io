@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="877.6" height="392.611" viewBox="0 0 877.6 392.611">
+  <g id="d_wall11" transform="translate(-344.4 -6308.423)">
+    <rect id="長方形_966" data-name="長方形 966" width="261.9" height="336.8" transform="translate(344.4 6308.423)" fill="#b4b4b4" opacity="0.11"/>
+    <rect id="長方形_967" data-name="長方形 967" width="354.7" height="334.6" transform="translate(866.3 6308.423)" fill="#c5c5c5" opacity="0.11"/>
+    <rect id="長方形_968" data-name="長方形 968" width="259.1" height="334.1" transform="translate(606.8 6308.423)" fill="#d5d5d5" opacity="0.11"/>
+    <g id="グループ_2367" data-name="グループ 2367" transform="translate(331 6176.423)">
+      <path id="パス_18390" data-name="パス 18390" d="M13.4,468H89.7l4.7,6.6L84,485.3l8.3.3,5,6.6-2.7,10.7,6.1,16.4,5.2-23.8,6.5-3.5L109,477l3.5-9H890" fill="#f6f6f6"/>
+      <path id="パス_18391" data-name="パス 18391" d="M13.4,468H89.7l4.7,6.6L84,485.3l8.3.3,5,6.6-2.7,10.7,6.1,16.4,5.2-23.8,6.5-3.5L109,477l3.5-9H890" fill="none" stroke="#717071" stroke-miterlimit="10" stroke-width="3"/>
+    </g>
+    <path id="パス_18392" data-name="パス 18392" d="M117.1,422.9l.3-7.5-5.6-.2.2-5.4-13.1-.5-.2,5.4-5.6-.2-.3,7.5,4,.1L95.9,447H94.6l-.2,5.7,8.5.3-1.1,29.4,1.9.1,1.1-29.4,8.5.3.2-5.7h-1.3l.9-24.9ZM99.8,410.7l11.1.4-.1,4-11.1-.4Z" transform="translate(331 6176.423)" fill="#cecece" opacity="0.75"/>
+    <g id="グループ_2368" data-name="グループ 2368" transform="translate(331 6176.423)" opacity="0.75">
+      <path id="パス_18393" data-name="パス 18393" d="M136,412v0Z" fill="#cecece"/>
+      <path id="パス_18394" data-name="パス 18394" d="M152.9,412.1v.2c0-.1.1-.1,0-.2Z" fill="#cecece"/>
+      <path id="パス_18395" data-name="パス 18395" d="M137.5,412h0v0Z" fill="#cecece"/>
+      <circle id="楕円形_427" data-name="楕円形 427" cx="6.2" cy="6.2" r="6.2" transform="translate(139.499 402.022) rotate(-89.523)" fill="#cecece"/>
+      <path id="パス_18396" data-name="パス 18396" d="M158.5,407.8c0-2.4-2.7-4.3-5.1-4.4l-17.3-.1a4.419,4.419,0,0,0-4.4,4.3v.3l-.2,21.1a2.125,2.125,0,0,0,4.2,0l.1-17h0a.634.634,0,0,1,.6-.5h.2a.634.634,0,0,1,.6.5h0v.1h0l-.2,21v4.1l-.2,27a3.193,3.193,0,0,0,3.1,2.5,3.3,3.3,0,0,0,3.1-2.3l.2-27.1c0-.6.7-1.1,1.4-1.1a1.266,1.266,0,0,1,1.4,1.1l-.2,27a3.261,3.261,0,0,0,6.4.3l.2-27.4v-3.7l.2-21.5v-.2h0c.1-.3.3-.5.5-.5h.2a.472.472,0,0,1,.5.5h0l-.1,17.1a2.125,2.125,0,0,0,4.2,0l.2-21.1v-.1C158.5,408,158.5,407.9,158.5,407.8Z" fill="#cecece"/>
+    </g>
+    <g id="グループ_2370" data-name="グループ 2370" transform="translate(331 6176.423)" opacity="0.75">
+      <path id="パス_18398" data-name="パス 18398" d="M176.5,413.4v0Z" fill="#cecece"/>
+      <path id="パス_18399" data-name="パス 18399" d="M192.7,413.6v0Z" fill="#cecece"/>
+      <path id="パス_18400" data-name="パス 18400" d="M177.9,413.5h0v0Z" fill="#cecece"/>
+      <circle id="楕円形_428" data-name="楕円形 428" cx="6" cy="6" r="6" transform="translate(179.733 403.912) rotate(-89.511)" fill="#cecece"/>
+      <path id="パス_18401" data-name="パス 18401" d="M198.1,409.5c0-2.3-2.6-4.2-4.9-4.2l-16.6-.1a4.14,4.14,0,0,0-4.2,4.1v.3l-.2,20.3a2.019,2.019,0,0,0,4,.1l.1-16.3v-.2h0a.634.634,0,0,1,.6-.5h.2a.634.634,0,0,1,.6.5h0v.1h0l-.2,20.2v3.9l-.2,25.9a3.109,3.109,0,0,0,6,.2l.2-26c0-.6.6-1,1.4-1a1.266,1.266,0,0,1,1.4,1.1l-.2,25.9a3.308,3.308,0,0,0,3.1,2.7,3.1,3.1,0,0,0,3-2.4l.2-26.3v-3.5l.2-20.6v-.2h0c.1-.3.3-.5.5-.5h.2c.2,0,.4.2.5.5h0l-.1,16.5a1.977,1.977,0,0,0,2,1.8,1.9,1.9,0,0,0,2-1.7l.2-20.3v-.1C198.1,409.6,198.1,409.6,198.1,409.5Z" fill="#cecece"/>
+    </g>
+    <g id="グループ_2372" data-name="グループ 2372" transform="translate(331 6176.423)" opacity="0.75">
+      <path id="パス_18403" data-name="パス 18403" d="M210.7,413.4v.2a.139.139,0,0,0,0-.2Z" fill="#cecece"/>
+      <path id="パス_18404" data-name="パス 18404" d="M227,413.6v0Z" fill="#cecece"/>
+      <path id="パス_18405" data-name="パス 18405" d="M212.2,413.5h0v0Z" fill="#cecece"/>
+      <circle id="楕円形_429" data-name="楕円形 429" cx="6" cy="6" r="6" transform="translate(214.011 403.99) rotate(-89.536)" fill="#cecece"/>
+      <path id="パス_18406" data-name="パス 18406" d="M232.4,409.5c0-2.3-2.6-4.2-4.9-4.2l-16.6-.1a4.14,4.14,0,0,0-4.2,4.1v.3l-.2,20.3a2.019,2.019,0,0,0,4,.1l.1-16.3v-.2h0a.634.634,0,0,1,.6-.5h.2a.634.634,0,0,1,.6.5h0v.1h0l-.2,20.2v3.9l-.2,25.9a3.109,3.109,0,0,0,6,.2l.2-26c0-.6.6-1,1.4-1a1.266,1.266,0,0,1,1.4,1.1l-.2,25.9a3.308,3.308,0,0,0,3.1,2.7,3.1,3.1,0,0,0,3-2.4l.2-26.3v-3.5l.2-20.6v-.2h0c.1-.3.3-.5.5-.5h.2c.2,0,.4.2.5.5h0L228,430a1.977,1.977,0,0,0,2,1.8,1.9,1.9,0,0,0,2-1.7l.2-20.3v-.1C232.4,409.6,232.4,409.6,232.4,409.5Z" fill="#cecece"/>
+    </g>
+    <g id="グループ_2373" data-name="グループ 2373" transform="translate(331 6176.423)" opacity="0.75">
+      <path id="パス_18407" data-name="パス 18407" d="M702.2,431.2v.1c0-.1.1-.1,0-.1Z" fill="#cecece"/>
+      <path id="パス_18408" data-name="パス 18408" d="M713.3,431.3v0Z" fill="#cecece"/>
+      <path id="パス_18409" data-name="パス 18409" d="M703.2,431.2Z" fill="#cecece"/>
+      <circle id="楕円形_430" data-name="楕円形 430" cx="4.1" cy="4.1" r="4.1" transform="translate(704.427 424.658) rotate(-89.54)" fill="#cecece"/>
+      <path id="パス_18410" data-name="パス 18410" d="M717,428.5c0-1.6-1.8-2.8-3.3-2.9l-11.3-.1a2.881,2.881,0,0,0-2.9,2.8v.3l-.1,13.8a1.417,1.417,0,0,0,2.8,0l.1-11.1v-.1h0c0-.2.2-.3.4-.3h.2c.2,0,.3.1.4.3h0v.1h0l-.1,13.8v2.7l-.1,17.7a2.229,2.229,0,0,0,2,1.7,2.131,2.131,0,0,0,2-1.5l.1-17.7a.929.929,0,0,1,1.8,0l-.1,17.7a2.148,2.148,0,0,0,2.1,1.8,2.252,2.252,0,0,0,2.1-1.6l.2-17.9v-2.4l.1-14v-.1h0a.319.319,0,0,1,.3-.3h.1a.265.265,0,0,1,.3.3h0l-.1,11.2a1.417,1.417,0,0,0,2.8,0l.1-13.8v-.1A.775.775,0,0,0,717,428.5Z" fill="#cecece"/>
+    </g>
+    <g id="グループ_2596" data-name="グループ 2596">
+      <g id="グループ_2369" data-name="グループ 2369" transform="translate(331 6176.423)">
+        <path id="パス_18397" data-name="パス 18397" d="M153.8,394.3c-.4-4.1-.5-8.9-8-8.9-8.1-.1-7.7,4.7-8.2,8.8Z" fill="#ffe9b4"/>
+      </g>
+      <g id="グループ_2371" data-name="グループ 2371" transform="translate(331 6176.423)">
+        <path id="パス_18402" data-name="パス 18402" d="M193.6,396.5c-.4-4-.5-8.5-7.7-8.6-7.8-.1-7.4,4.5-7.9,8.5Z" fill="#ffe9b4"/>
+      </g>
+      <g id="グループ_2374" data-name="グループ 2374" transform="translate(331 6176.423)">
+        <path id="パス_18411" data-name="パス 18411" d="M227.9,396.5c-.4-4-.5-8.5-7.7-8.6-7.8-.1-7.4,4.5-7.9,8.5Z" fill="#ffe9b4"/>
+      </g>
+      <g id="グループ_2375" data-name="グループ 2375" transform="translate(331 6176.423)">
+        <path id="パス_18412" data-name="パス 18412" d="M385.4,462l-3.7-.3a12.749,12.749,0,0,0,.1-2,25.1,25.1,0,0,0-50.2,0,13.4,13.4,0,0,0,.1,2l-3.7.3a16.949,16.949,0,0,1-.1-2.3,28.8,28.8,0,0,1,57.6,0A17.69,17.69,0,0,1,385.4,462Z" fill="#ffe9b4"/>
+      </g>
+      <g id="グループ_2376" data-name="グループ 2376" transform="translate(331 6176.423)">
+        <path id="パス_18413" data-name="パス 18413" d="M434.7,463.8H397.5v-58c0-25.2-29.6-36.7-29.9-36.8l1.4-3.7c1.3.5,32.5,12.6,32.5,40.6v54h33.2Z" fill="#ffe9b4"/>
+      </g>
+      <g id="グループ_2377" data-name="グループ 2377" transform="translate(331 6176.423)">
+        <path id="パス_18414" data-name="パス 18414" d="M488.9,463.4H445.1V396.1c0-27.3-32.4-39.9-32.7-40l2.8-7.4c1.5.6,37.9,14.7,37.9,47.5v59.3H489v7.9Z" fill="#ffe9b4"/>
+      </g>
+    </g>
+    <g id="グループ_2378" data-name="グループ 2378" transform="translate(331 6176.423)" opacity="0.75">
+      <path id="パス_18415" data-name="パス 18415" d="M686.7,426.9c.4,1.2.7,2.4,1.1,3.6,1.3,3.2,2.7,6.4,4,9.6v8.8H679.1c-13.6,0-27.1-.1-40.7.1-4.1.1-5.6-1.1-5.3-3.8a23.332,23.332,0,0,1,.9-5.8c2.3-6.6,4.8-13.2,7.1-19.9,1-2.9,3.3-4.4,7.5-4.4,9.5,0,18.9-.1,28.4.1,2,0,4,1.4,5.9,2.1l.8.8h0c.6,1.7,1.3,3.4,1.9,5.2.1.5.2,1,.3,1.4C686.1,425.4,686.4,426.1,686.7,426.9Zm-45,5.6h41.7c-.9-2.9-1.4-5.7-2.6-8.3a5.222,5.222,0,0,0-3.9-2.4q-14.4-.3-28.8,0a4.717,4.717,0,0,0-3.5,1.9C643.3,426.3,642.7,429.2,641.7,432.5Zm21,8.4h0c-3.6,0-7.1-.2-10.7.1-1.7.1-3.3,1.2-4.9,1.8,1.3,1.4,2.5,3.8,4,3.9a214.906,214.906,0,0,0,22.7.3c1.3-.1,2.5-2.7,3.7-4.1-1.6-.6-3.1-1.7-4.7-1.8A84.718,84.718,0,0,0,662.7,440.9Zm28,2.3c-1.4-1-2.7-2.8-4.2-2.8-3.9-.1-6.2,1.8-5.9,4.7.1.8,2,2,3.3,2.1C687,447.4,690.3,447.3,690.7,443.2Zm-46,3.9,1.2-1.5a55.8,55.8,0,0,0-6-4.9c-.5-.3-3.8.5-3.9,1.1-.4,1.6-.6,4.3.5,4.7C638.8,447.3,641.9,446.9,644.7,447.1Z" fill="#cecece" fill-rule="evenodd"/>
+      <path id="パス_18416" data-name="パス 18416" d="M691.6,450.7c-.3,4.4-1.6,5.6-7.1,5.6-14.6.1-29.2.1-43.7,0-5.7,0-7.1-1.3-6.7-5.6Z" fill="#cecece" fill-rule="evenodd"/>
+      <path id="パス_18417" data-name="パス 18417" d="M679.4,458.9c4.7-.5,8-.9,12.4-1.4-.9,2-1,4.3-2.6,5.2s-4.9.8-7,.2C680.9,462.5,680.5,460.4,679.4,458.9Z" fill="#cecece" fill-rule="evenodd"/>
+      <path id="パス_18418" data-name="パス 18418" d="M634.1,457.6c3.7.4,7.2.7,10.8,1.1.8,3.2-.9,4.8-5.4,4.8C634.8,463.5,633.8,462.4,634.1,457.6Z" fill="#cecece" fill-rule="evenodd"/>
+      <path id="パス_18419" data-name="パス 18419" d="M634.6,426.3c-.6,2.4-1.2,4.5-1.7,6.5-1.3-.8-3.4-1.5-3.8-2.5C628.2,428.1,628.7,426.1,634.6,426.3Z" fill="#cecece" fill-rule="evenodd"/>
+      <path id="パス_18420" data-name="パス 18420" d="M695.8,426.9a.864.864,0,0,0,.3.6c-.1,1.5-.2,2.9-.3,4.4h0a8.741,8.741,0,0,1-1,.8h0c-2.7.4-4.3-.4-5.1-2.2.4-1,.8-1.9,1.1-2.9C692.5,427.4,694.2,427.1,695.8,426.9Z" fill="#cecece" fill-rule="evenodd"/>
+      <path id="パス_18421" data-name="パス 18421" d="M686.7,426.9c-.3-.7-.5-1.5-.8-2.2C686.1,425.4,686.4,426.1,686.7,426.9Z" fill="#cecece" fill-rule="evenodd"/>
+      <path id="パス_18422" data-name="パス 18422" d="M694.8,432.7a8.741,8.741,0,0,1,1-.8C695.5,432.2,695.1,432.4,694.8,432.7Z" fill="#cecece" fill-rule="evenodd"/>
+      <path id="パス_18423" data-name="パス 18423" d="M683.6,418a6.035,6.035,0,0,1-.8-.8Z" fill="#cecece" fill-rule="evenodd"/>
+    </g>
+    <g id="グループ_2384" data-name="グループ 2384" transform="translate(340 6179.423)" opacity="0.75">
+      <path id="パス_18424" data-name="パス 18424" d="M858.8,350.6V319.3h-6.1v-6.5H832v6.5h-8.3v32.8L799,376.7h-8.2V358.4h-7.5v-7.5H770v7.5h-4v27.5H752.4V324.1c0-.3-10.2,0-10.2,0v72h-4.5v67.7h63.6l25.6-25.6,33-33V360.7h16V350.5H858.8Z" fill="#dadbdb"/>
+      <path id="パス_18425" data-name="パス 18425" d="M882,314.6h-4.9v45.5H856.7v53.7c0-1.6-1.6,33.3-2.3,50H882Z" fill="#c7c8c9"/>
+      <path id="パス_18426" data-name="パス 18426" d="M882,404.6H838.4V347.2l-17.7-17.7-22.4,22.4v37.4H784.7V407H769.1v56.8H882Z" fill="#b3b3b4"/>
+      <rect id="長方形_969" data-name="長方形 969" width="6.6" height="12.2" transform="translate(744.2 326.6)" fill="#fbefdb"/>
+      <rect id="長方形_970" data-name="長方形 970" width="6.6" height="12.2" transform="translate(743.9 341.7)" fill="#fbefdb"/>
+      <rect id="長方形_971" data-name="長方形 971" width="6.6" height="12.2" transform="translate(744.2 357.2)" fill="#fbefdb"/>
+      <rect id="長方形_972" data-name="長方形 972" width="6.6" height="12.2" transform="translate(744.2 373)" fill="#fbefdb"/>
+      <rect id="長方形_973" data-name="長方形 973" width="6.6" height="12.2" transform="translate(743.9 388)" fill="#fbefdb"/>
+      <rect id="長方形_974" data-name="長方形 974" width="6.6" height="12.2" transform="translate(744.2 403.6)" fill="#fbefdb"/>
+      <rect id="長方形_975" data-name="長方形 975" width="6.6" height="12.2" transform="translate(801.5 352.4)" fill="#fbefdb"/>
+      <rect id="長方形_976" data-name="長方形 976" width="6.6" height="12.2" transform="translate(813.5 352.1)" fill="#fbefdb"/>
+      <rect id="長方形_977" data-name="長方形 977" width="1.7" height="12.2" transform="translate(880.2 321)" fill="#fbefdb"/>
+      <rect id="長方形_978" data-name="長方形 978" width="1.5" height="12.2" transform="translate(880.5 340.4)" fill="#fbefdb"/>
+      <rect id="長方形_979" data-name="長方形 979" width="6.6" height="12.2" transform="translate(860.4 368.9)" fill="#fbefdb"/>
+      <rect id="長方形_980" data-name="長方形 980" width="6.6" height="12.2" transform="translate(872.3 368.7)" fill="#fbefdb"/>
+      <rect id="長方形_981" data-name="長方形 981" width="6.6" height="12.2" transform="translate(860.4 387.8)" fill="#fbefdb"/>
+      <rect id="長方形_982" data-name="長方形 982" width="6.6" height="12.2" transform="translate(872.3 387.5)" fill="#fbefdb"/>
+      <rect id="長方形_983" data-name="長方形 983" width="6.6" height="12.2" transform="translate(825.7 352.1)" fill="#fbefdb"/>
+      <rect id="長方形_984" data-name="長方形 984" width="6.6" height="12.2" transform="translate(774.5 415)" fill="#fbefdb"/>
+      <rect id="長方形_985" data-name="長方形 985" width="6.6" height="12.2" transform="translate(786.5 414.8)" fill="#fbefdb"/>
+      <rect id="長方形_986" data-name="長方形 986" width="6.6" height="12.2" transform="translate(798.7 414.8)" fill="#fbefdb"/>
+      <rect id="長方形_987" data-name="長方形 987" width="6.6" height="12.2" transform="translate(812.7 415)" fill="#fbefdb"/>
+      <rect id="長方形_988" data-name="長方形 988" width="6.6" height="12.2" transform="translate(824.7 414.8)" fill="#fbefdb"/>
+      <rect id="長方形_989" data-name="長方形 989" width="6.6" height="12.2" transform="translate(836.9 414.8)" fill="#fbefdb"/>
+      <rect id="長方形_990" data-name="長方形 990" width="6.6" height="12.2" transform="translate(850.9 415)" fill="#fbefdb"/>
+      <rect id="長方形_991" data-name="長方形 991" width="6.6" height="12.2" transform="translate(862.9 414.8)" fill="#fbefdb"/>
+      <rect id="長方形_992" data-name="長方形 992" width="6.6" height="12.2" transform="translate(875.1 414.8)" fill="#fbefdb"/>
+      <rect id="長方形_993" data-name="長方形 993" width="6.6" height="12.2" transform="translate(774.5 433.1)" fill="#fbefdb"/>
+      <rect id="長方形_994" data-name="長方形 994" width="6.6" height="12.2" transform="translate(786.5 432.9)" fill="#fbefdb"/>
+      <rect id="長方形_995" data-name="長方形 995" width="6.6" height="12.2" transform="translate(798.7 432.9)" fill="#fbefdb"/>
+      <rect id="長方形_996" data-name="長方形 996" width="6.6" height="12.2" transform="translate(812.7 433.1)" fill="#fbefdb"/>
+      <rect id="長方形_997" data-name="長方形 997" width="6.6" height="12.2" transform="translate(824.7 432.9)" fill="#fbefdb"/>
+      <rect id="長方形_998" data-name="長方形 998" width="6.6" height="12.2" transform="translate(836.9 432.9)" fill="#fbefdb"/>
+      <rect id="長方形_999" data-name="長方形 999" width="6.6" height="12.2" transform="translate(850.9 433.1)" fill="#fbefdb"/>
+      <rect id="長方形_1000" data-name="長方形 1000" width="6.6" height="12.2" transform="translate(862.9 432.9)" fill="#fbefdb"/>
+      <rect id="長方形_1001" data-name="長方形 1001" width="6.6" height="12.2" transform="translate(875.1 432.9)" fill="#fbefdb"/>
+      <rect id="長方形_1002" data-name="長方形 1002" width="6.6" height="12.2" transform="translate(801.5 375.3)" fill="#fbefdb"/>
+      <rect id="長方形_1003" data-name="長方形 1003" width="6.6" height="12.2" transform="translate(813.5 375)" fill="#fbefdb"/>
+      <rect id="長方形_1004" data-name="長方形 1004" width="6.6" height="12.2" transform="translate(825.7 375)" fill="#fbefdb"/>
+      <rect id="長方形_1005" data-name="長方形 1005" width="31.8" height="12.2" transform="translate(801.3 392.6)" fill="#fbefdb"/>
+      <g id="グループ_2383" data-name="グループ 2383" opacity="0.83">
+        <rect id="長方形_1006" data-name="長方形 1006" width="2.1" height="23" transform="translate(756.7 440.7)" fill="#9d9d9e"/>
+        <circle id="楕円形_431" data-name="楕円形 431" cx="11.9" cy="11.9" r="11.9" transform="translate(745.6 419.5)" fill="#9d9d9e"/>
+        <circle id="楕円形_432" data-name="楕円形 432" cx="11.9" cy="11.9" r="11.9" transform="translate(807.2 419.5)" fill="#9d9d9e"/>
+        <g id="グループ_2379" data-name="グループ 2379">
+          <rect id="長方形_1007" data-name="長方形 1007" width="2.1" height="23" transform="translate(818.3 440.7)" fill="#9d9d9e"/>
+          <circle id="楕円形_433" data-name="楕円形 433" cx="11.9" cy="11.9" r="11.9" transform="translate(807.2 419.5)" fill="#9d9d9e"/>
+          <path id="パス_18427" data-name="パス 18427" d="M819.3,419.4h-.2a11.9,11.9,0,1,0,0,23.8h.2Z" fill="#9d9d9e"/>
+        </g>
+        <g id="グループ_2382" data-name="グループ 2382">
+          <g id="グループ_2380" data-name="グループ 2380">
+            <rect id="長方形_1008" data-name="長方形 1008" width="2.1" height="23" transform="translate(785.2 440.7)" fill="#9d9d9e"/>
+          </g>
+          <g id="グループ_2381" data-name="グループ 2381">
+            <circle id="楕円形_434" data-name="楕円形 434" cx="11.9" cy="11.9" r="11.9" transform="translate(774.1 419.5)" fill="#9d9d9e"/>
+            <path id="パス_18428" data-name="パス 18428" d="M786.6,419.5c-.2,0-.4-.1-.6-.1a11.9,11.9,0,1,0,0,23.8,1.268,1.268,0,0,0,.6-.1Z" fill="#9d9d9e"/>
+          </g>
+        </g>
+      </g>
+    </g>
+    <rect id="長方形_1012" data-name="長方形 1012" width="204.5" height="78.6" transform="translate(945.3 6368.123)" fill="none"/>
+    <text id="美化市容" transform="translate(1006.489 6391.396)" fill="#292929" font-size="14" font-family="YuGothicUI-Regular, Yu Gothic UI" letter-spacing="0.1em" opacity="0.82"><tspan x="0" y="0">美化市容</tspan></text>
+    <text id="_" data-name="/" transform="translate(1031.689 6412.596)" fill="#292929" font-size="14" font-family="SegoeUI, Segoe UI" letter-spacing="0.1em" opacity="0.82"><tspan x="0" y="0">/</tspan></text>
+    <text id="受到抗噪保護" transform="translate(992.389 6433.696)" fill="#292929" font-size="14" font-family="YuGothicUI-Regular, Yu Gothic UI" letter-spacing="0.1em" opacity="0.82"><tspan x="0" y="0">受到抗噪保護</tspan></text>
+    <rect id="長方形_1013" data-name="長方形 1013" width="204.5" height="62.5" transform="translate(653.2 6362.623)" fill="none"/>
+    <text id="減低分貝" transform="translate(714.352 6385.926)" fill="#292929" font-size="14" font-family="YuGothicUI-Regular, Yu Gothic UI" letter-spacing="0.1em" opacity="0.82"><tspan x="0" y="0">減低分貝</tspan></text>
+    <text id="_2" data-name="/" transform="translate(739.552 6407.126)" fill="#292929" font-size="14" font-family="SegoeUI, Segoe UI" letter-spacing="0.1em" opacity="0.82"><tspan x="0" y="0">/</tspan></text>
+    <text id="輕_易搬_模組化" data-name="輕,易搬,模組化" transform="translate(696.752 6428.226)" fill="#292929" font-size="14" font-family="YuGothicUI-Regular, Yu Gothic UI" letter-spacing="0.1em" opacity="0.82"><tspan x="0" y="0">輕</tspan><tspan y="0" font-family="SegoeUI, Segoe UI">,</tspan><tspan y="0">易搬</tspan><tspan y="0" font-family="SegoeUI, Segoe UI">,</tspan><tspan y="0">模組化</tspan></text>
+    <rect id="長方形_1014" data-name="長方形 1014" width="204.5" height="114.1" transform="translate(387.3 6368.123)" fill="none"/>
+    <text id="舒適工作環境" transform="translate(434.333 6391.397)" fill="#292929" font-size="14" font-family="YuGothicUI-Regular, Yu Gothic UI" letter-spacing="0.1em" opacity="0.82"><tspan x="0" y="0">舒適工作環境</tspan></text>
+    <text id="_3" data-name="/" transform="translate(473.633 6412.597)" fill="#292929" font-size="14" font-family="SegoeUI, Segoe UI" letter-spacing="0.1em" opacity="0.82"><tspan x="0" y="0">/</tspan></text>
+    <text id="視野開闊" transform="translate(448.433 6433.697)" fill="#292929" font-size="14" font-family="YuGothicUI-Regular, Yu Gothic UI" letter-spacing="0.1em" opacity="0.82"><tspan x="0" y="0">視野開闊</tspan></text>
+  </g>
+</svg>

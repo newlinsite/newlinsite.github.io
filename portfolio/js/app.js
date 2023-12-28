@@ -32,11 +32,13 @@ var worknameBox = [
 	"d_uvc",
 	"d_ds",
 	//----------------------
+
 	"d_so",
 	"d_ofweb",
 	"d_game",
-	// "d_ar",
-	// "d_wall",
+	"d_wall",
+	"d_vrbot",
+	"d_ar",
 	// "d_wweb",
 	//----------------------
 	"v_vis",
@@ -60,11 +62,13 @@ var worknameBoxTag = [
 	["Window AP Design", "Streaming", "UI Flow"],
 	["UI Library", "APP icon", "interaction flow library"],
 	//----------------------
+
 	["Website", "Frond-end", "SEO", "Google Analysis"],
 	["User Research", "Re-design", "User Journey Map"],
 	["Gaming", "First Use", " Tutorial"],
-	// ["d_ar"],
-	// ["d_wall"],
+	["Product design", "Field research"],
+	["Product design", "VR"],
+	["AR", "Concept Design"],
 	// ["Google Analytics", "Website"],
 	//----------------------
 	["Visual System", "Poster", "Illustration", "Animations"],
@@ -91,8 +95,9 @@ var worknameBoxFull = [
 	"SO!Eyewear Website",
 	"Official Website Optimization ",
 	"Gaming KVM Adapter Application",
-	// "ar",
-	// "Road Construction </br>Noise Control System",
+	"Road Construction </br>Noise Control System",
+	"Remote VR Interactive Robot",
+	"Reality Plus",
 	// "Chunlin Official Website",
 	//----------------------
 	"VIS / Visual Design",

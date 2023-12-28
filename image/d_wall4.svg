@@ -1,235 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="955" height="640" viewBox="0 0 955 640">
-  <g id="d_wall4" transform="translate(-359 -2449.528)">
-    <text id="瓦斯管線_人員" data-name="瓦斯管線
-人員" transform="translate(775.189 2474.432)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">瓦斯管線</tspan><tspan x="0" y="12.6">人員</tspan></text>
-    <text id="瓦斯管線_人員-2" data-name="瓦斯管線
-人員" transform="translate(887.189 2474.432)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">瓦斯管線</tspan><tspan x="0" y="12.6">人員</tspan></text>
-    <text id="刨除機_駕駛" data-name="刨除機
-駕駛" transform="translate(1208.053 2474.432)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">刨除機</tspan><tspan x="0" y="12.6">駕駛</tspan></text>
-    <text id="主任" transform="translate(1103.654 2479.261)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">主任</tspan></text>
-    <text id="police" transform="translate(998.189 2479.261)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">police</tspan></text>
-    <text id="哨子" transform="translate(998.189 2518.018)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">哨子</tspan></text>
-    <text id="工人" transform="translate(443.69 2477.261)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">工人</tspan></text>
-    <text id="工人-2" data-name="工人" transform="translate(553 2479.261)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">工人</tspan></text>
-    <text id="工人-3" data-name="工人" transform="translate(669.139 2479.261)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">工人</tspan></text>
-    <text id="主任-2" data-name="主任" transform="translate(483.076 2476.261)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">主任</tspan></text>
-    <text id="使用工具" transform="translate(364.802 2527.669)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">使用工具</tspan></text>
-    <text id="User_Sound" data-name="User Sound" transform="translate(364.801 2614.917)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">User Sound</tspan></text>
-    <text id="Envir._Interaction_People" data-name="Envir. 
-Interaction 
-People" transform="translate(364.802 2686.393)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">Envir. </tspan><tspan x="0" y="12.7">Interaction </tspan><tspan x="0" y="25.4">People</tspan></text>
-    <text id="Interaction_Object" data-name="Interaction 
-Object" transform="translate(364.802 2781.526)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">Interaction </tspan><tspan x="0" y="12.7">Object</tspan></text>
-    <text id="對聲音_的感覺" data-name="對聲音
-的感覺" transform="translate(364.802 2866.774)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">對聲音</tspan><tspan x="0" y="12.7">的感覺</tspan></text>
-    <text id="對噪音傷害_的認知" data-name="對噪音傷害
-的認知" transform="translate(364.801 2954.022)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">對噪音傷害</tspan><tspan x="0" y="12.7">的認知</tspan></text>
-    <text id="現有的_防護措施" data-name="現有的
-防護措施" transform="translate(364.802 3041.269)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">現有的</tspan><tspan x="0" y="12.7">防護措施</tspan></text>
-    <g id="グループ" transform="translate(359 2395.428)">
-      <text id="電鑽" transform="translate(84.69 122.59)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">電鑽</tspan></text>
-      <text id="可鑽土" transform="translate(84.69 135.29)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">可鑽土</tspan></text>
-      <text id="可水泥攪拌" transform="translate(84.69 147.99)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">可水泥攪拌</tspan></text>
-      <text id="發電機_" data-name="發電機（？）" transform="translate(84.69 160.59)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">發電機（？）</tspan></text>
+<svg xmlns="http://www.w3.org/2000/svg" width="712.251" height="153.072" viewBox="0 0 712.251 153.072">
+  <g id="d_wall4" transform="translate(-1110.006 -834.052)">
+    <text id="Organize_and_store_construction_tools" data-name="Organize and store construction tools" transform="translate(1568.258 978.978)" fill="#050505" font-size="12" font-family="NotoSans-Regular, Noto Sans"><tspan x="0" y="0">Organize and store construction tools</tspan></text>
+    <text id="Protect_construction_workers_and_residents_from_noisy_environment" data-name="Protect construction workers and residents 
+from noisy environment" transform="translate(1185.49 883.937)" fill="#050505" font-size="12" font-family="NotoSans-Regular, Noto Sans"><tspan x="0" y="0">Protect construction workers and residents </tspan><tspan x="0" y="16">from noisy environment</tspan></text>
+    <text id="Protect_construction_workers_and_passers-by." data-name="Protect construction workers and passers-by." transform="translate(1568.258 880.624)" fill="#050505" font-size="12" font-family="NotoSans-Regular, Noto Sans"><tspan x="0" y="0">Protect construction workers and passers-by.</tspan></text>
+    <text id="Easy_to_move_fast_deployment" data-name="Easy to move, fast deployment" transform="translate(1185.49 983.124)" fill="#050505" font-size="12" font-family="NotoSans-Regular, Noto Sans"><tspan x="0" y="0">Easy to move, fast deployment</tspan></text>
+    <text id="整合施工人員的施工工具" transform="translate(1565.797 959)" fill="#050505" font-size="15" font-family="YuGothicUI-Regular, Yu Gothic UI" letter-spacing="0.1em"><tspan x="0" y="0">整合施工人員的施工工具</tspan></text>
+    <text id="保護施工人員與居民於噪音環境" transform="translate(1181.797 865.488)" fill="#050505" font-size="15" font-family="YuGothicUI-Regular, Yu Gothic UI" letter-spacing="0.1em"><tspan x="0" y="0">保護施工人員與居民於噪音環境</tspan></text>
+    <text id="方便移動_快速部署" data-name="方便移動，快速部署" transform="translate(1184.258 962.956)" fill="#050505" font-size="15" font-family="YuGothicUI-Regular, Yu Gothic UI" letter-spacing="0.1em"><tspan x="0" y="0">方便移動，快速部署</tspan></text>
+    <text id="保護施工人員以及用路人安全" transform="translate(1565.797 862.248)" fill="#050505" font-size="15" font-family="YuGothicUI-Regular, Yu Gothic UI" letter-spacing="0.1em"><tspan x="0" y="0">保護施工人員以及用路人安全</tspan></text>
+    <path id="パス_18094" data-name="パス 18094" d="M51.526,30.468a2.381,2.381,0,1,1,2.381-2.381,2.424,2.424,0,0,1-2.381,2.381m.366-8.607a3.642,3.642,0,0,1-2.014-.824c-2.381-2.2-4.67-4.578-6.867-6.959a2.9,2.9,0,0,1-.641-2.106,8.691,8.691,0,0,0-4.212-9.065,7.627,7.627,0,0,0-7.417-.092A39.427,39.427,0,0,0,34.129,6.2c1.465,1.465,1.557,3.113.183,4.487a2.968,2.968,0,0,1-4.3-.183c-1.19-1.1-2.2-2.381-3.479-3.663-2.472,5.769,1.282,12.087,7.05,11.812a7.477,7.477,0,0,1,6.776,3.113,35.283,35.283,0,0,0,3.2,3.2A6.116,6.116,0,0,1,45.757,29c.366,3.2,3.3,5.219,6.684,4.853a6,6,0,0,0,5.219-6.135,6.142,6.142,0,0,0-5.769-5.86" transform="translate(1463.547 950.079)"/>
+    <g id="グループ_2232" data-name="グループ 2232" transform="translate(1131.096 829.493)">
+      <path id="パス_18095" data-name="パス 18095" d="M364.4,50.014c-5.413,0-7.714-3.789-5.007-8.525L380.1,5.627c2.706-4.736,7.172-4.736,10.014,0l20.569,35.861c2.706,4.736.541,8.525-5.007,8.525Z" transform="translate(1.86 4.559)" fill="#fff" stroke="#d64850" stroke-miterlimit="10" stroke-width="4.148"/>
+      <path id="パス_18096" data-name="パス 18096" d="M370.947,26.668a19.207,19.207,0,0,1-2.247-1.5s.15-.749.3-.749h3.295c-.15.3,0,0,.15-.15.749-4.194,3.295-5.392,7.339-4.942a41.677,41.677,0,0,0,7.489,0,2.468,2.468,0,0,1,3,2.1,21.657,21.657,0,0,0,1.348,3.295c1.048-.15,2.1-.3,3-.449.15,0,.449.749.449.9-.6.449-1.348.9-2.1,1.5,2.846,2.1,1.348,5.242,1.2,7.938a2.265,2.265,0,0,1-1.8,1.647c-7.039.15-13.929,0-20.968.15a1.741,1.741,0,0,1-1.947-1.947c.15-2.7-1.348-5.691,1.5-7.788m2.247-.6h17.523c-1.348-5.242-1.348-5.242-6.29-5.242h-4.194c-5.242,0-5.242,0-7.039,4.793q-.225,0,0,.449m3.594,3.595c.6,4.942,1.2,5.242,7.339,4.793,1.8-.15,2.7-1.8,2.7-4.793Zm16.625.15c-1.048-.6-1.5-1.2-2.1-1.2-.6.15-.9.749-1.5,1.2.6.449,1.048,1.2,1.648,1.2.449.3,1.048-.449,1.947-1.2m-19.021,0c-1.048-.6-1.5-1.2-2.1-1.2s-.9.749-1.5,1.2c.6.449,1.048,1.2,1.648,1.348.449.15,1.048-.6,1.947-1.348" transform="translate(5.196 8.544)" fill="#252424" fill-rule="evenodd"/>
+      <path id="パス_18097" data-name="パス 18097" d="M369.5,31.3h4.643a13.491,13.491,0,0,1-.3,1.947,8.163,8.163,0,0,1-3.295.15c-.449,0-.6-1.2-1.048-2.1" transform="translate(5.595 14.546)" fill="#252424" fill-rule="evenodd"/>
+      <path id="パス_18098" data-name="パス 18098" d="M382.3,31.3h4.643c-.15.749-.15,1.8-.449,1.947a8.78,8.78,0,0,1-3.445.15c-.3,0-.449-1.2-.749-2.1" transform="translate(11.965 14.546)" fill="#252424" fill-rule="evenodd"/>
     </g>
-    <text id="手持破碎機_小怪手破碎機" data-name="手持破碎機
-小怪手破碎機" transform="translate(553 2518.018)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">手持破碎機</tspan><tspan x="0" y="12.7">小怪手破碎機</tspan></text>
-    <text id="大型吊具_水泥_焊槍" data-name="大型吊具
-水泥、焊槍" transform="translate(669.139 2518.018)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">大型吊具</tspan><tspan x="0" y="12.7">水泥、焊槍</tspan></text>
-    <text id="手持破碎機" transform="translate(775.189 2518.018)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">手持破碎機</tspan></text>
-    <text id="鏟子" transform="translate(887.189 2518.018)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">鏟子</tspan></text>
-    <text id="眼睛_嘴吧" data-name="眼睛 嘴吧" transform="translate(1103.654 2518.018)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">眼睛 嘴吧</tspan></text>
-    <text id="發電機一直吵雜聲_電鑽操作時才有聲_聲想跟發電機差不多" data-name="發電機一直吵雜聲
-電鑽操作時才有聲
-聲想跟發電機差不多" transform="translate(443.69 2614.012)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">發電機一直吵雜聲</tspan><tspan x="0" y="12.7">電鑽操作時才有聲</tspan><tspan x="0" y="25.4">聲想跟發電機差不多</tspan></text>
-    <g id="グループ-2" data-name="グループ" transform="translate(359 2395.428)">
-      <text id="在馬路中間車輛來往頻繁" transform="translate(84.69 290.964)" fill="#7a7a7a" font-size="9" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">在馬路中間車輛來往頻繁</tspan></text>
-      <text id="必須盡速完成工作" transform="translate(84.69 303.664)" fill="#7a7a7a" font-size="9" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">必須盡速完成工作</tspan></text>
-      <text id="講話溝通時會不使用工具" transform="translate(84.69 316.364)" fill="#7a7a7a" font-size="9" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">講話溝通時會不使用工具</tspan></text>
-      <text id="甚至關掉發電機" transform="translate(84.69 328.964)" fill="#7a7a7a" font-size="9" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">甚至關掉發電機</tspan></text>
-      <text id="_路人問路_" data-name="（路人問路）" transform="translate(84.69 341.664)" fill="#7a7a7a" font-size="9" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">（路人問路）</tspan></text>
+    <g id="run-fast" transform="translate(1109 939.871)">
+      <path id="パス_20644" data-name="パス 20644" d="M33,11a4,4,0,1,0-4-4,4,4,0,0,0,4,4M25.8,38.8l2-8.8L32,34V46h4V31l-4.2-4L33,21a14.6,14.6,0,0,0,11,5V22a9.827,9.827,0,0,1-8.6-4.8l-2-3.2A4.019,4.019,0,0,0,30,12c-.6,0-1,.2-1.6.2L18,16.6V26h4V19.2l3.6-1.4L22.4,34l-9.8-2-.8,4,14,2.8M8,18a2,2,0,0,1,0-4h6v4H8m2-8a2,2,0,0,1,0-4H20v4H10M6,26a2,2,0,1,1,0-4h8v4Z"/>
     </g>
-    <text id="在黃昏的住宅小巷內_隔兩接街可聽_但不大聲" data-name="在黃昏的住宅小巷內
-隔兩接街可聽
-但不大聲" transform="translate(553 2686.393)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">在黃昏的住宅小巷內</tspan><tspan x="0" y="12.7">隔兩接街可聽</tspan><tspan x="0" y="25.4">但不大聲</tspan></text>
-    <g id="グループ-3" data-name="グループ" transform="translate(359 2395.428)">
-      <text id="溝通時不會使用工具" transform="translate(310.139 290.964)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">溝通時不會使用工具</tspan></text>
-      <text id="大聲喧嘩校準的位置" transform="translate(310.139 303.664)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">大聲喧嘩校準的位置</tspan></text>
-      <text id="現場七八人" transform="translate(310.139 316.364)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">現場七八人</tspan></text>
-      <text id="但操作員兩三人" transform="translate(310.139 328.964)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">但操作員兩三人</tspan></text>
+    <g id="toolbox" transform="translate(1508.643 937)">
+      <path id="前面オブジェクトで型抜き_144" data-name="前面オブジェクトで型抜き 144" d="M35.039,13.139H6.887C4.862,11.248,2.714,9.061.126,6.257A1.479,1.479,0,0,1,0,6.113V0H13.14V4.38H21.9V0H35.039V13.138Z" transform="translate(0 19.14)"/>
+      <path id="パス_20648" data-name="パス 20648" d="M21,21h4.38v4.38H21Z" transform="translate(-5.67 -4.05)"/>
+      <path id="パス_20649" data-name="パス 20649" d="M24.09,10.38V6H10.95v4.38H0v6.57H13.14V14.76H21.9v2.19h13.14V10.38Zm-10.95,0V8.19H21.9v2.19Z" transform="translate(0)"/>
     </g>
-    <text id="溝通時會停止機具_看到拍照_才配戴安全帽和背心" data-name="溝通時會停止機具
-看到拍照
-才配戴安全帽和背心" transform="translate(775.189 2686.393)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">溝通時會停止機具</tspan><tspan x="0" y="12.7">看到拍照</tspan><tspan x="0" y="25.4">才配戴安全帽和背心</tspan></text>
-    <text id="在定點_聽刨洗機的聲音_無配戴安全帽_" data-name="在定點
-聽刨洗機的聲音
-無配戴安全帽！" transform="translate(887.189 2686.393)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">在定點</tspan><tspan x="0" y="12.7">聽刨洗機的聲音</tspan><tspan x="0" y="25.4">無配戴安全帽！</tspan></text>
-    <text id="車聲和_隨時會接近的機械聲" data-name="車聲和
-隨時會接近的機械聲" transform="translate(998.189 2686.393)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">車聲和</tspan><tspan x="0" y="12.7">隨時會接近的機械聲</tspan></text>
-    <g id="グループ-4" data-name="グループ" transform="translate(359 2395.428)">
-      <text id="跟著刨洗機或怪手" transform="translate(744.654 290.964)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">跟著刨洗機或怪手</tspan></text>
-      <text id="或指揮或站在遠處" transform="translate(744.654 303.664)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">或指揮或站在遠處</tspan></text>
-      <text id="會經過各種機台" transform="translate(744.654 316.364)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">會經過各種機台</tspan></text>
-      <text id="接觸各種聲音" transform="translate(744.654 328.964)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">接觸各種聲音</tspan></text>
+    <g id="NoiseCancelationOff" transform="translate(1110.006 838.611)">
+      <path id="パス_20645" data-name="パス 20645" d="M0,18H3v3H0Zm6-6H9v9H6Zm6-9h3V21H12Zm6,6h3V21H18Zm9,12H24V18h3Zm18,0H42V18h3ZM0,24H3v3H0Zm6,0H9v9H6Zm6,0h3V42H12Zm6,0h3V36H18Zm9,3H24V24h3Zm12-6H36V18h3Zm-6,0H30V18h3Zm4.5,6a10.255,10.255,0,0,1,4.09.82,10.523,10.523,0,0,1,5.59,5.59,10.607,10.607,0,0,1,0,8.181,10.523,10.523,0,0,1-5.59,5.59,10.607,10.607,0,0,1-8.181,0,10.523,10.523,0,0,1-5.59-5.59,10.607,10.607,0,0,1,0-8.181,10.523,10.523,0,0,1,5.59-5.59A10.255,10.255,0,0,1,37.5,27ZM30,37.5a7.348,7.348,0,0,0,.586,2.918,7.469,7.469,0,0,0,4,4A7.348,7.348,0,0,0,37.5,45a7.465,7.465,0,0,0,2.156-.316,7.324,7.324,0,0,0,1.969-.926L31.246,33.379a7.324,7.324,0,0,0-.926,1.969A7.465,7.465,0,0,0,30,37.5Zm13.759,4.125a7.324,7.324,0,0,0,.926-1.969A7.465,7.465,0,0,0,45,37.5a7.141,7.141,0,0,0-.6-2.907,7.682,7.682,0,0,0-4-4A7.141,7.141,0,0,0,37.5,30a7.465,7.465,0,0,0-2.156.316,7.324,7.324,0,0,0-1.969.926Z"/>
     </g>
-    <text id="一直待在刨除機上_持續聽著高分貝聲音" data-name="一直待在刨除機上
-持續聽著高分貝聲音" transform="translate(1208.053 2686.393)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">一直待在刨除機上</tspan><tspan x="0" y="12.7">持續聽著高分貝聲音</tspan></text>
-    <g id="グループ-5" data-name="グループ" transform="translate(359 2395.428)">
-      <text id="將四週土和水泥挖掉" transform="translate(84.69 374.054)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">將四週土和水泥挖掉</tspan></text>
-      <text id="再換水溝蓋" transform="translate(84.69 386.754)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">再換水溝蓋</tspan></text>
-      <text id="修補公作則是" transform="translate(84.69 399.454)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">修補公作則是</tspan></text>
-      <text id="另一單位執行" transform="translate(84.69 412.054)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">另一單位執行</tspan></text>
-    </g>
-    <text id="一群人為著兩台破碎機_溝通時不會使用_看到拍設才戴安全帽" data-name="一群人為著兩台破碎機
-溝通時不會使用
-看到拍設才戴安全帽" transform="translate(553 2769.482)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">一群人為著兩台破碎機</tspan><tspan x="0" y="12.7">溝通時不會使用</tspan><tspan x="0" y="25.4">看到拍設才戴安全帽</tspan></text>
-    <text id="一人操作大型物_或焊接_其它人負責補助" data-name="一人操作大型物
-或焊接
-其它人負責補助" transform="translate(669.139 2769.482)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">一人操作大型物</tspan><tspan x="0" y="12.7">或焊接</tspan><tspan x="0" y="25.4">其它人負責補助</tspan></text>
-    <g id="グループ-6" data-name="グループ" transform="translate(359 2395.428)">
-      <text id="很多人同時在一旁" transform="translate(416.19 374.054)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">很多人同時在一旁</tspan></text>
-      <text id="指揮或是在找管線" transform="translate(416.19 386.754)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">指揮或是在找管線</tspan></text>
-      <text id="一人在操作_挖到" data-name="一人在操作，挖到" transform="translate(416.19 399.454)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">一人在操作，挖到</tspan></text>
-      <text id="接近處會改成" transform="translate(416.19 412.054)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">接近處會改成</tspan></text>
-      <text id="用手挖" transform="translate(416.19 424.754)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">用手挖</tspan></text>
-    </g>
-    <text id="定點監控瓦斯管線" transform="translate(887.189 2769.482)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">定點監控瓦斯管線</tspan></text>
-    <text id="在很多聲音裡v_指揮交通_回答問路_避開危險" data-name="在很多聲音裡v
-指揮交通
-回答問路,避開危險" transform="translate(998.189 2769.482)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">在很多聲音裡v</tspan><tspan x="0" y="12.7">指揮交通</tspan><tspan x="0" y="25.4">回答問路,避開危險</tspan></text>
-    <g id="グループ-7" data-name="グループ" transform="translate(359 2395.428)">
-      <text id="會站在遠處" transform="translate(744.654 374.054)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">會站在遠處</tspan></text>
-      <text id="跟工人交談時" transform="translate(744.654 386.754)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">跟工人交談時</tspan></text>
-      <text id="會站在近處" transform="translate(744.654 399.454)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">會站在近處</tspan></text>
-      <text id="等待時機會是大喊" transform="translate(744.654 412.054)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">等待時機會是大喊</tspan></text>
-    </g>
-    <g id="グループ-8" data-name="グループ" transform="translate(359 2395.428)">
-      <text id="用手勢指揮前方探測人員" transform="translate(849.053 367.721)" fill="#7a7a7a" font-size="9" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">用手勢指揮前方探測人員</tspan></text>
-      <text id="跟卡車溝通方式_" data-name="跟卡車溝通方式：" transform="translate(849.053 378.421)" fill="#7a7a7a" font-size="9" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">跟卡車溝通方式：</tspan></text>
-      <text id="_每組可能不同_" data-name="（每組可能不同）" transform="translate(849.053 389.121)" fill="#7a7a7a" font-size="9" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">（每組可能不同）</tspan></text>
-      <text id="一聲" transform="translate(849.053 399.721)" fill="#7a7a7a" font-size="9" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">一聲</tspan></text>
-      <text id="走_" data-name="走、" transform="translate(867.753 399.721)" fill="#7a7a7a" font-size="9" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">走、</tspan></text>
-      <text id="兩聲" transform="translate(880.353 399.721)" fill="#7a7a7a" font-size="9" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">兩聲</tspan></text>
-      <text id="停_" data-name="停、" transform="translate(899.053 399.721)" fill="#7a7a7a" font-size="9" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">停、</tspan></text>
-      <text id="三聲倒" transform="translate(911.353 399.721)" fill="#7a7a7a" font-size="9" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">三聲倒</tspan></text>
-      <text id="車" transform="translate(849.053 410.421)" fill="#7a7a7a" font-size="9" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">車</tspan></text>
-      <text id="_" data-name="、" transform="translate(856.453 410.421)" fill="#7a7a7a" font-size="9" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">、</tspan></text>
-      <text id="多聲滿隨車會配置" transform="translate(860.953 410.421)" fill="#7a7a7a" font-size="9" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">多聲滿隨車會配置</tspan></text>
-      <text id="至少一工人跟著走注意" transform="translate(849.053 421.121)" fill="#7a7a7a" font-size="9" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">至少一工人跟著走注意</tspan></text>
-      <text id="死角_與溝通" data-name="死角、與溝通" transform="translate(849.053 431.821)" fill="#7a7a7a" font-size="9" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">死角、與溝通</tspan></text>
-    </g>
-    <text id="覺得聲音吵_但為了求生存沒辦法" data-name="覺得聲音吵
-但為了求生存沒辦法" transform="translate(443.69 2940.133)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">覺得聲音吵</tspan><tspan x="0" y="12.7">但為了求生存沒辦法</tspan></text>
-    <text id="是應該要付出的代價_有點無奈_的樂天心態_" data-name="是應該要付出的代價
-（有點無奈
-的樂天心態）" transform="translate(553 2940.133)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">是應該要付出的代價</tspan><tspan x="0" y="12.7">（有點無奈</tspan><tspan x="0" y="25.4">的樂天心態）</tspan></text>
-    <text id="知道噪音會造成傷害_不是每天聽_覺得沒關係" data-name="知道噪音會造成傷害
-不是每天聽
-覺得沒關係" transform="translate(669.139 2940.133)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">知道噪音會造成傷害</tspan><tspan x="0" y="12.7">不是每天聽</tspan><tspan x="0" y="25.4">覺得沒關係</tspan></text>
-    <text id="知道噪音會造成傷害" transform="translate(775.189 2940.133)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">知道噪音會造成傷害</tspan></text>
-    <text id="知道噪音會造成傷害-2" data-name="知道噪音會造成傷害" transform="translate(887.189 2940.133)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">知道噪音會造成傷害</tspan></text>
-    <text id="覺得吵" transform="translate(998.189 2940.133)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">覺得吵</tspan></text>
-    <g id="グループ-9" data-name="グループ" transform="translate(359 2395.428)">
-      <text id="認知為職業災害" transform="translate(744.654 544.705)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">認知為職業災害</tspan></text>
-      <text id="無可避免" transform="translate(744.654 557.405)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">無可避免</tspan></text>
-      <text id="是正常的現象" transform="translate(744.654 570.105)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">是正常的現象</tspan></text>
-      <text id="但也希望改善" transform="translate(744.654 582.705)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">但也希望改善</tspan></text>
-    </g>
-    <g id="グループ-10" data-name="グループ" transform="translate(359 2395.428)">
-      <text id="知道自己處於高分貝" transform="translate(849.053 544.705)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">知道自己處於高分貝</tspan></text>
-      <text id="但是為特殊機種" transform="translate(849.053 557.405)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">但是為特殊機種</tspan></text>
-      <text id="法律難管" transform="translate(849.053 570.105)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">法律難管</tspan></text>
-      <text id="曾有居民反映過很吵" transform="translate(849.053 582.705)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">曾有居民反映過很吵</tspan></text>
-      <text id="但沒辦法" transform="translate(849.053 595.405)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">但沒辦法</tspan></text>
-    </g>
-    <text id="沒使用過_但覺的危險" data-name="沒使用過
-但覺的危險" transform="translate(443.69 3023.223)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">沒使用過</tspan><tspan x="0" y="12.7">但覺的危險</tspan></text>
-    <text id="鑽鐵時_的尖銳聲會配戴耳塞" data-name="鑽鐵時
-的尖銳聲會配戴耳塞" transform="translate(553 3023.223)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">鑽鐵時</tspan><tspan x="0" y="12.7">的尖銳聲會配戴耳塞</tspan></text>
-    <text id="沒使用過_但覺得會_造成溝通和安全問題" data-name="沒使用過
-但覺得會
-造成溝通和安全問題" transform="translate(669.139 3023.223)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">沒使用過</tspan><tspan x="0" y="12.7">但覺得會</tspan><tspan x="0" y="25.4">造成溝通和安全問題</tspan></text>
-    <text id="連安全帽_都不太想戴了" data-name="連安全帽
-都不太想戴了" transform="translate(775.189 3023.223)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">連安全帽</tspan><tspan x="0" y="12.7">都不太想戴了</tspan></text>
-    <g id="グループ-11" data-name="グループ" transform="translate(359 2395.428)">
-      <text id="自己崗位並沒到" transform="translate(528.19 627.794)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">自己崗位並沒到</tspan></text>
-      <text id="必須配戴護具" transform="translate(528.19 640.494)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">必須配戴護具</tspan></text>
-      <text id="防躁用品會造成" transform="translate(528.19 653.194)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">防躁用品會造成</tspan></text>
-      <text id="工作上不便" transform="translate(528.19 665.794)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">工作上不便</tspan></text>
-      <text id="所以無配帶" transform="translate(528.19 678.494)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">所以無配帶</tspan></text>
-    </g>
-    <text id="沒用過" transform="translate(998.189 3023.223)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">沒用過</tspan></text>
-    <text id="防躁用品會讓工人_聽不到聲音_無法溝通和危險" data-name="防躁用品會讓工人
-聽不到聲音
-無法溝通和危險" transform="translate(1103.654 3023.223)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">防躁用品會讓工人</tspan><tspan x="0" y="12.7">聽不到聲音</tspan><tspan x="0" y="25.4">無法溝通和危險</tspan></text>
-    <g id="グループ-12" data-name="グループ" transform="translate(359 2395.428)">
-      <text id="機具總體品質來說" transform="translate(849.053 622.794)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">機具總體品質來說</tspan></text>
-      <text id="西德才能做出來" transform="translate(849.053 635.494)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">西德才能做出來</tspan></text>
-      <text id="也致力於機體降噪" transform="translate(849.053 648.194)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">也致力於機體降噪</tspan></text>
-      <text id="但效果都有限" transform="translate(849.053 660.794)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">但效果都有限</tspan></text>
-      <text id="耳罩會聽不到路面聲音" transform="translate(849.053 673.494)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">耳罩會聽不到路面聲音</tspan></text>
-      <text id="造成機械損害" transform="translate(849.053 686.194)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">造成機械損害</tspan></text>
-    </g>
-    <text id="_-" data-name="-" transform="translate(438.189 2852.572)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">-</tspan></text>
-    <text id="很吵_但覺得鑽水泥聲可接受_鑽鐵時很尖銳會受不了" data-name="很吵
-但覺得鑽水泥聲可接受
-鑽鐵時很尖銳會受不了" transform="translate(553 2865.254)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">很吵</tspan><tspan x="0" y="12.7">但覺得鑽水泥聲可接受</tspan><tspan x="0" y="25.4">鑽鐵時很尖銳會受不了</tspan></text>
-    <text id="這像工作沒有很吵_最吵的就是拔管聲" data-name="這像工作沒有很吵
-最吵的就是拔管聲" transform="translate(669.139 2852.572)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">這像工作沒有很吵</tspan><tspan x="0" y="12.7">最吵的就是拔管聲</tspan></text>
-    <text id="_--2" data-name="-" transform="translate(775.189 2852.572)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">-</tspan></text>
-    <g id="グループ-13" data-name="グループ" transform="translate(359 2395.428)">
-      <text id="覺得很吵_" data-name="覺得很吵！" transform="translate(528.19 457.144)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">覺得很吵！</tspan></text>
-      <text id="手持破碎機和刨除機" transform="translate(528.19 469.844)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">手持破碎機和刨除機</tspan></text>
-      <text id="相比認為刨除機大聲" transform="translate(528.19 482.544)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">相比認為刨除機大聲</tspan></text>
-      <text id="很多_原因為使用破" data-name="很多，原因為使用破" transform="translate(528.19 495.144)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">很多，原因為使用破</tspan></text>
-      <text id="碎機時人員較靠近" transform="translate(528.19 507.844)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">碎機時人員較靠近</tspan></text>
-    </g>
-    <text id="_--3" data-name="-" transform="translate(998.189 2852.572)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">-</tspan></text>
-    <text id="大型機具死角很多_聲音和多視線_會重要得多" data-name="大型機具死角很多
-聲音和多視線
-會重要得多" transform="translate(1103.654 2852.572)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">大型機具死角很多</tspan><tspan x="0" y="12.7">聲音和多視線</tspan><tspan x="0" y="25.4">會重要得多</tspan></text>
-    <g id="グループ-14" data-name="グループ" transform="translate(359 2395.428)">
-      <text id="要判別刨除的路面情況" transform="translate(849.053 457.144)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">要判別刨除的路面情況</tspan></text>
-      <text id="刀具情況_溝通" data-name="刀具情況，溝通" transform="translate(849.053 469.844)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">刀具情況，溝通</tspan></text>
-      <text id="聲音很重要" transform="translate(849.053 482.544)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">聲音很重要</tspan></text>
-      <text id="也無奈與樂天得" transform="translate(849.053 495.144)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">也無奈與樂天得</tspan></text>
-      <text id="知道處於高分貝環境" transform="translate(849.053 507.844)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">知道處於高分貝環境</tspan></text>
-    </g>
-    <text id="破碎機敲擊_地面的聲音_大聲不規律" data-name="破碎機敲擊
-地面的聲音
-大聲不規律" transform="translate(553 2614.012)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">破碎機敲擊</tspan><tspan x="0" y="12.7">地面的聲音</tspan><tspan x="0" y="25.4">大聲不規律</tspan></text>
-    <text id="破碎機敲擊_地面的聲音_大聲不規律-2" data-name="破碎機敲擊
-地面的聲音
-大聲不規律" transform="translate(669.139 2614.012)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">破碎機敲擊</tspan><tspan x="0" y="12.7">地面的聲音</tspan><tspan x="0" y="25.4">大聲不規律</tspan></text>
-    <text id="車聲_哨聲" data-name="車聲 哨聲" transform="translate(998.189 2623.561)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">車聲 哨聲</tspan></text>
-    <g id="グループ-15" data-name="グループ" transform="translate(359 2395.428)">
-      <text id="破碎機敲擊" transform="translate(416.19 218.583)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">破碎機敲擊</tspan></text>
-      <text id="地面的聲音" transform="translate(416.19 231.283)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">地面的聲音</tspan></text>
-      <text id="大聲" transform="translate(416.19 243.984)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">大聲</tspan></text>
-      <text id="_但沒古蹟刺耳_" data-name="（但沒古蹟刺耳）" transform="translate(416.19 256.583)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">（但沒古蹟刺耳）</tspan></text>
-    </g>
-    <text id="沒" transform="translate(887.189 2619.172)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">沒</tspan></text>
-    <text id="刨除機" transform="translate(1208.053 2518.018)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">刨除機</tspan></text>
-    <text id="大聲喊_" data-name="大聲喊！" transform="translate(1103.654 2601.052)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">大聲喊！</tspan></text>
-    <text id="一開始從水車灌水" transform="translate(1208.053 2598.385)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">一開始從水車灌水</tspan></text>
-    <text id="引擎聲和啟動刨除時" transform="translate(1208.053 2611.085)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">引擎聲和啟動刨除時</tspan></text>
-    <text id="的聲音都90分貝" transform="translate(1208.053 2623.785)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">的聲音都90分貝</tspan></text>
-    <text id="_10公尺85分貝" data-name="10公尺85分貝" transform="translate(1208.053 2636.385)" fill="#7a7a7a" font-size="10" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI"><tspan x="0" y="0">10公尺85分貝</tspan></text>
-    <rect id="長方形_922" data-name="長方形 922" width="954" height="639" transform="translate(359.5 2450.028)" fill="none" stroke="#939394" stroke-miterlimit="10" stroke-width="1"/>
-    <line id="線_364" data-name="線 364" x2="955" transform="translate(359 3003.028)" fill="none" stroke="#939394" stroke-miterlimit="10" stroke-width="1"/>
-    <line id="線_365" data-name="線 365" x2="955" transform="translate(359 2919.028)" fill="none" stroke="#939394" stroke-miterlimit="10" stroke-width="1"/>
-    <line id="線_366" data-name="線 366" x2="955" transform="translate(359 2834.028)" fill="none" stroke="#939394" stroke-miterlimit="10" stroke-width="1"/>
-    <line id="線_367" data-name="線 367" x2="955" transform="translate(359 2749.028)" fill="none" stroke="#939394" stroke-miterlimit="10" stroke-width="1"/>
-    <line id="線_368" data-name="線 368" x2="955" transform="translate(359 2664.028)" fill="none" stroke="#939394" stroke-miterlimit="10" stroke-width="1"/>
-    <line id="線_369" data-name="線 369" x2="955" transform="translate(359 2580.028)" fill="none" stroke="#939394" stroke-miterlimit="10" stroke-width="1"/>
-    <line id="線_370" data-name="線 370" x2="955" transform="translate(359 2494.028)" fill="none" stroke="#939394" stroke-miterlimit="10" stroke-width="1"/>
-    <line id="線_371" data-name="線 371" y2="638" transform="translate(1205.5 2450.528)" fill="none" stroke="#939394" stroke-miterlimit="10" stroke-width="1"/>
-    <line id="線_372" data-name="線 372" y2="638" transform="translate(1096.5 2450.528)" fill="none" stroke="#939394" stroke-miterlimit="10" stroke-width="1"/>
-    <line id="線_373" data-name="線 373" y2="638" transform="translate(986.5 2450.528)" fill="none" stroke="#939394" stroke-miterlimit="10" stroke-width="1"/>
-    <line id="線_374" data-name="線 374" y2="638" transform="translate(877.5 2450.528)" fill="none" stroke="#939394" stroke-miterlimit="10" stroke-width="1"/>
-    <line id="線_375" data-name="線 375" y2="638" transform="translate(769.5 2450.528)" fill="none" stroke="#939394" stroke-miterlimit="10" stroke-width="1"/>
-    <line id="線_376" data-name="線 376" y2="638" transform="translate(659.5 2450.528)" fill="none" stroke="#939394" stroke-miterlimit="10" stroke-width="1"/>
-    <line id="線_377" data-name="線 377" y2="638" transform="translate(549.5 2450.528)" fill="none" stroke="#939394" stroke-miterlimit="10" stroke-width="1"/>
-    <line id="線_378" data-name="線 378" y2="638" transform="translate(441.5 2450.528)" fill="none" stroke="#939394" stroke-miterlimit="10" stroke-width="1"/>
   </g>
 </svg>
