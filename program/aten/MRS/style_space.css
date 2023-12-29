@@ -107,8 +107,10 @@ html {
     left: 0;
     width: 100%;
     height: 100%;
-    /* transform: rotate3d(0, 0, 0, 45deg); */
+    transform: translateZ(-50) rotate3d(0, 0, 0, 45deg);
+
     transform-style: preserve-3d;
+    /* background-color: #ff000030; */
 }
 
 .space .camera>* {
@@ -195,7 +197,7 @@ html {
 ******************************************/
 
 
-.actionMenuBoxs {
+.featureMenu {
     background-color: #fff;
     width: 320px;
     position: absolute;
@@ -209,21 +211,23 @@ html {
     transition: 0.8s;
     opacity: 0;
     transform: translate(-200px, 0);
-}
 
-.actionMenuBoxs.active {
     opacity: 1;
     transform: translate(0, 0);
+}
 
+.featureMenu.active {
+    opacity: 1;
+    transform: translate(0, 0);
 }
 
 
-.actionMenuBoxs * {
+.featureMenu * {
     transition: 0.8s;
 }
 
 
-.actionMenuBoxs .actionMenu .name {
+.featureMenu .namebox {
     display: flex;
     align-items: center;
     width: 100%;
@@ -234,11 +238,11 @@ html {
     cursor: pointer;
 }
 
-.actionMenuBoxs .actionMenu .name:hover {
+.featureMenu .namebox:hover {
     background-color: #d4d4d4;
 }
 
-.actionMenuBoxs .actionMenu .name::after {
+.featureMenu .namebox::after {
     content: "";
     height: 100%;
     background-color: #00CBFF;
@@ -251,19 +255,19 @@ html {
 }
 
 
-.actionMenuBoxs .actionMenu .name p {
+.featureMenu .namebox p {
     font-size: 16px;
     font-weight: 700;
 }
 
-.actionMenuBoxs .actionMenu .name img {
+.featureMenu .namebox img {
     height: 36px;
     width: 36px;
     margin-right: 8px;
 
 }
 
-.actionMenuBoxs .actionMenu .describe {
+.featureMenu .describe {
     color: #053763;
     overflow: hidden;
     margin: 0 0 0 32px;
@@ -273,17 +277,72 @@ html {
 
 
 
-.actionMenuBoxs .actionMenu.active .name {
+.featureMenu .actionMenu.active .name {
     height: auto;
     background-color: #00ccff11;
 }
 
-.actionMenuBoxs .actionMenu.active .name::after {
+.featureMenu .actionMenu.active .name::after {
     opacity: 1;
 }
 
 
-.actionMenuBoxs .actionMenu.active .describe {
+.featureMenu .actionMenu.active .describe {
     height: 90px;
     padding-bottom: 8px;
+}
+
+
+
+
+/*****************************************
+
+   Flow Menu Boxs
+
+******************************************/
+
+
+
+.flowMenuBoxs {
+    background-color: #000;
+    /* width: 480px; */
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    padding: 8px 4px;
+    border-radius: 32px;
+    box-shadow: 0 0 20px #041b4148;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    transition: 0.8s;
+    box-shadow: 0 0 16px #0000008f;
+}
+
+.flowMenuBoxs.off {
+    opacity: 0;
+    transform: translate(-50%, -50%);
+}
+
+.flowMenuBoxs .flowMenu {
+    font-size: 16px;
+    margin: 0 4px;
+    padding: 12px 24px;
+    color: #fff;
+    background-color: rgb(0, 0, 0);
+    text-align: center;
+    border-radius: 50px;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+
+.flowMenuBoxs .flowMenu:hover {
+    background-color: rgb(42, 42, 42);
+}
+
+.flowMenuBoxs .flowMenu.active {
+    background-color: #00CBFF;
+    color: #000000d6;
 }

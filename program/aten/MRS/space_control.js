@@ -540,11 +540,109 @@ var VW = function (source = []) {
 //
 //---------------------------------
 
+var flowMenu = $css("flowMenuBoxs")[0]
+
+var featureMenu = function (num) {
+
+    this.flow = document.createElement("div")
+    this.flow.classList = "flowMenu"
+    this.flow.appendChild(document.createTextNode(featureMenuContent[num].flow))
+    this.featurMenu = document.createElement("div")
+    this.featurMenu.classList = "featureMenu"
+
+    this.feature = []
+    this.namebox = []
+    this.icon = []
+    this.name = []
+    this.describe = []
+
+    // 創立各 feature 功能按鈕，並填入功能
+    for (let i = 0; i < featureMenuContent[num].feature.length; i++) {
+
+        this.feature[i] = document.createElement("div")
+        this.namebox[i] = document.createElement("div")
+        this.icon[i] = document.createElement("img")
+        this.name[i] = document.createElement("p")
+        this.describe[i] = document.createElement("div")
+
+        this.namebox[i].classList = "namebox"
+        this.describe[i].classList = "describe"
+
+        //填入內容
+        if (featureMenuContent[num].feature[i][0] == null) {
+            featureMenuContent[num].feature[i][0] = "element/icon_share.png"
+        }
+        this.icon[i].src = featureMenuContent[num].feature[i][0]
+        this.name[i].appendChild(document.createTextNode(featureMenuContent[num].feature[i][1]))
+        this.describe[i].appendChild(document.createTextNode(featureMenuContent[num].feature[i][2]))
+
+        //放入featureMunu
+        this.featurMenu.appendChild(this.feature[i])
+        this.feature[i].appendChild(this.namebox[i])
+        this.feature[i].appendChild(this.describe[i])
+        this.namebox[i].appendChild(this.icon[i])
+        this.namebox[i].appendChild(this.name[i])
+    }
+    flowMenu.appendChild(this.flow)
+    container.appendChild(this.featurMenu)
+}
 
 
 
+var featureMenuContent = []
 
 
+
+featureMenuContent[0] = {
+    flow: "Turn on",
+    feature: [[
+        "element/icon_share.png",
+        "Local Content Sharing",
+        "All attendees are allow to quickly share content with their personal devices."
+    ], [
+        "element/icon_share.png",
+        "Enviromental Control",
+        "By detecting meeting environment factors, environmental equipment can be automatically turned on or off to allow the meeting to proceed smoothly."
+    ], [
+        "element/icon_controls.png",
+        "",
+        ""
+    ], [
+        // "element/icon_.png",
+        // "",
+        // ""
+    ], [
+        // "element/icon_.png",
+        // "",
+        // ""
+    ]]
+}
+
+
+featureMenuContent[1] = {
+    flow: "Round Table",
+    feature: [[
+        "element/icon_share.png",
+        "Local Content Sharing",
+        "All attendees are allow to quickly share content with their personal devices."
+    ], [
+        "element/icon_share.png",
+        "Enviromental Control",
+        "By detecting meeting environment factors, environmental equipment can be automatically turned on or off to allow the meeting to proceed smoothly."
+    ], [
+        "element/icon_controls.png",
+        "",
+        ""
+    ], [
+        // "element/icon_.png",
+        // "",
+        // ""
+    ], [
+        // "element/icon_.png",
+        // "",
+        // ""
+    ]]
+}
 
 
 
@@ -563,6 +661,7 @@ var VW = function (source = []) {
 //
 ///---------------------------------
 
+const container = $css("container")[0]
 const space = $css("space")[0]
 const camera = $css("camera")[0]
 const spaceW = space.clientWidth
@@ -571,7 +670,7 @@ const spaceR = spaceW / spaceH
 
 //創立 spaceWall 並入場
 //[空間寬度,空間高度,空間深度,空間底部平面]
-var spaceSize = [60, 27.5, 50, -25]
+var spaceSize = [60, 27.5, 100, -50]
 
 // 定義透視程度
 var spacePerspectRate = 1
@@ -617,12 +716,15 @@ var createWall = (wallcount = 11) => {
 
 
 // 開始創立牆壁
-createWall()
-// createWall(5) //只創立四邊的強
+// createWall()
+createWall(5) //只創立四邊的牆壁
 
 
-
-
+// 開始創立選單
+var menu = []
+for (let i = 0; i < featureMenuContent.length; i++) {
+    menu[i] = new featureMenu(i)
+}
 
 
 
@@ -654,9 +756,11 @@ media[1] = new Media("element/video.mp4")
 
 //設定所有 display 屬性
 var displayAttr = [
-    { size: [20, 16 / 9], xyz: [30.0, 50.0, 0.00], xyzR: [0.00, 45.0, 0.00], videoWall: [0, 0], wallBorder: 1, name: "" },
-    { size: [20, 16 / 9], xyz: [50.0, 50.0, 0.00], xyzR: [0.00, 0.00, 0.00], videoWall: [2, 2], wallBorder: 1, name: "" },
-    { size: [20, 16 / 9], xyz: [70.0, 50.0, 0.00], xyzR: [0.00, -45.0, 0.00], videoWall: [3, 3], wallBorder: 1, name: "" }
+    { size: [20, 16 / 9], xyz: [30.0, 50.0, -50], xyzR: [0.00, 45.0, 0.00], videoWall: [0, 0], border: 1, name: "" },
+    { size: [20, 16 / 9], xyz: [50.0, 50.0, -50], xyzR: [0.00, 0.00, 0.00], videoWall: [2, 2], border: 1, name: "" },
+    { size: [20, 16 / 9], xyz: [70.0, 50.0, -50], xyzR: [0.00, -45.0, 0.00], videoWall: [3, 3], border: 1, name: "" },
+    { size: [20, 16 / 9], xyz: [80.0, 50.0, -10], xyzR: [0.00, -90.0, 0.00], videoWall: [0, 0], border: 1, name: "" },
+    { size: [20, 16 / 9], xyz: [80.0, 50.0, -32], xyzR: [0.00, -90.0, 0.00], videoWall: [0, 0], border: 1, name: "" }
 ]
 
 //創立 display 並入場
@@ -668,7 +772,7 @@ for (let i = 0; i < displayAttr.length; i++) {
         displayAttr[i].xyzR,
         "display",
         displayAttr[i].videoWall,
-        displayAttr[i].wallBorder)
+        displayAttr[i].border)
     display[i].object.classList = "display"
     camera.appendChild(display[i].object)
 }
@@ -715,7 +819,7 @@ vp.changeLayout("VW", [0, 1, 2, 3, 4, 5], [
 display[0].input(vp)
 display[1].input(media[1])
 display[2].input(media[0])
-
+display[3].input(media[0])
 
 
 
@@ -767,10 +871,9 @@ function keyboardListener(e) {
 }
 
 
-
 window.addEventListener("mousemove", (e) => {
-    let x = (e.x - spaceW / 2) / spaceW * 90
-    let y = (e.y - spaceH / 2) / spaceH * 90
+    let x = (e.x - spaceW / 2) / spaceW * 90 / 3
+    let y = (e.y - spaceH / 2) / spaceH * 90 / 3 * 0
     // camera.style.transform = "rotate3d(" + -y + ", " + x + ", 0, 10deg)"
-    camera.style.transform = "rotateX(" + -y + "deg) rotateY(" + x + "deg)"
+    camera.style.transform = "translateZ(" + spaceW / 2 + "px) rotateX(" + -y + "deg) rotateY(" + x + "deg)"
 })

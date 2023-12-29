@@ -904,7 +904,6 @@ Control Object
 .actionMenuBoxs.active {
     opacity: 1;
     transform: translate(0, 0);
-
 }
 
 
@@ -976,7 +975,6 @@ Control Object
 .actionMenuBoxs .actionMenu.active .describe {
     height: 90px;
     padding-bottom: 8px;
-
 }
 
 
