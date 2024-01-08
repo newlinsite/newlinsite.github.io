@@ -66,6 +66,27 @@
 
         // ------------------------------------------
         //
+        // 除錯
+        //
+        // ------------------------------------------
+
+
+
+        if (isNaN(continent)) {
+            console.log("continent 不是數字");
+            continent = 0
+        } else {
+            if (continent < 0 || continent > 2) {
+                console.log(name + " continent 不在 0 ~ 2 ");
+                continent = 0
+            }
+        }
+
+
+
+
+        // ------------------------------------------
+        //
         // 創立地球上的點點
         //
         // ------------------------------------------
@@ -174,7 +195,6 @@
             this.nameText.href = link
             // this.nameText.href = "http://www.google.com"
             this.nameText.style.zIndex = "9000"
-            console.log(link)
         }
 
 
@@ -298,8 +318,6 @@
             //開啟選單
             openDropdown.nameDropdown.style.height = openDropdown.nameDropdownHieight + "px"
         }
-
-
     }
 
 
@@ -321,41 +339,69 @@
     // Set point attribute
     var pointsData = [
         // America
-        { id: "0000", name: 'point3', space: '         ', from: "main", continent: 0, position: { x: 12, y: 21 }, type: ['HQ'], space2: '                             ', link: "#" },
+        { 'id': "0000", 'name': 'point3', 'space': '         ', 'from': "main", 'continent': 0, 'position': { x: 12, y: 21 }, 'type': ['HQ'], 'space2': '                             ', 'link': "#" },
 
 
         // Asia-Pacific / Oceania Region
-        { id: "1000", name: 'Taiwan', space: '         ', from: "main", continent: 1, position: { x: 56.5, y: 52.5 }, type: ["RBU", "SRC", "RD", "F", "HQ"], space2: '', link: "#" },
-        { id: "1001", name: 'New Taipei City', space: '', from: "1000", continent: 1, position: { x: 57.5, y: 50.5 }, type: ["RBU", "SRC", "RD", "F", "HQ"], space2: '', link: "#" },
-        { id: "1002", name: 'Koahslung', space: '      ', from: "1000", continent: 1, position: { x: 55.5, y: 53.5 }, type: ['RBU'], space2: '         ', link: "#" },
-
-        { id: "1100", name: 'China', space: '          ', from: "main", continent: 1, position: { x: 46.0, y: 43.0 }, type: ["RBU", "SRC", "RD", "F"], space2: '      ', link: "#" },
-        { id: "1101", name: 'Beijing', space: '        ', from: "1100", continent: 1, position: { x: 51.0, y: 37.0 }, type: ["RBU", "SRC"], space2: '                 ', link: "#" },
-        { id: "1102", name: 'Shanghai', space: '       ', from: "1100", continent: 1, position: { x: 53.0, y: 45.0 }, type: ["RBU", "SRC", "RD", "F"], space2: '      ', link: "#" },
-        { id: "1103", name: 'Guangzhou', space: '      ', from: "1100", continent: 1, position: { x: 49.0, y: 51.0 }, type: ["RBU", "SRC"], space2: '                 ', link: "#" },
-
-        { id: "1200", name: 'Japan', space: '          ', from: "main", continent: 1, position: { x: 67.5, y: 41.0 }, type: ["RBU", "SRC"], space2: '                 ', link: "#" },
-        { id: "1201", name: 'Tokyo', space: '          ', from: "1200", continent: 1, position: { x: 68.5, y: 40.5 }, type: ["RBU", "SRC"], space2: '                 ', link: "#" },
-        { id: "1202", name: 'Osaka', space: '          ', from: "1200", continent: 1, position: { x: 67.5, y: 43.0 }, type: ["RBU", "SRC"], space2: '                 ', link: "#" },
-        { id: "1203", name: 'Kyushu', space: '         ', from: "1200", continent: 1, position: { x: 65.5, y: 44.0 }, type: ["RBU"], space2: '                        ', link: "#" },
-        { id: "1204", name: 'Nagoya', space: '         ', from: "1200", continent: 1, position: { x: 63.5, y: 45.0 }, type: ["RBU"], space2: '                        ', link: "#" },
-
-        { id: "1300", name: 'South Korea', space: '    ', from: "main", continent: 1, position: { x: 59.8, y: 42.5 }, type: ["RBU", "SRC"], space2: '                 ', link: "#" },
-        { id: "1301", name: 'Seoul', space: '          ', from: "1300", continent: 1, position: { x: 59.8, y: 42.7 }, type: ["RBU", "SRC"], space2: '                 ', link: "#" },
-        { id: "1302", name: 'Busan', space: '          ', from: "1300", continent: 1, position: { x: 60.3, y: 44.0 }, type: ["RBU", "SRC"], space2: '                 ', link: "#" },
+        { 'id': "1000", 'name': 'Taiwan', 'space': '         ', 'from': "main", 'continent': 1, 'position': { x: 56.5, y: 52.5 }, 'type': ["RBU", "SRC", "RD", "F", "HQ"], 'space2': '', 'link': "#" },
+        { 'id': "1001", 'name': 'Headquarters', 'space': '   ', 'from': "1000", 'continent': 1, 'position': { x: 58.2, y: 50.5 }, 'type': ["SRC", "RD", "F", "HQ"], 'space2': '       ', 'link': "#" },
+        { 'id': "1002", 'name': 'New Taipei City', 'space': '', 'from': "1000", 'continent': 1, 'position': { x: 57.0, y: 50.5 }, 'type': ["RBU"], 'space2': '                        ', 'link': "#" },
+        { 'id': "1003", 'name': 'Koahslung', 'space': '      ', 'from': "1000", 'continent': 1, 'position': { x: 55.5, y: 53.5 }, 'type': ['RBU'], 'space2': '                        ', 'link': "#" },
 
 
-        { id: "1400", name: 'India', space: '          ', from: "main", continent: 1, position: { x: 31.5, y: 52.5 }, type: ["RBU"], space2: '                        ', link: "#" },
-        { id: "1500", name: 'Theiland', space: '       ', from: "main", continent: 1, position: { x: 43.5, y: 59.5 }, type: ["F"], space2: '                          ', link: "#" },
-        { id: "1600", name: 'Australia', space: '      ', from: "main", continent: 1, position: { x: 66.5, y: 83.5 }, type: ["RBU", "SRC"], space2: '                 ', link: "#" },
-        { id: "1700", name: 'Indonesia', space: '      ', from: "main", continent: 1, position: { x: 52.0, y: 69.5 }, type: ["RBU"], space2: '                        ', link: "#" },
+        { 'id': "1100", 'name': 'China', 'space': '          ', 'from': "main", 'continent': 1, 'position': { x: 46.0, y: 43.0 }, 'type': ["RBU", "SRC", "RD", "F"], 'space2': '      ', 'link': "#" },
+        { 'id': "1101", 'name': 'Beijing', 'space': '        ', 'from': "1100", 'continent': 1, 'position': { x: 51.0, y: 37.0 }, 'type': ["RBU", "SRC"], 'space2': '                 ', 'link': "#" },
+        { 'id': "1102", 'name': 'Shanghai', 'space': '       ', 'from': "1100", 'continent': 1, 'position': { x: 53.0, y: 45.0 }, 'type': ["RBU", "SRC", "RD", "F"], 'space2': '      ', 'link': "#" },
+        { 'id': "1103", 'name': 'Guangzhou', 'space': '      ', 'from': "1100", 'continent': 1, 'position': { x: 49.0, y: 51.0 }, 'type': ["RBU", "SRC"], 'space2': '                 ', 'link': "#" },
+
+        { 'id': "1200", 'name': 'Japan', 'space': '          ', 'from': "main", 'continent': 1, 'position': { x: 67.5, y: 41.0 }, 'type': ["RBU", "SRC"], 'space2': '                 ', 'link': "#" },
+        { 'id': "1201", 'name': 'Tokyo', 'space': '          ', 'from': "1200", 'continent': 1, 'position': { x: 68.5, y: 40.5 }, 'type': ["RBU", "SRC"], 'space2': '                 ', 'link': "#" },
+        { 'id': "1202", 'name': 'Osaka', 'space': '          ', 'from': "1200", 'continent': 1, 'position': { x: 67.5, y: 43.0 }, 'type': ["RBU", "SRC"], 'space2': '                 ', 'link': "#" },
+        { 'id': "1203", 'name': 'Kyushu', 'space': '         ', 'from': "1200", 'continent': 1, 'position': { x: 65.5, y: 44.0 }, 'type': ["RBU"], 'space2': '                        ', 'link': "#" },
+        { 'id': "1204", 'name': 'Nagoya', 'space': '         ', 'from': "1200", 'continent': 1, 'position': { x: 63.5, y: 45.0 }, 'type': ["RBU"], 'space2': '                        ', 'link': "#" },
+
+        { 'id': "1300", 'name': 'South Korea', 'space': '    ', 'from': "main", 'continent': 1, 'position': { x: 59.8, y: 42.5 }, 'type': ["RBU", "SRC"], 'space2': '                 ', 'link': "#" },
+        { 'id': "1301", 'name': 'Seoul', 'space': '          ', 'from': "1300", 'continent': 1, 'position': { x: 59.8, y: 42.7 }, 'type': ["RBU", "SRC"], 'space2': '                 ', 'link': "#" },
+        { 'id': "1302", 'name': 'Busan', 'space': '          ', 'from': "1300", 'continent': 1, 'position': { x: 60.3, y: 44.0 }, 'type': ["RBU", "SRC"], 'space2': '                 ', 'link': "#" },
+
+
+        { 'id': "1400", 'name': 'India', 'space': '          ', 'from': "main", 'continent': 1, 'position': { x: 31.5, y: 52.5 }, 'type': ["RBU"], 'space2': '                        ', 'link': "#" },
+        { 'id': "1500", 'name': 'Theiland', 'space': '       ', 'from': "main", 'continent': 1, 'position': { x: 43.5, y: 59.5 }, 'type': ["F"], 'space2': '                          ', 'link': "#" },
+        { 'id': "1600", 'name': 'Australia', 'space': '      ', 'from': "main", 'continent': 1, 'position': { x: 66.5, y: 83.5 }, 'type': ["RBU", "SRC"], 'space2': '                 ', 'link': "#" },
+        { 'id': "1700", 'name': 'Indonesia', 'space': '      ', 'from': "main", 'continent': 1, 'position': { x: 52.0, y: 69.5 }, 'type': ["RBU"], 'space2': '                        ', 'link': "#" },
 
 
         // Europe / Africa
-        { id: "2100", name: 'point3', space: '         ', from: "main", continent: 2, position: { x: 42.0, y: 22.0 }, type: ["RBU", "SRC", "RD", "F", "HQ"], space2: '', link: "#" },
-        { id: "2200", name: 'point3', space: '         ', from: "main", continent: 2, position: { x: 17.0, y: 42.0 }, type: ['HQ'], space2: '                         ', link: "#" },
+        { 'id': "2100", 'name': 'point3', 'space': '         ', 'from': "main", 'continent': 2, 'position': { x: 42.0, y: 22.0 }, 'type': ["RBU", "SRC", "RD", "F", "HQ"], 'space2': '', 'link': "#" },
+        { 'id': "2200", 'name': 'point3', 'space': '         ', 'from': "main", 'continent': 2, 'position': { x: 17.0, y: 42.0 }, 'type': ['HQ'], 'space2': '                         ', 'link': "#" },
 
     ];
+
+
+
+    // 讀出 json
+    // console.log(JSON.stringify(pointsData))
+
+    // 讀取 json
+    // fetch('point.json')
+    //     .then(response => {
+    //         if (!response.ok) {
+    //             throw new Error('Network response was not ok');
+    //         }
+    //         return response.json(); // 将 JSON 数据解析为 JavaScript 对象
+    //     })
+    //     .then(data => {
+    //         // 在这里使用解析后的数据（JavaScript 对象）
+    //         console.log(data);
+    //         pointsData = data
+    //     })
+    //     .catch(error => {
+    //         console.error('There was a problem with the fetch operation:', error);
+    //     });
+
+
+
+
 
 
 
@@ -366,7 +412,6 @@
         var point = new Point(data.id, data.name, data.from, data.continent, data.position, data.type, data.link);
         pointsMap[data.id] = point;
     }
-
 
 
     smPoints = Object.values(pointsMap).filter(point => point.from !== 'main');

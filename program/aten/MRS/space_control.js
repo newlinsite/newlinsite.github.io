@@ -115,11 +115,9 @@ var timer = setInterval(executeSeconds, videoTimeRefresh * 1000);
 //  -------------------------------------------------------------------
 //  -------------------------------------------------------------------
 
-var VkObject = function (object, sizeRatio = [10, 1.77], position = [50, 50, 50], rotate = [0, 0, 0], deviceType = "VkObject", videoWall = false, borderSize = 1) {
-
+var VkObject = function (object, sizeRatio = [10, 1.77], position = [50, 50, 50], rotate = [0, 0, 0], deviceType = "VkObject", thick = [0, "#000"], videoWall = false, borderSize = 1) {
 
     this.object = object
-
 
     // -----------------
     //
@@ -271,6 +269,26 @@ var VkObject = function (object, sizeRatio = [10, 1.77], position = [50, 50, 50]
                 this.object.appendChild(this.videoWallLineW[i])
             }
         }
+
+
+        // 新增螢幕厚度
+        if (thick[0] < 0) {
+            this.displayThick = []
+            for (let i = 0; i < 4; i++) {
+                this.displayThick[i] = document.createElement("div")
+                this.displayThick[i].style.left = "50%"
+                this.displayThick[i].style.top = "50%"
+                this.displayThick[i].style.width = "100%"
+                this.displayThick[i].style.height = "100%"
+                this.displayThick[i].style.border = this.displayBorder + "px solid " + thick[1]
+                this.displayThick[i].style.borderRadius = this.displayBorder + "px"
+                this.displayThick[i].style.backgroundColor = thick[1]
+                this.displayThick[i].style.boxSizing = "content-box"
+                this.displayThick[i].style.transform = "translate3d(-50%, -50%, " + position[2] * thick[0] * (i + 0.5) + "px)"
+                this.object.appendChild(this.displayThick[i])
+            }
+        }
+
 
         // 新增視訊
         this.input = (source) => {
@@ -502,14 +520,12 @@ var VP = function (source = []) {
 
                 //跑馬燈
                 //時鐘
-
             }
         }
         else {
             this.output.appendChild(this.vpBox[sNum[0]])
         }
     }
-
     // 預設輸出
     this.output.appendChild(this.vpBox[0])
 }
@@ -527,28 +543,32 @@ var VW = function (source = []) {
 
 //上方欄生成
 //側邊主功能欄生成
+// 物件3D
+// 螢幕 厚度
+
+//視訊裁切
 //功能 ACTION
 //     主元素: ipad keypad 右側說明欄
 //     互動元素 中間小物、環境、溫溼度
-//物件3D
+
 
 
 
 //---------------------------------
 //
-//      選單生成
+//      選單生成與控制功能
 //
 //---------------------------------
 
 var flowMenu = $css("flowMenuBoxs")[0]
 
-var featureMenu = function (num) {
+var createMenu = function (num) {
 
     this.flow = document.createElement("div")
     this.flow.classList = "flowMenu"
     this.flow.appendChild(document.createTextNode(featureMenuContent[num].flow))
-    this.featurMenu = document.createElement("div")
-    this.featurMenu.classList = "featureMenu"
+    this.featureMenu = document.createElement("div")
+    this.featureMenu.classList = "featureMenu"
 
     this.feature = []
     this.namebox = []
@@ -576,22 +596,66 @@ var featureMenu = function (num) {
         this.name[i].appendChild(document.createTextNode(featureMenuContent[num].feature[i][1]))
         this.describe[i].appendChild(document.createTextNode(featureMenuContent[num].feature[i][2]))
 
-        //放入featureMunu
-        this.featurMenu.appendChild(this.feature[i])
+        //放入featureMenu
+        this.featureMenu.appendChild(this.feature[i])
         this.feature[i].appendChild(this.namebox[i])
         this.feature[i].appendChild(this.describe[i])
         this.namebox[i].appendChild(this.icon[i])
         this.namebox[i].appendChild(this.name[i])
+
+        //feature 開啟功能
+        this.feature[i].addEventListener("click", () => {
+            featureAllOff()
+            // actionAreaAllOff()
+            this.feature[i].classList.add("active")
+            // action[i]()
+        })
     }
+
+    //flow 開啟功能
+    this.flow.addEventListener("click", () => {
+        flowAllOff()
+        featureAllOff()
+        // actionAreaAllOff()
+        this.featureMenu.classList.add("active")
+        this.flow.classList.add("active")
+        this.feature[0].classList.add("active")
+        // action[0]()
+    })
+
     flowMenu.appendChild(this.flow)
-    container.appendChild(this.featurMenu)
+    container.appendChild(this.featureMenu)
+}
+
+
+//全選單 feature 關閉功能
+var featureAllOff = () => {
+    menu.forEach(menu => {
+        menu.feature.forEach(feature => {
+            feature.classList.remove("active")
+        })
+    })
+}
+//全選單 flow 關閉功能
+var flowAllOff = () => {
+    menu.forEach(menu => {
+        menu.flow.classList.remove("active")
+        menu.featureMenu.classList.remove("active")
+    })
 }
 
 
 
+
+
+
+
+flowMenu.classList.add("active")
+
+
+
+
 var featureMenuContent = []
-
-
 
 featureMenuContent[0] = {
     flow: "Turn on",
@@ -617,7 +681,6 @@ featureMenuContent[0] = {
         // ""
     ]]
 }
-
 
 featureMenuContent[1] = {
     flow: "Round Table",
@@ -650,31 +713,45 @@ featureMenuContent[1] = {
 
 
 
-
-
-
 ///---------------------------------
 //
 //
 //      環境架設
-//
+//      - 基本環境
+//      - 選單入場
+//      - 透視程度
+//      - 創立 spaceWall 並入場
+//      - 
 //
 ///---------------------------------
 
+
+// 基本環境
 const container = $css("container")[0]
-const space = $css("space")[0]
-const camera = $css("camera")[0]
-const spaceW = space.clientWidth
-const spaceH = space.clientHeight
+const space = $css("space")
+const camera = $css("camera")
+const spaceW = space[0].clientWidth
+const spaceH = space[0].clientHeight
 const spaceR = spaceW / spaceH
+
+// 選單入場
+var menu = []
+for (let i = 0; i < featureMenuContent.length; i++) {
+    menu[i] = new createMenu(i)
+}
+
+
+
+// 攝影機透視程度
+var spacePerspectRate = [1, 1, 1, 1, 1]
+for (let i = 0; i < space.length; i++) {
+    space[i].style.perspective = spaceW * spacePerspectRate[i] + "px"
+}
+
 
 //創立 spaceWall 並入場
 //[空間寬度,空間高度,空間深度,空間底部平面]
 var spaceSize = [60, 27.5, 100, -50]
-
-// 定義透視程度
-var spacePerspectRate = 1
-space.style.perspective = spaceW * spacePerspectRate + "px"
 
 
 // 創立牆壁功能
@@ -709,22 +786,14 @@ var createWall = (wallcount = 11) => {
         if (spaceWallAttr[i].main) {
             spaceWall[i].object.classList.add("main")
         }
-        camera.appendChild(spaceWall[i].object)
+        camera[0].appendChild(spaceWall[i].object)
     }
 }
-
 
 
 // 開始創立牆壁
 // createWall()
 createWall(5) //只創立四邊的牆壁
-
-
-// 開始創立選單
-var menu = []
-for (let i = 0; i < featureMenuContent.length; i++) {
-    menu[i] = new featureMenu(i)
-}
 
 
 
@@ -756,11 +825,11 @@ media[1] = new Media("element/video.mp4")
 
 //設定所有 display 屬性
 var displayAttr = [
-    { size: [20, 16 / 9], xyz: [30.0, 50.0, -50], xyzR: [0.00, 45.0, 0.00], videoWall: [0, 0], border: 1, name: "" },
-    { size: [20, 16 / 9], xyz: [50.0, 50.0, -50], xyzR: [0.00, 0.00, 0.00], videoWall: [2, 2], border: 1, name: "" },
-    { size: [20, 16 / 9], xyz: [70.0, 50.0, -50], xyzR: [0.00, -45.0, 0.00], videoWall: [3, 3], border: 1, name: "" },
-    { size: [20, 16 / 9], xyz: [80.0, 50.0, -10], xyzR: [0.00, -90.0, 0.00], videoWall: [0, 0], border: 1, name: "" },
-    { size: [20, 16 / 9], xyz: [80.0, 50.0, -32], xyzR: [0.00, -90.0, 0.00], videoWall: [0, 0], border: 1, name: "" }
+    { size: [20, 16 / 9], xyz: [30.0, 50.0, -50], xyzR: [0.00, 45.0, 0.00], thick: [0.1, "#888"], videoWall: [0, 0], border: 1, name: "" },
+    { size: [20, 16 / 9], xyz: [50.0, 50.0, -50], xyzR: [0.00, 0.00, 0.00], thick: [0.05, "#111"], videoWall: [2, 2], border: 1, name: "" },
+    { size: [20, 16 / 9], xyz: [70.0, 50.0, -50], xyzR: [0.00, -45.0, 0.00], thick: [0.05, "#111"], videoWall: [3, 3], border: 1, name: "" },
+    { size: [20, 16 / 9], xyz: [80.0, 50.0, -10], xyzR: [0.00, -90.0, 0.00], thick: [0.05, "#111"], videoWall: [0, 0], border: 1, name: "" },
+    { size: [20, 16 / 9], xyz: [80.0, 50.0, -32], xyzR: [0.00, -90.0, 0.00], thick: [0.05, "#111"], videoWall: [0, 0], border: 1, name: "" }
 ]
 
 //創立 display 並入場
@@ -771,10 +840,11 @@ for (let i = 0; i < displayAttr.length; i++) {
         displayAttr[i].xyz,
         displayAttr[i].xyzR,
         "display",
+        displayAttr[i].thick,
         displayAttr[i].videoWall,
         displayAttr[i].border)
     display[i].object.classList = "display"
-    camera.appendChild(display[i].object)
+    camera[0].appendChild(display[i].object)
 }
 
 //創立 VP
@@ -862,7 +932,6 @@ function keyboardListener(e) {
                 vp.changeLayout("2x3ssm")
                 display[0].input(vp)
             })
-
     }
     if (keyID === 'KeyS') {
         vp.changeLayout([3, 2])
@@ -875,5 +944,5 @@ window.addEventListener("mousemove", (e) => {
     let x = (e.x - spaceW / 2) / spaceW * 90 / 3
     let y = (e.y - spaceH / 2) / spaceH * 90 / 3 * 0
     // camera.style.transform = "rotate3d(" + -y + ", " + x + ", 0, 10deg)"
-    camera.style.transform = "translateZ(" + spaceW / 2 + "px) rotateX(" + -y + "deg) rotateY(" + x + "deg)"
+    camera[0].style.transform = "translateZ(" + spaceW / 2 + "px) rotateX(" + -y + "deg) rotateY(" + x + "deg)"
 })

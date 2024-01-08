@@ -118,8 +118,8 @@
     }
 
     .pointContainer .mapBox .mapEearth:hover {
-        width: 106%;
-        height: 106%;
+        width: 110%;
+        height: 110%;
     }
 
 
@@ -169,9 +169,9 @@
         top: 136%;
         left: 50%;
         width: 100%;
-        font-size: 20px;
-        color: #aaaaaa;
-        font-weight: 600;
+        font-size: 17px;
+        color: #626262;
+        font-weight: 400;
         text-align: center;
         transform: translate(-50%, -50%);
     }
