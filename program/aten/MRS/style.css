@@ -204,7 +204,9 @@ fliter
 
 .fliterbtn:hover {
     opacity: .8;
+
 }
+
 
 
 /*****************************************
@@ -234,7 +236,7 @@ iPad
     border-radius: 28px;
 }
 
-.ipad.active {
+.ipad.on {
     opacity: 1;
     transform: translate(0, 0);
 }

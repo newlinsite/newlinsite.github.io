@@ -59,7 +59,8 @@ html {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    font-family: Noto Sans, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: Noto Sans, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+        Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     margin: 0;
 
 }
@@ -120,14 +121,15 @@ html {
 }
 
 .spaceWall {
-    background-color: #c4c4c408;
+    /* background-color: #c4c4c408; */
     transition: 1s;
-
+    border: 2px solid #cd157a95;
+    z-index: 10000;
 }
 
 .spaceWall.main {
-    background-color: #c4c4c41a;
-    border: 1px solid #ffffff14;
+    /* background-color: #c4c4c41a; */
+    border: 4px solid #cd157a95;
 }
 
 
@@ -142,6 +144,7 @@ html {
     /* overflow: hidden; */
     transform-style: preserve-3d;
     transition: 3s;
+    background-color: #1d1d1d;
 }
 
 
@@ -153,6 +156,118 @@ html {
 }
 
 
+/*****************************************
+
+			ipad
+
+******************************************/
+
+.ipad {
+    position: absolute;
+    top: auto;
+    bottom: 4%;
+    right: 4%;
+    width: 548px;
+    height: 380px;
+
+    background-image: url(element/ipad_bg.png);
+    background-position: center;
+    background-size: cover;
+
+    transition: 1s;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+    border-radius: 28px;
+
+    opacity: 0;
+    transform: translate(600px, 200px) rotate(15deg);
+}
+
+.ipad.on {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+.ipad .page {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 88%;
+    height: 82%;
+    border-radius: 8px;
+    background-position: center;
+    background-size: cover;
+
+}
+
+.ipad .page .btn {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    background-position: center;
+    background-size: cover;
+}
+
+.ipad .page .btn * {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    transition: 0.2s;
+    text-align: center;
+}
+
+.ipad .page .slider {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    border-radius: 100px;
+    padding: 0.6% 1%;
+}
+
+.ipad .page .slider .real {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    -webkit-appearance: none;
+    outline: none;
+    background: none;
+    margin: 0;
+    padding: 0
+}
+
+.ipad .page .slider .real::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    position: relative;
+    width: 10%;
+    padding-top: 10%;
+    background: rgba(145, 145, 145, 0.417);
+    border-radius: 50%;
+    border: 2px solid #000;
+    box-sizing: content-box;
+    transition: .2s;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.259);
+    cursor: pointer;
+}
+
+.ipad .page .slider .real::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+}
+
+.ipad .page .slider .bar {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 100px;
+}
+
+.ipad .page .slider .bar>* {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 100px;
+}
 
 
 

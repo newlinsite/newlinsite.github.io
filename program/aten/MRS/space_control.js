@@ -16,7 +16,6 @@ var $css = function (name) {
 var $tag = function (name) {
     return document.getElementsByTagName(name)
 }
-
 var test = function (print = "test") {
     console.log(print)
 }
@@ -27,16 +26,16 @@ var test = function (print = "test") {
 // toggle
 // ------------------------
 
-toggle = (tag, do1, do0, autoSwitchTag = true) => {
-    if (tag === 0) {
+toggle = (tagObj, do1, do0, autoSwitchTag = true) => {
+    if (tagObj.tag === 0) {
         do1()
         if (autoSwitchTag) {
-            return 1;
+            tagObj.tag = 1
         }
     } else {
         do0()
         if (autoSwitchTag) {
-            return 0;
+            tagObj.tag = 0
         }
     }
 }
@@ -100,18 +99,26 @@ var timer = setInterval(executeSeconds, videoTimeRefresh * 1000);
 //  -------------------------------------------------------------------
 //  -------------------------------------------------------------------
 //
-//  創立控制單體
+//  控制單體 VkObject
 //  - 包含一些動作以及狀態
 //  - 包含常用 Toggle 功能
-//  
+//
 //  --- 顯示 (透明度)
 //  --- 高度
 //  --- 開關 (自由樣式)
 //  --- 自動樣式與標籤*3
 //  --- 訊源導入
 //  --- 
-
-
+//
+//  媒體訊源 Media
+//  -
+//  -
+//
+//
+//  畫面處理器 VP
+//  - source 前置作業
+//  - 切換 layout 功能
+//
 //  -------------------------------------------------------------------
 //  -------------------------------------------------------------------
 
@@ -135,22 +142,35 @@ var VkObject = function (object, sizeRatio = [10, 1.77], position = [50, 50, 50]
 
 
     // 位置與旋轉
+    this.x = position[0]
+    this.y = position[1]
+    this.z = position[2] * spaceW * 0.01
+    this.xR = rotate[0]
+    this.yR = rotate[1]
+    this.zR = rotate[2]
+    this.move = ([x, y, z] = [0, 0, 0], [xR, yR, zR] = [0, 0, 0]) => {
+        this.x = this.x + x
+        this.y = this.y + y
+        this.z = this.z + z
+        this.xR = this.xR + xR
+        this.yR = this.yR + yR
+        this.zR = this.zR + zR
 
-    this.object.style.left = position[0] + "%"
-    this.object.style.top = position[1] + "%"
-    this.z = position[2] * spaceW / 100
-    this.object.style.transform = "translate3d(-50%, -50%, " + this.z +
-        "px) rotateX(" + rotate[0] +
-        "deg) rotateY(" + rotate[1] +
-        "deg) rotateZ(" + rotate[2] + "deg)"
+        this.object.style.left = this.x + "%"
+        this.object.style.top = this.y + "%"
+        this.object.style.transform = "translate3d(-50%, -50%, " + this.z +
+            "px) rotateX(" + this.xR +
+            "deg) rotateY(" + this.yR +
+            "deg) rotateZ(" + this.zR + "deg)"
+    }
+    this.move()
 
 
 
     // defaut value
+    // defaut Tag
+    this.tag = [{ tag: 0 }, { tag: 0 }, { tag: 0 }]
 
-    this.tag01 = 0
-    this.tag02 = 0
-    this.tag03 = 0
 
 
 
@@ -163,33 +183,33 @@ var VkObject = function (object, sizeRatio = [10, 1.77], position = [50, 50, 50]
 
 
     // Appear, Opacity
-    this.appearTag = 1
+    this.appearTag = { tag: 0 }
     this.appear = () => {
         this.object.style.opacity = 1
-        this.appearTag = 1
+        this.appearTag.tag = 1
     }
     this.disappear = () => {
         this.object.style.opacity = 0
-        this.appearTag = 0
+        this.appearTag.tag = 0
     }
     this.appearToggle = () => {
         toggle(this.appearTag, this.appear, this.disappear)
     }
     this.customOpacity = (opacity) => {
         this.object.style.opacity = opacity
-        this.appearTag = opacity
+        this.appearTag.tag = opacity
     }
 
 
     // hidden
-    this.hiddenTag = 0
+    this.hiddenTag = { tag: 0 }
     this.hidden = () => {
         this.object.style.display = "none"
-        this.hiddenTag = 1
+        this.hiddenTag.tag = 1
     }
     this.disHidden = () => {
         this.object.style.display = ""
-        this.hiddenTag = 0
+        this.hiddenTag.tag = 0
     }
     this.hiddenToggle = () => {
         toggle(this.hiddenTag, this.hidden, this.disHidden)
@@ -198,14 +218,14 @@ var VkObject = function (object, sizeRatio = [10, 1.77], position = [50, 50, 50]
 
 
     // On and Off
-    this.onTag = 0
+    this.onTag = { tag: 0 }
     this.on = (style = "on") => {
         this.object.classList.add(style)
-        this.onTag = 1
+        this.onTag.tag = 1
     }
     this.off = (style = "on") => {
         this.object.classList.remove(style)
-        this.onTag = 0
+        this.onTag.tag = 0
     }
     this.onToggle = () => {
         toggle(this.onTag, this.on, this.off)
@@ -318,8 +338,6 @@ var VkObject = function (object, sizeRatio = [10, 1.77], position = [50, 50, 50]
 
 
 
-
-
 var Media = function (link) {
     this.deviceType = "media"
     if (link.includes(".png") || link.includes(".jpg") || link.includes(".gif")) {
@@ -336,8 +354,6 @@ var Media = function (link) {
     this.output.autoplay = true;
     this.output.loop = true;
 }
-
-
 
 
 
@@ -384,9 +400,8 @@ var VP = function (source = []) {
     //
     //------------------------------------------------------
 
-
     // 切換 layout 功能
-    this.changeLayout = (viewLayout = "single", sNum = [0, 1, 2, 3, 4, 5, 6], vwCell = []) => {
+    this.changeLayout = (outputDisplay, viewLayout = "single", sNum = [0, 1, 2, 3, 4, 5, 6], vwCell = []) => {
 
         // 清空 div 元素中的所有子元素
         while (this.output.firstChild) {
@@ -503,41 +518,47 @@ var VP = function (source = []) {
             for (let i = vwCell.length + 1; i > 0; i--) {
                 this.output.appendChild(this.vpBox[sNum[i]])
             }
+            try {
+                for (let i = 1; i < vwCell.length + 1; i++) {
+                    this.vpBox[sNum[i]].style.width = vwCell[i - 1].w + "%"
+                    this.vpBox[sNum[i]].style.height = "auto"
+                    this.vpBox[sNum[i]].style.paddingTop = vwCell[i - 1].h + "%"
+                    this.vpBox[sNum[i]].style.left = vwCell[i - 1].x + "%"
+                    this.vpBox[sNum[i]].style.top = vwCell[i - 1].y + "%"
 
-            for (let i = 1; i < vwCell.length + 1; i++) {
-                this.vpBox[sNum[i]].style.width = vwCell[i - 1].w + "%"
-                this.vpBox[sNum[i]].style.height = "auto"
-                this.vpBox[sNum[i]].style.paddingTop = vwCell[i - 1].h + "%"
-                this.vpBox[sNum[i]].style.left = vwCell[i - 1].x + "%"
-                this.vpBox[sNum[i]].style.top = vwCell[i - 1].y + "%"
+                    //裁切功能晚點做...
+                    // this.input[sNum[i]].style.width = vwCell[i - 1].cropTo[0] * 10 + "%"
+                    // this.input[sNum[i]].style.top = 0
+                    // this.input[sNum[i]].style.left = 0
+                    // this.input[sNum[i]].style.hight = "auto"
+                    // this.input[sNum[i]].style.transform = "translate(0, 0)"
 
-                //裁切功能晚點做...
-                // this.input[sNum[i]].style.width = vwCell[i - 1].cropTo[0] * 10 + "%"
-                // this.input[sNum[i]].style.top = 0
-                // this.input[sNum[i]].style.left = 0
-                // this.input[sNum[i]].style.hight = "auto"
-                // this.input[sNum[i]].style.transform = "translate(0, 0)"
-
-                //跑馬燈
-                //時鐘
+                    //跑馬燈
+                    //時鐘
+                }
+            } catch {
+                console.log("VW 參數設置錯誤")
             }
+
         }
         else {
             this.output.appendChild(this.vpBox[sNum[0]])
         }
+
+        //-----------------
+        //  輸出到哪一個display
+        //-----------------
+        try {
+            outputDisplay.input(this)
+        } catch {
+            console.log(outputDisplay, "VP 無可輸出螢幕")
+        }
     }
-    // 預設輸出
+
+    // 此VP預設輸出
     this.output.appendChild(this.vpBox[0])
 }
 
-
-
-var VW = function (source = []) {
-    // 跑馬燈 文字 位置 顏色 跑速度 Marquee
-    // 背景
-    // Source
-    // 各 Source 大小 位置 裁切
-}
 
 
 
@@ -550,6 +571,291 @@ var VW = function (source = []) {
 //功能 ACTION
 //     主元素: ipad keypad 右側說明欄
 //     互動元素 中間小物、環境、溫溼度
+
+
+
+
+
+//  -------------------------------------------------------------------
+//  -------------------------------------------------------------------
+//
+//  頁面控制 UI iPad
+//  - 
+//  - 
+//  
+//  頁面控制 UI KeyPad
+//  - 
+//  - 
+// 
+//  -------------------------------------------------------------------
+//  -------------------------------------------------------------------
+
+var controller = function (type, size, elementAtr) {
+
+    if (type == "ipad") {
+        this.ipad = new VkObject(document.createElement("div"), [], [], [], type)
+        container.appendChild(this.ipad.object)
+        this.ipad.object.classList = "ipad"
+        this.width = this.ipad.object.clientWidth
+
+        this.on = () => { this.ipad.on() }
+        this.off = () => { this.ipad.off() }
+        this.onToggle = () => { this.ipad.onToggle() }
+
+        //加入頁面
+        this.page = []
+        for (let i = 0; i < elementAtr.length; i++) {
+            this.page[i] = document.createElement("div")
+            this.page[i].classList = "page"
+            this.page[i].style.backgroundColor = elementAtr[i].bgColor
+            this.page[i].style.backgroundImage = "url(" + elementAtr[i].bgScr + ")"
+
+
+            //加入按鈕
+            this.page[i].btn = []
+            for (let j = 0; j < elementAtr[i].btns.length; j++) {
+                this.page[i].btn[j] = document.createElement("div")
+                this.page[i].btn[j].classList = "btn"
+                this.page[i].btn[j].style.left = elementAtr[i].btns[j].xy[0] + "%"
+                this.page[i].btn[j].style.top = elementAtr[i].btns[j].xy[1] + "%"
+                this.page[i].btn[j].style.width = elementAtr[i].btns[j].size[0] + "%"
+                this.page[i].btn[j].style.paddingTop = elementAtr[i].btns[j].size[1] + "%"
+                this.page[i].btn[j].style.borderRadius = elementAtr[i].btns[j].radius * this.width / 500 + "px"
+
+                this.page[i].btn[j].text = document.createElement("div")
+                this.page[i].btn[j].text.textContent = elementAtr[i].btns[j].text
+                this.page[i].btn[j].text.style.color = elementAtr[i].btns[j].textColor
+                this.page[i].btn[j].text.style.fontSize = elementAtr[i].btns[j].textSize * this.width / 500 + "px"
+
+                //狀態
+                this.page[i].btn[j].goState = []
+                this.page[i].btn[j].goState[0] = () => {
+                    this.page[i].btn[j].style.backgroundColor = elementAtr[i].btns[j].bgColor[1]
+                    this.page[i].btn[j].style.backgroundImage = elementAtr[i].btns[j].bgScr[1]
+                    this.page[i].btn[j].style.border = elementAtr[i].btns[j].border * this.width / 500 + "px solid" + elementAtr[i].btns[j].borderColor[1]
+                }
+
+                this.page[i].btn[j].goState[1] = () => {
+                    this.page[i].btn[j].style.backgroundColor = elementAtr[i].btns[j].bgColor[0]
+                    this.page[i].btn[j].style.backgroundImage = elementAtr[i].btns[j].bgScr[0]
+                    this.page[i].btn[j].style.border = elementAtr[i].btns[j].border * this.width / 500 + "px solid" + elementAtr[i].btns[j].borderColor[0]
+                }
+
+                this.page[i].btn[j].goState[1]()
+
+                //按鈕功能，切換狀態功能, toggle 或 press
+                if (elementAtr[i].btns[j].act != "none") {
+                    this.page[i].btn[j].style.cursor = "pointer"
+                    if (elementAtr[i].btns[j].toggle) {
+                        this.page[i].btn[j].stateTag = { tag: 1 }
+                        this.page[i].btn[j].addEventListener("click", () => {
+                            toggle(this.page[i].btn[j].stateTag,
+                                () => {
+                                    this.page[i].btn[j].goState[1]()
+                                    try { elementAtr[i].btns[j].act[0]() } catch { }
+                                }, () => {
+                                    this.page[i].btn[j].goState[0]()
+                                    try { elementAtr[i].btns[j].act[1]() } catch { }
+                                })
+                        })
+                    } else {
+                        this.page[i].btn[j].addEventListener("click", () => {
+                            this.page[i].btn[j].goState[0]()
+                            try { elementAtr[i].btns[j].act() } catch { }
+                            setTimeout(this.page[i].btn[j].goState[1], 200)
+                        })
+                    }
+                }
+
+                //換字功能
+                this.page[i].btn[j].changeText = (text = elementAtr[i].btns[j].text, color = elementAtr[i].btns[j].textColor) => {
+                    this.page[i].btn[j].text.textContent = text
+                    this.page[i].btn[j].text.color = color
+                }
+
+                // 按鈕物件入場
+                this.page[i].btn[j].appendChild(this.page[i].btn[j].text)
+                this.page[i].appendChild(this.page[i].btn[j])
+            }
+            //加入sliders
+            this.page[i].slider = []
+            for (let j = 0; j < elementAtr[i].sliders.length; j++) {
+
+                this.page[i].slider[j] = document.createElement("div")
+                this.page[i].slider[j].classList = "slider"
+
+                this.page[i].slider[j].slider = document.createElement("input")
+                this.page[i].slider[j].slider.type = "range"
+                this.page[i].slider[j].slider.classList = "real"
+                this.page[i].slider[j].slider.value = elementAtr[i].sliders[j].value
+
+
+                this.page[i].slider[j].style.left = elementAtr[i].sliders[j].xy[0] + "%"
+                this.page[i].slider[j].style.top = elementAtr[i].sliders[j].xy[1] + "%"
+                this.page[i].slider[j].style.width = elementAtr[i].sliders[j].size + "%"
+                this.page[i].slider[j].style.height = "4%"
+                this.page[i].slider[j].style.backgroundColor = elementAtr[i].sliders[j].bgColor + "66"
+
+                this.page[i].slider[j].bar = document.createElement("div")
+                this.page[i].slider[j].bar.classList = "bar"
+
+                this.page[i].slider[j].activeBar = document.createElement("div")
+                this.page[i].slider[j].activeBar.classList = "activeBar"
+                this.page[i].slider[j].activeBar.style.backgroundColor = elementAtr[i].sliders[j].activeColor
+                this.page[i].slider[j].activeBar.style.width = this.page[i].slider[j].slider.value + "%"
+
+                this.page[i].slider[j].navBar = document.createElement("div")
+                this.page[i].slider[j].navBar.classList = "navBar"
+                this.page[i].slider[j].navBar.style.backgroundColor = elementAtr[i].sliders[j].bgColor
+
+                if (elementAtr[i].sliders[j].dir == "row") {
+                    this.page[i].slider[j].style.transform = "translate(-50%, -50%) rotate(-90deg)"
+                }
+
+                // Slider 物件入場
+                this.page[i].slider[j].appendChild(this.page[i].slider[j].bar)
+                this.page[i].slider[j].bar.appendChild(this.page[i].slider[j].navBar)
+                this.page[i].slider[j].bar.appendChild(this.page[i].slider[j].activeBar)
+                this.page[i].slider[j].appendChild(this.page[i].slider[j].slider)
+                this.page[i].appendChild(this.page[i].slider[j])
+
+
+                // 物件功能
+                this.page[i].slider[j].slider.addEventListener("change", () => { this.page[i].slider[j].valueChange() })
+
+                this.page[i].slider[j].valueChange = () => {
+                    this.page[i].slider[j].activeBar.style.width = this.page[i].slider[j].slider.value + "%"
+                    try {
+                        this.page[i].slider[j].e = this.page[i].slider[j].slider.value
+                        elementAtr[i].sliders[j].act(this.page[i].slider[j].e)
+                    } catch { }
+                }
+            }
+        }
+
+
+        //換頁面功能
+        this.ipad.object.appendChild(document.createElement("span"))
+        this.goTo = (num) => {
+            this.ipad.object.replaceChild(this.page[num], this.ipad.object.firstChild);
+        }
+        this.goTo(0)
+    }
+
+}
+
+
+
+var ipadElementAtr = []
+ipadElementAtr[0] = [
+    {
+        pageID: 101,
+        bgColor: "#595959",
+        bgScr: "image/test_bg.png",
+        btns: [
+            {
+                xy: [30, 50], size: [20, 20], radius: 4, border: 3,
+                bgColor: ["#000", "#333"], bgScr: ["", ""], borderColor: ["#333", "#111"],
+                text: "PIP Mode", textColor: "#fff", textSize: 20,
+                act: [() => { vp.changeLayout(display[1], "pip") }, () => { vp.changeLayout(display[1], "pop") }], toggle: true
+            }, {
+                xy: [70, 50], size: [20, 20], radius: 4, border: 3,
+                bgColor: ["#000", "#333555"], bgScr: ["", ""], borderColor: ["#333", "#111"],
+                text: "Mixer", textColor: "#fff", textSize: 20,
+                act: () => { ipad.goTo(1) }, toggle: false
+            }, {
+                xy: [85, 90], size: [16, 8], radius: 6, border: 0,
+                bgColor: ["#00000055", ""], bgScr: ["", ""], borderColor: ["#888", "#111"],
+                text: "50", textColor: "#aaa", textSize: 15,
+                act: "none", toggle: false
+            }
+        ],
+        sliders: [
+            { xy: [50, 90], size: 50, dir: "", value: 50, bgColor: "#000000", activeColor: "#fff", act: (e) => { ipad.page[0].btn[2].changeText(e) } }
+        ]
+    }, {
+        pageID: 102,
+        bgColor: "#595959",
+        bgScr: "",
+        btns: [
+            {
+                xy: [50, 10], size: [20, 10], radius: 6, border: 0,
+                bgColor: ["#00000055", ""], bgScr: ["", ""], borderColor: ["#fff", ""],
+                text: "Mixer", textColor: "#aaa", textSize: 16,
+                act: "none", toggle: true
+            }, {
+                xy: [10, 10], size: [20, 10], radius: 6, border: 0,
+                bgColor: ["", ""], bgScr: ["", ""], borderColor: ["", ""],
+                text: "back", textColor: "#aaa", textSize: 14,
+                act: () => { ipad.goTo(0) }, toggle: false
+            }
+        ],
+        sliders: [
+            { xy: [20, 55], size: 40, dir: "row", value: 30, bgColor: "#000000", activeColor: "#fff", act: "" },
+            { xy: [30, 55], size: 40, dir: "row", value: 50, bgColor: "#000000", activeColor: "#fff", act: "" },
+            { xy: [40, 55], size: 40, dir: "row", value: 55, bgColor: "#000000", activeColor: "#fff", act: "" },
+            { xy: [50, 55], size: 40, dir: "row", value: 70, bgColor: "#000000", activeColor: "#fff", act: "" },
+            { xy: [60, 55], size: 40, dir: "row", value: 42, bgColor: "#000000", activeColor: "#fff", act: "" },
+            { xy: [70, 55], size: 40, dir: "row", value: 34, bgColor: "#000000", activeColor: "#fff", act: "" },
+            { xy: [80, 55], size: 40, dir: "row", value: 20, bgColor: "#000000", activeColor: "#fff", act: "" }
+        ]
+    }
+]
+
+
+
+//環境參數
+// 溫度
+// 濕度
+// CO2
+// 時間
+
+
+// 本體樣式
+//     位置
+//     大小
+//     旋轉
+//     導入頁面
+
+// 頁面
+//     背景圖
+
+
+// 按鈕
+//     位置 大小
+//     action
+//     Press or active
+
+// 數字/文字
+//     位置
+//     大小??
+//     內容
+//     顏色
+
+// Slider
+//     位置 大小
+//     左右互動
+
+// 圖片
+//     位置 大小
+//     狀態
+
+
+
+// 聲音
+//     播放 暫停
+//     音量 調整 Bar
+//     音量顯示 當下頻譜顯示
+
+// 特殊影片互動
+
+
+
+
+
+
+
+
 
 
 
@@ -604,16 +910,18 @@ var createMenu = function (num) {
         this.namebox[i].appendChild(this.name[i])
 
         //feature 開啟功能
-        this.feature[i].addEventListener("click", () => {
+        this.feature[i].open = () => {
             featureAllOff()
             // actionAreaAllOff()
             this.feature[i].classList.add("active")
             // action[i]()
-        })
+        }
+        this.feature[i].addEventListener("click", this.feature[i].open)
     }
 
+
     //flow 開啟功能
-    this.flow.addEventListener("click", () => {
+    this.flow.open = () => {
         flowAllOff()
         featureAllOff()
         // actionAreaAllOff()
@@ -621,8 +929,11 @@ var createMenu = function (num) {
         this.flow.classList.add("active")
         this.feature[0].classList.add("active")
         // action[0]()
-    })
+    }
+    this.flow.addEventListener("click", this.flow.open)
 
+
+    //flow 進場
     flowMenu.appendChild(this.flow)
     container.appendChild(this.featureMenu)
 }
@@ -645,18 +956,8 @@ var flowAllOff = () => {
 }
 
 
-
-
-
-
-
-flowMenu.classList.add("active")
-
-
-
-
+//選單內容
 var featureMenuContent = []
-
 featureMenuContent[0] = {
     flow: "Turn on",
     feature: [[
@@ -681,7 +982,6 @@ featureMenuContent[0] = {
         // ""
     ]]
 }
-
 featureMenuContent[1] = {
     flow: "Round Table",
     feature: [[
@@ -718,10 +1018,11 @@ featureMenuContent[1] = {
 //
 //      環境架設
 //      - 基本環境
-//      - 選單入場
+//      
 //      - 透視程度
 //      - 創立 spaceWall 並入場
-//      - 
+//      - 主背景入場
+//      - 選單入場
 //
 ///---------------------------------
 
@@ -734,13 +1035,22 @@ const spaceW = space[0].clientWidth
 const spaceH = space[0].clientHeight
 const spaceR = spaceW / spaceH
 
-// 選單入場
-var menu = []
-for (let i = 0; i < featureMenuContent.length; i++) {
-    menu[i] = new createMenu(i)
+
+// 主背景入場
+var spaceBgObj = $css("spaceBg")
+var spaceBg = []
+for (let i = 0; i < spaceBgObj.length; i++) {
+    spaceBg[i] = new VkObject(spaceBgObj[i],
+        [100, 50],
+        [50, 50, 0],
+        [0, 0, 0],
+        "spaceBg")
 }
 
 
+
+// 攝影機照射方向
+camera[0].style.transform = "translateZ(" + spaceW / 2 + "px) rotateX(0deg) rotateY(-0.5deg)"
 
 // 攝影機透視程度
 var spacePerspectRate = [1, 1, 1, 1, 1]
@@ -748,30 +1058,27 @@ for (let i = 0; i < space.length; i++) {
     space[i].style.perspective = spaceW * spacePerspectRate[i] + "px"
 }
 
+//[空間寬度,空間高度,空間深度,空間底部平面,底牆面中心位置x,底牆面中心位置y]
+var spaceSize = [90, 14.3, 100, -50, 50.5, 54]
 
-//創立 spaceWall 並入場
-//[空間寬度,空間高度,空間深度,空間底部平面]
-var spaceSize = [60, 27.5, 100, -50]
-
-
-// 創立牆壁功能
-var createWall = (wallcount = 11) => {
+// 功能:創立牆壁
+var createWall = (wallcount = 11, intoCamera = camera[0]) => {
     var spaceWallAttr = [
-        { size: [spaceSize[0], spaceSize[0] / spaceSize[1]], xyz: [50, 50, spaceSize[3]], xyzR: [0, 0, 0], main: true },
+        { size: [spaceSize[0], spaceSize[0] / spaceSize[1]], xyz: [spaceSize[4], spaceSize[5], spaceSize[3]], xyzR: [0, 0, 0], main: true },
         //垂直牆面
-        { size: [spaceSize[2], spaceSize[2] / spaceSize[1]], xyz: [50 - spaceSize[0] / 2, 50, 0], xyzR: [0, 90, 0], main: true },
-        { size: [spaceSize[2], spaceSize[2] / spaceSize[1]], xyz: [50 + spaceSize[0] / 2, 50, 0], xyzR: [0, 90, 0], main: true },
+        { size: [spaceSize[2], spaceSize[2] / spaceSize[1]], xyz: [spaceSize[4] - spaceSize[0] / 2, spaceSize[5], 0], xyzR: [0, 90, 0], main: true },
+        { size: [spaceSize[2], spaceSize[2] / spaceSize[1]], xyz: [spaceSize[4] + spaceSize[0] / 2, spaceSize[5], 0], xyzR: [0, 90, 0], main: true },
         //平行牆面
-        { size: [spaceSize[0], spaceSize[0] / spaceSize[2]], xyz: [50, 50 - spaceSize[1] * spaceR / 2, 0], xyzR: [90, 0, 0], main: true },
-        { size: [spaceSize[0], spaceSize[0] / spaceSize[2]], xyz: [50, 50 + spaceSize[1] * spaceR / 2, 0], xyzR: [90, 0, 0], main: true },
+        { size: [spaceSize[0], spaceSize[0] / spaceSize[2]], xyz: [spaceSize[4], spaceSize[5] - spaceSize[1] * spaceR / 2, 0], xyzR: [90, 0, 0], main: true },
+        { size: [spaceSize[0], spaceSize[0] / spaceSize[2]], xyz: [spaceSize[4], spaceSize[5] + spaceSize[1] * spaceR / 2, 0], xyzR: [90, 0, 0], main: true },
         //垂直中間牆面
-        { size: [spaceSize[2], spaceSize[2] / spaceSize[1]], xyz: [50 - spaceSize[0] / 4, 50, 0], xyzR: [0, 90, 0], main: false },
-        { size: [spaceSize[2], spaceSize[2] / spaceSize[1]], xyz: [50, 50, 0], xyzR: [0, 90, 0], main: false },
-        { size: [spaceSize[2], spaceSize[2] / spaceSize[1]], xyz: [50 + spaceSize[0] / 4, 50, 0], xyzR: [0, 90, 0], main: false },
+        { size: [spaceSize[2], spaceSize[2] / spaceSize[1]], xyz: [spaceSize[4] - spaceSize[0] / 4, spaceSize[5], 0], xyzR: [0, 90, 0], main: false },
+        { size: [spaceSize[2], spaceSize[2] / spaceSize[1]], xyz: [spaceSize[4], spaceSize[5], 0], xyzR: [0, 90, 0], main: false },
+        { size: [spaceSize[2], spaceSize[2] / spaceSize[1]], xyz: [spaceSize[4] + spaceSize[0] / 4, spaceSize[5], 0], xyzR: [0, 90, 0], main: false },
         //平行中間牆面
-        { size: [spaceSize[0], spaceSize[0] / spaceSize[2]], xyz: [50, 50 - spaceSize[1] * spaceR / 4, 0], xyzR: [90, 0, 0], main: false },
-        { size: [spaceSize[0], spaceSize[0] / spaceSize[2]], xyz: [50, 50, 0], xyzR: [90, 0, 0], main: false },
-        { size: [spaceSize[0], spaceSize[0] / spaceSize[2]], xyz: [50, 50 + spaceSize[1] * spaceR / 4, 0], xyzR: [90, 0, 0], main: false },
+        { size: [spaceSize[0], spaceSize[0] / spaceSize[2]], xyz: [spaceSize[4], spaceSize[5] - spaceSize[1] * spaceR / 4, 0], xyzR: [90, 0, 0], main: false },
+        { size: [spaceSize[0], spaceSize[0] / spaceSize[2]], xyz: [spaceSize[4], spaceSize[5], 0], xyzR: [90, 0, 0], main: false },
+        { size: [spaceSize[0], spaceSize[0] / spaceSize[2]], xyz: [spaceSize[4], spaceSize[5] + spaceSize[1] * spaceR / 4, 0], xyzR: [90, 0, 0], main: false },
         //自訂牆面
     ]
 
@@ -786,17 +1093,17 @@ var createWall = (wallcount = 11) => {
         if (spaceWallAttr[i].main) {
             spaceWall[i].object.classList.add("main")
         }
-        camera[0].appendChild(spaceWall[i].object)
+        intoCamera.appendChild(spaceWall[i].object)
     }
 }
 
 
-// 開始創立牆壁
-// createWall()
-createWall(5) //只創立四邊的牆壁
 
-
-
+// 選單入場
+var menu = []
+for (let i = 0; i < featureMenuContent.length; i++) {
+    menu[i] = new createMenu(i)
+}
 
 
 ///---------------------------------
@@ -807,15 +1114,24 @@ createWall(5) //只創立四邊的牆壁
 //
 ///---------------------------------
 
+//-----------------------------
+//  controller 
+//-----------------------------
+
+
+var ipad = new controller("ipad", [36, 1.45], ipadElementAtr[0])
+
+
+
 
 //-----------------------------
 // Media
 //-----------------------------
 
-
 var media = []
 media[0] = new Media("element/01.png")
 media[1] = new Media("element/video.mp4")
+media[2] = new Media("image/i03.png")
 
 
 
@@ -825,11 +1141,11 @@ media[1] = new Media("element/video.mp4")
 
 //設定所有 display 屬性
 var displayAttr = [
-    { size: [20, 16 / 9], xyz: [30.0, 50.0, -50], xyzR: [0.00, 45.0, 0.00], thick: [0.1, "#888"], videoWall: [0, 0], border: 1, name: "" },
-    { size: [20, 16 / 9], xyz: [50.0, 50.0, -50], xyzR: [0.00, 0.00, 0.00], thick: [0.05, "#111"], videoWall: [2, 2], border: 1, name: "" },
-    { size: [20, 16 / 9], xyz: [70.0, 50.0, -50], xyzR: [0.00, -45.0, 0.00], thick: [0.05, "#111"], videoWall: [3, 3], border: 1, name: "" },
-    { size: [20, 16 / 9], xyz: [80.0, 50.0, -10], xyzR: [0.00, -90.0, 0.00], thick: [0.05, "#111"], videoWall: [0, 0], border: 1, name: "" },
-    { size: [20, 16 / 9], xyz: [80.0, 50.0, -32], xyzR: [0.00, -90.0, 0.00], thick: [0.05, "#111"], videoWall: [0, 0], border: 1, name: "" }
+    { size: [72, 16 / 3], xyz: [50.0, 54.0, -50], xyzR: [0.00, 0.00, 0.00], thick: [0.05, "#111"], videoWall: [2, 2], border: 0, name: "" },
+    { size: [24, 16 / 9], xyz: [26.1, 54.0, -50], xyzR: [0.00, 0.00, 0.00], thick: [0.1, "#888"], videoWall: [0, 0], border: 0, name: "" },
+    { size: [24, 16 / 9], xyz: [50.0, 54.0, -50], xyzR: [0.00, 0.00, 0.00], thick: [0.05, "#111"], videoWall: [2, 2], border: 0, name: "" },
+    { size: [24, 16 / 9], xyz: [73.9, 54.0, -50], xyzR: [0.00, 0.00, 0.00], thick: [0.05, "#111"], videoWall: [3, 3], border: 0, name: "" },
+    { size: [20, 16 / 9], xyz: [90.0, 52.0, -32], xyzR: [0.00, -90.0, 0.00], thick: [0.05, "#111"], videoWall: [0, 0], border: 2, name: "" }
 ]
 
 //創立 display 並入場
@@ -859,7 +1175,15 @@ var vp = new VP([
     media[0]])
 
 
-
+var vw = new VP([
+    media[2],
+    media[1],
+    media[1],
+    // media[0],
+    // media[1],
+    //-------------------
+    // media[0],
+    media[0]])
 
 
 
@@ -881,19 +1205,30 @@ var vp = new VP([
 ///---------------------------------
 
 
-vp.changeLayout("VW", [0, 1, 2, 3, 4, 5], [
+
+
+// 牆壁創立
+// createWall(11, camera[0])
+// createWall(5, camera[0]) //只創立四邊的牆壁
+
+// 選單開關
+flowMenu.classList.add("active")
+
+
+vp.changeLayout(display[1], "VW", [0, 1, 2, 3, 4, 5], [
     { w: 18, h: 18, x: 10, y: 10, cropTo: [12] },
     { w: 32, h: 18, x: 50, y: 20, cropTo: [10] }
 ])
 
-display[0].input(vp)
-display[1].input(media[1])
-display[2].input(media[0])
+display[0].input(vw)
+display[1].input(vp)
+display[2].input(media[1])
 display[3].input(media[0])
+display[4].input(media[1])
 
+display[0].hidden()
 
-
-
+ipad.on()
 
 
 
@@ -911,38 +1246,54 @@ window.addEventListener("keydown", keyboardListener, false);
 function keyboardListener(e) {
     var keyID = e.code;
     if (keyID === 'KeyQ') {
-
-        display[1].tag01 = toggle(display[1].tag01,
-            () => { display[1].input(media[0]) },
-            () => { display[1].input(media[1]) })
-
+        toggle(display[1].tag[1],
+            () => { display[2].input(media[0]) },
+            () => { display[2].input(media[1]) })
     }
     if (keyID === 'KeyA') {
         display[1].hiddenToggle()
+        display[2].hiddenToggle()
+        display[3].hiddenToggle()
     }
-
+    if (keyID === 'KeyZ') {
+        display[0].hiddenToggle()
+    }
     if (keyID === 'KeyW') {
-
-        display[0].tag02 = toggle(display[0].tag02,
-            () => {
-                vp.changeLayout("2x3mss")
-                display[0].input(vp)
-            },
-            () => {
-                vp.changeLayout("2x3ssm")
-                display[0].input(vp)
-            })
+        toggle(display[1].tag[0],
+            () => { vp.changeLayout(display[1], "pip") },
+            () => { vp.changeLayout(display[1], "pop") })
     }
     if (keyID === 'KeyS') {
-        vp.changeLayout([3, 2])
-        display[0].input(vp)
+        toggle(display[2].tag[0],
+            () => { display[1].input(media[0]) },
+            () => { vp.changeLayout(display[1], [2, 2]) })
+    }
+
+    if (keyID === 'KeyE') {
+        toggle(display[2].tag[1],
+            () => {
+                display[1].move([-6, 0, 0], [0, 0, 0])
+                display[3].move([6, 0, 0], [0, 0, 0])
+            },
+            () => {
+                display[1].move([6, 0, 0], [0, 0, 0])
+                display[3].move([-6, 0, 0], [0, 0, 0])
+            })
+    }
+    if (keyID === 'KeyD') {
+        ipad.onToggle()
+    }
+    if (keyID === 'KeyC') {
+        toggle(display[0].tag[2],
+            () => { ipad.goTo(1) },
+            () => { ipad.goTo(0) })
     }
 }
 
 
-window.addEventListener("mousemove", (e) => {
-    let x = (e.x - spaceW / 2) / spaceW * 90 / 3
-    let y = (e.y - spaceH / 2) / spaceH * 90 / 3 * 0
-    // camera.style.transform = "rotate3d(" + -y + ", " + x + ", 0, 10deg)"
-    camera[0].style.transform = "translateZ(" + spaceW / 2 + "px) rotateX(" + -y + "deg) rotateY(" + x + "deg)"
-})
+// window.addEventListener("mousemove", (e) => {
+//     let x = (e.x - spaceW / 2) / spaceW * 90 / 3
+//     let y = (e.y - spaceH / 2) / spaceH * 90 / 3 * 0
+//     // camera.style.transform = "rotate3d(" + -y + ", " + x + ", 0, 10deg)"
+//     camera[0].style.transform = "translateZ(" + spaceW / 2 + "px) rotateX(" + -y + "deg) rotateY(" + x + "deg)"
+// })
