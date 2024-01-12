@@ -7,19 +7,6 @@
 //  -------------------------------------------------------------------
 //  -------------------------------------------------------------------
 
-var $id = function (name) {
-    return document.getElementById(name)
-}
-var $css = function (name) {
-    return document.getElementsByClassName(name)
-}
-var $tag = function (name) {
-    return document.getElementsByTagName(name)
-}
-var test = function (print = "test") {
-    console.log(print)
-}
-
 
 
 // ------------------------
@@ -337,6 +324,12 @@ var VkObject = function (object, sizeRatio = [10, 1.77], position = [50, 50, 50]
 }
 
 
+//--------------------------------------------------------------------------
+//
+// Media
+//
+//--------------------------------------------------------------------------
+
 
 var Media = function (link) {
     this.deviceType = "media"
@@ -355,6 +348,13 @@ var Media = function (link) {
     this.output.loop = true;
 }
 
+
+
+//--------------------------------------------------------------------------
+//
+// VP
+//
+//--------------------------------------------------------------------------
 
 
 var VP = function (source = []) {
@@ -562,18 +562,6 @@ var VP = function (source = []) {
 
 
 
-//上方欄生成
-//側邊主功能欄生成
-// 物件3D
-// 螢幕 厚度
-
-//視訊裁切
-//功能 ACTION
-//     主元素: ipad keypad 右側說明欄
-//     互動元素 中間小物、環境、溫溼度
-
-
-
 
 
 //  -------------------------------------------------------------------
@@ -610,7 +598,6 @@ var controller = function (type, size, elementAtr) {
             this.page[i].style.backgroundColor = elementAtr[i].bgColor
             this.page[i].style.backgroundImage = "url(" + elementAtr[i].bgScr + ")"
 
-
             //加入按鈕
             this.page[i].btn = []
             for (let j = 0; j < elementAtr[i].btns.length; j++) {
@@ -646,6 +633,7 @@ var controller = function (type, size, elementAtr) {
                 //按鈕功能，切換狀態功能, toggle 或 press
                 if (elementAtr[i].btns[j].act != "none") {
                     this.page[i].btn[j].style.cursor = "pointer"
+                    this.page[i].btn[j].classList.add("hover")
                     if (elementAtr[i].btns[j].toggle) {
                         this.page[i].btn[j].stateTag = { tag: 1 }
                         this.page[i].btn[j].addEventListener("click", () => {
@@ -746,87 +734,17 @@ var controller = function (type, size, elementAtr) {
 
 
 
-var ipadElementAtr = []
-ipadElementAtr[0] = [
-    {
-        pageID: 101,
-        bgColor: "#595959",
-        bgScr: "image/test_bg.png",
-        btns: [
-            {
-                xy: [25, 45], size: [24.5, 17], radius: 4, border: 3,
-                bgColor: ["#000", "#333"], bgScr: ["", ""], borderColor: ["#333", "#111"],
-                text: "PIP Mode", textColor: "#fff", textSize: 20,
-                act: [() => { vp.changeLayout(display[1], "pip") }, () => { vp.changeLayout(display[1], "pop") }], toggle: true
-            }, {
-                xy: [50, 45], size: [24.5, 17], radius: 4, border: 3,
-                bgColor: ["#000", "#333"], bgScr: ["", ""], borderColor: ["#333", "#111"],
-                text: "source", textColor: "#fff", textSize: 20,
-                act: [() => { display[2].input(media[1]) }, () => { display[2].input(media[0]) }], toggle: true
-            }, {
-                xy: [75, 45], size: [24.5, 17], radius: 4, border: 3,
-                bgColor: ["#000", "#333"], bgScr: ["", ""], borderColor: ["#333", "#111"],
-                text: "PIP", textColor: "#fff", textSize: 20,
-                act: [() => { vp.changeLayout(display[3], "4x") }, () => { vp.changeLayout(display[3], [3, 3]) }], toggle: true
-            }, {
-                xy: [84, 15], size: [16, 8], radius: 4, border: 1,
-                bgColor: ["#00000055", "#333555"], bgScr: ["", ""], borderColor: ["#333", "#111"],
-                text: "Mixer", textColor: "#fff", textSize: 15,
-                act: () => { ipad.goTo(1) }, toggle: false
-            }, {
-                xy: [85, 90], size: [16, 8], radius: 6, border: 0,
-                bgColor: ["#00000055", ""], bgScr: ["", ""], borderColor: ["#888", "#111"],
-                text: "50", textColor: "#aaa", textSize: 15,
-                act: "none", toggle: false
-            }, {
-                xy: [50, 70], size: [40, 8], radius: 10, border: 0,
-                bgColor: ["#00000055", "#00BBFF77"], bgScr: ["", ""], borderColor: ["#333", "#111"],
-                text: "< >", textColor: "#fff", textSize: 15,
-                act: [() => {
-                    display[1].move([6, 0, 0], [0, 0, 0])
-                    display[3].move([-6, 0, 0], [0, 0, 0])
-                }, () => {
-                    display[1].move([-6, 0, 0], [0, 0, 0])
-                    display[3].move([6, 0, 0], [0, 0, 0])
-                }], toggle: true
-            }, {
-                xy: [94, 45], size: [10, 14], radius: 4, border: 3,
-                bgColor: ["#000", "#333"], bgScr: ["", ""], borderColor: ["#333", "#111"],
-                text: "Proj.", textColor: "#fff", textSize: 14,
-                act: [() => { display[4].input(media[1]) }, () => { display[4].input(media[0]) }], toggle: true
-            }
-        ],
-        sliders: [
-            { xy: [50, 90], size: 50, dir: "", value: 50, bgColor: "#000000", activeColor: "#fff", act: (e) => { ipad.page[0].btn[4].changeText(e) } }
-        ]
-    }, {
-        pageID: 102,
-        bgColor: "#595959",
-        bgScr: "",
-        btns: [
-            {
-                xy: [50, 10], size: [20, 10], radius: 6, border: 0,
-                bgColor: ["#00000055", ""], bgScr: ["", ""], borderColor: ["#fff", ""],
-                text: "Mixer", textColor: "#aaa", textSize: 16,
-                act: "none", toggle: true
-            }, {
-                xy: [10, 10], size: [20, 10], radius: 6, border: 0,
-                bgColor: ["", ""], bgScr: ["", ""], borderColor: ["", ""],
-                text: "back", textColor: "#aaa", textSize: 14,
-                act: () => { ipad.goTo(0) }, toggle: false
-            }
-        ],
-        sliders: [
-            { xy: [20, 55], size: 40, dir: "row", value: 30, bgColor: "#000000", activeColor: "#fff", act: "" },
-            { xy: [30, 55], size: 40, dir: "row", value: 50, bgColor: "#000000", activeColor: "#fff", act: "" },
-            { xy: [40, 55], size: 40, dir: "row", value: 55, bgColor: "#000000", activeColor: "#fff", act: "" },
-            { xy: [50, 55], size: 40, dir: "row", value: 70, bgColor: "#000000", activeColor: "#fff", act: "" },
-            { xy: [60, 55], size: 40, dir: "row", value: 42, bgColor: "#000000", activeColor: "#fff", act: "" },
-            { xy: [70, 55], size: 40, dir: "row", value: 34, bgColor: "#000000", activeColor: "#fff", act: "" },
-            { xy: [80, 55], size: 40, dir: "row", value: 20, bgColor: "#000000", activeColor: "#fff", act: "" }
-        ]
-    }
-]
+
+//上方欄生成
+//側邊主功能欄生成
+// 物件3D
+// 螢幕 厚度
+
+//視訊裁切
+//功能 ACTION
+//     主元素: ipad keypad 右側說明欄
+//     互動元素 中間小物、環境、溫溼度
+
 
 
 
@@ -874,11 +792,6 @@ ipadElementAtr[0] = [
 //     音量顯示 當下頻譜顯示
 
 // 特殊影片互動
-
-
-
-
-
 
 
 
@@ -982,132 +895,81 @@ var flowAllOff = () => {
 }
 
 
-//選單內容
-var featureMenuContent = []
-featureMenuContent[0] = {
-    flow: "Turn on",
-    feature: [[
-        "element/icon_share.png",
-        "Local Content Sharing",
-        "All attendees are allow to quickly share content with their personal devices."
-    ], [
-        "element/icon_share.png",
-        "Enviromental Control",
-        "By detecting meeting environment factors, environmental equipment can be automatically turned on or off to allow the meeting to proceed smoothly."
-    ], [
-        "element/icon_controls.png",
-        "",
-        ""
-    ], [
-        // "element/icon_.png",
-        // "",
-        // ""
-    ], [
-        // "element/icon_.png",
-        // "",
-        // ""
-    ]]
-}
-featureMenuContent[1] = {
-    flow: "Round Table",
-    feature: [[
-        "element/icon_share.png",
-        "Local Content Sharing",
-        "All attendees are allow to quickly share content with their personal devices."
-    ], [
-        "element/icon_share.png",
-        "Enviromental Control",
-        "By detecting meeting environment factors, environmental equipment can be automatically turned on or off to allow the meeting to proceed smoothly."
-    ], [
-        "element/icon_controls.png",
-        "",
-        ""
-    ], [
-        // "element/icon_.png",
-        // "",
-        // ""
-    ], [
-        // "element/icon_.png",
-        // "",
-        // ""
-    ]]
-}
-
-
-
-
-
-
 
 ///---------------------------------
 //
 //
-//      環境架設
+//      - 環境生成功能
 //      - 基本環境
 //      
-//      - 透視程度
-//      - 創立 spaceWall 並入場
-//      - 主背景入場
-//      - 選單入場
+//     
 //
 ///---------------------------------
 
 
 // 基本環境
 const container = $css("container")[0]
-const space = $css("space")
-const camera = $css("camera")
-const spaceW = space[0].clientWidth
-const spaceH = space[0].clientHeight
-const spaceR = spaceW / spaceH
+const spaceW = container.clientWidth
+const spaceR = 0.5
+const spaceH = spaceW / spaceR
 
+// 功能:創立空間與相機
+var space = function (num, spaceAtr) {
+    this.space = document.createElement("div")
+    this.space.classList = "space"
+    this.camera = document.createElement("div")
+    this.camera.classList = "camera"
 
-// 主背景入場
-var spaceBgObj = $css("spaceBg")
-var spaceBg = []
-for (let i = 0; i < spaceBgObj.length; i++) {
-    spaceBg[i] = new VkObject(spaceBgObj[i],
-        [100, 50],
-        [50, 50, 0],
-        [0, 0, 0],
-        "spaceBg")
+    // 攝影機照射方向
+    this.camera.style.transform = "translate3d(" + spaceAtr[num].cameraLen[0] + "px ," + spaceAtr[num].cameraLen[1] + "px," + spaceW / 2 + "px) rotateX(" + spaceAtr[num].cameraLen[2] + "deg) rotateY(" + spaceAtr[num].cameraLen[3] + "deg)"
+    // 攝影機透視程度
+    this.spacePerspectRate = spaceAtr[num].spacePerspectRate
+    this.space.style.perspective = spaceW * this.spacePerspectRate + "px"
+
+    // 設定背景
+    this.spaceBgObj = []
+    this.spaceBg = []
+    for (let i = 0; i < spaceAtr[num].spaceBg.length; i++) {
+        if (spaceAtr[num].spaceBg[i].includes("jpg") || spaceAtr[num].spaceBg[i].includes("png")) {
+            this.spaceBgObj[i] = document.createElement("img")
+        } else if (spaceAtr[num].spaceBg[i].includes("mp4")) {
+            this.spaceBgObj[i] = document.createElement("video")
+        }
+        this.spaceBgObj[i].src = spaceAtr[num].spaceBg[i]
+        this.spaceBg[i] = new VkObject(this.spaceBgObj[i],
+            [100, 50],
+            [50, 50, 0],
+            [0, 0, 0],
+            "spaceBg")
+        this.space.appendChild(this.spaceBg[i].object)
+    }
+
+    this.space.appendChild(this.camera)
+    container.appendChild(this.space)
+    createWall(spaceAtr[num].wallCount, this.camera, spaceAtr[num])
 }
 
-
-
-// 攝影機照射方向
-camera[0].style.transform = "translateZ(" + spaceW / 2 + "px) rotateX(0deg) rotateY(-0.5deg)"
-
-// 攝影機透視程度
-var spacePerspectRate = [1, 1, 1, 1, 1]
-for (let i = 0; i < space.length; i++) {
-    space[i].style.perspective = spaceW * spacePerspectRate[i] + "px"
-}
-
-//[空間寬度,空間高度,空間深度,空間底部平面,底牆面中心位置x,底牆面中心位置y]
-var spaceSize = [90, 14.3, 100, -50, 50.5, 54]
 
 // 功能:創立牆壁
-var createWall = (wallcount = 11, intoCamera = camera[0]) => {
+var createWall = (wallcount = 11, intoCamera, atr) => {
     var spaceWallAttr = [
-        { size: [spaceSize[0], spaceSize[0] / spaceSize[1]], xyz: [spaceSize[4], spaceSize[5], spaceSize[3]], xyzR: [0, 0, 0], main: true },
+        { size: [atr.sW, atr.sW / atr.sH], xyz: [atr.sDWallx, atr.sDWally, atr.sDWallD], xyzR: [0, 0, 0], main: true },
         //垂直牆面
-        { size: [spaceSize[2], spaceSize[2] / spaceSize[1]], xyz: [spaceSize[4] - spaceSize[0] / 2, spaceSize[5], 0], xyzR: [0, 90, 0], main: true },
-        { size: [spaceSize[2], spaceSize[2] / spaceSize[1]], xyz: [spaceSize[4] + spaceSize[0] / 2, spaceSize[5], 0], xyzR: [0, 90, 0], main: true },
+        { size: [atr.sD, atr.sD / atr.sH], xyz: [atr.sDWallx - atr.sW / 2, atr.sDWally, 0], xyzR: [0, 90, 0], main: true },
+        { size: [atr.sD, atr.sD / atr.sH], xyz: [atr.sDWallx + atr.sW / 2, atr.sDWally, 0], xyzR: [0, 90, 0], main: true },
         //平行牆面
-        { size: [spaceSize[0], spaceSize[0] / spaceSize[2]], xyz: [spaceSize[4], spaceSize[5] - spaceSize[1] * spaceR / 2, 0], xyzR: [90, 0, 0], main: true },
-        { size: [spaceSize[0], spaceSize[0] / spaceSize[2]], xyz: [spaceSize[4], spaceSize[5] + spaceSize[1] * spaceR / 2, 0], xyzR: [90, 0, 0], main: true },
+        { size: [atr.sW, atr.sW / atr.sD], xyz: [atr.sDWallx, atr.sDWally - atr.sH * spaceR / 2, 0], xyzR: [90, 0, 0], main: true },
+        { size: [atr.sW, atr.sW / atr.sD], xyz: [atr.sDWallx, atr.sDWally + atr.sH * spaceR / 2, 0], xyzR: [90, 0, 0], main: true },
         //垂直中間牆面
-        { size: [spaceSize[2], spaceSize[2] / spaceSize[1]], xyz: [spaceSize[4] - spaceSize[0] / 4, spaceSize[5], 0], xyzR: [0, 90, 0], main: false },
-        { size: [spaceSize[2], spaceSize[2] / spaceSize[1]], xyz: [spaceSize[4], spaceSize[5], 0], xyzR: [0, 90, 0], main: false },
-        { size: [spaceSize[2], spaceSize[2] / spaceSize[1]], xyz: [spaceSize[4] + spaceSize[0] / 4, spaceSize[5], 0], xyzR: [0, 90, 0], main: false },
+        { size: [atr.sD, atr.sD / atr.sH], xyz: [atr.sDWallx - atr.sW / 4, atr.sDWally, 0], xyzR: [0, 90, 0], main: false },
+        { size: [atr.sD, atr.sD / atr.sH], xyz: [atr.sDWallx, atr.sDWally, 0], xyzR: [0, 90, 0], main: false },
+        { size: [atr.sD, atr.sD / atr.sH], xyz: [atr.sDWallx + atr.sW / 4, atr.sDWally, 0], xyzR: [0, 90, 0], main: false },
         //平行中間牆面
-        { size: [spaceSize[0], spaceSize[0] / spaceSize[2]], xyz: [spaceSize[4], spaceSize[5] - spaceSize[1] * spaceR / 4, 0], xyzR: [90, 0, 0], main: false },
-        { size: [spaceSize[0], spaceSize[0] / spaceSize[2]], xyz: [spaceSize[4], spaceSize[5], 0], xyzR: [90, 0, 0], main: false },
-        { size: [spaceSize[0], spaceSize[0] / spaceSize[2]], xyz: [spaceSize[4], spaceSize[5] + spaceSize[1] * spaceR / 4, 0], xyzR: [90, 0, 0], main: false },
+        { size: [atr.sW, atr.sW / atr.sD], xyz: [atr.sDWallx, atr.sDWally - atr.sH * spaceR / 4, 0], xyzR: [90, 0, 0], main: false },
+        { size: [atr.sW, atr.sW / atr.sD], xyz: [atr.sDWallx, atr.sDWally, 0], xyzR: [90, 0, 0], main: false },
+        { size: [atr.sW, atr.sW / atr.sD], xyz: [atr.sDWallx, atr.sDWally + atr.sH * spaceR / 4, 0], xyzR: [90, 0, 0], main: false },
         //自訂牆面
     ]
-
     var spaceWall = []
     for (let i = 0; i < wallcount; i++) {
         spaceWall[i] = new VkObject(document.createElement("div"),
@@ -1125,28 +987,41 @@ var createWall = (wallcount = 11, intoCamera = camera[0]) => {
 
 
 
-// 選單入場
-var menu = []
-for (let i = 0; i < featureMenuContent.length; i++) {
-    menu[i] = new createMenu(i)
-}
 
 
 ///---------------------------------
 //
-//
+//      環境架設
 //      設備架設
 //
 //
 ///---------------------------------
 
 //-----------------------------
+//  空間創立
+//-----------------------------
+
+var spaces = []
+for (let i = 0; i < spaceAtr.length; i++) {
+    spaces[i] = new space(i, spaceAtr)
+}
+
+//-----------------------------
+//  選單創立
+//-----------------------------
+
+var menu = []
+for (let i = 0; i < featureMenuContent.length; i++) {
+    menu[i] = new createMenu(i)
+}
+
+
+
+//-----------------------------
 //  controller 
 //-----------------------------
 
-
 var ipad = new controller("ipad", [36, 1.45], ipadElementAtr[0])
-
 
 
 
@@ -1158,6 +1033,41 @@ var media = []
 media[0] = new Media("element/01.png")
 media[1] = new Media("element/video.mp4")
 media[2] = new Media("image/i03.png")
+
+
+
+
+// 載入BGM聲音
+var bgm = []
+bgmSource = [
+    { voice: "bgm.mp3", drawColor: "#ffffff88", w: 50, h: 50, x: 50, y: 50 },
+    { voice: "../../../music/audio_guitar.wav", drawColor: "#ffffff88", w: 50, h: 50, x: 50, y: 50 },
+    { voice: "../../../music/audio_drum.wav", drawColor: "#ffffff88", w: 50, h: 50, x: 50, y: 50 },
+    { voice: "../../../music/people.aac", drawColor: "#ffffff88", w: 50, h: 50, x: 50, y: 50 },
+    { voice: "../../../music/AI_Voice006en.mp3", drawColor: "#ffffff88", w: 50, h: 50, x: 50, y: 50 },
+]
+
+for (let i = 0; i < bgmSource.length; i++) {
+    bgm[i] = new music(bgmSource[i].voice)
+    bgm[i].drawColor = "#ffffff88"
+    bgm[i].inputCanvas(container, bgmSource.w, bgmSource.h, bgmSource.x, bgmSource.y)
+}
+
+
+var audioUrlList = [
+    "music/001.aac",
+    "music/003.aac",
+    "music/002.aac",
+    "music/004.aac",
+    "music/ui_01.mp3",
+    "music/ui_02.mp3",
+    "music/ui_04.wav",
+    "music/out_logos---classic.aac"
+];
+
+var sound = new sounds(audioUrlList)
+
+
 
 
 
@@ -1186,7 +1096,7 @@ for (let i = 0; i < displayAttr.length; i++) {
         displayAttr[i].videoWall,
         displayAttr[i].border)
     display[i].object.classList = "display"
-    camera[0].appendChild(display[i].object)
+    spaces[0].camera.appendChild(display[i].object)
 }
 
 //創立 VP
@@ -1234,7 +1144,7 @@ var vw = new VP([
 
 
 // 牆壁創立
-// createWall(11, camera[0])
+// createWall(11, space3.camera)
 // createWall(5, camera[0]) //只創立四邊的牆壁
 
 // 選單開關
@@ -1255,12 +1165,15 @@ display[4].input(media[1])
 display[0].hidden()
 
 // ipad.on()
-
+// ipad.goTo(2)
 
 var ipadBtn = $css("ipadBtn")[0]
 ipadBtn.addEventListener("click", () => {
     ipad.onToggle()
+    // ipadBtn.style.zIndex = -1000
 })
+// ipadBtn.style.zIndex = -1000
+
 
 ///---------------------------------
 //
@@ -1317,6 +1230,31 @@ function keyboardListener(e) {
             () => { ipad.goTo(1) },
             () => { ipad.goTo(0) })
     }
+
+
+
+    if (keyID === 'KeyL') {
+        bgm[0].play()
+        // sound.play(0)
+    }
+
+    if (keyID === 'KeyO') {
+        toggle(bgm[0].muteTag, () => { bgm[0].fadeMute() }, () => { bgm[0].fadeUnmute() })
+    }
+    if (keyID === 'KeyI') {
+        toggle(bgm[0].tag[0], () => { bgm[0].fadeLowPass(100) }, () => { bgm[0].fadeLowPass(22050) })
+    }
+    if (keyID === 'KeyP') {
+
+        bgm[0].draw()
+    }
+
+    if (keyID === 'KeyK') {
+        musicAllStop(0.1)
+    }
+    ctx.resume().then(() => {
+        console.log('AudioContext 已啟動');
+    });
 }
 
 
@@ -1324,5 +1262,5 @@ function keyboardListener(e) {
 //     let x = (e.x - spaceW / 2) / spaceW * 90 / 3
 //     let y = (e.y - spaceH / 2) / spaceH * 90 / 3 * 0
 //     // camera.style.transform = "rotate3d(" + -y + ", " + x + ", 0, 10deg)"
-//     camera[0].style.transform = "translateZ(" + spaceW / 2 + "px) rotateX(" + -y + "deg) rotateY(" + x + "deg)"
+//     space3.camera.style.transform = "translateZ(" + spaceW / 2 + "px) rotateX(" + -y + "deg) rotateY(" + x + "deg)"
 // })

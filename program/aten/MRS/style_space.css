@@ -128,7 +128,7 @@ html {
 }
 
 .spaceWall.main {
-    /* background-color: #c4c4c41a; */
+    /* background-color: #5e5e5eaf; */
     border: 4px solid #cd157a95;
 }
 
@@ -158,7 +158,7 @@ html {
 
 /*****************************************
 
-			ipad
+			ipad zI=8000
 
 ******************************************/
 
@@ -169,14 +169,13 @@ html {
     right: 4%;
     width: 548px;
     height: 380px;
-
     background-image: url(element/ipad_bg.png);
     background-position: center;
     background-size: cover;
-
     transition: 1s;
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
     border-radius: 28px;
+    z-index: 8000;
 
     opacity: 0;
     transform: translate(600px, 200px) rotate(15deg);
@@ -197,7 +196,6 @@ html {
     border-radius: 8px;
     background-position: center;
     background-size: cover;
-
 }
 
 .ipad .page .btn {
@@ -205,7 +203,15 @@ html {
     transform: translate(-50%, -50%);
     background-position: center;
     background-size: cover;
+
+    transition: 0.3s;
 }
+
+.ipad .page .btn.hover:hover {
+    opacity: 0.85;
+}
+
+
 
 .ipad .page .btn * {
     position: absolute;
