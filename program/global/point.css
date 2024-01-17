@@ -71,6 +71,7 @@
 
 
 
+
     /* ********************************************************************
 
     
@@ -80,6 +81,7 @@
     ******************************************************************** */
 
 
+
     .pointContainer .mapBox {
         width: 24%;
         padding-top: 24%;
@@ -87,6 +89,8 @@
         top: 45%;
         transform: translate(-50%, -50%);
     }
+
+
 
     .pointContainer .mapBox::before {
         /* 陰影 */
@@ -136,6 +140,9 @@
             transform: translate(-50%, -50%) translateY(0);
         }
     }
+
+
+
 
 
     .pointContainer .mapBox.map_america {
@@ -458,6 +465,139 @@
 
 
 
+
+    @media (max-width: 768px) {
+
+        /* countryList */
+
+        .pointContainer .mapBox .countryList {
+            left: 125%;
+            top: -110%;
+            height: 300%;
+            width: 80%;
+        }
+
+
+        /* Name tag */
+        .pointContainer .mapBox .countryList .nameTag {
+            position: absolute;
+            top: 0;
+            right: 100%;
+        }
+
+        .pointContainer .mapBox .countryList .nameTag .tagCircle {
+            width: 10px;
+            height: 10px;
+        }
+
+
+        .pointContainer .mapBox .countryList .mainName {
+            font-size: 15px;
+            margin: 2px 0 1px 0;
+        }
+
+
+        .pointContainer .mapBox .countryList .mainName a {
+            margin: 6px 18px 6px 8px;
+        }
+
+        /* Name Dropdown */
+
+        .pointContainer .mapBox .countryList .nameDropdown {
+            /* transition: 1s;
+            overflow: hidden; */
+        }
+
+        .pointContainer .mapBox .countryList .smName {
+            /* font-size: 13px; */
+            margin: 2px;
+        }
+
+        .pointContainer .mapBox .countryList .smName a {
+            color: #262940;
+            display: inline-block;
+            margin: 2px 6px 2px 6px;
+        }
+
+
+
+        /* ... */
+        .pointContainer {
+            padding-top: 170%;
+        }
+
+        .pointContainer .leber {
+            right: auto;
+            left: 8%;
+            width: 36%;
+        }
+
+
+        .pointContainer .mapBox {
+            width: 45%;
+            padding-top: 45%;
+        }
+
+
+        .pointContainer .mapBox.map_asia {
+            top: 20%;
+            left: 70%;
+        }
+
+        .pointContainer .mapBox.map_america {
+            top: 48%;
+            left: 30%;
+        }
+
+        .pointContainer .mapBox.map_eu {
+            top: 75%;
+            left: 70%;
+        }
+
+        .pointContainer .mapBox::before {
+            bottom: -15%;
+        }
+
+        .pointContainer .earthName {
+            top: 120%;
+            width: 100%;
+            font-size: 14px;
+        }
+
+
+        /* 開啟時，地球樣式 */
+        .pointContainer.map-open .mapBox {
+            width: 10%;
+            padding-top: 10%;
+            opacity: 0.8;
+            z-index: 5;
+        }
+
+        .pointContainer.map-open .mapBox.center {
+            top: 40%;
+            width: 55%;
+            padding-top: 55%;
+            left: 30%;
+            opacity: 1;
+        }
+
+        .pointContainer.map-open .mapBox.center .earthName {
+            font-size: 18px;
+            top: 130%;
+        }
+
+
+        .pointContainer.map-open .mapBox.left {
+            top: 80%;
+            left: 30%;
+        }
+
+        .pointContainer.map-open .mapBox.right {
+            top: 80%;
+            left: 70%;
+        }
+
+    }
 
 
 
