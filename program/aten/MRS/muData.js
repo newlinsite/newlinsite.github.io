@@ -8,20 +8,68 @@
 // ---------------------------------
 
 spaceAtr = [{
-    spaceBg: ["image/background.jpg"],
-    spacePerspectRate: 1,
-    cameraLen: [0, 0, 0, -0.5],
-    sW: 90,
-    sH: 14.3,
+    spaceBg: ["image/background.jpg", "image/background_chair.jpg"],
+    spacePerspectRate: 0.8,
+    cameraLen: [0, 0, -2, 0],
+    sW: 75,
+    sH: 11,
     sD: 100,
     sDWallD: -50,
-    sDWallx: 50.5,
-    sDWally: 54,
+    sDWallx: 50,
+    sDWally: 48,
     wallCount: 0
 }]
 
 
 
+
+//-----------------------------
+// Media
+//-----------------------------
+
+var mediaList = [
+    "element/01.png",
+    "element/video.mp4",
+    "image/i03.png"
+]
+
+bgmList = [
+    { voice: "bgm.mp3", drawColor: "#ffffff88", w: 50, h: 50, x: 50, y: 50 },
+    { voice: "../../../music/audio_guitar.wav", drawColor: "#ffffff88", w: 50, h: 50, x: 50, y: 50 },
+    { voice: "../../../music/audio_drum.wav", drawColor: "#ffffff88", w: 50, h: 50, x: 50, y: 50 },
+    { voice: "../../../music/people.aac", drawColor: "#ffffff88", w: 50, h: 50, x: 50, y: 50 },
+    { voice: "../../../music/AI_Voice006en.mp3", drawColor: "#ffffff88", w: 50, h: 50, x: 50, y: 50 },
+]
+
+var audioList = [
+    "music/001.aac",
+    "music/003.aac",
+    "music/002.aac",
+    "music/004.aac",
+    "music/ui_01.mp3",
+    "music/ui_02.mp3",
+    "music/ui_04.wav",
+    "music/out_logos---classic.aac"
+];
+
+
+
+//-----------------------------
+// Display
+//-----------------------------
+
+//設定所有 display 屬性
+var displayAttr = [
+    //LED*3
+    { size: [19.5, 16 / 9], xyz: [30.5, 45.8, -50], xyzR: [0.00, 0.000, 0.00], thick: [0.00, "#888"], videoWall: [0, 0], border: 0, addClass: "led", name: "" },
+    { size: [19.5, 16 / 9], xyz: [50.0, 45.8, -50], xyzR: [0.00, 0.000, 0.00], thick: [0.00, "#111"], videoWall: [2, 2], border: 0, addClass: "led", name: "" },
+    { size: [19.5, 16 / 9], xyz: [69.5, 45.8, -50], xyzR: [0.00, 0.000, 0.00], thick: [0.00, "#111"], videoWall: [3, 3], border: 0, addClass: "led", name: "" },
+    //LED 16:3
+    { size: [58.5, 16 / 3], xyz: [50.0, 45.8, -50], xyzR: [0.00, 0.000, 0.00], thick: [0.00, "#111"], videoWall: [2, 2], border: 0, addClass: "", name: "" },
+    //Display
+    { size: [15.0, 16 / 9], xyz: [86.0, 45.0, -40], xyzR: [0.00, -90.0, 0.00], thick: [0.03, "#222"], videoWall: [0, 0], border: 1, addClass: "", name: "" },
+    { size: [18.0, 16 / 9], xyz: [-10.0, 58.0, -80], xyzR: [20.00, 45.0, -20.00], thick: [0.06, "#222"], videoWall: [2, 2], border: 1, addClass: "shadow", name: "" }
+]
 
 
 
@@ -43,17 +91,17 @@ ipadElementAtr[0] = [
                 xy: [25, 45], size: [24.5, 17], radius: 4, border: 3,
                 bgColor: ["#000", "#333"], bgScr: ["", ""], borderColor: ["#333", "#111"],
                 text: "PIP Mode", textColor: "#fff", textSize: 20,
-                act: [() => { vp.changeLayout(display[1], "pip") }, () => { vp.changeLayout(display[1], "pop") }], toggle: true
+                act: [() => { vp.changeLayout(display[0], "pip") }, () => { vp.changeLayout(display[0], "pop") }], toggle: true
             }, {
                 xy: [50, 45], size: [24.5, 17], radius: 4, border: 3,
                 bgColor: ["#000", "#333"], bgScr: ["", ""], borderColor: ["#333", "#111"],
                 text: "source", textColor: "#fff", textSize: 20,
-                act: [() => { display[2].input(media[1]) }, () => { display[2].input(media[0]) }], toggle: true
+                act: [() => { display[1].input(media[1]) }, () => { display[1].input(media[0]) }], toggle: true
             }, {
                 xy: [75, 45], size: [24.5, 17], radius: 4, border: 3,
                 bgColor: ["#000", "#333"], bgScr: ["", ""], borderColor: ["#333", "#111"],
                 text: "PIP", textColor: "#fff", textSize: 20,
-                act: [() => { vp.changeLayout(display[3], "4x") }, () => { vp.changeLayout(display[3], [3, 3]) }], toggle: true
+                act: [() => { vp.changeLayout(display[2], "4x") }, () => { vp.changeLayout(display[2], [3, 3]) }], toggle: true
             }, {
                 xy: [90, 8], size: [16, 6], radius: 4, border: 1,
                 bgColor: ["#00000055", "#333555"], bgScr: ["", ""], borderColor: ["#333", "#111"],
@@ -69,11 +117,11 @@ ipadElementAtr[0] = [
                 bgColor: ["#00000055", "#00BBFF77"], bgScr: ["", ""], borderColor: ["#333", "#111"],
                 text: "< >", textColor: "#fff", textSize: 15,
                 act: [() => {
-                    display[1].move([6, 0, 0], [0, 0, 0])
-                    display[3].move([-6, 0, 0], [0, 0, 0])
+                    display[0].move([6, 0, 0], [0, 0, 0])
+                    display[2].move([-6, 0, 0], [0, 0, 0])
                 }, () => {
-                    display[1].move([-6, 0, 0], [0, 0, 0])
-                    display[3].move([6, 0, 0], [0, 0, 0])
+                    display[0].move([-6, 0, 0], [0, 0, 0])
+                    display[2].move([6, 0, 0], [0, 0, 0])
                 }], toggle: true
             }, {
                 xy: [94, 45], size: [10, 14], radius: 4, border: 3,
@@ -194,7 +242,7 @@ ipadElementAtr[0] = [
             }, {
                 xy: [17, 85], size: [18, 7], radius: 6, border: 0,
                 bgColor: ["#00000033", "#00225555"], bgScr: ["", ""], borderColor: ["#fff", ""],
-                text: "Line in", textColor: "#aaa", textSize: 12,
+                text: "MIC in", textColor: "#aaa", textSize: 12,
                 act: [() => { bgm[4].stop() }, () => { bgm[4].play() }], toggle: true
             }, {
                 xy: [10, 10], size: [20, 10], radius: 6, border: 0,

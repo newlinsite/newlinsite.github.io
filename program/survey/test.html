@@ -5,74 +5,146 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>客戶需求填寫</title>
+    <title>TEST</title>
     <!-- <link rel="stylesheet" type="text/css" href="index.css"> -->
     <script src="https://code.jquery.com/jquery-3.3.1.js"
         integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="survey.css">
 </head>
 
 <body>
     <div class="container">
-        <h1>111</h1>
-        <div>
-            <span>您的大名：</span><input id="nameValue" type="text">
+        <div class="container">
+            <h1>Input</h1>
+            <div class="question"></div>
+            <div class="btnBox">
+                <div class="btn ABox">Next</div>
+                <div class="btn ABox">Last</div>
+            </div>
+
+
+
         </div>
-        <div>
-            <span>您的電話：</span><input id="phoneValue" type="text">
-        </div>
-        <div>
-            <span>您的需求：</span><input id="demandValue" type="text">
-        </div>
-        <button>送出</button>
+
     </div>
-    <!-- <script type="text/javascript" src="index.js"></script> -->
+
 </body>
 <script src='//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js'></script>
 <script>
-    let h1 = document.querySelector('h1');
+
+    var getTime = () => {
+        timestamp = new Date().getTime();
+        date = new Date(timestamp);
+        time = date.getDate() + '/' + (date.getMonth() + 1) + '/' +
+            date.getFullYear() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' +
+            date.getSeconds();
+    }
 
 
-    var timestamp = new Date().getTime();
-    var date = new Date(timestamp);
-    var time = 'Date: ' + date.getDate() + '/' + (date.getMonth() + 1) + '/' +
-        date.getFullYear() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' +
-        date.getSeconds();
-    console.log(time)
-
-    $.ajax({
-        url: "https://script.google.com/macros/s/AKfycbypnOaX0iV61jW8aGaLONGyKDai_TwPv046IeRcu3B0XS2QRhsM0HTLAmyMo_2C9z_ePQ/exec",
-        success: function (response) {
-            console.log(response)
-        },
-    });
-
-
-
-
-    let sendButton = document.querySelector('button');
-
-    function send() {
-        let name = document.querySelector('#nameValue').value;
-        let phone = document.querySelector('#phoneValue').value;
-        let demand = document.querySelector('#demandValue').value;
+    // 首次 onload 定義 ID
+    var firstOnload = () => {
+        getTime()
         $.ajax({
             url: "https://script.google.com/macros/s/AKfycbypnOaX0iV61jW8aGaLONGyKDai_TwPv046IeRcu3B0XS2QRhsM0HTLAmyMo_2C9z_ePQ/exec",
             data: {
-                "name": name,
-                "phone": phone,
-                "demand": time
+                "onload": true,
+                "timestamp": time,
             },
             success: function (response) {
-                console.log(response)
-                // if (response == "成功") {
-                //     alert("成功");
-                // }
-                h1.innerHTML = response.test
+                console.log("id : " + response.id)
+                id = response.id
+            },
+        });
+    }
+
+    // 傳送資訊
+    var send = () => {
+        // question = document.querySelector('#question').value;
+        // answer = document.querySelector('#answer').value;
+        getTime()
+        $.ajax({
+            url: "https://script.google.com/macros/s/AKfycbypnOaX0iV61jW8aGaLONGyKDai_TwPv046IeRcu3B0XS2QRhsM0HTLAmyMo_2C9z_ePQ/exec",
+            data: {
+                "inputData": true,
+                "timestamp": time,
+                "id": id,
+                "question": question,
+                "answer": answer
+            },
+            success: function (response) {
+                console.log("id : " + response.id + "  Q : " + question + "  A : " + answer)
             },
         });
     };
 
-    sendButton.addEventListener('click', send);
+
+
+
+
+    var questionList = [
+        {
+            q: 1, qC: "問題1內容",
+            a1: "s", a0C: "答案1",
+            a2: "b", a1C: "答案2"
+        },
+        {
+            q: 2, qC: "問題2內容",
+            a1: "a", a0C: "答案3",
+            a2: "c", a1C: "答案4"
+        },
+        {
+            q: 3, qC: "問題3內容",
+            a1: "a", a0C: "答案4",
+            a2: "c", a1C: "答案6"
+        }
+    ]
+
+
+    var h1 = document.getElementsByTagName('h1')
+    var ABox = document.getElementsByClassName("ABox")
+    var QBox = document.getElementsByClassName("question")[0]
+
+    var timestamp = ""
+    var date = ""
+    var time = ""
+    var question = 0
+    var answer = ""
+    var a0 = ""
+    var a1 = ""
+
+    var changeQ = (num) => {
+        num = num - 1
+        question = questionList[num].q
+        QBox.innerHTML = questionList[num].qC
+        a0 = questionList[0].a0
+        a1 = questionList[0].a1
+        ABox[0].innerHTML = questionList[num].a0C
+        ABox[1].innerHTML = questionList[num].a1C
+
+    }
+
+    var ToAnswer = (a) => {
+        changeQ(question + 1)
+        answer = a1
+        send()
+    }
+
+
+    firstOnload()
+    changeQ(1)
+
+
+    ABox[1].addEventListener("click", (a1) => { ToAnswer(a1) })
+
+
+
+    h1[0].innerHTML = "Test"
+
+    // firstOnload()
+    // sendButton.addEventListener('click', send);
+
+
+
 </script>
 
 </html>

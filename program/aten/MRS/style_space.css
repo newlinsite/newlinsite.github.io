@@ -141,7 +141,6 @@ html {
 
 .display {
     box-sizing: content-box;
-    /* overflow: hidden; */
     transform-style: preserve-3d;
     transition: 3s;
     background-color: #1d1d1d;
@@ -154,6 +153,40 @@ html {
     left: 0;
     top: 0;
 }
+
+.display.led::after,
+.display.shadow::before,
+.display.led::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.display.shadow::before,
+.display.led::before {
+    background-color: #00000086;
+    width: 105%;
+    height: 6%;
+    bottom: -5%;
+    border-radius: 50%;
+    filter: blur(5px);
+}
+
+.display.led::before {
+    bottom: -10%;
+}
+
+.display.led::after {
+    background-color: #e2e2e2;
+    width: 96%;
+    height: 2.4%;
+    top: 100%;
+    border-radius: 0 2px;
+    box-shadow: inset 0 3px 2px #00000074;
+}
+
+
 
 
 /*****************************************

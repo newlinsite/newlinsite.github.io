@@ -31,8 +31,8 @@ var ctx = new AudioContext();
 
 
 
-function loadSound(num, box) {
-    url = audioUrlList[num]
+function loadSound(num, box, audioList) {
+    url = audioList[num]
     var request = new XMLHttpRequest();
     request.open('GET', url, true);
     request.responseType = 'arraybuffer';
@@ -52,7 +52,7 @@ var sounds = function (list) {
     // 將清單內的音樂載入Buffer
     this.bufferBox = []
     for (let i = 0; i < list.length; i++) {
-        loadSound(i, this.bufferBox)
+        loadSound(i, this.bufferBox, list)
     }
 
 
@@ -210,8 +210,8 @@ var music = function (voiceElement) {
         freqCanvasBox.appendChild(this.freqCanvas);
     }
 
-    this.draw = function () {
-        this.drawing = requestAnimationFrame(this.draw.bind(this));
+    this.draw = () => {
+        this.drawing = requestAnimationFrame(this.draw);
         this.analyser.getByteFrequencyData(this.dataArray);
 
         // 使用dataArray来更新你的视觉元素，比如文字的大小、颜色等
@@ -225,24 +225,22 @@ var music = function (voiceElement) {
         }
     }
 
-    this.stopDraw = function () {
+    this.stopDraw = () => {
         cancelAnimationFrame(this.drawing);
+
     }
 
 
     // // 獲取音量數值
     // this.dataArrayVol = new Uint8Array(this.analyser.frequencyBinCount);
-    // this.volumeNum = function () {
-    //     this.volumeNuming = requestAnimationFrame(this.volumeNum.bind(this));
+    // this.volumeNum = () => {
+    //     this.volumeNuming = requestAnimationFrame(this.volumeNum);
     //     this.analyser.getByteTimeDomainData(this.dataArrayVol);
     //     this.volumeNow = this.dataArrayVol[0]
-    //     // console.log(this.volumeNow)
-    //     // this.freqContext.fillStyle = this.drawColor;
-    //     // this.freqContext.clearRect(0, 0, this.freqCanvas.width, this.freqCanvas.height); // clear the canvas
-    //     // for (let i = 0; i < this.dataArray.length; i++) {
-    //     //     let y = this.dataArray[i] / 128.0 * (this.freqCanvas.height / 2);
-    //     //     this.freqContext.fillRect(i, this.freqCanvas.height / 2 - y, 1, 2 * y);
-    //     // }
+    //     this.freqContext.fillStyle = this.drawColor;
+    //     let y = this.volumeNow
+    //     this.freqContext.fillRect(0, this.freqCanvas.height / 2, 20, -2 * y);
+
     // }
 }
 

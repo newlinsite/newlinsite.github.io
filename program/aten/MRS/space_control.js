@@ -245,7 +245,7 @@ var VkObject = function (object, sizeRatio = [10, 1.77], position = [50, 50, 50]
     if (this.deviceType == "display") {
 
         this.displayBorder = this.width / 6 * borderSize
-        this.object.style.border = this.displayBorder + "px solid #000"
+        this.object.style.border = this.displayBorder + "px solid #22222200"
         this.object.style.borderRadius = this.displayBorder + "px"
         this.object.appendChild(document.createElement("span"))
 
@@ -257,7 +257,7 @@ var VkObject = function (object, sizeRatio = [10, 1.77], position = [50, 50, 50]
                 this.videoWallLineH[i] = document.createElement("div")
                 this.videoWallLineH[i].style.height = "100%"
                 this.videoWallLineH[i].style.width = 0.6 * this.displayBorder + "px"
-                this.videoWallLineH[i].style.backgroundColor = "#000"
+                this.videoWallLineH[i].style.backgroundColor = "#111"
                 this.videoWallLineH[i].style.top = 0
                 this.videoWallLineHP = 100 / videoWall[0] * (i + 1)
                 this.videoWallLineH[i].style.left = this.videoWallLineHP + "%"
@@ -279,7 +279,7 @@ var VkObject = function (object, sizeRatio = [10, 1.77], position = [50, 50, 50]
 
 
         // 新增螢幕厚度
-        if (thick[0] < 0) {
+        if (thick[0] > 0) {
             this.displayThick = []
             for (let i = 0; i < 4; i++) {
                 this.displayThick[i] = document.createElement("div")
@@ -996,7 +996,6 @@ var createWall = (wallcount = 11, intoCamera, atr) => {
 //
 //
 ///---------------------------------
-
 //-----------------------------
 //  空間創立
 //-----------------------------
@@ -1005,67 +1004,39 @@ var spaces = []
 for (let i = 0; i < spaceAtr.length; i++) {
     spaces[i] = new space(i, spaceAtr)
 }
-
 //-----------------------------
 //  選單創立
 //-----------------------------
-
 var menu = []
 for (let i = 0; i < featureMenuContent.length; i++) {
     menu[i] = new createMenu(i)
 }
 
 
-
 //-----------------------------
 //  controller 
 //-----------------------------
-
 var ipad = new controller("ipad", [36, 1.45], ipadElementAtr[0])
-
 
 
 //-----------------------------
 // Media
 //-----------------------------
-
 var media = []
-media[0] = new Media("element/01.png")
-media[1] = new Media("element/video.mp4")
-media[2] = new Media("image/i03.png")
-
-
-
+for (let i = 0; i < mediaList.length; i++) {
+    media[i] = new Media(mediaList[i])
+}
 
 // 載入BGM聲音
 var bgm = []
-bgmSource = [
-    { voice: "bgm.mp3", drawColor: "#ffffff88", w: 50, h: 50, x: 50, y: 50 },
-    { voice: "../../../music/audio_guitar.wav", drawColor: "#ffffff88", w: 50, h: 50, x: 50, y: 50 },
-    { voice: "../../../music/audio_drum.wav", drawColor: "#ffffff88", w: 50, h: 50, x: 50, y: 50 },
-    { voice: "../../../music/people.aac", drawColor: "#ffffff88", w: 50, h: 50, x: 50, y: 50 },
-    { voice: "../../../music/AI_Voice006en.mp3", drawColor: "#ffffff88", w: 50, h: 50, x: 50, y: 50 },
-]
-
-for (let i = 0; i < bgmSource.length; i++) {
-    bgm[i] = new music(bgmSource[i].voice)
+for (let i = 0; i < bgmList.length; i++) {
+    bgm[i] = new music(bgmList[i].voice)
     bgm[i].drawColor = "#ffffff88"
-    bgm[i].inputCanvas(container, bgmSource.w, bgmSource.h, bgmSource.x, bgmSource.y)
+    bgm[i].inputCanvas(container, bgmList.w, bgmList.h, bgmList.x, bgmList.y)
+    bgm[i].draw()
 }
 
-
-var audioUrlList = [
-    "music/001.aac",
-    "music/003.aac",
-    "music/002.aac",
-    "music/004.aac",
-    "music/ui_01.mp3",
-    "music/ui_02.mp3",
-    "music/ui_04.wav",
-    "music/out_logos---classic.aac"
-];
-
-var sound = new sounds(audioUrlList)
+var sound = new sounds(audioList)
 
 
 
@@ -1075,14 +1046,6 @@ var sound = new sounds(audioUrlList)
 // Display
 //-----------------------------
 
-//設定所有 display 屬性
-var displayAttr = [
-    { size: [72, 16 / 3], xyz: [50.0, 54.0, -50], xyzR: [0.00, 0.00, 0.00], thick: [0.05, "#111"], videoWall: [2, 2], border: 0, name: "" },
-    { size: [24, 16 / 9], xyz: [26.1, 54.0, -50], xyzR: [0.00, 0.00, 0.00], thick: [0.1, "#888"], videoWall: [0, 0], border: 0, name: "" },
-    { size: [24, 16 / 9], xyz: [50.0, 54.0, -50], xyzR: [0.00, 0.00, 0.00], thick: [0.05, "#111"], videoWall: [2, 2], border: 0, name: "" },
-    { size: [24, 16 / 9], xyz: [73.9, 54.0, -50], xyzR: [0.00, 0.00, 0.00], thick: [0.05, "#111"], videoWall: [3, 3], border: 0, name: "" },
-    { size: [20, 16 / 9], xyz: [90.0, 52.0, -32], xyzR: [0.00, -90.0, 0.00], thick: [0.05, "#111"], videoWall: [0, 0], border: 2, name: "" }
-]
 
 //創立 display 並入場
 var display = []
@@ -1095,9 +1058,12 @@ for (let i = 0; i < displayAttr.length; i++) {
         displayAttr[i].thick,
         displayAttr[i].videoWall,
         displayAttr[i].border)
-    display[i].object.classList = "display"
+    display[i].object.classList = "display " + displayAttr[i].addClass
     spaces[0].camera.appendChild(display[i].object)
 }
+
+
+
 
 //創立 VP
 var vp = new VP([
@@ -1131,7 +1097,6 @@ var vw = new VP([
 
 
 
-
 ///---------------------------------
 //
 //
@@ -1140,15 +1105,21 @@ var vw = new VP([
 //
 ///---------------------------------
 
+// ipad.on()
+// ipad.goTo(2)
+
+var ipadBtn = $css("ipadBtn")[0]
+ipadBtn.addEventListener("click", () => {
+    ipad.onToggle()
+})
 
 
 
-// 牆壁創立
-// createWall(11, space3.camera)
-// createWall(5, camera[0]) //只創立四邊的牆壁
+
 
 // 選單開關
 flowMenu.classList.add("active")
+
 
 
 vp.changeLayout(display[1], "VW", [0, 1, 2, 3, 4, 5], [
@@ -1156,23 +1127,23 @@ vp.changeLayout(display[1], "VW", [0, 1, 2, 3, 4, 5], [
     { w: 32, h: 18, x: 50, y: 20, cropTo: [10] }
 ])
 
-display[0].input(vw)
-display[1].input(vp)
-display[2].input(media[1])
-display[3].input(media[0])
+// 預設 Source
+display[0].input(vp)
+display[1].input(media[1])
+display[2].input(media[0])
+
+display[3].input(vw)
 display[4].input(media[1])
+display[5].input(media[1])
 
-display[0].hidden()
 
-// ipad.on()
-// ipad.goTo(2)
+display[3].hidden()
 
-var ipadBtn = $css("ipadBtn")[0]
-ipadBtn.addEventListener("click", () => {
-    ipad.onToggle()
-    // ipadBtn.style.zIndex = -1000
-})
-// ipadBtn.style.zIndex = -1000
+
+// bgm[1].play()
+// bgm[0].draw()
+// bgm[1].draw()
+// bgm[1].volumeNum()
 
 
 ///---------------------------------
@@ -1189,37 +1160,37 @@ function keyboardListener(e) {
     var keyID = e.code;
     if (keyID === 'KeyQ') {
         toggle(display[1].tag[1],
-            () => { display[2].input(media[0]) },
-            () => { display[2].input(media[1]) })
+            () => { display[1].input(media[0]) },
+            () => { display[1].input(media[1]) })
     }
     if (keyID === 'KeyA') {
+        display[0].hiddenToggle()
         display[1].hiddenToggle()
         display[2].hiddenToggle()
-        display[3].hiddenToggle()
     }
     if (keyID === 'KeyZ') {
-        display[0].hiddenToggle()
+        display[3].hiddenToggle()
     }
     if (keyID === 'KeyW') {
-        toggle(display[1].tag[0],
-            () => { vp.changeLayout(display[1], "pip") },
-            () => { vp.changeLayout(display[1], "pop") })
+        toggle(display[0].tag[0],
+            () => { vp.changeLayout(display[0], "pip") },
+            () => { vp.changeLayout(display[0], "pop") })
     }
     if (keyID === 'KeyS') {
-        toggle(display[2].tag[0],
-            () => { display[1].input(media[0]) },
-            () => { vp.changeLayout(display[1], [2, 2]) })
+        toggle(display[1].tag[0],
+            () => { display[0].input(media[0]) },
+            () => { vp.changeLayout(display[0], [2, 2]) })
     }
 
     if (keyID === 'KeyE') {
         toggle(display[2].tag[1],
             () => {
-                display[1].move([-6, 0, 0], [0, 0, 0])
-                display[3].move([6, 0, 0], [0, 0, 0])
+                display[0].move([-6, 0, 0], [0, 0, 0])
+                display[2].move([6, 0, 0], [0, 0, 0])
             },
             () => {
-                display[1].move([6, 0, 0], [0, 0, 0])
-                display[3].move([-6, 0, 0], [0, 0, 0])
+                display[0].move([6, 0, 0], [0, 0, 0])
+                display[2].move([-6, 0, 0], [0, 0, 0])
             })
     }
     if (keyID === 'KeyD') {
@@ -1231,22 +1202,31 @@ function keyboardListener(e) {
             () => { ipad.goTo(0) })
     }
 
+    if (keyID === 'KeyR') {
+
+        spaces[0].spaceBg[1].appearToggle()
+
+    }
+
+
+
+
 
 
     if (keyID === 'KeyL') {
-        bgm[0].play()
-        // sound.play(0)
+        toggle(bgm[0].tag[0], bgm[0].play, bgm[0].fadeStop)
+
     }
 
     if (keyID === 'KeyO') {
         toggle(bgm[0].muteTag, () => { bgm[0].fadeMute() }, () => { bgm[0].fadeUnmute() })
     }
     if (keyID === 'KeyI') {
-        toggle(bgm[0].tag[0], () => { bgm[0].fadeLowPass(100) }, () => { bgm[0].fadeLowPass(22050) })
+        toggle(bgm[0].tag[1], () => { bgm[0].fadeLowPass(100) }, () => { bgm[0].fadeLowPass(22050) })
     }
     if (keyID === 'KeyP') {
+        toggle(bgm[0].tag[2], bgm[0].draw, bgm[0].stopDraw)
 
-        bgm[0].draw()
     }
 
     if (keyID === 'KeyK') {
