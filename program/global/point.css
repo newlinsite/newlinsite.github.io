@@ -463,62 +463,29 @@
 
 
 
-
-
-
-    @media (max-width: 768px) {
-
-        /* countryList */
+    @media (max-width: 1400px) {
+        .pointContainer {
+            padding-top: 65%;
+        }
 
         .pointContainer .mapBox .countryList {
             left: 125%;
-            top: -110%;
-            height: 300%;
+            top: -80%;
+            height: 250%;
             width: 80%;
         }
+    }
 
-
-        /* Name tag */
-        .pointContainer .mapBox .countryList .nameTag {
-            position: absolute;
-            top: 0;
-            right: 100%;
-        }
-
-        .pointContainer .mapBox .countryList .nameTag .tagCircle {
-            width: 10px;
-            height: 10px;
+    @media (max-width: 1000px) {
+        .pointContainer {
+            padding-top: 80%;
         }
 
 
-        .pointContainer .mapBox .countryList .mainName {
-            font-size: 15px;
-            margin: 2px 0 1px 0;
-        }
+    }
 
 
-        .pointContainer .mapBox .countryList .mainName a {
-            margin: 6px 18px 6px 8px;
-        }
-
-        /* Name Dropdown */
-
-        .pointContainer .mapBox .countryList .nameDropdown {
-            /* transition: 1s;
-            overflow: hidden; */
-        }
-
-        .pointContainer .mapBox .countryList .smName {
-            /* font-size: 13px; */
-            margin: 2px;
-        }
-
-        .pointContainer .mapBox .countryList .smName a {
-            color: #262940;
-            display: inline-block;
-            margin: 2px 6px 2px 6px;
-        }
-
+    @media (max-width: 768px) {
 
 
         /* ... */
@@ -531,6 +498,14 @@
             left: 8%;
             width: 36%;
         }
+
+        .pointContainer.map-open .leber {
+            top: 2%;
+            right: auto;
+            width: 40%;
+            left: 12%;
+        }
+
 
 
         .pointContainer .mapBox {
@@ -590,11 +565,70 @@
         .pointContainer.map-open .mapBox.left {
             top: 80%;
             left: 30%;
+            z-index: 100;
         }
 
         .pointContainer.map-open .mapBox.right {
             top: 80%;
             left: 70%;
+            z-index: 100;
+        }
+
+        .pointContainer.map-open .mapBox.left .earthName,
+        .pointContainer.map-open .mapBox.right .earthName {
+            top: 170%;
+            width: 400%;
+        }
+
+        /* countryList */
+
+        .pointContainer .mapBox .countryList {
+            left: 125%;
+            top: -110%;
+            height: 300%;
+            width: 80%;
+        }
+
+
+        /* Name tag */
+        .pointContainer .mapBox .countryList .nameTag {
+            position: absolute;
+            top: 0;
+            right: 100%;
+        }
+
+        .pointContainer .mapBox .countryList .nameTag .tagCircle {
+            width: 10px;
+            height: 10px;
+        }
+
+
+        .pointContainer .mapBox .countryList .mainName {
+            font-size: 15px;
+            margin: 2px 0 1px 0;
+        }
+
+
+        .pointContainer .mapBox .countryList .mainName a {
+            margin: 6px 18px 6px 8px;
+        }
+
+        /* Name Dropdown */
+
+        .pointContainer .mapBox .countryList .nameDropdown {
+            /* transition: 1s;
+            overflow: hidden; */
+        }
+
+        .pointContainer .mapBox .countryList .smName {
+            /* font-size: 13px; */
+            margin: 2px;
+        }
+
+        .pointContainer .mapBox .countryList .smName a {
+            color: #262940;
+            display: inline-block;
+            margin: 2px 6px 2px 6px;
         }
 
     }
@@ -624,7 +658,7 @@
 
     .pointContainer .map_back {
         position: absolute;
-        top: 4%;
+        top: 3%;
         left: 2%;
         padding: 4px 12px;
         font-weight: 600;
@@ -637,7 +671,14 @@
         opacity: 0;
         transform: scale(1);
         box-shadow: 0 0 4px #00000014;
+        width: 40px;
+        height: 40px;
+        background-image: url(image/back.svg);
+        background-position: center;
+        background-size: contain;
     }
+
+
 
     .pointContainer.map-open .map_back {
         opacity: 1;

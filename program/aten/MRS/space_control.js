@@ -578,12 +578,12 @@ var VP = function (source = []) {
 //  -------------------------------------------------------------------
 //  -------------------------------------------------------------------
 
-var controller = function (type, size, elementAtr) {
+var controller = function (type, elementAtr) {
 
     if (type == "ipad") {
         this.ipad = new VkObject(document.createElement("div"), [], [], [], type)
         container.appendChild(this.ipad.object)
-        this.ipad.object.classList = "ipad"
+        this.ipad.object.classList = type
         this.width = this.ipad.object.clientWidth
 
         this.on = () => { this.ipad.on() }
@@ -900,7 +900,6 @@ var flowAllOff = () => {
 //
 //
 //      - 環境生成功能
-//      - 基本環境
 //      
 //     
 //
@@ -996,6 +995,9 @@ var createWall = (wallcount = 11, intoCamera, atr) => {
 //
 //
 ///---------------------------------
+
+
+
 //-----------------------------
 //  空間創立
 //-----------------------------
@@ -1016,7 +1018,12 @@ for (let i = 0; i < featureMenuContent.length; i++) {
 //-----------------------------
 //  controller 
 //-----------------------------
-var ipad = new controller("ipad", [36, 1.45], ipadElementAtr[0])
+var ipad = []
+for (let i = 0; i < ipadElementAtr.length; i++) {
+    ipad[i] = new controller("ipad", ipadElementAtr[i])
+
+}
+
 
 
 //-----------------------------
@@ -1105,12 +1112,12 @@ var vw = new VP([
 //
 ///---------------------------------
 
-// ipad.on()
-// ipad.goTo(2)
+// ipad[0].on()
+// ipad[0].goTo(2)
 
 var ipadBtn = $css("ipadBtn")[0]
 ipadBtn.addEventListener("click", () => {
-    ipad.onToggle()
+    ipad[0].onToggle()
 })
 
 
@@ -1194,12 +1201,12 @@ function keyboardListener(e) {
             })
     }
     if (keyID === 'KeyD') {
-        ipad.onToggle()
+        ipad[0].onToggle()
     }
     if (keyID === 'KeyC') {
         toggle(display[0].tag[2],
-            () => { ipad.goTo(1) },
-            () => { ipad.goTo(0) })
+            () => { ipad[0].goTo(1) },
+            () => { ipad[0].goTo(0) })
     }
 
     if (keyID === 'KeyR') {
