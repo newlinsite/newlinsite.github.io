@@ -130,7 +130,7 @@ cv2.imwrite('new_image.jpg', image)
 
 # ----------------------------------------
 
-#  OpenCV 影像辨識
+#  OpenCV 影像辨識:人臉
 
 # ----------------------------------------
 
@@ -152,8 +152,10 @@ faces = face_cascade.detectMultiScale(gray, 1.2, 3)    # 偵測人臉
 
 
 
+
+
 for (x, y, w, h) in faces:
-    cv2.rectangle(img, (x, y), (x+w, y+h), (0, 255, 0), 2)    # 抓取每個人臉屬性，繪製方框
+    cv2.rectangle(img, (x, y), ( x + w,  y + h), (0, 255, 0), 2)    # 抓取每個人臉屬性，繪製方框
     
     # 繪製馬賽克區域
     mosaic = img[y:y+h, x:x+w]   # 馬賽克區域
@@ -162,12 +164,48 @@ for (x, y, w, h) in faces:
     mw = int(w/level)            # 根據馬賽克程度縮小的寬度
     mosaic = cv2.resize(mosaic, (mw,mh), interpolation=cv2.INTER_LINEAR) # 先縮小
     mosaic = cv2.resize(mosaic, (w,h), interpolation=cv2.INTER_NEAREST)  # 然後放大
-    img[y:y+h, x:x+w+100] = mosaic   # 將指定區域換成馬賽克區域
+    img[y: y + h, x: x + w ] = mosaic   # 將指定區域換成馬賽克區域
 
 
-
-cv2.imshow('Image', img)
-cv2.waitKey(0) # 按下任意鍵停止
-cv2.destroyAllWindows()
 
 cvPrint(img)
+
+
+
+
+
+
+
+
+# ----------------------------------------
+
+#  OpenCV 讀入影片
+
+# ----------------------------------------
+
+
+
+cap = cv2.VideoCapture(2)
+if not cap.isOpened():
+    print("Cannot open camera")
+    exit()
+while True:
+    ret, frame = cap.read()             # 讀取影片的每一幀
+    if not ret:
+        print("Cannot receive frame")   # 如果讀取錯誤，印出訊息
+        break
+    
+    frame = cv2.resize(frame,(540,320)) # 縮小尺寸，避免尺寸過大導致效能不好
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)   # 將鏡頭影像轉換成灰階
+    faces = face_cascade.detectMultiScale(gray)      # 偵測人臉
+    for (x, y, w, h) in faces:
+        cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)   # 標記人臉
+    cv2.imshow('Image', frame)          # 如果讀取成功，顯示該幀的畫面
+    if cv2.waitKey(10) == ord('q'):      # 每一毫秒更新一次，直到按下 q 結束
+        break
+cap.release()                           # 所有作業都完成後，釋放資源
+cv2.destroyAllWindows()                 # 結束所有視窗
+
+
+
+
