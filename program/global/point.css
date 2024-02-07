@@ -33,6 +33,37 @@
     }
 
 
+    /******************************
+          
+    
+    
+    
+    
+    Customed Globe Presence
+
+
+
+
+*******************************/
+
+
+    .RBUContainer * {
+        position: relative;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    .RBUContainer a {
+        text-decoration: none;
+    }
+
+    .RBUContainer ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+
 
 
     /* Container */
@@ -95,7 +126,7 @@
     .pointContainer .mapBox::before {
         /* 陰影 */
         content: "";
-        background-image: url(image/shadow.svg);
+        background-image: url(global_image/shadow.svg);
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
@@ -150,7 +181,8 @@
     }
 
     .pointContainer .mapBox.map_america .mapEearth {
-        background-image: url(image/earth0.svg);
+        background-image: url(global_image/earth0.svg);
+        /* background-image: url(//assets.aten.com/webpage/shared/about-aten/global-presence/earth0.svg); */
         animation-duration: 17s;
     }
 
@@ -159,7 +191,8 @@
     }
 
     .pointContainer .mapBox.map_asia .mapEearth {
-        background-image: url(image/earth1.svg);
+        background-image: url(global_image/earth1.svg);
+        /* background-image: url(//assets.aten.com/webpage/shared/about-aten/global-presence/earth1.svg); */
     }
 
     .pointContainer .mapBox.map_eu {
@@ -167,7 +200,8 @@
     }
 
     .pointContainer .mapBox.map_eu .mapEearth {
-        background-image: url(image/earth2.svg);
+        background-image: url(global_image/earth2.svg);
+        /* background-image: url(//assets.aten.com/webpage/shared/about-aten/global-presence/earth2.svg); */
         animation-duration: 22s;
     }
 
@@ -673,7 +707,8 @@
         box-shadow: 0 0 4px #00000014;
         width: 40px;
         height: 40px;
-        background-image: url(image/back.svg);
+        background-image: url(global_image/back.svg);
+        /* background-image: url(//assets.aten.com/webpage/shared/about-aten/global-presence/back.svg); */
         background-position: center;
         background-size: contain;
     }

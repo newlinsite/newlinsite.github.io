@@ -8,6 +8,12 @@
     <title>Document</title>
 </head>
 
+<!-- ***************
+    上傳CMS換圖片
+        global_image/ =>
+        //assets.aten.com/webpage/shared/about-aten/global-presence/ 
+******************* -->
+
 <body>
     <div class="container">
         <div class="RBUContainer">
@@ -28,7 +34,8 @@
                     <div class="countryList"></div>
                 </div>
                 <div class="map_back"></div>
-                <img src="image/map_leber.svg" alt="" class="leber">
+                <img src="global_image/map_leber.svg" alt="" class="leber">
+                <!-- <img src="//assets.aten.com/webpage/shared/about-aten/global-presence/map_leber.svg" alt="" class="leber"> -->
             </div>
 
         </div>
@@ -46,9 +53,22 @@
     //
     //
 
-    var $ = function (name) {
-        return document.getElementById(name)
-    }
+    // var $ = function (name) {
+    //     return document.getElementById(name)
+    // }
+
+
+
+    // -----------------------------------------
+    //
+    //
+    //
+    //     Customed Globe Presence
+    //
+    //
+    //
+    // -----------------------------------------
+
     var $css = function (name) {
         return document.getElementsByClassName(name)
     }
@@ -190,7 +210,7 @@
 
 
         // 加入 Link
-        if (typeof link != 'undefined') {
+        if (typeof link != 'undefined' && link != "") {
             link = "#" + link
             this.nameText.href = "#"
             this.nameText.setAttribute("data-toggle", "modal");
@@ -344,7 +364,7 @@
     // Set point attribute
     var pointsData = [
         // America
-        { 'id': "0000", 'name': 'point3', 'space': '         ', 'from': "main", 'continent': 0, 'position': { x: 12, y: 21 }, 'type': ['HQ'], 'space2': '                             ', 'link': "#" },
+        { 'id': "0000", 'name': 'point3', 'space': '         ', 'from': "main", 'continent': 0, 'position': { x: 12, y: 21 }, 'type': ['HQ'], 'space2': '                             ', 'link': "" },
 
 
         // Asia-Pacific / Oceania Region
@@ -377,8 +397,8 @@
 
 
         // Europe / Africa
-        { 'id': "2100", 'name': 'point3', 'space': '         ', 'from': "main", 'continent': 2, 'position': { x: 42.0, y: 22.0 }, 'type': ["RBU", "SRC", "RD", "F", "HQ"], 'space2': '', 'link': "#" },
-        { 'id': "2200", 'name': 'point3', 'space': '         ', 'from': "main", 'continent': 2, 'position': { x: 17.0, y: 42.0 }, 'type': ['HQ'], 'space2': '                         ', 'link': "#" },
+        { 'id': "2100", 'name': 'point3', 'space': '         ', 'from': "main", 'continent': 2, 'position': { x: 42.0, y: 22.0 }, 'type': ["RBU", "SRC", "RD", "F", "HQ"], 'space2': '', 'link': "" },
+        { 'id': "2200", 'name': 'point3', 'space': '         ', 'from': "main", 'continent': 2, 'position': { x: 17.0, y: 42.0 }, 'type': ['HQ'], 'space2': '                         ', 'link': "" },
 
     ];
 
