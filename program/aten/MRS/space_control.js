@@ -109,6 +109,17 @@ var timer = setInterval(executeSeconds, videoTimeRefresh * 1000);
 //  -------------------------------------------------------------------
 //  -------------------------------------------------------------------
 
+
+
+
+
+
+
+
+
+
+
+
 var VkObject = function (object, sizeRatio = [10, 1.77], position = [50, 50, 50], rotate = [0, 0, 0], deviceType = "VkObject", thick = [0, "#000"], videoWall = false, borderSize = 1) {
 
     this.object = object
@@ -993,110 +1004,67 @@ var createWall = (wallcount = 11, intoCamera, atr) => {
 //      環境架設
 //      設備架設
 //
-//
 ///---------------------------------
 
 
+// 創立 空間
+var spaces = Array.from({ length: spaceAtr.length }, (_, i) => new space(i, spaceAtr));
 
-//-----------------------------
-//  空間創立
-//-----------------------------
+// 創立 選單
+var menu = Array.from({ length: featureMenuContent.length }, (_, i) => new createMenu(i));
 
-var spaces = []
-for (let i = 0; i < spaceAtr.length; i++) {
-    spaces[i] = new space(i, spaceAtr)
-}
-//-----------------------------
-//  選單創立
-//-----------------------------
-var menu = []
-for (let i = 0; i < featureMenuContent.length; i++) {
-    menu[i] = new createMenu(i)
-}
+// 創立 controller 
+var ipad = Array.from({ length: ipadElementAtr.length }, (_, i) => new controller("ipad", ipadElementAtr[i]));
 
+// 創立 media 
+var media = Array.from({ length: mediaList.length }, (_, i) => new Media(mediaList[i]))
 
-//-----------------------------
-//  controller 
-//-----------------------------
-var ipad = []
-for (let i = 0; i < ipadElementAtr.length; i++) {
-    ipad[i] = new controller("ipad", ipadElementAtr[i])
+// 創立 長音樂
+var bgm = bgmList.map((item) => {
+    let musicInstance = new music(item.voice);
+    musicInstance.drawColor = "#ffffff88";
+    musicInstance.inputCanvas(container, item.w, item.h, item.x, item.y);
+    musicInstance.draw();
+    return musicInstance;
+});
 
-}
-
-
-
-//-----------------------------
-// Media
-//-----------------------------
-var media = []
-for (let i = 0; i < mediaList.length; i++) {
-    media[i] = new Media(mediaList[i])
-}
-
-// 載入BGM聲音
-var bgm = []
-for (let i = 0; i < bgmList.length; i++) {
-    bgm[i] = new music(bgmList[i].voice)
-    bgm[i].drawColor = "#ffffff88"
-    bgm[i].inputCanvas(container, bgmList.w, bgmList.h, bgmList.x, bgmList.y)
-    bgm[i].draw()
-}
-
+// 創立 短音效
 var sound = new sounds(audioList)
 
 
 
 
-
-//-----------------------------
-// Display
-//-----------------------------
-
-
-//創立 display 並入場
-var display = []
-for (let i = 0; i < displayAttr.length; i++) {
-    display[i] = new VkObject(document.createElement("div"),
-        displayAttr[i].size,
-        displayAttr[i].xyz,
-        displayAttr[i].xyzR,
+//創立 display 
+var display = displayAttr.map((attr) => {
+    let vkObject = new VkObject(
+        document.createElement("div"),
+        attr.size,
+        attr.xyz,
+        attr.xyzR,
         "display",
-        displayAttr[i].thick,
-        displayAttr[i].videoWall,
-        displayAttr[i].border)
-    display[i].object.classList = "display " + displayAttr[i].addClass
-    spaces[0].camera.appendChild(display[i].object)
-}
-
-
-
+        attr.thick,
+        attr.videoWall,
+        attr.border
+    );
+    vkObject.object.classList = "display " + attr.addClass;
+    spaces[0].camera.appendChild(vkObject.object);
+    return vkObject;
+});
 
 //創立 VP
 var vp = new VP([
-    media[0],
+    media[0], media[1],
+    media[1], media[0],
     media[1],
-    media[1],
-    media[0],
-    media[1],
-    //-------------------
-    media[0],
-    media[0]])
-
+    media[0], media[0]
+])
 
 var vw = new VP([
-    media[2],
-    media[1],
-    media[1],
-    // media[0],
+    media[2], media[1],
+    media[1], media[0],
     // media[1],
-    //-------------------
-    // media[0],
-    media[0]])
-
-
-
-
+    // media[0], media[0]
+])
 
 
 

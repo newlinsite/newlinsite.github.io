@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    * {
+        position: relative;
+        box-sizing: border-box;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    body,
+    html {
+        background-color: #000;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        font-family: Noto Sans, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+            Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        margin: 0;
+    }
+
+    #container {
+        width: 50%;
+        height: 50%;
+        margin: 25% auto;
+    }
+
+    .item {
+        background-color: #949494;
+        height: 100px;
+        width: 100px;
+        position: absolute;
+    }
+
+    #item_left {
+        top: 10%;
+        left: 10%;
+    }
+
+    #item_right {
+        top: 10%;
+        left: 90%;
+    }
+</style>
+
+<body>
+    <div id="container">
+        <div id="item_left" class="item"></div>
+        <div id="item_right" class="item" style="margin-left:50px;"></div>
+    </div>
+
+
+
+</body>
+
+<script src="jsplumb.min.js"></script>
+<script>
+    /* global jsPlumb */
+    jsPlumb.ready(function () {
+        jsPlumb.setContainer('container')
+        var common = {
+            endpoint: 'Rectangle',
+            // connector: ['Bezier'],
+            connector: ['Flowchart'],
+            // connector: ['StateMachine'],
+            paintStyle: { stroke: 'lightgray', strokeWidth: 3 },
+            endpointStyle: { fill: 'lightgray', outlineStroke: 'darkgray', outlineWidth: 2 },
+            overlays: [['Arrow', { width: 12, length: 12, location: 0.5 }]],
+        }
+        jsPlumb.connect({
+            source: 'item_left',
+            target: 'item_right',
+            endpoint: 'Dot'
+        }, common)
+
+        var itemCommon = {
+            isSource: true,
+            isTarget: true,
+            connector: ['Straight']
+        }
+
+        jsPlumb.addEndpoint('item_right', {
+            anchor: 'Left'
+        }, itemCommon)
+
+        jsPlumb.addEndpoint('item_left', {
+            anchor: 'Right'
+        }, itemCommon)
+        // jsPlumb.draggable(
+        //     'item_left',
+        //     { anchors: ['Right'] },
+        //     itemCommon)
+
+        // jsPlumb.draggablee(
+        //     'item_right',
+        //     { anchors: ['Left'] },
+        //     itemCommon)
+
+    })
+</script>
+
+</html>

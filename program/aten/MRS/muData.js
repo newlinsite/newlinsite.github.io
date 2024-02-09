@@ -106,7 +106,7 @@ ipadElementAtr[0] = [
                 xy: [90, 8], size: [16, 6], radius: 4, border: 1,
                 bgColor: ["#00000055", "#333555"], bgScr: ["", ""], borderColor: ["#333", "#111"],
                 text: "Mixer", textColor: "#fff", textSize: 14,
-                act: () => { ipad.goTo(1) }, toggle: false
+                act: () => { ipad[0].goTo(1) }, toggle: false
             }, {
                 xy: [85, 90], size: [16, 8], radius: 6, border: 0,
                 bgColor: ["#00000055", ""], bgScr: ["", ""], borderColor: ["#888", "#111"],
@@ -132,7 +132,7 @@ ipadElementAtr[0] = [
                 xy: [90, 20], size: [16, 6], radius: 4, border: 1,
                 bgColor: ["#00000055", "#333555"], bgScr: ["", ""], borderColor: ["#333", "#111"],
                 text: "UC8000", textColor: "#fff", textSize: 14,
-                act: () => { ipad.goTo(2) }, toggle: false
+                act: () => { ipad[0].goTo(2) }, toggle: false
             }
         ],
         sliders: [
@@ -152,7 +152,7 @@ ipadElementAtr[0] = [
                 xy: [10, 10], size: [20, 10], radius: 6, border: 0,
                 bgColor: ["", ""], bgScr: ["", ""], borderColor: ["", ""],
                 text: "back", textColor: "#aaa", textSize: 14,
-                act: () => { ipad.goTo(0) }, toggle: false
+                act: () => { ipad[0].goTo(0) }, toggle: false
             }, {
                 xy: [20, 92], size: [7, 7], radius: 6, border: 0,
                 bgColor: ["#00000033", "#00225555"], bgScr: ["", ""], borderColor: ["#fff", ""],
@@ -248,7 +248,7 @@ ipadElementAtr[0] = [
                 xy: [10, 10], size: [20, 10], radius: 6, border: 0,
                 bgColor: ["", ""], bgScr: ["", ""], borderColor: ["", ""],
                 text: "back", textColor: "#aaa", textSize: 14,
-                act: () => { ipad.goTo(0) }, toggle: false
+                act: () => { ipad[0].goTo(0) }, toggle: false
             }
         ],
         sliders: [{ xy: [50, 85], size: 40, dir: "", value: 42, bgColor: "#000000", activeColor: "#fff", act: (e) => { bgm[4].changeFadeGain(e * 0.01) } }]
