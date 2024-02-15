@@ -70,7 +70,8 @@ html {
     width: 100%;
     height: 100%;
     margin: 0 auto;
-
+    perspective: 2000px;
+    transform-style: preserve-3d;
 }
 
 
@@ -119,6 +120,7 @@ html {
 
 .space .camera>* {
     position: absolute;
+    transition: 0.6s;
 }
 
 .spaceWall {
@@ -199,20 +201,26 @@ html {
 .ipad {
     position: absolute;
     top: auto;
-    bottom: 4%;
+    /* bottom: 4%;
     right: 4%;
     width: 548px;
-    height: 380px;
+    height: 380px; */
+    bottom: 15%;
+    right: 15%;
+    width: 360px;
+    height: 248px;
     background-image: url(element/ipad_bg.png);
     background-position: center;
     background-size: cover;
-    transition: 1s;
+    /* transition: 1s; */
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
-    border-radius: 28px;
+    border-radius: 18px;
     z-index: 8000;
 
     opacity: 0;
     transform: translate(600px, 200px) rotate(15deg);
+
+    transform-style: preserve-3d;
 }
 
 .ipad.on {
