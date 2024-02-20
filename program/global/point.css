@@ -27,11 +27,18 @@
         background-color: #F5F8FA;
     }
 
-    .container {
-        max-width: 1400px;
-        margin: auto;
-    }
+    .container {}
 
+    h3 {
+        font-weight: 500 !important;
+        letter-spacing: -0.01em !important;
+        word-spacing: -0.05em !important;
+
+        padding-bottom: 10px !important;
+        margin-bottom: 30px !important;
+        border-bottom: none !important;
+
+    }
 
     /******************************
           
@@ -51,6 +58,7 @@
         position: relative;
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
+
     }
 
     .RBUContainer a {
@@ -72,19 +80,32 @@
         width: 100%;
         position: relative;
         overflow: hidden;
+        background: transparent radial-gradient(closest-side at 50% 50%, #F8F8F8 0%, #DFDFDF 100%) 0% 0% no-repeat padding-box;
+        padding: 24px 0;
     }
 
     .pointContainer * {
-        transition: 1s;
+        transition: 1s !important;
     }
 
     .pointContainer {
         width: 100%;
         padding-top: 50%;
         position: relative;
-        background: transparent radial-gradient(closest-side at 50% 50%, #F8F8F8 0%, #DFDFDF 100%) 0% 0% no-repeat padding-box;
+
+        max-width: 1400px;
+        margin: auto;
     }
 
+
+    .pointContainer .RBUh {
+        color: #01375b !important;
+        position: absolute;
+        top: 3%;
+        width: 100%;
+        text-align: center;
+        font-size: 2em !important;
+    }
 
 
     .pointContainer .leber {
@@ -99,7 +120,6 @@
         right: 4%;
         width: 16%;
     }
-
 
 
 
@@ -210,9 +230,9 @@
         top: 136%;
         left: 50%;
         width: 100%;
-        font-size: 17px;
-        color: #626262;
-        font-weight: 400;
+        font-size: 20px;
+        color: #7b8c9c;
+        font-weight: 700;
         text-align: center;
         transform: translate(-50%, -50%);
     }
@@ -527,17 +547,24 @@
             padding-top: 170%;
         }
 
+
+        .pointContainer .RBUh {
+            top: 1%;
+            font-size: 1.25em !important;
+        }
+
         .pointContainer .leber {
             right: auto;
             left: 8%;
             width: 36%;
+            top: 8%;
         }
 
         .pointContainer.map-open .leber {
-            top: 2%;
+            top: 8%;
             right: auto;
-            width: 40%;
-            left: 12%;
+            width: 30%;
+            left: 6%;
         }
 
 
@@ -549,7 +576,7 @@
 
 
         .pointContainer .mapBox.map_asia {
-            top: 20%;
+            top: 22.5%;
             left: 70%;
         }
 
