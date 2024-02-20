@@ -110,156 +110,122 @@ var timer = setInterval(executeSeconds, videoTimeRefresh * 1000);
 //  -------------------------------------------------------------------
 
 
+class VkObject {
+    constructor(
+        object,
+        sizeRatio = [10, 1.77],
+        position = [50, 50, 0],
+        rotate = [0, 0, 0],
+    ) {
+        this.object = object
 
+        // 長寬 Size
+        this.sizeRatio = sizeRatio
+        this.reSize()
+        // 位置與旋轉
+        this.x = position[0]
+        this.y = position[1]
+        this.z = position[2] * spaceW * 0.01
+        this.xR = rotate[0]
+        this.yR = rotate[1]
+        this.zR = rotate[2]
+        this.move()
 
-
-
-
-
-
-
-
-
-var VkObject = function (object, sizeRatio = [10, 1.77], position = [50, 50, 50], rotate = [0, 0, 0], deviceType = "VkObject", thick = [0, "#000"], videoWall = false, borderSize = 1) {
-
-    this.object = object
+        //其他參數
+        this.tag = [{ tag: 0 }, { tag: 0 }, { tag: 0 }]
+        this.appearTag = { tag: 1 }
+        this.hiddenTag = { tag: 0 }
+        this.onTag = { tag: 0 }
+    }
 
     // -----------------
-    //
-    // object define
-    //
+    // 物件動作
     // -----------------
-
-    this.deviceType = deviceType
-
-    // 長寬 Size
-    this.width = sizeRatio[0]
-    this.height = sizeRatio[0] / sizeRatio[1]
-    this.object.style.width = this.width + "%"
-    this.object.style.paddingTop = this.height + "%"
-
-
-    // 位置與旋轉
-    this.x = position[0]
-    this.y = position[1]
-    this.z = position[2] * spaceW * 0.01
-    this.xR = rotate[0]
-    this.yR = rotate[1]
-    this.zR = rotate[2]
-    this.move = ([x, y, z] = [0, 0, 0], [xR, yR, zR] = [0, 0, 0]) => {
-        this.x = this.x + x
-        this.y = this.y + y
-        this.z = this.z + z
-        this.xR = this.xR + xR
-        this.yR = this.yR + yR
-        this.zR = this.zR + zR
-
+    move([x, y, z] = [0, 0, 0], [xR, yR, zR] = [0, 0, 0], [cx, cy] = [50, 50]) {
+        this.x += x
+        this.y += y
+        this.z += z
+        this.xR += xR
+        this.yR += yR
+        this.zR += zR
         this.object.style.left = this.x + "%"
         this.object.style.top = this.y + "%"
-        this.object.style.transform = "translate3d(-50%, -50%, " + this.z +
-            "px) rotateX(" + this.xR +
-            "deg) rotateY(" + this.yR +
-            "deg) rotateZ(" + this.zR + "deg)"
+        this.object.style.transform = `
+        translate3d( -${cx}%, -${cy}%, ${this.z}px) 
+            rotateX(${this.xR}deg) 
+            rotateY(${this.yR}deg) 
+            rotateZ(${this.zR}deg)`;
     }
-    this.move()
-
-
-
-    // defaut value
-    // defaut Tag
-    this.tag = [{ tag: 0 }, { tag: 0 }, { tag: 0 }]
-
-
-
-
-
-    // -----------------
-    //
-    // 物件動作
-    //
-    // -----------------
-
-
-    // Appear, Opacity
-    this.appearTag = { tag: 0 }
-    this.appear = () => {
+    // -------------------------------------------------------------
+    reSize([w, ratio] = [this.sizeRatio[0], this.sizeRatio[1]]) {
+        this.width = w
+        this.height = w / ratio
+        this.object.style.width = this.width + "%"
+        this.object.style.paddingTop = this.height + "%"
+    }
+    // -------------------------------------------------------------
+    appear() {
         this.object.style.opacity = 1
         this.appearTag.tag = 1
     }
-    this.disappear = () => {
+    disappear() {
         this.object.style.opacity = 0
         this.appearTag.tag = 0
     }
-    this.appearToggle = () => {
-        toggle(this.appearTag, this.appear, this.disappear)
-    }
-    this.customOpacity = (opacity) => {
+    appearToggle() { toggle(this.appearTag, () => this.appear(), () => this.disappear()) }
+    customOpacity(opacity) {
         this.object.style.opacity = opacity
         this.appearTag.tag = opacity
     }
-
-
-    // hidden
-    this.hiddenTag = { tag: 0 }
-    this.hidden = () => {
+    // -------------------------------------------------------------
+    hidden() {
         this.object.style.display = "none"
         this.hiddenTag.tag = 1
     }
-    this.disHidden = () => {
+    disHidden() {
         this.object.style.display = ""
         this.hiddenTag.tag = 0
     }
-    this.hiddenToggle = () => {
-        toggle(this.hiddenTag, this.hidden, this.disHidden)
-    }
-
-
-
-    // On and Off
-    this.onTag = { tag: 0 }
-    this.on = (style = "on") => {
+    hiddenToggle() { toggle(this.hiddenTag, () => this.hidden(), () => this.disHidden()) }
+    // -------------------------------------------------------------
+    on(style = "on") {
         this.object.classList.add(style)
         this.onTag.tag = 1
     }
-    this.off = (style = "on") => {
+    off(style = "on") {
         this.object.classList.remove(style)
         this.onTag.tag = 0
     }
-    this.onToggle = () => {
-        toggle(this.onTag, this.on, this.off)
-    }
-
-    // press
-    this.press = (style = "press", time = 200) => {
+    onToggle() { toggle(this.onTag, () => this.on(), () => this.off()) }
+    // -------------------------------------------------------------
+    press(style = "press", time = 200) {
         this.object.classList.add(style)
         setTimeout(() => {
             this.object.classList.remove(style)
         }, time);
     }
-
-
-    // 新增css
-    this.addCss = (style) => {
+    // -------------------------------------------------------------
+    addCss(style) {
         this.object.classList.add(style)
     }
-    this.removeCss = (style) => {
+    removeCss(style) {
         this.object.classList.remove(style)
     }
 
+}
 
-    // -----------------
-    //
-    // display define
-    //
-    // -----------------
 
-    if (this.deviceType == "display") {
-
+class VkDisplay extends VkObject {
+    constructor(object, sizeRatio, position, rotate, deviceType,
+        thick = [0, "#000"],
+        videoWall = false,
+        borderSize = 1) {
+        super(object, sizeRatio, position, rotate, deviceType);
+        deviceType = "display"
         this.displayBorder = this.width / 6 * borderSize
         this.object.style.border = this.displayBorder + "px solid #22222200"
         this.object.style.borderRadius = this.displayBorder + "px"
         this.object.appendChild(document.createElement("span"))
-
         // 加入電視牆隔線 ex: display[2].videoWall 3*3 = [ 3,3 ]
         if (videoWall != false) {
             // 直線
@@ -287,8 +253,6 @@ var VkObject = function (object, sizeRatio = [10, 1.77], position = [50, 50, 50]
                 this.object.appendChild(this.videoWallLineW[i])
             }
         }
-
-
         // 新增螢幕厚度
         if (thick[0] > 0) {
             this.displayThick = []
@@ -307,32 +271,248 @@ var VkObject = function (object, sizeRatio = [10, 1.77], position = [50, 50, 50]
             }
         }
 
+    }
+    // 新增視訊
+    input(source) {
 
-        // 新增視訊
-        this.input = (source) => {
+        if (source.deviceType == "media") {
+            this.source = source.output.cloneNode(true);
+            this.source.currentTime = videoTime
+            this.object.replaceChild(this.source, this.object.firstChild);
+        }
+        if (source.deviceType == "vp") {
+            this.source = source.output.cloneNode(true);
+            this.object.replaceChild(this.source, this.object.firstChild);
 
-            if (source.deviceType == "media") {
-                this.source = source.output.cloneNode(true);
-                this.source.currentTime = videoTime
-                this.object.replaceChild(this.source, this.object.firstChild);
-            }
-            if (source.deviceType == "vp") {
-                this.source = source.output.cloneNode(true);
-                this.object.replaceChild(this.source, this.object.firstChild);
-
-                // 嘗試尋找物件裡面有 影片物件 的話將其時間同步
-                try {
-                    this.vpVideos = this.object.querySelectorAll("video")
-                    for (let i = 0; i < source.input.length; i++) {
-                        this.vpVideos[i].currentTime = videoTime
-                    }
-                } catch {
-                    // test("no image in vp")
+            // 嘗試尋找物件裡面有 影片物件 的話將其時間同步
+            try {
+                this.vpVideos = this.object.querySelectorAll("video")
+                for (let i = 0; i < source.input.length; i++) {
+                    this.vpVideos[i].currentTime = videoTime
                 }
+            } catch {
+                // test("no image in vp")
             }
         }
     }
+
 }
+
+
+
+// var VkObject = function (object, sizeRatio = [10, 1.77], position = [50, 50, 50], rotate = [0, 0, 0], deviceType = "VkObject", thick = [0, "#000"], videoWall = false, borderSize = 1) {
+
+//     this.object = object
+
+//     // -----------------
+//     //
+//     // object define
+//     //
+//     // -----------------
+
+//     this.deviceType = deviceType
+
+//     // 長寬 Size
+//     this.width = sizeRatio[0]
+//     this.height = sizeRatio[0] / sizeRatio[1]
+//     this.object.style.width = this.width + "%"
+//     this.object.style.paddingTop = this.height + "%"
+
+
+//     // 位置與旋轉
+//     this.x = position[0]
+//     this.y = position[1]
+//     this.z = position[2] * spaceW * 0.01
+//     this.xR = rotate[0]
+//     this.yR = rotate[1]
+//     this.zR = rotate[2]
+//     this.move = ([x, y, z] = [0, 0, 0], [xR, yR, zR] = [0, 0, 0]) => {
+//         this.x = this.x + x
+//         this.y = this.y + y
+//         this.z = this.z + z
+//         this.xR = this.xR + xR
+//         this.yR = this.yR + yR
+//         this.zR = this.zR + zR
+
+//         this.object.style.left = this.x + "%"
+//         this.object.style.top = this.y + "%"
+//         this.object.style.transform = "translate3d(-50%, -50%, " + this.z +
+//             "px) rotateX(" + this.xR +
+//             "deg) rotateY(" + this.yR +
+//             "deg) rotateZ(" + this.zR + "deg)"
+//     }
+//     this.move()
+
+
+
+//     // defaut value
+//     // defaut Tag
+//     this.tag = [{ tag: 0 }, { tag: 0 }, { tag: 0 }]
+
+
+
+
+
+//     // -----------------
+//     //
+//     // 物件動作
+//     //
+//     // -----------------
+
+
+//     // Appear, Opacity
+//     this.appearTag = { tag: 0 }
+//     this.appear = () => {
+//         this.object.style.opacity = 1
+//         this.appearTag.tag = 1
+//     }
+//     this.disappear = () => {
+//         this.object.style.opacity = 0
+//         this.appearTag.tag = 0
+//     }
+//     this.appearToggle = () => {
+//         toggle(this.appearTag, this.appear, this.disappear)
+//     }
+//     this.customOpacity = (opacity) => {
+//         this.object.style.opacity = opacity
+//         this.appearTag.tag = opacity
+//     }
+
+
+//     // hidden
+//     this.hiddenTag = { tag: 0 }
+//     this.hidden = () => {
+//         this.object.style.display = "none"
+//         this.hiddenTag.tag = 1
+//     }
+//     this.disHidden = () => {
+//         this.object.style.display = ""
+//         this.hiddenTag.tag = 0
+//     }
+//     this.hiddenToggle = () => {
+//         toggle(this.hiddenTag, this.hidden, this.disHidden)
+//     }
+
+
+
+//     // On and Off
+//     this.onTag = { tag: 0 }
+//     this.on = (style = "on") => {
+//         this.object.classList.add(style)
+//         this.onTag.tag = 1
+//     }
+//     this.off = (style = "on") => {
+//         this.object.classList.remove(style)
+//         this.onTag.tag = 0
+//     }
+//     this.onToggle = () => {
+//         toggle(this.onTag, this.on, this.off)
+//     }
+
+//     // press
+//     this.press = (style = "press", time = 200) => {
+//         this.object.classList.add(style)
+//         setTimeout(() => {
+//             this.object.classList.remove(style)
+//         }, time);
+//     }
+
+
+//     // 新增css
+//     this.addCss = (style) => {
+//         this.object.classList.add(style)
+//     }
+//     this.removeCss = (style) => {
+//         this.object.classList.remove(style)
+//     }
+
+
+//     // -----------------
+//     //
+//     // display define
+//     //
+//     // -----------------
+
+//     if (this.deviceType == "display") {
+
+//         this.displayBorder = this.width / 6 * borderSize
+//         this.object.style.border = this.displayBorder + "px solid #22222200"
+//         this.object.style.borderRadius = this.displayBorder + "px"
+//         this.object.appendChild(document.createElement("span"))
+
+//         // 加入電視牆隔線 ex: display[2].videoWall 3*3 = [ 3,3 ]
+//         if (videoWall != false) {
+//             // 直線
+//             this.videoWallLineH = []
+//             for (let i = 0; i < videoWall[0] - 1; i++) {
+//                 this.videoWallLineH[i] = document.createElement("div")
+//                 this.videoWallLineH[i].style.height = "100%"
+//                 this.videoWallLineH[i].style.width = 0.6 * this.displayBorder + "px"
+//                 this.videoWallLineH[i].style.backgroundColor = "#111"
+//                 this.videoWallLineH[i].style.top = 0
+//                 this.videoWallLineHP = 100 / videoWall[0] * (i + 1)
+//                 this.videoWallLineH[i].style.left = this.videoWallLineHP + "%"
+//                 this.object.appendChild(this.videoWallLineH[i])
+//             }
+//             // 橫線
+//             this.videoWallLineW = []
+//             for (let i = 0; i < videoWall[1] - 1; i++) {
+//                 this.videoWallLineW[i] = document.createElement("div")
+//                 this.videoWallLineW[i].style.width = "100%"
+//                 this.videoWallLineW[i].style.height = 0.6 * this.displayBorder + "px"
+//                 this.videoWallLineW[i].style.backgroundColor = "#000"
+//                 this.videoWallLineW[i].style.left = 0
+//                 this.videoWallLineWP = 100 / videoWall[1] * (i + 1)
+//                 this.videoWallLineW[i].style.top = this.videoWallLineWP + "%"
+//                 this.object.appendChild(this.videoWallLineW[i])
+//             }
+//         }
+
+
+//         // 新增螢幕厚度
+//         if (thick[0] > 0) {
+//             this.displayThick = []
+//             for (let i = 0; i < 4; i++) {
+//                 this.displayThick[i] = document.createElement("div")
+//                 this.displayThick[i].style.left = "50%"
+//                 this.displayThick[i].style.top = "50%"
+//                 this.displayThick[i].style.width = "100%"
+//                 this.displayThick[i].style.height = "100%"
+//                 this.displayThick[i].style.border = this.displayBorder + "px solid " + thick[1]
+//                 this.displayThick[i].style.borderRadius = this.displayBorder + "px"
+//                 this.displayThick[i].style.backgroundColor = thick[1]
+//                 this.displayThick[i].style.boxSizing = "content-box"
+//                 this.displayThick[i].style.transform = "translate3d(-50%, -50%, " + position[2] * thick[0] * (i + 0.5) + "px)"
+//                 this.object.appendChild(this.displayThick[i])
+//             }
+//         }
+
+
+//         // 新增視訊
+//         this.input = (source) => {
+
+//             if (source.deviceType == "media") {
+//                 this.source = source.output.cloneNode(true);
+//                 this.source.currentTime = videoTime
+//                 this.object.replaceChild(this.source, this.object.firstChild);
+//             }
+//             if (source.deviceType == "vp") {
+//                 this.source = source.output.cloneNode(true);
+//                 this.object.replaceChild(this.source, this.object.firstChild);
+
+//                 // 嘗試尋找物件裡面有 影片物件 的話將其時間同步
+//                 try {
+//                     this.vpVideos = this.object.querySelectorAll("video")
+//                     for (let i = 0; i < source.input.length; i++) {
+//                         this.vpVideos[i].currentTime = videoTime
+//                     }
+//                 } catch {
+//                     // test("no image in vp")
+//                 }
+//             }
+//         }
+//     }
+// }
 
 
 //--------------------------------------------------------------------------
@@ -921,7 +1101,7 @@ var flowAllOff = () => {
 const container = $css("container")[0]
 const spaceW = container.clientWidth
 const spaceR = 0.5
-const spaceH = spaceW / spaceR
+const spaceH = spaceW * spaceR
 
 // 功能:創立空間與相機
 var space = function (num, spaceAtr) {
@@ -1023,8 +1203,8 @@ var media = Array.from({ length: mediaList.length }, (_, i) => new Media(mediaLi
 var bgm = bgmList.map((item) => {
     let musicInstance = new music(item.voice);
     musicInstance.drawColor = "#ffffff88";
-    musicInstance.inputCanvas(container, item.w, item.h, item.x, item.y);
-    musicInstance.draw();
+    // musicInstance.inputCanvas(container, item.w, item.h, item.x, item.y);
+    // musicInstance.draw();
     return musicInstance;
 });
 
@@ -1034,9 +1214,9 @@ var sound = new sounds(audioList)
 
 
 
-//創立 display 
+// 創立 display
 var display = displayAttr.map((attr) => {
-    let vkObject = new VkObject(
+    let vkObject = new VkDisplay(
         document.createElement("div"),
         attr.size,
         attr.xyz,
@@ -1050,6 +1230,9 @@ var display = displayAttr.map((attr) => {
     spaces[0].camera.appendChild(vkObject.object);
     return vkObject;
 });
+
+
+
 
 //創立 VP
 var vp = new VP([
@@ -1080,7 +1263,7 @@ var vw = new VP([
 //
 ///---------------------------------
 
-// ipad[0].on()
+ipad[0].on()
 // ipad[0].goTo(2)
 
 var ipadBtn = $css("ipadBtn")[0]
@@ -1102,7 +1285,7 @@ vp.changeLayout(display[1], "VW", [0, 1, 2, 3, 4, 5], [
     { w: 32, h: 18, x: 50, y: 20, cropTo: [10] }
 ])
 
-// 預設 Source
+// // 預設 Source
 display[0].input(vp)
 display[1].input(media[1])
 display[2].input(media[0])
@@ -1129,6 +1312,23 @@ display[3].hidden()
 //
 ///---------------------------------
 
+
+
+// var textBoxOB = document.createElement("div")
+
+// textBoxOB.style.backgroundColor = "#60b1ca"
+// textBoxOB.style.zIndex = 200000
+// spaces[0].camera.appendChild(textBoxOB)
+// // var textBox = new VkObject2(textBoxOB)
+// var textBox = new VkDisplay(textBoxOB, [20, 5])
+
+
+
+// console.log(textBox)
+
+
+
+
 window.addEventListener("keydown", keyboardListener, false);
 
 function keyboardListener(e) {
@@ -1137,13 +1337,18 @@ function keyboardListener(e) {
         toggle(display[1].tag[1],
             () => { display[1].input(media[0]) },
             () => { display[1].input(media[1]) })
+
+
     }
     if (keyID === 'KeyA') {
+
+
         display[0].hiddenToggle()
         display[1].hiddenToggle()
         display[2].hiddenToggle()
     }
     if (keyID === 'KeyZ') {
+
         display[3].hiddenToggle()
     }
     if (keyID === 'KeyW') {
@@ -1213,9 +1418,14 @@ function keyboardListener(e) {
 }
 
 
-// window.addEventListener("mousemove", (e) => {
-//     let x = (e.x - spaceW / 2) / spaceW * 90 / 3
-//     let y = (e.y - spaceH / 2) / spaceH * 90 / 3 * 0
-//     // camera.style.transform = "rotate3d(" + -y + ", " + x + ", 0, 10deg)"
-//     space3.camera.style.transform = "translateZ(" + spaceW / 2 + "px) rotateX(" + -y + "deg) rotateY(" + x + "deg)"
-// })
+window.addEventListener("mousemove", (e) => {
+    // let x = (e.x - spaceW / 2) / spaceW * 90 / 3 * 1
+    // let y = (e.y - spaceH / 2) / spaceH * 90 / 3 * 1
+    // // camera.style.transform = "rotate3d(" + -y + ", " + x + ", 0, 10deg)"
+    // spaces[0].camera.style.transform = "translateZ(" + spaceW / 2 + "px) rotateX(" + -y + "deg) rotateY(" + x + "deg)"
+    let x = (e.x - spaceW) / spaceW * 90 / 3 * 1
+    let y = (e.y - spaceH) / spaceH * 90 / 3 * 0.5
+    console.log(e.x, e.y, x, y, spaceW, spaceH)
+    ipad[0].ipad.object.style.transform = "translateZ(" + 500 + "px) rotateX(" + -y + "deg) rotateY(" + x + "deg)"
+    ipad[0].ipad.object.style.transition = 0
+})
