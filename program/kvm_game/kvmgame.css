@@ -1,0 +1,63 @@
+    /******************************
+           Page
+*******************************/
+    * {
+        position: relative;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    body,
+    html {
+        width: 100%;
+        height: 100%;
+        font-family: "Noto sans TC", "Microsoft JhengHei ", "微軟正黑體", sans-serif;
+        /* overflow: hidden; */
+        margin: 0;
+        background-color: #3b3b3b;
+    }
+
+    .container {
+        background-color: #454545;
+        width: 100%;
+        height: 100%;
+        max-width: 500px;
+        max-height: 900px;
+        margin: auto;
+    }
+
+    .gameLevel {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        background-color: #1f1f1f;
+        overflow: hidden;
+        transform: translate(-50%, -50%);
+        transition: 0.5s;
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    .gameLevel>* {
+        position: absolute;
+
+    }
+
+    .gameLevel>.gameItem {
+        transition: 0.5s;
+    }
+
+    .gameLevel>.gameItem:hover {
+        opacity: 0.8;
+    }

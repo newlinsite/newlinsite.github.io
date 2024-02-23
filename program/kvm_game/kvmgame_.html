@@ -5,12 +5,200 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="kvmgame.css">
 </head>
 
 <body>
-
+    <div class="container"></div>
 </body>
 <script>
+    var $id = function (name) {
+        return document.getElementById(name)
+    }
+    var $css = function (name) {
+        return document.getElementsByClassName(name)
+    }
+    var $tag = function (name) {
+        return document.getElementsByTagName(name)
+    }
+    var test = function (print = "test") {
+        console.log(print)
+    }
+    function nothing() {
+        console.log("nothing")
+    }
+
+    // ------------------------
+    // toggle
+    // ------------------------
+
+    toggle = (tagObj, do1, do0, autoSwitchTag = true) => {
+        if (tagObj.tag === 0) {
+            do1()
+            if (autoSwitchTag) {
+                tagObj.tag = 1
+            }
+        } else {
+            do0()
+            if (autoSwitchTag) {
+                tagObj.tag = 0
+            }
+        }
+    }
+
+
+    container = $css("container")[0]
+
+
+    gameLevelAttr = [
+        {
+            level: 0,
+            background: "",
+            item: [
+                { type: "A", size: [10, 10], xyr: [50, 50, 45], background: "" }
+            ]
+        }, {
+            level: 1,
+            background: "",
+            item: [
+                { type: "A", size: [20, 10], xyr: [40, 50, 25], background: "" },
+                { type: "A", size: [10, 20], xyr: [50, 20, 15], background: "" }
+            ]
+        }
+    ]
+
+
+
+    class GameLevel {
+        constructor(
+            attr
+        ) {
+            this.object = document.createElement("div")
+            this.object.classList = "gameLevel"
+            this.state = 0
+            this.level = attr.level
+            // 長寬 位置與旋轉
+            this.item = []
+            for (let i = 0; i < attr.item.length; i++) {
+                this.item[i] = document.createElement("div")
+                this.item[i].classList = "gameItem"
+                // this.item[i].style.backgroundImage = "url(" + attr.item[i].background + ")"
+                this.item[i].style.backgroundColor = "#333"
+                this.item[i].style.width = attr.item[i].size[0] + "%"
+                this.item[i].style.height = attr.item[i].size[1] + "%"
+                this.item[i].style.left = attr.item[i].xyr[0] + "%"
+                this.item[i].style.top = attr.item[i].xyr[1] + "%"
+                this.item[i].style.transform = "translate(-50%, -50%) rotate(" + attr.item[i].xyr[2] + "deg)"
+                this.item[i].state = 0
+                this.item[i].addEventListener("click", nothing)
+                this.object.appendChild(this.item[i])
+            }
+
+            container.appendChild(this.object)
+            //其他參數
+            this.tag = [{ tag: 0 }, { tag: 0 }, { tag: 0 }]
+            this.openTag = { tag: 0 }
+        }
+
+        open() {
+            this.object.style.height = 100 + "%"
+            this.object.style.width = 100 + "%"
+            this.object.style.opacity = 1
+            this.openTag = { tag: 1 }
+
+        }
+        close() {
+            this.object.style.height = 0 + "%"
+            this.object.style.width = 0 + "%"
+            this.object.style.opacity = 0
+            this.openTag = { tag: 0 }
+        }
+        opentaggle() {
+            toggle(this.openTag,
+                () => this.open(),
+                () => this.close()
+            )
+        }
+        next() {
+            this.close()
+            gameLevel[this.level + 1].open()
+        }
+
+        // judger() {
+        //     if (click > 0) {
+        //         if (item.type = 已點的物件) {
+        //             +分數
+        //             關卡任務 + 1
+        //         } else {
+        //             -分數
+        //         }
+        //     }
+        //     回復點擊狀態
+        //     if (關卡任務完成) {
+        //         nextGameLevel()
+        //     }
+        // }
+
+    }
+
+
+    class GameState {
+        constructor() {
+            this.Level = 0
+        }
+        goto(num) {
+            if (this.Level != num) {
+                gameLevel[num].open()
+                gameLevel[this.Level].close()
+                this.Level = num
+                test("level now is " + this.Level)
+            }
+        }
+    }
+    gameState = new GameState()
+
+
+
+    gameLevel = []
+    for (let i = 0; i < gameLevelAttr.length; i++) {
+        gameLevel[i] = new GameLevel(gameLevelAttr[i])
+    }
+
+
+    gameLevel[0].open()
+
+
+    ///---------------------------------
+    //
+    //
+    //      互動
+    //
+    //
+    ///---------------------------------
+
+    window.addEventListener("keydown", keyboardListener, false);
+
+    function keyboardListener(e) {
+        var keyID = e.code;
+        if (keyID === 'KeyQ') {
+            gameLevel[0].opentaggle()
+        }
+
+        if (keyID === 'KeyW') {
+            gameLevel[0].next()
+        }
+        if (keyID === 'KeyA') {
+
+        }
+        if (keyID === 'KeyE') {
+            gameState.goto(0)
+        }
+        if (keyID === 'KeyD') {
+            gameState.goto(1)
+        }
+    }
+
+
 </script>
 
 </html>

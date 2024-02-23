@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/game.css">
+    <script type="text/javascript" src="js/question.js"></script>
+    <title>Games</title>
+</head>
+
+<body class="gametype_00">
+    <div id="container" class="home">
+        <div id="home" class="flex-c">
+            <h1 id="game_name">比手</br>畫腳</br><span>START</span></h1>
+            <div class="time_btns flex-c">
+                <div class="time_btn flex-c"></div>
+                <div class="time_btn flex-c active"></div>
+                <div class="time_btn flex-c"></div>
+                <div class="time_btn flex-c"></div>
+                <div class="time_btn flex-c"></div>
+            </div>
+            <div class="Qlist_btns flex-c">
+
+            </div>
+            <div class="question_input_box">
+                <div class="input_btn">Upload file</div>
+                <input type="file" id="fileInput">
+            </div>
+            <div class="question_input_box sm ">
+                <div class="input_btn">Background</div>
+                <div class="side_btn" id="bg_clear">Clear</div>
+                <input type="file" id="imageInput" name="file">
+            </div>
+            <p class="input_rule">Please upload .txt and a line is a question</p>
+        </div>
+        <div class="question_box flex-c">
+            <div id="question"></div>
+            <div id="timer" class="flex-c"></div>
+            <div class="next_box flex-c">
+                <a href="#" class="next_btn flex-c">close</a>
+                <a href="#" class="next_btn flex-c">done</a>
+            </div>
+            <div id="answer_count"></div>
+        </div>
+        <div id="home_btn" class="flex-c">home</div>
+        <div id="swich_btn" class="flex-c">compare_arrows</div>
+        <div id="screen_click"></div>
+        <p id="hotkey"></p>
+    </div>
+    <audio loop class="bgm" src="music/bgm_BrandNewToy.mp3"></audio>
+    <audio loop class="bgm" src="music/bgm_cut-to-the-chase.mp3"></audio>
+    <audio loop class="bgm" src="music/bgm_greensleeves.mp3"></audio>
+    <audio loop class="bgm" src="music/out_clock-sound.mp3"></audio>
+    <audio loop class="bgm" src="music/bgm_NewCity.mp3"></audio>
+    <audio loop class="bgm" src="music/ch_bgm.mp3"></audio>
+    <audio loop class="bgm" src="music/ch_good.mp3"></audio>
+
+
+</body>
+<script>
+
+
+    // ******************************
+    // 
+    //      Random question 
+    //      - QintoHTML()
+    //      - fileInput.Listener
+    //
+    // ******************************
+
+    var Qlist = [];
+    var Qlisting = [];
+    var Qlisting_len = 0;
+
+    Qlist = Qlist_0_00     // 輸入預設問題
+    Qlisting = Qlist       // 輸入執行遊戲的問題集
+
+
+    // 建立隨機題號
+    var Qlisting_len = Qlisting.length;
+    function getRandom() {
+        Qlisting_len = Qlisting.length;
+        return Math.floor(Math.random() * Qlisting_len);
+    }
+    var num = getRandom();
+
+
+    // 取得隨機題目,印 入HTML 後,刪除該題目
+    var questionBox = document.getElementById("question")
+    function QintoHTML() {
+        Qlisting_len = Qlisting.length;
+        if (Qlisting_len == 0) {
+            questionBox.innerHTML = "It's over";
+        }
+        else {
+            num = getRandom();
+            questionBox.innerHTML = Qlisting[num];
+            Qlisting = Qlisting.filter((element, index) => index != num);
+        }
+    }
+
+
+
+
+
+    // 切換題組
+    function changeQList(QlistName) {
+        Qlist = QlistName
+        Qlisting = Qlist
+        QintoHTML()
+    }
+
+
+    // 問題檔案輸入
+    function selectedFileChanged() {
+        if (this.files.length === 0) {
+            console.log('請選擇檔案！');
+            return;
+        }
+        const reader = new FileReader();
+        reader.onload = function fileReadCompleted() {
+            // 檔案問題分割 → 重新計算題目數 → 輸出題目
+            Qlist = reader.result.split("\n");
+            Qlisting = Qlist
+            QintoHTML()
+        };
+        reader.readAsText(this.files[0]);
+    }
+
+
+    document.getElementById('fileInput').addEventListener('change', selectedFileChanged);
+
+
+
+
+
+    // ******************************
+    //
+    // 
+    //      計時器
+    //      - timerStart()
+    //      - timerStop()
+    //
+    //
+    //
+    //
+    // ******************************
+
+    var timer = document.getElementById("timer");
+    var timerNum = null;
+    var timerResetSec = 180;
+
+    function timerStart() {
+        clearInterval(timerNum);
+        var count = timerResetSec;
+        timer.innerHTML = count;
+        timerNum = setInterval(function () {
+            if (count > 1) {
+                count = count - 1;
+                timer.innerHTML = `${count}`;
+                if (count < 15 && bgm[3].playingTag == 0) {
+                    bgm[3].fadePlay(1, 5, 0.2);
+                }
+                else if (count > 15 && bgm[3].playingTag == 1) {
+                    bgm[3].stop();
+                }
+                if (count == 30) {
+                    playSound(5, 2);
+                }
+                else if (count == 20) {
+                    playSound(5, 2);
+                }
+                else if (count == 10) {
+                    playSound(5, 2);
+                }
+
+            }
+            else {
+                clearInterval(timerNum);
+                container.setAttribute("class", "playing timeout");
+                timer.innerHTML = "OUT!";
+                if (answerCount < 6) {
+                    playSound(4, 12);
+                }
+                else {
+                    playSound(3);
+                }
+                musicAllStop();
+                bgm[4].fadePlay(0.2, 7, 0);
+            }
+        }, 1000);
+    }
+    function timerStop() {
+        clearInterval(timerNum);
+    }
+
+
+
+
+    // ******************************
+    // 
+    //      音樂撥放器
+    //      - 
+    //      - 
+    //
+    // ******************************
+
+
+
+    // Fix up prefixing
+    window.AudioContext = window.AudioContext || window.webkitAudioContext;
+    var ctx = new AudioContext();
+
+
+
+    // Audio Effect 短音效
+
+    var bufferBox = [];
+    var audioUrlList = [
+        "music/ui_01.mp3",
+        "music/ui_02.mp3",
+        "music/ui_04.wav",
+        "music/out_logos---classic.aac",
+        "music/x_laughing.mp3",
+        "music/out_BoardGamesDominoTilesFalling.aac"
+    ];
+
+    function loadSound(num) {
+        url = audioUrlList[num]
+        var request = new XMLHttpRequest();
+        request.open('GET', url, true);
+        request.responseType = 'arraybuffer';
+
+        // Decode asynchronously
+        request.onload = function () {
+            ctx.decodeAudioData(request.response, function (buffer) {
+                bufferBox[num] = buffer;               // 將 buffer 倒入清單管理
+            }, onError);
+        }
+        request.send();
+    }
+
+    // 將清單內的音樂載入Buffer
+    for (let i = 0; i < audioUrlList.length; i++) {
+        loadSound(i)
+    }
+
+    //創一個的音源 與連接節點倒終點
+
+    function playSound(num, gain = 1) {
+        buffer = bufferBox[num];
+        var source = ctx.createBufferSource();                    // creates a sound source
+        var gainCode = ctx.createGain();
+        gainCode.gain.value = gain
+        source.buffer = buffer;                                   // tell the source which sound to play
+        source.connect(gainCode).connect(ctx.destination);        // connect the source to the ctx's destination (the speakers)
+        source.start(0);                                          // play the source now
+    }
+
+
+
+
+
+
+    // BGM 長音樂
+
+    var music = function (num) {
+        this.source = ctx.createMediaElementSource(bgmSource[num]);
+        this.gainCode = ctx.createGain();
+        this.lowPassCode = ctx.createBiquadFilter();
+        this.source.connect(this.gainCode).connect(this.lowPassCode).connect(ctx.destination);
+
+        // option
+        this.playingTag = 0
+        this.lowPassCode.type = 'lowpass';
+        this.lowPassCode.frequency.value = 22050;
+
+        // function
+        this.play = function () {
+            this.playingTag = 1
+            bgmSource[num].play()
+        }
+        this.fadePlay = function (gain = 1, fadeTime = 1, startGain = 0) {
+            this.play();
+            this.gainCode.gain.value = startGain
+            this.gainCode.gain.linearRampToValueAtTime(gain, ctx.currentTime + 10);
+        }
+        this.stop = function () {
+            this.playingTag = 0
+            bgmSource[num].pause()
+            bgmSource[num].currentTime = 0;
+        }
+        this.fadeStop = function (fadeTime = 1) {
+            if (this.playingTag == 1) {
+                this.playingTag = 0
+                let tempGain = this.gainCode.gain.value
+                this.gainCode.gain.linearRampToValueAtTime(0, ctx.currentTime + fadeTime);
+                setTimeout(() => {
+                    if (this.playingTag == 1) {
+                        this.gainCode.gain.linearRampToValueAtTime(tempGain, ctx.currentTime + 0.5);
+                        console.log("replay")
+                    }
+                    else {
+                        this.stop()
+                        this.gainCode.gain.value = tempGain
+                    }
+                }, fadeTime * 1000 + 100);
+            }
+        }
+        this.fadeLowPass = function (frequency = 22050, gain = -40, fadeTime = 1) {
+            this.lowPassCode.frequency.linearRampToValueAtTime(frequency, ctx.currentTime + fadeTime);
+        }
+    }
+
+
+
+
+    bgmSource = document.getElementsByClassName("bgm");
+    var bgm = []
+    for (let i = 0; i < bgmSource.length; i++) {
+        bgm[i] = new music(i)
+    }
+
+
+    function musicAllStop(fadeTime = 1) {
+        for (let i = 0; i < bgmSource.length; i++) {
+            bgm[i].fadeStop(fadeTime)
+        }
+    }
+
+
+    // 測試鍵盤快捷鍵
+    window.addEventListener("keydown", torandomTest, false);
+    function torandomTest(e) {
+        var keyID = e.code;
+        if (keyID === 'KeyQ') {
+            bgm[1].play()
+        };
+        if (keyID === 'KeyW') {
+            bgm[1].stop()
+        };
+        if (keyID === 'KeyE') {
+            bgm[1].fadeStop()
+        };
+        if (keyID === 'KeyR') {
+            bgm[1].fadeLowPass(2000, -40, 4)
+        }
+        if (keyID === 'KeyT') {
+            bgm[1].fadeLowPass(22050, 0)
+        }
+        if (keyID === 'KeyY') {
+
+        }
+
+    }
+
+
+
+
+
+
+
+    // ******************************
+    // 
+    //      Main fuction
+    //      - to_start()
+    //      - to_home()
+    //      - nextQ()
+    //      -
+    //      - toTimerResetSec(sec)      設定遊戲的秒數
+    //      - setTime_btns()            設定秒數按鈕的執行動作
+    //      - inputTimerResetSec(mode)  填入秒數按鈕的執行秒數
+    //      -
+    //      - setGameType()             遊戲模式設定
+    //      - gameTypeChange()          切換遊戲模式
+    //
+    // ******************************
+
+    var hotkeyBox = document.getElementById("hotkey")
+    var container = document.getElementById("container")
+    var answerCountbox = document.getElementById("answer_count")
+    var body = document.querySelector("body")
+    var time_btn = document.getElementsByClassName("time_btn")
+
+
+    var answerCount = 0
+    var gameType = 0
+
+
+    // ******************************
+    // 基本控制
+    // ******************************
+
+    function to_start() {
+        container.setAttribute("class", "playing");
+        hotkeyBox.innerHTML = "Press N + 1 , B + 0 , Press H to back Home";
+        timerStart()
+        QintoHTML()
+        if (tagQList == 1 || tagQList == 2) {
+            bgm[1].play();
+        }
+        else if (tagQList == 3) {
+            bgm[2].play();
+        }
+        else if (tagQList == 6) {
+            bgm[5].play();
+        }
+        else {
+            bgm[0].play();
+        }
+
+    };
+    function to_home() {
+        container.setAttribute("class", "home");
+        hotkeyBox.innerHTML = "Click Game Name to Start";
+        timerStop()
+        answerCount = 0                                     // 重設執行答對題目
+        answerCountbox.innerHTML = answerCount;
+        toTimerResetSec(timerResetSecList[TimerResetNum])   // 重設秒數
+        Qlisting = Qlist                                    // 重設執行遊戲的問題集
+        musicAllStop()
+        answerCountbox.classList.remove("ch");              // 除掉小當家彩蛋
+    }
+
+    function nextQ(score = 1, music = 1) {
+        QintoHTML();
+        answerCount = answerCount + score
+        answerCountbox.innerHTML = answerCount;
+        // 換題重設秒數，且減一秒 (給快問快答使用)
+        if (gameType == 1) {
+            timerStop()
+            timerStart()
+            // 特定秒數以上每題減一秒
+            if (timerResetSec > 3) {
+                timerResetSec = timerResetSec - 1
+            }
+            container.setAttribute("class", "playing");
+        }
+        playSound(music)
+
+        //小當家彩蛋
+        if (tagQList == 6 && answerCount == 16) {
+            musicAllStop(3)
+            bgm[6].play();
+            answerCountbox.classList.add("ch");
+        }
+    }
+
+
+
+
+    // ******************************
+    // 首頁時間按鈕功能
+    // ******************************
+    var timerResetSecList = []
+    var TimerResetNum = 2
+
+    // 設定遊戲的秒數
+    function toTimerResetSec(sec) {
+        if (sec == "none") {
+            timerResetSec = 9999;
+            timer.classList.add("hidden");
+        }
+        else {
+            timerResetSec = sec;
+            timer.classList.remove("hidden");
+        }
+    }
+
+    // 設定秒數按鈕的執行動作
+    function setTime_btns() {
+        for (let i = 0; i < time_btn.length; i++) {
+            time_btn[i].onclick = function () {
+                toTimerResetSec(timerResetSecList[i]);
+                time_btnActiver(i);
+                TimerResetNum = i;
+            }
+            if (i == 0) {
+                time_btn[i].innerHTML = timerResetSecList[i];
+            } else {
+                time_btn[i].innerHTML = timerResetSecList[i] + "s";
+            }
+
+        }
+    }
+
+    // 填入秒數按鈕的執行秒數    
+    function inputTimerResetSec(mode) {
+        if (mode == "mode_00") {
+            timerResetSecList = ["none", 180, 150, 120, 60]
+            setTime_btns()
+        }
+        else {
+            timerResetSecList = ["none", 30, 20, 10, 5]
+            setTime_btns()
+        }
+    }
+
+
+    // ******************************
+    // 遊戲模式
+    // ******************************
+
+    // 遊戲模式設定
+    function setGameType() {
+        if (gameType == 0) {
+            game_name.innerHTML = "比手</br>畫腳</br><span>START</span>"
+            changeQList(Qlist_0_00)
+            body.classList.remove("gametype_01")
+            body.classList.add("gametype_00")
+            inputTimerResetSec("mode_00")
+        }
+        else {
+            game_name.innerHTML = "快問</br>快答</br><span>START</span>"
+            changeQList(Qlist_1_01)
+            body.classList.remove("gametype_00")
+            body.classList.add("gametype_01")
+            inputTimerResetSec("mode_01")
+        }
+    }
+
+    // 切換遊戲模式
+    function gameTypeChange() {
+        if (gameType == 0) {
+            gameType = 1;
+            setGameType()
+            toTimerResetSec(timerResetSecList[TimerResetNum])
+            setQlist_btn(1)
+        }
+        else {
+            gameType = 0;
+            setGameType()
+            toTimerResetSec(timerResetSecList[TimerResetNum])
+            setQlist_btn()
+        }
+    }
+
+    // ******************************
+    // 背景切換功能
+    // ******************************
+
+    var myImage = document.getElementById('imageInput')
+    myImage.addEventListener('change', function (e) {
+        var file = e.target.files[0]
+        container.style = "background-image: url(" + URL.createObjectURL(file) + ");"
+    })
+
+    var bgClear = document.getElementById('bg_clear')
+    bgClear.addEventListener('click', function (e) {
+        container.style = ""
+    })
+
+
+
+    // ******************************
+    // 其他功能
+    // ******************************
+
+
+    // 錯誤提示
+    function onError() {
+        console.log("error")
+    }
+
+
+    // ******************************
+    // 
+    //      Load Page
+    //
+    // ******************************
+
+
+    hotkeyBox.innerHTML = "Click Game Name to Start";
+    answerCountbox.innerHTML = answerCount;
+    inputTimerResetSec("mode_00")
+
+
+
+
+
+
+    // ******************************
+    // 
+    //      控制器、快捷鍵
+    //
+    // ******************************
+
+
+    // 按鈕 
+    var home_btn = document.getElementById("home_btn")
+    var screen_click = document.getElementById("screen_click")
+    var game_name = document.getElementById("game_name")
+    var swich_btn = document.getElementById("swich_btn")
+    var Qlist_btns = document.getElementsByClassName("Qlist_btns")
+    // var Qlist_btn = document.getElementsByClassName("Qlist_btn")
+    var next_btn = document.getElementsByClassName("next_btn")
+
+
+
+    home_btn.addEventListener('click', to_home, false);
+    game_name.addEventListener('click', to_start, false);
+    swich_btn.addEventListener('click', gameTypeChange, false);
+    next_btn[0].addEventListener('click', function () { nextQ(0, 2) }, false);
+    next_btn[1].addEventListener('click', function () { nextQ() }, false);
+
+
+
+
+    // 選取時間按鈕狀態 
+    function time_btnActiver(x) {
+        for (let i = 0; i < 5; i++) {
+            time_btn[i].classList.remove("active");
+        }
+        time_btn[x].classList.add("active");
+        playSound(0)
+    }
+
+
+    // 設定換題目組按鈕的執行動作
+    var tagQList = 0
+    function setQlist_btn(listNum = 0) {
+
+
+        //創建按鈕
+        HDMITempInput = ""
+        Qlist_tempList_Name = [Qlist_0s_Name, Qlist_1s_Name]
+        for (let i = 0; i < Qlist_tempList_Name[listNum].length; i++) {
+            HDMITempInput = HDMITempInput + '<div class="Qlist_btn flex-c">' + Qlist_tempList_Name[listNum][i] + '</div>'
+        }
+        Qlist_btns[0].innerHTML = HDMITempInput
+
+
+
+        //倒入切換問題功能
+        var Qlist_btn = document.getElementsByClassName("Qlist_btn")
+        for (let i = 0; i < Qlist_btn.length; i++) {
+            Qlist_tempList = [Qlist_0s, Qlist_1s]
+            Qlist_btn[i].addEventListener('click', function () {
+                changeQList(Qlist_tempList[listNum][i]);
+                playSound(0)
+                tagQList = i
+            }, false);
+        }
+    }
+    setQlist_btn()
+
+
+
+
+
+
+
+
+    // 鍵盤快捷鍵
+    window.addEventListener("keydown", torandom, false);
+    function torandom(e) {
+        var keyID = e.code;
+        if (keyID === 'KeyN') {
+            nextQ()
+        };
+        if (keyID === 'Space') {
+            nextQ()
+        };
+        if (keyID === 'KeyB') {
+            nextQ(0, 2)
+        };
+        if (keyID === 'KeyH') {
+            to_home()
+        }
+        if (keyID === 'KeyS') {
+            to_start()
+        }
+    }
+
+
+
+</script>
+
+</html>
