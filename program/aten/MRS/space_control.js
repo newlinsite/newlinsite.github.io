@@ -133,9 +133,9 @@ class VkObject {
 
         //其他參數
         this.tag = [{ tag: 0 }, { tag: 0 }, { tag: 0 }]
-        this.appearTag = { tag: 1 }
-        this.hiddenTag = { tag: 0 }
-        this.onTag = { tag: 0 }
+        this.isAppear = { tag: 1 }
+        this.isHidden = { tag: 0 }
+        this.isOn = { tag: 0 }
     }
 
     // -----------------
@@ -166,37 +166,37 @@ class VkObject {
     // -------------------------------------------------------------
     appear() {
         this.object.style.opacity = 1
-        this.appearTag.tag = 1
+        this.isAppear.tag = 1
     }
     disappear() {
         this.object.style.opacity = 0
-        this.appearTag.tag = 0
+        this.isAppear.tag = 0
     }
-    appearToggle() { toggle(this.appearTag, () => this.appear(), () => this.disappear()) }
+    appearToggle() { toggle(this.isAppear, () => this.appear(), () => this.disappear()) }
     customOpacity(opacity) {
         this.object.style.opacity = opacity
-        this.appearTag.tag = opacity
+        this.isAppear.tag = opacity
     }
     // -------------------------------------------------------------
     hidden() {
         this.object.style.display = "none"
-        this.hiddenTag.tag = 1
+        this.isHidden.tag = 1
     }
     disHidden() {
         this.object.style.display = ""
-        this.hiddenTag.tag = 0
+        this.isHidden.tag = 0
     }
-    hiddenToggle() { toggle(this.hiddenTag, () => this.hidden(), () => this.disHidden()) }
+    hiddenToggle() { toggle(this.isHidden, () => this.hidden(), () => this.disHidden()) }
     // -------------------------------------------------------------
     on(style = "on") {
         this.object.classList.add(style)
-        this.onTag.tag = 1
+        this.isOn.tag = 1
     }
     off(style = "on") {
         this.object.classList.remove(style)
-        this.onTag.tag = 0
+        this.isOn.tag = 0
     }
-    onToggle() { toggle(this.onTag, () => this.on(), () => this.off()) }
+    onToggle() { toggle(this.isOn, () => this.on(), () => this.off()) }
     // -------------------------------------------------------------
     press(style = "press", time = 200) {
         this.object.classList.add(style)
@@ -361,52 +361,52 @@ class VkDisplay extends VkObject {
 
 
 //     // Appear, Opacity
-//     this.appearTag = { tag: 0 }
+//     this.isAppear = { tag: 0 }
 //     this.appear = () => {
 //         this.object.style.opacity = 1
-//         this.appearTag.tag = 1
+//         this.isAppear.tag = 1
 //     }
 //     this.disappear = () => {
 //         this.object.style.opacity = 0
-//         this.appearTag.tag = 0
+//         this.isAppear.tag = 0
 //     }
 //     this.appearToggle = () => {
-//         toggle(this.appearTag, this.appear, this.disappear)
+//         toggle(this.isAppear, this.appear, this.disappear)
 //     }
 //     this.customOpacity = (opacity) => {
 //         this.object.style.opacity = opacity
-//         this.appearTag.tag = opacity
+//         this.isAppear.tag = opacity
 //     }
 
 
 //     // hidden
-//     this.hiddenTag = { tag: 0 }
+//     this.isHidden = { tag: 0 }
 //     this.hidden = () => {
 //         this.object.style.display = "none"
-//         this.hiddenTag.tag = 1
+//         this.isHidden.tag = 1
 //     }
 //     this.disHidden = () => {
 //         this.object.style.display = ""
-//         this.hiddenTag.tag = 0
+//         this.isHidden.tag = 0
 //     }
 //     this.hiddenToggle = () => {
-//         toggle(this.hiddenTag, this.hidden, this.disHidden)
+//         toggle(this.isHidden, this.hidden, this.disHidden)
 //     }
 
 
 
 //     // On and Off
-//     this.onTag = { tag: 0 }
+//     this.isOn = { tag: 0 }
 //     this.on = (style = "on") => {
 //         this.object.classList.add(style)
-//         this.onTag.tag = 1
+//         this.isOn.tag = 1
 //     }
 //     this.off = (style = "on") => {
 //         this.object.classList.remove(style)
-//         this.onTag.tag = 0
+//         this.isOn.tag = 0
 //     }
 //     this.onToggle = () => {
-//         toggle(this.onTag, this.on, this.off)
+//         toggle(this.isOn, this.on, this.off)
 //     }
 
 //     // press
@@ -1203,13 +1203,13 @@ var media = Array.from({ length: mediaList.length }, (_, i) => new Media(mediaLi
 var bgm = bgmList.map((item) => {
     let musicInstance = new music(item.voice);
     musicInstance.drawColor = "#ffffff88";
-    // musicInstance.inputCanvas(container, item.w, item.h, item.x, item.y);
-    // musicInstance.draw();
+    musicInstance.inputCanvas(container, item.w, item.h, item.x, item.y);
+    musicInstance.draw();
     return musicInstance;
 });
 
 // 創立 短音效
-var sound = new sounds(audioList)
+var sound = new Sound(audioList)
 
 
 
@@ -1411,21 +1411,36 @@ function keyboardListener(e) {
 
     if (keyID === 'KeyK') {
         musicAllStop(0.1)
+        // bgm[0].stopDraw()
     }
-    ctx.resume().then(() => {
-        console.log('AudioContext 已啟動');
-    });
+
+    // ctx.resume().then(() => {
+    //     console.log('AudioContext 已啟動');
+    // });
+
+
+
+    if (keyID === 'Numpad1') {
+        sound.play(7, "stop")
+    }
+
+    if (keyID === 'Numpad2') {
+        toggle(testTag, () => bgm[0].play(), () => bgm[0].stop())
+
+    }
+
+
 }
 
-
-window.addEventListener("mousemove", (e) => {
-    // let x = (e.x - spaceW / 2) / spaceW * 90 / 3 * 1
-    // let y = (e.y - spaceH / 2) / spaceH * 90 / 3 * 1
-    // // camera.style.transform = "rotate3d(" + -y + ", " + x + ", 0, 10deg)"
-    // spaces[0].camera.style.transform = "translateZ(" + spaceW / 2 + "px) rotateX(" + -y + "deg) rotateY(" + x + "deg)"
-    let x = (e.x - spaceW) / spaceW * 90 / 3 * 1
-    let y = (e.y - spaceH) / spaceH * 90 / 3 * 0.5
-    console.log(e.x, e.y, x, y, spaceW, spaceH)
-    ipad[0].ipad.object.style.transform = "translateZ(" + 500 + "px) rotateX(" + -y + "deg) rotateY(" + x + "deg)"
-    ipad[0].ipad.object.style.transition = 0
-})
+var testTag = { tag: 0 }
+// window.addEventListener("mousemove", (e) => {
+//     // let x = (e.x - spaceW / 2) / spaceW * 90 / 3 * 1
+//     // let y = (e.y - spaceH / 2) / spaceH * 90 / 3 * 1
+//     // // camera.style.transform = "rotate3d(" + -y + ", " + x + ", 0, 10deg)"
+//     // spaces[0].camera.style.transform = "translateZ(" + spaceW / 2 + "px) rotateX(" + -y + "deg) rotateY(" + x + "deg)"
+//     let x = (e.x - spaceW) / spaceW * 90 / 3 * 1
+//     let y = (e.y - spaceH) / spaceH * 90 / 3 * 0.5
+//     console.log(e.x, e.y, x, y, spaceW, spaceH)
+//     ipad[0].ipad.object.style.transform = "translateZ(" + 500 + "px) rotateX(" + -y + "deg) rotateY(" + x + "deg)"
+//     ipad[0].ipad.object.style.transition = 0
+// })

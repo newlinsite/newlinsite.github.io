@@ -34,7 +34,7 @@ var mediaList = [
     "image/i03.png"
 ]
 
-bgmList = [
+var bgmList = [
     { voice: "bgm.mp3", drawColor: "#ffffff88", w: 50, h: 50, x: 50, y: 50 },
     { voice: "../../../music/audio_guitar.wav", drawColor: "#ffffff88", w: 50, h: 50, x: 50, y: 50 },
     { voice: "../../../music/audio_drum.wav", drawColor: "#ffffff88", w: 50, h: 50, x: 50, y: 50 },
@@ -153,32 +153,32 @@ ipadElementAtr[0] = [
                 xy: [10, 10], size: [20, 10], radius: 6, border: 0,
                 bgColor: ["", ""], bgScr: ["", ""], borderColor: ["", ""],
                 text: "back", textColor: "#aaa", textSize: 14,
-                act: () => { ipad[0].goTo(0) }, toggle: false
+                act: () => ipad[0].goTo(0), toggle: false
             }, {
                 xy: [20, 92], size: [7, 7], radius: 6, border: 0,
                 bgColor: ["#00000033", "#00225555"], bgScr: ["", ""], borderColor: ["#fff", ""],
                 text: "≫", textColor: "#aaa", textSize: 12,
-                act: [() => { bgm[0].stop() }, () => { bgm[0].play() }], toggle: true
+                act: [() => bgm[0].stop(), () => bgm[0].play()], toggle: true
             }, {
                 xy: [30, 92], size: [7, 7], radius: 6, border: 0,
                 bgColor: ["#00000033", "#00225555"], bgScr: ["", ""], borderColor: ["#fff", ""],
                 text: "≫", textColor: "#aaa", textSize: 12,
-                act: [() => { bgm[1].stop() }, () => { bgm[1].play() }], toggle: true
+                act: [() => bgm[1].stop(), () => bgm[1].play()], toggle: true
             }, {
                 xy: [40, 92], size: [7, 7], radius: 6, border: 0,
                 bgColor: ["#00000033", "#00225555"], bgScr: ["", ""], borderColor: ["#fff", ""],
                 text: "≫", textColor: "#aaa", textSize: 12,
-                act: [() => { bgm[2].stop() }, () => { bgm[2].play() }], toggle: true
+                act: [() => bgm[2].stop(), () => bgm[2].play()], toggle: true
             }, {
                 xy: [50, 92], size: [7, 7], radius: 6, border: 0,
                 bgColor: ["#00000033", "#00225555"], bgScr: ["", ""], borderColor: ["#fff", ""],
                 text: "≫", textColor: "#aaa", textSize: 12,
-                act: [() => { bgm[3].stop() }, () => { bgm[3].play() }], toggle: true
+                act: [() => bgm[3].stop(), () => bgm[3].play()], toggle: true
             }, {
                 xy: [60, 92], size: [7, 7], radius: 6, border: 0,
                 bgColor: ["#00000033", "#00225555"], bgScr: ["", ""], borderColor: ["#fff", ""],
                 text: "≫", textColor: "#aaa", textSize: 12,
-                act: [() => { bgm[4].stop() }, () => { bgm[4].play() }], toggle: true
+                act: [() => bgm[4].stop(), () => bgm[4].play()], toggle: true
             }
         ],
         sliders: [
