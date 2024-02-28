@@ -18,10 +18,9 @@ def newText(textList):
         font = ImageFont.truetype(t['font'], t['size'])
         color = ImageColor.getrgb(t['color'])
         alpha = t['alpha']
-
+        print(color + (alpha,))
         textDraw.text( (t['xy'][0],t['xy'][1]) , t['text'] , fill = color + (alpha,) , font = font , stroke_width = t['border'][0] , stroke_fill = t['border'][1])
     return textContainer
-
 
 
 size = [800,450]
@@ -30,14 +29,15 @@ size = [800,450]
 font = ["font/NotoSansTC-Regular.ttf"]
 textBox = [
      {'text': "text01", 'xy' : [100,100],  'size' : 40,  'color':"#000333",'alpha':0, 'border' : [2,"#333333"], 'font':font[0]},
-     {'text': "text02", 'xy' : [100,300],  'size' : 30,  'color':"#ffffff",'alpha':0, 'border' : [2,"#333333"], 'font':font[0]},
-     {'text': "text03", 'xy' : [100,400],  'size' : 20,  'color':"#555555",'alpha':0, 'border' : [2,"#333333"], 'font':font[0]}
+     {'text': "text02", 'xy' : [100,300],  'size' : 30,  'color':"#ffffff",'alpha':50, 'border' : [2,"#333333"], 'font':font[0]},
+     {'text': "text03", 'xy' : [100,400],  'size' : 20,  'color':"#555555",'alpha':255, 'border' : [2,"#333333"], 'font':font[0]}
      ]
 
 textContainer = newText(textBox)
 
 textContainer.show()
 textContainer.save('ok.png')
+
 
 
 def newText(textList):
@@ -47,7 +47,7 @@ def newText(textList):
         font = ImageFont.truetype(t['font'], t['size'])
         color = ImageColor.getrgb(t['color'])
         alpha = t['alpha']
-
+        
         textDraw.text( (t['xy'][0],t['xy'][1]) , t['text'] , fill = color + (alpha,) , font = font , stroke_width = t['border'][0] , stroke_fill = t['border'][1])
     return textContainer
 
@@ -67,45 +67,72 @@ antext(text,'x',[0,100],[])
 
 
 
-
-
-
-
-
-
 import cv2
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont, ImageColor
 
-def easeIn(t):
+def ease_in(t):
     return t * t
 
-def easeOut(t):
+def ease_out(t):
     return 1 - (1 - t) ** 2
 
-def move_and_fade_in(image_size, text_params, duration, easeFunction):
+def move_and_fade_in_out(image_size, text_params, duration, ease_function):
     frames = duration * fps
     text_images = []
 
+    fade_in_duration = 1.0  # 淡入持续时间（秒）
+    stay_duration = 2.0  # 停留时间（秒）
+    fade_out_duration = 1.0  # 淡出持续时间（秒）
+
     for frame in range(frames):
         # 创建一帧图像
-        frame_image = Image.new('RGBA', image_size, (255, 255, 255, 0))
+        frame_image = Image.new('RGBA', image_size)
         draw = ImageDraw.Draw(frame_image)
 
-        for text_param in text_params:
-            # 计算当前帧的位置和透明度
-            xStart, yStart = text_param['start_pos']
-            xEnd, yEnd = text_param['end_pos']
-            alpha = easeFunction(frame / frames) * 255
+        if frame < fade_in_duration * fps:  # 淡入阶段
+            progress = frame / (fade_in_duration * fps)
+            for text_param in text_params:
+                              
+                alpha_start,alpha_end = text_param['alpha']
+                alpha_current = alpha_start + (alpha_end - alpha_start) * ease_function(progress)
+                
+                
+                               
+                x_start, y_start = text_param['start_pos']
+                x_end, y_end = text_param['end_pos']
+                x_current = x_start + (x_end - x_start) * ease_function(progress)
+                y_current = y_start + (y_end - y_start) * ease_function(progress)
+                font = ImageFont.truetype(text_param['font'], text_param['size'])
+                color = ImageColor.getrgb(text_param['color'])+ (int(alpha_current),)
+         
 
-            # 计算当前帧的位置
-            xCurrent = xStart + (xEnd - xStart) * easeFunction(frame / frames)
-            yCurrent = yStart + (yEnd - yStart) * easeFunction(frame / frames)
+                print(color)
+                
+                draw.text((x_current, y_current), text_param['text'], fill = color , font=font)
+                frame_image.save(str(frame) + 'ok.png')
+        elif frame < (fade_in_duration + stay_duration) * fps:  # 停留阶段
+            for text_param in text_params:
+                alpha = 255
+                x_current, y_current = text_param['end_pos']
+                font = ImageFont.truetype(text_param['font'], text_param['size'])
+                color = ImageColor.getrgb(text_param['color'])
+                draw.text((x_current, y_current), text_param['text'], fill=color + (int(alpha),), font=font)
 
-            # 绘制文本
-            font = ImageFont.truetype(text_param['font'], text_param['size'])
-            color = ImageColor.getrgb(text_param['color'])
-            draw.text((xCurrent, yCurrent), text_param['text'], fill=color + (int(alpha),), font=font)
+        elif frame < (fade_in_duration + stay_duration + fade_out_duration) * fps:  # 淡出阶段
+            progress = (frame - (fade_in_duration + stay_duration) * fps) / (fade_out_duration * fps)
+            for text_param in text_params:
+                                
+                alpha_start,alpha_end = text_param['alpha']
+                alpha_current = alpha_end + (alpha_start - alpha_end) * ease_function(progress)
+                
+                x_start, y_start = text_param['start_pos']
+                x_end, y_end = text_param['end_pos']
+                x_current = x_end + (x_start - x_end) * ease_function(progress)
+                y_current = y_end + (y_start - y_end) * ease_function(progress)
+                font = ImageFont.truetype(text_param['font'], text_param['size'])
+                color = ImageColor.getrgb(text_param['color'])
+                draw.text((x_current, y_current), text_param['text'], fill=color + (int(alpha),), font=font)
 
         # 添加当前帧图像到列表中
         text_images.append(frame_image)
@@ -115,7 +142,7 @@ def move_and_fade_in(image_size, text_params, duration, easeFunction):
 # 设置视频参数
 width, height = 640, 480
 fps = 30
-duration = 5  # 秒
+duration = 4  # 秒
 
 # 设置文本参数
 text_params = [
@@ -123,14 +150,16 @@ text_params = [
         'text': 'Hello',
         'font': 'arial.ttf',
         'size': 36,
-        'color': '#FF0000',
+        'color': '#225500',
+        'alpha': (0,100),
         'start_pos': (100, 100),
-        'end_pos': (500, 300)
+        'end_pos': (500, 100)
     }
 ]
 
-# 生成逐帧图像
-text_frames = move_and_fade_in((width, height), text_params, duration, easeIn)
+# 生成逐帧图像，使用 ease_in_out 缓动函数
+text_frames = move_and_fade_in_out((width, height), text_params, duration, ease_out)
+text_frames[12].show()
 
 # 保存视频
 out = cv2.VideoWriter('text_animation.mp4', cv2.VideoWriter_fourcc(*'mp4v'), fps, (width, height))
@@ -138,6 +167,24 @@ for frame_image in text_frames:
     frame_bgr = cv2.cvtColor(np.array(frame_image), cv2.COLOR_RGBA2BGR)
     out.write(frame_bgr)
 out.release()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
