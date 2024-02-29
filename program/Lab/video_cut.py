@@ -178,9 +178,7 @@ text02 = newText((width, height), text_params, ease_out, 2, 2, 2)
 
 
 
-
 videoSec = 8
-fps = 30
 videoLen = videoSec * fps
 
 #創立影片基底
