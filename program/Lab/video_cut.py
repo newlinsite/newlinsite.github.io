@@ -59,17 +59,21 @@ def newText(text, s, x, y ,alpha, border, boderColor, font):
     textDraw.text( (x,y) , text , fill = color + (alpha,) , font = font , stroke_width = border , stroke_fill = borderColor)
 
 
-進場delay
-動畫
-總長度
-退場delay
-antext(text,'x',[0,100],[])
+
+
+
+
+
+
+
+
 
 
 
 import cv2
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont, ImageColor
+from moviepy.editor import ImageSequenceClip
 
 def ease_in(t):
     return t * t
@@ -77,17 +81,18 @@ def ease_in(t):
 def ease_out(t):
     return 1 - (1 - t) ** 2
 
-def move_and_fade_in_out(image_size, text_params, duration, ease_function):
-    frames = duration * fps
+def newText(image_size, text_params, ease_function, inS, stopS, outS):
+    
     text_images = []
-
-    fade_in_duration = 1.0  # 淡入持续时间（秒）
-    stay_duration = 2.0  # 停留时间（秒）
-    fade_out_duration = 1.0  # 淡出持续时间（秒）
-
+    fade_in_duration = inS  # 淡入持续时间（秒）
+    stay_duration = stopS  # 停留时间（秒）
+    fade_out_duration = outS  # 淡出持续时间（秒）
+    duration = inS + stopS + outS
+    frames = duration * fps
+    
     for frame in range(frames):
         # 创建一帧图像
-        frame_image = Image.new('RGBA', image_size)
+        frame_image = Image.new('RGBA', image_size,(255, 255, 255, 0))
         draw = ImageDraw.Draw(frame_image)
 
         if frame < fade_in_duration * fps:  # 淡入阶段
@@ -97,20 +102,15 @@ def move_and_fade_in_out(image_size, text_params, duration, ease_function):
                 alpha_start,alpha_end = text_param['alpha']
                 alpha_current = alpha_start + (alpha_end - alpha_start) * ease_function(progress)
                 
-                
-                               
                 x_start, y_start = text_param['start_pos']
                 x_end, y_end = text_param['end_pos']
                 x_current = x_start + (x_end - x_start) * ease_function(progress)
                 y_current = y_start + (y_end - y_start) * ease_function(progress)
                 font = ImageFont.truetype(text_param['font'], text_param['size'])
-                color = ImageColor.getrgb(text_param['color'])+ (int(alpha_current),)
-         
+                color = ImageColor.getrgb(text_param['color'])+ (int(alpha_current),)     
 
-                print(color)
-                
-                draw.text((x_current, y_current), text_param['text'], fill = color , font=font)
-                frame_image.save(str(frame) + 'ok.png')
+                draw.text((x_current, y_current), text_param['text'], fill=color, font=font)
+
         elif frame < (fade_in_duration + stay_duration) * fps:  # 停留阶段
             for text_param in text_params:
                 alpha = 255
@@ -130,9 +130,11 @@ def move_and_fade_in_out(image_size, text_params, duration, ease_function):
                 x_end, y_end = text_param['end_pos']
                 x_current = x_end + (x_start - x_end) * ease_function(progress)
                 y_current = y_end + (y_start - y_end) * ease_function(progress)
+                
                 font = ImageFont.truetype(text_param['font'], text_param['size'])
-                color = ImageColor.getrgb(text_param['color'])
-                draw.text((x_current, y_current), text_param['text'], fill=color + (int(alpha),), font=font)
+                color = ImageColor.getrgb(text_param['color'])+ (int(alpha_current),)  
+                
+                draw.text((x_current, y_current), text_param['text'], fill=color , font=font)
 
         # 添加当前帧图像到列表中
         text_images.append(frame_image)
@@ -142,7 +144,6 @@ def move_and_fade_in_out(image_size, text_params, duration, ease_function):
 # 设置视频参数
 width, height = 640, 480
 fps = 30
-duration = 4  # 秒
 
 # 设置文本参数
 text_params = [
@@ -156,30 +157,103 @@ text_params = [
         'end_pos': (500, 100)
     }
 ]
-
+# 设置文本参数
+text_params = [
+    {
+        'text': 'Hello 123',
+        'font': 'arial.ttf',
+        'size': 36,
+        'color': '#225500',
+        'alpha': (0,100),
+        'start_pos': (100, 200),
+        'end_pos': (500, 200)
+    }
+]
 # 生成逐帧图像，使用 ease_in_out 缓动函数
-text_frames = move_and_fade_in_out((width, height), text_params, duration, ease_out)
-text_frames[12].show()
+text01 = newText((width, height), text_params, ease_out, 2, 4, 1)
+text02 = newText((width, height), text_params, ease_out, 2, 2, 2)
 
-# 保存视频
+
+
+
+
+
+
+videoSec = 8
+fps = 30
+videoLen = videoSec * fps
+
+#創立影片基底
+def newVideo(videoLen):
+    videoFrames=[]
+    for i in range(videoLen):
+        background = Image.open("bg01.png")
+        videoFrames.append(background)
+    return videoFrames
+
+videoFrames = newVideo(videoLen)
+
+
+
+#在特定 frames 疊上新圖
+
+def mergeFs(bgFs, startFrame, fs):
+    for i in range(startFrame,len(fs)):
+        textFrame = fs[i-startFrame]
+        bgFs[i].paste(textFrame, (0, 0), textFrame)
+    return bgFs
+
+
+videoFrames = mergeFs(videoFrames, 20, text01)
+videoFrames = mergeFs(videoFrames, 40, text02)
+
+
+
+
+
+
+
+### 把圖片逐 Frame 變成影片
+# 将PIL图像对象转换为NumPy数组
+videoFrames_np = [np.array(img) for img in videoFrames]
+# 从图像文件创建图像序列剪辑
+clip = ImageSequenceClip(videoFrames_np, fps=30)
+# 保存视频文件
+clip.write_videofile("output.mp4")
+
+
+
+
+
+
+
+
+
+#----------------------------------------------------
+import numpy as np
+from moviepy.editor import ImageSequenceClip
+from moviepy.editor import *
+
+# 将PIL图像对象转换为NumPy数组
+text_frames_np = [np.array(img) for img in text_frames]
+
+# 创建ImageSequenceClip
+clip = ImageSequenceClip(text_frames_np, fps=fps)
+
+clip.show()
+
+# 保存为视频文件
+clip.write_videofile("output_video.mp4", codec="libx264", fps=fps)
+
+
+
 out = cv2.VideoWriter('text_animation.mp4', cv2.VideoWriter_fourcc(*'mp4v'), fps, (width, height))
 for frame_image in text_frames:
     frame_bgr = cv2.cvtColor(np.array(frame_image), cv2.COLOR_RGBA2BGR)
     out.write(frame_bgr)
 out.release()
 
-
-
-
-
-
-
-
-
-
-
-
-
+#----------------------------------------------------
 
 
 
@@ -204,6 +278,14 @@ output = CompositeVideoClip([clip, text_clip])  # 混合影片
 output.write_videofile("output.mp4",temp_audiofile="temp-audio.m4a", remove_temp=True, codec="libx264", audio_codec="aac")
 
 print('ok')
+
+
+
+
+
+
+
+
 
 
 
