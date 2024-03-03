@@ -51,7 +51,7 @@
 
     .gameLevel>* {
         position: absolute;
-
+        transition: 0.3s;
     }
 
     .gameLevel>.gameItem {

@@ -1,73 +1,3 @@
-"""
-Created on Tue Feb 27 19:45:20 2024
-
-@author: newlin
-"""
-
-
-
-from moviepy.editor import *
-from PIL import Image, ImageDraw, ImageFont, ImageColor
-
-
-
-def newText(textList):
-    textContainer = Image.new('RGBA', (size[0], size[1]))   # 建立畫布
-    textDraw = ImageDraw.Draw(textContainer)                              # 準備在圖片上繪圖
-    for t in textBox:
-        font = ImageFont.truetype(t['font'], t['size'])
-        color = ImageColor.getrgb(t['color'])
-        alpha = t['alpha']
-        print(color + (alpha,))
-        textDraw.text( (t['xy'][0],t['xy'][1]) , t['text'] , fill = color + (alpha,) , font = font , stroke_width = t['border'][0] , stroke_fill = t['border'][1])
-    return textContainer
-
-
-size = [800,450]
-
-
-font = ["font/NotoSansTC-Regular.ttf"]
-textBox = [
-     {'text': "text01", 'xy' : [100,100],  'size' : 40,  'color':"#000333",'alpha':0, 'border' : [2,"#333333"], 'font':font[0]},
-     {'text': "text02", 'xy' : [100,300],  'size' : 30,  'color':"#ffffff",'alpha':50, 'border' : [2,"#333333"], 'font':font[0]},
-     {'text': "text03", 'xy' : [100,400],  'size' : 20,  'color':"#555555",'alpha':255, 'border' : [2,"#333333"], 'font':font[0]}
-     ]
-
-textContainer = newText(textBox)
-
-textContainer.show()
-textContainer.save('ok.png')
-
-
-
-def newText(textList):
-    textContainer = Image.new('RGBA', (size[0], size[1]))   # 建立畫布
-    textDraw = ImageDraw.Draw(textContainer)                              # 準備在圖片上繪圖
-    for t in textList:
-        font = ImageFont.truetype(t['font'], t['size'])
-        color = ImageColor.getrgb(t['color'])
-        alpha = t['alpha']
-        
-        textDraw.text( (t['xy'][0],t['xy'][1]) , t['text'] , fill = color + (alpha,) , font = font , stroke_width = t['border'][0] , stroke_fill = t['border'][1])
-    return textContainer
-
-
-
-def newText(text, s, x, y ,alpha, border, boderColor, font):
-    font = ImageFont.truetype(t['font'], s)
-    for frame in range(frames):
-    textDraw.text( (x,y) , text , fill = color + (alpha,) , font = font , stroke_width = border , stroke_fill = borderColor)
-
-
-
-
-
-
-
-
-
-
-
 
 
 import cv2
@@ -75,135 +5,221 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont, ImageColor
 from moviepy.editor import ImageSequenceClip
 
-def ease_in(t):
+import pygame
+
+def playSound(url, vol = 0.5):
+    pygame.mixer.init()
+    pygame.mixer.music.load(url)
+    pygame.mixer.music.set_volume(vol)
+    pygame.mixer.music.play()
+    while pygame.mixer.music.get_busy(): # 让程序保持运行，直到音频播放完毕
+        pygame.time.Clock().tick(10)
+    pygame.quit()
+    
+    
+    
+    
+    
+def easeIn(t):
     return t * t
 
-def ease_out(t):
+def easeOut(t):
     return 1 - (1 - t) ** 2
 
-def newText(image_size, text_params, ease_function, inS, stopS, outS):
+def newText(videoSize, textParam, easeType, inS, stopS, outS):
     
     text_images = []
     fade_in_duration = inS  # 淡入持续时间（秒）
     stay_duration = stopS  # 停留时间（秒）
     fade_out_duration = outS  # 淡出持续时间（秒）
     duration = inS + stopS + outS
-    frames = duration * fps
+    frames = int(duration * fps)
+    space = textParam['space']
+    print(textParam['text'])
     
     for frame in range(frames):
         # 创建一帧图像
-        frame_image = Image.new('RGBA', image_size,(255, 255, 255, 0))
+        frame_image = Image.new('RGBA', videoSize,(255, 255, 255, 0))
         draw = ImageDraw.Draw(frame_image)
-
+        
         if frame < fade_in_duration * fps:  # 淡入阶段
             progress = frame / (fade_in_duration * fps)
-            for text_param in text_params:
+          
                               
-                alpha_start,alpha_end = text_param['alpha']
-                alpha_current = alpha_start + (alpha_end - alpha_start) * ease_function(progress)
-                
-                x_start, y_start = text_param['start_pos']
-                x_end, y_end = text_param['end_pos']
-                x_current = x_start + (x_end - x_start) * ease_function(progress)
-                y_current = y_start + (y_end - y_start) * ease_function(progress)
-                font = ImageFont.truetype(text_param['font'], text_param['size'])
-                color = ImageColor.getrgb(text_param['color'])+ (int(alpha_current),)     
+            alpha_start,alpha_end = textParam['alpha']
+            alpha_current = alpha_start + (alpha_end - alpha_start) * easeType(progress)
+            
+            x_start, y_start = textParam['start_pos']
+            x_end, y_end = textParam['end_pos']
+            x_current = x_start + (x_end - x_start) * easeType(progress)
+            y_current = y_start + (y_end - y_start) * easeType(progress)
+            font = ImageFont.truetype(textParam['font'], textParam['size'])
 
-                draw.text((x_current, y_current), text_param['text'], fill=color, font=font)
+            color = ImageColor.getrgb(textParam['color'])+ (int(alpha_current),)     
+            
+            if space == 0:
+                draw.text((x_current, y_current), textParam['text'], fill = color, font = font)
+            else:
+                for char in textParam['text']:
+                    draw.text((x_current, y_current), char, fill = color, font=font)
+                    x_current += space    # 更新 x 坐标以绘制下一个字符               
+
+
 
         elif frame < (fade_in_duration + stay_duration) * fps:  # 停留阶段
-            for text_param in text_params:
-                alpha = 255
-                x_current, y_current = text_param['end_pos']
-                font = ImageFont.truetype(text_param['font'], text_param['size'])
-                color = ImageColor.getrgb(text_param['color'])
-                draw.text((x_current, y_current), text_param['text'], fill=color + (int(alpha),), font=font)
+            
+            alpha = alpha_end
+            x_current, y_current = textParam['end_pos']
+            font = ImageFont.truetype(textParam['font'], textParam['size'])
+            color = ImageColor.getrgb(textParam['color'])+ (int(alpha),)
+            
+            if space == 0:
+                draw.text((x_current, y_current), textParam['text'], fill = color, font = font)
+            else:
+                for char in textParam['text']:
+                    draw.text((x_current, y_current), char, fill = color, font=font)
+                    x_current += space    # 更新 x 坐标以绘制下一个字符    
 
         elif frame < (fade_in_duration + stay_duration + fade_out_duration) * fps:  # 淡出阶段
             progress = (frame - (fade_in_duration + stay_duration) * fps) / (fade_out_duration * fps)
-            for text_param in text_params:
+        
                                 
-                alpha_start,alpha_end = text_param['alpha']
-                alpha_current = alpha_end + (alpha_start - alpha_end) * ease_function(progress)
-                
-                x_start, y_start = text_param['start_pos']
-                x_end, y_end = text_param['end_pos']
-                x_current = x_end + (x_start - x_end) * ease_function(progress)
-                y_current = y_end + (y_start - y_end) * ease_function(progress)
-                
-                font = ImageFont.truetype(text_param['font'], text_param['size'])
-                color = ImageColor.getrgb(text_param['color'])+ (int(alpha_current),)  
-                
-                draw.text((x_current, y_current), text_param['text'], fill=color , font=font)
+            alpha_start,alpha_end = textParam['alpha']
+            alpha_current = alpha_end + (alpha_start - alpha_end) * easeType(progress)
+            
+            x_start, y_start = textParam['start_pos']
+            x_end, y_end = textParam['end_pos']
+            x_current = x_end + (x_start - x_end) * easeType(progress)
+            y_current = y_end + (y_start - y_end) * easeType(progress)
+            
+            font = ImageFont.truetype(textParam['font'], textParam['size'])
+            color = ImageColor.getrgb(textParam['color'])+ (int(alpha_current),)  
+            
+            if space == 0:
+                draw.text((x_current, y_current), textParam['text'], fill = color, font = font)
+            else:
+                for char in textParam['text']:
+                    draw.text((x_current, y_current), char, fill = color, font=font)
+                    x_current += space    # 更新 x 坐标以绘制下一个字符    
 
         # 添加当前帧图像到列表中
         text_images.append(frame_image)
 
     return text_images
 
-# 设置视频参数
-width, height = 640, 480
-fps = 30
-
-# 设置文本参数
-text_params = [
-    {
-        'text': 'Hello',
-        'font': 'arial.ttf',
-        'size': 36,
-        'color': '#225500',
-        'alpha': (0,100),
-        'start_pos': (100, 100),
-        'end_pos': (500, 100)
-    }
-]
-# 设置文本参数
-text_params = [
-    {
-        'text': 'Hello 123',
-        'font': 'arial.ttf',
-        'size': 36,
-        'color': '#225500',
-        'alpha': (0,100),
-        'start_pos': (100, 200),
-        'end_pos': (500, 200)
-    }
-]
-# 生成逐帧图像，使用 ease_in_out 缓动函数
-text01 = newText((width, height), text_params, ease_out, 2, 4, 1)
-text02 = newText((width, height), text_params, ease_out, 2, 2, 2)
-
-
-
-
-
-
-videoSec = 8
-videoLen = videoSec * fps
 
 #創立影片基底
-def newVideo(videoLen):
+def newVideo(backgroundUrl, videoLen):
     videoFrames=[]
     for i in range(videoLen):
-        background = Image.open("bg01.png")
+        background = Image.open( backgroundUrl )
         videoFrames.append(background)
     return videoFrames
 
-videoFrames = newVideo(videoLen)
-
-
 
 #在特定 frames 疊上新圖
-
-def mergeFs(bgFs, startFrame, fs):
-    for i in range(startFrame,len(fs)):
+def mergeFs(bgFs, startSec, fs):
+    startFrame = int(fps*startSec)
+    for i in range(startFrame, startFrame + len(fs)):
         textFrame = fs[i-startFrame]
         bgFs[i].paste(textFrame, (0, 0), textFrame)
-    return bgFs
+    #return bgFs
 
 
-videoFrames = mergeFs(videoFrames, 20, text01)
-videoFrames = mergeFs(videoFrames, 40, text02)
+### 把圖片逐 Frame 變成影片 ------------------------------------------------
+def imageToVideo(images, isOutput = True , outputName = "output.mp4", videoFps=30):
+    imagesNp = [np.array(img) for img in images] # 将PIL图像对象转换为NumPy数组
+    clip = ImageSequenceClip(imagesNp, fps = videoFps)   # 从图像文件创建图像序列剪辑
+    if(isOutput):
+        clip.write_videofile( outputName )  # 保存视频文件
+    return clip
+
+
+
+"""## ---------------------------------------
+
+單字影片生成
+
+## ---------------------------------------"""
+
+
+
+
+
+import pandas as pd
+
+dfText = pd.read_excel("wordList.xlsx")
+Theme = ['type','食物']
+content =[
+        dfText.loc[dfText[Theme[0]] == Theme[1], 'ch'].tolist(),
+        dfText.loc[dfText[Theme[0]] == Theme[1], 'jp'].tolist(),
+        dfText.loc[dfText[Theme[0]] == Theme[1], 'en'].tolist()
+    ]
+
+
+
+## ------------------------------
+
+clip = []
+
+# 影片参数
+videoBg = "bg01.png"
+videoSec,fps = 8, 30
+vSizeW, vSizeH =  Image.open( videoBg ).size
+videoLen = videoSec * fps
+
+
+
+for i in range(0,1):
+#for i in range(0,len(content[0])):
+    # 设置文本参数
+    textParams= [
+        {
+            'text': content[0][i],
+            'font': 'font/NotoSansTC-Medium.ttf',
+            'space':     0,
+            'size':      40,
+            'color':     '#225500',
+            'alpha':     (0,100),
+            'start_pos': (100, 100),
+            'end_pos':   (500, 100)
+        },
+        {
+            'text': content[1][i],
+            'font': 'font/NotoSansTC-Regular.ttf',
+            'space':     10,
+            'size':      30,
+            'color':     '#225500',
+            'alpha':     (0,100),
+            'start_pos': (100, 200),
+            'end_pos':   (500, 200)
+        },
+        {
+            'text': content[2][i],
+            'font': 'font/NotoSansTC-Light.ttf',
+            'space':     50,
+            'size':      25,
+            'color':     '#222222',
+            'alpha':     (0,100),
+            'start_pos': (100, 260),
+            'end_pos':   (500, 260)
+        }
+    ]
+    
+    # 生成逐帧图像
+    textLayer=[]
+    textLayer.append( newText((vSizeW, vSizeH), textParams[0], easeOut, 1.0, 5.0, 1.0) )    
+    textLayer.append( newText((vSizeW, vSizeH), textParams[1], easeOut, 1.0, 4.4, 1.0) )    
+    textLayer.append( newText((vSizeW, vSizeH), textParams[2], easeOut, 1.0, 4.0, 1.0) )    
+      
+    
+    # 創造背景 > 所有圖層合併
+    videoFrames = newVideo(videoBg, videoLen)
+    mergeFs(videoFrames, 0.5, textLayer[0])
+    mergeFs(videoFrames, 0.8, textLayer[1])
+    mergeFs(videoFrames, 1.0, textLayer[2])
+    
+    clip.append(imageToVideo(videoFrames,True , str(i) + "_output.mp4" , fps))
 
 
 
@@ -211,14 +227,85 @@ videoFrames = mergeFs(videoFrames, 40, text02)
 
 
 
-### 把圖片逐 Frame 變成影片
-# 将PIL图像对象转换为NumPy数组
-videoFrames_np = [np.array(img) for img in videoFrames]
-# 从图像文件创建图像序列剪辑
-clip = ImageSequenceClip(videoFrames_np, fps=30)
-# 保存视频文件
-clip.write_videofile("output.mp4")
 
+
+videoFrames[20].show()
+
+
+
+"""## ---------------------------------------
+
+語音組合
+
+## ---------------------------------------"""
+
+
+
+from pydub import AudioSegment
+
+
+def createVoiceLayer( url, startS, aTimeS, times, isTranslate = False, translateUrl = ""):
+    voiceSource = AudioSegment.from_mp3(url)
+    voiceLen = voiceSource.duration_seconds
+    voiceMa = aTimeS - voiceLen
+    if voiceMa < 0:
+        print('Source Voice is too long')
+        return None
+    
+    aVoice = voiceSource + AudioSegment.silent(duration = voiceMa*1000)
+    voice = aVoice
+    for i in range( times-1 ):
+        voice = voice + aVoice
+    voice = AudioSegment.silent(duration = startS*1000 ) + voice
+    
+    if isTranslate:
+        voiceTra = AudioSegment.from_mp3( translateUrl )
+        voice = voice + voiceTra
+    return voice
+    
+    
+voice = createVoiceLayer("out.mp3", 5, 2, 3, True, "output.mp3")
+voice.export('ou2.mp3', format='mp3')
+
+
+
+
+"""
+
+影音組合
+
+"""
+
+from moviepy.editor import *
+video = clip[0]  
+audio = AudioFileClip("ou2.mp3")  
+output = video.set_audio(audio)         # 合併影片與聲音
+output.write_videofile("output.mp4", temp_audiofile="temp-audio.m4a", remove_temp=True, codec="libx264", audio_codec="aac")
+# 注意要設定相關參數，不然轉出來的影片會沒有聲音
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+playSound("out.mp3")
+playSound("output.mp3")
+playSound("ou2.mp3")
 
 
 
@@ -245,7 +332,7 @@ clip.write_videofile("output_video.mp4", codec="libx264", fps=fps)
 
 
 
-out = cv2.VideoWriter('text_animation.mp4', cv2.VideoWriter_fourcc(*'mp4v'), fps, (width, height))
+out = cv2.vWriter('text_animation.mp4', cv2.vWriter_fourcc(*'mp4v'), fps, (width, height))
 for frame_image in text_frames:
     frame_bgr = cv2.cvtColor(np.array(frame_image), cv2.COLOR_RGBA2BGR)
     out.write(frame_bgr)

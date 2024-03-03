@@ -72,7 +72,10 @@
             name: "",
             background: "",
             item: [
-                { type: "A", size: [10, 10], xyr: [50, 50, 45], background: "" }
+                { type: "A", size: [10, 10], xyr: [50, 30, 45], background: "" },
+                { type: "A", size: [10, 10], xyr: [50, 50, 45], background: "" },
+                { type: "B", size: [10, 10], xyr: [50, 70, 0], background: "" },
+                { type: "B", size: [10, 10], xyr: [50, 90, 0], background: "" },
             ]
         }, {
             level: 1,
@@ -88,6 +91,8 @@
 
     class Item {
         constructor(attr, style) {
+            this.type = attr.type
+            this.state = 0
             this.object = document.createElement("div")
             this.object.classList = style
             // this.object.style.backgroundImage = "url(" + attr.item[i].background + ")"
@@ -97,13 +102,22 @@
             this.object.style.left = attr.xyr[0] + "%"
             this.object.style.top = attr.xyr[1] + "%"
             this.object.style.transform = "translate(-50%, -50%) rotate(" + attr.xyr[2] + "deg)"
-            this.object.state = 0
             this.object.addEventListener("click", () => {
-                console.log("item")
             })
+        }
+        on(url, color = "#555") {
+            this.state = 1
+            this.object.style.backgroundColor = "#555"
+            // this.object.style.backgroundImage = "url(" + url + ")"
+        }
+        off() {
+            this.state = 0
+            this.object.style.backgroundColor = "#333"
+            // this.object.style.backgroundImage = "url(" + attr.item[i].background + ")"
         }
     }
     class Dialog { }
+
     class GameLevel {
         constructor(
             attr
@@ -112,20 +126,55 @@
             this.object.classList = "gameLevel"
             this.state = 0
             this.level = attr.level
-            // 長寬 位置與旋轉
+            this.selectedItem = "" //儲存用
+
+            // gameItem 設定
             this.item = []
             for (let i = 0; i < attr.item.length; i++) {
                 this.item[i] = new Item(attr.item[i], "gameItem")
                 this.item[i].object.addEventListener("click", () => {
-                    sound.play(4)
+                    if (this.item[i].state == 0) {
+                        sound.play(4)
+                        this.item[i].on()
+                        this.checkMatch(i)
+                        this.stopMask()
+                    }
+                    // console.log("num :" + i, "state :" + this.item[i].state, "selected : " + this.selectedItem)
+
                 })
                 this.object.appendChild(this.item[i].object)
             }
-
             container.appendChild(this.object)
+
+            // Mask
+            this.mask = document.createElement("div")
+            this.mask.style.display = "none"
+            this.mask.style.backgroundColor = "#000"
+            this.mask.style.width = 100 + "%"
+            this.mask.style.height = 100 + "%"
+            this.object.appendChild(this.mask)
+
+
             //其他參數
             this.tag = [{ tag: 0 }, { tag: 0 }, { tag: 0 }]
             this.openTag = { tag: 0 }
+        }
+
+        checkMatch(num) {
+            if (this.selectedItem != "") {
+                if (this.selectedItem.type === this.item[num].type) {
+                    test("s +1")
+                } else {
+                    test("s -1")
+                }
+                setTimeout(() => {
+                    this.selectedItem.off()
+                    this.item[num].off()
+                    this.selectedItem = ""
+                }, 500)
+            } else {
+                this.selectedItem = this.item[num]
+            }
         }
 
         open() {
@@ -145,6 +194,19 @@
                 () => this.open(),
                 () => this.close()
             )
+        }
+        stopMask() {
+
+            this.mask.style.display = "inline-block"
+            this.mask.style.opacity = 0.2
+            setTimeout(() => {
+                this.mask.style.opacity = 0
+            }, 200)
+            setTimeout(() => {
+                this.mask.style.display = "none"
+            }, 500)
+
+
         }
 
 
