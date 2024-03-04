@@ -76,9 +76,6 @@
                 { type: "A", size: [10, 10], xyr: [50, 50, 45], background: "" },
                 { type: "B", size: [10, 10], xyr: [50, 70, 0], background: "" },
                 { type: "B", size: [10, 10], xyr: [50, 90, 0], background: "" },
-            ],
-            btn: [
-                { size: [10, 10], xyr: [80, 80, 45], background: "", act: () => { game.startTimer() } },
             ]
         }, {
             level: 1,
@@ -87,21 +84,6 @@
             item: [
                 { type: "A", size: [20, 10], xyr: [40, 50, 25], background: "" },
                 { type: "A", size: [10, 20], xyr: [50, 20, 15], background: "" }
-            ],
-            btn: [
-
-            ]
-        }, {
-            level: 2,
-            background: "",
-            name: "",
-            item: [
-                { type: "A", size: [20, 10], xyr: [40, 50, 25], background: "" },
-                { type: "A", size: [10, 20], xyr: [50, 20, 15], background: "" },
-                { type: "K", size: [10, 20], xyr: [30, 30, 0], background: "" }
-            ],
-            btn: [
-
             ]
         }
     ]
@@ -116,10 +98,12 @@
             // this.object.style.backgroundImage = "url(" + attr.item[i].background + ")"
             this.object.style.backgroundColor = "#333"
             this.object.style.width = attr.size[0] + "%"
-            this.object.style.paddingTop = attr.size[1] + "%"
+            this.object.style.height = attr.size[1] + "%"
             this.object.style.left = attr.xyr[0] + "%"
             this.object.style.top = attr.xyr[1] + "%"
             this.object.style.transform = "translate(-50%, -50%) rotate(" + attr.xyr[2] + "deg)"
+            this.object.addEventListener("click", () => {
+            })
         }
         on(url, color = "#555") {
             this.state = 1
@@ -134,42 +118,29 @@
     }
     class Dialog { }
 
-    class GameScene {
+    class GameLevel {
         constructor(
             attr
         ) {
             this.object = document.createElement("div")
-            this.object.classList = "gameScene"
+            this.object.classList = "gameLevel"
             this.state = 0
             this.level = attr.level
-
-            // Button Item 
-            this.btn = []
-            for (let i = 0; i < attr.btn.length; i++) {
-                this.btn[i] = new Item(attr.btn[i], "btn")
-                this.btn[i].object.addEventListener("click", () => {
-                    attr.btn[i].act()
-                })
-                this.object.appendChild(this.btn[i].object)
-            }
-            container.appendChild(this.object)
-
-
-            // gameItem 
-            this.item = []
             this.selectedItem = "" //儲存用
+
+            // gameItem 設定
+            this.item = []
             for (let i = 0; i < attr.item.length; i++) {
                 this.item[i] = new Item(attr.item[i], "gameItem")
                 this.item[i].object.addEventListener("click", () => {
                     if (this.item[i].state == 0) {
                         sound.play(4)
                         this.item[i].on()
-                        if (this.level < 2) {
-                            this.ruleCheckMatch(i)
-                        } else {
-                            this.ruleFind(i, "K")
-                        }
+                        this.checkMatch(i)
+                        this.stopMask()
                     }
+                    // console.log("num :" + i, "state :" + this.item[i].state, "selected : " + this.selectedItem)
+
                 })
                 this.object.appendChild(this.item[i].object)
             }
@@ -177,28 +148,24 @@
 
             // Mask
             this.mask = document.createElement("div")
-            this.mask.classList = "mask"
+            this.mask.style.display = "none"
+            this.mask.style.backgroundColor = "#000"
+            this.mask.style.width = 100 + "%"
+            this.mask.style.height = 100 + "%"
             this.object.appendChild(this.mask)
 
-            // Score Note
-            this.scoreNote = document.createElement("div")
-            this.scoreNote.classList = "scoreNote"
-            this.object.appendChild(this.scoreNote)
-            this.scoreNoteNumber = document.createElement("div")
-            this.scoreNoteNumber.classList = "scoreNoteNumber"
-            this.scoreNote.appendChild(this.scoreNoteNumber)
 
             //其他參數
             this.tag = [{ tag: 0 }, { tag: 0 }, { tag: 0 }]
             this.openTag = { tag: 0 }
         }
 
-        ruleCheckMatch(num) {
+        checkMatch(num) {
             if (this.selectedItem != "") {
                 if (this.selectedItem.type === this.item[num].type) {
-                    this.addScore(1)
+                    test("s +1")
                 } else {
-                    this.addScore(-1)
+                    test("s -1")
                 }
                 setTimeout(() => {
                     this.selectedItem.off()
@@ -209,22 +176,7 @@
                 this.selectedItem = this.item[num]
             }
         }
-        ruleFind(num, type) {
-            if (this.item[num].type === type) {
-                this.addScore(1)
-            } else {
-                this.addScore(-1)
-            }
-            this.item[num].off()
-        }
 
-
-        addScore(score) {
-            game.score = game.score + score
-            test("" + score + ", Score : " + game.score)
-            this.onMask()
-            this.onScoreNote(score)
-        }
         open() {
             this.object.style.height = 100 + "%"
             this.object.style.width = 100 + "%"
@@ -243,27 +195,18 @@
                 () => this.close()
             )
         }
-        onMask(fideOutTime = 200, offTime = 500) {
+        stopMask() {
+
             this.mask.style.display = "inline-block"
             this.mask.style.opacity = 0.2
             setTimeout(() => {
                 this.mask.style.opacity = 0
-            }, fideOutTime)
+            }, 200)
             setTimeout(() => {
                 this.mask.style.display = "none"
-            }, offTime)
-        }
+            }, 500)
 
-        onScoreNote(score, fideOutTime = 300, offTime = 600) {
-            this.scoreNote.style.display = "inline-block"
-            this.scoreNote.style.opacity = 1
-            this.scoreNoteNumber.textContent = score
-            setTimeout(() => {
-                this.scoreNote.style.opacity = 0
-            }, fideOutTime)
-            setTimeout(() => {
-                this.scoreNote.style.display = "none"
-            }, offTime)
+
         }
 
     }
@@ -273,21 +216,7 @@
         constructor() {
             this.nowLevel = 0
             this.score = 0
-            this.time = 0
         }
-
-        startTimer(aTime = 1000, act = () => console.log(this.time)) {
-            this.timer = setInterval(() => {
-                this.time = this.time + 1
-                act()
-            }, aTime);
-        }
-        stopTimer() {
-            clearInterval(this.timer)
-            this.time = 0
-        }
-
-
         goHome() { }
         goToScore() { }
         getNewScore() { }
@@ -307,7 +236,7 @@
 
     gameLevel = []
     for (let i = 0; i < gameLevelAttr.length; i++) {
-        gameLevel[i] = new GameScene(gameLevelAttr[i])
+        gameLevel[i] = new GameLevel(gameLevelAttr[i])
     }
 
 
@@ -331,7 +260,7 @@
         }
 
         if (keyID === 'KeyW') {
-            game.stopTimer()
+
         }
         if (keyID === 'KeyA') {
 
@@ -341,9 +270,6 @@
         }
         if (keyID === 'KeyD') {
             game.goto(1)
-        }
-        if (keyID === 'KeyC') {
-            game.goto(2)
         }
     }
 
