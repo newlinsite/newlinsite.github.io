@@ -63,49 +63,6 @@
     }
 
 
-    container = $css("container")[0]
-
-
-    gameLevelAttr = [
-        {
-            level: 0,
-            name: "",
-            background: "",
-            item: [
-                { type: "A", size: [10, 10], xyr: [50, 30, 45], background: "" },
-                { type: "A", size: [10, 10], xyr: [50, 50, 45], background: "" },
-                { type: "B", size: [10, 10], xyr: [50, 70, 0], background: "" },
-                { type: "B", size: [10, 10], xyr: [50, 90, 0], background: "" },
-            ],
-            btn: [
-                { size: [10, 10], xyr: [80, 80, 45], background: "", act: () => { game.startTimer() } },
-            ]
-        }, {
-            level: 1,
-            background: "",
-            name: "",
-            item: [
-                { type: "A", size: [20, 10], xyr: [40, 50, 25], background: "" },
-                { type: "A", size: [10, 20], xyr: [50, 20, 15], background: "" }
-            ],
-            btn: [
-
-            ]
-        }, {
-            level: 2,
-            background: "",
-            name: "",
-            item: [
-                { type: "A", size: [20, 10], xyr: [40, 50, 25], background: "" },
-                { type: "A", size: [10, 20], xyr: [50, 20, 15], background: "" },
-                { type: "K", size: [10, 20], xyr: [30, 30, 0], background: "" }
-            ],
-            btn: [
-
-            ]
-        }
-    ]
-
 
     class Item {
         constructor(attr, style) {
@@ -133,6 +90,8 @@
         }
     }
     class Dialog { }
+    class Saying { }
+
 
     class GameScene {
         constructor(
@@ -287,10 +246,16 @@
             this.time = 0
         }
 
+        startGame() {
+            scene[0].close()
+        }
 
-        goHome() { }
-        goToScore() { }
-        getNewScore() { }
+        goHome() {
+            scene[0].open()
+        }
+
+        goToScorePage() { }
+
 
         goto(num) {
             if (this.nowLevel != num) {
@@ -301,18 +266,86 @@
             }
         }
     }
+
+
+
+    ///---------------------------------
+    //
+    //
+    //      入場
+    //
+    //
+    ///---------------------------------
+
+
+    gameLevelAttr = [
+        {
+            level: 0, background: "",
+            item: [
+                { type: "A", size: [10, 10], xyr: [50, 30, 45], background: "" },
+                { type: "A", size: [10, 10], xyr: [50, 50, 45], background: "" },
+                { type: "B", size: [10, 10], xyr: [50, 70, 0], background: "" },
+                { type: "B", size: [10, 10], xyr: [50, 90, 0], background: "" },
+            ],
+            btn: [
+                { size: [10, 10], xyr: [80, 80, 45], background: "", act: () => { game.startTimer() } },
+            ]
+        }, {
+            level: 1, background: "",
+            item: [
+                { type: "A", size: [20, 10], xyr: [40, 50, 25], background: "" },
+                { type: "A", size: [10, 20], xyr: [50, 20, 15], background: "" }
+            ],
+            btn: [
+
+            ]
+        }, {
+            level: 2, background: "",
+            item: [
+                { type: "A", size: [20, 10], xyr: [40, 50, 25], background: "" },
+                { type: "A", size: [10, 20], xyr: [50, 20, 15], background: "" },
+                { type: "K", size: [10, 20], xyr: [30, 30, 0], background: "" }
+            ],
+            btn: [
+
+            ]
+        }
+    ]
+    sceneAttr = [
+        {
+            level: "home", background: "", item: [],
+            btn: [
+                { name: "start", size: [30, 15], xyr: [50, 50, 0], background: "", act: nothing },
+                { name: "kCyan", size: [30, 30], xyr: [80, 90, 0], background: "", act: nothing },
+                { name: "mute", size: [10, 10], xyr: [10, 5, 0], background: "", act: nothing }
+            ]
+        }, {
+            level: "levelPage",
+            background: "", item: [],
+            btn: [
+                { name: "start", size: [30, 15], xyr: [50, 50, 0], background: "", act: nothing },
+            ]
+        }, {
+            level: "scorePage",
+            background: "", item: [],
+            btn: [
+
+            ]
+        }
+    ]
+
+
+    container = $css("container")[0]
     game = new Game()
 
 
 
-    gameLevel = []
-    for (let i = 0; i < gameLevelAttr.length; i++) {
-        gameLevel[i] = new GameScene(gameLevelAttr[i])
-    }
+    var gameLevel = Array.from({ length: gameLevelAttr.length }, (_, i) => new GameScene(gameLevelAttr[i]))
+    var scene = Array.from({ length: sceneAttr.length }, (_, i) => new GameScene(sceneAttr[i]))
 
 
     gameLevel[0].open()
-
+    game.goHome()
 
     ///---------------------------------
     //
@@ -327,14 +360,15 @@
     function keyboardListener(e) {
         var keyID = e.code;
         if (keyID === 'KeyQ') {
-            gameLevel[0].opentaggle()
+            // gameLevel[0].opentaggle()
+            game.startGame()
         }
 
         if (keyID === 'KeyW') {
-            game.stopTimer()
+            game.goHome()
         }
         if (keyID === 'KeyA') {
-
+            game.stopTimer()
         }
         if (keyID === 'KeyE') {
             game.goto(0)
