@@ -177,7 +177,6 @@
             this.item[num].off()
         }
 
-
         addScore(score) {
             game.score = game.score + score
             test("" + score + ", Score : " + game.score)
@@ -280,35 +279,29 @@
 
     gameLevelAttr = [
         {
-            level: 0, background: "",
+            level: 101, background: "",
             item: [
                 { type: "A", size: [10, 10], xyr: [50, 30, 45], background: "" },
                 { type: "A", size: [10, 10], xyr: [50, 50, 45], background: "" },
                 { type: "B", size: [10, 10], xyr: [50, 70, 0], background: "" },
                 { type: "B", size: [10, 10], xyr: [50, 90, 0], background: "" },
             ],
-            btn: [
-                { size: [10, 10], xyr: [80, 80, 45], background: "", act: () => { game.startTimer() } },
-            ]
+            btn: []
         }, {
-            level: 1, background: "",
+            level: 201, background: "",
             item: [
                 { type: "A", size: [20, 10], xyr: [40, 50, 25], background: "" },
                 { type: "A", size: [10, 20], xyr: [50, 20, 15], background: "" }
             ],
-            btn: [
-
-            ]
+            btn: []
         }, {
-            level: 2, background: "",
+            level: 301, background: "",
             item: [
                 { type: "A", size: [20, 10], xyr: [40, 50, 25], background: "" },
                 { type: "A", size: [10, 20], xyr: [50, 20, 15], background: "" },
                 { type: "K", size: [10, 20], xyr: [30, 30, 0], background: "" }
             ],
-            btn: [
-
-            ]
+            btn: []
         }
     ]
     sceneAttr = [
