@@ -89,8 +89,80 @@
             // this.object.style.backgroundImage = "url(" + attr.item[i].background + ")"
         }
     }
-    class Dialog { }
     class Saying { }
+
+    class Dialog {
+        constructor(text, buttonText = "Skip", duration = 3000, isAvatar = true) {
+            this.isAvatar = isAvatar
+            this.container = document.createElement("div");
+            //判斷 對話框 or 小K
+            if (isAvatar) {
+                this.container.classList.add("character-dialog");
+                this.avatar = document.createElement("div");
+                this.avatar.classList.add("avatar");
+                this.container.appendChild(this.avatar);
+            } else {
+                this.container.classList.add("dialog");
+            }
+
+            this.dialog = document.createElement("div");
+            this.dialog.classList.add("dialog");
+            this.container.appendChild(this.dialog);
+
+            this.text = text;
+            this.buttonText = buttonText;
+            this.duration = duration;
+            this.timer = null;
+
+            this.dialogText = "";
+            this.currentIndex = 0;
+
+            this.dialog.appendChild(document.createElement("span"));
+
+            this.addButton();
+            container.appendChild(this.container);
+        }
+
+        addButton() {
+            const button = document.createElement("button");
+            button.textContent = this.buttonText;
+            button.addEventListener("click", () => this.skip());
+            this.container.appendChild(button);
+        }
+
+        skip() {
+            this.dialogText = this.text;
+            this.dialog.firstChild.textContent = this.dialogText;
+            clearInterval(this.timer);
+            this.remove();
+        }
+
+        typeText() {
+            this.dialogText += this.text.charAt(this.currentIndex);
+            this.dialog.firstChild.textContent = this.dialogText;
+            this.currentIndex++;
+            if (this.currentIndex === this.text.length) {
+                clearInterval(this.timer);
+                setTimeout(() => this.remove(), this.duration);
+            }
+        }
+
+        show() {
+            this.timer = setInterval(() => this.typeText(), 100);
+            this.container.classList.add("fadeInLeft")
+            if (this.isAvatar) {
+                this.avatar.classList.add("fadeInLeft")
+            }
+
+        }
+
+        remove() {
+            clearInterval(this.timer);
+            this.container.classList.add("fadeOut")
+            setInterval(() => this.container.remove(), 500);
+
+        }
+    }
 
 
     class GameScene {
@@ -123,7 +195,7 @@
                     if (this.item[i].state == 0) {
                         sound.play(4)
                         this.item[i].on()
-                        if (this.level < 2) {
+                        if (this.level / 100 < 2) {
                             this.ruleCheckMatch(i)
                         } else {
                             this.ruleFind(i, "K")
@@ -229,9 +301,33 @@
 
     class Game {
         constructor() {
-            this.nowLevel = 0
+            this.nowLevel = [0, 0]
             this.score = 0
             this.time = 0
+        }
+
+
+        start() {
+            scene[0].close()
+        }
+
+        goHome() {
+            scene[0].open()
+        }
+
+        goToScorePage() { }
+
+
+        goToLevel(num) {
+            const randomIndex = Math.floor(Math.random() * gameLevel[num].length);
+            if (this.nowLevel[0] != num) {
+                gameLevel[num][randomIndex].open()
+                gameLevel[this.nowLevel[0]][this.nowLevel[1]].close()
+
+                this.nowLevel = [num, randomIndex]
+
+                test("level now is " + this.nowLevel)
+            }
         }
 
         startTimer(aTime = 1000, act = () => console.log(this.time)) {
@@ -243,26 +339,6 @@
         stopTimer() {
             clearInterval(this.timer)
             this.time = 0
-        }
-
-        startGame() {
-            scene[0].close()
-        }
-
-        goHome() {
-            scene[0].open()
-        }
-
-        goToScorePage() { }
-
-
-        goto(num) {
-            if (this.nowLevel != num) {
-                gameLevel[num].open()
-                gameLevel[this.nowLevel].close()
-                this.nowLevel = num
-                test("level now is " + this.nowLevel)
-            }
         }
     }
 
@@ -278,37 +354,51 @@
 
 
     gameLevelAttr = [
-        {
+        [{
             level: 101, background: "",
             item: [
                 { type: "A", size: [10, 10], xyr: [50, 30, 45], background: "" },
                 { type: "A", size: [10, 10], xyr: [50, 50, 45], background: "" },
                 { type: "B", size: [10, 10], xyr: [50, 70, 0], background: "" },
                 { type: "B", size: [10, 10], xyr: [50, 90, 0], background: "" },
-            ],
-            btn: []
+            ], btn: []
         }, {
+            level: 102, background: "",
+            item: [
+                { type: "A", size: [10, 10], xyr: [50, 30, 0], background: "" },
+                { type: "A", size: [10, 10], xyr: [50, 50, 0], background: "" },
+                { type: "B", size: [10, 10], xyr: [0, 70, 45], background: "" },
+                { type: "B", size: [10, 10], xyr: [50, 90, 45], background: "" },
+            ], btn: []
+        }, {
+            level: 103, background: "",
+            item: [
+                { type: "A", size: [10, 10], xyr: [10, 30, 0], background: "" },
+                { type: "A", size: [10, 10], xyr: [50, 50, 0], background: "" },
+                { type: "B", size: [10, 10], xyr: [10, 50, 45], background: "" },
+                { type: "B", size: [10, 10], xyr: [50, 90, 45], background: "" },
+            ], btn: []
+        }], [{
             level: 201, background: "",
             item: [
                 { type: "A", size: [20, 10], xyr: [40, 50, 25], background: "" },
                 { type: "A", size: [10, 20], xyr: [50, 20, 15], background: "" }
-            ],
-            btn: []
-        }, {
+            ], btn: []
+        }], [{
             level: 301, background: "",
             item: [
                 { type: "A", size: [20, 10], xyr: [40, 50, 25], background: "" },
                 { type: "A", size: [10, 20], xyr: [50, 20, 15], background: "" },
                 { type: "K", size: [10, 20], xyr: [30, 30, 0], background: "" }
-            ],
-            btn: []
-        }
+            ], btn: []
+        }]
     ]
+
     sceneAttr = [
         {
             level: "home", background: "", item: [],
             btn: [
-                { name: "start", size: [30, 15], xyr: [50, 50, 0], background: "", act: nothing },
+                { name: "start", size: [30, 15], xyr: [50, 50, 0], background: "", act: () => game.startGame() },
                 { name: "kCyan", size: [30, 30], xyr: [80, 90, 0], background: "", act: nothing },
                 { name: "mute", size: [10, 10], xyr: [10, 5, 0], background: "", act: nothing }
             ]
@@ -331,14 +421,23 @@
     container = $css("container")[0]
     game = new Game()
 
+    gameLevel = []
+    for (let i = 0; i < gameLevelAttr.length; i++) {
+        gameLevel[i] = Array.from({ length: gameLevelAttr[i].length }, (_, j) => new GameScene(gameLevelAttr[i][j]))
+    }
 
 
-    var gameLevel = Array.from({ length: gameLevelAttr.length }, (_, i) => new GameScene(gameLevelAttr[i]))
+
+
     var scene = Array.from({ length: sceneAttr.length }, (_, i) => new GameScene(sceneAttr[i]))
 
 
-    gameLevel[0].open()
+    gameLevel[0][0].open()
     game.goHome()
+
+    test(gameLevel)
+    test(scene)
+    test(gameLevelAttr.length)
 
     ///---------------------------------
     //
@@ -354,7 +453,7 @@
         var keyID = e.code;
         if (keyID === 'KeyQ') {
             // gameLevel[0].opentaggle()
-            game.startGame()
+            game.start()
         }
 
         if (keyID === 'KeyW') {
@@ -363,15 +462,20 @@
         if (keyID === 'KeyA') {
             game.stopTimer()
         }
-        if (keyID === 'KeyE') {
-            game.goto(0)
+        if (keyID === 'KeyQ') {
+            game.goToLevel(0)
+        }
+        if (keyID === 'KeyA') {
+            game.goToLevel(1)
+        }
+        if (keyID === 'KeyZ') {
+            game.goToLevel(2)
         }
         if (keyID === 'KeyD') {
-            game.goto(1)
+            const characterDialog = new Dialog("Hello, how are you?", "Continue", 100000);
+            characterDialog.show();
         }
-        if (keyID === 'KeyC') {
-            game.goto(2)
-        }
+
     }
 
 

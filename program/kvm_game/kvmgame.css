@@ -109,3 +109,117 @@
         color: #000000;
         font-family: Arial, Helvetica, sans-serif;
     }
+
+
+
+
+    /******************************
+           dialog
+    *******************************/
+    .character-dialog {
+        position: absolute;
+        width: 85%;
+        padding-top: 20%;
+        bottom: 4%;
+        left: 50%;
+        transform: translate(-50%, 0);
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        /* z-index: 1000; */
+        animation: fadeInLeft 0.5s ease forwards;
+    }
+
+    .character-dialog>* {
+        position: absolute;
+
+    }
+
+    .avatar {
+        width: 16%;
+        padding-top: 16%;
+        top: 50%;
+        left: 10%;
+        transform: translate(-50%, -50%);
+        background-color: #ccc;
+        border-radius: 50%;
+        animation: fadeInbig 0.5s ease forwards;
+    }
+
+    .dialog {
+        top: 20%;
+        left: 30%;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+
+    }
+
+    button {
+        /* top: 4px; */
+        right: 4px;
+        bottom: 4px;
+        display: block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    .character-dialog.fadeOut {
+        animation: fadeOut 0.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes fadeInbig {
+        from {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.2);
+        }
+
+        to {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+    }
+
+    @keyframes fadeInLeft {
+        from {
+            opacity: 0;
+            -webkit-transform: translate3d(-30%, 0, 0);
+            transform: translate3d(-100%, 0, 0);
+        }
+
+        to {
+            opacity: 1;
+            -webkit-transform: translate(-50%, 0);
+            transform: translate(-50%, 0);
+        }
+    }
+
+    @keyframes fadeOut {
+        from {
+            opacity: 1;
+        }
+
+        to {
+            opacity: 0;
+        }
+    }
