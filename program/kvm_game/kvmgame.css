@@ -110,28 +110,74 @@
         font-family: Arial, Helvetica, sans-serif;
     }
 
-
-
-
     /******************************
            dialog
     *******************************/
-    .character-dialog {
+    .dialog {
+        top: 50%;
+        left: 50%;
+        width: 85%;
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 0;
+        transition: 0.5s;
+    }
+
+    .dialog.fade {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+
+
+    .dialog h5 {
+        font-size: 25px;
+        margin: 12px 0;
+    }
+
+    .dialog p {
+        font-size: 16px;
+    }
+
+    .dialog .btnBox {
+        display: flex;
+
+        justify-content: end;
+        width: 100%;
+    }
+
+    .dialog button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        margin: 4px;
+    }
+
+    .dialog button:hover {
+        background-color: #0056b3;
+    }
+
+    /******************************
+          say
+    *******************************/
+    .say {
         position: absolute;
         width: 85%;
         padding-top: 20%;
         bottom: 4%;
         left: 50%;
         transform: translate(-50%, 0);
-        background-color: white;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        /* z-index: 1000; */
         animation: fadeInLeft 0.5s ease forwards;
     }
 
-    .character-dialog>* {
+    .say>* {
         position: absolute;
 
     }
@@ -139,27 +185,31 @@
     .avatar {
         width: 16%;
         padding-top: 16%;
-        top: 50%;
-        left: 10%;
+        top: 0%;
+        left: 8%;
         transform: translate(-50%, -50%);
         background-color: #ccc;
         border-radius: 50%;
-        animation: fadeInbig 0.5s ease forwards;
+        /* animation: fadeInbig 0.5s ease forwards; */
     }
 
-    .dialog {
-        top: 20%;
-        left: 30%;
-        font-family: Arial, sans-serif;
+    .textBox {
+        width: 90%;
+        min-height: 80%;
+        top: 0%;
+        left: 5%;
+        padding: 5% 12%;
         font-size: 16px;
         line-height: 1.5;
-
+        border-radius: 8px;
+        background-color: white;
+        border: 1px solid #ccc;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
-    button {
-        /* top: 4px; */
-        right: 4px;
-        bottom: 4px;
+    .say button {
+        right: 0%;
+        bottom: 0%;
         display: block;
         padding: 10px 20px;
         background-color: #007bff;
@@ -167,14 +217,13 @@
         border-radius: 5px;
         border: none;
         cursor: pointer;
-
     }
 
-    button:hover {
+    .say button:hover {
         background-color: #0056b3;
     }
 
-    .character-dialog.fadeOut {
+    .say.fadeOut {
         animation: fadeOut 0.5s ease forwards;
     }
 

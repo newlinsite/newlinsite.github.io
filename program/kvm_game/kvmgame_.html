@@ -89,59 +89,75 @@
             // this.object.style.backgroundImage = "url(" + attr.item[i].background + ")"
         }
     }
-    class Saying { }
-
     class Dialog {
-        constructor(text, buttonText = "Skip", duration = 3000, isAvatar = true) {
-            this.isAvatar = isAvatar
-            this.container = document.createElement("div");
-            //判斷 對話框 or 小K
-            if (isAvatar) {
-                this.container.classList.add("character-dialog");
-                this.avatar = document.createElement("div");
-                this.avatar.classList.add("avatar");
-                this.container.appendChild(this.avatar);
-            } else {
-                this.container.classList.add("dialog");
-            }
+        constructor(title, content, buttons = [{ t: "text", a: nothing }], where = container) {
+            this.where = where
 
             this.dialog = document.createElement("div");
             this.dialog.classList.add("dialog");
-            this.container.appendChild(this.dialog);
 
-            this.text = text;
-            this.buttonText = buttonText;
+            this.title = document.createElement("h5");
+            this.title.textContent = title;
+            this.dialog.appendChild(this.title);
+
+            this.content = document.createElement("p");
+            this.content.textContent = content;
+            this.dialog.appendChild(this.content);
+
+            this.btnBox = document.createElement("div");
+            this.btnBox.classList.add("btnBox");
+            this.dialog.appendChild(this.btnBox);
+
+            buttons.forEach((bb) => {
+                const btn = document.createElement("button");
+                btn.textContent = bb.t;
+                btn.addEventListener("click", bb.a);
+                this.btnBox.appendChild(btn);
+            });
+        }
+        show() {
+            this.where.appendChild(this.dialog);
+            setTimeout(() => this.dialog.classList.add("fade"), 0);
+
+        }
+        remove() {
+            this.dialog.classList.remove("fade")
+            setTimeout(() => { this.dialog.remove() }, 300);
+        }
+    }
+
+    class Say {
+        constructor(text, buttonText = "Skip", duration = 3000) {
+            this.container = document.createElement("div");
             this.duration = duration;
             this.timer = null;
 
-            this.dialogText = "";
-            this.currentIndex = 0;
+            this.text = text;
+            this.nowText = "";
+            this.nowTextIndex = 0;
+            this.textBox = document.createElement("div");
+            this.textBox.classList.add("textBox");
+            this.textBox.appendChild(document.createElement("span"));
+            this.container.appendChild(this.textBox);
 
-            this.dialog.appendChild(document.createElement("span"));
+            this.container.classList.add("say");
+            this.avatar = document.createElement("div");
+            this.avatar.classList.add("avatar");
+            this.container.appendChild(this.avatar);
 
-            this.addButton();
+            this.button = document.createElement("button");
+            this.button.textContent = buttonText;
+            this.button.addEventListener("click", () => this.remove());
+            this.container.appendChild(this.button);
+
             container.appendChild(this.container);
         }
 
-        addButton() {
-            const button = document.createElement("button");
-            button.textContent = this.buttonText;
-            button.addEventListener("click", () => this.skip());
-            this.container.appendChild(button);
-        }
-
-        skip() {
-            this.dialogText = this.text;
-            this.dialog.firstChild.textContent = this.dialogText;
-            clearInterval(this.timer);
-            this.remove();
-        }
-
         typeText() {
-            this.dialogText += this.text.charAt(this.currentIndex);
-            this.dialog.firstChild.textContent = this.dialogText;
-            this.currentIndex++;
-            if (this.currentIndex === this.text.length) {
+            this.nowText += this.text.charAt(this.nowTextIndex);
+            this.textBox.firstChild.textContent = this.nowText;
+            this.nowTextIndex++;
+            if (this.nowTextIndex === this.text.length) {
                 clearInterval(this.timer);
                 setTimeout(() => this.remove(), this.duration);
             }
@@ -150,17 +166,13 @@
         show() {
             this.timer = setInterval(() => this.typeText(), 100);
             this.container.classList.add("fadeInLeft")
-            if (this.isAvatar) {
-                this.avatar.classList.add("fadeInLeft")
-            }
-
+            this.avatar.classList.add("fadeInLeft")
         }
 
         remove() {
             clearInterval(this.timer);
             this.container.classList.add("fadeOut")
-            setInterval(() => this.container.remove(), 500);
-
+            setTimeout(() => this.container.remove(), 500);
         }
     }
 
@@ -435,6 +447,17 @@
     gameLevel[0][0].open()
     game.goHome()
 
+
+    var dAttr = [{
+        name: "",
+        h: "標題",
+        c: "內容內容內容內容內容內容內容",
+        btn: [{ t: "text", a: nothing }, { t: "Cancel", a: () => dialog01.remove() }]
+    }]
+    const dialog01 = new Dialog(dAttr[0].h, dAttr[0].c, dAttr[0].btn);
+
+
+
     test(gameLevel)
     test(scene)
     test(gameLevelAttr.length)
@@ -472,11 +495,15 @@
             game.goToLevel(2)
         }
         if (keyID === 'KeyD') {
-            const characterDialog = new Dialog("Hello, how are you?", "Continue", 100000);
-            characterDialog.show();
+            const say = new Say("Hello, how are you? Hello, how are you? Hello, how are you?", "Continue", 10000000);
+            say.show();
         }
-
+        if (keyID === 'KeyH') {
+            dialog01.show()
+        }
     }
+
+
 
 
 </script>
