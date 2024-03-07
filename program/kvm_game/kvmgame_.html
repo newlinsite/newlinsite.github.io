@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div class="container"></div>
+    <div class="gameContainer"></div>
 </body>
 <script src="../library/voiceControl.js"></script>
 <script>
@@ -118,11 +118,13 @@
         show() {
             this.where.appendChild(this.dialog);
             setTimeout(() => this.dialog.classList.add("fade"), 0);
+            game.onMaskOn(0.4)
 
         }
         remove() {
             this.dialog.classList.remove("fade")
             setTimeout(() => { this.dialog.remove() }, 300);
+            game.onMaskOff()
         }
     }
 
@@ -167,19 +169,21 @@
             this.timer = setInterval(() => this.typeText(), 100);
             this.container.classList.add("fadeInLeft")
             this.avatar.classList.add("fadeInLeft")
+            game.onMaskOn(0.3)
         }
 
         remove() {
             clearInterval(this.timer);
             this.container.classList.add("fadeOut")
             setTimeout(() => this.container.remove(), 500);
+            game.onMaskOff()
         }
     }
 
 
     class GameScene {
         constructor(
-            attr
+            attr,
         ) {
             this.object = document.createElement("div")
             this.object.classList = "gameScene"
@@ -218,10 +222,6 @@
             }
             container.appendChild(this.object)
 
-            // Mask
-            this.mask = document.createElement("div")
-            this.mask.classList = "mask"
-            this.object.appendChild(this.mask)
 
             // Score Note
             this.scoreNote = document.createElement("div")
@@ -240,14 +240,15 @@
             if (this.selectedItem != "") {
                 if (this.selectedItem.type === this.item[num].type) {
                     this.addScore(1)
+                    this.selectedItem = ""
                 } else {
                     this.addScore(-1)
+                    setTimeout(() => {
+                        this.selectedItem.off()
+                        this.item[num].off()
+                        this.selectedItem = ""
+                    }, 500)
                 }
-                setTimeout(() => {
-                    this.selectedItem.off()
-                    this.item[num].off()
-                    this.selectedItem = ""
-                }, 500)
             } else {
                 this.selectedItem = this.item[num]
             }
@@ -264,7 +265,7 @@
         addScore(score) {
             game.score = game.score + score
             test("" + score + ", Score : " + game.score)
-            this.onMask()
+            game.onMask()
             this.onScoreNote(score)
         }
         open() {
@@ -285,15 +286,11 @@
                 () => this.close()
             )
         }
-        onMask(fideOutTime = 200, offTime = 500) {
-            this.mask.style.display = "inline-block"
-            this.mask.style.opacity = 0.2
-            setTimeout(() => {
-                this.mask.style.opacity = 0
-            }, fideOutTime)
-            setTimeout(() => {
-                this.mask.style.display = "none"
-            }, offTime)
+
+        reset() {
+            for (let i = 0; i < this.item.length; i++) {
+                this.item[i].off()
+            }
         }
 
         onScoreNote(score, fideOutTime = 300, offTime = 600) {
@@ -316,6 +313,11 @@
             this.nowLevel = [0, 0]
             this.score = 0
             this.time = 0
+
+            // Mask
+            this.mask = document.createElement("div")
+            this.mask.classList = "mask"
+            container.appendChild(this.mask)
         }
 
 
@@ -351,6 +353,23 @@
         stopTimer() {
             clearInterval(this.timer)
             this.time = 0
+        }
+        onMask(stayTime = 300, fideOutTime = 300, opacity = 0.2) {
+            this.onMaskOn(opacity)
+            setTimeout(() => {
+                this.onMaskOff(fideOutTime)
+            }, stayTime)
+
+        }
+        onMaskOn(opacity = 0.2) {
+            this.mask.style.display = "inline-block"
+            this.mask.style.opacity = opacity
+        }
+        onMaskOff(fideOutTime = 300) {
+            this.mask.style.opacity = 0
+            setTimeout(() => {
+                this.mask.style.display = "none"
+            }, fideOutTime + 100)
         }
     }
 
@@ -430,7 +449,7 @@
     ]
 
 
-    container = $css("container")[0]
+    container = $css("gameContainer")[0]
     game = new Game()
 
     gameLevel = []
@@ -458,9 +477,6 @@
 
 
 
-    test(gameLevel)
-    test(scene)
-    test(gameLevelAttr.length)
 
     ///---------------------------------
     //
@@ -479,21 +495,30 @@
             game.start()
         }
 
-        if (keyID === 'KeyW') {
+        if (keyID === 'KeyA') {
             game.goHome()
-        }
-        if (keyID === 'KeyA') {
-            game.stopTimer()
-        }
-        if (keyID === 'KeyQ') {
-            game.goToLevel(0)
-        }
-        if (keyID === 'KeyA') {
-            game.goToLevel(1)
+
         }
         if (keyID === 'KeyZ') {
+            game.stopTimer()
+        }
+
+        if (keyID === 'KeyW') {
+            game.goToLevel(0)
+        }
+        if (keyID === 'KeyS') {
+            game.goToLevel(1)
+        }
+        if (keyID === 'KeyX') {
             game.goToLevel(2)
         }
+        if (keyID === 'KeyE') {
+            gameLevel[0][0].reset()
+        }
+
+
+
+
         if (keyID === 'KeyD') {
             const say = new Say("Hello, how are you? Hello, how are you? Hello, how are you?", "Continue", 10000000);
             say.show();
