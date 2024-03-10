@@ -1,5 +1,7 @@
 
 
+#%% import
+
 import cv2
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont, ImageColor
@@ -18,7 +20,7 @@ def playSound(url, vol = 0.5):
     
     
     
-    
+#%% Function
     
 def easeIn(t):
     return t * t
@@ -44,8 +46,7 @@ def newText(videoSize, textParam, easeType, inS, stopS, outS):
         
         if frame < fade_in_duration * fps:  # 淡入阶段
             progress = frame / (fade_in_duration * fps)
-          
-                              
+
             alpha_start,alpha_end = textParam['alpha']
             alpha_current = alpha_start + (alpha_end - alpha_start) * easeType(progress)
             
@@ -61,10 +62,8 @@ def newText(videoSize, textParam, easeType, inS, stopS, outS):
                 draw.text((x_current, y_current), textParam['text'], fill = color, font = font)
             else:
                 for char in textParam['text']:
-                    draw.text((x_current, y_current), char, fill = color, font=font)
-                    x_current += space    # 更新 x 坐标以绘制下一个字符               
-
-
+                    draw.text((x_current, y_current), char, fill = color, font = font)
+                    x_current += space    # 更新 x 坐标以绘制下一个字符             
 
         elif frame < (fade_in_duration + stay_duration) * fps:  # 停留阶段
             
@@ -136,11 +135,18 @@ def imageToVideo(images, isOutput = True , outputName = "output.mp4", videoFps=3
 
 
 
-"""## ---------------------------------------
 
-單字影片生成
 
-## ---------------------------------------"""
+
+
+
+#%% =============================================================================
+# 
+# 
+# 單字影片生成
+# 
+# 
+# =============================================================================
 
 
 
@@ -149,7 +155,7 @@ def imageToVideo(images, isOutput = True , outputName = "output.mp4", videoFps=3
 import pandas as pd
 
 dfText = pd.read_excel("wordList.xlsx")
-Theme = ['type','食物']
+Theme = ['type','食物',0]
 content =[
         dfText.loc[dfText[Theme[0]] == Theme[1], 'ch'].tolist(),
         dfText.loc[dfText[Theme[0]] == Theme[1], 'jp'].tolist(),
@@ -206,6 +212,8 @@ for i in range(0,1):
         }
     ]
     
+    
+    
     # 生成逐帧图像
     textLayer=[]
     textLayer.append( newText((vSizeW, vSizeH), textParams[0], easeOut, 1.0, 5.0, 1.0) )    
@@ -219,30 +227,34 @@ for i in range(0,1):
     mergeFs(videoFrames, 0.8, textLayer[1])
     mergeFs(videoFrames, 1.0, textLayer[2])
     
-    clip.append(imageToVideo(videoFrames,True , str(i) + "_output.mp4" , fps))
+    textTimeline = [
+        [ easeOut, 0.5, 1.0, 5.0, 1.0],
+        [ easeOut, 0.8, 1.0, 4.4, 1.0],
+        [ easeOut, 1.0, 1.0, 4.0, 1.0],
+        ]
+    
+    
+    clip.append(imageToVideo(videoFrames,True , Theme[0] + "_" + Theme[1] + Theme[2] + ".mp4" , fps))
+
+
+
+videoFrames[28].show()
 
 
 
 
 
-
-
-
-
-videoFrames[20].show()
-
-
-
-"""## ---------------------------------------
-
-語音組合
-
-## ---------------------------------------"""
+#%% =============================================================================
+# 
+# 
+# 語音組合
+# 
+#
+# =============================================================================
 
 
 
 from pydub import AudioSegment
-
 
 def createVoiceLayer( url, startS, aTimeS, times, isTranslate = False, translateUrl = ""):
     voiceSource = AudioSegment.from_mp3(url)
@@ -264,11 +276,12 @@ def createVoiceLayer( url, startS, aTimeS, times, isTranslate = False, translate
     return voice
     
     
+# 創造聲音圖層
 voice = createVoiceLayer("out.mp3", 5, 2, 3, True, "output.mp3")
 voice.export('ou2.mp3', format='mp3')
 
 
-
+#%%
 
 """
 
@@ -292,17 +305,6 @@ output.write_videofile("output.mp4", temp_audiofile="temp-audio.m4a", remove_tem
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 playSound("out.mp3")
 playSound("output.mp3")
 playSound("ou2.mp3")
@@ -314,7 +316,14 @@ playSound("ou2.mp3")
 
 
 
-#----------------------------------------------------
+
+
+
+
+
+
+
+#%%----------------------------------------------------
 import numpy as np
 from moviepy.editor import ImageSequenceClip
 from moviepy.editor import *
