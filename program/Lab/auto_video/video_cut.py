@@ -28,6 +28,83 @@ def easeIn(t):
 def easeOut(t):
     return 1 - (1 - t) ** 2
 
+# def newText(videoSize, textParam, easeType, inS, stopS, outS):
+    
+#     text_images = []
+#     fade_in_duration = inS  # 淡入持续时间（秒）
+#     stay_duration = stopS  # 停留时间（秒）
+#     fade_out_duration = outS  # 淡出持续时间（秒）
+#     duration = inS + stopS + outS
+#     frames = int(duration * fps)
+#     space = textParam['space']
+#     print(textParam['text'])
+    
+#     for frame in range(frames):
+#         # 创建一帧图像
+#         frame_image = Image.new('RGBA', videoSize,(255, 255, 255, 0))
+#         draw = ImageDraw.Draw(frame_image)
+        
+#         if frame < fade_in_duration * fps:  # 淡入阶段
+#             progress = frame / (fade_in_duration * fps)
+
+#             alpha_start,alpha_end = textParam['alpha']
+#             alpha_current = alpha_start + (alpha_end - alpha_start) * easeType(progress)
+            
+#             x_start, y_start = textParam['start_pos']
+#             x_end, y_end = textParam['end_pos']
+#             x_current = x_start + (x_end - x_start) * easeType(progress)
+#             y_current = y_start + (y_end - y_start) * easeType(progress)
+#             font = ImageFont.truetype(textParam['font'], textParam['size'])
+
+#             color = ImageColor.getrgb(textParam['color'])+ (int(alpha_current),)     
+            
+#             if space == 0:
+#                 draw.text((x_current, y_current), textParam['text'], fill = color, font = font)
+#             else:
+#                 for char in textParam['text']:
+#                     draw.text((x_current, y_current), char, fill = color, font = font)
+#                     x_current += space    # 更新 x 坐标以绘制下一个字符             
+
+#         elif frame < (fade_in_duration + stay_duration) * fps:  # 停留阶段
+            
+#             alpha = alpha_end
+#             x_current, y_current = textParam['end_pos']
+#             font = ImageFont.truetype(textParam['font'], textParam['size'])
+#             color = ImageColor.getrgb(textParam['color'])+ (int(alpha),)
+            
+#             if space == 0:
+#                 draw.text((x_current, y_current), textParam['text'], fill = color, font = font)
+#             else:
+#                 for char in textParam['text']:
+#                     draw.text((x_current, y_current), char, fill = color, font=font)
+#                     x_current += space    # 更新 x 坐标以绘制下一个字符    
+
+#         elif frame < (fade_in_duration + stay_duration + fade_out_duration) * fps:  # 淡出阶段
+#             progress = (frame - (fade_in_duration + stay_duration) * fps) / (fade_out_duration * fps)
+        
+                                
+#             alpha_start,alpha_end = textParam['alpha']
+#             alpha_current = alpha_end + (alpha_start - alpha_end) * easeType(progress)
+            
+#             x_start, y_start = textParam['start_pos']
+#             x_end, y_end = textParam['end_pos']
+#             x_current = x_end + (x_start - x_end) * easeType(progress)
+#             y_current = y_end + (y_start - y_end) * easeType(progress)
+            
+#             font = ImageFont.truetype(textParam['font'], textParam['size'])
+#             color = ImageColor.getrgb(textParam['color'])+ (int(alpha_current),)  
+            
+#             if space == 0:
+#                 draw.text((x_current, y_current), textParam['text'], fill = color, font = font)
+#             else:
+#                 for char in textParam['text']:
+#                     draw.text((x_current, y_current), char, fill = color, font=font)
+#                     x_current += space    # 更新 x 坐标以绘制下一个字符    
+
+#         # 添加当前帧图像到列表中
+#         text_images.append(frame_image)
+
+#     return text_images
 def newText(videoSize, textParam, easeType, inS, stopS, outS):
     
     text_images = []
@@ -37,7 +114,6 @@ def newText(videoSize, textParam, easeType, inS, stopS, outS):
     duration = inS + stopS + outS
     frames = int(duration * fps)
     space = textParam['space']
-    print(textParam['text'])
     
     for frame in range(frames):
         # 创建一帧图像
@@ -47,22 +123,22 @@ def newText(videoSize, textParam, easeType, inS, stopS, outS):
         if frame < fade_in_duration * fps:  # 淡入阶段
             progress = frame / (fade_in_duration * fps)
 
-            alpha_start,alpha_end = textParam['alpha']
+            alpha_start, alpha_end = textParam['alpha']
             alpha_current = alpha_start + (alpha_end - alpha_start) * easeType(progress)
             
             x_start, y_start = textParam['start_pos']
             x_end, y_end = textParam['end_pos']
             x_current = x_start + (x_end - x_start) * easeType(progress)
             y_current = y_start + (y_end - y_start) * easeType(progress)
-            font = ImageFont.truetype(textParam['font'], textParam['size'])
+            font = ImageFont.truetype(textParam['font'], int(textParam['size_in'] + (textParam['size'] - textParam['size_in']) * progress))
 
-            color = ImageColor.getrgb(textParam['color'])+ (int(alpha_current),)     
+            color = ImageColor.getrgb(textParam['color']) + (int(alpha_current),)     
             
             if space == 0:
-                draw.text((x_current, y_current), textParam['text'], fill = color, font = font)
+                draw.text((x_current, y_current), textParam['text'], fill=color, font=font)
             else:
                 for char in textParam['text']:
-                    draw.text((x_current, y_current), char, fill = color, font = font)
+                    draw.text((x_current, y_current), char, fill=color, font=font)
                     x_current += space    # 更新 x 坐标以绘制下一个字符             
 
         elif frame < (fade_in_duration + stay_duration) * fps:  # 停留阶段
@@ -70,20 +146,20 @@ def newText(videoSize, textParam, easeType, inS, stopS, outS):
             alpha = alpha_end
             x_current, y_current = textParam['end_pos']
             font = ImageFont.truetype(textParam['font'], textParam['size'])
-            color = ImageColor.getrgb(textParam['color'])+ (int(alpha),)
+            color = ImageColor.getrgb(textParam['color']) + (int(alpha),)
             
             if space == 0:
-                draw.text((x_current, y_current), textParam['text'], fill = color, font = font)
+                draw.text((x_current, y_current), textParam['text'], fill=color, font=font)
             else:
                 for char in textParam['text']:
-                    draw.text((x_current, y_current), char, fill = color, font=font)
+                    draw.text((x_current, y_current), char, fill=color, font=font)
                     x_current += space    # 更新 x 坐标以绘制下一个字符    
 
         elif frame < (fade_in_duration + stay_duration + fade_out_duration) * fps:  # 淡出阶段
             progress = (frame - (fade_in_duration + stay_duration) * fps) / (fade_out_duration * fps)
         
                                 
-            alpha_start,alpha_end = textParam['alpha']
+            alpha_start, alpha_end = textParam['alpha']
             alpha_current = alpha_end + (alpha_start - alpha_end) * easeType(progress)
             
             x_start, y_start = textParam['start_pos']
@@ -91,14 +167,14 @@ def newText(videoSize, textParam, easeType, inS, stopS, outS):
             x_current = x_end + (x_start - x_end) * easeType(progress)
             y_current = y_end + (y_start - y_end) * easeType(progress)
             
-            font = ImageFont.truetype(textParam['font'], textParam['size'])
-            color = ImageColor.getrgb(textParam['color'])+ (int(alpha_current),)  
+            font = ImageFont.truetype(textParam['font'], int(textParam['size'] - (textParam['size'] - textParam['size_in']) * progress))
+            color = ImageColor.getrgb(textParam['color']) + (int(alpha_current),)  
             
             if space == 0:
-                draw.text((x_current, y_current), textParam['text'], fill = color, font = font)
+                draw.text((x_current, y_current), textParam['text'], fill=color, font=font)
             else:
                 for char in textParam['text']:
-                    draw.text((x_current, y_current), char, fill = color, font=font)
+                    draw.text((x_current, y_current), char, fill=color, font=font)
                     x_current += space    # 更新 x 坐标以绘制下一个字符    
 
         # 添加当前帧图像到列表中
@@ -155,7 +231,7 @@ def imageToVideo(images, isOutput = True , outputName = "output.mp4", videoFps=3
 import pandas as pd
 
 dfText = pd.read_excel("wordList.xlsx")
-Theme = ['type','食物',0]
+Theme = ['type','食物',"0"]
 content =[
         dfText.loc[dfText[Theme[0]] == Theme[1], 'ch'].tolist(),
         dfText.loc[dfText[Theme[0]] == Theme[1], 'jp'].tolist(),
@@ -185,6 +261,7 @@ for i in range(0,1):
             'font': 'font/NotoSansTC-Medium.ttf',
             'space':     0,
             'size':      40,
+            'size_in':   10,
             'color':     '#225500',
             'alpha':     (0,100),
             'start_pos': (100, 100),
@@ -195,6 +272,7 @@ for i in range(0,1):
             'font': 'font/NotoSansTC-Regular.ttf',
             'space':     10,
             'size':      30,
+            'size_in':   10,
             'color':     '#225500',
             'alpha':     (0,100),
             'start_pos': (100, 200),
@@ -205,6 +283,7 @@ for i in range(0,1):
             'font': 'font/NotoSansTC-Light.ttf',
             'space':     50,
             'size':      25,
+            'size_in':   10,
             'color':     '#222222',
             'alpha':     (0,100),
             'start_pos': (100, 260),
