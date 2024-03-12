@@ -70,8 +70,8 @@
             this.state = 0
             this.object = document.createElement("div")
             this.object.classList = style
-            // this.object.style.backgroundImage = "url(" + attr.item[i].background + ")"
-            this.object.style.backgroundColor = "#333"
+            this.object.style.backgroundImage = "url(" + attr.background + ")"
+            this.object.style.backgroundColor = attr.color
             this.object.style.width = attr.size[0] + "%"
             this.object.style.paddingTop = attr.size[1] + "%"
             this.object.style.left = attr.xyr[0] + "%"
@@ -80,13 +80,17 @@
         }
         on(url, color = "#555") {
             this.state = 1
-            this.object.style.backgroundColor = "#555"
-            // this.object.style.backgroundImage = "url(" + url + ")"
+            this.object.style.backgroundColor = color
+            if (typeof url !== 'undefined') {
+                this.object.style.backgroundImage = "url(" + url + ")"
+            }
         }
         off() {
             this.state = 0
-            this.object.style.backgroundColor = "#333"
-            // this.object.style.backgroundImage = "url(" + attr.item[i].background + ")"
+            this.object.style.backgroundColor = attr.color
+            if (typeof url !== 'undefined') {
+                this.object.style.backgroundImage = "url(" + attr.item[i].background + ")"
+            }
         }
     }
     class Dialog {
@@ -222,7 +226,6 @@
             }
             container.appendChild(this.object)
 
-
             // Score Note
             this.scoreNote = document.createElement("div")
             this.scoreNote.classList = "scoreNote"
@@ -268,6 +271,27 @@
             game.onMask()
             this.onScoreNote(score)
         }
+        gameStart(time = 3) {
+            game.onMaskOn()
+            const countdownElement = document.createElement("div");
+            const countdownElementText = document.createElement("div");
+            countdownElement.classList = "countdownElement"
+            this.object.appendChild(countdownElement);
+            countdownElement.appendChild(countdownElementText);
+            countdownElementText.textContent = time - game.time;
+            game.startTimer(
+                1, () => {
+                    console.log(time - game.time)
+                    countdownElementText.textContent = time - game.time;
+                },
+                time, () => {
+                    countdownElement.style.opacity = 0
+                    game.onMaskOff()
+                    setTimeout(() => countdownElement.remove(), 600);
+                }
+            )
+        }
+
         open() {
             this.object.style.height = 100 + "%"
             this.object.style.width = 100 + "%"
@@ -337,23 +361,28 @@
             if (this.nowLevel[0] != num) {
                 gameLevel[num][randomIndex].open()
                 gameLevel[this.nowLevel[0]][this.nowLevel[1]].close()
-
                 this.nowLevel = [num, randomIndex]
-
                 test("level now is " + this.nowLevel)
             }
         }
 
-        startTimer(aTime = 1000, act = () => console.log(this.time)) {
+        startTimer(aTime = 1, act = () => console.log(this.time), stopTime = 5, stopAct = () => console.log("stop")) {
             this.timer = setInterval(() => {
                 this.time = this.time + 1
-                act()
-            }, aTime);
+                //是否到停止時間
+                if (this.time == stopTime) {
+                    this.stopTimer()
+                    stopAct()
+                } else {
+                    act()
+                }
+            }, aTime * 1000);
         }
         stopTimer() {
             clearInterval(this.timer)
             this.time = 0
         }
+
         onMask(stayTime = 300, fideOutTime = 300, opacity = 0.2) {
             this.onMaskOn(opacity)
             setTimeout(() => {
@@ -388,39 +417,39 @@
         [{
             level: 101, background: "",
             item: [
-                { type: "A", size: [10, 10], xyr: [50, 30, 45], background: "" },
-                { type: "A", size: [10, 10], xyr: [50, 50, 45], background: "" },
-                { type: "B", size: [10, 10], xyr: [50, 70, 0], background: "" },
-                { type: "B", size: [10, 10], xyr: [50, 90, 0], background: "" },
+                { type: "A", size: [10, 10], xyr: [50, 30, 45], background: "", color: "#333" },
+                { type: "A", size: [10, 10], xyr: [50, 50, 45], background: "", color: "#333" },
+                { type: "B", size: [10, 10], xyr: [50, 70, 0], background: "", color: "#333" },
+                { type: "B", size: [10, 10], xyr: [50, 90, 0], background: "", color: "#333" },
             ], btn: []
         }, {
             level: 102, background: "",
             item: [
-                { type: "A", size: [10, 10], xyr: [50, 30, 0], background: "" },
-                { type: "A", size: [10, 10], xyr: [50, 50, 0], background: "" },
-                { type: "B", size: [10, 10], xyr: [0, 70, 45], background: "" },
-                { type: "B", size: [10, 10], xyr: [50, 90, 45], background: "" },
+                { type: "A", size: [10, 10], xyr: [50, 30, 0], background: "", color: "#333" },
+                { type: "A", size: [10, 10], xyr: [50, 50, 0], background: "", color: "#333" },
+                { type: "B", size: [10, 10], xyr: [0, 70, 45], background: "", color: "#333" },
+                { type: "B", size: [10, 10], xyr: [50, 90, 45], background: "", color: "#333" },
             ], btn: []
         }, {
             level: 103, background: "",
             item: [
-                { type: "A", size: [10, 10], xyr: [10, 30, 0], background: "" },
-                { type: "A", size: [10, 10], xyr: [50, 50, 0], background: "" },
-                { type: "B", size: [10, 10], xyr: [10, 50, 45], background: "" },
-                { type: "B", size: [10, 10], xyr: [50, 90, 45], background: "" },
+                { type: "A", size: [10, 10], xyr: [10, 30, 0], background: "", color: "#333" },
+                { type: "A", size: [10, 10], xyr: [50, 50, 0], background: "", color: "#333" },
+                { type: "B", size: [10, 10], xyr: [10, 50, 45], background: "", color: "#333" },
+                { type: "B", size: [10, 10], xyr: [50, 90, 45], background: "", color: "#333" },
             ], btn: []
         }], [{
             level: 201, background: "",
             item: [
-                { type: "A", size: [20, 10], xyr: [40, 50, 25], background: "" },
-                { type: "A", size: [10, 20], xyr: [50, 20, 15], background: "" }
+                { type: "A", size: [20, 10], xyr: [40, 50, 25], background: "", color: "#333" },
+                { type: "A", size: [10, 20], xyr: [50, 20, 15], background: "", color: "#333" }
             ], btn: []
         }], [{
             level: 301, background: "",
             item: [
-                { type: "A", size: [20, 10], xyr: [40, 50, 25], background: "" },
-                { type: "A", size: [10, 20], xyr: [50, 20, 15], background: "" },
-                { type: "K", size: [10, 20], xyr: [30, 30, 0], background: "" }
+                { type: "A", size: [20, 10], xyr: [40, 50, 25], background: "", color: "#333" },
+                { type: "A", size: [10, 20], xyr: [50, 20, 15], background: "", color: "#333" },
+                { type: "K", size: [10, 20], xyr: [30, 30, 0], background: "", color: "#333" }
             ], btn: []
         }]
     ]
@@ -429,15 +458,15 @@
         {
             level: "home", background: "", item: [],
             btn: [
-                { name: "start", size: [30, 15], xyr: [50, 50, 0], background: "", act: () => game.start() },
-                { name: "kCyan", size: [30, 30], xyr: [80, 90, 0], background: "", act: nothing },
-                { name: "mute", size: [10, 10], xyr: [10, 5, 0], background: "", act: nothing }
+                { name: "start", size: [30, 15], xyr: [50, 50, 0], background: "", act: () => game.start(), color: "#333" },
+                { name: "kCyan", size: [30, 30], xyr: [80, 90, 0], background: "", act: nothing, color: "#333" },
+                { name: "mute", size: [10, 10], xyr: [10, 5, 0], background: "", act: nothing, color: "#333" }
             ]
         }, {
             level: "levelPage",
             background: "", item: [],
             btn: [
-                { name: "start", size: [30, 15], xyr: [50, 50, 0], background: "", act: nothing },
+                { name: "start", size: [30, 15], xyr: [50, 50, 0], background: "", act: nothing, color: "#333" },
             ]
         }, {
             level: "scorePage",
@@ -492,7 +521,10 @@
         var keyID = e.code;
         if (keyID === 'KeyQ') {
             // gameLevel[0].opentaggle()
-            game.start()
+            // game.start()
+            // game.startTimer()
+
+            gameLevel[0][0].gameStart()
         }
 
         if (keyID === 'KeyA') {

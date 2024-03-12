@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        position: relative;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    body,
+    html {
+        width: 100%;
+        height: 100%;
+        font-family: "Noto sans TC", "Microsoft JhengHei ", "微軟正黑體", sans-serif;
+        margin: 0;
+        background-color: #0a0a0a;
+    }
+
+    .container {
+        max-width: 1400px;
+        padding-top: 50%;
+        margin: auto;
+    }
+
+    .coinBox,
+    .coinBox>.coin {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate3d(-50%, -50%, 100px) rotateX(30deg) rotateY(30deg);
+        transition: 0.5s;
+    }
+
+    .coinBox {
+        transform: translate3d(-50%, -50%, 100px) rotateX(0deg) rotateY(-80deg) rotateZ(0deg);
+        transform-style: preserve-3d;
+        animation: ss 12s forwards 10;
+    }
+
+    @keyframes ss {
+        from {
+
+            transform: translate3d(-50%, -50%, 100px) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+        }
+
+        to {
+
+            transform: translate3d(-50%, -50%, 100px) rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+        }
+    }
+
+    .coin {
+        background-image: url(bg.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 400px;
+        height: 400px;
+
+    }
+</style>
+
+<body>
+    <div class="container"></div>
+</body>
+<script>
+    var $id = function (name) {
+        return document.getElementById(name)
+    }
+    var $css = function (name) {
+        return document.getElementsByClassName(name)
+    }
+    var $tag = function (name) {
+        return document.getElementsByTagName(name)
+    }
+    var test = function (print = "test") {
+        console.log(print)
+    }
+    function nothing() {
+        console.log("nothing")
+    }
+
+
+    var container = $css("container")[0]
+    var coinBox = document.createElement("div")
+    coinBox.classList.add("coinBox")
+    var coin = []
+    for (let i = 0; i < 40; i++) {
+        coin[i] = document.createElement("div")
+        coin[i].classList.add("coin")
+        size = (-1 * 1.1 ** i + 42) / 30;
+        // po = -1 * 50 * i / 100 * 2
+        po = (-1 * 1.1 ** i + 42) / 2;
+        test(po)
+
+        coin[i].style = "transform: translate3d(" + po + "%, -50%, " + i * 2 + "px) scale(" + size + ")"
+        coinBox.appendChild(coin[i])
+    }
+
+    container.appendChild(coinBox)
+
+    // window.addEventListener("mousemove", (e) => {
+    //     coinBox.style.transform = "translate3d(-50%, -50%, 100px) rotateX(" + e.x / 5 + "deg) rotateY(" + e.y / 5 + "deg)"
+
+    // })
+</script>
+
+</html>

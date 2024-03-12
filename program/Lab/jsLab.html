@@ -34,7 +34,14 @@
 
     .container {
         max-width: 1400px;
+        padding-top: 50%;
         margin: auto;
+    }
+
+    .scene3D {
+        position: absolute;
+        top: 0;
+        left: 0;
     }
 </style>
 
@@ -42,16 +49,102 @@
     <div class="container"></div>
 </body>
 
-
+<script src="../library/three.min.js"></script>
 <script>
 
-
-    class Animal {
-        constructor(name) {
-            this.name = name
-        }
+    var $id = function (name) {
+        return document.getElementById(name)
+    }
+    var $css = function (name) {
+        return document.getElementsByClassName(name)
+    }
+    var $tag = function (name) {
+        return document.getElementsByTagName(name)
+    }
+    var test = function (print = "test") {
+        console.log(print)
+    }
+    function nothing() {
+        console.log("nothing")
     }
 
+
+
+
+
+
+    let scene, renderer, camera
+    let cube
+    let container = $css("container")[0]
+    let containerW = container.clientWidth
+    let containerH = container.clientHeight
+
+
+    // 初始化場景、渲染器、相機、物體
+    function init() {
+        // 建立場景
+        scene = new THREE.Scene()
+
+        // 建立渲染器
+        renderer = new THREE.WebGLRenderer()
+        renderer.setSize(containerW, containerH) // 場景大小
+        renderer.setClearColor(0xeeeeee, 1.0) // 預設背景顏色
+        renderer.shadowMap.enable = true // 陰影效果
+
+        // 將渲染器的 DOM 綁到網頁上
+        container.appendChild(renderer.domElement)
+        renderer.domElement.classList.add("scene3D")
+
+
+        // 建立相機
+        camera = new THREE.PerspectiveCamera(
+            45,
+            containerW / containerH,
+            0.1,
+            100
+        )
+        camera.position.set(10, 10, 10)
+        camera.lookAt(scene.position)
+
+        // 建立光源
+        let pointLight = new THREE.PointLight(0xffffff)
+        pointLight.position.set(10, 10, -10)
+        scene.add(pointLight)
+
+        // 建立物體
+        const geometry = new THREE.BoxGeometry(1, 1, 1) // 幾何體
+        const material = new THREE.MeshPhongMaterial({
+            color: 0x0000ff
+        }) // 材質
+        cube = new THREE.Mesh(geometry, material) // 建立網格物件
+        cube.position.set(0, 0, 0)
+        scene.add(cube)
+    }
+
+    // 建立動畫
+    function animate() {
+        cube.rotation.x += 0.01
+        cube.rotation.y += 0.01
+    }
+
+    // 渲染場景
+    function render() {
+        animate()
+        requestAnimationFrame(render)
+        renderer.render(scene, camera)
+    }
+
+    // 監聽螢幕寬高來做簡單 RWD 設定
+    window.addEventListener('resize', function () {
+        containerW = container.clientWidth
+        containerH = container.clientHeight
+        camera.aspect = containerW / containerH
+        camera.updateProjectionMatrix()
+        renderer.setSize(containerW, containerH)
+    })
+
+    init()
+    render()
 
 
 </script>
