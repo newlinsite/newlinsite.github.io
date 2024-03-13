@@ -21,7 +21,7 @@ def playSound(url, vol = 0.5):
     
     
     
-#%% Function
+# Function
     
 def easeIn(t):
     return t * t
@@ -47,6 +47,8 @@ def newText(videoSize, textParam, easeType, inSec, stopSec, outSec):
 
     # 文字參數
     alphaStart, alphaEnd = textParam['alpha']
+    alphaStart = alphaStart*2.55
+    alphaEnd   = alphaEnd  *2.55
     xStart, xEnd = textParam['x']
     yStart, yEnd = textParam['y']
     tSizeStart, tSizeEnd = textParam['size']
@@ -54,6 +56,7 @@ def newText(videoSize, textParam, easeType, inSec, stopSec, outSec):
     xPadding, yPadding = textParam['padding']
     bgColor = textParam['bgColor']
     print(textParam['text'])
+    
     for frame in range(frames):
         
         # 創建透明底板
@@ -83,9 +86,10 @@ def newText(videoSize, textParam, easeType, inSec, stopSec, outSec):
             
             # 繪製圓角矩形
             if(textParam['bg']):
+                bgColorCurrent = ImageColor.getrgb(bgColor) + (int(alphaCurrent),)  
                 drawRoundedRectangle(draw, 
                  (xCurrent-xPadding, yCurrent-yPadding, xCurrent + textWidth + xPadding, yCurrent + textHeight + yPadding), 
-                 5, fill = bgColor)
+                 5, fill = bgColorCurrent)
             
             # 建立文字
             if space == 0:
@@ -116,9 +120,10 @@ def newText(videoSize, textParam, easeType, inSec, stopSec, outSec):
             
             # 繪製圓角矩形
             if(textParam['bg']):
+                bgColorCurrent = ImageColor.getrgb(bgColor) + (int(alpha),)  
                 drawRoundedRectangle(draw, 
                  (xCurrent-xPadding, yCurrent-yPadding, xCurrent + textWidth + xPadding, yCurrent + textHeight + yPadding), 
-                 5, fill = bgColor)
+                 5, fill = bgColorCurrent)
             
             
             # 建立文字
@@ -151,9 +156,10 @@ def newText(videoSize, textParam, easeType, inSec, stopSec, outSec):
             
             # 繪製圓角矩形
             if(textParam['bg']):
+                bgColorCurrent = ImageColor.getrgb(bgColor) + (int(alphaCurrent),)  
                 drawRoundedRectangle(draw, 
                  (xCurrent-xPadding, yCurrent-yPadding, xCurrent + textWidth + xPadding, yCurrent + textHeight + yPadding), 
-                 5, fill = bgColor)
+                 5, fill = bgColorCurrent)
             
             # 建立文字
             if space == 0:
@@ -286,7 +292,6 @@ def newVideo(backgroundUrl, videoLen):
 
 #在特定 frames 疊上新圖
 def mergeFs(bgFs, startSec, fs):
-    print("start Merge")
     startFrame = int(fps*startSec)
     for i in range(startFrame, startFrame + len(fs)):
         textFrame = fs[i-startFrame]
@@ -295,13 +300,16 @@ def mergeFs(bgFs, startSec, fs):
 
 
 ### 把圖片逐 Frame 變成影片 ------------------------------------------------
-def imageToVideo(images, videoFps=30, isOutput = True , outputName = "output.mp4"):
+def imageToVideo(images, videoFps = 30, isOutput = True , outputName = "output.mp4"):
     imagesNp = [np.array(img) for img in images] # 将PIL图像对象转换为NumPy数组
     clip = ImageSequenceClip(imagesNp, fps = videoFps)   # 从图像文件创建图像序列剪辑
     if(isOutput):
-        clip.write_videofile( outputName )  # 保存视频文件
+        clip.write_videofile( outputName, fps = videoFps)  # 保存视频文件
     return clip
-
+    
+    # 如果 clip.write_videofile 讀取不到 fps 請再函示庫加入以下 Code 30可以改成指定 fps
+    # if fps is None:
+    #     fps = 30
 
 
 
@@ -328,11 +336,13 @@ def imageToVideo(images, videoFps=30, isOutput = True , outputName = "output.mp4
 import pandas as pd
 
 dfText = pd.read_excel("wordList.xlsx")
-Theme = ['type','食物',"0"]
+Theme = ['type','職場',"0"]
 content =[
         dfText.loc[dfText[Theme[0]] == Theme[1], 'ch'].tolist(),
-        dfText.loc[dfText[Theme[0]] == Theme[1], 'jp'].tolist(),
-        dfText.loc[dfText[Theme[0]] == Theme[1], 'en'].tolist()
+        dfText.loc[dfText[Theme[0]] == Theme[1], 'spelling-1'].tolist(),
+        dfText.loc[dfText[Theme[0]] == Theme[1], 'spelling-2 '].tolist(),
+        # dfText.loc[dfText[Theme[0]] == Theme[1], 'jp'].tolist(),
+        dfText.loc[dfText[Theme[0]] == Theme[1], 'detail'].tolist()
     ]
 
 
@@ -341,18 +351,21 @@ content =[
 clip = []
 
 # 影片参数
-videoBg = "bg01.png"
-videoSec,fps = 9, 30
+videoBg = "bg02.png"
+fps = 30
 vSizeW, vSizeH =  Image.open( videoBg ).size
-videoLen = videoSec * fps
 
 fade = [
+    { 't':[0.5, 1.0, 6.0, 1.0 ], 'f': easeOut},
+    { 't':[0.5, 1.0, 6.0, 1.0 ], 'f': easeOut},
+    { 't':[0.5, 1.0, 6.0, 1.0 ], 'f': easeOut},
     { 't':[0.5, 1.0, 6.0, 1.0 ], 'f': easeOut},
     { 't':[0.5, 1.0, 6.0, 1.0 ], 'f': easeOut},
     { 't':[0.5, 1.0, 6.0, 1.0 ], 'f': easeOut}
  ]
 
-videoLen = max(sum(row['t']) for row in fade)+ 0.5
+# 取 fade 中最長片段 + 0.5 秒
+videoLen = int((max(sum(row['t']) for row in fade) + 0.5)) * fps
 
 # for i in range(0,1):
 for i in range(0,len(content[0])):
@@ -362,62 +375,102 @@ for i in range(0,len(content[0])):
             'text': content[0][i],
             'font': 'font/NotoSansTC-Medium.ttf',
             'space':     0,
-            'size':      (10, 40),
+            'size':      (80, 85),
             'alignCenter':True,
-            'color':     '#225500',
+            'color':     '#FFFFFF',
             'alpha':     (0,100),
             'x':         (960, 960),
-            'y':         (50, 300),
-            'bg':True, 'padding':(8,8), 'bgColor':"#333333"
+            'y':         (300, 320),
+            'bg':False, 'padding':(8,8), 'bgColor':"#333333"
         },
-        {   'name':"拼音",
+        {   'name':"注音標題",
+            'text': "注音",
+            'font': 'font/NotoSansTC-Regular.ttf',
+            'space':     0,
+            'size':      (33, 33),
+            'alignCenter':False,
+            'color':     '#FFFFFF',
+            'alpha':     (0,100),
+            'x':         (814, 814),
+            'y':         (480, 480),
+            'bg':True, 'padding':(26,8), 'bgColor':"#406A51"
+        },
+        {   'name':"注音",
             'text': content[1][i],
             'font': 'font/NotoSansTC-Regular.ttf',
             'space':     0,
-            'size':      (10, 30),
-            'alignCenter':True,
-            'color':     '#225500',
+            'size':      (34, 34),
+            'alignCenter':False,
+            'color':     '#FFFFFF',
             'alpha':     (0,100),
-            'x':         (960, 960),
-            'y':         (100, 400),
-            'bg':True, 'padding':(8,8), 'bgColor':(255, 255, 255, 255)
+            'x':         (990, 965),
+            'y':         (480, 480),
+            'bg':False, 'padding':(8,8), 'bgColor':"#406A51"
         },
-        {   'name':"日文",
+        {   'name':"拼音標題",
+            'text': "拼音",
+            'font': 'font/NotoSansTC-Regular.ttf',
+            'space':     0,
+            'size':      (33, 33),
+            'alignCenter':False,
+            'color':     '#FFFFFF',
+            'alpha':     (0,100),
+            'x':         (814, 814),
+            'y':         (564, 564),
+            'bg':True, 'padding':(26,8), 'bgColor':"#406A51"
+        },
+        {   'name':"拼音",
             'text': content[2][i],
+            'font': 'font/NotoSansTC-Regular.ttf',
+            'space':     0,
+            'size':      (34, 34),
+            'alignCenter':False,
+            'color':     '#FFFFFF',
+            'alpha':     (0,100),
+            'x':         (990, 965),
+            'y':         (564, 564),
+            'bg':False, 'padding':(8,8),  'bgColor':"#406A51"
+        },
+        # {   'name':"日文",
+        #     'text': content[2][i],
+        #     'font': 'font/NotoSansTC-Light.ttf',
+        #     'space':     0,
+        #     'size':      (1, 25),
+        #     'alignCenter':True,
+        #     'color':     '#222222',
+        #     'alpha':     (0,100),
+        #     'x':         (960, 960),
+        #     'y':         (100, 600),
+        #     'bg':True, 'padding':(8,8), 'bgColor':(255, 255, 255, 255)
+        # },
+        {   'name':"說明",
+            'text': content[3][i],
             'font': 'font/NotoSansTC-Light.ttf',
             'space':     0,
-            'size':      (1, 25),
+            'size':      (30, 30),
             'alignCenter':True,
-            'color':     '#222222',
-            'alpha':     (0,100),
+            'color':     '#FFFFFF',
+            'alpha':     (0,70),
             'x':         (960, 960),
-            'y':         (100, 600),
-            'bg':True, 'padding':(8,8), 'bgColor':(255, 255, 255, 255)
+            'y':         (680, 700),
+            'bg':False, 'padding':(8,8),  'bgColor':"#406A51"
         }
     ]
     
     
     # 生成逐帧图像
-    
-    textLayer=[]
-    textLayer.append( newText((vSizeW, vSizeH), textParams[0], easeOut, fade[0].t[0], fade[0].t[1], fade[0].t[2]) )    
-    textLayer.append( newText((vSizeW, vSizeH), textParams[1], easeOut, 1.0, 5.4, 1.0) )    
-    textLayer.append( newText((vSizeW, vSizeH), textParams[2], easeOut, 1.0, 5.0, 1.0) )    
-      
-    
+    textLayer = []
+    for j in range(len(fade)):
+        print("create Layer " + str(j) + "------------------")
+        textLayer.append( newText((vSizeW, vSizeH), textParams[j], easeOut, fade[j]['t'][1], fade[j]['t'][2], fade[j]['t'][3]) )    
+
     # 創造背景 > 所有圖層合併
     videoFrames = newVideo(videoBg, videoLen)
-    mergeFs(videoFrames, 0.5, textLayer[0])
-    mergeFs(videoFrames, 0.8, textLayer[1])
-    mergeFs(videoFrames, 1.0, textLayer[2])
-    
-    textTimeline = [
-        [ easeOut, 0.5, 1.0, 5.0, 1.0],
-        [ easeOut, 0.8, 1.0, 4.4, 1.0],
-        [ easeOut, 1.0, 1.0, 4.0, 1.0],
-        ]
-    
-    
+    for j in range(len(textLayer)):
+        print("start Merge " + str(j))
+        mergeFs(videoFrames, fade[j]['t'][0], textLayer[j])
+
+    # 產生片段 > 儲存 > 輸出
     clip.append(imageToVideo(videoFrames, fps ,True , Theme[0] + "_" + Theme[1] + Theme[2] + str(i) + ".mp4" ))
 
 
