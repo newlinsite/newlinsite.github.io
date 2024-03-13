@@ -1,13 +1,14 @@
 
 
+
 #%% import
+# Pillow   9.4.0
 
 import cv2
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont, ImageColor
 from moviepy.editor import ImageSequenceClip
-
-import pygame
+import pygame #試聽聲音用
 
 def playSound(url, vol = 0.5):
     pygame.mixer.init()
@@ -28,159 +29,250 @@ def easeIn(t):
 def easeOut(t):
     return 1 - (1 - t) ** 2
 
-# def newText(videoSize, textParam, easeType, inS, stopS, outS):
+def drawRoundedRectangle(draw, xy, radius, **kwargs):
+    # 绘制圆角矩形
+    x1, y1, x2, y2 = xy
+    draw.rectangle([x1 + radius, y1, x2 - radius, y2], **kwargs)
+    draw.rectangle([x1, y1 + radius, x2, y2 - radius], **kwargs)
+    draw.pieslice([x1, y1, x1 + radius * 2, y1 + radius * 2], 180, 270, **kwargs)
+    draw.pieslice([x2 - radius * 2, y1, x2, y1 + radius * 2], 270, 360, **kwargs)
+    draw.pieslice([x1, y2 - radius * 2, x1 + radius * 2, y2], 90, 180, **kwargs)
+    draw.pieslice([x2 - radius * 2, y2 - radius * 2, x2, y2], 0, 90, **kwargs)
+
+def newText(videoSize, textParam, easeType, inSec, stopSec, outSec):
     
-#     text_images = []
-#     fade_in_duration = inS  # 淡入持续时间（秒）
-#     stay_duration = stopS  # 停留时间（秒）
-#     fade_out_duration = outS  # 淡出持续时间（秒）
-#     duration = inS + stopS + outS
-#     frames = int(duration * fps)
-#     space = textParam['space']
-#     print(textParam['text'])
-    
-#     for frame in range(frames):
-#         # 创建一帧图像
-#         frame_image = Image.new('RGBA', videoSize,(255, 255, 255, 0))
-#         draw = ImageDraw.Draw(frame_image)
-        
-#         if frame < fade_in_duration * fps:  # 淡入阶段
-#             progress = frame / (fade_in_duration * fps)
-
-#             alpha_start,alpha_end = textParam['alpha']
-#             alpha_current = alpha_start + (alpha_end - alpha_start) * easeType(progress)
-            
-#             x_start, y_start = textParam['start_pos']
-#             x_end, y_end = textParam['end_pos']
-#             x_current = x_start + (x_end - x_start) * easeType(progress)
-#             y_current = y_start + (y_end - y_start) * easeType(progress)
-#             font = ImageFont.truetype(textParam['font'], textParam['size'])
-
-#             color = ImageColor.getrgb(textParam['color'])+ (int(alpha_current),)     
-            
-#             if space == 0:
-#                 draw.text((x_current, y_current), textParam['text'], fill = color, font = font)
-#             else:
-#                 for char in textParam['text']:
-#                     draw.text((x_current, y_current), char, fill = color, font = font)
-#                     x_current += space    # 更新 x 坐标以绘制下一个字符             
-
-#         elif frame < (fade_in_duration + stay_duration) * fps:  # 停留阶段
-            
-#             alpha = alpha_end
-#             x_current, y_current = textParam['end_pos']
-#             font = ImageFont.truetype(textParam['font'], textParam['size'])
-#             color = ImageColor.getrgb(textParam['color'])+ (int(alpha),)
-            
-#             if space == 0:
-#                 draw.text((x_current, y_current), textParam['text'], fill = color, font = font)
-#             else:
-#                 for char in textParam['text']:
-#                     draw.text((x_current, y_current), char, fill = color, font=font)
-#                     x_current += space    # 更新 x 坐标以绘制下一个字符    
-
-#         elif frame < (fade_in_duration + stay_duration + fade_out_duration) * fps:  # 淡出阶段
-#             progress = (frame - (fade_in_duration + stay_duration) * fps) / (fade_out_duration * fps)
-        
-                                
-#             alpha_start,alpha_end = textParam['alpha']
-#             alpha_current = alpha_end + (alpha_start - alpha_end) * easeType(progress)
-            
-#             x_start, y_start = textParam['start_pos']
-#             x_end, y_end = textParam['end_pos']
-#             x_current = x_end + (x_start - x_end) * easeType(progress)
-#             y_current = y_end + (y_start - y_end) * easeType(progress)
-            
-#             font = ImageFont.truetype(textParam['font'], textParam['size'])
-#             color = ImageColor.getrgb(textParam['color'])+ (int(alpha_current),)  
-            
-#             if space == 0:
-#                 draw.text((x_current, y_current), textParam['text'], fill = color, font = font)
-#             else:
-#                 for char in textParam['text']:
-#                     draw.text((x_current, y_current), char, fill = color, font=font)
-#                     x_current += space    # 更新 x 坐标以绘制下一个字符    
-
-#         # 添加当前帧图像到列表中
-#         text_images.append(frame_image)
-
-#     return text_images
-def newText(videoSize, textParam, easeType, inS, stopS, outS):
-    
-    text_images = []
-    fade_in_duration = inS  # 淡入持续时间（秒）
-    stay_duration = stopS  # 停留时间（秒）
-    fade_out_duration = outS  # 淡出持续时间（秒）
-    duration = inS + stopS + outS
+    textBox = []
+    duration = inSec + stopSec + outSec
     frames = int(duration * fps)
+
+    # 文字參數
+    alphaStart, alphaEnd = textParam['alpha']
+    xStart, xEnd = textParam['x']
+    yStart, yEnd = textParam['y']
+    tSizeStart, tSizeEnd = textParam['size']
     space = textParam['space']
-    
+    xPadding, yPadding = textParam['padding']
+    bgColor = textParam['bgColor']
+    print(textParam['text'])
     for frame in range(frames):
-        # 创建一帧图像
-        frame_image = Image.new('RGBA', videoSize,(255, 255, 255, 0))
-        draw = ImageDraw.Draw(frame_image)
         
-        if frame < fade_in_duration * fps:  # 淡入阶段
-            progress = frame / (fade_in_duration * fps)
+        # 創建透明底板
+        frameImage = Image.new('RGBA', videoSize,(255, 255, 255, 0))
+        draw = ImageDraw.Draw(frameImage)
+        
+        
+        ### 淡入階段 --------------------------------------------------------------------
+        if frame < inSec * fps:
+            progress = frame / (inSec * fps)
 
-            alpha_start, alpha_end = textParam['alpha']
-            alpha_current = alpha_start + (alpha_end - alpha_start) * easeType(progress)
+            # 透明度、顏色 計算
+            alphaCurrent = alphaStart + (alphaEnd - alphaStart) * easeType(progress)
+            color = ImageColor.getrgb(textParam['color']) + (int(alphaCurrent),)  
             
-            x_start, y_start = textParam['start_pos']
-            x_end, y_end = textParam['end_pos']
-            x_current = x_start + (x_end - x_start) * easeType(progress)
-            y_current = y_start + (y_end - y_start) * easeType(progress)
-            font = ImageFont.truetype(textParam['font'], int(textParam['size_in'] + (textParam['size'] - textParam['size_in']) * progress))
-
-            color = ImageColor.getrgb(textParam['color']) + (int(alpha_current),)     
+            # 建立 "font" > 算文字尺寸 > 如有置中 > 取出中心校正值
+            font = ImageFont.truetype(textParam['font'], int(tSizeStart + (tSizeEnd - tSizeStart) * progress))
+            textWidth, textHeight = draw.textsize(textParam['text'], font = font)
+            textCenterWidth , textCenterHeight = (0,0)
+            if(textParam['alignCenter']):
+                textCenterWidth = textWidth / 2
+                textCenterHeight = textHeight / 2
             
+            # 位置 計算
+            xCurrent = xStart + (xEnd - xStart) * easeType(progress) -  textCenterWidth
+            yCurrent = yStart + (yEnd - yStart) * easeType(progress) - textCenterHeight
+            
+            # 繪製圓角矩形
+            if(textParam['bg']):
+                drawRoundedRectangle(draw, 
+                 (xCurrent-xPadding, yCurrent-yPadding, xCurrent + textWidth + xPadding, yCurrent + textHeight + yPadding), 
+                 5, fill = bgColor)
+            
+            # 建立文字
             if space == 0:
-                draw.text((x_current, y_current), textParam['text'], fill=color, font=font)
+                draw.text((xCurrent, yCurrent), textParam['text'], fill = color, font = font)
             else:
                 for char in textParam['text']:
-                    draw.text((x_current, y_current), char, fill=color, font=font)
-                    x_current += space    # 更新 x 坐标以绘制下一个字符             
-
-        elif frame < (fade_in_duration + stay_duration) * fps:  # 停留阶段
-            
-            alpha = alpha_end
-            x_current, y_current = textParam['end_pos']
-            font = ImageFont.truetype(textParam['font'], textParam['size'])
+                    draw.text((xCurrent, yCurrent), char, fill=color, font=font)
+                    xCurrent += space    # 更新 x 坐标以绘制下一个字符             
+        
+        ### 停留階段 --------------------------------------------------------------------
+       
+        elif frame < (inSec + stopSec) * fps:  # 停留阶段
+            # 透明度 計算
+            alpha = alphaEnd
             color = ImageColor.getrgb(textParam['color']) + (int(alpha),)
             
+            # 建立 "font" > 算文字尺寸 > 如有置中 > 取出中心校正值
+            font = ImageFont.truetype(textParam['font'], tSizeEnd )
+            textWidth, textHeight = draw.textsize(textParam['text'], font = font)
+            textCenterWidth , textCenterHeight = (0,0)
+            if(textParam['alignCenter']):
+                textCenterWidth = textWidth / 2
+                textCenterHeight = textHeight / 2
+            
+            # 位置 計算
+            xCurrent = xEnd  -  textCenterWidth
+            yCurrent = yEnd  - textCenterHeight            
+            
+            # 繪製圓角矩形
+            if(textParam['bg']):
+                drawRoundedRectangle(draw, 
+                 (xCurrent-xPadding, yCurrent-yPadding, xCurrent + textWidth + xPadding, yCurrent + textHeight + yPadding), 
+                 5, fill = bgColor)
+            
+            
+            # 建立文字
             if space == 0:
-                draw.text((x_current, y_current), textParam['text'], fill=color, font=font)
+                draw.text((xCurrent, yCurrent), textParam['text'], fill = color, font = font)
             else:
                 for char in textParam['text']:
-                    draw.text((x_current, y_current), char, fill=color, font=font)
-                    x_current += space    # 更新 x 坐标以绘制下一个字符    
-
-        elif frame < (fade_in_duration + stay_duration + fade_out_duration) * fps:  # 淡出阶段
-            progress = (frame - (fade_in_duration + stay_duration) * fps) / (fade_out_duration * fps)
+                    draw.text((xCurrent, yCurrent), char, fill = color, font = font)
+                    xCurrent += space    # 更新 x 坐标以绘制下一个字符
+    
+        ### 淡出階段 --------------------------------------------------------------------
+        elif frame < (inSec + stopSec + outSec) * fps:  # 淡出阶段
+            progress = (frame - (inSec + stopSec) * fps) / (outSec * fps)
         
-                                
-            alpha_start, alpha_end = textParam['alpha']
-            alpha_current = alpha_end + (alpha_start - alpha_end) * easeType(progress)
+            # 透明度、顏色
+            alphaCurrent = alphaEnd + (alphaStart - alphaEnd) * easeType(progress)
+            color = ImageColor.getrgb(textParam['color']) + (int(alphaCurrent),)             
+
+            # 建立 "font" > 算文字尺寸 > 如有置中 > 取出中心校正值
+            font = ImageFont.truetype(textParam['font'], int(tSizeEnd - (tSizeEnd - tSizeStart) * progress))
+            textWidth, textHeight = draw.textsize(textParam['text'], font = font)
+            textCenterWidth , textCenterHeight = (0,0) 
+            if(textParam['alignCenter']):
+                textCenterWidth = textWidth / 2
+                textCenterHeight = textHeight / 2 
             
-            x_start, y_start = textParam['start_pos']
-            x_end, y_end = textParam['end_pos']
-            x_current = x_end + (x_start - x_end) * easeType(progress)
-            y_current = y_end + (y_start - y_end) * easeType(progress)
+            # 位置 計算
+            xCurrent = xEnd + (xStart - xEnd) * easeType(progress) -  textCenterWidth
+            yCurrent = yEnd + (yStart - yEnd) * easeType(progress) - textCenterHeight
             
-            font = ImageFont.truetype(textParam['font'], int(textParam['size'] - (textParam['size'] - textParam['size_in']) * progress))
-            color = ImageColor.getrgb(textParam['color']) + (int(alpha_current),)  
+            # 繪製圓角矩形
+            if(textParam['bg']):
+                drawRoundedRectangle(draw, 
+                 (xCurrent-xPadding, yCurrent-yPadding, xCurrent + textWidth + xPadding, yCurrent + textHeight + yPadding), 
+                 5, fill = bgColor)
             
+            # 建立文字
             if space == 0:
-                draw.text((x_current, y_current), textParam['text'], fill=color, font=font)
+                draw.text((xCurrent, yCurrent), textParam['text'], fill = color, font = font)
             else:
                 for char in textParam['text']:
-                    draw.text((x_current, y_current), char, fill=color, font=font)
-                    x_current += space    # 更新 x 坐标以绘制下一个字符    
+                    draw.text((xCurrent, yCurrent), char, fill = color, font = font)
+                    xCurrent += space    # 更新 x 坐标以绘制下一个字符    
+                    
+        textBox.append(frameImage) # 添加当前帧图像到列表中
+    return textBox
 
-        # 添加当前帧图像到列表中
-        text_images.append(frame_image)
 
-    return text_images
+
+
+def newImage(videoSize, imageParam, easeType, inSec, stopSec, outSec):
+    
+    imageBox = []
+    duration = inSec + stopSec + outSec
+    frames = int(duration * fps)
+
+    # 圖片參數
+    alphaStart, alphaEnd = imageParam['alpha']
+    xStart, xEnd = imageParam['x']
+    yStart, yEnd = imageParam['y']
+    sizeStart, sizeEnd = imageParam['size']
+    image = Image.open(imageParam['image'])
+    imageWidth, imageHeight = image.size
+    
+    if image.mode != 'RGBA': # 确保图像模式为RGBA，如果原图像没有透明度，就创建一个新的带透明度的图像
+        image = image.convert('RGBA')
+    imageData = image.getdata() # 获取图像的透明度数据
+        
+    for frame in range(frames):
+        # 創建透明底板
+        frameImage = Image.new('RGBA', videoSize, (255, 255, 255, 0))
+        
+        ### 淡入階段 --------------------------------------------------------------------
+        if frame < inSec * fps:
+            progress = frame / (inSec * fps)
+
+            # 透明度 > 將每個像素的透明度乘以當前比率以降低透明度
+            alphaCurrent = alphaStart + (alphaEnd - alphaStart) * easeType(progress)
+            imageDataCurrent = [(r, g, b, int(alpha * alphaCurrent)) for r, g, b, alpha in imageData]
+            # 建立一個具有修改後透明度的新圖片
+            imageCurrent = Image.new('RGBA', image.size)
+            imageCurrent.putdata(imageDataCurrent)
+            
+            # 大小 計算
+            sizeCurrent = sizeStart + (sizeEnd - sizeStart) * progress
+            imageCurrent = imageCurrent.resize((int(sizeCurrent * imageWidth), int(sizeCurrent * imageHeight)))
+            
+            # 位置 計算
+            xCurrent = xStart + (xEnd - xStart) * easeType(progress) - imageCurrent.width / 2
+            yCurrent = yStart + (yEnd - yStart) * easeType(progress) - imageCurrent.height / 2
+            
+            # 繪製圓形遮罩
+            mask = Image.new("L", imageCurrent.size, 255)
+            # mask = Image.new("L", imageCurrent.size, 0) #"L"新創灰階圖像，0=全黑
+            # drawMask = ImageDraw.Draw(mask) 
+            # drawMask.ellipse((0, 0, imageCurrent.size[0], imageCurrent.size[1]), fill = 255) #畫橢圓形
+            frameImage.paste(imageCurrent, (int(xCurrent), int(yCurrent)), mask)
+            
+        ### 停留階段 --------------------------------------------------------------------
+        elif frame < (inSec + stopSec) * fps:  # 停留阶段
+            # 透明度 
+            alphaCurrent = alphaEnd
+            imageDataCurrent = [(r, g, b, int(alpha * alphaCurrent)) for r, g, b, alpha in imageData]
+            # 建立一個具有修改後透明度的新圖片
+            imageCurrent = Image.new('RGBA', image.size)
+            imageCurrent.putdata(imageDataCurrent)
+            
+            # 大小
+            sizeCurrent = sizeEnd
+            imageCurrent = image.resize((int(sizeCurrent * imageWidth), int(sizeCurrent * imageHeight)))
+            
+            # 位置
+            xCurrent = xEnd - imageCurrent.width / 2
+            yCurrent = yEnd - imageCurrent.height / 2
+            
+            # 繪製圓形遮罩
+            mask = Image.new("L", imageCurrent.size, 255)
+            # mask = Image.new("L", imageCurrent.size, 0)
+            # draw_mask = ImageDraw.Draw(mask)
+            # draw_mask.ellipse((0, 0, imageCurrent.size[0], imageCurrent.size[1]), fill=255)
+            frameImage.paste(imageCurrent, (int(xCurrent), int(yCurrent)), mask)
+    
+        ### 淡出階段 --------------------------------------------------------------------
+        elif frame < (inSec + stopSec + outSec) * fps:  # 淡出阶段
+            progress = (frame - (inSec + stopSec) * fps) / (outSec * fps)
+        
+                   
+            # 透明度 > 將每個像素的透明度乘以當前比率以降低透明度
+            alphaCurrent = alphaEnd - (alphaStart - alphaEnd) * easeType(progress)
+            imageDataCurrent = [(r, g, b, int(alpha * alphaCurrent)) for r, g, b, alpha in imageData]
+            # 建立一個具有修改後透明度的新圖片
+            imageCurrent = Image.new('RGBA', image.size)
+            imageCurrent.putdata(imageDataCurrent)
+            
+                        
+            # 大小
+            sizeCurrent = sizeEnd - (sizeEnd - sizeStart) * progress
+            imageCurrent = image.resize((int(sizeCurrent * imageWidth), int(sizeCurrent * imageHeight)))
+            
+            # 位置
+            xCurrent = xEnd - (xEnd - xStart) * easeType(progress) - imageCurrent.width / 2
+            yCurrent = yEnd - (yEnd - yStart) * easeType(progress) - imageCurrent.height / 2
+            
+            # 繪製圓形遮罩 > 畫圖
+            mask = Image.new("L", imageCurrent.size, 255)
+            # mask = Image.new("L", imageCurrent.size, 0)
+            # draw_mask = ImageDraw.Draw(mask)
+            # draw_mask.ellipse((0, 0, imageCurrent.size[0], imageCurrent.size[1]), fill=255)
+            frameImage.paste(imageCurrent, (int(xCurrent), int(yCurrent)), mask)
+                    
+        imageBox.append(frameImage) # 添加当前帧图像到列表中
+    return imageBox
+
+
 
 
 #創立影片基底
@@ -194,6 +286,7 @@ def newVideo(backgroundUrl, videoLen):
 
 #在特定 frames 疊上新圖
 def mergeFs(bgFs, startSec, fs):
+    print("start Merge")
     startFrame = int(fps*startSec)
     for i in range(startFrame, startFrame + len(fs)):
         textFrame = fs[i-startFrame]
@@ -202,7 +295,7 @@ def mergeFs(bgFs, startSec, fs):
 
 
 ### 把圖片逐 Frame 變成影片 ------------------------------------------------
-def imageToVideo(images, isOutput = True , outputName = "output.mp4", videoFps=30):
+def imageToVideo(images, videoFps=30, isOutput = True , outputName = "output.mp4"):
     imagesNp = [np.array(img) for img in images] # 将PIL图像对象转换为NumPy数组
     clip = ImageSequenceClip(imagesNp, fps = videoFps)   # 从图像文件创建图像序列剪辑
     if(isOutput):
@@ -213,7 +306,11 @@ def imageToVideo(images, isOutput = True , outputName = "output.mp4", videoFps=3
 
 
 
-
+## ------------------------------
+# font = ImageFont.truetype('font/NotoSansTC-Medium.ttf', 10)
+# frame_image = Image.new('RGBA', (500,500),(255, 255, 255, 0))
+# draw = ImageDraw.Draw(frame_image)
+# draw.textsize("5555", font=font)
 
 
 #%% =============================================================================
@@ -240,64 +337,72 @@ content =[
 
 
 
-## ------------------------------
 
 clip = []
 
 # 影片参数
 videoBg = "bg01.png"
-videoSec,fps = 8, 30
+videoSec,fps = 9, 30
 vSizeW, vSizeH =  Image.open( videoBg ).size
 videoLen = videoSec * fps
 
+fade = [
+    { 't':[0.5, 1.0, 6.0, 1.0 ], 'f': easeOut},
+    { 't':[0.5, 1.0, 6.0, 1.0 ], 'f': easeOut},
+    { 't':[0.5, 1.0, 6.0, 1.0 ], 'f': easeOut}
+ ]
 
+videoLen = max(sum(row['t']) for row in fade)+ 0.5
 
-for i in range(0,1):
-#for i in range(0,len(content[0])):
+# for i in range(0,1):
+for i in range(0,len(content[0])):
     # 设置文本参数
     textParams= [
-        {
+        {   'name':"中文",
             'text': content[0][i],
             'font': 'font/NotoSansTC-Medium.ttf',
             'space':     0,
-            'size':      40,
-            'size_in':   10,
+            'size':      (10, 40),
+            'alignCenter':True,
             'color':     '#225500',
             'alpha':     (0,100),
-            'start_pos': (100, 100),
-            'end_pos':   (500, 100)
+            'x':         (960, 960),
+            'y':         (50, 300),
+            'bg':True, 'padding':(8,8), 'bgColor':"#333333"
         },
-        {
+        {   'name':"拼音",
             'text': content[1][i],
             'font': 'font/NotoSansTC-Regular.ttf',
-            'space':     10,
-            'size':      30,
-            'size_in':   10,
+            'space':     0,
+            'size':      (10, 30),
+            'alignCenter':True,
             'color':     '#225500',
             'alpha':     (0,100),
-            'start_pos': (100, 200),
-            'end_pos':   (500, 200)
+            'x':         (960, 960),
+            'y':         (100, 400),
+            'bg':True, 'padding':(8,8), 'bgColor':(255, 255, 255, 255)
         },
-        {
+        {   'name':"日文",
             'text': content[2][i],
             'font': 'font/NotoSansTC-Light.ttf',
-            'space':     50,
-            'size':      25,
-            'size_in':   10,
+            'space':     0,
+            'size':      (1, 25),
+            'alignCenter':True,
             'color':     '#222222',
             'alpha':     (0,100),
-            'start_pos': (100, 260),
-            'end_pos':   (500, 260)
+            'x':         (960, 960),
+            'y':         (100, 600),
+            'bg':True, 'padding':(8,8), 'bgColor':(255, 255, 255, 255)
         }
     ]
     
     
-    
     # 生成逐帧图像
+    
     textLayer=[]
-    textLayer.append( newText((vSizeW, vSizeH), textParams[0], easeOut, 1.0, 5.0, 1.0) )    
-    textLayer.append( newText((vSizeW, vSizeH), textParams[1], easeOut, 1.0, 4.4, 1.0) )    
-    textLayer.append( newText((vSizeW, vSizeH), textParams[2], easeOut, 1.0, 4.0, 1.0) )    
+    textLayer.append( newText((vSizeW, vSizeH), textParams[0], easeOut, fade[0].t[0], fade[0].t[1], fade[0].t[2]) )    
+    textLayer.append( newText((vSizeW, vSizeH), textParams[1], easeOut, 1.0, 5.4, 1.0) )    
+    textLayer.append( newText((vSizeW, vSizeH), textParams[2], easeOut, 1.0, 5.0, 1.0) )    
       
     
     # 創造背景 > 所有圖層合併
@@ -313,12 +418,38 @@ for i in range(0,1):
         ]
     
     
-    clip.append(imageToVideo(videoFrames,True , Theme[0] + "_" + Theme[1] + Theme[2] + ".mp4" , fps))
+    clip.append(imageToVideo(videoFrames, fps ,True , Theme[0] + "_" + Theme[1] + Theme[2] + str(i) + ".mp4" ))
+
+
 
 
 
 videoFrames[28].show()
 
+
+
+
+
+
+
+
+# imageParam ={
+#     'image':"001.png",
+#     'x':(0,100),
+#     'y':(0,200),
+#     'size':(0.5,1),
+#     'alpha':(0,1)
+#     }
+# images = newImage((800,800), imageParam, easeOut, 1.5, 1, 1.5)
+
+
+# videoTest = newVideo(videoBg, 5*fps)
+
+# mergeFs(videoTest, 0.5, images)
+
+# imageToVideo(videoTest,True , "4444.mp4" , fps)
+
+# images[20].show()
 
 
 
@@ -330,6 +461,12 @@ videoFrames[28].show()
 # 
 #
 # =============================================================================
+
+# 使用 pydub 如出現以下錯誤 : winError2 找不到系统文件
+# 為 ffmepeg 讀不到問題，方法
+# 1. 從 https://ffmpeg.org/ 安装 ffmpeg ( 不要使用 Source Code 或是 pip )
+# 2. 將下載後的整個資料夾放到適合的位置
+# 3. 系統內容>進階>環境變數>path>新增以上位置 + ffmpeg 資料夾內 bin 的連結
 
 
 
@@ -356,8 +493,12 @@ def createVoiceLayer( url, startS, aTimeS, times, isTranslate = False, translate
     
     
 # 創造聲音圖層
-voice = createVoiceLayer("out.mp3", 5, 2, 3, True, "output.mp3")
-voice.export('ou2.mp3', format='mp3')
+voice = createVoiceLayer("tts/jp_a0001.mp3", 5, 2, 3, True, "tts/jp_a0001.mp3")
+
+
+
+
+
 
 
 #%%
