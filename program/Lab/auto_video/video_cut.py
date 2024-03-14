@@ -8,6 +8,7 @@ import cv2
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont, ImageColor
 from moviepy.editor import ImageSequenceClip
+from moviepy.editor import VideoFileClip, concatenate_videoclips, AudioFileClip
 import pygame #試聽聲音用
 
 def playSound(url, vol = 0.5):
@@ -39,7 +40,24 @@ def drawRoundedRectangle(draw, xy, radius, **kwargs):
     draw.pieslice([x1, y2 - radius * 2, x1 + radius * 2, y2], 90, 180, **kwargs)
     draw.pieslice([x2 - radius * 2, y2 - radius * 2, x2, y2], 0, 90, **kwargs)
 
-def newText(videoSize, textParam, easeType, inSec, stopSec, outSec):
+# fps = 30
+# videoSize = (1000,1000)
+# easeType = easeIn
+# inSec, stopSec, outSec = (1,1,1)
+# textParam = {   'name':"中文",
+#     'text': "55555555\n222222",
+#     'font': 'font/NotoSansTC-Medium.ttf',
+#     'space':     0,
+#     'size':      (80, 85),
+#     'alignCenter':True,
+#     'color':     '#FFFFFF',
+#     'alpha':     (0,100),
+#     'x':         (960, 960),
+#     'y':         (300, 320),
+#     'bg':False, 'padding':(8,8), 'bgColor':"#333333"
+# }
+# frame = 30
+def newText(videoSize, textParam, easeType, inSec, stopSec, outSec, fps = 30):
     
     textBox = []
     duration = inSec + stopSec + outSec
@@ -53,123 +71,135 @@ def newText(videoSize, textParam, easeType, inSec, stopSec, outSec):
     yStart, yEnd = textParam['y']
     tSizeStart, tSizeEnd = textParam['size']
     space = textParam['space']
-    xPadding, yPadding = textParam['padding']
-    bgColor = textParam['bgColor']
-    print(textParam['text'])
-    
+    if(textParam['bg']):
+        xPadding, yPadding = textParam['padding']
+        radius = textParam['radius']
+        bgColor = textParam['bgColor']
+        
+    textLines = textParam['text'].split('\n')  # 按行拆分文字
+    print(textLines)
+  
     for frame in range(frames):
         
         # 創建透明底板
         frameImage = Image.new('RGBA', videoSize,(255, 255, 255, 0))
         draw = ImageDraw.Draw(frameImage)
+        lineSpacing = textParam['lineSpace']
+        lineCount = 0
         
-        
-        ### 淡入階段 --------------------------------------------------------------------
-        if frame < inSec * fps:
-            progress = frame / (inSec * fps)
-
-            # 透明度、顏色 計算
-            alphaCurrent = alphaStart + (alphaEnd - alphaStart) * easeType(progress)
-            color = ImageColor.getrgb(textParam['color']) + (int(alphaCurrent),)  
-            
-            # 建立 "font" > 算文字尺寸 > 如有置中 > 取出中心校正值
-            font = ImageFont.truetype(textParam['font'], int(tSizeStart + (tSizeEnd - tSizeStart) * progress))
-            textWidth, textHeight = draw.textsize(textParam['text'], font = font)
-            textCenterWidth , textCenterHeight = (0,0)
-            if(textParam['alignCenter']):
-                textCenterWidth = textWidth / 2
-                textCenterHeight = textHeight / 2
-            
-            # 位置 計算
-            xCurrent = xStart + (xEnd - xStart) * easeType(progress) -  textCenterWidth
-            yCurrent = yStart + (yEnd - yStart) * easeType(progress) - textCenterHeight
-            
-            # 繪製圓角矩形
-            if(textParam['bg']):
-                bgColorCurrent = ImageColor.getrgb(bgColor) + (int(alphaCurrent),)  
-                drawRoundedRectangle(draw, 
-                 (xCurrent-xPadding, yCurrent-yPadding, xCurrent + textWidth + xPadding, yCurrent + textHeight + yPadding), 
-                 5, fill = bgColorCurrent)
-            
-            # 建立文字
-            if space == 0:
-                draw.text((xCurrent, yCurrent), textParam['text'], fill = color, font = font)
-            else:
-                for char in textParam['text']:
-                    draw.text((xCurrent, yCurrent), char, fill=color, font=font)
-                    xCurrent += space    # 更新 x 坐标以绘制下一个字符             
-        
-        ### 停留階段 --------------------------------------------------------------------
-       
-        elif frame < (inSec + stopSec) * fps:  # 停留阶段
-            # 透明度 計算
-            alpha = alphaEnd
-            color = ImageColor.getrgb(textParam['color']) + (int(alpha),)
-            
-            # 建立 "font" > 算文字尺寸 > 如有置中 > 取出中心校正值
-            font = ImageFont.truetype(textParam['font'], tSizeEnd )
-            textWidth, textHeight = draw.textsize(textParam['text'], font = font)
-            textCenterWidth , textCenterHeight = (0,0)
-            if(textParam['alignCenter']):
-                textCenterWidth = textWidth / 2
-                textCenterHeight = textHeight / 2
-            
-            # 位置 計算
-            xCurrent = xEnd  -  textCenterWidth
-            yCurrent = yEnd  - textCenterHeight            
-            
-            # 繪製圓角矩形
-            if(textParam['bg']):
-                bgColorCurrent = ImageColor.getrgb(bgColor) + (int(alpha),)  
-                drawRoundedRectangle(draw, 
-                 (xCurrent-xPadding, yCurrent-yPadding, xCurrent + textWidth + xPadding, yCurrent + textHeight + yPadding), 
-                 5, fill = bgColorCurrent)
-            
-            
-            # 建立文字
-            if space == 0:
-                draw.text((xCurrent, yCurrent), textParam['text'], fill = color, font = font)
-            else:
-                for char in textParam['text']:
-                    draw.text((xCurrent, yCurrent), char, fill = color, font = font)
-                    xCurrent += space    # 更新 x 坐标以绘制下一个字符
+        for text in textLines:  #根據行數位移高度 ( lineCurrent )
+            ### 淡入階段 --------------------------------------------------------------------
+            if frame < inSec * fps:
+                progress = frame / (inSec * fps)
     
-        ### 淡出階段 --------------------------------------------------------------------
-        elif frame < (inSec + stopSec + outSec) * fps:  # 淡出阶段
-            progress = (frame - (inSec + stopSec) * fps) / (outSec * fps)
+                # 透明度、顏色 計算
+                alphaCurrent = alphaStart + (alphaEnd - alphaStart) * easeType(progress)
+                color = ImageColor.getrgb(textParam['color']) + (int(alphaCurrent),)  
+                
+                # 建立 "font" > 算文字尺寸 > 如有置中 > 取出中心校正值
+                font = ImageFont.truetype(textParam['font'], int(tSizeStart + (tSizeEnd - tSizeStart) * progress))
+                
+                textWidth, textHeight = draw.textsize(text, font = font)
+                textCenterWidth , textCenterHeight = (0,0)
+                if(textParam['alignCenter']):
+                    textCenterWidth = textWidth / 2
+                    textCenterHeight = textHeight / 2
+                
+                # 位置 計算
+                lineCurrent = (lineSpacing + textHeight * lineCount)
+                xCurrent = xStart + (xEnd - xStart) * easeType(progress) - textCenterWidth
+                yCurrent = yStart + (yEnd - yStart) * easeType(progress) - textCenterHeight + lineCurrent
+                
+                # 繪製圓角矩形
+                if(textParam['bg']):
+                    bgColorCurrent = ImageColor.getrgb(bgColor) + (int(alphaCurrent),)  
+                    drawRoundedRectangle(draw, 
+                     (xCurrent-xPadding, yCurrent-yPadding, xCurrent + textWidth + xPadding, yCurrent + textHeight + yPadding), 
+                     radius, fill = bgColorCurrent)
+                
+                # 建立文字
+                if space == 0:
+                    draw.text((xCurrent, yCurrent), text, fill = color, font = font)
+                else:
+                    for char in text:
+                        draw.text((xCurrent, yCurrent), char, fill=color, font=font)
+                        xCurrent += space    # 更新 x 坐标以绘制下一个字符             
+            
+            ### 停留階段 --------------------------------------------------------------------           
+            elif frame < (inSec + stopSec) * fps:  # 停留阶段
+                # 透明度 計算
+                alpha = alphaEnd
+                color = ImageColor.getrgb(textParam['color']) + (int(alpha),)
+                
+                # 建立 "font" > 算文字尺寸 > 如有置中 > 取出中心校正值
+                font = ImageFont.truetype(textParam['font'], tSizeEnd )
+                textWidth, textHeight = draw.textsize(text, font = font)
+                textCenterWidth , textCenterHeight = (0,0)
+                if(textParam['alignCenter']):
+                    textCenterWidth = textWidth / 2
+                    textCenterHeight = textHeight / 2
+                
+                # 位置 計算
+                lineCurrent = (lineSpacing + textHeight * lineCount)
+                xCurrent = xEnd  -  textCenterWidth
+                yCurrent = yEnd  - textCenterHeight + lineCurrent            
+                
+                # 繪製圓角矩形
+                if(textParam['bg']):
+                    bgColorCurrent = ImageColor.getrgb(bgColor) + (int(alpha),)  
+                    drawRoundedRectangle(draw, 
+                     (xCurrent-xPadding, yCurrent-yPadding, xCurrent + textWidth + xPadding, yCurrent + textHeight + yPadding), 
+                     radius, fill = bgColorCurrent)
+                
+                
+                # 建立文字
+                if space == 0:
+                    draw.text((xCurrent, yCurrent), text, fill = color, font = font)
+                else:
+                    for char in text:
+                        draw.text((xCurrent, yCurrent), char, fill = color, font = font)
+                        xCurrent += space    # 更新 x 坐标以绘制下一个字符
         
-            # 透明度、顏色
-            alphaCurrent = alphaEnd + (alphaStart - alphaEnd) * easeType(progress)
-            color = ImageColor.getrgb(textParam['color']) + (int(alphaCurrent),)             
-
-            # 建立 "font" > 算文字尺寸 > 如有置中 > 取出中心校正值
-            font = ImageFont.truetype(textParam['font'], int(tSizeEnd - (tSizeEnd - tSizeStart) * progress))
-            textWidth, textHeight = draw.textsize(textParam['text'], font = font)
-            textCenterWidth , textCenterHeight = (0,0) 
-            if(textParam['alignCenter']):
-                textCenterWidth = textWidth / 2
-                textCenterHeight = textHeight / 2 
+            ### 淡出階段 --------------------------------------------------------------------
+            elif frame < (inSec + stopSec + outSec) * fps:  # 淡出阶段
+                progress = (frame - (inSec + stopSec) * fps) / (outSec * fps)
             
-            # 位置 計算
-            xCurrent = xEnd + (xStart - xEnd) * easeType(progress) -  textCenterWidth
-            yCurrent = yEnd + (yStart - yEnd) * easeType(progress) - textCenterHeight
-            
-            # 繪製圓角矩形
-            if(textParam['bg']):
-                bgColorCurrent = ImageColor.getrgb(bgColor) + (int(alphaCurrent),)  
-                drawRoundedRectangle(draw, 
-                 (xCurrent-xPadding, yCurrent-yPadding, xCurrent + textWidth + xPadding, yCurrent + textHeight + yPadding), 
-                 5, fill = bgColorCurrent)
-            
-            # 建立文字
-            if space == 0:
-                draw.text((xCurrent, yCurrent), textParam['text'], fill = color, font = font)
-            else:
-                for char in textParam['text']:
-                    draw.text((xCurrent, yCurrent), char, fill = color, font = font)
-                    xCurrent += space    # 更新 x 坐标以绘制下一个字符    
-                    
-        textBox.append(frameImage) # 添加当前帧图像到列表中
+                # 透明度、顏色
+                alphaCurrent = alphaEnd + (alphaStart - alphaEnd) * easeType(progress)
+                color = ImageColor.getrgb(textParam['color']) + (int(alphaCurrent),)             
+    
+                # 建立 "font" > 算文字尺寸 > 如有置中 > 取出中心校正值
+                font = ImageFont.truetype(textParam['font'], int(tSizeEnd - (tSizeEnd - tSizeStart) * progress))
+                textWidth, textHeight = draw.textsize(text, font = font)
+                textCenterWidth , textCenterHeight = (0,0) 
+                if(textParam['alignCenter']):
+                    textCenterWidth = textWidth / 2
+                    textCenterHeight = textHeight / 2 
+                
+                # 位置 計算
+                lineCurrent = (lineSpacing + textHeight * lineCount)
+                xCurrent = xEnd + (xStart - xEnd) * easeType(progress) -  textCenterWidth
+                yCurrent = yEnd + (yStart - yEnd) * easeType(progress) - textCenterHeight + lineCurrent
+                
+                # 繪製圓角矩形
+                if(textParam['bg']):
+                    bgColorCurrent = ImageColor.getrgb(bgColor) + (int(alphaCurrent),)  
+                    drawRoundedRectangle(draw, 
+                     (xCurrent-xPadding, yCurrent-yPadding, xCurrent + textWidth + xPadding, yCurrent + textHeight + yPadding), 
+                     radius, fill = bgColorCurrent)
+                
+                # 建立文字
+                if space == 0:
+                    draw.text((xCurrent, yCurrent), text, fill = color, font = font)
+                else:
+                    for char in text:
+                        draw.text((xCurrent, yCurrent), char, fill = color, font = font)
+                        xCurrent += space    # 更新 x 坐标以绘制下一个字符 
+            # 進行下一列，如果有多列文字的話
+            lineCount = lineCount + 1
+                        
+        # 添加当前帧图像到列表中            
+        textBox.append(frameImage) 
     return textBox
 
 
@@ -311,7 +341,18 @@ def imageToVideo(images, videoFps = 30, isOutput = True , outputName = "output.m
     # if fps is None:
     #     fps = 30
 
-
+def originalTime(data):
+    newData = []
+    for item in data:
+        newValues = []
+        for i in range(4):
+            if i > 0 :
+                newValue = item['t'][i] - item['t'][i-1]
+            else:
+                newValue = item['t'][i]
+            newValues.append(newValue) 
+        newData.append({'t': newValues})
+    return newData
 
 
 ## ------------------------------
@@ -336,7 +377,7 @@ def imageToVideo(images, videoFps = 30, isOutput = True , outputName = "output.m
 import pandas as pd
 
 dfText = pd.read_excel("wordList.xlsx")
-Theme = ['type','職場',"0"]
+Theme = ['type','職場',"v0.8"]
 content =[
         dfText.loc[dfText[Theme[0]] == Theme[1], 'ch'].tolist(),
         dfText.loc[dfText[Theme[0]] == Theme[1], 'spelling-1'].tolist(),
@@ -355,81 +396,95 @@ videoBg = "bg02.png"
 fps = 30
 vSizeW, vSizeH =  Image.open( videoBg ).size
 
-fade = [
-    { 't':[0.5, 1.0, 6.0, 1.0 ], 'f': easeOut},
-    { 't':[0.5, 1.0, 6.0, 1.0 ], 'f': easeOut},
-    { 't':[0.5, 1.0, 6.0, 1.0 ], 'f': easeOut},
-    { 't':[0.5, 1.0, 6.0, 1.0 ], 'f': easeOut},
-    { 't':[0.5, 1.0, 6.0, 1.0 ], 'f': easeOut},
-    { 't':[0.5, 1.0, 6.0, 1.0 ], 'f': easeOut}
+# fade = [
+#     { 't':[0.5, 1.0, 7.0, 1.0 ], 'f': easeOut},
+#     { 't':[1.0, 0.8, 6.0, 1.0 ], 'f': easeOut},
+#     { 't':[1.0, 0.8, 6.0, 1.0 ], 'f': easeOut},
+#     { 't':[1.2, 0.8, 6.0, 1.0 ], 'f': easeOut},
+#     { 't':[1.2, 0.8, 6.0, 1.0 ], 'f': easeOut},
+#     { 't':[1.5, 1.5, 5.5, 1.0 ], 'f': easeOut}
+#  ]
+
+# 時間為累加
+fadeAccu = [
+    { 't':[0.6, 1.5, 9.4, 10.0 ], 'f': easeOut},
+    { 't':[1.0, 1.8, 9.0, 9.50 ], 'f': easeOut},
+    { 't':[1.0, 1.8, 9.0, 9.50 ], 'f': easeOut},
+    { 't':[1.2, 2.0, 9.0, 9.50 ], 'f': easeOut},
+    { 't':[1.2, 2.0, 9.0, 9.50 ], 'f': easeOut},
+    { 't':[1.0, 3.0, 8.5, 9.00 ], 'f': easeOut}
  ]
+fade = originalTime(fadeAccu)
+
 
 # 取 fade 中最長片段 + 0.5 秒
 videoLen = int((max(sum(row['t']) for row in fade) + 0.5)) * fps
 
+
 # for i in range(0,1):
+i = 0
 for i in range(0,len(content[0])):
     # 设置文本参数
     textParams= [
         {   'name':"中文",
             'text': content[0][i],
             'font': 'font/NotoSansTC-Medium.ttf',
-            'space':     0,
-            'size':      (80, 85),
+            'space':     0,  'lineSpace': 0,
+            'size':      (80, 80),
             'alignCenter':True,
             'color':     '#FFFFFF',
             'alpha':     (0,100),
             'x':         (960, 960),
-            'y':         (300, 320),
-            'bg':False, 'padding':(8,8), 'bgColor':"#333333"
+            'y':         (280, 320),
+            'bg':False
         },
         {   'name':"注音標題",
             'text': "注音",
             'font': 'font/NotoSansTC-Regular.ttf',
-            'space':     0,
+            'space':      0,  'lineSpace': 0,
             'size':      (33, 33),
             'alignCenter':False,
             'color':     '#FFFFFF',
             'alpha':     (0,100),
             'x':         (814, 814),
             'y':         (480, 480),
-            'bg':True, 'padding':(26,8), 'bgColor':"#406A51"
+            'bg':True, 'padding':(26,8), 'bgColor':"#406A51",'radius': 10
         },
         {   'name':"注音",
             'text': content[1][i],
             'font': 'font/NotoSansTC-Regular.ttf',
-            'space':     0,
+            'space':     0,  'lineSpace': 0,
             'size':      (34, 34),
             'alignCenter':False,
             'color':     '#FFFFFF',
             'alpha':     (0,100),
-            'x':         (990, 965),
+            'x':         (1000, 965),
             'y':         (480, 480),
-            'bg':False, 'padding':(8,8), 'bgColor':"#406A51"
+            'bg':False
         },
         {   'name':"拼音標題",
             'text': "拼音",
             'font': 'font/NotoSansTC-Regular.ttf',
-            'space':     0,
+            'space':     0,  'lineSpace': 0,
             'size':      (33, 33),
             'alignCenter':False,
             'color':     '#FFFFFF',
             'alpha':     (0,100),
             'x':         (814, 814),
             'y':         (564, 564),
-            'bg':True, 'padding':(26,8), 'bgColor':"#406A51"
+            'bg':True, 'padding':(26,8), 'bgColor':"#406A51",'radius': 10
         },
         {   'name':"拼音",
             'text': content[2][i],
             'font': 'font/NotoSansTC-Regular.ttf',
-            'space':     0,
+            'space':     0,  'lineSpace': 0,
             'size':      (34, 34),
             'alignCenter':False,
             'color':     '#FFFFFF',
             'alpha':     (0,100),
-            'x':         (990, 965),
+            'x':         (1000, 965),
             'y':         (564, 564),
-            'bg':False, 'padding':(8,8),  'bgColor':"#406A51"
+            'bg':False
         },
         # {   'name':"日文",
         #     'text': content[2][i],
@@ -445,15 +500,15 @@ for i in range(0,len(content[0])):
         # },
         {   'name':"說明",
             'text': content[3][i],
-            'font': 'font/NotoSansTC-Light.ttf',
-            'space':     0,
+            'font': 'font/MPLUS1p-Regular.ttf',
+            'space':     0,  'lineSpace': 5,
             'size':      (30, 30),
             'alignCenter':True,
             'color':     '#FFFFFF',
             'alpha':     (0,70),
             'x':         (960, 960),
             'y':         (680, 700),
-            'bg':False, 'padding':(8,8),  'bgColor':"#406A51"
+            'bg':False
         }
     ]
     
@@ -471,17 +526,13 @@ for i in range(0,len(content[0])):
         mergeFs(videoFrames, fade[j]['t'][0], textLayer[j])
 
     # 產生片段 > 儲存 > 輸出
-    clip.append(imageToVideo(videoFrames, fps ,True , Theme[0] + "_" + Theme[1] + Theme[2] + str(i) + ".mp4" ))
-
-
+    outputUrl = Theme[1] + "_" + Theme[2] + str(i) + ".mp4"
+    clip.append(imageToVideo(videoFrames, fps ,True , outputUrl ))
 
 
 
 videoFrames[28].show()
-
-
-
-
+print(clip)
 
 
 
@@ -495,13 +546,9 @@ videoFrames[28].show()
 #     }
 # images = newImage((800,800), imageParam, easeOut, 1.5, 1, 1.5)
 
-
 # videoTest = newVideo(videoBg, 5*fps)
-
 # mergeFs(videoTest, 0.5, images)
-
 # imageToVideo(videoTest,True , "4444.mp4" , fps)
-
 # images[20].show()
 
 
@@ -543,10 +590,15 @@ def createVoiceLayer( url, startS, aTimeS, times, isTranslate = False, translate
         voiceTra = AudioSegment.from_mp3( translateUrl )
         voice = voice + voiceTra
     return voice
+   
+
     
-    
+
+#%% ----
 # 創造聲音圖層
-voice = createVoiceLayer("tts/jp_a0001.mp3", 5, 2, 3, True, "tts/jp_a0001.mp3")
+voice = []
+for i in range(len(clip)):
+    voice.append(createVoiceLayer("tts/jp_a000"+ i +".mp3", 3.5, 3, 2, True, "tts/jp_a000"+ i +".mp3"))
 
 
 
@@ -554,28 +606,38 @@ voice = createVoiceLayer("tts/jp_a0001.mp3", 5, 2, 3, True, "tts/jp_a0001.mp3")
 
 
 
-#%%
-
-"""
-
-影音組合
-
-"""
-
-from moviepy.editor import *
-video = clip[0]  
-audio = AudioFileClip("ou2.mp3")  
-output = video.set_audio(audio)         # 合併影片與聲音
-output.write_videofile("output.mp4", temp_audiofile="temp-audio.m4a", remove_temp=True, codec="libx264", audio_codec="aac")
-# 注意要設定相關參數，不然轉出來的影片會沒有聲音
+#%% =============================================================================
+# 
+# 
+# 影音組合 > 輸出片段 > 組合主片段 > 輸出
+# 
+#
+# =============================================================================
 
 
 
+for i  in range(len(clip)):
+
+    video = clip[i]  
+    audio = voice[i]
+    clip[i]  = video.set_audio(audio)         # 合併影片與聲音
+    outputUrl = Theme[1] + "_" + Theme[2] + str(i) + ".mp4"
+    clip[i]  .write_videofile( outputUrl, temp_audiofile="temp-audio.m4a", remove_temp=True, codec="libx264", audio_codec="aac")
+
+
+
+finalClip = concatenate_videoclips(clip)
 
 
 
 
 
+
+
+# audio = AudioFileClip("ou2.mp3")  
+# output = video.set_audio(audio)         # 合併影片與聲音
+# output.write_videofile("output.mp4", temp_audiofile="temp-audio.m4a", remove_temp=True, codec="libx264", audio_codec="aac")
+# # 注意要設定相關參數，不然轉出來的影片會沒有聲音
 
 
 playSound("out.mp3")
