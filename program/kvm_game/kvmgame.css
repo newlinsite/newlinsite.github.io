@@ -22,25 +22,32 @@
         width: 100%;
         height: 100%;
         font-family: "Noto sans TC", "Microsoft JhengHei ", "微軟正黑體", sans-serif;
-        /* overflow: hidden; */
         margin: 0;
         background-color: #3b3b3b;
+    }
+
+
+    .gameOutContainer {
+        width: 100%;
+        max-width: 480px;
+        height: 100%;
+        margin: auto;
+        overflow: hidden;
     }
 
     .gameContainer {
         background-color: #454545;
         width: 100%;
-        height: 100%;
-        max-width: 500px;
-        max-height: 900px;
-        margin: auto;
+        padding-top: 177.78%;
+        top: 50%;
+        transform: translateY(-50%);
     }
 
 
 
 
     /******************************
-           Game
+            Game
     *******************************/
 
     .gameScene {
@@ -54,6 +61,8 @@
         opacity: 0;
         width: 0;
         height: 0;
+        background-size: cover;
+        background-position: center;
     }
 
     .gameScene>* {
@@ -63,25 +72,54 @@
 
     .gameScene>.gameItem,
     .gameScene>.btn {
-        transition: 0.5s;
-        cursor: pointer;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .gameScene .gameItem {
+        transition: 0.3s;
+    }
+
+    .gameScene>.gameItem.on {
+        filter: drop-shadow(0px 0px 12px rgb(113, 243, 255));
+    }
+
+    .gameScene>.gameItem.over {
+        opacity: 0.3;
     }
 
     .gameScene>.gameItem:hover {
-        opacity: 0.8;
+        opacity: 0.95;
     }
 
 
     .gameScene>.btn {
-        /* border-radius: 50%; */
+        cursor: pointer;
+        transition: 0.5s;
+        filter: drop-shadow(4px 4px 1px rgba(10, 16, 73, 0.6));
+
+    }
+
+    .gameScene>.btn:hover {
+        transform: translate(-50%, -50%) scale(1.1) !important;
+        filter: drop-shadow(5px 5px 6px rgba(1, 8, 69, 0.5));
     }
 
 
-
+    .gameScene>.stableItem {
+        cursor: auto;
+        pointer-events: none;
+    }
 
     /******************************
-           提視窗
+        
+    
+    遊戲提示視窗
+
+
     *******************************/
+
+    /* mask */
     .gameContainer .mask {
         display: none;
         position: absolute;
@@ -93,6 +131,62 @@
         z-index: 1000;
     }
 
+
+    /*  scoreBar   timeBar  */
+    .gameContainer .scoreBar,
+    .gameContainer .timeBar {
+        background-image: url(image/bg_score.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 27.78%;
+        height: 5.2%;
+        left: 24%;
+        top: 18%;
+        transform: translate(-50%, -100%);
+        opacity: 0;
+        transition: 2s;
+    }
+
+    .gameContainer .scoreBar.show,
+    .gameContainer .timeBar.show {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+
+    .gameContainer .timeBar {
+        background-image: url(image/bg_time.png);
+        left: 75%;
+    }
+
+    .gameContainer .scoreBar .scoreBarNumber,
+    .gameContainer .timeBar .timeBarNumber {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        color: #16115c;
+        font-size: 16px;
+        font-weight: 800;
+    }
+
+    /* ------------------- */
+    .gameContainer .scoreBar.show.scorePage,
+    .gameContainer .timeBar.show.scorePage {
+        width: 35%;
+        height: 10%;
+        left: 50%;
+    }
+
+    .gameContainer .scoreBar.show.scorePage {
+        top: 10%;
+    }
+
+    .gameContainer .timeBar.show.scorePage {
+        top: 20%;
+    }
+
+
+    /* scoreNote */
     .gameContainer .scoreNote {
         display: none;
         background-color: #ede559;
@@ -102,7 +196,6 @@
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
-
     }
 
     .gameContainer .scoreNote .scoreNoteNumber {
@@ -115,7 +208,7 @@
 
 
 
-
+    /* countdownElement  */
     .gameContainer .countdownElement {
         position: absolute;
         left: 50%;
@@ -140,6 +233,7 @@
            dialog
     *******************************/
     .dialog {
+        position: absolute;
         top: 50%;
         left: 50%;
         width: 85%;
@@ -151,6 +245,8 @@
         transform: translate(-50%, -50%) scale(0.5);
         opacity: 0;
         transition: 0.3s;
+        z-index: 3000;
+
     }
 
     .dialog.fade {
@@ -201,6 +297,7 @@
         left: 50%;
         transform: translate(-50%, 0);
         animation: fadeInLeft 0.5s ease forwards;
+        z-index: 3000;
     }
 
     .say>* {
