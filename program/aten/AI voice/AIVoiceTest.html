@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Voice</title>
+</head>
+<style>
+    /******************************
+           Page
+*******************************/
+    * {
+        position: relative;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    body,
+    html {
+        width: 100%;
+        height: 100%;
+        font-family: "Noto sans TC", "Microsoft JhengHei ", "微軟正黑體", sans-serif;
+        margin: 0;
+        /* background-color: #3b3b3b; */
+    }
+
+    .btn {
+        display: inline-block;
+        min-width: 120px;
+        background-color: #008CFF;
+        padding: 12px 16px;
+        color: #fff;
+        text-align: center;
+        border-radius: 10px;
+        opacity: 1;
+        transition: 0.5s;
+    }
+
+    .btn:hover {
+        opacity: 0.8;
+    }
+
+    /*****************************************
+******************************************
+******************************************
+
+
+			layout
+
+******************************************
+******************************************
+******************************************/
+
+    .container {
+        /* max-width: 1200px; */
+        display: flex;
+        margin-top: 32px;
+        margin: 0px auto;
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -4px;
+    }
+
+    .row>* {
+        padding: 0 4px;
+    }
+
+    .flex-dir-col {
+        flex-direction: column
+    }
+
+    .flex-align-c {
+        align-items: center;
+    }
+
+    .flex-align-end {
+        align-items: end;
+    }
+
+
+    .flex-jus-c {
+        justify-content: center;
+    }
+
+    .flex-jus-end {
+        justify-content: end;
+    }
+
+    .flex-dir-row-rev {
+        flex-direction: row-reverse
+    }
+
+    .col {
+        flex: 1 0 0%;
+    }
+
+    .col-1 {
+        width: 8.33333333%;
+    }
+
+    .col-2 {
+        width: 16.66666667%;
+    }
+
+    .col-3 {
+        width: 25%;
+    }
+
+    .col-4 {
+        width: 33.33333333%;
+    }
+
+    .col-5 {
+        width: 41.66666667%;
+    }
+
+    .col-6 {
+        width: 50%;
+    }
+
+    .col-7 {
+        width: 58.33333333%;
+    }
+
+    .col-8 {
+        width: 66.66666667%;
+    }
+
+    .col-9 {
+        width: 75%;
+    }
+
+    .col-10 {
+        width: 83.33333333%;
+    }
+
+    .col-11 {
+        width: 91.66666667%;
+    }
+
+    .col-12 {
+        width: 100%;
+    }
+
+    .sideBar {
+        background-color: #08375E;
+        width: 240px;
+        height: 100%;
+        min-height: 100vh;
+
+    }
+
+    .inputFeild {
+        background-color: #ffffff;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .inputFeild>div {
+        border-bottom: 2px solid #0000000f;
+        padding: 8px 16px;
+        margin: 0 12px;
+        min-height: 10px;
+    }
+
+    .inputFeild>.textfield {
+        padding: 12px;
+        min-width: 100px;
+        flex-grow: 1;
+    }
+
+    .inputFeild>.textfield>p {
+        max-width: 1000px;
+        margin: 12px auto;
+        font-size: 18px;
+        font-weight: 300;
+        letter-spacing: 0.1em;
+        line-height: 1.88em;
+    }
+
+    .fileBar {
+        background-color: #F5F5F5;
+        width: 280px;
+        height: 100%;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        border-left: 2px solid #0000000f;
+
+    }
+
+    .fileBar .header,
+    .fileBar .footer {
+        background-color: #EBEBEB;
+        border-bottom: 2px solid #0000000f;
+        padding: 8px 16px;
+        text-align: center;
+
+    }
+
+    .fileBar .body {
+        padding: 12px 0;
+        flex-grow: 1;
+    }
+
+    .fileBar .body h3 {
+        margin: 0;
+        font-size: 15px;
+        font-weight: 400;
+    }
+
+    .fileBar .body .playBtn {
+        transition: 0.5s;
+        cursor: pointer;
+        transform: scale(1);
+        filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.1));
+    }
+
+    .fileBar .body .playBtn:hover {
+        transform: scale(1.05);
+        filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.3));
+
+    }
+
+    .fileBar .body p {
+        margin: 4px 0;
+        font-size: 12px;
+        font-weight: 400;
+        color: #A6A6A6;
+    }
+
+
+    /* Card */
+
+    .fileBar .body .fileCard {
+        height: 72px;
+        padding: 8px;
+        margin: 4px 0;
+        overflow: hidden;
+    }
+
+
+    .fileBar .body .fileCard>.more {
+        position: absolute;
+        right: 6%;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+    }
+
+    .fileBar .body .fileCard .cardtools {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 80%;
+        height: 95%;
+        background: transparent linear-gradient(90deg, #008CFF00 0%, #008cff4d 25%, #004680 100%) 0% 0% no-repeat padding-box;
+        /* background-color: #fff; */
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        padding: 0 12px;
+
+        transform: translateX(5%);
+        transition: 0.4s;
+        opacity: 0;
+    }
+
+    .fileBar .body .fileCard .cardtools:hover {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+
+    .fileBar .body .fileCard .cardtools>img {
+        width: 26px;
+        height: 26px;
+        margin: 6px;
+        opacity: 1;
+        transition: 0.3s;
+        cursor: pointer;
+        transform: scale(1);
+        filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.35));
+    }
+
+    .fileBar .body .fileCard .cardtools>img:hover {
+        opacity: 1;
+        transform: scale(1);
+        filter: drop-shadow(0 0 10px rgba(0, 0, 0, 1));
+    }
+
+
+
+
+
+    .fileBar .body .fileCard::after {
+        content: "55";
+        position: absolute;
+        background-color: #EBEBEB;
+        width: 248px;
+        height: 2px;
+        left: 50%;
+        bottom: 0px;
+        transform: translate(-50%, 0%);
+    }
+
+
+    .fileBar .body .fileCard .col-2 {
+        text-align: center;
+    }
+
+
+
+
+    .fileBar .footer {
+        border-top: 2px solid #0000000f;
+        padding: 10px 16px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="sideBar">
+
+        </div>
+        <div class="inputFeild">
+            <div>
+                <img src="image/menu title.png" alt="">
+            </div>
+            <div>
+                <img src="image/Tools.png" alt="">
+            </div>
+            <div class="textfield">
+                <p>宏正的優聲學人工智慧語音合成技術為針對企業應用推出的軟硬體包套賣斷服務，消費者在購買包含預先訓練過人工智慧模型的推論伺服器後，即可搭建私有雲並無限制使用人工智慧語音合成。
+                    與一般雲端人工智慧語音合成服務論字計價的方式相比，優聲學不但更適合使用量大的產業應用於新聞朗讀、影音創作、教育訓練等情境，私有雲的架構也較公有雲更加安全，可以降低企業「代言人」遭冒用的風險。
+                    優聲學的技術優勢除了能夠提供發音更加自然的語音之外，也針對台灣口音進行最佳化，故更適合國內企業採用。
+                    另一方面，優聲學目前提供6種不同風格的男、女語音選擇， 更可以客製化企業專屬語音。相較於一般語音合成服務需要約6個月的時間進行調整，優聲學只需2~3週即可完成，也是一大優勢。
+                    宏正的優聲學人工智慧語音合成技術為針對企業應用推出的軟硬體包套賣斷服務，消費者在購買包含預先訓練過人工智慧模型的推論伺服器後，即可搭建私有雲並無限制使用人工智慧語音合成。
+                    與一般雲端人工智慧語音合成服務論字計價的方式相比，優聲學不但更適合使用量大的產業應用於新聞朗讀、影音創作、教育訓練等情境，私有雲的架構也較公有雲更加安全，可以降低企業「代言人」遭冒用的風險。
+                    優聲學的技術優勢除了能夠提供發音更加自然的語音之外，也針對台灣口音進行最佳化，故更適合國內企業採用。
+                    另一方面，優聲學目前提供6種不同風格的男、女語音選擇 更可以客製化企業專屬語音。相較於一般語音合成服務需要約6個月的時間進行調整，優聲學只需2~3週即可完成，也是一大優勢。</p>
+            </div>
+            <div style="background-color: #F5F5F5; margin: 0px;">
+                <div class="btn">合成</div>
+            </div>
+            <div style="background-color: #EBEBEB; margin: 0px; text-align: right;"><img src="image/footer.png" alt="">
+            </div>
+
+        </div>
+        <div class="fileBar">
+            <div class="header">合成列</div>
+            <div class="body">
+                <div class="fileCard">
+                    <div class="row flex-align-c flex-jus-c">
+                        <div class="col-2 row flex-align-c flex-jus-c"><img class="playBtn" src="image/btn_play.svg"
+                                alt=""></div>
+                        <div class="col-10">
+                            <h3>宏正於44家已獲得傑傑出...</h3>
+                        </div>
+                        <div class="col-2">
+                            <p>12:50</p>
+                        </div>
+                        <div class="col-10">
+                            <p>2500 字 2022-07-28 14:33</p>
+                        </div>
+                    </div>
+                    <div class="cardtools">
+                        <img src="image/icon_Search_Edit.svg" alt="">
+                        <img src="image/icon_download.svg" alt="">
+                        <img src="image/icon_more.svg" alt="">
+                    </div>
+                    <img class="more" src="image/icon_arrowDropdown.svg" alt="">
+                </div>
+                <div class="fileCard">
+                    <div class="row flex-align-c flex-jus-c">
+                        <div class="col-2 row flex-align-c flex-jus-c"><img class="playBtn" src="image/btn_play.svg"
+                                alt=""></div>
+                        <div class="col-10">
+                            <h3>宏正於44家已獲得傑傑出...</h3>
+                        </div>
+                        <div class="col-2">
+                            <p>12:50</p>
+                        </div>
+                        <div class="col-10">
+                            <p>2500 字 2022-07-28 14:33</p>
+                        </div>
+                    </div>
+                    <div class="cardtools">
+                        <img src="image/icon_Search_Edit.svg" alt="">
+                        <img src="image/icon_download.svg" alt="">
+                        <img src="image/icon_more.svg" alt="">
+                    </div>
+                    <img class="more" src="image/icon_arrowDropdown.svg" alt="">
+                </div>
+                <div class="fileCard">
+                    <div class="row flex-align-c flex-jus-c">
+                        <div class="col-2 row flex-align-c flex-jus-c"><img class="playBtn" src="image/btn_play.svg"
+                                alt=""></div>
+                        <div class="col-10">
+                            <h3>宏正於44家已獲得傑傑出...</h3>
+                        </div>
+                        <div class="col-2">
+                            <p>12:50</p>
+                        </div>
+                        <div class="col-10">
+                            <p>2500 字 2022-07-28 14:33</p>
+                        </div>
+                    </div>
+                    <div class="cardtools">
+                        <img src="image/icon_Search_Edit.svg" alt="">
+                        <img src="image/icon_download.svg" alt="">
+                        <img src="image/icon_more.svg" alt="">
+                    </div>
+                    <img class="more" src="image/icon_arrowDropdown.svg" alt="">
+                </div>
+            </div>
+            <div class="footer">儲存 30天內合成的語音</div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -305,39 +305,43 @@
 
     }
 
-    .avatar {
-        width: 16%;
-        padding-top: 16%;
-        top: 0%;
+    .say .avatar {
+        width: 27%;
+        padding-top: 27%;
+        top: 50%;
         left: 8%;
         transform: translate(-50%, -50%);
-        background-color: #ccc;
+        background-size: contain;
+        background-position: center;
         border-radius: 50%;
         /* animation: fadeInbig 0.5s ease forwards; */
     }
 
-    .textBox {
-        width: 90%;
+    .say .textBox {
+        width: 95%;
         min-height: 80%;
-        top: 0%;
+        top: 50%;
         left: 5%;
-        padding: 5% 12%;
+        transform: translate(0%, -50%);
+        padding: 3.5% 5% 3.5% 16%;
         font-size: 16px;
         line-height: 1.5;
-        border-radius: 8px;
+        border-radius: 40px;
         background-color: white;
-        border: 1px solid #ccc;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border: 4px solid #0A4476;
+        box-shadow: 1px 6px 0 rgba(33, 33, 33, 0.5);
     }
 
     .say button {
         right: 0%;
-        bottom: 0%;
+        top: -10%;
         display: block;
-        padding: 10px 20px;
-        background-color: #007bff;
+        font-size: 15px;
+        padding: 7px 28px;
+        background-color: #0A4476;
         color: white;
-        border-radius: 5px;
+        border-radius: 55px;
+        box-shadow: 1px 4px 0 rgba(33, 33, 33, 0.5);
         border: none;
         cursor: pointer;
     }

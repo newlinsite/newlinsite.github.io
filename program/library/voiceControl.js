@@ -37,14 +37,6 @@ var ctx = new AudioContext();
 var mainGainNode = ctx.createGain();
 mainGainNode.gain.value = 1
 
-// // 用戶點擊播放區域時啟動 AudioContext 對象
-// $tag("body")[0].addEventListener('click', function () {
-//     ctx.resume().then(() => {
-//         console.log('AudioContext 已啟動');
-//     });
-// });
-// var freqCanvasBox = $id("freqCanvasBox")
-
 
 
 // ******************************

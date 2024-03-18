@@ -33,17 +33,6 @@
 
 
 
-    var audioList = [
-        "../aten/MRS/music/001.aac",
-        "../aten/MRS/music/003.aac",
-        "../aten/MRS/music/002.aac",
-        "../aten/MRS/music/004.aac",
-        "../aten/MRS/music/ui_01.mp3",
-        "../aten/MRS/music/ui_02.mp3",
-        "../aten/MRS/music/ui_04.wav",
-        "../aten/MRS/music/out_logos---classic.aac"
-    ];
-    var sound = new Sound(audioList)
 
 
     // ------------------------
@@ -152,8 +141,9 @@
     }
 
     class Say {
-        constructor(text, buttonText = "Skip", duration = 3000) {
+        constructor(text, avatarBg, buttonText = "Skip", duration = 3000) {
             this.container = document.createElement("div");
+            this.container.classList.add("say");
             this.duration = duration;
             this.timer = null;
 
@@ -165,10 +155,9 @@
             this.textBox.appendChild(document.createElement("span"));
             this.container.appendChild(this.textBox);
 
-            this.container.classList.add("say");
             this.avatar = document.createElement("div");
             this.avatar.classList.add("avatar");
-
+            this.avatar.style.backgroundImage = "url(image/" + avatarBg + ")";
             this.container.appendChild(this.avatar);
 
             this.button = document.createElement("button");
@@ -243,7 +232,7 @@
                         if (this.item[i].state == 0) {
                             sound.play(4)
                             this.item[i].on()
-                            if (this.level / 100 < 2) { //前兩關物件配對、最後一關找小K
+                            if (this.level / 100 < 3) { //前兩關物件配對、最後一關找小K
                                 this.ruleCheckMatch(i)
                             } else {
                                 this.ruleFind(i, "K")
@@ -538,6 +527,69 @@
     ///---------------------------------
 
 
+    // ---------------------
+    //
+    // 創建聲音
+    //
+    // ---------------------
+    var audioList = [
+        "../aten/MRS/music/001.aac",
+        "../aten/MRS/music/003.aac",
+        "../aten/MRS/music/002.aac",
+        "../aten/MRS/music/004.aac",
+        "../aten/MRS/music/ui_01.mp3",
+        "../aten/MRS/music/ui_02.mp3",
+        "../aten/MRS/music/ui_04.wav",
+        "../aten/MRS/music/out_logos---classic.aac"
+    ];
+    var sound = new Sound(audioList)
+
+    var bgmList = [
+        { voice: "../aten/MRS/music/out_logos---classic.aac", drawColor: "#ffffff88", w: 50, h: 50, x: 50, y: 50 },
+    ]
+
+    var bgm = bgmList.map((item) => {
+        let musicInstance = new music(item.voice);
+        return musicInstance;
+    });
+
+    // Mute 功能
+    muteTag = { tag: 1 }
+    mute = () => {
+        toggle(muteTag, () => {
+            mainGainNode.gain.value = 1
+            for (let i = 0; i < gameLevel.length; i++) {
+                for (let j = 0; j < gameLevel[i].length; j++) {
+                    gameLevel[i][j].btn[0].object.style.opacity = 1;
+                }
+            }
+            scene[0].btn[0].object.style.opacity = 1;
+        }, () => {
+            mainGainNode.gain.value = 0
+            for (let i = 0; i < gameLevel.length; i++) {
+                for (let j = 0; j < gameLevel[i].length; j++) {
+                    gameLevel[i][j].btn[0].object.style.opacity = 0.5;
+                }
+            }
+            scene[0].btn[2].object.style.opacity = 0.5;
+        })
+    }
+
+
+
+    // ---------------------
+    //
+    // 創建遊戲場景
+    //
+    // ---------------------
+
+
+
+    gameHeaderBtns = [
+        { size: [8, 8], xyr: [70, 6.5, 0], background: "btn_Mute.png", act: () => mute(), color: "" },
+        { size: [8, 8], xyr: [80, 6.5, 0], background: "btn_Home.png", act: () => game.goHome(), color: "" },
+        { size: [8, 8], xyr: [90, 6.5, 0], background: "btn_next.png", act: () => gameLevel[game.nowLevel[0]][game.nowLevel[1]].gameOver(), color: "" },
+    ]
     gameLevelAttr = [
         [{
             level: 101, background: "level01_Bg.png", gameTime: 5, gameKachiNum: 5,
@@ -553,7 +605,7 @@
                 { type: "L102", size: [190, 135], xyr: [178, 561, 0], background: "l1_item09.png", isStableItem: false, color: "" },
                 { type: "L101", size: [213, 131], xyr: [591, 440, 0], background: "l1_item10.png", isStableItem: false, color: "" },
                 { type: "B", size: [947, 389], xyr: [41, 1364, 0], background: "l1_itemS01.png", isStableItem: true, color: "" },
-            ], btn: []
+            ], btn: gameHeaderBtns
         }, {
             level: 102, background: "level01_Bg.png", gameTime: 5, gameKachiNum: 4,
             item: [
@@ -566,7 +618,7 @@
                 { type: "L102", size: [190, 135], xyr: [178, 561, 0], background: "l1_item09.png", isStableItem: false, color: "" },
                 { type: "L101", size: [213, 131], xyr: [591, 440, 0], background: "l1_item10.png", isStableItem: false, color: "" },
                 { type: "B", size: [947, 389], xyr: [41, 1364, 0], background: "l1_itemS01.png", isStableItem: true, color: "" },
-            ], btn: []
+            ], btn: gameHeaderBtns
         }, {
             level: 103, background: "level01_Bg.png", gameTime: 5, gameKachiNum: 3,
             item: [
@@ -577,20 +629,32 @@
                 { type: "L103", size: [216, 102], xyr: [658, 717, 0], background: "l1_item08.png", isStableItem: false, color: "" },
                 { type: "L101", size: [213, 131], xyr: [591, 440, 0], background: "l1_item10.png", isStableItem: false, color: "" },
                 { type: "B", size: [947, 389], xyr: [41, 1364, 0], background: "l1_itemS01.png", isStableItem: true, color: "" },
-            ], btn: []
+            ], btn: gameHeaderBtns
         }], [{
-            level: 201, background: "level02_Bg.png", gameTime: 3, gameKachiNum: 5,
+            level: 201, background: "level02_Bg.png", gameTime: 30000, gameKachiNum: 5,
             item: [
-                { type: "A", size: [20, 10], xyr: [40, 50, 25], background: "", isStableItem: false, color: "" },
-                { type: "A", size: [10, 20], xyr: [50, 20, 15], background: "", isStableItem: false, color: "" }
-            ], btn: []
+                { type: "L205", size: [236, 122], xyr: [81, 598, 0], background: "l2_itemK05.png", isStableItem: false, color: "" },
+                { type: "L205", size: [98, 56], xyr: [820, 604, 0], background: "l2_itemM05.png", isStableItem: false, color: "" },
+                { type: "L204", size: [169, 144], xyr: [690, 1006, 0], background: "l2_itemK04.png", isStableItem: false, color: "" },
+                { type: "L204", size: [45, 53], xyr: [292, 907, 0], background: "l2_itemM04.png", isStableItem: false, color: "" },
+
+                { type: "L201", size: [229, 168], xyr: [656, 724, 0], background: "l2_itemK01.png", isStableItem: false, color: "" },
+                { type: "L201", size: [75, 75], xyr: [407, 1436, 0], background: "l2_itemM01.png", isStableItem: false, color: "" },
+
+                { type: "L203", size: [152, 129], xyr: [50, 1061, 0], background: "l2_itemK03.png", isStableItem: false, color: "" },
+                { type: "L203", size: [44, 35], xyr: [179, 1015, 0], background: "l2_itemM03.png", isStableItem: false, color: "" },
+
+                { type: "L202", size: [221, 164], xyr: [96, 1374, 0], background: "l2_itemK02.png", isStableItem: false, color: "" },
+                { type: "L202", size: [65, 54], xyr: [911, 1264, 0], background: "l2_itemM02.png", isStableItem: false, color: "" },
+
+            ], btn: gameHeaderBtns
         }], [{
             level: 301, background: "", gameTime: 3, gameKachiNum: 5,
             item: [
                 { type: "A", size: [20, 10], xyr: [40, 50, 25], background: "", isStableItem: false, color: "" },
                 { type: "A", size: [10, 20], xyr: [50, 20, 15], background: "", isStableItem: false, color: "" },
                 { type: "K", size: [10, 20], xyr: [30, 30, 0], background: "", isStableItem: false, color: "" }
-            ], btn: []
+            ], btn: gameHeaderBtns
         }]
     ]
 
@@ -600,7 +664,7 @@
             btn: [
                 { name: "start", size: [44, 28], xyr: [50, 45, 0], background: "btn_start.png", act: () => game.start(), color: "" },
                 { name: "kCyan", size: [75, 75], xyr: [70, 85, 0], background: "home_k.png", act: () => sound.play(1), color: "" },
-                { name: "mute", size: [10, 10], xyr: [10, 5, 0], background: "btn_Mute.png", act: () => sound.play(1), color: "" }
+                { name: "mute", size: [10, 10], xyr: [10, 5, 0], background: "btn_Mute.png", act: () => mute(), color: "" }
             ], item: [], gameTime: 0, gameKachiNum: 0
         }, {
             level: "scorePage", background: "",
@@ -636,7 +700,6 @@
 
 
 
-
     // ---------------------
     //
     // 創建對話視窗
@@ -658,12 +721,12 @@
     },]
     var timeOutText = "時間到!!!"
     var sayAttr = [
-        { name: "", c: "11 Hello, how are you? Hello, how are you? Hello, how are you?", },
-        { name: "", c: "22 Hello, how are you? Hello, how are you? Hello, how are you?", },
-        { name: "", c: "33 Hello, how are you? Hello, how are you? Hello, how are you?", },
+        { name: "", bg: "faceK02.png", c: "記得連續點擊你看到的兩個相同的電腦，點擊正確才會算分喔！", },
+        { name: "", bg: "faceK02.png", c: "22 Hello, how are you? Hello, how are you? Hello, how are you?", },
+        { name: "", bg: "faceK02.png", c: "33 Hello, how are you? Hello, how are you? Hello, how are you?", },
     ]
     const overDialog = Array.from({ length: overDAttr.length }, (_, i) => new Dialog(overDAttr[i].h, overDAttr[i].c, overDAttr[i].btn))
-    const say = Array.from({ length: sayAttr.length }, (_, i) => new Say(sayAttr[i].c, "Skip", 1000))
+    const say = Array.from({ length: sayAttr.length }, (_, i) => new Say(sayAttr[i].c, sayAttr[i].bg, "Skip", 2000))
 
 
 
@@ -678,9 +741,9 @@
 
 
 
-    gameLevel[0][0].open()
-    gameLevel[0][0].reNewScore()
-    gameLevel[0][0].reNewTimeBar(30)
+    // gameLevel[1][0].open()
+    // gameLevel[1][0].reNewScore()
+    // gameLevel[1][0].reNewTimeBar(30)
     game.goHome()
     // game.end()
 
