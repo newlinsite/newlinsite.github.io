@@ -11,6 +11,7 @@
 <body>
     <div class="gameOutContainer">
         <div class="gameContainer"></div>
+        <a href=""></a>
     </div>
 </body>
 <script src="../library/voiceControl.js"></script>
@@ -56,11 +57,16 @@
 
 
     class Item {
-        constructor(attr, style, simplyP = false) {
+        constructor(attr, style, simplyP = false, a = false) {
             this.type = attr.type
             this.state = 0
             this.color = attr.color
-            this.object = document.createElement("div")
+            if (a) {
+                this.object = document.createElement("a")
+
+            } else {
+                this.object = document.createElement("div")
+            }
             this.object.classList = style
             this.object.style.backgroundImage = "url(image/" + attr.background + ")"
             this.object.style.backgroundColor = attr.color
@@ -209,6 +215,8 @@
             this.gameFullTime = attr.gameTime
             this.gameKachiNum = attr.gameKachiNum
             this.gameNowNum = 0
+            container.appendChild(this.object)
+
 
             // 創建 Button Item 
             this.btn = []
@@ -219,9 +227,23 @@
                 })
                 this.object.appendChild(this.btn[i].object)
             }
-            container.appendChild(this.object)
+
+            // 創建連結
+            if (attr.a) {
+                // console.log(attr.level)
+                this.a = []
+                for (let i = 0; i < attr.a.length; i++) {
+                    this.a[i] = new Item(attr.a[i], "btn", false, true)
+                    this.a[i].object.href = attr.a[i].a
+                    this.a[i].object.target = "_blank"
+
+                    this.a[i].object.addEventListener("click", () => {
 
 
+                    })
+                    this.object.appendChild(this.a[i].object)
+                }
+            }
             // 創建 gameItem 
             this.item = []
             this.selectedItem = "" //儲存用
@@ -545,13 +567,14 @@
     var sound = new Sound(audioList)
 
     var bgmList = [
-        { voice: "../aten/MRS/music/out_logos---classic.aac", drawColor: "#ffffff88", w: 50, h: 50, x: 50, y: 50 },
+        { voice: "../aten/MRS/music/out_logos---classic.aac" },
     ]
 
     var bgm = bgmList.map((item) => {
         let musicInstance = new music(item.voice);
         return musicInstance;
     });
+    bgm[0].play("loop")
 
     // Mute 功能
     muteTag = { tag: 1 }
@@ -563,7 +586,7 @@
                     gameLevel[i][j].btn[0].object.style.opacity = 1;
                 }
             }
-            scene[0].btn[0].object.style.opacity = 1;
+            scene[0].btn[2].object.style.opacity = 1
         }, () => {
             mainGainNode.gain.value = 0
             for (let i = 0; i < gameLevel.length; i++) {
@@ -571,7 +594,7 @@
                     gameLevel[i][j].btn[0].object.style.opacity = 0.5;
                 }
             }
-            scene[0].btn[2].object.style.opacity = 0.5;
+            scene[0].btn[2].object.style.opacity = 0.5
         })
     }
 
@@ -658,6 +681,10 @@
         }]
     ]
 
+    var shareLink = [
+        "http://instagram.com/sharer.php?u=www.google&media=/program/kvm_game/image/",
+        "&description=Test"
+    ]
     sceneAttr = [
         {
             level: "home", background: "home_bg.png",
@@ -670,18 +697,20 @@
             level: "scorePage", background: "",
             btn: [
                 { name: "kCyan", size: [75, 75], xyr: [70, 85, 0], background: "home_k.png", act: () => sound.play(1), color: "" },
+            ], a: [
+                { name: "", size: [44, 28], xyr: [30, 45, 0], background: "btn_start.png", a: shareLink[0] + "home_bg.png" + shareLink[1], act: nothing, color: "" }
             ], item: [], gameTime: 0, gameKachiNum: 0
         }
     ]
 
     gameDetailAttr = [{
-        level: "level1 detail Page", background: "level01d_Bg.png", item: [], gameTime: 0, gameKachiNum: 0,
+        level: "L1 detail", background: "level01d_Bg.png", item: [], gameTime: 0, gameKachiNum: 0,
         btn: [{ name: "start", size: [44, 28], xyr: [50, 45, 0], act: () => game.goToLevel(0), background: "btn_start.png", color: "" }]
     }, {
-        level: "level1 detail Page", background: "level02d_Bg.png", item: [], gameTime: 0, gameKachiNum: 0,
+        level: "L2 detail", background: "level02d_Bg.png", item: [], gameTime: 0, gameKachiNum: 0,
         btn: [{ name: "start", size: [44, 28], xyr: [50, 45, 0], act: () => game.goToLevel(1), background: "btn_start.png", color: "" }]
     }, {
-        level: "level1 detail Page", background: "level01d_Bg.png", item: [], gameTime: 0, gameKachiNum: 0,
+        level: "L3 detail", background: "level01d_Bg.png", item: [], gameTime: 0, gameKachiNum: 0,
         btn: [{ name: "start", size: [44, 28], xyr: [50, 45, 0], act: () => game.goToLevel(2), background: "btn_start.png", color: "" }]
     },]
 
@@ -745,7 +774,7 @@
     // gameLevel[1][0].reNewScore()
     // gameLevel[1][0].reNewTimeBar(30)
     game.goHome()
-    // game.end()
+    game.end()
 
 
     ///---------------------------------
