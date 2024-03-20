@@ -85,11 +85,11 @@
     }
 
     .gameScene>.gameItem.over {
-        opacity: 0.3;
+        opacity: 0.2;
     }
 
     .gameScene>.gameItem:hover {
-        opacity: 0.95;
+        /* opacity: 0.95; */
     }
 
 
@@ -190,12 +190,15 @@
     .gameContainer .scoreNote {
         display: none;
         background-color: #ede559;
-        width: 10%;
-        padding-top: 10%;
+        box-shadow: 0 2px 4px #0000001e;
+        width: 12%;
+        padding-top: 12%;
         border-radius: 50%;
         left: 50%;
         top: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate(20%, -50%);
+        transition: ease-out 1.2s;
+        pointer-events: none;
     }
 
     .gameContainer .scoreNote .scoreNoteNumber {
@@ -203,7 +206,8 @@
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
-        color: #000000;
+        color: #251f2f;
+        font-weight: 800;
     }
 
 
@@ -215,11 +219,32 @@
         top: 50%;
         transform: translate(-50%, -50%);
         color: #ffffff;
-        font-size: 36px;
-        background-color: #585858;
-        width: 20%;
-        padding-top: 20%;
+        font-size: 45px;
+        background-color: #113469dc;
+        width: 28%;
+        padding-top: 28%;
         transition: 0.5s ease-in;
+        border-radius: 50%;
+        animation: count 1s ease forwards 3;
+    }
+
+    @keyframes count {
+        0% {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.4);
+        }
+
+        90% {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+
+        }
+
+        100% {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.4);
+
+        }
     }
 
     .gameContainer .countdownElement>* {

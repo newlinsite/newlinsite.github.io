@@ -52,21 +52,22 @@
     }
 
     /*****************************************
-******************************************
-******************************************
+    ******************************************
+    ******************************************
 
 
-			layout
+                layout
 
-******************************************
-******************************************
-******************************************/
+    ******************************************
+    ******************************************
+    ******************************************/
 
     .container {
         /* max-width: 1200px; */
         display: flex;
         margin-top: 32px;
         margin: 0px auto;
+        height: 100%;
     }
 
     .row {
@@ -156,6 +157,14 @@
         width: 100%;
     }
 
+
+    /*** ------------------------------------------- 
+
+
+        SideBar
+
+     ------------------------------------------- ***/
+
     .sideBar {
         background-color: #08375E;
         width: 240px;
@@ -164,34 +173,189 @@
 
     }
 
-    .inputFeild {
+    /*** ------------------------------------------- 
+
+
+        WorkArea 
+
+     ------------------------------------------- ***/
+
+    .workArea {
         background-color: #ffffff;
         flex-grow: 1;
-        display: flex;
-        flex-direction: column;
+        margin: 0;
+        height: 100%;
+        overflow: hidden;
     }
 
-    .inputFeild>div {
+    .workArea .divid {
+        width: 98%;
+        height: 2px;
+        background-color: #00000011;
+        margin: 8px 0;
+    }
+
+    .workArea .tools {
         border-bottom: 2px solid #0000000f;
-        padding: 8px 16px;
-        margin: 0 12px;
-        min-height: 10px;
+        background-color: #fff;
+        padding: 8px 0;
     }
 
-    .inputFeild>.textfield {
-        padding: 12px;
-        min-width: 100px;
+    .workArea .footer {
+        border-top: 2px solid #00000011;
+    }
+
+    /*  ----------------- 
+        textArea
+    -----------------  */
+
+
+    .workArea .textArea {
+        background-color: #FAFAFA;
+        flex-shrink: 2;
         flex-grow: 1;
+        height: 10%;
+        overflow-y: scroll;
+        position: relative;
     }
 
-    .inputFeild>.textfield>p {
+    .workArea .textArea .newVoice {
+        max-width: 1058px;
+        margin: 4px auto;
+        padding: 4px;
+        transition: 0.5s;
+
+        background-image: url("image/newVoice.svg");
+        margin: 0 auto;
+        width: calc(100% + 58px);
+
+        left: -24px;
+        height: 50px;
+
+        background-repeat: no-repeat;
+        background-position: 0 center;
+        transition: 0.5s;
+        opacity: 0.2;
+        cursor: pointer;
+    }
+
+    .workArea .textArea .newVoice:last-child {
+        opacity: 0.8;
+        margin-bottom: 128px;
+    }
+
+    .workArea .textArea .newVoice:hover {
+        opacity: 1;
+    }
+
+
+    /* textBox */
+    .workArea .textArea .textBox {
+        margin: 8px 0;
+        padding: 24px 0;
+    }
+
+    .workArea .textArea .textBox::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: transparent linear-gradient(90deg, #ffffff00 0%, #fff 20%, #fff 80%, #ffffff00 100%) 0% 0% no-repeat padding-box;
+        opacity: 0;
+        transition: 0.5s;
+        filter: drop-shadow(0 5px 8px #00000009)
+    }
+
+    .workArea .textArea .textBox:hover::before {
+        opacity: 0.2;
+        /* filter: drop-shadow(0 0px 0px #00000000) */
+    }
+
+
+    .workArea .textArea .textBox::after {
+        content: "";
+        width: 100%;
+        height: 4px;
+        position: absolute;
+        bottom: -0px;
+        filter: blur(1.5px);
+        transition: 0.5s;
+        opacity: 0;
+    }
+
+
+
+
+    .workArea .textArea .textBox .header,
+    .workArea .textArea .textBox p {
         max-width: 1000px;
-        margin: 12px auto;
+        margin: 4px auto;
+        padding: 4px;
+        transition: 0.5s;
+
+    }
+
+    .workArea .textArea .textBox .header .bg {
+        background-image: url("image/testboxHeader.svg");
+        width: 100%;
+        height: 40px;
+        background-repeat: no-repeat;
+        background-position: 0 center;
+        left: -58px;
+        transition: 0.5s;
+    }
+
+    .workArea .textArea .textBox.a01 .header .bg {
+        background-image: url("image/testboxHeader_01.svg");
+    }
+
+    .workArea .textArea .textBox.a02 .header .bg {
+        background-image: url("image/testboxHeader_02.svg");
+    }
+
+    .workArea .textArea .textBox p {
         font-size: 18px;
         font-weight: 300;
         letter-spacing: 0.1em;
         line-height: 1.88em;
+
     }
+
+
+    /*   focus   */
+
+
+
+    .workArea .textArea .textBox.focus::before {
+        opacity: 0.9;
+    }
+
+    .workArea .textArea .textBox.focus::after {
+        opacity: 1;
+    }
+
+    .workArea .textArea .textBox.focus .header .bg {
+        background-image: url("image/testboxHeader_on.svg");
+    }
+
+    .workArea .textArea .textBox.a01.focus .header .bg {
+        background-image: url("image/testboxHeader_01_on.svg");
+    }
+
+    .workArea .textArea .textBox.a02.focus .header .bg {
+        background-image: url("image/testboxHeader_02_on.svg");
+    }
+
+
+
+
+    /*** ------------------------------------------- 
+
+
+        FileBar
+
+     ------------------------------------------- ***/
 
     .fileBar {
         background-color: #F5F5F5;
@@ -243,6 +407,7 @@
         font-weight: 400;
         color: #A6A6A6;
     }
+
 
 
     /* Card */
@@ -305,10 +470,8 @@
 
 
 
-
-
     .fileBar .body .fileCard::after {
-        content: "55";
+        content: "";
         position: absolute;
         background-color: #EBEBEB;
         width: 248px;
@@ -324,8 +487,6 @@
     }
 
 
-
-
     .fileBar .footer {
         border-top: 2px solid #0000000f;
         padding: 10px 16px;
@@ -337,28 +498,62 @@
         <div class="sideBar">
 
         </div>
-        <div class="inputFeild">
-            <div>
-                <img src="image/menu title.png" alt="">
+        <div class="workArea row flex-dir-col">
+            <div class="tools row flex-dir-col flex-align-c ">
+                <div class="col"><img src="image/menu title.svg" alt=""></div>
+                <div class="divid"></div>
+                <div class="col toolimg"></div>
             </div>
-            <div>
-                <img src="image/Tools.png" alt="">
+            <div class="textArea">
+                <div class="textBox a01">
+                    <div class="header">
+                        <div class="bg a01"></div>
+                    </div>
+                    <p>宏正的優聲學人工智慧語音合成技術為針對企業應用推出的軟硬體包套賣斷服務，消費者在購買包含預先訓練過人工智慧模型的推論伺服器後，即可搭建私有雲並無限制使用人工智慧語音合成。
+                        與一般雲端人工智慧語音合成服務論字不但更適合使用量大的產業應用於新聞朗讀、影音創作、教育訓練等情境，私有雲的架構也較公有雲更加安全，可以降低企業「代言人」遭冒用的風險。
+                        優聲學的技術優勢除了能夠提供發音更加自然的語音之外，也針對台灣口音進行最佳化，故更適合國內企業採用。
+                        另一方面，優聲學目前提供6種不同風格的男、女語音選擇 更可以客製化企業專屬語音。相較於一般語音合成服務需要約6個月的時間進行調整，優聲學只需2~3週即可完成，也是一大優勢。
+                    </p>
+                </div>
+                <div class="newVoice"></div>
+
+                <div class="textBox a02">
+                    <div class="header">
+                        <div class="bg "></div>
+                    </div>
+                    <p>宏正的優聲學 語音選擇 更可以客製化企業專屬語音。相較於一般語音合成服務需要約6個月的時間進行調整，優聲學只需2~3週即可完成，也是一大優勢。
+                    </p>
+                </div>
+                <div class="newVoice"></div>
+
+                <div class="textBox a01">
+                    <div class="header">
+                        <div class="bg"></div>
+                    </div>
+                    <p>宏正的優聲學人工智慧語音合成技術為針對企業應用推出的軟硬體包套賣斷服務，消費者在購買包含預先訓練過人工智慧模型的推論伺服器後，即可搭建私有雲並無限制使用人工智慧語音合成。
+                        與一般雲端人工智慧語音合成服務論字計價的方式相比，優聲學不但更適合使用量大的產業應用於新聞朗讀、影音創作、教育訓練等情境，私有雲的架構也較公有雲更加安全，可以降低企業「代言人」遭冒用的風險。
+                        優聲學的技術優勢除了能夠提供發音更加自然的語音之外，也針對台灣口音進行最佳化，故更適合國內企業採用。
+                        另一方面，優聲學目前提供6種不同風格的男、女語音夠提供發音更加自然的語音之外，也針對台灣口音進行最佳化，故更適合國內企業採用。
+                        另一方面，優聲學目前提供6種不同風格的男、女語音夠提供發音更加自然的語音之外，也針對台灣口音進行最佳化，故更適合國內企業採用。
+                        另一方面，優聲學目前提供6種不同風格的男、女語音夠提供發音更加自然的語音之外，也針對台灣口音進行最佳化，故更適合國內企業採用。
+                        另一方面，優聲學目前提供6種不同風格的男、女語音選擇， 更可以客製化企業專屬語音。相較於一般語音合成服務需要約6個月的時間進行調整，優聲學只需2~3週即可完成，也是一大優勢。
+                        宏正的優聲學人工智慧語音合成技術為針對企業應用推出的軟硬體包套賣斷服務，消費者在購買包含預先訓練過人工智慧模型的推論伺服器後，即可搭建私有雲並無限制使用人工智慧語音合成。
+                        與一般雲端人工智慧語音合成服務論字計價的方式相比，優聲學不但更適合使用量大的產業應用於新聞朗讀、影音創作、教育訓練等情境，私有雲的架構也較公有雲更加安全，可以降低企業「代言人」遭冒用的風險。
+                        優聲學的技術優勢除了能夠提供發音更加自然的語音之外，也針對台灣口音進行最佳化，故更適合國內企業採用。
+                        另一方面，優聲學目前提供6種不同風格的男、女語音選擇 更可以客製化企業專屬語音。相較於一般語音合成服務需要約6個月的時間進行調整，優聲學只需2~3週即可完成，也是一大優勢。
+                    </p>
+                </div>
+                <div class="newVoice"></div>
             </div>
-            <div class="textfield">
-                <p>宏正的優聲學人工智慧語音合成技術為針對企業應用推出的軟硬體包套賣斷服務，消費者在購買包含預先訓練過人工智慧模型的推論伺服器後，即可搭建私有雲並無限制使用人工智慧語音合成。
-                    與一般雲端人工智慧語音合成服務論字計價的方式相比，優聲學不但更適合使用量大的產業應用於新聞朗讀、影音創作、教育訓練等情境，私有雲的架構也較公有雲更加安全，可以降低企業「代言人」遭冒用的風險。
-                    優聲學的技術優勢除了能夠提供發音更加自然的語音之外，也針對台灣口音進行最佳化，故更適合國內企業採用。
-                    另一方面，優聲學目前提供6種不同風格的男、女語音選擇， 更可以客製化企業專屬語音。相較於一般語音合成服務需要約6個月的時間進行調整，優聲學只需2~3週即可完成，也是一大優勢。
-                    宏正的優聲學人工智慧語音合成技術為針對企業應用推出的軟硬體包套賣斷服務，消費者在購買包含預先訓練過人工智慧模型的推論伺服器後，即可搭建私有雲並無限制使用人工智慧語音合成。
-                    與一般雲端人工智慧語音合成服務論字計價的方式相比，優聲學不但更適合使用量大的產業應用於新聞朗讀、影音創作、教育訓練等情境，私有雲的架構也較公有雲更加安全，可以降低企業「代言人」遭冒用的風險。
-                    優聲學的技術優勢除了能夠提供發音更加自然的語音之外，也針對台灣口音進行最佳化，故更適合國內企業採用。
-                    另一方面，優聲學目前提供6種不同風格的男、女語音選擇 更可以客製化企業專屬語音。相較於一般語音合成服務需要約6個月的時間進行調整，優聲學只需2~3週即可完成，也是一大優勢。</p>
+            <div class="footer">
+                <div style="background-color: #F5F5F5; margin: 0px;">
+                    <div class="btn sys">合成</div>
+                </div>
+                <div style="background-color: #EBEBEB; margin: 0px; text-align: right;"><img src="image/footer.png"
+                        alt="">
+                </div>
             </div>
-            <div style="background-color: #F5F5F5; margin: 0px;">
-                <div class="btn sys">合成</div>
-            </div>
-            <div style="background-color: #EBEBEB; margin: 0px; text-align: right;"><img src="image/footer.png" alt="">
-            </div>
+
 
         </div>
         <div class="fileBar">
@@ -434,6 +629,36 @@
 </body>
 <script>
     var sysBtn = document.getElementsByClassName("sys")[0]
+    var tools = document.getElementsByClassName("toolimg")[0]
+    var textBox = document.getElementsByClassName("textBox")
+
+    var Toolsimg = []
+    Toolsimg[0] = document.createElement("img")
+    Toolsimg[0].src = "image/Tools_01.svg"
+    Toolsimg[1] = document.createElement("img")
+    Toolsimg[1].src = "image/Tools_02.svg"
+    tools.appendChild(Toolsimg[0])
+
+
+    for (let i = 0; i < textBox.length; i++) {
+        textBox[i].addEventListener("click", () => {
+            resetAllTextBox()
+
+            textBox[i].classList.add("focus")
+            if (textBox[i].classList[1] == "a01") {
+                tools.replaceChild(Toolsimg[0], tools.firstChild)
+            } else {
+                tools.replaceChild(Toolsimg[1], tools.firstChild)
+            }
+        })
+    }
+
+    var resetAllTextBox = () => {
+        for (let i = 0; i < textBox.length; i++) {
+            textBox[i].classList.remove("focus")
+        }
+    }
+
 
 
 

@@ -182,8 +182,8 @@ class music {
             freqCanvasBox.appendChild(this.freqCanvas);
         }
 
-
     }
+
     // -------------------
     // 播放功能
     // -------------------

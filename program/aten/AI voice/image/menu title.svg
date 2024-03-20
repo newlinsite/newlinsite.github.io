@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="40" viewBox="0 0 160 40">
+  <g id="menu_title" data-name="menu title" transform="translate(-12 -9)">
+    <g id="icon_arrow_dropdown" transform="translate(132 9)">
+      <rect id="Container" width="40" height="40" rx="2" fill="#ebebeb" opacity="0"/>
+      <path id="Combined_Shape" data-name="Combined Shape" d="M5.39,6.95h0L.314,1.876A1.073,1.073,0,0,1,1.832.359L6.9,5.429,12.015.314a1.073,1.073,0,1,1,1.517,1.517L6.9,8.462Z" transform="translate(13 16)" fill="#4a4a4a"/>
+    </g>
+    <text id="menu_title-2" data-name="menu title" transform="translate(12 38)" fill="#4a4a4a" font-size="22" font-family="YuGothicUI-Semibold, Yu Gothic UI" font-weight="600" letter-spacing="0.024em"><tspan x="0" y="0">新語音合成</tspan></text>
+  </g>
+</svg>

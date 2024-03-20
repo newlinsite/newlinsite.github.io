@@ -61,6 +61,7 @@
             this.type = attr.type
             this.state = 0
             this.color = attr.color
+
             if (a) {
                 this.object = document.createElement("a")
 
@@ -147,7 +148,7 @@
     }
 
     class Say {
-        constructor(text, avatarBg, buttonText = "Skip", duration = 3000) {
+        constructor(text, avatarBg, buttonText = "Skip", duration = 3000, voice = false) {
             this.container = document.createElement("div");
             this.container.classList.add("say");
             this.duration = duration;
@@ -170,6 +171,8 @@
             this.button.textContent = buttonText;
             this.button.addEventListener("click", () => this.remove());
             this.container.appendChild(this.button);
+
+            this.voice = voice
         }
 
         typeText() {
@@ -182,13 +185,16 @@
             }
         }
 
-        show(where = container) {
+        show(where = container, voice) {
             where.appendChild(this.container);
             this.timer = setInterval(() => this.typeText(), 50);
             this.container.classList.remove("fadeOut")
             this.container.classList.add("fadeInLeft")
             this.avatar.classList.add("fadeInLeft")
             game.onMaskOn(0.3)
+            if (this.voice) {
+                bgm[this.voice].play()
+            }
         }
 
         remove(where = container) {
@@ -230,7 +236,6 @@
 
             // 創建連結
             if (attr.a) {
-                // console.log(attr.level)
                 this.a = []
                 for (let i = 0; i < attr.a.length; i++) {
                     this.a[i] = new Item(attr.a[i], "btn", false, true)
@@ -252,7 +257,7 @@
                 if (!attr.item[i].isStableItem) { //如果不是靜態物件，加入遊戲規則
                     this.item[i].object.addEventListener("click", () => {
                         if (this.item[i].state == 0) {
-                            sound.play(4)
+                            sound.play(0)
                             this.item[i].on()
                             if (this.level / 100 < 3) { //前兩關物件配對、最後一關找小K
                                 this.ruleCheckMatch(i)
@@ -300,7 +305,8 @@
         ruleCheckMatch(num) {
             if (this.selectedItem != "") {
                 if (this.selectedItem.type === this.item[num].type) {
-                    this.addScore(1)
+                    this.addScore(1, num)
+                    sound.play(1)
                     this.item[num].object.classList.add("over")
                     this.selectedItem.object.classList.add("over")
                     this.selectedItem = ""
@@ -310,6 +316,7 @@
 
                 } else {
                     // this.addScore(-1)
+                    sound.play(2)
                     setTimeout(() => {
                         this.selectedItem.off()
                         this.item[num].off()
@@ -329,13 +336,13 @@
             this.item[num].off()
         }
 
-        addScore(num) {
+        addScore(num, itemNum) {
             let score = num * 15
             game.score = game.score + score
             this.gameNowNum = this.gameNowNum + num
             test("" + score + ", Score : " + game.score)
             game.onMask()
-            this.onScoreNote(score)
+            this.onScoreNote(score, itemNum)
             this.reNewScore()
         }
 
@@ -344,6 +351,23 @@
         }
         reNewTimeBar(time = game.time) {
             this.timeBarNumber.textContent = time
+        }
+
+        onScoreNote(score, itemNum, offTime = 1250) {
+            this.scoreNote.style.display = "inline-block"
+            this.scoreNote.style.left = this.item[itemNum].object.style.left
+            this.scoreNote.style.top = this.item[itemNum].object.style.top
+            this.scoreNote.style.opacity = 0.9
+            this.scoreNoteNumber.textContent = score
+
+            setTimeout(() => {
+                this.scoreNote.style.left = "12%"
+                this.scoreNote.style.top = "20%"
+                this.scoreNote.style.opacity = 0
+            }, 0)
+            setTimeout(() => {
+                this.scoreNote.style.display = "none"
+            }, offTime)
         }
 
         gameStart(time = 3) {
@@ -357,6 +381,7 @@
             this.countdownElement.appendChild(this.countdownElementText);
             this.countdownElementText.textContent = time - game.time;
             //開始遊戲前倒數
+            sound.play(4)
             game.startTimer(
                 1, () => {
                     this.countdownElementText.textContent = time - game.time;
@@ -369,6 +394,8 @@
                     //開始遊戲計時
                     game.startTimer(1, () => this.reNewTimeBar(this.gameFullTime - game.time), this.gameFullTime + 1,
                         () => this.gameOver(true))
+                    //播放遊戲中音樂
+                    bgm[0].play("loop")
                 }
             )
         }
@@ -391,7 +418,6 @@
             this.reset()
         }
 
-
         reset() {
             for (let i = 0; i < this.item.length; i++) {
                 this.item[i].off()
@@ -406,20 +432,9 @@
             this.gameNowNum = 0
             this.scoreBar.classList.remove("show")
             this.timeBar.classList.remove("show")
+            //停止所有音樂
+            musicAllStop()
         }
-
-        onScoreNote(score, fideOutTime = 300, offTime = 600) {
-            this.scoreNote.style.display = "inline-block"
-            this.scoreNote.style.opacity = 1
-            this.scoreNoteNumber.textContent = score
-            setTimeout(() => {
-                this.scoreNote.style.opacity = 0
-            }, fideOutTime)
-            setTimeout(() => {
-                this.scoreNote.style.display = "none"
-            }, offTime)
-        }
-
     }
 
 
@@ -433,7 +448,9 @@
             // Mask
             this.mask = document.createElement("div")
             this.mask.classList = "mask"
+            this.maskTag = 0
             container.appendChild(this.mask)
+
         }
 
         // 切換 Page
@@ -484,7 +501,9 @@
         }
         goToDetail(num) {
             gameDetail[num].open()
-            say[num].show();
+            say[num].show()
+            bgm[1].play("loop")
+
         }
         goToLevel(num) {
             this.closeAllScene()
@@ -521,20 +540,27 @@
         }
         onMask(stayTime = 300, fideOutTime = 300, opacity = 0.2) {
             this.onMaskOn(opacity)
-            setTimeout(() => {
+            this.maskStayTimer = setTimeout(() => {
                 this.onMaskOff(fideOutTime)
             }, stayTime)
-
         }
+
         onMaskOn(opacity = 0.2) {
-            this.mask.style.display = "inline-block"
-            this.mask.style.opacity = opacity
+            setTimeout(() => {
+                this.maskTag = 1
+                this.mask.style.display = "inline-block"
+                this.mask.style.opacity = opacity
+            }, 100)
         }
         onMaskOff(fideOutTime = 300) {
-            this.mask.style.opacity = 0
-            setTimeout(() => {
-                this.mask.style.display = "none"
-            }, fideOutTime + 100)
+            if (this.maskTag == 1) {
+                this.mask.style.opacity = 0
+                this.maskTimer = setTimeout(() => {
+                    this.mask.style.display = "none"
+                    this.maskTag = 0
+                }, fideOutTime + 100)
+            }
+            this.maskTag = 0
         }
     }
 
@@ -555,26 +581,32 @@
     //
     // ---------------------
     var audioList = [
-        "../aten/MRS/music/001.aac",
-        "../aten/MRS/music/003.aac",
-        "../aten/MRS/music/002.aac",
-        "../aten/MRS/music/004.aac",
-        "../aten/MRS/music/ui_01.mp3",
-        "../aten/MRS/music/ui_02.mp3",
-        "../aten/MRS/music/ui_04.wav",
-        "../aten/MRS/music/out_logos---classic.aac"
+        "music/ui_02.mp3",
+        "music/01_addScore.wav",
+        "music/02_noScore.wav",
+        "music/03_scoreWait.wav",
+        "music/04_count.wav",
+
     ];
     var sound = new Sound(audioList)
 
-    var bgmList = [
-        { voice: "../aten/MRS/music/out_logos---classic.aac" },
-    ]
 
+    var bgmList = [
+        { voice: "music/遊戲主音樂 (main)-Funky and Fresh.mp3" },
+        { voice: "music/遊戲主音樂 (option)-Funny.wav" },
+        { voice: "music/小K-1.wav" },
+        { voice: "music/小K-2.wav" },
+        { voice: "music/小K-3.wav" },
+        { voice: "music/小K-4.wav" },
+        { voice: "music/小K-5.wav" },
+    ]
     var bgm = bgmList.map((item) => {
         let musicInstance = new music(item.voice);
         return musicInstance;
     });
-    bgm[0].play("loop")
+    bgm[0].gainNode.gain.value = 0.1
+
+
 
     // Mute 功能
     muteTag = { tag: 1 }
@@ -615,7 +647,7 @@
     ]
     gameLevelAttr = [
         [{
-            level: 101, background: "level01_Bg.png", gameTime: 5, gameKachiNum: 5,
+            level: 101, background: "level01_Bg.png", gameTime: 50000, gameKachiNum: 5,
             item: [
                 { type: "L104", size: [101, 103], xyr: [106, 896, 0], background: "l1_item07.png", isStableItem: false, color: "" },
                 { type: "L101", size: [105, 105], xyr: [358, 889, 0], background: "l1_item06.png", isStableItem: false, color: "" },
@@ -752,12 +784,12 @@
     },]
     var timeOutText = "時間到!!!"
     var sayAttr = [
-        { name: "", bg: "faceK02.png", c: "記得連續點擊你看到的兩個相同的電腦，點擊正確才會算分喔！", },
-        { name: "", bg: "faceK02.png", c: "22 Hello, how are you? Hello, how are you? Hello, how are you?", },
-        { name: "", bg: "faceK02.png", c: "33 Hello, how are you? Hello, how are you? Hello, how are you?", },
+        { name: "", bg: "faceK02.png", c: "記得連續點擊你看到的兩個相同的電腦，點擊正確才會算分喔！", voice: 2 },
+        { name: "", bg: "faceK02.png", c: "22 Hello, how are you? Hello, how are you? Hello, how are you?", voice: 3 },
+        { name: "", bg: "faceK02.png", c: "33 Hello, how are you? Hello, how are you? Hello, how are you?", voice: 4 },
     ]
     const overDialog = Array.from({ length: overDAttr.length }, (_, i) => new Dialog(overDAttr[i].h, overDAttr[i].c, overDAttr[i].btn))
-    const say = Array.from({ length: sayAttr.length }, (_, i) => new Say(sayAttr[i].c, sayAttr[i].bg, "Skip", 2000))
+    const say = Array.from({ length: sayAttr.length }, (_, i) => new Say(sayAttr[i].c, sayAttr[i].bg, "Skip", 2000, sayAttr[i].voice))
 
 
 
@@ -772,11 +804,11 @@
 
 
 
-    // gameLevel[1][0].open()
+    gameLevel[0][0].open()
     // gameLevel[1][0].reNewScore()
     // gameLevel[1][0].reNewTimeBar(30)
-    game.goHome()
-    game.end()
+    // game.goHome()
+    // game.end()
 
 
     ///---------------------------------
@@ -800,7 +832,7 @@
         }
 
         if (keyID === 'KeyA') {
-            game.goHome()
+            gameLevel[0][0].reset()
 
         }
         if (keyID === 'KeyZ') {
