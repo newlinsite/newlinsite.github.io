@@ -236,10 +236,10 @@
                     this.a[i] = new Item(attr.a[i], "btn", false, true)
                     this.a[i].object.href = attr.a[i].a
                     this.a[i].object.target = "_blank"
-                    this.a[i].object.download = "download"
-
+                    if (attr.a[i].download) {
+                        this.a[i].object.download = "download"
+                    }
                     this.a[i].object.addEventListener("click", () => {
-
                     })
                     this.object.appendChild(this.a[i].object)
                 }
@@ -682,8 +682,6 @@
     ]
 
     var shareLink = [
-        "http://instagram.com/sharer.php?u=www.google&media=/program/kvm_game/image/",
-        "&description=Test",
         "https://www.facebook.com/sharer.php?u＝網址",
         "program/kvm_game/image/"
     ]
@@ -700,7 +698,8 @@
             btn: [
                 { name: "kCyan", size: [75, 75], xyr: [70, 85, 0], background: "home_k.png", act: () => sound.play(1), color: "" },
             ], a: [
-                { name: "", size: [44, 28], xyr: [30, 45, 0], background: "btn_start.png", a: "image/home_bg.png", act: nothing, color: "" },
+                { name: "", size: [44, 28], xyr: [30, 45, 0], background: "btn_start.png", a: "image/home_bg.png", download: true, act: nothing, color: "" },
+                { name: "", size: [44, 28], xyr: [60, 45, 0], background: "btn_start.png", a: "image/home_bg.png", download: false, act: nothing, color: "" },
 
             ], item: [], gameTime: 0, gameKachiNum: 0
         }
