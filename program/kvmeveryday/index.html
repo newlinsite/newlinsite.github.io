@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="kvmgame.css">
+</head>
+
+<body>
+    <div class="gameOutContainer">
+        <div class="gameContainer"></div>
+        <a href=""></a>
+    </div>
+</body>
+<script src="../library/voiceControl.js"></script>
+<script>
+    var $id = function (name) {
+        return document.getElementById(name)
+    }
+    var $css = function (name) {
+        return document.getElementsByClassName(name)
+    }
+    var $tag = function (name) {
+        return document.getElementsByTagName(name)
+    }
+    var test = function (print = "test") {
+        console.log(print)
+    }
+    function nothing() {
+        console.log("nothing")
+    }
+
+
+
+
+
+    // ------------------------
+    // toggle
+    // ------------------------
+
+    toggle = (tagObj, do1, do0, autoSwitchTag = true) => {
+        if (tagObj.tag === 0) {
+            do1()
+            if (autoSwitchTag) {
+                tagObj.tag = 1
+            }
+        } else {
+            do0()
+            if (autoSwitchTag) {
+                tagObj.tag = 0
+            }
+        }
+    }
+
+
+
+    class Item {
+        constructor(attr, style, simplyP = false, a = false) {
+            this.type = attr.type
+            this.state = 0
+            this.color = attr.color
+
+            if (a) {
+                this.object = document.createElement("a")
+
+            } else {
+                this.object = document.createElement("div")
+            }
+            this.object.classList = style
+            this.object.style.backgroundImage = "url(image/" + attr.background + ")"
+            this.object.style.backgroundColor = attr.color
+            this.object.style.width = attr.size[0] + "%"
+            this.object.style.paddingTop = attr.size[1] + "%"
+            this.object.style.left = attr.xyr[0] + "%"
+            this.object.style.top = attr.xyr[1] + "%"
+            this.object.style.transform = "translate(-50%, -50%) rotate(" + attr.xyr[2] + "deg)"
+            if (simplyP) { // simplyP 輸入 1080 * 1920 絕對位置，用於直接輸入設計稿上的數字
+                this.object.style.paddingTop = 0
+                this.object.style.width = attr.size[0] / 10.80 + "%"
+                this.object.style.height = attr.size[1] / 19.20 + "%"
+                this.object.style.left = attr.xyr[0] / 10.80 + "%"
+                this.object.style.top = attr.xyr[1] / 19.20 + "%"
+                this.object.style.transform = "rotate(" + attr.xyr[2] + "deg)"
+            }
+        }
+        on(url, style = "on") {
+            this.state = 1
+            this.object.classList.add(style)
+            if (typeof url !== 'undefined') {
+                this.object.style.backgroundImage = "url(" + url + ")"
+            }
+        }
+        off(style = "on") {
+            this.state = 0
+            this.object.classList.remove(style)
+            if (typeof url !== 'undefined') {
+                this.object.style.backgroundImage = "url(" + attr.item[i].background + ")"
+            }
+        }
+    }
+
+    class Dialog {
+        constructor(title, content, buttons = [{ t: "text", a: nothing }], where = container) {
+            this.where = where
+
+            this.dialog = document.createElement("div");
+            this.dialog.classList.add("dialog");
+
+            this.titleText = title
+            this.title = document.createElement("h5");
+            this.title.textContent = this.titleText;
+            this.dialog.appendChild(this.title);
+
+            this.contentText = content
+            this.content = document.createElement("p");
+            this.content.textContent = this.contentText;
+            this.dialog.appendChild(this.content);
+
+            this.btnBox = document.createElement("div");
+            this.btnBox.classList.add("btnBox");
+            this.dialog.appendChild(this.btnBox);
+
+            buttons.forEach((bb) => {
+                const btn = document.createElement("button");
+                btn.textContent = bb.t;
+                btn.addEventListener("click", bb.a);
+                this.btnBox.appendChild(btn);
+            });
+        }
+        show(isTimeOut = false) {
+            if (isTimeOut) {
+                this.title.textContent = timeOutText;
+            }
+            this.content.textContent = this.contentText + game.score;
+
+            this.where.appendChild(this.dialog);
+            setTimeout(() => this.dialog.classList.add("fade"), 0);
+            game.onMaskOn(0.4)
+
+        }
+        remove() {
+            this.dialog.classList.remove("fade")
+            setTimeout(() => { this.dialog.remove() }, 300);
+            game.onMaskOff()
+        }
+    }
+
+    class Say {
+        constructor(text, avatarBg, buttonText = "Skip", duration = 3000, voice = false) {
+            this.container = document.createElement("div");
+            this.container.classList.add("say");
+            this.duration = duration;
+            this.timer = null;
+
+            this.text = text;
+            this.nowText = "";
+            this.nowTextIndex = 0;
+            this.textBox = document.createElement("div");
+            this.textBox.classList.add("textBox");
+            this.textBox.appendChild(document.createElement("span"));
+            this.container.appendChild(this.textBox);
+
+            this.avatar = document.createElement("div");
+            this.avatar.classList.add("avatar");
+            this.avatar.style.backgroundImage = "url(image/" + avatarBg + ")";
+            this.container.appendChild(this.avatar);
+
+            this.button = document.createElement("button");
+            this.button.textContent = buttonText;
+            this.button.addEventListener("click", () => this.remove());
+            this.container.appendChild(this.button);
+
+            this.voice = voice
+        }
+
+        typeText() {
+            this.nowText += this.text.charAt(this.nowTextIndex);
+            this.textBox.firstChild.textContent = this.nowText;
+            this.nowTextIndex++;
+            if (this.nowTextIndex === this.text.length) {
+                clearInterval(this.timer);
+                setTimeout(() => this.remove(), this.duration);
+            }
+        }
+
+        show(where = container, voice) {
+            where.appendChild(this.container);
+            this.timer = setInterval(() => this.typeText(), 50);
+            this.container.classList.remove("fadeOut")
+            this.container.classList.add("fadeInLeft")
+            this.avatar.classList.add("fadeInLeft")
+            game.onMaskOn(0.3)
+            if (this.voice) {
+                bgm[this.voice].play()
+            }
+        }
+
+        remove(where = container) {
+            clearInterval(this.timer);
+            this.container.classList.add("fadeOut")
+            this.nowText = "";
+            this.nowTextIndex = 0;
+            setTimeout(() => this.container.remove(), 500);
+            game.onMaskOff()
+        }
+    }
+
+
+    class GameScene {
+        constructor(
+            attr,
+            simplyP = false
+        ) {
+            this.object = document.createElement("div")
+            this.object.classList = "gameScene"
+            this.object.style.backgroundImage = "url(image/" + attr.background + ")"
+            this.state = 0
+            this.level = attr.level
+            this.gameFullTime = attr.gameTime
+            this.gameKachiNum = attr.gameKachiNum
+            this.gameNowNum = 0
+            container.appendChild(this.object)
+
+
+            // 創建 Button Item 
+            this.btn = []
+            for (let i = 0; i < attr.btn.length; i++) {
+                this.btn[i] = new Item(attr.btn[i], "btn")
+                this.btn[i].object.addEventListener("click", () => {
+                    attr.btn[i].act()
+                })
+                this.object.appendChild(this.btn[i].object)
+            }
+
+            // 創建連結
+            if (attr.a) {
+                this.a = []
+                for (let i = 0; i < attr.a.length; i++) {
+                    this.a[i] = new Item(attr.a[i], "btn", false, true)
+                    this.a[i].object.href = attr.a[i].a
+                    this.a[i].object.target = "_blank"
+                    if (attr.a[i].download) {
+                        this.a[i].object.download = "download"
+                    }
+                    this.a[i].object.addEventListener("click", () => {
+                    })
+                    this.object.appendChild(this.a[i].object)
+                }
+            }
+            // 創建 gameItem 
+            this.item = []
+            this.selectedItem = "" //儲存用
+            for (let i = 0; i < attr.item.length; i++) {
+                this.item[i] = new Item(attr.item[i], "gameItem", simplyP)
+                if (!attr.item[i].isStableItem) { //如果不是靜態物件，加入遊戲規則
+                    this.item[i].object.addEventListener("click", () => {
+                        if (this.item[i].state == 0) {
+                            sound.play(0)
+                            this.item[i].on()
+                            if (this.level / 100 < 3) { //前兩關物件配對、最後一關找小K
+                                this.ruleCheckMatch(i)
+                            } else {
+                                this.ruleFind(i, "K")
+                            }
+                        }
+                    })
+                } else {
+                    this.item[i].object.classList.add("stableItem")
+                }
+                this.object.appendChild(this.item[i].object)
+            }
+            container.appendChild(this.object)
+
+            // Score Bar 
+            this.scoreBar = document.createElement("div")
+            this.scoreBar.classList = "scoreBar"
+            this.object.appendChild(this.scoreBar)
+            this.scoreBarNumber = document.createElement("div")
+            this.scoreBarNumber.classList = "scoreBarNumber"
+            this.scoreBar.appendChild(this.scoreBarNumber)
+
+            // Time Bar
+            this.timeBar = document.createElement("div")
+            this.timeBar.classList = "timeBar"
+            this.object.appendChild(this.timeBar)
+            this.timeBarNumber = document.createElement("div")
+            this.timeBarNumber.classList = "timeBarNumber"
+            this.timeBar.appendChild(this.timeBarNumber)
+
+            // Score Note
+            this.scoreNote = document.createElement("div")
+            this.scoreNote.classList = "scoreNote"
+            this.object.appendChild(this.scoreNote)
+            this.scoreNoteNumber = document.createElement("div")
+            this.scoreNoteNumber.classList = "scoreNoteNumber"
+            this.scoreNote.appendChild(this.scoreNoteNumber)
+
+            //其他參數
+            this.tag = [{ tag: 0 }, { tag: 0 }, { tag: 0 }]
+            this.openTag = { tag: 0 }
+        }
+
+        ruleCheckMatch(num) {
+            if (this.selectedItem != "") {
+                if (this.selectedItem.type === this.item[num].type) {
+                    this.addScore(1, num)
+                    sound.play(1)
+                    this.item[num].object.classList.add("over")
+                    this.selectedItem.object.classList.add("over")
+                    this.selectedItem = ""
+                    if (this.gameNowNum === this.gameKachiNum) {
+                        this.gameOver()
+                    }
+
+                } else {
+                    // this.addScore(-1)
+                    sound.play(2)
+                    setTimeout(() => {
+                        this.selectedItem.off()
+                        this.item[num].off()
+                        this.selectedItem = ""
+                    }, 500)
+                }
+            } else {
+                this.selectedItem = this.item[num]
+            }
+        }
+        ruleFind(num, type) {
+            if (this.item[num].type === type) {
+                this.addScore(1)
+            } else {
+                this.addScore(-1)
+            }
+            this.item[num].off()
+        }
+
+        addScore(num, itemNum) {
+            let score = num * 15
+            game.score = game.score + score
+            this.gameNowNum = this.gameNowNum + num
+            test("" + score + ", Score : " + game.score)
+            game.onMask()
+            this.onScoreNote(score, itemNum)
+            this.reNewScore()
+        }
+
+        reNewScore() {
+            this.scoreBarNumber.textContent = game.score
+        }
+        reNewTimeBar(time = game.time) {
+            this.timeBarNumber.textContent = time
+        }
+
+        onScoreNote(score, itemNum, offTime = 1250) {
+            this.scoreNote.style.display = "inline-block"
+            this.scoreNote.style.left = this.item[itemNum].object.style.left
+            this.scoreNote.style.top = this.item[itemNum].object.style.top
+            this.scoreNote.style.opacity = 0.9
+            this.scoreNoteNumber.textContent = score
+
+            setTimeout(() => {
+                this.scoreNote.style.left = "12%"
+                this.scoreNote.style.top = "20%"
+                this.scoreNote.style.opacity = 0
+            }, 0)
+            setTimeout(() => {
+                this.scoreNote.style.display = "none"
+            }, offTime)
+        }
+
+        gameStart(time = 3) {
+            game.onMaskOn()
+            this.scoreBar.classList.add("show")
+            this.timeBar.classList.add("show")
+            this.countdownElement = document.createElement("div");
+            this.countdownElementText = document.createElement("div");
+            this.countdownElement.classList = "countdownElement"
+            this.object.appendChild(this.countdownElement);
+            this.countdownElement.appendChild(this.countdownElementText);
+            this.countdownElementText.textContent = time - game.time;
+            //開始遊戲前倒數
+            sound.play(4)
+            game.startTimer(
+                1, () => {
+                    this.countdownElementText.textContent = time - game.time;
+                },
+                time, () => {
+                    //關閉倒數物件
+                    this.countdownElement.style.opacity = 0
+                    game.onMaskOff()
+                    setTimeout(() => this.countdownElement.remove(), 600);
+                    //開始遊戲計時
+                    game.startTimer(1, () => this.reNewTimeBar(this.gameFullTime - game.time), this.gameFullTime + 1,
+                        () => this.gameOver(true))
+                    //播放遊戲中音樂
+                    bgm[0].play("loop")
+                }
+            )
+        }
+        gameOver(isTimeOut = false) {
+            overDialog[Math.floor(this.level / 100) - 1].show(isTimeOut)
+            this.reset()
+        }
+        open() {
+            this.object.style.height = 100 + "%"
+            this.object.style.width = 100 + "%"
+            this.object.style.opacity = 1
+            this.openTag = { tag: 1 }
+            this.reset()
+        }
+        close() {
+            this.object.style.height = 0 + "%"
+            this.object.style.width = 0 + "%"
+            this.object.style.opacity = 0
+            this.openTag = { tag: 0 }
+            this.reset()
+        }
+
+        reset() {
+            for (let i = 0; i < this.item.length; i++) {
+                this.item[i].off()
+                this.item[i].object.classList.remove("over")
+            }
+            game.stopTimer()
+            //倒數物件如果存在，刪除
+            if (this.countdownElement) {
+                this.countdownElement.style.opacity = ""
+                this.countdownElement.remove();
+            }
+            this.gameNowNum = 0
+            this.scoreBar.classList.remove("show")
+            this.timeBar.classList.remove("show")
+            //停止所有音樂
+            musicAllStop()
+        }
+    }
+
+
+    class Game {
+        constructor() {
+            this.nowLevel = [0, 0]
+            this.score = 0
+            this.scorePR = 0
+            this.time = 0
+            this.scoreRange = 0
+            // Mask
+            this.mask = document.createElement("div")
+            this.mask.classList = "mask"
+            this.maskTag = 0
+            container.appendChild(this.mask)
+
+        }
+
+        // 切換 Page
+        start() {
+            scene[0].close()
+            this.goToDetail(0)
+        }
+        end() {
+            if (this.score < 2) {
+                this.scoreRange = 1
+            } else if (this.score < 20) {
+                this.scoreRange = 1
+            } else if (this.score < 50) {
+                this.scoreRange = 1
+            } else {
+                this.scoreRange = 1
+            }
+
+            this.scorePR = this.score * 10
+            scene[this.scoreRange].open()
+            this.scorePR = this.score * 10
+            scene[this.scoreRange].scoreBar.classList.add("show")
+            scene[this.scoreRange].timeBar.classList.add("show")
+            scene[this.scoreRange].scoreBar.classList.add("scorePage")
+            scene[this.scoreRange].timeBar.classList.add("scorePage")
+            scene[this.scoreRange].reNewScore()
+            scene[this.scoreRange].timeBarNumber.textContent = this.scorePR
+        }
+        goHome() {
+            this.closeAllScene()
+            scene[0].open()
+            gameLevel[this.nowLevel[0]][this.nowLevel[1]].reset()
+            gameLevel[this.nowLevel[0]][this.nowLevel[1]].close()
+            this.nowLevel = [0, 0]
+            this.score = 0
+            this.time = 0
+            this.onMaskOff()
+            this.stopTimer()
+            scene[this.scoreRange].scoreBar.classList.remove("scorePage")
+            scene[this.scoreRange].timeBar.classList.remove("scorePage")
+        }
+
+
+
+        closeAllScene() {
+            scene.forEach(s => s.close());
+            gameDetail.forEach(s => s.close());
+        }
+        goToDetail(num) {
+            gameDetail[num].open()
+            say[num].show()
+            bgm[1].play("loop")
+
+        }
+        goToLevel(num) {
+            this.closeAllScene()
+            const randomIndex = Math.floor(Math.random() * gameLevel[num].length);
+            if (this.nowLevel != [num, randomIndex]) {
+                gameLevel[this.nowLevel[0]][this.nowLevel[1]].close()
+                gameLevel[num][randomIndex].open()
+                gameLevel[num][randomIndex].reNewScore()
+                gameLevel[num][randomIndex].reNewTimeBar(gameLevel[num][randomIndex].gameFullTime)
+                // setTimeout 為分流不同步 reset() 中的功能( 如:停止timer )
+                setTimeout(() => { gameLevel[num][randomIndex].gameStart() }, 100)
+                this.nowLevel = [num, randomIndex]
+                test("level now is " + this.nowLevel)
+            }
+        }
+
+
+        // 工具
+        startTimer(aTime = 1, act = () => console.log(this.time), stopTime = 5, stopAct = () => console.log("stop")) {
+            this.timer = setInterval(() => {
+                this.time = this.time + 1
+                //是否到停止時間
+                if (this.time == stopTime) {
+                    this.stopTimer()
+                    stopAct()
+                } else {
+                    act()
+                }
+            }, aTime * 1000);
+        }
+        stopTimer() {
+            clearInterval(this.timer)
+            this.time = 0
+        }
+        onMask(stayTime = 300, fideOutTime = 300, opacity = 0.2) {
+            this.onMaskOn(opacity)
+            this.maskStayTimer = setTimeout(() => {
+                this.onMaskOff(fideOutTime)
+            }, stayTime)
+        }
+
+        onMaskOn(opacity = 0.2) {
+            setTimeout(() => {
+                this.maskTag = 1
+                this.mask.style.display = "inline-block"
+                this.mask.style.opacity = opacity
+            }, 100)
+        }
+        onMaskOff(fideOutTime = 300) {
+            if (this.maskTag == 1) {
+                this.mask.style.opacity = 0
+                this.maskTimer = setTimeout(() => {
+                    this.mask.style.display = "none"
+                    this.maskTag = 0
+                }, fideOutTime + 100)
+            }
+            this.maskTag = 0
+        }
+    }
+
+
+
+    ///---------------------------------
+    //
+    //
+    //      創建
+    //
+    //
+    ///---------------------------------
+
+
+    // ---------------------
+    //
+    // 創建聲音
+    //
+    // ---------------------
+    var audioList = [
+        "music/ui_02.mp3",
+        "music/01_addScore.wav",
+        "music/02_noScore.wav",
+        "music/03_scoreWait.wav",
+        "music/04_count.wav",
+
+    ];
+    var sound = new Sound(audioList)
+
+
+    var bgmList = [
+        { voice: "music/遊戲主音樂 (main)-Funky and Fresh.mp3" },
+        { voice: "music/遊戲主音樂 (option)-Funny.wav" },
+        { voice: "music/小K-1.wav" },
+        { voice: "music/小K-2.wav" },
+        { voice: "music/小K-3.wav" },
+        { voice: "music/小K-4.wav" },
+        { voice: "music/小K-5.wav" },
+    ]
+    var bgm = bgmList.map((item) => {
+        let musicInstance = new music(item.voice);
+        return musicInstance;
+    });
+    bgm[0].gainNode.gain.value = 0.1
+
+
+
+    // Mute 功能
+    muteTag = { tag: 1 }
+    mute = () => {
+        toggle(muteTag, () => {
+            mainGainNode.gain.value = 1
+            for (let i = 0; i < gameLevel.length; i++) {
+                for (let j = 0; j < gameLevel[i].length; j++) {
+                    gameLevel[i][j].btn[0].object.style.opacity = 1;
+                }
+            }
+            scene[0].btn[2].object.style.opacity = 1
+        }, () => {
+            mainGainNode.gain.value = 0
+            for (let i = 0; i < gameLevel.length; i++) {
+                for (let j = 0; j < gameLevel[i].length; j++) {
+                    gameLevel[i][j].btn[0].object.style.opacity = 0.5;
+                }
+            }
+            scene[0].btn[2].object.style.opacity = 0.5
+        })
+    }
+
+
+
+    // ---------------------
+    //
+    // 創建遊戲場景
+    //
+    // ---------------------
+
+
+
+    gameHeaderBtns = [
+        { size: [8, 8], xyr: [70, 6.5, 0], background: "btn_Mute.png", act: () => mute(), color: "" },
+        { size: [8, 8], xyr: [80, 6.5, 0], background: "btn_Home.png", act: () => game.goHome(), color: "" },
+        { size: [8, 8], xyr: [90, 6.5, 0], background: "btn_next.png", act: () => gameLevel[game.nowLevel[0]][game.nowLevel[1]].gameOver(), color: "" },
+    ]
+    gameLevelAttr = [
+        [{
+            level: 101, background: "level01_Bg.png", gameTime: 15, gameKachiNum: 5,
+            item: [
+                { type: "L104", size: [101, 103], xyr: [106, 896, 0], background: "l1_item07.png", isStableItem: false, color: "" },
+                { type: "L101", size: [105, 105], xyr: [358, 889, 0], background: "l1_item06.png", isStableItem: false, color: "" },
+                { type: "L102", size: [192, 194], xyr: [219, 960, 0], background: "l1_item05.png", isStableItem: false, color: "" },
+                { type: "L105", size: [213, 216], xyr: [540, 927, 0], background: "l1_item04.png", isStableItem: false, color: "" },
+                { type: "L103", size: [241, 243], xyr: [95, 1231, 0], background: "l1_item03.png", isStableItem: false, color: "" },
+                { type: "L105", size: [241, 243], xyr: [368, 1214, 0], background: "l1_item02.png", isStableItem: false, color: "" },
+                { type: "L104", size: [254, 258], xyr: [667, 1188, 0], background: "l1_item01.png", isStableItem: false, color: "" },
+                { type: "L103", size: [216, 102], xyr: [658, 717, 0], background: "l1_item08.png", isStableItem: false, color: "" },
+                { type: "L102", size: [190, 135], xyr: [178, 561, 0], background: "l1_item09.png", isStableItem: false, color: "" },
+                { type: "L101", size: [213, 131], xyr: [591, 440, 0], background: "l1_item10.png", isStableItem: false, color: "" },
+                { type: "B", size: [947, 389], xyr: [41, 1364, 0], background: "l1_itemS01.png", isStableItem: true, color: "" },
+            ], btn: gameHeaderBtns
+        }, {
+            level: 102, background: "level01_Bg.png", gameTime: 15, gameKachiNum: 4,
+            item: [
+                { type: "L104", size: [101, 103], xyr: [106, 896, 0], background: "l1_item07.png", isStableItem: false, color: "" },
+                { type: "L101", size: [105, 105], xyr: [358, 889, 0], background: "l1_item06.png", isStableItem: false, color: "" },
+                { type: "L102", size: [192, 194], xyr: [219, 960, 0], background: "l1_item05.png", isStableItem: false, color: "" },
+                { type: "L103", size: [241, 243], xyr: [95, 1231, 0], background: "l1_item03.png", isStableItem: false, color: "" },
+                { type: "L104", size: [254, 258], xyr: [667, 1188, 0], background: "l1_item01.png", isStableItem: false, color: "" },
+                { type: "L103", size: [216, 102], xyr: [658, 717, 0], background: "l1_item08.png", isStableItem: false, color: "" },
+                { type: "L102", size: [190, 135], xyr: [178, 561, 0], background: "l1_item09.png", isStableItem: false, color: "" },
+                { type: "L101", size: [213, 131], xyr: [591, 440, 0], background: "l1_item10.png", isStableItem: false, color: "" },
+                { type: "B", size: [947, 389], xyr: [41, 1364, 0], background: "l1_itemS01.png", isStableItem: true, color: "" },
+            ], btn: gameHeaderBtns
+        }, {
+            level: 103, background: "level01_Bg.png", gameTime: 15, gameKachiNum: 3,
+            item: [
+                { type: "L104", size: [101, 103], xyr: [106, 896, 0], background: "l1_item07.png", isStableItem: false, color: "" },
+                { type: "L101", size: [105, 105], xyr: [358, 889, 0], background: "l1_item06.png", isStableItem: false, color: "" },
+                { type: "L103", size: [241, 243], xyr: [95, 1231, 0], background: "l1_item03.png", isStableItem: false, color: "" },
+                { type: "L104", size: [254, 258], xyr: [667, 1188, 0], background: "l1_item01.png", isStableItem: false, color: "" },
+                { type: "L103", size: [216, 102], xyr: [658, 717, 0], background: "l1_item08.png", isStableItem: false, color: "" },
+                { type: "L101", size: [213, 131], xyr: [591, 440, 0], background: "l1_item10.png", isStableItem: false, color: "" },
+                { type: "B", size: [947, 389], xyr: [41, 1364, 0], background: "l1_itemS01.png", isStableItem: true, color: "" },
+            ], btn: gameHeaderBtns
+        }], [{
+            level: 201, background: "level02_Bg.png", gameTime: 15, gameKachiNum: 5,
+            item: [
+                { type: "L205", size: [236, 122], xyr: [81, 598, 0], background: "l2_itemK05.png", isStableItem: false, color: "" },
+                { type: "L205", size: [98, 56], xyr: [820, 604, 0], background: "l2_itemM05.png", isStableItem: false, color: "" },
+                { type: "L204", size: [169, 144], xyr: [690, 1006, 0], background: "l2_itemK04.png", isStableItem: false, color: "" },
+                { type: "L204", size: [45, 53], xyr: [292, 907, 0], background: "l2_itemM04.png", isStableItem: false, color: "" },
+
+                { type: "L201", size: [229, 168], xyr: [656, 724, 0], background: "l2_itemK01.png", isStableItem: false, color: "" },
+                { type: "L201", size: [75, 75], xyr: [407, 1436, 0], background: "l2_itemM01.png", isStableItem: false, color: "" },
+
+                { type: "L203", size: [152, 129], xyr: [50, 1061, 0], background: "l2_itemK03.png", isStableItem: false, color: "" },
+                { type: "L203", size: [44, 35], xyr: [179, 1015, 0], background: "l2_itemM03.png", isStableItem: false, color: "" },
+
+                { type: "L202", size: [221, 164], xyr: [96, 1374, 0], background: "l2_itemK02.png", isStableItem: false, color: "" },
+                { type: "L202", size: [65, 54], xyr: [911, 1264, 0], background: "l2_itemM02.png", isStableItem: false, color: "" },
+
+            ], btn: gameHeaderBtns
+        }], [{
+            level: 301, background: "", gameTime: 20, gameKachiNum: 5,
+            item: [
+                { type: "A", size: [20, 10], xyr: [40, 50, 25], background: "", isStableItem: false, color: "" },
+                { type: "A", size: [10, 20], xyr: [50, 20, 15], background: "", isStableItem: false, color: "" },
+                { type: "K", size: [10, 20], xyr: [30, 30, 0], background: "", isStableItem: false, color: "" }
+            ], btn: gameHeaderBtns
+        }]
+    ]
+
+    var shareLink = [
+        "https://www.facebook.com/sharer.php?u＝網址",
+        "program/kvm_game/image/"
+    ]
+    sceneAttr = [
+        {
+            level: "home", background: "home_bg.png",
+            btn: [
+                { name: "start", size: [44, 28], xyr: [50, 45, 0], background: "btn_start.png", act: () => game.start(), color: "" },
+                { name: "kCyan", size: [75, 75], xyr: [70, 85, 0], background: "home_k.png", act: () => sound.play(1), color: "" },
+                { name: "mute", size: [10, 10], xyr: [10, 5, 0], background: "btn_Mute.png", act: () => mute(), color: "" }
+            ], item: [], gameTime: 0, gameKachiNum: 0
+        }, {
+            level: "scorePage", background: "",
+            btn: [
+                { name: "kCyan", size: [75, 75], xyr: [70, 85, 0], background: "home_k.png", act: () => sound.play(1), color: "" },
+            ], a: [
+                { name: "", size: [44, 28], xyr: [30, 45, 0], background: "btn_start.png", a: "image/home_bg.png", download: true, act: nothing, color: "" },
+                { name: "", size: [44, 28], xyr: [60, 45, 0], background: "btn_start.png", a: "image/home_bg.png", download: false, act: nothing, color: "" },
+
+            ], item: [], gameTime: 0, gameKachiNum: 0
+        }
+    ]
+
+    gameDetailAttr = [{
+        level: "L1 detail", background: "level01d_Bg.png", item: [], gameTime: 0, gameKachiNum: 0,
+        btn: [{ name: "start", size: [44, 28], xyr: [50, 45, 0], act: () => game.goToLevel(0), background: "btn_start.png", color: "" }]
+    }, {
+        level: "L2 detail", background: "level02d_Bg.png", item: [], gameTime: 0, gameKachiNum: 0,
+        btn: [{ name: "start", size: [44, 28], xyr: [50, 45, 0], act: () => game.goToLevel(1), background: "btn_start.png", color: "" }]
+    }, {
+        level: "L3 detail", background: "level01d_Bg.png", item: [], gameTime: 0, gameKachiNum: 0,
+        btn: [{ name: "start", size: [44, 28], xyr: [50, 45, 0], act: () => game.goToLevel(2), background: "btn_start.png", color: "" }]
+    },]
+
+
+
+
+
+    container = $css("gameContainer")[0]
+    game = new Game()
+    gameLevel = []
+    for (let i = 0; i < gameLevelAttr.length; i++) {
+        gameLevel[i] = Array.from({ length: gameLevelAttr[i].length }, (_, j) => new GameScene(gameLevelAttr[i][j], true))
+    }
+    var gameDetail = Array.from({ length: gameDetailAttr.length }, (_, i) => new GameScene(gameDetailAttr[i]))
+    var scene = Array.from({ length: sceneAttr.length }, (_, i) => new GameScene(sceneAttr[i]))
+
+
+
+    // ---------------------
+    //
+    // 創建對話視窗
+    //
+    // ---------------------
+
+    var overDAttr = [{
+        name: "", h: "標題",
+        c: "完成1，你的分數是: ",
+        btn: [{ t: "下一關", a: () => { game.goToDetail(1); overDialog[0].remove() } }]
+    }, {
+        name: "", h: "標題",
+        c: "完成2，你的分數是: ",
+        btn: [{ t: "下一關", a: () => { game.goToDetail(2); overDialog[1].remove() } }]
+    }, {
+        name: "", h: "標題",
+        c: "完成3，你的分數是: ",
+        btn: [{ t: "下一關", a: () => { game.end(); overDialog[2].remove() } }]
+    },]
+    var timeOutText = "時間到!!!"
+    var sayAttr = [
+        { name: "", bg: "faceK02.png", c: "讓我瞧瞧，/n你的眼力多好!!！", voice: 2 },
+        { name: "", bg: "faceK02.png", c: "記得連續點擊你看到的兩個相同的電腦，點擊正確才會算分喔！", voice: 3 },
+        { name: "", bg: "faceK02.png", c: "33 Hello, how are you? Hello, how are you? Hello, how are you?", voice: 4 },
+    ]
+    const overDialog = Array.from({ length: overDAttr.length }, (_, i) => new Dialog(overDAttr[i].h, overDAttr[i].c, overDAttr[i].btn))
+    const say = Array.from({ length: sayAttr.length }, (_, i) => new Say(sayAttr[i].c, sayAttr[i].bg, "Skip", 1400, sayAttr[i].voice))
+
+
+
+
+    ///---------------------------------
+    //
+    //
+    //      入場
+    //
+    //
+    ///---------------------------------
+
+
+
+    gameLevel[0][0].open()
+    gameLevel[1][0].reNewScore()
+    gameLevel[1][0].reNewTimeBar(30)
+    game.goHome()
+    // game.end()
+
+
+    ///---------------------------------
+    //
+    //
+    //      互動
+    //
+    //
+    ///---------------------------------
+
+    window.addEventListener("keydown", keyboardListener, false);
+
+    function keyboardListener(e) {
+        var keyID = e.code;
+        if (keyID === 'KeyQ') {
+            // gameLevel[0].opentaggle()
+            // game.start()
+            // game.startTimer()
+
+            gameLevel[0][0].gameStart()
+        }
+
+        if (keyID === 'KeyA') {
+            gameLevel[0][0].reset()
+
+        }
+        if (keyID === 'KeyZ') {
+            game.stopTimer()
+        }
+
+        if (keyID === 'KeyW') {
+            game.goToLevel(0)
+        }
+        if (keyID === 'KeyS') {
+            game.goToLevel(1)
+        }
+        if (keyID === 'KeyX') {
+            game.goToLevel(2)
+        }
+        if (keyID === 'KeyE') {
+            gameLevel[0][0].reset()
+        }
+
+
+        if (keyID === 'KeyH') {
+            game.goHome()
+        }
+
+        if (keyID === 'KeyD') {
+
+            say.show();
+        }
+
+    }
+
+
+
+
+</script>
+
+</html>

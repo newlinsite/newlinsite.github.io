@@ -1,0 +1,426 @@
+    /******************************
+           Page
+*******************************/
+    * {
+        position: relative;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    body,
+    html {
+        width: 100%;
+        height: 100%;
+        font-family: "Noto sans TC", "Microsoft JhengHei ", "微軟正黑體", sans-serif;
+        margin: 0;
+        background-color: #3b3b3b;
+    }
+
+
+    .gameOutContainer {
+        width: 100%;
+        max-width: 480px;
+        height: 100%;
+        margin: auto;
+        overflow: hidden;
+    }
+
+    .gameContainer {
+        background-color: #454545;
+        width: 100%;
+        padding-top: 177.78%;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+
+
+
+    /******************************
+            Game
+    *******************************/
+
+    .gameScene {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        background-color: #1f1f1f;
+        overflow: hidden;
+        transform: translate(-50%, -50%);
+        transition: 0.5s;
+        opacity: 0;
+        width: 0;
+        height: 0;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .gameScene>* {
+        position: absolute;
+        transition: 0.3s;
+    }
+
+    .gameScene>.gameItem,
+    .gameScene>.btn {
+        background-size: cover;
+        background-position: center;
+    }
+
+    .gameScene .gameItem {
+        transition: 0.3s;
+    }
+
+    .gameScene>.gameItem.on {
+        filter: drop-shadow(0px 0px 12px rgb(113, 243, 255));
+    }
+
+    .gameScene>.gameItem.over {
+        opacity: 0.2;
+    }
+
+    .gameScene>.gameItem:hover {
+        /* opacity: 0.95; */
+    }
+
+
+    .gameScene>.btn {
+        cursor: pointer;
+        transition: 0.5s;
+        filter: drop-shadow(4px 4px 1px rgba(10, 16, 73, 0.6));
+
+    }
+
+    .gameScene>.btn:hover {
+        transform: translate(-50%, -50%) scale(1.1) !important;
+        filter: drop-shadow(5px 5px 6px rgba(1, 8, 69, 0.5));
+    }
+
+
+    .gameScene>.stableItem {
+        cursor: auto;
+        pointer-events: none;
+    }
+
+    /******************************
+        
+    
+    遊戲提示視窗
+
+
+    *******************************/
+
+    /* mask */
+    .gameContainer .mask {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #000000;
+        width: 100%;
+        height: 100%;
+        z-index: 1000;
+    }
+
+
+    /*  scoreBar   timeBar  */
+    .gameContainer .scoreBar,
+    .gameContainer .timeBar {
+        background-image: url(image/bg_score.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 27.78%;
+        height: 5.2%;
+        left: 24%;
+        top: 18%;
+        transform: translate(-50%, -100%);
+        opacity: 0;
+        transition: 2s;
+    }
+
+    .gameContainer .scoreBar.show,
+    .gameContainer .timeBar.show {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+
+    .gameContainer .timeBar {
+        background-image: url(image/bg_time.png);
+        left: 75%;
+    }
+
+    .gameContainer .scoreBar .scoreBarNumber,
+    .gameContainer .timeBar .timeBarNumber {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        color: #16115c;
+        font-size: 16px;
+        font-weight: 800;
+    }
+
+    /* ------------------- */
+    .gameContainer .scoreBar.show.scorePage,
+    .gameContainer .timeBar.show.scorePage {
+        width: 35%;
+        height: 10%;
+        left: 50%;
+    }
+
+    .gameContainer .scoreBar.show.scorePage {
+        top: 10%;
+    }
+
+    .gameContainer .timeBar.show.scorePage {
+        top: 20%;
+    }
+
+
+    /* scoreNote */
+    .gameContainer .scoreNote {
+        display: none;
+        background-color: #ede559;
+        box-shadow: 0 2px 4px #0000001e;
+        width: 12%;
+        padding-top: 12%;
+        border-radius: 50%;
+        left: 50%;
+        top: 50%;
+        transform: translate(20%, -50%);
+        transition: ease-out 1.2s;
+        pointer-events: none;
+    }
+
+    .gameContainer .scoreNote .scoreNoteNumber {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        color: #251f2f;
+        font-weight: 800;
+    }
+
+
+
+    /* countdownElement  */
+    .gameContainer .countdownElement {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        color: #ffffff;
+        font-size: 45px;
+        background-color: #113469dc;
+        width: 28%;
+        padding-top: 28%;
+        transition: 0.5s ease-in;
+        border-radius: 50%;
+        animation: count 1s ease forwards 3;
+    }
+
+    @keyframes count {
+        0% {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.4);
+        }
+
+        90% {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+
+        }
+
+        100% {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.4);
+
+        }
+    }
+
+    .gameContainer .countdownElement>* {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    /******************************
+           dialog
+    *******************************/
+    .dialog {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 85%;
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 0;
+        transition: 0.3s;
+        z-index: 3000;
+
+    }
+
+    .dialog.fade {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+
+
+    .dialog h5 {
+        font-size: 25px;
+        margin: 12px 0;
+    }
+
+    .dialog p {
+        font-size: 16px;
+    }
+
+    .dialog .btnBox {
+        display: flex;
+
+        justify-content: end;
+        width: 100%;
+    }
+
+    .dialog button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        margin: 4px;
+    }
+
+    .dialog button:hover {
+        background-color: #0056b3;
+    }
+
+    /******************************
+          say
+    *******************************/
+    .say {
+        position: absolute;
+        width: 85%;
+        padding-top: 20%;
+        bottom: 4%;
+        left: 50%;
+        transform: translate(-50%, 0);
+        animation: fadeInLeft 0.5s ease forwards;
+        z-index: 3000;
+    }
+
+    .say>* {
+        position: absolute;
+
+    }
+
+    .say .avatar {
+        width: 27%;
+        padding-top: 27%;
+        top: 50%;
+        left: 8%;
+        transform: translate(-50%, -50%);
+        background-size: contain;
+        background-position: center;
+        border-radius: 50%;
+        /* animation: fadeInbig 0.5s ease forwards; */
+    }
+
+    .say .textBox {
+        width: 95%;
+        min-height: 80%;
+        top: 50%;
+        left: 5%;
+        transform: translate(0%, -50%);
+        padding: 3.5% 5% 3.5% 16%;
+        font-size: 16px;
+        line-height: 1.5;
+        border-radius: 40px;
+        background-color: white;
+        border: 4px solid #0A4476;
+        box-shadow: 1px 6px 0 rgba(33, 33, 33, 0.5);
+    }
+
+    .say button {
+        right: 0%;
+        top: -10%;
+        display: block;
+        font-size: 15px;
+        padding: 7px 28px;
+        background-color: #0A4476;
+        color: white;
+        border-radius: 55px;
+        box-shadow: 1px 4px 0 rgba(33, 33, 33, 0.5);
+        border: none;
+        cursor: pointer;
+    }
+
+    .say button:hover {
+        background-color: #0056b3;
+    }
+
+    .say.fadeOut {
+        animation: fadeOut 0.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes fadeInbig {
+        from {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.2);
+        }
+
+        to {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+    }
+
+    @keyframes fadeInLeft {
+        from {
+            opacity: 0;
+            -webkit-transform: translate3d(-30%, 0, 0);
+            transform: translate3d(-100%, 0, 0);
+        }
+
+        to {
+            opacity: 1;
+            -webkit-transform: translate(-50%, 0);
+            transform: translate(-50%, 0);
+        }
+    }
+
+    @keyframes fadeOut {
+        from {
+            opacity: 1;
+        }
+
+        to {
+            opacity: 0;
+        }
+    }

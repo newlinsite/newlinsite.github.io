@@ -647,7 +647,7 @@
     ]
     gameLevelAttr = [
         [{
-            level: 101, background: "level01_Bg.png", gameTime: 50000, gameKachiNum: 5,
+            level: 101, background: "level01_Bg.png", gameTime: 15, gameKachiNum: 5,
             item: [
                 { type: "L104", size: [101, 103], xyr: [106, 896, 0], background: "l1_item07.png", isStableItem: false, color: "" },
                 { type: "L101", size: [105, 105], xyr: [358, 889, 0], background: "l1_item06.png", isStableItem: false, color: "" },
@@ -662,7 +662,7 @@
                 { type: "B", size: [947, 389], xyr: [41, 1364, 0], background: "l1_itemS01.png", isStableItem: true, color: "" },
             ], btn: gameHeaderBtns
         }, {
-            level: 102, background: "level01_Bg.png", gameTime: 5, gameKachiNum: 4,
+            level: 102, background: "level01_Bg.png", gameTime: 15, gameKachiNum: 4,
             item: [
                 { type: "L104", size: [101, 103], xyr: [106, 896, 0], background: "l1_item07.png", isStableItem: false, color: "" },
                 { type: "L101", size: [105, 105], xyr: [358, 889, 0], background: "l1_item06.png", isStableItem: false, color: "" },
@@ -675,7 +675,7 @@
                 { type: "B", size: [947, 389], xyr: [41, 1364, 0], background: "l1_itemS01.png", isStableItem: true, color: "" },
             ], btn: gameHeaderBtns
         }, {
-            level: 103, background: "level01_Bg.png", gameTime: 5, gameKachiNum: 3,
+            level: 103, background: "level01_Bg.png", gameTime: 15, gameKachiNum: 3,
             item: [
                 { type: "L104", size: [101, 103], xyr: [106, 896, 0], background: "l1_item07.png", isStableItem: false, color: "" },
                 { type: "L101", size: [105, 105], xyr: [358, 889, 0], background: "l1_item06.png", isStableItem: false, color: "" },
@@ -686,7 +686,7 @@
                 { type: "B", size: [947, 389], xyr: [41, 1364, 0], background: "l1_itemS01.png", isStableItem: true, color: "" },
             ], btn: gameHeaderBtns
         }], [{
-            level: 201, background: "level02_Bg.png", gameTime: 30000, gameKachiNum: 5,
+            level: 201, background: "level02_Bg.png", gameTime: 15, gameKachiNum: 5,
             item: [
                 { type: "L205", size: [236, 122], xyr: [81, 598, 0], background: "l2_itemK05.png", isStableItem: false, color: "" },
                 { type: "L205", size: [98, 56], xyr: [820, 604, 0], background: "l2_itemM05.png", isStableItem: false, color: "" },
@@ -704,7 +704,7 @@
 
             ], btn: gameHeaderBtns
         }], [{
-            level: 301, background: "", gameTime: 3, gameKachiNum: 5,
+            level: 301, background: "", gameTime: 20, gameKachiNum: 5,
             item: [
                 { type: "A", size: [20, 10], xyr: [40, 50, 25], background: "", isStableItem: false, color: "" },
                 { type: "A", size: [10, 20], xyr: [50, 20, 15], background: "", isStableItem: false, color: "" },
@@ -784,12 +784,12 @@
     },]
     var timeOutText = "時間到!!!"
     var sayAttr = [
-        { name: "", bg: "faceK02.png", c: "記得連續點擊你看到的兩個相同的電腦，點擊正確才會算分喔！", voice: 2 },
-        { name: "", bg: "faceK02.png", c: "22 Hello, how are you? Hello, how are you? Hello, how are you?", voice: 3 },
+        { name: "", bg: "faceK02.png", c: "讓我瞧瞧，/n你的眼力多好!!！", voice: 2 },
+        { name: "", bg: "faceK02.png", c: "記得連續點擊你看到的兩個相同的電腦，點擊正確才會算分喔！", voice: 3 },
         { name: "", bg: "faceK02.png", c: "33 Hello, how are you? Hello, how are you? Hello, how are you?", voice: 4 },
     ]
     const overDialog = Array.from({ length: overDAttr.length }, (_, i) => new Dialog(overDAttr[i].h, overDAttr[i].c, overDAttr[i].btn))
-    const say = Array.from({ length: sayAttr.length }, (_, i) => new Say(sayAttr[i].c, sayAttr[i].bg, "Skip", 2000, sayAttr[i].voice))
+    const say = Array.from({ length: sayAttr.length }, (_, i) => new Say(sayAttr[i].c, sayAttr[i].bg, "Skip", 1400, sayAttr[i].voice))
 
 
 
@@ -805,9 +805,9 @@
 
 
     gameLevel[0][0].open()
-    // gameLevel[1][0].reNewScore()
-    // gameLevel[1][0].reNewTimeBar(30)
-    // game.goHome()
+    gameLevel[1][0].reNewScore()
+    gameLevel[1][0].reNewTimeBar(30)
+    game.goHome()
     // game.end()
 
 
