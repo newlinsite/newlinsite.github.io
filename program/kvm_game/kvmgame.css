@@ -111,6 +111,59 @@
         pointer-events: none;
     }
 
+
+    /* -----------
+    loadingPage
+    ------------- */
+
+
+    .loadingPage {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        transition: 1s;
+        transform: translate(-50%, -50%);
+    }
+
+    .loadingPage.fade {
+        opacity: 0;
+    }
+
+
+    .loadingPage::after {
+        content: "";
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        width: 0;
+        height: 6%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        border-radius: 60px;
+        animation: loadingBar;
+        animation-duration: 5s;
+        animation-iteration-count: 1s;
+        animation-delay: 0.5s;
+        animation-fill-mode: forwards
+    }
+
+    @keyframes loadingBar {
+        0% {
+            width: 0%;
+            left: 10%;
+        }
+
+        100% {
+            width: 80%;
+            left: 50%;
+        }
+    }
+
     /******************************
         
     
@@ -320,14 +373,19 @@
         padding-top: 20%;
         bottom: 4%;
         left: 50%;
-        transform: translate(-50%, 0);
-        animation: fadeInLeft 0.5s ease forwards;
+        transition: 1s;
+        transform: translate(-50%, -50%);
+        opacity: 0;
         z-index: 3000;
+    }
+
+    .say.fadeIn {
+        opacity: 1;
+        transform: translate(-50%, 0);
     }
 
     .say>* {
         position: absolute;
-
     }
 
     .say .avatar {
@@ -339,7 +397,6 @@
         background-size: contain;
         background-position: center;
         border-radius: 50%;
-        /* animation: fadeInbig 0.5s ease forwards; */
     }
 
     .say .textBox {
@@ -373,54 +430,4 @@
 
     .say button:hover {
         background-color: #0056b3;
-    }
-
-    .say.fadeOut {
-        animation: fadeOut 0.5s ease forwards;
-    }
-
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-        }
-
-        to {
-            opacity: 1;
-        }
-    }
-
-    @keyframes fadeInbig {
-        from {
-            opacity: 0;
-            transform: translate(-50%, -50%) scale(0.2);
-        }
-
-        to {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1);
-        }
-    }
-
-    @keyframes fadeInLeft {
-        from {
-            opacity: 0;
-            -webkit-transform: translate3d(-30%, 0, 0);
-            transform: translate3d(-100%, 0, 0);
-        }
-
-        to {
-            opacity: 1;
-            -webkit-transform: translate(-50%, 0);
-            transform: translate(-50%, 0);
-        }
-    }
-
-    @keyframes fadeOut {
-        from {
-            opacity: 1;
-        }
-
-        to {
-            opacity: 0;
-        }
     }

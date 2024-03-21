@@ -33,9 +33,6 @@
     }
 
 
-
-
-
     // ------------------------
     // toggle
     // ------------------------
@@ -53,6 +50,96 @@
             }
         }
     }
+
+    // ------------------------
+    // Copy
+    // ------------------------
+
+    var copy = (copyText = "copy") => {
+        const textarea = document.createElement('textarea');
+        textarea.value = copyText;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+    }
+
+
+
+    ///---------------------------------
+    //
+    //
+    //      Class
+    //
+    //
+    ///---------------------------------
+
+    class Toast {
+        constructor(text = "toast", duration = 1500, fadeTime = 1500, style = false, fadeStyle = "", where = container) {
+            this.container = document.createElement("div");
+            this.container.textContent = text
+            where.appendChild(this.container)
+            //如果沒有自設 style 套用預設
+            if (style) {
+                this.container.classList.add(style);
+                setTimeout(() => {
+                    this.container.classList.add(fadeStyle);
+                }, duration)
+            } else {
+                this.container.style.color = "#333"
+                this.container.style.position = "absolute"
+                this.container.style.top = "90%"
+                this.container.style.left = "50%"
+                this.container.style.padding = "8px 16px"
+                this.container.style.borderRadius = "8px"
+                this.container.style.backgroundColor = "#eee"
+                this.container.style.boxShadow = "0 2px 4px #000000ee"
+                this.container.style.transition = fadeTime + "ms"
+                this.container.style.transform = "translate(-50%, -50%)"
+                setTimeout(() => {
+                    this.container.style.opacity = "0"
+                    this.container.style.transform = "translate(-50%, 0)"
+                }, duration)
+            }
+            setTimeout(() => {
+                this.container.remove()
+            }, duration + fadeTime)
+
+        }
+    }
+    class ImgToast {
+        constructor(bg = "", duration = 1500, fadeTime = 1500, style = false, fadeStyle = "", where = container) {
+            this.container = document.createElement("div");
+            this.container.style.backgroundImage = "url(image/" + bg + ")"
+            where.appendChild(this.container)
+
+            //如果沒有自設 style 套用預設
+            if (style) {
+                this.container.classList.add(style);
+                setTimeout(() => {
+                    this.container.classList.add(fadeStyle);
+                }, duration)
+            } else {
+                this.container.style.position = "absolute"
+                this.container.style.top = "50%"
+                this.container.style.left = "50%"
+                this.container.style.width = "50%"
+                this.container.style.paddingTop = "50%"
+                this.container.style.backgroundPosition = "center"
+                this.container.style.backgroundSize = "contain"
+                this.container.style.backgroundRepeat = "no-repeat"
+                this.container.style.transition = fadeTime + "ms"
+                this.container.style.transform = "translate(-50%, -50%)"
+                setTimeout(() => {
+                    this.container.style.opacity = "0"
+                }, duration)
+            }
+            setTimeout(() => {
+                this.container.remove()
+            }, duration + fadeTime)
+        }
+    }
+
 
 
 
@@ -134,11 +221,9 @@
                 this.title.textContent = timeOutText;
             }
             this.content.textContent = this.contentText + game.score;
-
             this.where.appendChild(this.dialog);
             setTimeout(() => this.dialog.classList.add("fade"), 0);
-            game.onMaskOn(0.4)
-
+            game.onMaskOn()
         }
         remove() {
             this.dialog.classList.remove("fade")
@@ -153,6 +238,7 @@
             this.container.classList.add("say");
             this.duration = duration;
             this.timer = null;
+            this.fadeTimer = null;
 
             this.text = text;
             this.nowText = "";
@@ -186,12 +272,10 @@
         }
 
         show(where = container, voice) {
+            clearTimeout(this.fadeTimer)
             where.appendChild(this.container);
-            this.timer = setInterval(() => this.typeText(), 50);
-            this.container.classList.remove("fadeOut")
-            this.container.classList.add("fadeInLeft")
-            this.avatar.classList.add("fadeInLeft")
-            game.onMaskOn(0.3)
+            this.timer = setInterval(() => this.typeText(), 100);
+            setTimeout(() => this.container.classList.add("fadeIn"), 0)
             if (this.voice) {
                 bgm[this.voice].play()
             }
@@ -199,14 +283,12 @@
 
         remove(where = container) {
             clearInterval(this.timer);
-            this.container.classList.add("fadeOut")
+            this.container.classList.remove("fadeIn")
             this.nowText = "";
             this.nowTextIndex = 0;
-            setTimeout(() => this.container.remove(), 500);
-            game.onMaskOff()
+            this.fadeTimer = setTimeout(() => this.container.remove(), 1000);
         }
     }
-
 
     class GameScene {
         constructor(
@@ -225,15 +307,16 @@
 
 
             // 創建 Button Item 
-            this.btn = []
-            for (let i = 0; i < attr.btn.length; i++) {
-                this.btn[i] = new Item(attr.btn[i], "btn")
-                this.btn[i].object.addEventListener("click", () => {
-                    attr.btn[i].act()
-                })
-                this.object.appendChild(this.btn[i].object)
+            if (attr.btn) {
+                this.btn = []
+                for (let i = 0; i < attr.btn.length; i++) {
+                    this.btn[i] = new Item(attr.btn[i], "btn")
+                    this.btn[i].object.addEventListener("click", () => {
+                        attr.btn[i].act()
+                    })
+                    this.object.appendChild(this.btn[i].object)
+                }
             }
-
             // 創建連結
             if (attr.a) {
                 this.a = []
@@ -250,29 +333,30 @@
                 }
             }
             // 創建 gameItem 
-            this.item = []
-            this.selectedItem = "" //儲存用
-            for (let i = 0; i < attr.item.length; i++) {
-                this.item[i] = new Item(attr.item[i], "gameItem", simplyP)
-                if (!attr.item[i].isStableItem) { //如果不是靜態物件，加入遊戲規則
-                    this.item[i].object.addEventListener("click", () => {
-                        if (this.item[i].state == 0) {
-                            sound.play(0)
-                            this.item[i].on()
-                            if (this.level / 100 < 3) { //前兩關物件配對、最後一關找小K
-                                this.ruleCheckMatch(i)
-                            } else {
-                                this.ruleFind(i, "K")
+            if (attr.item) {
+                this.item = []
+                this.selectedItem = "" //儲存用
+                for (let i = 0; i < attr.item.length; i++) {
+                    this.item[i] = new Item(attr.item[i], "gameItem", simplyP)
+                    if (!attr.item[i].isStableItem) { //如果不是靜態物件，加入遊戲規則
+                        this.item[i].object.addEventListener("click", () => {
+                            if (this.item[i].state == 0) {
+                                sound.play(0)
+                                this.item[i].on()
+                                if (this.level / 100 < 3) { //前兩關物件配對、最後一關找小K
+                                    this.ruleCheckMatch(i)
+                                } else {
+                                    this.ruleFind(i, "K")
+                                }
                             }
-                        }
-                    })
-                } else {
-                    this.item[i].object.classList.add("stableItem")
+                        })
+                    } else {
+                        this.item[i].object.classList.add("stableItem")
+                    }
+                    this.object.appendChild(this.item[i].object)
                 }
-                this.object.appendChild(this.item[i].object)
+                container.appendChild(this.object)
             }
-            container.appendChild(this.object)
-
             // Score Bar 
             this.scoreBar = document.createElement("div")
             this.scoreBar.classList = "scoreBar"
@@ -374,14 +458,15 @@
             game.onMaskOn()
             this.scoreBar.classList.add("show")
             this.timeBar.classList.add("show")
+            sound.play(4)
+
+            //開始遊戲前倒數
             this.countdownElement = document.createElement("div");
             this.countdownElementText = document.createElement("div");
             this.countdownElement.classList = "countdownElement"
             this.object.appendChild(this.countdownElement);
             this.countdownElement.appendChild(this.countdownElementText);
             this.countdownElementText.textContent = time - game.time;
-            //開始遊戲前倒數
-            sound.play(4)
             game.startTimer(
                 1, () => {
                     this.countdownElementText.textContent = time - game.time;
@@ -437,7 +522,6 @@
         }
     }
 
-
     class Game {
         constructor() {
             this.nowLevel = [0, 0]
@@ -459,25 +543,29 @@
             this.goToDetail(0)
         }
         end() {
-            if (this.score < 2) {
-                this.scoreRange = 1
+            this.closeAllScene()
+            new ImgToast("l1_item07.png", 5000, 1000, "loadingPage", "fade")
+            const scorePage = scene.find(p => p.level === "scorePage");
+
+            if (this.score < 10) {
+                let background = ""
             } else if (this.score < 20) {
-                this.scoreRange = 1
-            } else if (this.score < 50) {
-                this.scoreRange = 1
+                let background = ""
+            } else if (this.score < 30) {
+                let background = ""
             } else {
-                this.scoreRange = 1
+                let background = ""
             }
+            let background = "level02_Bg.png"
+            scorePage.object.style.backgroundImage = "url(image/" + background + ")"
 
             this.scorePR = this.score * 10
-            scene[this.scoreRange].open()
+            scorePage.open()
             this.scorePR = this.score * 10
-            scene[this.scoreRange].scoreBar.classList.add("show")
-            scene[this.scoreRange].timeBar.classList.add("show")
-            scene[this.scoreRange].scoreBar.classList.add("scorePage")
-            scene[this.scoreRange].timeBar.classList.add("scorePage")
-            scene[this.scoreRange].reNewScore()
-            scene[this.scoreRange].timeBarNumber.textContent = this.scorePR
+            scorePage.scoreBar.classList.add("show")
+            scorePage.scoreBar.classList.add("scorePage")
+            scorePage.reNewScore()
+            scorePage.timeBarNumber.textContent = this.scorePR
         }
         goHome() {
             this.closeAllScene()
@@ -494,16 +582,13 @@
         }
 
 
-
         closeAllScene() {
             scene.forEach(s => s.close());
             gameDetail.forEach(s => s.close());
         }
         goToDetail(num) {
             gameDetail[num].open()
-            say[num].show()
             bgm[1].play("loop")
-
         }
         goToLevel(num) {
             this.closeAllScene()
@@ -513,8 +598,10 @@
                 gameLevel[num][randomIndex].open()
                 gameLevel[num][randomIndex].reNewScore()
                 gameLevel[num][randomIndex].reNewTimeBar(gameLevel[num][randomIndex].gameFullTime)
+                game.onMaskOn(0.3)
+                say[num].show()
                 // setTimeout 為分流不同步 reset() 中的功能( 如:停止timer )
-                setTimeout(() => { gameLevel[num][randomIndex].gameStart() }, 100)
+                setTimeout(() => { gameLevel[num][randomIndex].gameStart() }, say[num].duration)
                 this.nowLevel = [num, randomIndex]
                 test("level now is " + this.nowLevel)
             }
@@ -565,7 +652,6 @@
     }
 
 
-
     ///---------------------------------
     //
     //
@@ -586,10 +672,8 @@
         "music/02_noScore.wav",
         "music/03_scoreWait.wav",
         "music/04_count.wav",
-
     ];
     var sound = new Sound(audioList)
-
 
     var bgmList = [
         { voice: "music/遊戲主音樂 (main)-Funky and Fresh.mp3" },
@@ -605,7 +689,6 @@
         return musicInstance;
     });
     bgm[0].gainNode.gain.value = 0.1
-
 
 
     // Mute 功能
@@ -632,13 +715,12 @@
 
 
 
+
     // ---------------------
     //
     // 創建遊戲場景
     //
     // ---------------------
-
-
 
     gameHeaderBtns = [
         { size: [8, 8], xyr: [70, 6.5, 0], background: "btn_Mute.png", act: () => mute(), color: "" },
@@ -713,30 +795,6 @@
         }]
     ]
 
-    var shareLink = [
-        "https://www.facebook.com/sharer.php?u＝網址",
-        "program/kvm_game/image/"
-    ]
-    sceneAttr = [
-        {
-            level: "home", background: "home_bg.png",
-            btn: [
-                { name: "start", size: [44, 28], xyr: [50, 45, 0], background: "btn_start.png", act: () => game.start(), color: "" },
-                { name: "kCyan", size: [75, 75], xyr: [70, 85, 0], background: "home_k.png", act: () => sound.play(1), color: "" },
-                { name: "mute", size: [10, 10], xyr: [10, 5, 0], background: "btn_Mute.png", act: () => mute(), color: "" }
-            ], item: [], gameTime: 0, gameKachiNum: 0
-        }, {
-            level: "scorePage", background: "",
-            btn: [
-                { name: "kCyan", size: [75, 75], xyr: [70, 85, 0], background: "home_k.png", act: () => sound.play(1), color: "" },
-            ], a: [
-                { name: "", size: [44, 28], xyr: [30, 45, 0], background: "btn_start.png", a: "image/home_bg.png", download: true, act: nothing, color: "" },
-                { name: "", size: [44, 28], xyr: [60, 45, 0], background: "btn_start.png", a: "image/home_bg.png", download: false, act: nothing, color: "" },
-
-            ], item: [], gameTime: 0, gameKachiNum: 0
-        }
-    ]
-
     gameDetailAttr = [{
         level: "L1 detail", background: "level01d_Bg.png", item: [], gameTime: 0, gameKachiNum: 0,
         btn: [{ name: "start", size: [44, 28], xyr: [50, 45, 0], act: () => game.goToLevel(0), background: "btn_start.png", color: "" }]
@@ -750,6 +808,36 @@
 
 
 
+    var shareLink = [
+        "https://www.facebook.com/sharer.php?u＝網址",
+        "program/kvm_game/image/"
+    ]
+    sceneAttr = [
+        {
+            level: "home", background: "home_bg.png",
+            btn: [
+                { name: "start", size: [44, 28], xyr: [50, 45, 0], background: "btn_start.png", act: () => game.start(), color: "" },
+                { name: "kCyan", size: [75, 75], xyr: [70, 85, 0], background: "home_k.png", act: () => sound.play(1), color: "" },
+                { name: "mute", size: [10, 10], xyr: [10, 5, 0], background: "btn_Mute.png", act: () => mute(), color: "" }
+            ], item: [], gameTime: 0, gameKachiNum: 0
+        }, {
+            level: "setumei", background: "",
+            btn: [
+                { name: "start", size: [44, 28], xyr: [50, 45, 0], background: "btn_start.png", act: () => game.end(), color: "" },
+            ], item: [], gameTime: 0, gameKachiNum: 0
+        }, {
+            level: "scorePage", background: "",
+            btn: [
+                { name: "kCyan", size: [75, 75], xyr: [70, 85, 0], background: "home_k.png", act: () => sound.play(1), color: "" },
+            ], a: [
+                { name: "download", size: [44, 28], xyr: [30, 45, 0], background: "btn_start.png", a: "image/home_bg.png", download: true, act: nothing, color: "" },
+                { name: "link", size: [44, 28], xyr: [60, 45, 0], background: "btn_start.png", a: "image/home_bg.png", download: false, act: nothing, color: "" },
+                { name: "link", size: [44, 28], xyr: [0, 45, 0], background: "btn_start.png", a: "image/home_bg.png", download: false, act: nothing, color: "" },
+            ], item: [], gameTime: 0, gameKachiNum: 0
+        }
+    ]
+
+
 
 
     container = $css("gameContainer")[0]
@@ -760,6 +848,10 @@
     }
     var gameDetail = Array.from({ length: gameDetailAttr.length }, (_, i) => new GameScene(gameDetailAttr[i]))
     var scene = Array.from({ length: sceneAttr.length }, (_, i) => new GameScene(sceneAttr[i]))
+
+
+
+
 
 
 
@@ -780,16 +872,16 @@
     }, {
         name: "", h: "標題",
         c: "完成3，你的分數是: ",
-        btn: [{ t: "下一關", a: () => { game.end(); overDialog[2].remove() } }]
+        btn: [{ t: "下一關", a: () => { scene[1].open(); overDialog[2].remove() } }]
     },]
     var timeOutText = "時間到!!!"
     var sayAttr = [
-        { name: "", bg: "faceK02.png", c: "讓我瞧瞧，/n你的眼力多好!!！", voice: 2 },
+        { name: "", bg: "faceK02.png", c: "讓我瞧瞧你的眼力多好!!", voice: 2 },
         { name: "", bg: "faceK02.png", c: "記得連續點擊你看到的兩個相同的電腦，點擊正確才會算分喔！", voice: 3 },
         { name: "", bg: "faceK02.png", c: "33 Hello, how are you? Hello, how are you? Hello, how are you?", voice: 4 },
     ]
     const overDialog = Array.from({ length: overDAttr.length }, (_, i) => new Dialog(overDAttr[i].h, overDAttr[i].c, overDAttr[i].btn))
-    const say = Array.from({ length: sayAttr.length }, (_, i) => new Say(sayAttr[i].c, sayAttr[i].bg, "Skip", 1400, sayAttr[i].voice))
+    const say = Array.from({ length: sayAttr.length }, (_, i) => new Say(sayAttr[i].c, sayAttr[i].bg, "Skip", 2000, sayAttr[i].voice))
 
 
 
@@ -797,18 +889,18 @@
     ///---------------------------------
     //
     //
-    //      入場
+    //      入場動作
     //
     //
     ///---------------------------------
-
 
 
     gameLevel[0][0].open()
     gameLevel[1][0].reNewScore()
     gameLevel[1][0].reNewTimeBar(30)
     game.goHome()
-    // game.end()
+    game.end()
+
 
 
     ///---------------------------------
@@ -857,15 +949,16 @@
             game.goHome()
         }
 
-        if (keyID === 'KeyD') {
-
-            say.show();
+        if (keyID === 'KeyC') {
+            say[0].show()
+            // new ImgToast("l1_item07.png")
         }
 
     }
 
 
-
+    // const hash = window.location.hash;
+    // console.log('Hash:', hash);
 
 </script>
 
