@@ -126,41 +126,46 @@
         background-position: center;
         background-size: contain;
         background-repeat: no-repeat;
-        transition: 1s;
-        transform: translate(-50%, -50%);
+        transition: 0.3s ease-out;
+        transform: translate(-50%, -50%) scale(1);
     }
 
     .loadingPage.fade {
         opacity: 0;
+        transform: translate(-50%, -50%) scale(1.5);
+
     }
 
 
     .loadingPage::after {
         content: "";
         position: absolute;
-        top: 20%;
-        left: 50%;
-        width: 0;
-        height: 6%;
+        top: 41.4%;
+        /* left: 48.6%; */
+        /* width: 66.2%; */
+        height: 3.2%;
         transform: translate(-50%, -50%);
-        background-color: #fff;
+        /* background-color: #9e2b2b; */
+        background-image: url("image/scorePage_loading.png");
+        background-size: cover;
+        background-position: 0 center;
         border-radius: 60px;
         animation: loadingBar;
-        animation-duration: 5s;
+        animation-duration: 2.3s;
         animation-iteration-count: 1s;
         animation-delay: 0.5s;
-        animation-fill-mode: forwards
+        animation-fill-mode: forwards;
     }
 
     @keyframes loadingBar {
         0% {
             width: 0%;
-            left: 10%;
+            left: 15.5%;
         }
 
         100% {
-            width: 80%;
-            left: 50%;
+            width: 66.2%;
+            left: 48.6%;
         }
     }
 

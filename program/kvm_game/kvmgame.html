@@ -544,9 +544,12 @@
         }
         end() {
             this.closeAllScene()
-            new ImgToast("l1_item07.png", 5000, 1000, "loadingPage", "fade")
+            // loading 畫面
+            new ImgToast("scorePage_loading_Bg.png", 2450, 500, "loadingPage", "fade")
             const scorePage = scene.find(p => p.level === "scorePage");
+            setTimeout(() => sound.play(3), 500)
 
+            // 選擇顯示圖
             if (this.score < 10) {
                 let background = ""
             } else if (this.score < 20) {
@@ -786,11 +789,12 @@
 
             ], btn: gameHeaderBtns
         }], [{
-            level: 301, background: "", gameTime: 20, gameKachiNum: 5,
+            level: 301, background: "level03_Bg.png", gameTime: 20, gameKachiNum: 5,
             item: [
-                { type: "A", size: [20, 10], xyr: [40, 50, 25], background: "", isStableItem: false, color: "" },
+                { type: "K", size: [10, 20], xyr: [30, 30, 0], background: "", isStableItem: false, color: "" },
+                { type: "A", size: [20, 10], xyr: [40, 50, 25], background: "", isStableItem: true, color: "" },
                 { type: "A", size: [10, 20], xyr: [50, 20, 15], background: "", isStableItem: false, color: "" },
-                { type: "K", size: [10, 20], xyr: [30, 30, 0], background: "", isStableItem: false, color: "" }
+
             ], btn: gameHeaderBtns
         }]
     ]
@@ -821,9 +825,9 @@
                 { name: "mute", size: [10, 10], xyr: [10, 5, 0], background: "btn_Mute.png", act: () => mute(), color: "" }
             ], item: [], gameTime: 0, gameKachiNum: 0
         }, {
-            level: "setumei", background: "",
+            level: "setumei", background: "ls_Bg.png",
             btn: [
-                { name: "start", size: [44, 28], xyr: [50, 45, 0], background: "btn_start.png", act: () => game.end(), color: "" },
+                { name: "Next", size: [44, 28], xyr: [50, 78, 0], background: "btn_start.png", act: () => game.end(), color: "" },
             ], item: [], gameTime: 0, gameKachiNum: 0
         }, {
             level: "scorePage", background: "",
@@ -898,9 +902,9 @@
     gameLevel[0][0].open()
     gameLevel[1][0].reNewScore()
     gameLevel[1][0].reNewTimeBar(30)
-    game.goHome()
-    game.end()
-
+    // game.goHome()
+    // game.end()
+    scene[1].open()
 
 
     ///---------------------------------
