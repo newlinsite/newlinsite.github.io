@@ -39,6 +39,17 @@ mainGainNode.gain.value = 1
 
 
 
+// // 用戶點擊播放區域時啟動 AudioContext 對象
+var openCtx = (btn) => {
+    btn.addEventListener('click', function () {
+        ctx.resume().then(() => {
+            console.log('AudioContext 已啟動');
+        });
+    });
+}
+
+
+
 // ******************************
 // ------------------------------
 //

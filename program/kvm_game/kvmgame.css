@@ -78,6 +78,85 @@
 
     .gameScene .gameItem {
         transition: 0.3s;
+
+    }
+
+
+    .gameItem.an0,
+    .gameItem.an4 {
+        animation: kAn01;
+        animation-duration: 8s;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in-out;
+    }
+
+    .gameItem.an2,
+    .gameItem.an8 {
+        animation: kAn02;
+        animation-duration: 9s;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in;
+    }
+
+    .gameItem.an6 {
+        animation: kAn03;
+        animation-duration: 10s;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-out;
+    }
+
+    @keyframes kAn01 {
+        0% {
+            transform: translate(0, 0) rotate(0);
+        }
+
+        65% {
+            transform: translate(-2%, 4%) rotate(5deg);
+        }
+
+        90% {
+            transform: translate(-5%, -20%) rotate(15deg);
+        }
+
+        100% {
+            transform: translate(0, 0);
+        }
+    }
+
+    @keyframes kAn02 {
+        0% {
+            transform: translate(0, 0);
+        }
+
+        50% {
+            transform: translate(0, 0);
+        }
+
+        95% {
+            transform: translate(10%, -10%);
+        }
+
+        100% {
+            transform: translate(0, 0);
+        }
+    }
+
+    @keyframes kAn03 {
+        0% {
+            transform: translate(0, 0);
+        }
+
+        85% {
+            transform: translate(-5%, -3%);
+        }
+
+        90% {
+            transform: translate(-15%, -18%);
+        }
+
+        100% {
+            transform: translate(0, 0);
+        }
     }
 
     .gameScene>.gameItem.on {
@@ -228,20 +307,15 @@
     }
 
     /* ------------------- */
-    .gameContainer .scoreBar.show.scorePage,
-    .gameContainer .timeBar.show.scorePage {
-        width: 35%;
-        height: 10%;
-        left: 50%;
-    }
-
     .gameContainer .scoreBar.show.scorePage {
-        top: 10%;
+        width: 30%;
+        height: 10%;
+        left: 20%;
+        top: 24%;
+        background-image: url("");
     }
 
-    .gameContainer .timeBar.show.scorePage {
-        top: 20%;
-    }
+
 
 
     /* scoreNote */
@@ -263,11 +337,41 @@
         position: absolute;
         left: 50%;
         top: 50%;
+        font-size: 25px;
+        font-weight: 900;
         transform: translate(-50%, -50%);
-        color: #251f2f;
+        color: #58699e;
         font-weight: 800;
     }
 
+    /* score 選錯 toast , Time out  */
+    .gameContainer .scoreNo,
+    .gameContainer .timeOut {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 10%;
+        padding-top: 10%;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        transform: translate(-50%, -50%);
+        transition: 0.6s cubic-bezier(.25, .96, .4, 1.29);
+        opacity: 0.8;
+    }
+
+    .gameContainer .scoreNo.fade,
+    .gameContainer .timeOut.fade {
+        transform: translate(-50%, -30%) scale(0.3);
+        opacity: 0;
+    }
+
+    .gameContainer .timeOut {
+        transition: 0.7s cubic-bezier(.25, .96, .4, 1.29);
+        width: 90%;
+        padding-top: 80%;
+        opacity: 0.95;
+    }
 
 
     /* countdownElement  */
@@ -312,19 +416,26 @@
         transform: translate(-50%, -50%);
     }
 
+
+
+
+
+
     /******************************
            dialog
     *******************************/
     .dialog {
+
         position: absolute;
         top: 50%;
         left: 50%;
-        width: 85%;
+        width: 60%;
         background-color: white;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        padding: 12px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border: 3px solid #0A4476;
+        box-shadow: 3px 5px 0 rgba(33, 33, 33, 0.5);
+        border-radius: 16px;
+        padding: 12px 12px 0px 12px;
+
         transform: translate(-50%, -50%) scale(0.5);
         opacity: 0;
         transition: 0.3s;
@@ -339,34 +450,50 @@
 
 
     .dialog h5 {
-        font-size: 25px;
+        font-size: 17px;
         margin: 12px 0;
+        text-align: center;
+        font-weight: 400;
+        line-height: 1.6em;
+    }
+
+    .dialog h5 span {
+        font-size: 24px;
+        font-weight: 800;
     }
 
     .dialog p {
         font-size: 16px;
+        text-align: center;
+        margin-bottom: -16px;
     }
 
     .dialog .btnBox {
         display: flex;
-
-        justify-content: end;
+        justify-content: center;
         width: 100%;
+        transform: translate(0, 50%);
     }
 
     .dialog button {
         display: inline-block;
         padding: 10px 20px;
+        min-width: 45%;
         background-color: #007bff;
+        border: 2px solid #0A4476;
+        box-shadow: 3px 5px 0 rgba(33, 33, 33, 0.5);
+        font-size: 16px;
+        font-weight: 800;
         color: white;
-        border-radius: 5px;
-        border: none;
+        border-radius: 165px;
         cursor: pointer;
         margin: 4px;
+        transition: 0.3s;
     }
 
     .dialog button:hover {
-        background-color: #0056b3;
+        background-color: rgb(9, 89, 239);
+        transform: scale(1.1);
     }
 
     /******************************
@@ -376,7 +503,7 @@
         position: absolute;
         width: 85%;
         padding-top: 20%;
-        bottom: 4%;
+        bottom: 10%;
         left: 50%;
         transition: 1s;
         transform: translate(-50%, -50%);
@@ -406,10 +533,10 @@
 
     .say .textBox {
         width: 95%;
-        min-height: 80%;
-        top: 50%;
+        min-height: 90%;
+        top: 4.5%;
         left: 5%;
-        transform: translate(0%, -50%);
+        transform: translate(0%, 0%);
         padding: 3.5% 5% 3.5% 16%;
         font-size: 16px;
         line-height: 1.5;
@@ -420,11 +547,11 @@
     }
 
     .say button {
-        right: 0%;
-        top: -10%;
+        right: -3%;
+        top: -15%;
         display: block;
         font-size: 15px;
-        padding: 7px 28px;
+        padding: 9px 32px;
         background-color: #0A4476;
         color: white;
         border-radius: 55px;
