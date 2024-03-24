@@ -11,9 +11,9 @@ from google.cloud import texttospeech
 # Instantiates a client
 client = texttospeech.TextToSpeechClient()
 
-def tts(content , code , contentType = "text"):
+def tts(content , viodeCode , contentType = "text"):
     
-    # 映射表，根据简单代码选择语言代码和名称参数
+    # 聲優表
     voiceMap = {
         "tw-A": {"language": "cmn-TW", "name": "cmn-TW-Wavenet-A"},#f
         "tw-B": {"language": "cmn-TW", "name": "cmn-TW-Wavenet-B"},
@@ -32,18 +32,18 @@ def tts(content , code , contentType = "text"):
     }
 
     
-    if code in voiceMap:
+    if viodeCode in voiceMap:
         
-        # 根据简单代码选择对应的语言代码和名称参数
-        voiceAttr = voiceMap[code]
+        # 根據 聲優表 語音代碼與聲音
+        voiceAttr = voiceMap[viodeCode]
+        print(voiceAttr["language"] + " " + voiceAttr["name"] + contentType + " : " + content )
     
         # Set the text input to be synthesized
         if contentType == "ssml":
             synthesis_input = texttospeech.SynthesisInput(ssml = content)
-            print("ssml")
+            
         else:
             synthesis_input = texttospeech.SynthesisInput(text = content)
-            print("text")
         
         voice = texttospeech.VoiceSelectionParams(
             language_code = voiceAttr["language"],
@@ -65,15 +65,15 @@ def tts(content , code , contentType = "text"):
         print("wrong voice code")
 
 
-def ttsOuput(voice,name):
+def voiceOuput(voice,name):
     with open( name + ".mp3", "wb" ) as out:
         # Write the response to the output file.
         out.write(voice.audio_content)
-        print('Audio content written to file ' + name + '.mp3"')
+        print('save -  ' + name + '.mp3"')
     
 
 
-
+#%%
 '''
     ssml tag
     <break time="200ms"/>
@@ -105,4 +105,76 @@ def ttsOuput(voice,name):
 
 
     
+#%%
+
+
+import pygame #試聽聲音用
+import pandas as pd
+
+def playSound(url, vol = 0.5):
+    pygame.mixer.init()
+    pygame.mixer.music.load(url)
+    pygame.mixer.music.set_volume(vol)
+    pygame.mixer.music.play()
+    while pygame.mixer.music.get_busy(): # 让程序保持运行，直到音频播放完毕
+        pygame.time.Clock().tick(10)
+    pygame.quit()
+    
+
+
+
+voiceMap = {
+    "ch-F": "tw-A",
+    "ch-M": "tw-B",
+    "jp-F": "jp-A", 
+    "jp-M": "jp-C", 
+}
+
+
+
+# 主題
+df = pd.read_excel("wordList.xlsx")
+ThemeCol = 'type'
+Theme = '職場'
+languages = ["ch","jp"]
+voiceGander = ["F","M"]
+
+for lang in languages:
+    textList = df.loc[ df[ThemeCol] == Theme, lang].tolist()
+    nameList = df.loc[ df[ThemeCol] == Theme, 'ch'].tolist()
+    idList = df.loc[ df[ThemeCol] == Theme, "id"].tolist()
+    
+    for gender in voiceGander:
+        voice = voiceMap[lang + "-" + gender]
+        
+        for text, ID, name in zip(textList, idList, nameList):
+            vocie = tts( text , voice )
+            audioOutputUrl = "tts/" + Theme + "_" + name  + "_" + lang + "-" + gender + "_" +  str(ID)
+            voiceOuput(vocie, audioOutputUrl)
+
+
+
+
+playSound(audioOutputUrl + ".mp3")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     

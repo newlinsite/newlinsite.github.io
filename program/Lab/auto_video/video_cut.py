@@ -10,6 +10,8 @@ from PIL import Image, ImageDraw, ImageFont, ImageColor
 from moviepy.editor import ImageSequenceClip
 from moviepy.editor import VideoFileClip, concatenate_videoclips, AudioFileClip
 import pygame #試聽聲音用
+import pandas as pd
+
 
 def playSound(url, vol = 0.5):
     pygame.mixer.init()
@@ -40,23 +42,6 @@ def drawRoundedRectangle(draw, xy, radius, **kwargs):
     draw.pieslice([x1, y2 - radius * 2, x1 + radius * 2, y2], 90, 180, **kwargs)
     draw.pieslice([x2 - radius * 2, y2 - radius * 2, x2, y2], 0, 90, **kwargs)
 
-# fps = 30
-# videoSize = (1000,1000)
-# easeType = easeIn
-# inSec, stopSec, outSec = (1,1,1)
-# textParam = {   'name':"中文",
-#     'text': "55555555\n222222",
-#     'font': 'font/NotoSansTC-Medium.ttf',
-#     'space':     0,
-#     'size':      (80, 85),
-#     'alignCenter':True,
-#     'color':     '#FFFFFF',
-#     'alpha':     (0,100),
-#     'x':         (960, 960),
-#     'y':         (300, 320),
-#     'bg':False, 'padding':(8,8), 'bgColor':"#333333"
-# }
-# frame = 30
 def newText(videoSize, textParam, easeType, inSec, stopSec, outSec, fps = 30):
     
     textBox = []
@@ -311,7 +296,7 @@ def newImage(videoSize, imageParam, easeType, inSec, stopSec, outSec):
 
 
 
-#創立影片基底
+# 創立影片基底
 def newVideo(backgroundUrl, videoLen):
     videoFrames=[]
     for i in range(videoLen):
@@ -320,12 +305,19 @@ def newVideo(backgroundUrl, videoLen):
     return videoFrames
 
 
-#在特定 frames 疊上新圖
-def mergeFs(bgFs, startSec, fs):
+# 在特定 frames 疊上新圖
+def mergeFs(bgFs, startSec, fs , test = False):
     startFrame = int(fps*startSec)
-    for i in range(startFrame, startFrame + len(fs)):
-        textFrame = fs[i-startFrame]
-        bgFs[i].paste(textFrame, (0, 0), textFrame)
+    loopStart  = startFrame
+    endFrame   = startFrame + len(fs)
+    # 判斷是否為測試，如果為測試 只貼 test 內區間
+    if(test != False):                              
+        loopStart  = test[0]
+        endFrame   = test[1]
+    # 開始 Merge    
+    for i in range(loopStart, endFrame):
+        textFrame = fs[i-startFrame]                # 取出要貼的圖
+        bgFs[i].paste(textFrame, (0, 0), textFrame) # 貼上去
     #return bgFs
 
 
@@ -336,11 +328,13 @@ def imageToVideo(images, videoFps = 30, isOutput = True , outputName = "output.m
     if(isOutput):
         clip.write_videofile( outputName, fps = videoFps)  # 保存视频文件
     return clip
-    
+    # ----------------------------------------------------------------
     # 如果 clip.write_videofile 讀取不到 fps 請再函示庫加入以下 Code 30可以改成指定 fps
     # if fps is None:
     #     fps = 30
+    # --------------------------------
 
+# 把累加的數列還原
 def originalTime(data):
     newData = []
     for item in data:
@@ -371,185 +365,202 @@ def originalTime(data):
 # =============================================================================
 
 
-
-
-
-import pandas as pd
-
-dfText = pd.read_excel("wordList.xlsx")
-Theme = ['type','職場',"v0.8"]
-content =[
-        dfText.loc[dfText[Theme[0]] == Theme[1], 'ch'].tolist(),
-        dfText.loc[dfText[Theme[0]] == Theme[1], 'spelling-1'].tolist(),
-        dfText.loc[dfText[Theme[0]] == Theme[1], 'spelling-2 '].tolist(),
-        # dfText.loc[dfText[Theme[0]] == Theme[1], 'jp'].tolist(),
-        dfText.loc[dfText[Theme[0]] == Theme[1], 'detail'].tolist()
-    ]
-
-
-
-
-clip = []
+# 主題
+df = pd.read_excel("wordList.xlsx")
+ThemeCol = 'type'
+Theme = '職場'
+template = 'cn-single'
 
 # 影片参数
+clip = []
 videoBg = "bg02.png"
 fps = 30
 vSizeW, vSizeH =  Image.open( videoBg ).size
 
-# fade = [
-#     { 't':[0.5, 1.0, 7.0, 1.0 ], 'f': easeOut},
-#     { 't':[1.0, 0.8, 6.0, 1.0 ], 'f': easeOut},
-#     { 't':[1.0, 0.8, 6.0, 1.0 ], 'f': easeOut},
-#     { 't':[1.2, 0.8, 6.0, 1.0 ], 'f': easeOut},
-#     { 't':[1.2, 0.8, 6.0, 1.0 ], 'f': easeOut},
-#     { 't':[1.5, 1.5, 5.5, 1.0 ], 'f': easeOut}
-#  ]
 
-# 時間為累加
-fadeAccu = [
-    { 't':[0.6, 1.5, 9.4, 10.0 ], 'f': easeOut},
-    { 't':[1.0, 1.8, 9.0, 9.50 ], 'f': easeOut},
-    { 't':[1.0, 1.8, 9.0, 9.50 ], 'f': easeOut},
-    { 't':[1.2, 2.0, 9.0, 9.50 ], 'f': easeOut},
-    { 't':[1.2, 2.0, 9.0, 9.50 ], 'f': easeOut},
-    { 't':[1.0, 3.0, 8.5, 9.00 ], 'f': easeOut}
- ]
-fade = originalTime(fadeAccu)
+#%% ==============================
+
+# 圖層累加時間時間軸
+fadeAccu = {
+    'cn-single':[
+        { 't':[0.6, 1.5, 9.4, 10.0 ], 'f': easeOut},
+        { 't':[1.0, 1.8, 9.0, 9.50 ], 'f': easeOut},
+        { 't':[1.0, 1.8, 9.0, 9.50 ], 'f': easeOut},
+        { 't':[1.2, 2.0, 9.0, 9.50 ], 'f': easeOut},
+        { 't':[1.2, 2.0, 9.0, 9.50 ], 'f': easeOut},
+        { 't':[1.4, 3.2, 8.5, 9.00 ], 'f': easeOut},
+        { 't':[1.4, 3.2, 8.5, 9.00 ], 'f': easeOut}
+     ]
+}
+
+textTemplate = {
+    'cn-single':[
+    {   'Name': "中文",
+        'isDynamic': True, 'col':'ch',
+        'text': '',
+        'font': 'font/NotoSansTC-Medium.ttf',
+        'space':      0,  'lineSpace': 0,
+        'size':      (80, 80),
+        'alignCenter':True,
+        'color':     '#FFFFFF',
+        'alpha':     (0,100),
+        'x':         (960, 960),
+        'y':         (280, 320),
+        'bg':False
+    },
+    {   'name':"注音標題",
+        'text': "注音",
+        'isDynamic': False , 'col':'',
+        'font': 'font/NotoSansTC-Regular.ttf',
+        'space':      0,  'lineSpace': 0,
+        'size':      (33, 33),
+        'alignCenter':False,
+        'color':     '#FFFFFF',
+        'alpha':     (0,100),
+        'x':         (814, 814),
+        'y':         (450, 450),
+        'bg':True, 'padding':(26,8), 'bgColor':"#406A51",'radius': 10
+    },
+    {   'name':"注音",
+        'isDynamic': True, 'col':'spelling-1',
+        'text': '',
+        'font': 'font/NotoSansTC-Regular.ttf',
+        'space':     0,  'lineSpace': 0,
+        'size':      (34, 34),
+        'alignCenter':False,
+        'color':     '#FFFFFF',
+        'alpha':     (0,100),
+        'x':         (1000, 965),
+        'y':         (450, 450),
+        'bg':False
+    },
+    {   'name':"拼音標題",
+        'isDynamic': False , 'col':'',
+        'text': "拼音",
+        'font': 'font/NotoSansTC-Regular.ttf',
+        'space':     0,  'lineSpace': 0,
+        'size':      (33, 33),
+        'alignCenter':False,
+        'color':     '#FFFFFF',
+        'alpha':     (0,100),
+        'x':         (814, 814),
+        'y':         (540, 540),
+        'bg':True, 'padding':(26,8), 'bgColor':"#406A51",'radius': 10
+    },
+    {   'name':"拼音",
+        'isDynamic': True, 'col':'spelling-2',
+        'text': '',
+        'font': 'font/NotoSansTC-Regular.ttf',
+        'space':     0,  'lineSpace': 0,
+        'size':      (34, 34),
+        'alignCenter':False,
+        'color':     '#FFFFFF',
+        'alpha':     (0,100),
+        'x':         (1000, 965),
+        'y':         (540, 540),
+        'bg':False
+    },
+    {   'name':"日文",
+        'isDynamic': True, 'col':'jp',
+        'text': '',
+        'font': 'font/NotoSansTC-Regular.ttf',
+        'space':     0,  'lineSpace': 0,
+        'size':      (50, 55),
+        'alignCenter':True,
+        'color':     '#FFFFFF',
+        'alpha':     (0,90),
+        'x':         (960, 960),
+        'y':         (700, 725),
+        'bg':False
+    },
+    {   'name':"說明",
+        'isDynamic': True, 'col':'detail',
+        'text': '',
+        'font': 'font/MPLUS1p-Regular.ttf',
+        'space':     0,  'lineSpace': 5,
+        'size':      (30, 30),
+        'alignCenter':True,
+        'color':     '#FFFFFF',
+        'alpha':     (0,70),
+        'x':         (960, 960),
+        'y':         (750, 800),
+        'bg':False
+    }]
+}
 
 
-# 取 fade 中最長片段 + 0.5 秒
+
+
+
+
+
+# 測試控制區
+singleImg = True
+# singleImg = False
+
+i = 1
+j = 0
+loopTimes = 2
+# loopTimes = len(textTemplate[ template ])
+
+
+
+
+# 還原累加時間時間軸 > 取 fade 中最長片段 + 0.5 秒
+fade = originalTime(fadeAccu[template])
 videoLen = int((max(sum(row['t']) for row in fade) + 0.5)) * fps
 
+# 開始製作
+for i in range(0,loopTimes):
+    
+    # 宣告開始
+    thisCn = df.loc[ df[ThemeCol] == Theme, 'ch'].tolist()[i]
+    thisId = str(df.loc[ df[ThemeCol] == Theme, 'id'].tolist()[i])
+    print(thisCn + ", id: " + thisId  + "  ---- Start ----------------------------- ")
+    
+    # 设置 Template > 用於帶入文字
+    tem =  textTemplate[ template ]
 
-# for i in range(0,1):
-i = 0
-for i in range(0,len(content[0])):
-    # 设置文本参数
-    textParams= [
-        {   'name':"中文",
-            'text': content[0][i],
-            'font': 'font/NotoSansTC-Medium.ttf',
-            'space':     0,  'lineSpace': 0,
-            'size':      (80, 80),
-            'alignCenter':True,
-            'color':     '#FFFFFF',
-            'alpha':     (0,100),
-            'x':         (960, 960),
-            'y':         (280, 320),
-            'bg':False
-        },
-        {   'name':"注音標題",
-            'text': "注音",
-            'font': 'font/NotoSansTC-Regular.ttf',
-            'space':      0,  'lineSpace': 0,
-            'size':      (33, 33),
-            'alignCenter':False,
-            'color':     '#FFFFFF',
-            'alpha':     (0,100),
-            'x':         (814, 814),
-            'y':         (480, 480),
-            'bg':True, 'padding':(26,8), 'bgColor':"#406A51",'radius': 10
-        },
-        {   'name':"注音",
-            'text': content[1][i],
-            'font': 'font/NotoSansTC-Regular.ttf',
-            'space':     0,  'lineSpace': 0,
-            'size':      (34, 34),
-            'alignCenter':False,
-            'color':     '#FFFFFF',
-            'alpha':     (0,100),
-            'x':         (1000, 965),
-            'y':         (480, 480),
-            'bg':False
-        },
-        {   'name':"拼音標題",
-            'text': "拼音",
-            'font': 'font/NotoSansTC-Regular.ttf',
-            'space':     0,  'lineSpace': 0,
-            'size':      (33, 33),
-            'alignCenter':False,
-            'color':     '#FFFFFF',
-            'alpha':     (0,100),
-            'x':         (814, 814),
-            'y':         (564, 564),
-            'bg':True, 'padding':(26,8), 'bgColor':"#406A51",'radius': 10
-        },
-        {   'name':"拼音",
-            'text': content[2][i],
-            'font': 'font/NotoSansTC-Regular.ttf',
-            'space':     0,  'lineSpace': 0,
-            'size':      (34, 34),
-            'alignCenter':False,
-            'color':     '#FFFFFF',
-            'alpha':     (0,100),
-            'x':         (1000, 965),
-            'y':         (564, 564),
-            'bg':False
-        },
-        # {   'name':"日文",
-        #     'text': content[2][i],
-        #     'font': 'font/NotoSansTC-Light.ttf',
-        #     'space':     0,
-        #     'size':      (1, 25),
-        #     'alignCenter':True,
-        #     'color':     '#222222',
-        #     'alpha':     (0,100),
-        #     'x':         (960, 960),
-        #     'y':         (100, 600),
-        #     'bg':True, 'padding':(8,8), 'bgColor':(255, 255, 255, 255)
-        # },
-        {   'name':"說明",
-            'text': content[3][i],
-            'font': 'font/MPLUS1p-Regular.ttf',
-            'space':     0,  'lineSpace': 5,
-            'size':      (30, 30),
-            'alignCenter':True,
-            'color':     '#FFFFFF',
-            'alpha':     (0,70),
-            'x':         (960, 960),
-            'y':         (680, 700),
-            'bg':False
-        }
-    ]
-    
-    
+        
     # 生成逐帧图像
     textLayer = []
     for j in range(len(fade)):
-        print("create Layer " + str(j) + "------------------")
-        textLayer.append( newText((vSizeW, vSizeH), textParams[j], easeOut, fade[j]['t'][1], fade[j]['t'][2], fade[j]['t'][3]) )    
+        print("create Layer " + str(j) + "---------")
+        
+        # 將文字放入模板，根據模板上的欄位，(如果是list則帶入動態資訊)
+        if (tem[j]['isDynamic']):
+            tem[j]['text'] = df.loc[ df[ThemeCol] == Theme, tem[j]['col']].tolist()[i]
+         
+        #是否輸出單張畫面 ( 觀看排版用 )
+        if(singleImg):
+            textLayer.append( newText((vSizeW, vSizeH), tem[j], easeOut, 0, 1/fps , 0) )
+        else:
+            textLayer.append( newText((vSizeW, vSizeH), tem[j], easeOut, fade[j]['t'][1], fade[j]['t'][2], fade[j]['t'][3]) ) 
 
     # 創造背景 > 所有圖層合併
     videoFrames = newVideo(videoBg, videoLen)
     for j in range(len(textLayer)):
         print("start Merge " + str(j))
-        mergeFs(videoFrames, fade[j]['t'][0], textLayer[j])
+        #是否輸出單張畫面 ( 觀看排版用 )
+        if(singleImg):
+            mergeFs(videoFrames, 0, textLayer[j])
+        else:
+            mergeFs(videoFrames, fade[j]['t'][0], textLayer[j])
 
+    # 如為測試則跳出
+    if(singleImg):
+        videoFrames[0].show()
+        break
+    
     # 產生片段 > 儲存 > 輸出
-    outputUrl = Theme[1] + "_" + Theme[2] + str(i) + ".mp4"
+    outputUrl = template + "_" + Theme + "_" + thisCn + ".mp4"
     clip.append(imageToVideo(videoFrames, fps ,True , outputUrl ))
 
 
 
-videoFrames[28].show()
-print(clip)
 
 
 
-
-# imageParam ={
-#     'image':"001.png",
-#     'x':(0,100),
-#     'y':(0,200),
-#     'size':(0.5,1),
-#     'alpha':(0,1)
-#     }
-# images = newImage((800,800), imageParam, easeOut, 1.5, 1, 1.5)
-
-# videoTest = newVideo(videoBg, 5*fps)
-# mergeFs(videoTest, 0.5, images)
-# imageToVideo(videoTest,True , "4444.mp4" , fps)
-# images[20].show()
 
 
 
@@ -595,11 +606,19 @@ def createVoiceLayer( url, startS, aTimeS, times, isTranslate = False, translate
     
 
 #%% ----
+
+
+# 主題
+df = pd.read_excel("wordList.xlsx")
+ThemeCol = 'type'
+Theme = '職場'
+template = 'cn-single'
+
+
 # 創造聲音圖層
 voice = []
 for i in range(len(clip)):
     voice.append(createVoiceLayer("tts/jp_a000"+ i +".mp3", 3.5, 3, 2, True, "tts/jp_a000"+ i +".mp3"))
-
 
 
 
