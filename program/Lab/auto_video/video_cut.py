@@ -588,43 +588,91 @@ for i in range(0,loopTimes):
 
 from pydub import AudioSegment
 
-def createVoiceLayer( url, startS, aTimeS, times, isTranslate = False, translateUrl = ""):
-    voiceSource = AudioSegment.from_mp3(url)
-    voiceLen = voiceSource.duration_seconds
-    voiceMa = aTimeS - voiceLen
-    if voiceMa < 0:
-        print('Source Voice is too long')
-        return None
-    
-    aVoice = voiceSource + AudioSegment.silent(duration = voiceMa*1000)
-    voice = aVoice
-    for i in range( times-1 ):
-        voice = voice + aVoice
-    voice = AudioSegment.silent(duration = startS*1000 ) + voice
-    
-    if isTranslate:
-        voiceTra = AudioSegment.from_mp3( translateUrl )
-        voice = voice + voiceTra
-    return voice
-   
 
+
+def createVoiceLayer( startS, voiceUrls, voiceTimes):
     
+    voices      = []
+    voiceLens   = []
+    voiceMas    = []
+    aVoices     = []
+    # 讀取聲音
+    for url in voiceUrls:
+        voices.append(AudioSegment.from_mp3(url))
+    
+    # 計算個聲音長度與間距
+    for i in range(len(voices)):
+        voice = voices[i]
+        voiceLens.append(voice.duration_seconds)
+        voiceMas.append(voiceTimes[i] - voiceLens[i])
+        if voiceMas[i] < 0:
+            print('Source Voice is too long')
+            return None
+    
+    # 將每段聲音加上無聲間距
+    for i in range(len(voices)):    
+        aVoices.append(voices[i] + AudioSegment.silent(duration = voiceMas[i]*1000))
+    
+    # 用無聲開始階段 創立最後輸出的新聲音 > 循環加入所有聲音
+    voiceOutput = AudioSegment.silent(duration = startS*1000 )
+    for voice in voices:
+        voiceOutput = voiceOutput + voice
+    
+    return voiceOutput
+
+
 
 #%% ----
+voiceTemplate = {
+    'cn-cn':{
+        "startS":1,
+        "voices"     :["jp-F","ch-F"],
+        "voiceTimes" :[ 3    , 3    ]
+        }
+    }
 
 
 # 主題
 df = pd.read_excel("wordList.xlsx")
 ThemeCol = 'type'
 Theme = '職場'
-template = 'cn-single'
+template = 'cn-cn'
 
+
+#%% ----
 
 # 創造聲音圖層
 voice = []
-for i in range(len(clip)):
-    voice.append(createVoiceLayer("tts/jp_a000"+ i +".mp3", 3.5, 3, 2, True, "tts/jp_a000"+ i +".mp3"))
 
+nameList = df.loc[ df[ThemeCol] == Theme, 'ch'].tolist()
+idList = df.loc[ df[ThemeCol] == Theme, "id"].tolist()
+
+tem =  voiceTemplate[ template ]
+
+
+# for i in range(len(clip)):
+for i in range(len(idList)):  
+    
+    name = nameList[i]
+    ID   = str(idList[i])
+    
+    print( ID + " " + name )
+    audioUrls = []
+    for voiceAttr in tem["voices"]:
+        audioUrls.append("tts/" + Theme + "_" + name  + "_" + voiceAttr + "_" +  ID + ".mp3")
+    
+    voice.append(createVoiceLayer( tem["startS"] , audioUrls , tem["voiceTimes"]))
+    voice[i].export("test"+str(i)+".mp3", format="mp3")
+    
+    
+    
+
+    
+#%% ----
+
+
+
+playSound("test")
 
 
 
