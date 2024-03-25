@@ -203,6 +203,11 @@
 
     .workArea .footer {
         border-top: 2px solid #00000011;
+        padding: 0;
+    }
+
+    .workArea .footer>* {
+        padding: 16px 16px;
     }
 
     /*  ----------------- 
@@ -217,7 +222,10 @@
         height: 10%;
         overflow-y: scroll;
         position: relative;
+        padding-bottom: 200px;
     }
+
+
 
     .workArea .textArea .newVoice {
         position: absolute;
@@ -238,14 +246,14 @@
     }
 
     .workArea .textArea .newVoice:last-child {
-        opacity: 0.8;
-        margin-bottom: 128px;
+        opacity: 0.6;
+        transform: translate(-50%, 40%);
+
     }
 
     .workArea .textArea .newVoice:hover {
         opacity: 1;
         height: 50px;
-
     }
 
 
@@ -253,6 +261,16 @@
     .workArea .textArea .textBox {
         margin: 0px 0;
         padding: 24px 0;
+        transition: 1.5s;
+        overflow: hidden;
+        max-height: 1000px;
+    }
+
+    .workArea .textArea .textBox.fade {
+        padding: 0;
+        opacity: 0;
+        max-height: 0px;
+
     }
 
     .workArea .textArea .textBox::before {
@@ -298,7 +316,7 @@
 
     .workArea .textArea .textBox .header .bg {
         background-image: url("image/testboxHeader.svg");
-        width: 100%;
+        width: 120%;
         height: 40px;
         background-repeat: no-repeat;
         background-position: 0 center;
@@ -324,8 +342,6 @@
 
 
     /*   focus   */
-
-
 
     .workArea .textArea .textBox.focus::before {
         opacity: 0.9;
@@ -359,14 +375,16 @@
 
     .fileBar {
         background-color: #F5F5F5;
-        width: 280px;
+        width: 300px;
         height: 100%;
         min-height: 100vh;
         display: flex;
         flex-direction: column;
         border-left: 2px solid #0000000f;
+        overflow: hidden;
 
     }
+
 
     .fileBar .header,
     .fileBar .footer {
@@ -377,14 +395,15 @@
 
     }
 
+
     .fileBar .body {
         padding: 12px 0;
         flex-grow: 1;
     }
 
     .fileBar .body h3 {
-        margin: 0;
-        font-size: 15px;
+        margin: 0 4px;
+        font-size: 14px;
         font-weight: 400;
     }
 
@@ -403,9 +422,10 @@
 
     .fileBar .body p {
         margin: 4px 0;
-        font-size: 12px;
+        font-size: 11px;
         font-weight: 400;
-        color: #A6A6A6;
+        color: #797979;
+        letter-spacing: 0.05em;
     }
 
 
@@ -416,56 +436,33 @@
         height: 72px;
         padding: 8px;
         margin: 4px 0;
-        overflow: hidden;
+        background-color: #00000000;
+        transition: 0.5s;
+        cursor: pointer;
+    }
+
+    .fileBar .body .fileCard:hover {
+        background-color: #00000010;
+        /* background-color: #b6090982; */
     }
 
 
-    .fileBar .body .fileCard>.more {
-        position: absolute;
-        right: 6%;
-        top: 50%;
-        transform: translateY(-50%);
-        pointer-events: none;
-    }
 
-    .fileBar .body .fileCard .cardtools {
+    .fileBar .body .fileCard .tools {
         position: absolute;
         right: 0;
         top: 0;
-        width: 80%;
         height: 95%;
-        background: transparent linear-gradient(90deg, #008CFF00 0%, #008cff4d 25%, #004680 100%) 0% 0% no-repeat padding-box;
-        /* background-color: #fff; */
+        /* background-color: #333; */
         display: flex;
         align-items: center;
         justify-content: end;
-        padding: 0 12px;
-
+        padding: 0 4px;
         transform: translateX(5%);
-        transition: 0.4s;
-        opacity: 0;
     }
 
-    .fileBar .body .fileCard .cardtools:hover {
-        transform: translateX(0%);
-        opacity: 1;
-    }
-
-    .fileBar .body .fileCard .cardtools>img {
-        width: 26px;
-        height: 26px;
-        margin: 6px;
-        opacity: 1;
-        transition: 0.3s;
-        cursor: pointer;
-        transform: scale(1);
-        filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.35));
-    }
-
-    .fileBar .body .fileCard .cardtools>img:hover {
-        opacity: 1;
-        transform: scale(1);
-        filter: drop-shadow(0 0 10px rgba(0, 0, 0, 1));
+    .fileBar .body .fileCard .tools>img {
+        margin: 3px;
     }
 
 
@@ -474,10 +471,11 @@
         content: "";
         position: absolute;
         background-color: #EBEBEB;
+        /* background-color: #bc0606; */
         width: 248px;
         height: 2px;
         left: 50%;
-        bottom: 0px;
+        bottom: -3px;
         transform: translate(-50%, 0%);
     }
 
@@ -546,11 +544,15 @@
                 <div class="newVoice"></div>
             </div>
             <div class="footer">
-                <div style="background-color: #F5F5F5; margin: 0px;">
-                    <div class="btn sys">合成</div>
+                <div class="row flex-align-c" style="background-color: #F5F5F5; margin: 0px;">
+                    <div style="flex: 0 0 0%;">
+                        <div class="btn sys">合成</div>
+                    </div>
+                    <div style="flex: 1 0 0%;"><img src="image/btn__icon-text__atenblue.svg" alt=""></div>
+                    <div style="flex: 0 0 0%;"><img src="image/footer_text.svg" alt=""></div>
+
                 </div>
-                <div style="background-color: #EBEBEB; margin: 0px; text-align: right;"><img src="image/footer.png"
-                        alt="">
+                <div class="" style="background-color: #EBEBEB; margin: 0px; text-align: right;">
                 </div>
             </div>
 
@@ -564,7 +566,7 @@
                         <div class="col-2 row flex-align-c flex-jus-c"><img class="playBtn" src="image/btn_play.svg"
                                 alt=""></div>
                         <div class="col-10">
-                            <h3>宏正於44家已獲得傑傑出...</h3>
+                            <h3>宏正於44家合成列獲得傑出...</h3>
                         </div>
                         <div class="col-2">
                             <p>12:50</p>
@@ -573,19 +575,17 @@
                             <p>2500 字 2022-07-28 14:33</p>
                         </div>
                     </div>
-                    <div class="cardtools">
-                        <img src="image/icon_Search_Edit.svg" alt="">
+                    <div class="tools">
                         <img src="image/icon_download.svg" alt="">
                         <img src="image/icon_more.svg" alt="">
                     </div>
-                    <img class="more" src="image/icon_arrowDropdown.svg" alt="">
                 </div>
                 <div class="fileCard">
                     <div class="row flex-align-c flex-jus-c">
                         <div class="col-2 row flex-align-c flex-jus-c"><img class="playBtn" src="image/btn_play.svg"
                                 alt=""></div>
                         <div class="col-10">
-                            <h3>宏正於44家已獲得傑傑出...</h3>
+                            <h3>宏正於4444家已獲得傑傑出...</h3>
                         </div>
                         <div class="col-2">
                             <p>12:50</p>
@@ -594,19 +594,17 @@
                             <p>2500 字 2022-07-28 14:33</p>
                         </div>
                     </div>
-                    <div class="cardtools">
-                        <img src="image/icon_Search_Edit.svg" alt="">
+                    <div class="tools">
                         <img src="image/icon_download.svg" alt="">
                         <img src="image/icon_more.svg" alt="">
                     </div>
-                    <img class="more" src="image/icon_arrowDropdown.svg" alt="">
                 </div>
                 <div class="fileCard">
                     <div class="row flex-align-c flex-jus-c">
                         <div class="col-2 row flex-align-c flex-jus-c"><img class="playBtn" src="image/btn_play.svg"
                                 alt=""></div>
                         <div class="col-10">
-                            <h3>宏正於44家已獲得傑傑出...</h3>
+                            <h3>宏正於44家已獲得傑出大獎</h3>
                         </div>
                         <div class="col-2">
                             <p>12:50</p>
@@ -615,21 +613,42 @@
                             <p>2500 字 2022-07-28 14:33</p>
                         </div>
                     </div>
-                    <div class="cardtools">
-                        <img src="image/icon_Search_Edit.svg" alt="">
+                    <div class="tools">
                         <img src="image/icon_download.svg" alt="">
                         <img src="image/icon_more.svg" alt="">
                     </div>
-                    <img class="more" src="image/icon_arrowDropdown.svg" alt="">
                 </div>
+                <div class="fileCard">
+                    <div class="row flex-align-c flex-jus-c">
+                        <div class="col-2 row flex-align-c flex-jus-c"><img class="playBtn" src="image/btn_play.svg"
+                                alt=""></div>
+                        <div class="col-10">
+                            <h3>宏正於44家已已已獲得傑出...</h3>
+                        </div>
+                        <div class="col-2">
+                            <p>12:50</p>
+                        </div>
+                        <div class="col-10">
+                            <p>2500 字 2022-07-28 14:33</p>
+                        </div>
+                    </div>
+                    <div class="tools">
+                        <img src="image/icon_download.svg" alt="">
+                        <img src="image/icon_more.svg" alt="">
+                    </div>
+                </div>
+
+
             </div>
             <div class="footer">儲存 30天內合成的語音</div>
         </div>
     </div>
 </body>
 <script>
+
     var sysBtn = document.getElementsByClassName("sys")[0]
     var tools = document.getElementsByClassName("toolimg")[0]
+    var textArea = document.getElementsByClassName("textArea")[0]
     var textBox = document.getElementsByClassName("textBox")
 
     var Toolsimg = []
@@ -658,6 +677,41 @@
             textBox[i].classList.remove("focus")
         }
     }
+
+
+
+    // 插入新文字框功能
+
+    var newVoiceBtn = document.getElementsByClassName("newVoice")
+
+    // 插入的 HTML 内容
+    let newHTML = `
+    <div class="textBox a02 fade">
+        <div class="header">
+            <div class="bg "></div>
+        </div>
+        <p style="color:#ccc">請輸入文字</p>
+    </div>
+    <div class="newVoice"></div>
+    `
+
+    //在指定位置插入新的 HTML 元素
+
+
+    for (let i = 0; i < newVoiceBtn.length; i++) {
+        let index = i * 2 + 1
+
+        newVoiceBtn[i].addEventListener("click", () => {
+            textArea.children[index].insertAdjacentHTML('afterend', newHTML);
+
+            setTimeout(() => textBox[index].classList.remove("fade"), 100)
+        }
+        )
+    }
+
+
+
+
 
 
 

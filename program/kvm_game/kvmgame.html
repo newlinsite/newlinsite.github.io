@@ -11,7 +11,17 @@
 <body>
     <div class="gameOutContainer">
         <div class="gameContainer"></div>
-        <a href=""></a>
+        <div class="openMask">
+            <div class="balls">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="startBtn">
+                <p>GO!</p>
+            </div>
+        </div>
+
     </div>
 </body>
 <script src="../library/voiceControl.js"></script>
@@ -29,7 +39,7 @@
         console.log(print)
     }
     function nothing() {
-        console.log("nothing")
+        // console.log("nothing")
     }
 
 
@@ -493,7 +503,7 @@
                     //關閉倒數物件
                     this.countdownElement.style.opacity = 0
                     game.onMaskOff()
-                    setTimeout(() => this.countdownElement.remove(), 600);
+                    // setTimeout(() => this.countdownElement.remove(), 600);
                     //開始遊戲計時
                     game.startTimer(1, () => this.reNewTimeBar(this.gameFullTime - game.time), this.gameFullTime + 1,
                         () => {
@@ -759,7 +769,7 @@
     ]
     gameLevelAttr = [
         [{
-            level: 101, background: "level01_Bg.png", gameTime: 15, gameKachiNum: 5,
+            level: 101, background: "level01_Bg.png", gameTime: 10, gameKachiNum: 5,
             item: [
                 { type: "L101", size: [166, 90], xyr: [101, 726, 0], background: "L1-1_item01.png", isStableItem: false, color: "" },
                 { type: "L101", size: [218, 207], xyr: [653, 431, 0], background: "L1-1_item02.png", isStableItem: false, color: "" },
@@ -775,7 +785,7 @@
                 { type: "B", size: [947, 389], xyr: [41, 1364, 0], background: "L1_itemS01.png", isStableItem: true, color: "" },
             ], btn: gameHeaderBtns
         }, {
-            level: 102, background: "level01_Bg.png", gameTime: 15, gameKachiNum: 5,
+            level: 102, background: "level01_Bg.png", gameTime: 10, gameKachiNum: 5,
             item: [
                 { type: "L101", size: [87, 88], xyr: [392, 900, 0], background: "L1-2_item01.png", isStableItem: false, color: "" },
                 { type: "L101", size: [181, 184], xyr: [202, 1288, 0], background: "L1-2_item02.png", isStableItem: false, color: "" },
@@ -789,7 +799,7 @@
                 { type: "L109", size: [107, 88], xyr: [318, 1077, 0], background: "L1-2_item10.png", isStableItem: false, color: "" },
             ], btn: gameHeaderBtns
         },], [{
-            level: 201, background: "level02_Bg.png", gameTime: 15, gameKachiNum: 5,
+            level: 201, background: "level02_Bg.png", gameTime: 10, gameKachiNum: 5,
             item: [
                 { type: "L201", size: [97, 53], xyr: [842, 621, 0], background: "L2-1_item01.png", isStableItem: false, color: "" },
                 { type: "L201", size: [92, 105], xyr: [47, 552, 0], background: "L2-1_item02.png", isStableItem: false, color: "" },
@@ -803,7 +813,7 @@
                 { type: "L209", size: [103, 146], xyr: [877, 1134, 0], background: "L2-1_item10.png", isStableItem: false, color: "" },
             ], btn: gameHeaderBtns
         }, {
-            level: 202, background: "level02_Bg.png", gameTime: 15, gameKachiNum: 5,
+            level: 202, background: "level02_Bg.png", gameTime: 10, gameKachiNum: 5,
             item: [
                 { type: "L201", size: [220, 160], xyr: [541, 422, 0], background: "L2-2_item01.png", isStableItem: false, color: "" },
                 { type: "L201", size: [65, 53], xyr: [717, 992, 0], background: "L2-2_item02.png", isStableItem: false, color: "" },
@@ -817,7 +827,7 @@
                 { type: "L209", size: [43, 45], xyr: [151, 852, 0], background: "L2-2_item10.png", isStableItem: false, color: "" },
             ], btn: gameHeaderBtns
         },], [{
-            level: 301, background: "level03_Bg.png", gameTime: 20, gameKachiNum: 5,
+            level: 301, background: "level03_Bg.png", gameTime: 10, gameKachiNum: 5,
             item: [
                 // { type: "K", size: [115, 100], xyr: [380, 382, 0], background: "L3_item01.png", isStableItem: false, color: "" },
                 // { type: "S", size: [188, 188], xyr: [379, 428, 0], background: "L3_itemS01.png", isStableItem: true, color: "" },
@@ -882,11 +892,11 @@
         }, {
             level: "scorePage", background: "",
             btn: [
-                { name: "reStart", size: [20, 10], xyr: [25, 30, 0], background: "btn_start.png", act: () => game.goHome(), color: "" },
+                { name: "reStart", size: [20, 8], xyr: [25, 30, 0], background: "scorePBtn01.png", act: () => game.goHome(), color: "" },
             ], a: [
-                { name: "download", size: [20, 10], xyr: [25, 89, 0], background: "btn_start.png", a: "image/home_bg.png", download: true, act: nothing, color: "" },
-                { name: "link    ", size: [20, 10], xyr: [50, 89, 0], background: "btn_start.png", a: "image/home_bg.png", download: false, act: nothing, color: "" },
-                { name: "link    ", size: [20, 10], xyr: [75, 89, 0], background: "btn_start.png", a: "image/home_bg.png", download: false, act: nothing, color: "" },
+                { name: "download", size: [22.5, 9.5], xyr: [26, 89, 0], background: "scorePBtn02.png", a: "image/home_bg.png", download: true, act: nothing, color: "" },
+                { name: "link    ", size: [22.5, 9.5], xyr: [50, 89, 0], background: "scorePBtn03.png", a: "image/home_bg.png", download: false, act: nothing, color: "" },
+                { name: "link    ", size: [22.5, 9.5], xyr: [74, 89, 0], background: "scorePBtn04.png", a: "image/home_bg.png", download: false, act: nothing, color: "" },
             ], item: [], gameTime: 0, gameKachiNum: 0
         }
     ]
@@ -925,7 +935,7 @@
         name: "L3", h: "<span>恭喜你全都找到了！<br></span>前往下一關繼續挑戰吧～",
         c: "你的分數是: ",
         btn: [{
-            t: "下一關", a: () => {
+            t: "產生眼力分數", a: () => {
                 scene[1].open();
                 //延遲按鈕進場
                 scene[1].btn[0].object.style.opacity = 0
@@ -963,9 +973,33 @@
     //
     ///---------------------------------
 
+    // 入場 Mask
+
+    openMask = $css("openMask")[0]
+    startBtn = $css("startBtn")[0]
+
+    window.onload = () => {
+        openMask.style.opacity = 0.98
+        startBtn.style.opacity = 1
+        openMask.addEventListener("click", () => {
+            openMask.style.opacity = 0
+            setTimeout(() => openMask.remove(), 500)
+        })
+    }
+
+    // openMask.style.opacity = 0
+    // setTimeout(() => openMask.remove(), 500)
+
+
+    //啟動音樂
+    openCtx(openMask)
     openCtx(scene[0].btn[0].object)
 
-    // gameLevel[2][0].open()
+
+
+
+
+    // gameLevel[0][0].open()
     // gameLevel[1][1].open()
 
     // gameLevel[1][0].reNewScore()

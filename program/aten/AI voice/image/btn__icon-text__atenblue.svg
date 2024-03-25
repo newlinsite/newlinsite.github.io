@@ -1,0 +1,13 @@
+<svg id="btn__icon-text__atenblue" xmlns="http://www.w3.org/2000/svg" width="132" height="40" viewBox="0 0 132 40">
+  <rect id="Container" width="132" height="40" rx="2" fill="none"/>
+  <g id="content" transform="translate(10)">
+    <text id="Label" transform="translate(76 27)" fill="#008cff" font-size="18" font-family="YuGothicUI-Bold, Yu Gothic UI" font-weight="700" letter-spacing="0.036em"><tspan x="-36.964" y="0">合成說明</tspan></text>
+    <g id="btn_icon_02">
+      <rect id="Container-2" data-name="Container" width="40" height="40" rx="2" fill="#008cff" opacity="0"/>
+      <g id="icon_info" transform="translate(8.5 8.5)">
+        <path id="Path_1250" data-name="Path 1250" d="M0,0H23V23H0Z" fill="none"/>
+        <path id="info-outline" d="M8.543,14.39V8.69h1.914v5.7ZM9.5.139a9.151,9.151,0,0,1,6.719,2.784A9.14,9.14,0,0,1,19,9.625a9.143,9.143,0,0,1-2.781,6.7A9.146,9.146,0,0,1,9.5,19.111,9.156,9.156,0,0,1,2.78,16.327,9.135,9.135,0,0,1,0,9.625a9.144,9.144,0,0,1,2.781-6.7A9.149,9.149,0,0,1,9.5.139Zm0,17.1a7.305,7.305,0,0,0,5.362-2.227,7.343,7.343,0,0,0,2.225-5.389,7.343,7.343,0,0,0-2.225-5.389A7.305,7.305,0,0,0,9.5,2.009,7.3,7.3,0,0,0,4.138,4.236,7.348,7.348,0,0,0,1.914,9.625a7.338,7.338,0,0,0,2.225,5.389A7.307,7.307,0,0,0,9.5,17.24ZM8.543,6.774V4.859h1.914V6.774Z" transform="translate(2 1.861)" fill="#008cff"/>
+      </g>
+    </g>
+  </g>
+</svg>

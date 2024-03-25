@@ -5,6 +5,7 @@
         position: relative;
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
+
     }
 
     a {
@@ -29,11 +30,37 @@
 
     .gameOutContainer {
         width: 100%;
-        max-width: 480px;
+        max-width: 500px;
         height: 100%;
         margin: auto;
         overflow: hidden;
+        font-size: 16px;
     }
+
+
+    @media screen and (max-height: 830px) {
+        .gameOutContainer {
+            max-width: 400px;
+
+        }
+
+        .gameOutContainer * {
+            font-size: 14px;
+        }
+    }
+
+    @media screen and (max-height: 666px) {
+        .gameOutContainer {
+            max-width: 300px;
+            font-size: 16px;
+        }
+
+        .gameOutContainer * {
+            font-size: 12px;
+        }
+    }
+
+
 
     .gameContainer {
         background-color: #454545;
@@ -44,7 +71,82 @@
     }
 
 
+    .gameOutContainer .openMask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #08375E;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: 0.5s;
+        cursor: pointer;
+    }
 
+    .gameOutContainer .openMask .startBtn {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 40%;
+        padding-top: 20%;
+        background-color: #008CFF;
+        border-radius: 50%;
+        border: 3px solid #fff;
+        box-shadow: 5px 5px 0 rgba(12, 24, 64, 0.549);
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: 0.5s;
+    }
+
+    .gameOutContainer .openMask .startBtn p {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        margin: 0;
+        padding: 0;
+        font-size: 2em;
+        color: #fff;
+        font-weight: 800;
+    }
+
+
+    .gameOutContainer .openMask .balls {
+        width: 3.5em;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .gameOutContainer .openMask .balls div {
+        width: 0.8em;
+        height: 0.8em;
+        border-radius: 50%;
+        background-color: #008CFF;
+        transform: translateY(-100%);
+        animation: wave 0.8s ease-in-out alternate infinite;
+    }
+
+    .gameOutContainer .openMask .balls div:nth-of-type(1) {
+        animation-delay: -0.4s;
+    }
+
+    .gameOutContainer .openMask .balls div:nth-of-type(2) {
+        animation-delay: -0.2s;
+    }
+
+    @keyframes wave {
+        from {
+            transform: translateY(-100%);
+        }
+
+        to {
+            transform: translateY(100%);
+        }
+    }
 
     /******************************
             Game
@@ -160,7 +262,8 @@
     }
 
     .gameScene>.gameItem.on {
-        filter: drop-shadow(0px 0px 12px rgb(113, 243, 255));
+        /* filter: drop-shadow(0px 0px 12px rgb(113, 243, 255)); */
+        filter: drop-shadow(0px 0px 10px rgb(0, 229, 255));
     }
 
     .gameScene>.gameItem.over {
@@ -302,7 +405,7 @@
         top: 50%;
         transform: translate(-50%, -50%);
         color: #16115c;
-        font-size: 16px;
+        font-size: 1em;
         font-weight: 800;
     }
 
@@ -337,7 +440,7 @@
         position: absolute;
         left: 50%;
         top: 50%;
-        font-size: 25px;
+        font-size: 1.5em;
         font-weight: 900;
         transform: translate(-50%, -50%);
         color: #58699e;
@@ -381,7 +484,6 @@
         top: 50%;
         transform: translate(-50%, -50%);
         color: #ffffff;
-        font-size: 45px;
         background-color: #113469dc;
         width: 28%;
         padding-top: 28%;
@@ -389,6 +491,11 @@
         border-radius: 50%;
         animation: count 1s ease forwards 3;
     }
+
+    .gameContainer .countdownElement>div {
+        font-size: 2.8em;
+    }
+
 
     @keyframes count {
         0% {
@@ -425,7 +532,6 @@
            dialog
     *******************************/
     .dialog {
-
         position: absolute;
         top: 50%;
         left: 50%;
@@ -435,12 +541,10 @@
         box-shadow: 3px 5px 0 rgba(33, 33, 33, 0.5);
         border-radius: 16px;
         padding: 12px 12px 0px 12px;
-
         transform: translate(-50%, -50%) scale(0.5);
         opacity: 0;
         transition: 0.3s;
         z-index: 3000;
-
     }
 
     .dialog.fade {
@@ -450,7 +554,7 @@
 
 
     .dialog h5 {
-        font-size: 17px;
+        font-size: 1em;
         margin: 12px 0;
         text-align: center;
         font-weight: 400;
@@ -458,12 +562,12 @@
     }
 
     .dialog h5 span {
-        font-size: 24px;
+        font-size: 1.3em;
         font-weight: 800;
     }
 
     .dialog p {
-        font-size: 16px;
+        font-size: 1em;
         text-align: center;
         margin-bottom: -16px;
     }
@@ -482,7 +586,7 @@
         background-color: #007bff;
         border: 2px solid #0A4476;
         box-shadow: 3px 5px 0 rgba(33, 33, 33, 0.5);
-        font-size: 16px;
+        font-size: 1.2em;
         font-weight: 800;
         color: white;
         border-radius: 165px;
@@ -538,7 +642,7 @@
         left: 5%;
         transform: translate(0%, 0%);
         padding: 3.5% 5% 3.5% 16%;
-        font-size: 16px;
+        font-size: 1.2em;
         line-height: 1.5;
         border-radius: 40px;
         background-color: white;
@@ -550,7 +654,7 @@
         right: -3%;
         top: -15%;
         display: block;
-        font-size: 15px;
+        font-size: 1em;
         padding: 9px 32px;
         background-color: #0A4476;
         color: white;

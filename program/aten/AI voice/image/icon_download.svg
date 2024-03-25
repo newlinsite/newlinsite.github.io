@@ -1,6 +1,6 @@
-<svg id="icon_download" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-  <rect id="Layout" width="24" height="24" transform="translate(24 24) rotate(180)" fill="none"/>
-  <g id="round-download" transform="translate(5 4)">
-    <path id="Path_6786" data-name="Path 6786" d="M16.59,9H15V4a1,1,0,0,0-1-1H10A1,1,0,0,0,9,4V9H7.41a1,1,0,0,0-.71,1.71l4.59,4.59a1,1,0,0,0,1.41,0l4.59-4.59A1,1,0,0,0,16.59,9ZM5,19a1,1,0,0,0,1,1H18a1,1,0,1,0,0-2H6A1,1,0,0,0,5,19Z" transform="translate(-5 -3)" fill="#fff"/>
+<svg id="icon_download" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <rect id="Layout" width="20" height="20" transform="translate(20 20) rotate(180)" fill="none"/>
+  <g id="round-download" transform="translate(4.167 3.333)" opacity="0.6">
+    <path id="Path_6786" data-name="Path 6786" d="M14.658,8H13.333V3.833A.836.836,0,0,0,12.5,3H9.167a.836.836,0,0,0-.833.833V8H7.008a.836.836,0,0,0-.592,1.425l3.825,3.825a.83.83,0,0,0,1.175,0l3.825-3.825A.833.833,0,0,0,14.658,8ZM5,16.333a.836.836,0,0,0,.833.833h10a.833.833,0,1,0,0-1.667h-10A.836.836,0,0,0,5,16.333Z" transform="translate(-5 -3)"/>
   </g>
 </svg>
