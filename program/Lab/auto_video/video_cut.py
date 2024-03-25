@@ -521,7 +521,7 @@ for i in range(0,loopTimes):
     # 设置 Template > 用於帶入文字
     tem =  textTemplate[ template ]
 
-        
+       
     # 生成逐帧图像
     textLayer = []
     for j in range(len(fade)):
@@ -530,6 +530,11 @@ for i in range(0,loopTimes):
         # 將文字放入模板，根據模板上的欄位，(如果是list則帶入動態資訊)
         if (tem[j]['isDynamic']):
             tem[j]['text'] = df.loc[ df[ThemeCol] == Theme, tem[j]['col']].tolist()[i]
+            if isinstance(tem[j]['text'], str):
+                print(tem[j]['text'])
+            else:
+                tem[j]['text'] = ""
+                
          
         #是否輸出單張畫面 ( 觀看排版用 )
         if(singleImg):
