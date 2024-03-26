@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="kvmgame.css">
+    <link rel="stylesheet" href="kvmgame_p.css">
 </head>
 
 <body>
@@ -321,7 +321,7 @@
             this.container.classList.remove("fadeIn")
             this.nowText = "";
             this.nowTextIndex = 0;
-            this.fadeTimer = setTimeout(() => this.container.remove(), 1000);
+            this.fadeTimer = setTimeout(() => this.container.remove(), 500);
             bgm[this.voice].fadeStop()
             this.act()
         }
@@ -590,6 +590,7 @@
         }
         end() {
             this.closeAllScene()
+            musicAllStop()
 
             // loading 畫面
             new ImgToast("scorePage_loading_Bg.png", 2450, 500, "loadingPage", "fade", false, false, container, ["scorePage_loading.png", "interImg"])
@@ -597,12 +598,12 @@
             setTimeout(() => sound.play(3), 500)
 
             // 選擇眼力圖 > 開啟結果頁 > 更新分數 
-            const kekaNum = parseInt(this.score) + 1
+            const kekaNum = parseInt(this.score / 10) + 1
             let background = `scorePage_${kekaNum}`
             scorePage.object.style.backgroundImage = "url(" + imageUrlPrefix + background + ".png)"
             scorePage.open()
-            scorePage.scoreBar.classList.add("show")
-            scorePage.scoreBar.classList.add("scorePage")
+            // scorePage.scoreBar.classList.add("show")
+            // scorePage.scoreBar.classList.add("scorePage")
             scorePage.scoreBar.style.backgroundImage = ""
             scorePage.reNewScore()
         }
@@ -916,11 +917,11 @@
         }, {
             level: "scorePage", background: "",
             btn: [
-                { name: "reStart", size: [20, 8], xyr: [25, 30, 0], background: "scorePBtn01.png", act: () => game.goHome(), color: "" },
+                { name: "reStart", size: [18, 7], xyr: [25, 24.5, 0], background: "scorePBtn01.png", act: () => game.goHome(), color: "" },
             ], a: [
-                { name: "download", size: [22.5, 9.5], xyr: [26, 89, 0], background: "scorePBtn02.png", a: "#", download: true, act: nothing, color: "" },
-                { name: "link    ", size: [22.5, 9.5], xyr: [50, 89, 0], background: "scorePBtn03.png", a: "#", download: false, act: nothing, color: "" },
-                { name: "link    ", size: [22.5, 9.5], xyr: [74, 89, 0], background: "scorePBtn04.png", a: "#", download: false, act: nothing, color: "" },
+                { name: "download", size: [21, 9], xyr: [26.5, 89, 0], background: "scorePBtn02.png", a: "#", download: true, act: nothing, color: "" },
+                { name: "link    ", size: [21, 9], xyr: [49, 89, 0], background: "scorePBtn03.png", a: "#", download: false, act: nothing, color: "" },
+                { name: "link    ", size: [21, 9], xyr: [71.5, 89, 0], background: "scorePBtn04.png", a: "#", download: false, act: nothing, color: "" },
             ], item: [], gameTime: 0, gameKachiNum: 0
         }
     ]
@@ -972,7 +973,9 @@
     },]
 
     var timeOutText = "<span>時間到囉！</span><br>下一關我們繼續加油～"
-    var gameStartNow = () => gameLevel[game.nowLevel[0]][game.nowLevel[1]].gameStart()
+    var gameStartNow = () => {
+        gameLevel[game.nowLevel[0]][game.nowLevel[1]].gameStart()
+    }
     var showGoToEndBtn = () => {
         scene[1].btn[0].object.style.opacity = 1
         scene[1].btn[0].object.style.transform = "translate(-50%, -50%) scale(1)"
@@ -1047,7 +1050,7 @@
     // gameLevel[1][0].reNewScore()
     // gameLevel[1][0].reNewTimeBar(30)
     game.goHome()
-    // game.end()
+    game.end()
     // game.goToLevel(0)
     // scene[1].open()
 
