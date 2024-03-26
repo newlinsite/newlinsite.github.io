@@ -30,18 +30,23 @@
 
     .gameOutContainer {
         width: 100%;
-        max-width: 500px;
+        max-width: 490px;
         height: 100%;
         margin: auto;
         overflow: hidden;
         font-size: 16px;
     }
 
+    @media screen and (orientation:portrait) {
+        .gameOutContainer {
+            max-width: 610px;
+        }
+    }
+
 
     @media screen and (max-height: 830px) {
         .gameOutContainer {
             max-width: 400px;
-
         }
 
         .gameOutContainer * {
@@ -148,8 +153,13 @@
         }
     }
 
+
     /******************************
-            Game
+
+    
+            Game Scene
+
+
     *******************************/
 
     .gameScene {
@@ -318,16 +328,12 @@
 
     }
 
-
-    .loadingPage::after {
+    .loadingPage .interImg {
         content: "";
         position: absolute;
         top: 41.4%;
-        /* left: 48.6%; */
-        /* width: 66.2%; */
         height: 3.2%;
         transform: translate(-50%, -50%);
-        /* background-color: #9e2b2b; */
         background-image: url("image/scorePage_loading.png");
         background-size: cover;
         background-position: 0 center;
@@ -375,7 +381,6 @@
     /*  scoreBar   timeBar  */
     .gameContainer .scoreBar,
     .gameContainer .timeBar {
-        background-image: url(image/bg_score.png);
         background-size: contain;
         background-repeat: no-repeat;
         width: 27.78%;
@@ -394,7 +399,6 @@
     }
 
     .gameContainer .timeBar {
-        background-image: url(image/bg_time.png);
         left: 75%;
     }
 
@@ -415,7 +419,6 @@
         height: 10%;
         left: 20%;
         top: 24%;
-        background-image: url("");
     }
 
 

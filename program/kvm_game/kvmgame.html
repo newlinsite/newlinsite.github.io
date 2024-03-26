@@ -499,7 +499,7 @@
             game.onMaskOn()
             this.scoreBar.classList.add("show")
             this.timeBar.classList.add("show")
-            sound.play(4)
+            sound.play(4, "", 0.5)
 
             //開始遊戲前倒數
             this.countdownElement = document.createElement("div");
@@ -737,6 +737,12 @@
         return musicInstance;
     });
     bgm[0].gainNode.gain.value = 0.2
+    bgm[2].gainNode.gain.value = 2.5
+    bgm[3].gainNode.gain.value = 2.5
+    bgm[4].gainNode.gain.value = 2.5
+    bgm[5].gainNode.gain.value = 2.5
+    bgm[6].gainNode.gain.value = 2.5
+
 
 
     // Mute 功能
