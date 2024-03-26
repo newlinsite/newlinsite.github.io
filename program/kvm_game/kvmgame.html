@@ -613,12 +613,14 @@
             // 選擇眼力圖 > 開啟結果頁 > 更新分數 
             const kekaNum = parseInt(this.score / 10) + 1
             let background = `scorePage_${kekaNum}`
-            scorePage.object.style.backgroundImage = "url(" + imageUrlPrefix + background + ".png)"
+            scorePage.object.style.backgroundImage = "url(" + imageUrlPrefix + background + ".png"
+            scene[2].a[0].object.href = imageUrlPrefix + background + ".png"
             scorePage.open()
             // scorePage.scoreBar.classList.add("show")
             // scorePage.scoreBar.classList.add("scorePage")
             scorePage.scoreBar.style.backgroundImage = ""
             scorePage.reNewScore()
+
         }
         goHome() {
             this.closeAllScene()
@@ -922,7 +924,7 @@
         }, {
             level: "scorePage", background: "",
             btn: [
-                { name: "reStart", size: [18, 7], xyr: [25, 24.5, 0], background: "scorePBtn01.png", act: () => game.goHome(), color: "" },
+                { name: "reStart", size: [0, 0], xyr: [25, 24.5, 0], background: "scorePBtn01.png", act: () => game.goHome(), color: "" },
             ], a: [
                 { name: "download", size: [21, 9], xyr: [26.5, 89, 0], background: "scorePBtn02.png", a: "#", download: true, act: nothing, color: "" },
                 { name: "link    ", size: [21, 9], xyr: [49, 89, 0], background: "scorePBtn03.png", a: "#", download: false, act: nothing, color: "" },
