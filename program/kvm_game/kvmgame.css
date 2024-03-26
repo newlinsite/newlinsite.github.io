@@ -148,8 +148,13 @@
         }
     }
 
+
     /******************************
-            Game
+
+    
+            Game Scene
+
+
     *******************************/
 
     .gameScene {
@@ -318,16 +323,12 @@
 
     }
 
-
     .loadingPage::after {
         content: "";
         position: absolute;
         top: 41.4%;
-        /* left: 48.6%; */
-        /* width: 66.2%; */
         height: 3.2%;
         transform: translate(-50%, -50%);
-        /* background-color: #9e2b2b; */
         background-image: url("image/scorePage_loading.png");
         background-size: cover;
         background-position: 0 center;

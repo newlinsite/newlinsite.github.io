@@ -42,6 +42,8 @@
         // console.log("nothing")
     }
 
+    var imageUrlPrefix = "image/"
+
 
     // ------------------------
     // toggle
@@ -120,7 +122,7 @@
     class ImgToast {
         constructor(bg = "", duration = 1500, fadeTime = 1500, style = false, fadeStyle = "", fadeIn = false, xy = false, where = container) {
             this.container = document.createElement("div");
-            this.container.style.backgroundImage = "url(image/" + bg + ")"
+            this.container.style.backgroundImage = "url(" + imageUrlPrefix + bg + ")"
             where.appendChild(this.container)
 
             //設定位置
@@ -179,7 +181,7 @@
                 this.object = document.createElement("div")
             }
             this.object.classList = style
-            this.object.style.backgroundImage = "url(image/" + attr.background + ")"
+            this.object.style.backgroundImage = "url(" + imageUrlPrefix + attr.background + ")"
             this.object.style.backgroundColor = attr.color
             this.object.style.width = attr.size[0] + "%"
             this.object.style.paddingTop = attr.size[1] + "%"
@@ -273,7 +275,7 @@
 
             this.avatar = document.createElement("div");
             this.avatar.classList.add("avatar");
-            this.avatar.style.backgroundImage = "url(image/" + avatarBg + ")";
+            this.avatar.style.backgroundImage = "url(" + imageUrlPrefix + avatarBg + ")";
             this.container.appendChild(this.avatar);
 
             this.button = document.createElement("button");
@@ -321,7 +323,7 @@
         ) {
             this.object = document.createElement("div")
             this.object.classList = "gameScene"
-            this.object.style.backgroundImage = "url(image/" + attr.background + ")"
+            this.object.style.backgroundImage = "url(" + imageUrlPrefix + attr.background + ")"
             this.state = 0
             this.level = attr.level
             this.gameFullTime = attr.gameTime
@@ -396,6 +398,7 @@
             // Time Bar
             this.timeBar = document.createElement("div")
             this.timeBar.classList = "timeBar"
+            this.timeBar.style.backgroundImage = "url(" + imageUrlPrefix + "bg_score.png)"
             this.object.appendChild(this.timeBar)
             this.timeBarNumber = document.createElement("div")
             this.timeBarNumber.classList = "timeBarNumber"
@@ -584,7 +587,7 @@
             // 選擇眼力圖 > 開啟結果頁 > 更新分數 
             const kekaNum = parseInt(this.score) + 1
             let background = `scorePage_${kekaNum}`
-            scorePage.object.style.backgroundImage = "url(image/" + background + ".png)"
+            scorePage.object.style.backgroundImage = "url(" + imageUrlPrefix + background + ".png)"
             scorePage.open()
             scorePage.scoreBar.classList.add("show")
             scorePage.scoreBar.classList.add("scorePage")
@@ -874,7 +877,7 @@
 
     var shareLink = [
         "https://www.facebook.com/sharer.php?u＝網址",
-        "program/kvm_game/image/"
+        "program/kvm_game/"
     ]
     sceneAttr = [
         {
@@ -894,9 +897,9 @@
             btn: [
                 { name: "reStart", size: [20, 8], xyr: [25, 30, 0], background: "scorePBtn01.png", act: () => game.goHome(), color: "" },
             ], a: [
-                { name: "download", size: [22.5, 9.5], xyr: [26, 89, 0], background: "scorePBtn02.png", a: "image/home_bg.png", download: true, act: nothing, color: "" },
-                { name: "link    ", size: [22.5, 9.5], xyr: [50, 89, 0], background: "scorePBtn03.png", a: "image/home_bg.png", download: false, act: nothing, color: "" },
-                { name: "link    ", size: [22.5, 9.5], xyr: [74, 89, 0], background: "scorePBtn04.png", a: "image/home_bg.png", download: false, act: nothing, color: "" },
+                { name: "download", size: [22.5, 9.5], xyr: [26, 89, 0], background: "scorePBtn02.png", a: "#", download: true, act: nothing, color: "" },
+                { name: "link    ", size: [22.5, 9.5], xyr: [50, 89, 0], background: "scorePBtn03.png", a: "#", download: false, act: nothing, color: "" },
+                { name: "link    ", size: [22.5, 9.5], xyr: [74, 89, 0], background: "scorePBtn04.png", a: "#", download: false, act: nothing, color: "" },
             ], item: [], gameTime: 0, gameKachiNum: 0
         }
     ]
