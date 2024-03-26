@@ -274,6 +274,7 @@
             this.timer = null;
             this.fadeTimer = null;
 
+
             this.text = text;
             this.nowText = "";
             this.nowTextIndex = 0;
@@ -314,6 +315,7 @@
             if (this.voice) {
                 bgm[this.voice].play()
             }
+
         }
 
         remove(where = container) {
@@ -324,6 +326,7 @@
             this.fadeTimer = setTimeout(() => this.container.remove(), 500);
             bgm[this.voice].fadeStop()
             this.act()
+
         }
     }
 
@@ -342,6 +345,7 @@
             this.gameNowNum = 0
             container.appendChild(this.object)
 
+            this.playingTag = false
 
             // 創建 Button Item 
             if (attr.btn) {
@@ -498,6 +502,11 @@
         }
 
         gameStart(startTime = 3) {
+            if (this.playingTag) {
+                return test(this.level + " is playing")
+            }
+            test(this.level + " start")
+            this.playingTag = true
             game.onMaskOn()
             this.scoreBar.classList.add("show")
             this.timeBar.classList.add("show")
@@ -531,8 +540,10 @@
             )
         }
         gameOver(isTimeOut = false) {
+
             overDialog[Math.floor(this.level / 100) - 1].show(isTimeOut)
             this.reset()
+            test(this.level + " gameOVer")
         }
         open() {
             this.object.style.height = 100 + "%"
@@ -566,6 +577,8 @@
             this.timeBar.classList.remove("show")
             //停止所有音樂
             musicAllStop()
+            this.playingTag = false
+            // test(this.level + " reset")
         }
     }
 
@@ -641,7 +654,10 @@
                 gameLevel[num][randomIndex].reNewScore()
                 gameLevel[num][randomIndex].reNewTimeBar(gameLevel[num][randomIndex].gameFullTime)
                 game.onMaskOn(0.3)
+
                 say[num + 1].show()
+
+
                 if (isStartGame) {
                     // setTimeout 為分流不同步 reset() 中的功能( 如:停止timer )
                     setTimeout(() => { gameLevel[num][randomIndex].gameStart() }, 0)
@@ -854,17 +870,6 @@
         },], [{
             level: 301, background: "level03_Bg.png", gameTime: 10, gameKachiNum: 5,
             item: [
-                // { type: "K", size: [115, 100], xyr: [380, 382, 0], background: "L3_item01.png", isStableItem: false, color: "" },
-                // { type: "S", size: [188, 188], xyr: [379, 428, 0], background: "L3_itemS01.png", isStableItem: true, color: "" },
-                // { type: "K", size: [174, 172], xyr: [569, 1000, 0], background: "L3_item02.png", isStableItem: false, color: "" },
-                // { type: "S", size: [183, 172], xyr: [573, 1000, 0], background: "L3_itemS02.png", isStableItem: true, color: "" },
-                // { type: "K", size: [100, 100], xyr: [283, 1008, 0], background: "L3_item03.png", isStableItem: false, color: "" },
-                // { type: "S", size: [224, 209], xyr: [242, 959, 0], background: "L3_itemS03.png", isStableItem: true, color: "" },
-                // { type: "K", size: [90, 77], xyr: [839, 1230, 0], background: "L3_item04.png", isStableItem: false, color: "" },
-                // { type: "S", size: [350, 287], xyr: [706, 1136, 0], background: "L3_itemS04.png", isStableItem: true, color: "" },
-                // { type: "K", size: [150, 163], xyr: [74, 1158, 0], background: "L3_item05.png", isStableItem: false, color: "" },
-                // { type: "S", size: [182, 308], xyr: [48, 1117, 0], background: "L3_itemS05.png", isStableItem: true, color: "" },
-                // { type: "S", size: [112, 145], xyr: [585, 1590, 0], background: "L3_itemS06.png", isStableItem: true, color: "" },
                 { type: "K", size: [115, 100], xyr: [480, 428, 0], background: "L3_item01.png", isStableItem: false, color: "" },
                 { type: "S", size: [188, 188], xyr: [379, 428, 0], background: "L3_itemS01.png", isStableItem: true, color: "" },
                 { type: "K", size: [174, 172], xyr: [569, 1000, 0], background: "L3_item02.png", isStableItem: false, color: "" },
@@ -975,6 +980,7 @@
     var timeOutText = "<span>時間到囉！</span><br>下一關我們繼續加油～"
     var gameStartNow = () => {
         gameLevel[game.nowLevel[0]][game.nowLevel[1]].gameStart()
+        test(11)
     }
     var showGoToEndBtn = () => {
         scene[1].btn[0].object.style.opacity = 1
@@ -984,10 +990,10 @@
 
     var sayAttr = [
         { name: "", voice: 2, t: 1500, act: nothing, bg: "faceK01.png", c: "Let me see see 你的眼力多好！" },
-        { name: "", voice: 3, t: 2000, act: gameStartNow, bg: "faceK02.png", c: "記得連續點擊你看到的兩個相同的電腦，點擊正確才會算分喔！" },
-        { name: "", voice: 4, t: 2000, act: gameStartNow, bg: "faceK03.png", c: "連續點擊你看到的兩個相同的鍵盤或滑鼠，把你的桌面恢復乾淨吧！" },
-        { name: "", voice: 5, t: 2000, act: gameStartNow, bg: "faceK04.png", c: "快來找我! 快看看我在哪" },
-        { name: "", voice: 6, t: 3000, act: showGoToEndBtn, bg: "faceK05.png", c: "有了偶，就只需要用一組鍵盤滑鼠和一個螢幕就可以輕鬆在兩台電腦中切換，真是天下無敵方便呀！" },
+        { name: "", voice: 3, t: 1500, act: gameStartNow, bg: "faceK02.png", c: "記得連續點擊你看到的兩個相同的電腦，點擊正確才會算分喔！" },
+        { name: "", voice: 4, t: 1500, act: gameStartNow, bg: "faceK03.png", c: "連續點擊你看到的兩個相同的鍵盤或滑鼠，把你的桌面恢復乾淨吧！" },
+        { name: "", voice: 5, t: 1500, act: gameStartNow, bg: "faceK04.png", c: "快來找我! 快看看我在哪" },
+        { name: "", voice: 6, t: 2000, act: showGoToEndBtn, bg: "faceK05.png", c: "有了偶，就只需要用一組鍵盤滑鼠和一個螢幕就可以輕鬆在兩台電腦中切換，真是天下無敵方便呀！" },
     ]
 
     const overDialog = Array.from({ length: overDAttr.length }, (_, i) => new Dialog(overDAttr[i].h, overDAttr[i].c, overDAttr[i].btn))
@@ -1050,10 +1056,12 @@
     // gameLevel[1][0].reNewScore()
     // gameLevel[1][0].reNewTimeBar(30)
     game.goHome()
-    game.end()
+    // game.end()
     // game.goToLevel(0)
     // scene[1].open()
 
+
+    // game.goToDetail(2)
 
 
 
