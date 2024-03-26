@@ -39,7 +39,7 @@
 
     @media screen and (orientation:portrait) {
         .gameOutContainer {
-            max-width: 610px;
+            max-width: 800px;
         }
     }
 

@@ -267,7 +267,7 @@
     }
 
     class Say {
-        constructor(text, avatarBg, buttonText = "Skip", duration = 3000, voice = false) {
+        constructor(text, avatarBg, buttonText = "Skip", duration = 3000, voice = false, act = nothing) {
             this.container = document.createElement("div");
             this.container.classList.add("say");
             this.duration = duration;
@@ -322,6 +322,7 @@
             this.nowTextIndex = 0;
             this.fadeTimer = setTimeout(() => this.container.remove(), 1000);
             bgm[this.voice].fadeStop()
+            act()
         }
     }
 
@@ -629,7 +630,7 @@
             }, 1500)
             bgm[1].play("loop")
         }
-        goToLevel(num) {
+        goToLevel(num, isStartGame = false) {
             this.closeAllScene()
             const randomIndex = Math.floor(Math.random() * gameLevel[num].length);
             if (this.nowLevel != [num, randomIndex]) {
@@ -639,8 +640,10 @@
                 gameLevel[num][randomIndex].reNewTimeBar(gameLevel[num][randomIndex].gameFullTime)
                 game.onMaskOn(0.3)
                 say[num + 1].show()
-                // setTimeout 為分流不同步 reset() 中的功能( 如:停止timer )
-                setTimeout(() => { gameLevel[num][randomIndex].gameStart() }, say[num].duration)
+                if (isStartGame) {
+                    // setTimeout 為分流不同步 reset() 中的功能( 如:停止timer )
+                    setTimeout(() => { gameLevel[num][randomIndex].gameStart() }, 0)
+                }
                 this.nowLevel = [num, randomIndex]
                 test("level now is " + this.nowLevel)
             }
@@ -952,7 +955,7 @@
         c: "你的分數是: ",
         btn: [{ t: "下一關", a: () => { game.goToDetail(2); overDialog[1].remove() } }]
     }, {
-        name: "L3", h: "<span>恭喜你全都找到了！<br></span>前往下一關繼續挑戰吧～",
+        name: "L3", h: "<span>恭喜你全都找到了！</span>",
         c: "你的分數是: ",
         btn: [{
             t: "產生眼力分數", a: () => {
@@ -970,17 +973,19 @@
             }
         }]
     },]
+
     var timeOutText = "<span>時間到囉！</span><br>下一關我們繼續加油～"
+    var gameStartNow = () => { gameLevel[game.nowLevel[0]][game.nowLevel[1]].gameStart() }
     var sayAttr = [
         { name: "", voice: 2, t: 1500, bg: "faceK01.png", c: "Let me see see 你的眼力多好！" },
         { name: "", voice: 3, t: 2000, bg: "faceK02.png", c: "記得連續點擊你看到的兩個相同的電腦，點擊正確才會算分喔！" },
         { name: "", voice: 4, t: 2000, bg: "faceK03.png", c: "連續點擊你看到的兩個相同的鍵盤或滑鼠，把你的桌面恢復乾淨吧！" },
         { name: "", voice: 5, t: 2000, bg: "faceK04.png", c: "快來找我! 快看看我在哪" },
         { name: "", voice: 6, t: 4000, bg: "faceK05.png", c: "有了偶，就只需要用一組鍵盤滑鼠和一個螢幕就可以輕鬆在兩台電腦中切換，真是天下無敵方便呀！" },
-
     ]
+
     const overDialog = Array.from({ length: overDAttr.length }, (_, i) => new Dialog(overDAttr[i].h, overDAttr[i].c, overDAttr[i].btn))
-    const say = Array.from({ length: sayAttr.length }, (_, i) => new Say(sayAttr[i].c, sayAttr[i].bg, "Skip", sayAttr[i].t, sayAttr[i].voice))
+    const say = Array.from({ length: sayAttr.length }, (_, i) => new Say(sayAttr[i].c, sayAttr[i].bg, "Skip", sayAttr[i].t, sayAttr[i].voice, sayAttr[i].act))
 
 
 
