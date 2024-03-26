@@ -5,25 +5,25 @@
       <stop offset="1" stop-color="#008cff"/>
     </linearGradient>
     <clipPath id="clip-path">
-      <rect id="Mask" width="24" height="24" transform="translate(-0.472 0.001)" fill="#4a4a4a"/>
+      <rect id="Mask" width="24" height="24" transform="translate(-0.472 0.001)" fill="#161616"/>
     </clipPath>
     <clipPath id="clip-path-2">
-      <path id="Path_94" data-name="Path 94" d="M6-14a1,1,0,0,1,1,1H7v9.492L9.542-6.05a1,1,0,0,1,1.414,0,1,1,0,0,1,0,1.414L6.714-.393a1,1,0,0,1-1.414,0L1.057-4.636a1,1,0,0,1,0-1.414,1,1,0,0,1,1.414,0L5-3.522V-13a1,1,0,0,1,.883-.993Z" transform="translate(-0.764 14)" fill="#4a4a4a"/>
+      <path id="Path_94" data-name="Path 94" d="M6-14a1,1,0,0,1,1,1H7v9.492L9.542-6.05a1,1,0,0,1,1.414,0,1,1,0,0,1,0,1.414L6.714-.393a1,1,0,0,1-1.414,0L1.057-4.636a1,1,0,0,1,0-1.414,1,1,0,0,1,1.414,0L5-3.522V-13a1,1,0,0,1,.883-.993Z" transform="translate(-0.764 14)" fill="#161616"/>
     </clipPath>
     <clipPath id="clip-path-3">
-      <rect id="Rectangle_21" data-name="Rectangle 21" width="22" height="24" fill="#4a4a4a"/>
+      <rect id="Rectangle_21" data-name="Rectangle 21" width="22" height="24" fill="#161616"/>
     </clipPath>
     <clipPath id="clip-path-4">
-      <path id="Path_93" data-name="Path 93" d="M0,0H12V-14H0Z" transform="translate(0 14)" fill="#4a4a4a"/>
+      <path id="Path_93" data-name="Path 93" d="M0,0H12V-14H0Z" transform="translate(0 14)" fill="#161616"/>
     </clipPath>
     <clipPath id="clip-path-5">
-      <rect id="Mask-2" data-name="Mask" width="24" height="24" transform="translate(0.472 -0.001)" fill="#4a4a4a"/>
+      <rect id="Mask-2" data-name="Mask" width="24" height="24" transform="translate(0.472 -0.001)" fill="#161616"/>
     </clipPath>
     <clipPath id="clip-path-6">
-      <path id="Path_94-2" data-name="Path 94" d="M5.236,0a1,1,0,0,1,1,1h0v9.492L8.778,7.95a1,1,0,1,1,1.414,1.414L5.95,13.607a1,1,0,0,1-1.414,0L.293,9.364A1,1,0,1,1,1.707,7.95l2.529,2.528V1A1,1,0,0,1,5.119.007Z" fill="#4a4a4a"/>
+      <path id="Path_94-2" data-name="Path 94" d="M5.236,0a1,1,0,0,1,1,1h0v9.492L8.778,7.95a1,1,0,1,1,1.414,1.414L5.95,13.607a1,1,0,0,1-1.414,0L.293,9.364A1,1,0,1,1,1.707,7.95l2.529,2.528V1A1,1,0,0,1,5.119.007Z" fill="#161616"/>
     </clipPath>
     <clipPath id="clip-path-8">
-      <path id="Path_93-2" data-name="Path 93" d="M0,14H12V0H0Z" fill="#4a4a4a"/>
+      <path id="Path_93-2" data-name="Path 93" d="M0,14H12V0H0Z" fill="#161616"/>
     </clipPath>
     <clipPath id="clip-path-9">
       <circle id="Mask-3" data-name="Mask" cx="16" cy="16" r="16" transform="translate(0 0.003)" fill="#fff" stroke="#707070" stroke-width="1"/>
@@ -37,7 +37,7 @@
       <rect width="126" height="33" rx="16.5" stroke="none"/>
       <rect x="0.5" y="0.5" width="125" height="32" rx="16" fill="none"/>
     </g>
-    <g id="Rectangle_8015" data-name="Rectangle 8015" transform="translate(177 2)" fill="rgba(214,214,214,0.1)" stroke="#d6d6d6" stroke-width="1">
+    <g id="Rectangle_8015" data-name="Rectangle 8015" transform="translate(177 2)" fill="rgba(214,214,214,0.1)" stroke="#d6d6d6" stroke-width="1" opacity="0">
       <rect width="237" height="33" rx="16.5" stroke="none"/>
       <rect x="0.5" y="0.5" width="236" height="32" rx="16" fill="none"/>
     </g>
@@ -52,7 +52,7 @@
         <rect id="Container" width="32" height="32" rx="16" transform="translate(31.528 32.001) rotate(180)" fill="none"/>
         <g id="icon_more" transform="translate(4 4)">
           <rect id="Layout" width="24" height="24" transform="translate(-0.472 0.001)" fill="none"/>
-          <path id="more-vert" d="M1.877,5.111A1.807,1.807,0,0,1,.552,4.559,1.833,1.833,0,0,1,0,3.212,1.831,1.831,0,0,1,.552,1.865a1.811,1.811,0,0,1,1.325-.552A1.8,1.8,0,0,1,3.2,1.865a1.836,1.836,0,0,1,.553,1.347A1.829,1.829,0,0,1,3.2,4.559a1.806,1.806,0,0,1-1.325.552Zm0,1.855A1.807,1.807,0,0,1,3.2,7.518a1.919,1.919,0,0,1,0,2.694,1.808,1.808,0,0,1-1.325.552A1.808,1.808,0,0,1,.55,10.212a1.919,1.919,0,0,1,0-2.694,1.807,1.807,0,0,1,1.325-.552Zm0,5.653a1.807,1.807,0,0,1,1.325.552,1.919,1.919,0,0,1,0,2.694,1.808,1.808,0,0,1-1.325.552,1.808,1.808,0,0,1-1.325-.552,1.919,1.919,0,0,1,0-2.694,1.807,1.807,0,0,1,1.325-.552Z" transform="translate(9.779 3.137)" fill="#4a4a4a"/>
+          <path id="more-vert" d="M1.877,5.111A1.807,1.807,0,0,1,.552,4.559,1.833,1.833,0,0,1,0,3.212,1.831,1.831,0,0,1,.552,1.865a1.811,1.811,0,0,1,1.325-.552A1.8,1.8,0,0,1,3.2,1.865a1.836,1.836,0,0,1,.553,1.347A1.829,1.829,0,0,1,3.2,4.559a1.806,1.806,0,0,1-1.325.552Zm0,1.855A1.807,1.807,0,0,1,3.2,7.518a1.919,1.919,0,0,1,0,2.694,1.808,1.808,0,0,1-1.325.552A1.808,1.808,0,0,1,.55,10.212a1.919,1.919,0,0,1,0-2.694,1.807,1.807,0,0,1,1.325-.552Zm0,5.653a1.807,1.807,0,0,1,1.325.552,1.919,1.919,0,0,1,0,2.694,1.808,1.808,0,0,1-1.325.552,1.808,1.808,0,0,1-1.325-.552,1.919,1.919,0,0,1,0-2.694,1.807,1.807,0,0,1,1.325-.552Z" transform="translate(9.779 3.137)" fill="#161616"/>
         </g>
       </g>
       <g id="icon_sort_down" data-name="icon_sort down" transform="translate(40)" opacity="0.6">
@@ -64,7 +64,7 @@
                 <g id="Group_249" data-name="Group 249" transform="translate(-5.764 -5)">
                   <g id="Group_248" data-name="Group 248" clip-path="url(#clip-path-3)">
                     <g id="Group_247" data-name="Group 247" transform="translate(5 5)" clip-path="url(#clip-path-4)">
-                      <path id="Path_92" data-name="Path 92" d="M-4.236-19H16.249V4.9H-4.236Z" transform="translate(0 14)" fill="#4a4a4a"/>
+                      <path id="Path_92" data-name="Path 92" d="M-4.236-19H16.249V4.9H-4.236Z" transform="translate(0 14)" fill="#161616"/>
                     </g>
                   </g>
                 </g>
@@ -82,7 +82,7 @@
                 <g id="Group_249-2" data-name="Group 249" transform="translate(-5.764 -5)">
                   <g id="Group_248-2" data-name="Group 248" clip-path="url(#clip-path-3)">
                     <g id="Group_247-2" data-name="Group 247" transform="translate(5 5)" clip-path="url(#clip-path-8)">
-                      <path id="Path_92-2" data-name="Path 92" d="M0,0H20.485V23.9H0Z" transform="translate(-4.236 -5)" fill="#4a4a4a"/>
+                      <path id="Path_92-2" data-name="Path 92" d="M0,0H20.485V23.9H0Z" transform="translate(-4.236 -5)" fill="#161616"/>
                     </g>
                   </g>
                 </g>

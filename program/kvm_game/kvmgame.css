@@ -323,7 +323,7 @@
 
     }
 
-    .loadingPage::after {
+    .loadingPage .interImg {
         content: "";
         position: absolute;
         top: 41.4%;
@@ -376,7 +376,6 @@
     /*  scoreBar   timeBar  */
     .gameContainer .scoreBar,
     .gameContainer .timeBar {
-        background-image: url(image/bg_score.png);
         background-size: contain;
         background-repeat: no-repeat;
         width: 27.78%;
@@ -395,7 +394,6 @@
     }
 
     .gameContainer .timeBar {
-        background-image: url(image/bg_time.png);
         left: 75%;
     }
 
@@ -416,7 +414,6 @@
         height: 10%;
         left: 20%;
         top: 24%;
-        background-image: url("");
     }
 
 

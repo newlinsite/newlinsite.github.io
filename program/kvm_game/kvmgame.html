@@ -120,7 +120,9 @@
         }
     }
     class ImgToast {
-        constructor(bg = "", duration = 1500, fadeTime = 1500, style = false, fadeStyle = "", fadeIn = false, xy = false, where = container) {
+        constructor(bg = "", duration = 1500, fadeTime = 1500, style = false, fadeStyle = "", fadeIn = false,
+            xy = false, where = container, interImg = false) {
+
             this.container = document.createElement("div");
             this.container.style.backgroundImage = "url(" + imageUrlPrefix + bg + ")"
             where.appendChild(this.container)
@@ -129,7 +131,14 @@
             if (xy) {
                 this.container.style.left = xy[0]
                 this.container.style.top = xy[1]
-                test(xy[1])
+            }
+
+            //插入圖
+            if (interImg) {
+                this.interImg = document.createElement("div");
+                this.interImg.style.backgroundImage = "url(" + imageUrlPrefix + interImg[0] + ")"
+                this.interImg.classList.add(interImg[1]);
+                this.container.appendChild(this.interImg)
             }
 
             //如果沒有自設 style 套用預設
@@ -390,6 +399,7 @@
             // Score Bar 
             this.scoreBar = document.createElement("div")
             this.scoreBar.classList = "scoreBar"
+            this.scoreBar.style.backgroundImage = "url(" + imageUrlPrefix + "bg_score.png)"
             this.object.appendChild(this.scoreBar)
             this.scoreBarNumber = document.createElement("div")
             this.scoreBarNumber.classList = "scoreBarNumber"
@@ -398,7 +408,7 @@
             // Time Bar
             this.timeBar = document.createElement("div")
             this.timeBar.classList = "timeBar"
-            this.timeBar.style.backgroundImage = "url(" + imageUrlPrefix + "bg_score.png)"
+            this.timeBar.style.backgroundImage = "url(" + imageUrlPrefix + "bg_time.png)"
             this.object.appendChild(this.timeBar)
             this.timeBarNumber = document.createElement("div")
             this.timeBarNumber.classList = "timeBarNumber"
@@ -580,7 +590,7 @@
             this.closeAllScene()
 
             // loading 畫面
-            new ImgToast("scorePage_loading_Bg.png", 2450, 500, "loadingPage", "fade")
+            new ImgToast("scorePage_loading_Bg.png", 2450, 500, "loadingPage", "fade", false, false, container, ["scorePage_loading.png", "interImg"])
             const scorePage = scene.find(p => p.level === "scorePage");
             setTimeout(() => sound.play(3), 500)
 
@@ -591,6 +601,7 @@
             scorePage.open()
             scorePage.scoreBar.classList.add("show")
             scorePage.scoreBar.classList.add("scorePage")
+            scorePage.scoreBar.style.backgroundImage = ""
             scorePage.reNewScore()
         }
         goHome() {
