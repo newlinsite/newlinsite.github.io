@@ -321,7 +321,7 @@
             this.container.classList.remove("fadeIn")
             this.nowText = "";
             this.nowTextIndex = 0;
-            this.fadeTimer = setTimeout(() => this.container.remove(), 1000);
+            this.fadeTimer = setTimeout(() => this.container.remove(), 500);
             bgm[this.voice].fadeStop()
             this.act()
         }
@@ -972,7 +972,9 @@
     },]
 
     var timeOutText = "<span>時間到囉！</span><br>下一關我們繼續加油～"
-    var gameStartNow = () => gameLevel[game.nowLevel[0]][game.nowLevel[1]].gameStart()
+    var gameStartNow = () => {
+        gameLevel[game.nowLevel[0]][game.nowLevel[1]].gameStart()
+    }
     var showGoToEndBtn = () => {
         scene[1].btn[0].object.style.opacity = 1
         scene[1].btn[0].object.style.transform = "translate(-50%, -50%) scale(1)"

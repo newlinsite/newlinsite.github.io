@@ -88,7 +88,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        transition: 1.2s;
+        transition: 1.6s;
         cursor: pointer;
     }
 
@@ -104,7 +104,7 @@
         box-shadow: 5px 5px 0 rgba(12, 24, 64, 0.549);
         transform: translate(-50%, -50%);
         opacity: 0;
-        transition: 1.2s;
+        transition: 1.5s;
     }
 
     .gameOutContainer .openMask .startBtn p {
@@ -310,7 +310,7 @@
     }
 
     .gameScene>.btn.home {
-        transition: 1.2s cubic-bezier(.2, .86, .45, 1.08);
+        transition: 2s cubic-bezier(.2, .86, .45, 1.08);
         transform: rotate(0);
     }
 
@@ -627,7 +627,7 @@
         padding-top: 20%;
         bottom: 10%;
         left: 50%;
-        transition: 1s;
+        transition: 0.5s;
         transform: translate(-50%, -50%);
         opacity: 0;
         z-index: 3000;
