@@ -45,11 +45,42 @@
         border-radius: 10px;
         opacity: 1;
         transition: 0.5s;
+        cursor: pointer;
     }
 
     .btn:hover {
         opacity: 0.8;
+
     }
+
+    .toolsTopParent .toolsTip {
+        position: absolute;
+        width: 100%;
+        left: 50%;
+        top: calc(100% + 3px);
+        transform: translate(-50%, -50%);
+        text-align: center;
+        transition: 0.4s ease-out;
+        opacity: 0;
+
+    }
+
+    .toolsTopParent .toolsTip>div {
+        display: inline-block;
+        color: #333;
+        font-size: 14px;
+        background-color: #fff;
+        padding: 6px 12px;
+        border-radius: 12px;
+        box-shadow: 0 2px 16px #0000001b;
+        pointer-events: none;
+    }
+
+    .toolsTopParent:hover .toolsTip {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+
 
     /*****************************************
     ******************************************
@@ -170,7 +201,6 @@
         width: 240px;
         height: 100%;
         min-height: 100vh;
-
     }
 
     /*** ------------------------------------------- 
@@ -223,6 +253,7 @@
         overflow-y: scroll;
         position: relative;
         padding-bottom: 200px;
+        padding-top: 30px;
     }
 
 
@@ -238,15 +269,16 @@
         padding: 4px;
         background-image: url("image/newVoice.svg");
         background-repeat: no-repeat;
-        background-position: 0 center;
+        background-position: center;
         cursor: pointer;
         transition: 0.5s;
         z-index: 1000;
-        opacity: 0;
+        opacity: 0.2;
     }
 
     .workArea .textArea .newVoice:last-child {
-        opacity: 0.6;
+        opacity: 0.5;
+        background-image: url("image/newVoice_on.svg");
         transform: translate(-50%, 40%);
 
     }
@@ -254,6 +286,7 @@
     .workArea .textArea .newVoice:hover {
         opacity: 1;
         height: 50px;
+        background-image: url("image/newVoice_on.svg");
     }
 
 
@@ -364,10 +397,10 @@
     }
 
 
-    p.test {
+    /* .workArea .textArea .textBox p.test {
         color: #456456;
-        font-size: 1px !important;
-    }
+        font-size: 1px;
+    } */
 
     /*** ------------------------------------------- 
 
@@ -456,7 +489,6 @@
         right: 0;
         top: 0;
         height: 95%;
-        /* background-color: #333; */
         display: flex;
         align-items: center;
         justify-content: end;
@@ -468,13 +500,10 @@
         margin: 3px;
     }
 
-
-
     .fileBar .body .fileCard::after {
         content: "";
         position: absolute;
         background-color: #EBEBEB;
-        /* background-color: #bc0606; */
         width: 248px;
         height: 2px;
         left: 50%;
@@ -482,11 +511,9 @@
         transform: translate(-50%, 0%);
     }
 
-
     .fileBar .body .fileCard .col-2 {
         text-align: center;
     }
-
 
     .fileBar .footer {
         border-top: 2px solid #0000000f;
@@ -506,11 +533,12 @@
                 <div class="col toolimg"></div>
             </div>
             <div class="textArea">
+                <div class="newVoice"></div>
                 <div class="textBox a01">
                     <div class="header">
                         <div class="bg a01"></div>
                     </div>
-                    <p class="test">
+                    <p>
                         宏正的優聲學人工智慧語音合成技術為針對企業應用推出的軟硬體包套賣斷服務，消費者在購買包含預先訓練過人工智慧模型的推論伺服器後，即可搭建私有雲並無限制使用人工智慧語音合成。
                         與一般雲端人工智慧語音合成服務論字不但更適合使用量大的產業應用於新聞朗讀、影音創作、教育訓練等情境，私有雲的架構也較公有雲更加安全，可以降低企業「代言人」遭冒用的風險。
                         優聲學的技術優勢除了能夠提供發音更加自然的語音之外，也針對台灣口音進行最佳化，故更適合國內企業採用。
@@ -650,10 +678,40 @@
 </body>
 <script>
 
+
+    class toolsTip {
+        constructor(text, who, style = "toolsTip") {
+
+            this.objBox = document.createElement("div")
+
+            this.obj = document.createElement("div")
+            this.obj.textContent = text
+            this.objBox.classList = style
+
+            this.objBox.appendChild(this.obj)
+            who.appendChild(this.objBox)
+            who.classList.add("toolsTopParent")
+            who.style.zIndex = 5000
+        }
+    }
+
+
+    var body = document.getElementsByTagName("body")[0]
     var sysBtn = document.getElementsByClassName("sys")[0]
     var tools = document.getElementsByClassName("toolimg")[0]
     var textArea = document.getElementsByClassName("textArea")[0]
     var textBox = document.getElementsByClassName("textBox")
+
+    var newVoiceBtn = document.getElementsByClassName("newVoice")
+
+
+    let toolsTipBox = []
+    toolsTipBox[0] = (new toolsTip("語音合成", sysBtn))
+    toolsTipBox[1] = (new toolsTip("向下新增聲優", newVoiceBtn[0]))
+    toolsTipBox[2] = (new toolsTip("向下新增聲優", newVoiceBtn[1]))
+    toolsTipBox[3] = (new toolsTip("向下新增聲優", newVoiceBtn[2]))
+
+
 
     var Toolsimg = []
     Toolsimg[0] = document.createElement("img")
@@ -685,9 +743,6 @@
 
 
     // 插入新文字框功能
-
-    var newVoiceBtn = document.getElementsByClassName("newVoice")
-
     // 插入的 HTML 内容
     let newHTML = `
     <div class="textBox a02 fade">
@@ -703,12 +758,19 @@
 
 
     for (let i = 0; i < newVoiceBtn.length; i++) {
-        let index = i * 2 + 1
+        let index = i * 2
 
         newVoiceBtn[i].addEventListener("click", () => {
             textArea.children[index].insertAdjacentHTML('afterend', newHTML);
 
-            setTimeout(() => textBox[index].classList.remove("fade"), 100)
+            console.log(i, index)
+            setTimeout(() => {
+
+
+                console.log(index)
+                textBox[i].classList.remove("fade")
+
+            }, 100)
         }
         )
     }
