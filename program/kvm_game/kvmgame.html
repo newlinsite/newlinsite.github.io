@@ -293,6 +293,7 @@
             this.container.appendChild(this.button);
 
             this.voice = voice
+            this.act = () => act()
         }
 
         typeText() {
@@ -322,7 +323,7 @@
             this.nowTextIndex = 0;
             this.fadeTimer = setTimeout(() => this.container.remove(), 1000);
             bgm[this.voice].fadeStop()
-            act()
+            this.act()
         }
     }
 
@@ -454,7 +455,7 @@
         }
         ruleFind(num, type) {
             if (this.item[num].type === type) {
-                this.addScore(1, num, 5)
+                this.addScore(1, num, 4)
                 this.item[num].object.classList.add("over")
                 if (this.gameNowNum === this.gameKachiNum) {
                     this.gameOver()
@@ -462,7 +463,7 @@
             }
         }
 
-        addScore(num, itemNum, scoreX = 3) {
+        addScore(num, itemNum, scoreX = 8) {
             let score = num * scoreX
             game.score = game.score + score
             this.gameNowNum = this.gameNowNum + num
@@ -963,10 +964,6 @@
                 //延遲按鈕進場
                 scene[1].btn[0].object.style.opacity = 0
                 scene[1].btn[0].object.style.transform = "translate(-50%, -50%) scale(0.2)"
-                setTimeout(() => {
-                    scene[1].btn[0].object.style.opacity = 1
-                    scene[1].btn[0].object.style.transform = "translate(-50%, -50%) scale(1)"
-                }, 4500)
                 say[4].show();
                 overDialog[2].remove();
                 bgm[1].play("loop")
@@ -975,13 +972,19 @@
     },]
 
     var timeOutText = "<span>時間到囉！</span><br>下一關我們繼續加油～"
-    var gameStartNow = () => { gameLevel[game.nowLevel[0]][game.nowLevel[1]].gameStart() }
+    var gameStartNow = () => gameLevel[game.nowLevel[0]][game.nowLevel[1]].gameStart()
+    var showGoToEndBtn = () => {
+        scene[1].btn[0].object.style.opacity = 1
+        scene[1].btn[0].object.style.transform = "translate(-50%, -50%) scale(1)"
+    }
+
+
     var sayAttr = [
-        { name: "", voice: 2, t: 1500, bg: "faceK01.png", c: "Let me see see 你的眼力多好！" },
-        { name: "", voice: 3, t: 2000, bg: "faceK02.png", c: "記得連續點擊你看到的兩個相同的電腦，點擊正確才會算分喔！" },
-        { name: "", voice: 4, t: 2000, bg: "faceK03.png", c: "連續點擊你看到的兩個相同的鍵盤或滑鼠，把你的桌面恢復乾淨吧！" },
-        { name: "", voice: 5, t: 2000, bg: "faceK04.png", c: "快來找我! 快看看我在哪" },
-        { name: "", voice: 6, t: 4000, bg: "faceK05.png", c: "有了偶，就只需要用一組鍵盤滑鼠和一個螢幕就可以輕鬆在兩台電腦中切換，真是天下無敵方便呀！" },
+        { name: "", voice: 2, t: 1500, act: nothing, bg: "faceK01.png", c: "Let me see see 你的眼力多好！" },
+        { name: "", voice: 3, t: 2000, act: gameStartNow, bg: "faceK02.png", c: "記得連續點擊你看到的兩個相同的電腦，點擊正確才會算分喔！" },
+        { name: "", voice: 4, t: 2000, act: gameStartNow, bg: "faceK03.png", c: "連續點擊你看到的兩個相同的鍵盤或滑鼠，把你的桌面恢復乾淨吧！" },
+        { name: "", voice: 5, t: 2000, act: gameStartNow, bg: "faceK04.png", c: "快來找我! 快看看我在哪" },
+        { name: "", voice: 6, t: 3000, act: showGoToEndBtn, bg: "faceK05.png", c: "有了偶，就只需要用一組鍵盤滑鼠和一個螢幕就可以輕鬆在兩台電腦中切換，真是天下無敵方便呀！" },
     ]
 
     const overDialog = Array.from({ length: overDAttr.length }, (_, i) => new Dialog(overDAttr[i].h, overDAttr[i].c, overDAttr[i].btn))
@@ -1004,12 +1007,26 @@
     startBtn = $css("startBtn")[0]
 
     window.onload = () => {
+        scene[0].btn[0].object.style.transform = "translate(-50%, -50%) scale(1.4)"
+        scene[0].btn[1].object.style.transform = "translate(20%, 20%) scale(0.8) rotate(16deg)"
+        scene[0].btn[0].object.classList = ("btn home Fade")
+        scene[0].btn[1].object.classList = ("btn home Fade")
+
         openMask.style.opacity = 0.98
         startBtn.style.opacity = 1
         openMask.addEventListener("click", () => {
             openMask.style.opacity = 0
-            setTimeout(() => openMask.remove(), 500)
+            setTimeout(() => openMask.remove(), 2000)
+            setTimeout(() => {
+                scene[0].btn[1].object.classList.remove("Fade")
+                scene[0].btn[1].object.style.transform = "translate(-50%, -50%)"
+            }, 500)
+            setTimeout(() => {
+                scene[0].btn[0].object.classList.remove("Fade")
+                scene[0].btn[0].object.style.transform = "translate(-50%, -50%)"
+            }, 1500)
         })
+
     }
 
     // openMask.style.opacity = 0
