@@ -226,7 +226,7 @@
     }
 
     class Dialog {
-        constructor(title, content, buttons = [{ t: "text", a: nothing }], where = container) {
+        constructor(title, content, buttons = [{ t: "text", a: nothing }], timeOutT = "timeOutText", where = container) {
             this.where = where
 
             this.dialog = document.createElement("div");
@@ -241,6 +241,7 @@
             this.content = document.createElement("p");
             this.content.textContent = this.contentText;
             this.dialog.appendChild(this.content);
+            this.timeOutText = timeOutT
 
             this.btnBox = document.createElement("div");
             this.btnBox.classList.add("gameBtnBox");
@@ -255,7 +256,7 @@
         }
         show(isTimeOut = false) {
             if (isTimeOut) {
-                this.title.innerHTML = timeOutText;
+                this.title.innerHTML = this.timeOutText;
             }
             this.content.textContent = this.contentText + game.score;
             this.where.appendChild(this.dialog);
@@ -369,7 +370,7 @@
                     this.a[i].object.href = attr.a[i].a
                     this.a[i].object.target = "_blank"
                     if (attr.a[i].download) {
-                        this.a[i].object.download = "download"
+                        this.a[i].object.download = "眼力大考驗結果圖"
                     }
                     this.a[i].object.addEventListener("click", () => {
                     })
@@ -967,15 +968,21 @@
     // ---------------------
 
     var overDAttr = [{
-        name: "L1", h: "<span>恭喜你全都找到了！<br></span>前往下一關繼續挑戰吧～",
+        name: "L1",
+        h: "<span>恭喜你全都找到了！<br></span>前往下一關繼續挑戰吧～",
+        timeout: "<span>時間到囉！</span><br>下一關我們繼續加油～",
         c: "你的分數是: ",
         btn: [{ t: "下一關", a: () => { game.goToDetail(1); overDialog[0].remove() } }]
     }, {
-        name: "L2", h: "<span>恭喜你全都找到了！<br></span>前往下一關繼續挑戰吧～",
+        name: "L2",
+        h: "<span>恭喜你全都找到了！<br></span>前往下一關繼續挑戰吧～",
+        timeout: "<span>時間到囉！</span><br>下一關我們繼續加油～",
         c: "你的分數是: ",
         btn: [{ t: "下一關", a: () => { game.goToDetail(2); overDialog[1].remove() } }]
     }, {
-        name: "L3", h: "<span>恭喜你全都找到了！</span>",
+        name: "L3",
+        h: "<span>恭喜你全都找到了！</span>恭喜你完成眼力大考驗！",
+        timeout: "<span>時間到囉！</span><br>恭喜你完成眼力大考驗！",
         c: "你的分數是: ",
         btn: [{
             t: "產生眼力分數", a: () => {
@@ -990,7 +997,8 @@
         }]
     },]
 
-    var timeOutText = "<span>時間到囉！</span><br>下一關我們繼續加油～"
+
+
     var gameStartNow = () => {
         gameLevel[game.nowLevel[0]][game.nowLevel[1]].gameStart()
     }
@@ -1008,7 +1016,7 @@
         { name: "", voice: 6, t: 2600, act: showGoToEndBtn, bg: "faceK05.png", c: "有了偶，就只需要用一組鍵盤滑鼠和一個螢幕就可以輕鬆在兩台電腦中切換，真是天下無敵方便呀！" },
     ]
 
-    const overDialog = Array.from({ length: overDAttr.length }, (_, i) => new Dialog(overDAttr[i].h, overDAttr[i].c, overDAttr[i].btn))
+    const overDialog = Array.from({ length: overDAttr.length }, (_, i) => new Dialog(overDAttr[i].h, overDAttr[i].c, overDAttr[i].btn, overDAttr[i].timeout))
     const say = Array.from({ length: sayAttr.length }, (_, i) => new Say(sayAttr[i].c, sayAttr[i].bg, "Skip", sayAttr[i].t, sayAttr[i].voice, sayAttr[i].act))
 
 
