@@ -148,6 +148,7 @@ class music {
         } else if (typeof voiceElement === "string" && voiceElement.trim().length > 0) {
             this.voice = document.createElement("audio")
             this.voice.src = voiceElement
+            this.voice.crossOrigin = "anonymous"
         } else {
             console.log("Voice source error")
         }

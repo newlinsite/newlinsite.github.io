@@ -42,6 +42,9 @@
         // console.log("nothing")
     }
 
+
+
+    var imageUrlPrefix = "//assets.aten.com/webpage/shared/campaign/global/kvmEveday/"
     var imageUrlPrefix = "image/"
 
 
@@ -240,7 +243,7 @@
             this.dialog.appendChild(this.content);
 
             this.btnBox = document.createElement("div");
-            this.btnBox.classList.add("btnBox");
+            this.btnBox.classList.add("gameBtnBox");
             this.dialog.appendChild(this.btnBox);
 
             buttons.forEach((bb) => {
@@ -351,7 +354,7 @@
             if (attr.btn) {
                 this.btn = []
                 for (let i = 0; i < attr.btn.length; i++) {
-                    this.btn[i] = new Item(attr.btn[i], "btn")
+                    this.btn[i] = new Item(attr.btn[i], "gameBtn")
                     this.btn[i].object.addEventListener("click", () => {
                         attr.btn[i].act()
                     })
@@ -362,7 +365,7 @@
             if (attr.a) {
                 this.a = []
                 for (let i = 0; i < attr.a.length; i++) {
-                    this.a[i] = new Item(attr.a[i], "btn", false, true)
+                    this.a[i] = new Item(attr.a[i], "gameBtn", false, true)
                     this.a[i].object.href = attr.a[i].a
                     this.a[i].object.target = "_blank"
                     if (attr.a[i].download) {
@@ -508,8 +511,8 @@
             test(this.level + " start")
             this.playingTag = true
             game.onMaskOn()
-            this.scoreBar.classList.add("show")
-            this.timeBar.classList.add("show")
+            this.scoreBar.classList.add("gameShow")
+            this.timeBar.classList.add("gameShow")
             sound.play(4, "", 0.5)
 
             //開始遊戲前倒數
@@ -573,8 +576,8 @@
             }
             this.gameNowNum = 0
             this.selectedItem = null
-            this.scoreBar.classList.remove("show")
-            this.timeBar.classList.remove("show")
+            this.scoreBar.classList.remove("gameShow")
+            this.timeBar.classList.remove("gameShow")
             //停止所有音樂
             musicAllStop()
             this.playingTag = false
@@ -738,28 +741,33 @@
     //
     // ---------------------
     var audioList = [
-        "music/ui_02.mp3",
-        "music/01_addScore.mp3",
-        "music/02_noScore.mp3",
-        "music/03_scoreWait.mp3",
-        "music/04_count.mp3",
+        imageUrlPrefix + "ui_02.mp3",
+        imageUrlPrefix + "01_addScore.mp3",
+        imageUrlPrefix + "02_noScore.mp3",
+        imageUrlPrefix + "03_scoreWait.mp3",
+        imageUrlPrefix + "04_count.mp3",
     ];
     var sound = new Sound(audioList)
 
     var bgmList = [
-        { voice: "music/001.mp3" },
-        { voice: "music/002.mp3" },
-        { voice: "music/K-1.mp3" },
-        { voice: "music/K-2.mp3" },
-        { voice: "music/K-3.mp3" },
-        { voice: "music/K-4.mp3" },
-        { voice: "music/K-5.mp3" },
+        { voice: imageUrlPrefix + "001.wav" },
+        { voice: imageUrlPrefix + "002.mp3" },
+        { voice: imageUrlPrefix + "K-1.mp3" },
+        { voice: imageUrlPrefix + "K-2.mp3" },
+        { voice: imageUrlPrefix + "K-3.mp3" },
+        { voice: imageUrlPrefix + "K-4.mp3" },
+        { voice: imageUrlPrefix + "K-5.mp3" },
     ]
     var bgm = bgmList.map((item) => {
         let musicInstance = new music(item.voice);
         return musicInstance;
     });
-    // bgm[0].gainNode.gain.value = 0.2
+
+
+
+
+    bgm[0].gainNode.gain.value = 0.5
+    bgm[1].gainNode.gain.value = 0.5
     bgm[2].gainNode.gain.value = 2.5
     bgm[3].gainNode.gain.value = 2.5
     bgm[4].gainNode.gain.value = 2.5
@@ -767,6 +775,8 @@
     bgm[6].gainNode.gain.value = 2.5
 
 
+    console.log(bgm[0].voice, imageUrlPrefix + "001.mp3")
+    console.log(bgm[1].voice, bgm[1].voice.src)
 
     // Mute 功能
     muteTag = { tag: 1 }
@@ -996,7 +1006,7 @@
         { name: "", voice: 3, t: 2000, act: gameStartNow, bg: "faceK02.png", c: "記得連續點擊你看到的兩個相同的電腦，點擊正確才會算分喔！" },
         { name: "", voice: 4, t: 2000, act: gameStartNow, bg: "faceK03.png", c: "連續點擊你看到的兩個相同的鍵盤或滑鼠，把你的桌面恢復乾淨吧！" },
         { name: "", voice: 5, t: 2000, act: gameStartNow, bg: "faceK04.png", c: "快來找我! 快看看我在哪" },
-        { name: "", voice: 6, t: 2000, act: showGoToEndBtn, bg: "faceK05.png", c: "有了偶，就只需要用一組鍵盤滑鼠和一個螢幕就可以輕鬆在兩台電腦中切換，真是天下無敵方便呀！" },
+        { name: "", voice: 6, t: 2600, act: showGoToEndBtn, bg: "faceK05.png", c: "有了偶，就只需要用一組鍵盤滑鼠和一個螢幕就可以輕鬆在兩台電腦中切換，真是天下無敵方便呀！" },
     ]
 
     const overDialog = Array.from({ length: overDAttr.length }, (_, i) => new Dialog(overDAttr[i].h, overDAttr[i].c, overDAttr[i].btn))
@@ -1021,8 +1031,8 @@
     window.onload = () => {
         scene[0].btn[0].object.style.transform = "translate(-50%, -50%) scale(1.4)"
         scene[0].btn[1].object.style.transform = "translate(20%, 20%) scale(0.8) rotate(16deg)"
-        scene[0].btn[0].object.classList = ("btn home Fade")
-        scene[0].btn[1].object.classList = ("btn home Fade")
+        scene[0].btn[0].object.classList = ("gameBtn home Fade")
+        scene[0].btn[1].object.classList = ("gameBtn home Fade")
 
         openMask.style.opacity = 0.98
         startBtn.style.opacity = 1
@@ -1037,6 +1047,15 @@
                 scene[0].btn[0].object.classList.remove("Fade")
                 scene[0].btn[0].object.style.transform = "translate(-50%, -50%)"
             }, 1500)
+
+
+            bgm[0].voice = document.createElement("audio")
+            bgm[0].voice.src = imageUrlPrefix + "002.mp3"
+            bgm[1].voice = document.createElement("audio")
+            bgm[1].voice.src = imageUrlPrefix + "001.wav"
+
+
+
         })
 
     }
