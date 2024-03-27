@@ -750,7 +750,7 @@
     var sound = new Sound(audioList)
 
     var bgmList = [
-        { voice: imageUrlPrefix + "001.wav" },
+        { voice: imageUrlPrefix + "001.mp3" },
         { voice: imageUrlPrefix + "002.mp3" },
         { voice: imageUrlPrefix + "K-1.mp3" },
         { voice: imageUrlPrefix + "K-2.mp3" },
@@ -775,8 +775,7 @@
     bgm[6].gainNode.gain.value = 2.5
 
 
-    console.log(bgm[0].voice, imageUrlPrefix + "001.mp3")
-    console.log(bgm[1].voice, bgm[1].voice.src)
+
 
     // Mute 功能
     muteTag = { tag: 1 }
@@ -1049,12 +1048,30 @@
             }, 1500)
 
 
-            bgm[0].voice = document.createElement("audio")
-            bgm[0].voice.src = imageUrlPrefix + "002.mp3"
-            bgm[1].voice = document.createElement("audio")
-            bgm[1].voice.src = imageUrlPrefix + "001.wav"
-
-
+            // bgm[0].voice = document.createElement("audio")
+            // bgm[0].voice.src = imageUrlPrefix + "002.mp3"
+            // bgm[1].voice = document.createElement("audio")
+            // bgm[1].voice.src = imageUrlPrefix + "001.wav"
+            var bgmList = [
+                { voice: imageUrlPrefix + "001.mp3" },
+                { voice: imageUrlPrefix + "002.mp3" },
+                { voice: imageUrlPrefix + "K-1.mp3" },
+                { voice: imageUrlPrefix + "K-2.mp3" },
+                { voice: imageUrlPrefix + "K-3.mp3" },
+                { voice: imageUrlPrefix + "K-4.mp3" },
+                { voice: imageUrlPrefix + "K-5.mp3" },
+            ]
+            var bgm = bgmList.map((item) => {
+                let musicInstance = new music(item.voice);
+                return musicInstance;
+            });
+            bgm[0].gainNode.gain.value = 0.3
+            bgm[1].gainNode.gain.value = 0.3
+            bgm[2].gainNode.gain.value = 2.5
+            bgm[3].gainNode.gain.value = 2.5
+            bgm[4].gainNode.gain.value = 2.5
+            bgm[5].gainNode.gain.value = 2.5
+            bgm[6].gainNode.gain.value = 2.5
 
         })
 
@@ -1068,6 +1085,34 @@
     //啟動音樂
     openCtx(openMask)
     openCtx(scene[0].btn[0].object)
+
+    //入場先讀取圖
+    var imagePreLoad = []
+    var imagePreLoadUrl = [
+        imageUrlPrefix + "scorePage_loading_Bg.png",
+        imageUrlPrefix + "scorePage_0.png",
+        imageUrlPrefix + "scorePage_1.png",
+        imageUrlPrefix + "scorePage_2.png",
+        imageUrlPrefix + "scorePage_3.png",
+        imageUrlPrefix + "scorePage_4.png",
+        imageUrlPrefix + "scorePage_5.png",
+        imageUrlPrefix + "scorePage_6.png",
+        imageUrlPrefix + "scorePage_7.png",
+        imageUrlPrefix + "scorePage_8.png",
+        imageUrlPrefix + "scorePage_9.png",
+        imageUrlPrefix + "scorePage_10.png",
+    ]
+    for (let i = 0; i < imagePreLoadUrl.length; i++) {
+        imagePreLoad[i] = document.createElement("img")
+        imagePreLoad[i].src = imagePreLoadUrl[i]
+        imagePreLoad[i].style.opacity = 1
+        imagePreLoad[i].style.height = 0
+        imagePreLoad[i].style.position = "absolute"
+        imagePreLoad[i].style.top = 0
+        container.appendChild(imagePreLoad[i])
+        setTimeout(() => { imagePreLoad[i].remove() }, 10)
+    }
+
 
 
 
