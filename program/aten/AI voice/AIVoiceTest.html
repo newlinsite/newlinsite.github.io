@@ -246,7 +246,7 @@
 
 
     .workArea .textArea {
-        background-color: #FAFAFA;
+        background-color: #f6f6f6;
         flex-shrink: 2;
         flex-grow: 1;
         height: 10%;
@@ -328,15 +328,18 @@
     }
 
 
-    .workArea .textArea .textBox::after {
+    .workArea .textArea .textBox .pBox::after {
         content: "";
         width: 100%;
         height: 4px;
+        background: transparent linear-gradient(90deg, #d2d2d200 10%, #d2d2d270 40%, #d2d2d270 60%, #d2d2d200 90%) 0% 0% no-repeat padding-box;
+
         position: absolute;
-        bottom: -0px;
-        filter: blur(1.5px);
+        bottom: -3px;
+        filter: blur(2px);
         transition: 0.5s;
         opacity: 0;
+
     }
 
 
@@ -348,8 +351,9 @@
         margin: 4px auto;
         padding: 4px;
         transition: 0.5s;
-
     }
+
+
 
     .workArea .textArea .textBox .header .bg {
         background-image: url("image/testboxHeader.svg");
@@ -377,23 +381,37 @@
         background-image: url("image/testboxHeader_02.svg");
     }
 
+
+    .workArea .textArea .textBox .pBox {
+        transition: 0.3s;
+    }
+
     .workArea .textArea .textBox p {
         font-size: 18px;
         font-weight: 300;
         letter-spacing: 0.1em;
         line-height: 1.88em;
+        padding: 24px 0;
+        margin: 12px auto;
+    }
 
+    .workArea .textArea .textBox:hover .pBox {
+        background: transparent linear-gradient(90deg, #ffffff00 0%, #ffffffaa 20%, #ffffffaa 80%, #ffffff00 100%) 0% 0% no-repeat padding-box;
+    }
+
+    .workArea .textArea .textBox.focus .pBox {
+        background: transparent linear-gradient(90deg, #ffffff00 0%, #fff 20%, #fff 80%, #ffffff00 100%) 0% 0% no-repeat padding-box;
     }
 
 
     /*   focus   */
 
     .workArea .textArea .textBox.focus::before {
-        opacity: 0.9;
+        /* opacity: 0.9; */
     }
 
-    .workArea .textArea .textBox.focus::after {
-        opacity: 1;
+    .workArea .textArea .textBox.focus .pBox::after {
+        opacity: 0.4;
     }
 
     .workArea .textArea .textBox.focus .header .bg {
@@ -409,10 +427,8 @@
     }
 
 
-    /* .workArea .textArea .textBox p.test {
-        color: #456456;
-        font-size: 1px;
-    } */
+
+
 
     /*** ------------------------------------------- 
 
@@ -550,12 +566,28 @@
                     <div class="header">
                         <div class="bg a01"></div>
                     </div>
-                    <p>
-                        宏正的優聲學人工智慧語音合成技術為針對企業應用推出的軟硬體包套賣斷服務，消費者在購買包含預先訓練過人工智慧模型的推論伺服器後，即可搭建私有雲並無限制使用人工智慧語音合成。
-                        與一般雲端人工智慧語音合成服務論字不但更適合使用量大的產業應用於新聞朗讀、影音創作、教育訓練等情境，私有雲的架構也較公有雲更加安全，可以降低企業「代言人」遭冒用的風險。
-                        優聲學的技術優勢除了能夠提供發音更加自然的語音之外，也針對台灣口音進行最佳化，故更適合國內企業採用。
-                        另一方面，優聲學目前提供6種不同風格的男、女語音選擇 更可以客製化企業專屬語音。相較於一般語音合成服務需要約6個月的時間進行調整，優聲學只需2~3週即可完成，也是一大優勢。
-                    </p>
+                    <div class="pBox">
+                        <p>
+                            宏正的優聲學人工智慧語音合成技術為針對企業應用推出的軟硬體包套賣斷服務，消費者在購買包含預先訓練過人工智慧模型的推論伺服器後，即可搭建私有雲並無限制使用人工智慧語音合成。
+                            與一般雲端人工智慧語音合成服務論字不但更適合使用量大的產業應用於新聞朗讀、影音創作、教育訓練等情境，私有雲的架構也較公有雲更加安全，可以降低企業「代言人」遭冒用的風險。
+                            優聲學的技術優勢除了能夠提供發音更加自然的語音之外，也針對台灣口音進行最佳化，故更適合國內企業採用。
+                            另一方面，優聲學目前提供6種不同風格的男、女語音選擇 更可以客製化企業專屬語音。相較於一般語音合成服務需要約6個月的時間進行調整，優聲學只需2~3週即可完成，也是一大優勢。
+                            宏正的優聲學人工智慧語音合成技術為針對企業應用推出的軟硬體包套賣斷服務，消費者在購買包含預先訓練過人工智慧模型的推論伺服器後，即可搭建私有雲並無限制使用人工智慧語音合成。
+                            與一般雲端人工智慧語音合成服務論字不但更適合使用量大的產業應用於新聞朗讀、影音創作、教育訓練等情境，私有雲的架構也較公有雲更加安全，可以降低企業「代言人」遭冒用的風險。
+                            優聲學的技術優勢除了能夠提供發音更加自然的語音之外，也針對台灣口音進行最佳化，故更適合國內企業採用。
+                            另一方面，優聲學目前提供6種不同風格的男、女語音選擇
+
+                            宏正的優聲學人工智慧語音合成技術為針對企業應用推出的軟硬體包套賣斷服務，消費者在購買包含預先訓練過人工智慧模型的推論伺服器後，即可搭建私有雲並無限制使用人工智慧語音合成。
+                            與一般雲端人工智慧語音合成服務論字不但更適合使用量大的產業應用於新聞朗讀、影音創作、教育訓練等情境，私有雲的架構也較公有雲更加安全，可以降低企業「代言人」遭冒用的風險。
+                            優聲學的技術優勢除了能夠提供發音更加自然的語音之外，也針對台灣口音進行最佳化，故更適合國內企業採用。
+                            另一方面，優聲學目前提供6種不同風格的男、女語音選擇
+                            宏正的優聲學人工智慧語音合成技術為針對企業應用推出的軟硬體包套賣斷服務，消費者在購買包含預先訓練過人工智慧模型的推論伺服器後，即可搭建私有雲並無限制使用人工智慧語音合成。
+                            與一般雲端人工智慧語音合成服務論字不但更適合使用量大的產業應用於新聞朗讀、影音創作、教育訓練等情境，私有雲的架構也較公有雲更加安全，可以降低企業「代言人」遭冒用的風險。
+                            優聲學的技術優勢除了能夠提供發音更加自然的語音之外，也針對台灣口音進行最佳化，故更適合國內企業採用。
+                            另一方面，優聲學目前提供6種不同風格的男、女語音選擇
+                        </p>
+                    </div>
+
                 </div>
                 <div class="newVoice"></div>
 
@@ -563,8 +595,10 @@
                     <div class="header">
                         <div class="bg "></div>
                     </div>
-                    <p>宏正的優聲學 語音選擇 更可以客製化企業專屬語音。相較於一般語音合成服務需要約6個月的時間進行調整，優聲學只需2~3週即可完成，也是一大優勢。
-                    </p>
+                    <div class="pBox">
+                        <p>宏正的優聲學 語音選擇 更可以客製化企業專屬語音。相較於一般語音合成服務需要約6個月的時間進行調整，優聲學只需2~3週即可完成，也是一大優勢。
+                        </p>
+                    </div>
                 </div>
                 <div class="newVoice"></div>
 
@@ -572,18 +606,20 @@
                     <div class="header">
                         <div class="bg"></div>
                     </div>
-                    <p>宏正的優聲學人工智慧語音合成技術為針對企業應用推出的軟硬體包套賣斷服務，消費者在購買包含預先訓練過人工智慧模型的推論伺服器後，即可搭建私有雲並無限制使用人工智慧語音合成。
-                        與一般雲端人工智慧語音合成服務論字計價的方式相比，優聲學不但更適合使用量大的產業應用於新聞朗讀、影音創作、教育訓練等情境，私有雲的架構也較公有雲更加安全，可以降低企業「代言人」遭冒用的風險。
-                        優聲學的技術優勢除了能夠提供發音更加自然的語音之外，也針對台灣口音進行最佳化，故更適合國內企業採用。
-                        另一方面，優聲學目前提供6種不同風格的男、女語音夠提供發音更加自然的語音之外，也針對台灣口音進行最佳化，故更適合國內企業採用。
-                        另一方面，優聲學目前提供6種不同風格的男、女語音夠提供發音更加自然的語音之外，也針對台灣口音進行最佳化，故更適合國內企業採用。
-                        另一方面，優聲學目前提供6種不同風格的男、女語音夠提供發音更加自然的語音之外，也針對台灣口音進行最佳化，故更適合國內企業採用。
-                        另一方面，優聲學目前提供6種不同風格的男、女語音選擇， 更可以客製化企業專屬語音。相較於一般語音合成服務需要約6個月的時間進行調整，優聲學只需2~3週即可完成，也是一大優勢。
-                        宏正的優聲學人工智慧語音合成技術為針對企業應用推出的軟硬體包套賣斷服務，消費者在購買包含預先訓練過人工智慧模型的推論伺服器後，即可搭建私有雲並無限制使用人工智慧語音合成。
-                        與一般雲端人工智慧語音合成服務論字計價的方式相比，優聲學不但更適合使用量大的產業應用於新聞朗讀、影音創作、教育訓練等情境，私有雲的架構也較公有雲更加安全，可以降低企業「代言人」遭冒用的風險。
-                        優聲學的技術優勢除了能夠提供發音更加自然的語音之外，也針對台灣口音進行最佳化，故更適合國內企業採用。
-                        另一方面，優聲學目前提供6種不同風格的男、女語音選擇 更可以客製化企業專屬語音。相較於一般語音合成服務需要約6個月的時間進行調整，優聲學只需2~3週即可完成，也是一大優勢。
-                    </p>
+                    <div class="pBox">
+                        <p>宏正的優聲學人工智慧語音合成技術為針對企業應用推出的軟硬體包套賣斷服務，消費者在購買包含預先訓練過人工智慧模型的推論伺服器後，即可搭建私有雲並無限制使用人工智慧語音合成。
+                            與一般雲端人工智慧語音合成服務論字計價的方式相比，優聲學不但更適合使用量大的產業應用於新聞朗讀、影音創作、教育訓練等情境，私有雲的架構也較公有雲更加安全，可以降低企業「代言人」遭冒用的風險。
+                            優聲學的技術優勢除了能夠提供發音更加自然的語音之外，也針對台灣口音進行最佳化，故更適合國內企業採用。
+                            另一方面，優聲學目前提供6種不同風格的男、女語音夠提供發音更加自然的語音之外，也針對台灣口音進行最佳化，故更適合國內企業採用。
+                            另一方面，優聲學目前提供6種不同風格的男、女語音夠提供發音更加自然的語音之外，也針對台灣口音進行最佳化，故更適合國內企業採用。
+                            另一方面，優聲學目前提供6種不同風格的男、女語音夠提供發音更加自然的語音之外，也針對台灣口音進行最佳化，故更適合國內企業採用。
+                            另一方面，優聲學目前提供6種不同風格的男、女語音選擇， 更可以客製化企業專屬語音。相較於一般語音合成服務需要約6個月的時間進行調整，優聲學只需2~3週即可完成，也是一大優勢。
+                            宏正的優聲學人工智慧語音合成技術為針對企業應用推出的軟硬體包套賣斷服務，消費者在購買包含預先訓練過人工智慧模型的推論伺服器後，即可搭建私有雲並無限制使用人工智慧語音合成。
+                            與一般雲端人工智慧語音合成服務論字計價的方式相比，優聲學不但更適合使用量大的產業應用於新聞朗讀、影音創作、教育訓練等情境，私有雲的架構也較公有雲更加安全，可以降低企業「代言人」遭冒用的風險。
+                            優聲學的技術優勢除了能夠提供發音更加自然的語音之外，也針對台灣口音進行最佳化，故更適合國內企業採用。
+                            另一方面，優聲學目前提供6種不同風格的男、女語音選擇 更可以客製化企業專屬語音。相較於一般語音合成服務需要約6個月的時間進行調整，優聲學只需2~3週即可完成，也是一大優勢。
+                        </p>
+                    </div>
                 </div>
                 <div class="newVoice"></div>
             </div>
@@ -690,6 +726,23 @@
 </body>
 <script>
 
+    var $id = function (name) {
+        return document.getElementById(name)
+    }
+    var $css = function (name) {
+        return document.getElementsByClassName(name)
+    }
+    var $tag = function (name) {
+        return document.getElementsByTagName(name)
+    }
+    var test = function (print = "test") {
+        console.log(print)
+    }
+    function nothing() {
+        console.log("nothing")
+    }
+
+    var imageUrlPrefix = "image/"
 
     class toolsTip {
         constructor(text, who, style = "toolsTip") {
@@ -708,20 +761,24 @@
     }
 
 
-    var body = document.getElementsByTagName("body")[0]
-    var sysBtn = document.getElementsByClassName("sys")[0]
-    var tools = document.getElementsByClassName("toolimg")[0]
-    var textArea = document.getElementsByClassName("textArea")[0]
-    var textBox = document.getElementsByClassName("textBox")
 
-    var newVoiceBtn = document.getElementsByClassName("newVoice")
+
+
+
+    var body = $tag("body")[0]
+    var sysBtn = $css("sys")[0]
+    var tools = $css("toolimg")[0]
+    var textArea = $css("textArea")[0]
+    var textBox = $css("textBox")
+
+    var newVoiceBtn = $css("newVoice")
 
 
     let toolsTipBox = []
     toolsTipBox[0] = (new toolsTip("語音合成", sysBtn))
-    toolsTipBox[1] = (new toolsTip("向下新增聲優", newVoiceBtn[0]))
-    toolsTipBox[2] = (new toolsTip("向下新增聲優", newVoiceBtn[1]))
-    toolsTipBox[3] = (new toolsTip("向下新增聲優", newVoiceBtn[2]))
+    toolsTipBox[1] = (new toolsTip("新增聲優", newVoiceBtn[0]))
+    toolsTipBox[2] = (new toolsTip("新增聲優", newVoiceBtn[1]))
+    toolsTipBox[3] = (new toolsTip("新增聲優", newVoiceBtn[2]))
 
 
 
@@ -761,7 +818,7 @@
         <div class="header">
             <div class="bg "></div>
         </div>
-        <p style="color:#ccc">請輸入文字</p>
+        <div class="pBox"><p style="color:#ccc">請輸入文字</p></div>
     </div>
     <div class="newVoice"></div>
     `
