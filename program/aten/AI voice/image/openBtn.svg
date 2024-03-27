@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <g id="openBtn" transform="translate(0 40) rotate(-90)">
+    <rect id="Container" width="40" height="40" rx="20" fill="#4a6b95" opacity="0"/>
+    <path id="Combined_Shape" data-name="Combined Shape" d="M5.39,6.95h0L.314,1.876A1.073,1.073,0,0,1,1.832.358L6.9,5.428,12.015.314a1.073,1.073,0,1,1,1.516,1.517L6.9,8.462Z" transform="translate(13 16)" fill="#fff"/>
+  </g>
+</svg>

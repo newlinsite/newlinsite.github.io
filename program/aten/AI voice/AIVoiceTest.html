@@ -438,14 +438,49 @@
      ------------------------------------------- ***/
 
     .fileBar {
-        background-color: #F5F5F5;
+        background-color: #f5f5f5;
         width: 300px;
-        height: 100%;
-        min-height: 100vh;
+        /* height: 100%;
+        min-height: 100vh; */
+
+        border-left: 2px solid #0000000f;
+        transition: 0.8s;
+    }
+
+    .fileBar.close {
+        width: 0;
+    }
+
+    .fileBar .openBtn {
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin: 4px;
+        border-radius: 50%;
+        transition: 0.8s;
+        z-index: 1000;
+    }
+
+    .fileBar.close .openBtn {
+        left: -50px;
+        background-color: #4A6B95;
+        transform: rotate(180deg);
+    }
+
+    .fileBar .fileContainer {
         display: flex;
         flex-direction: column;
-        border-left: 2px solid #0000000f;
         overflow: hidden;
+        height: 100%;
+        min-height: 100vh;
+        transition: 1.2s ease-in;
+        opacity: 1;
+    }
+
+    .fileBar.close .fileContainer {
+        width: 0;
+        opacity: 0;
 
     }
 
@@ -454,9 +489,17 @@
     .fileBar .footer {
         background-color: #EBEBEB;
         border-bottom: 2px solid #0000000f;
-        padding: 8px 16px;
+        padding: 12px 16px;
         text-align: center;
+        font-size: 14px;
+    }
 
+
+
+    .fileBar .header {
+        background-color: #4A6B95;
+        color: #fff;
+        font-size: 16px;
     }
 
 
@@ -639,88 +682,91 @@
 
         </div>
         <div class="fileBar">
-            <div class="header">合成列</div>
-            <div class="body">
-                <div class="fileCard">
-                    <div class="row flex-align-c flex-jus-c">
-                        <div class="col-2 row flex-align-c flex-jus-c"><img class="playBtn" src="image/btn_play.svg"
-                                alt=""></div>
-                        <div class="col-10">
-                            <h3>宏正於44家合成列獲得傑出...</h3>
+            <img src="image/openBtn.svg" alt="" class="openBtn">
+            <div class="fileContainer">
+                <div class="header">語音庫</div>
+                <div class="body">
+                    <div class="fileCard">
+                        <div class="row flex-align-c flex-jus-c">
+                            <div class="col-2 row flex-align-c flex-jus-c"><img class="playBtn" src="image/btn_play.svg"
+                                    alt=""></div>
+                            <div class="col-10">
+                                <h3>宏正於44家合成列獲得傑出...</h3>
+                            </div>
+                            <div class="col-2">
+                                <p>12:50</p>
+                            </div>
+                            <div class="col-10">
+                                <p>2500 字 2022-07-28 14:33</p>
+                            </div>
                         </div>
-                        <div class="col-2">
-                            <p>12:50</p>
-                        </div>
-                        <div class="col-10">
-                            <p>2500 字 2022-07-28 14:33</p>
-                        </div>
-                    </div>
-                    <div class="tools">
-                        <img src="image/icon_download.svg" alt="">
-                        <img src="image/icon_more.svg" alt="">
-                    </div>
-                </div>
-                <div class="fileCard">
-                    <div class="row flex-align-c flex-jus-c">
-                        <div class="col-2 row flex-align-c flex-jus-c"><img class="playBtn" src="image/btn_play.svg"
-                                alt=""></div>
-                        <div class="col-10">
-                            <h3>宏正於4444家已獲得傑傑出...</h3>
-                        </div>
-                        <div class="col-2">
-                            <p>12:50</p>
-                        </div>
-                        <div class="col-10">
-                            <p>2500 字 2022-07-28 14:33</p>
+                        <div class="tools">
+                            <img src="image/icon_download.svg" alt="">
+                            <img src="image/icon_more.svg" alt="">
                         </div>
                     </div>
-                    <div class="tools">
-                        <img src="image/icon_download.svg" alt="">
-                        <img src="image/icon_more.svg" alt="">
-                    </div>
-                </div>
-                <div class="fileCard">
-                    <div class="row flex-align-c flex-jus-c">
-                        <div class="col-2 row flex-align-c flex-jus-c"><img class="playBtn" src="image/btn_play.svg"
-                                alt=""></div>
-                        <div class="col-10">
-                            <h3>宏正於44家已獲得傑出大獎</h3>
+                    <div class="fileCard">
+                        <div class="row flex-align-c flex-jus-c">
+                            <div class="col-2 row flex-align-c flex-jus-c"><img class="playBtn" src="image/btn_play.svg"
+                                    alt=""></div>
+                            <div class="col-10">
+                                <h3>宏正於4444家已獲得傑傑出...</h3>
+                            </div>
+                            <div class="col-2">
+                                <p>12:50</p>
+                            </div>
+                            <div class="col-10">
+                                <p>2500 字 2022-07-28 14:33</p>
+                            </div>
                         </div>
-                        <div class="col-2">
-                            <p>12:50</p>
-                        </div>
-                        <div class="col-10">
-                            <p>2500 字 2022-07-28 14:33</p>
-                        </div>
-                    </div>
-                    <div class="tools">
-                        <img src="image/icon_download.svg" alt="">
-                        <img src="image/icon_more.svg" alt="">
-                    </div>
-                </div>
-                <div class="fileCard">
-                    <div class="row flex-align-c flex-jus-c">
-                        <div class="col-2 row flex-align-c flex-jus-c"><img class="playBtn" src="image/btn_play.svg"
-                                alt=""></div>
-                        <div class="col-10">
-                            <h3>宏正於44家已已已獲得傑出...</h3>
-                        </div>
-                        <div class="col-2">
-                            <p>12:50</p>
-                        </div>
-                        <div class="col-10">
-                            <p>2500 字 2022-07-28 14:33</p>
+                        <div class="tools">
+                            <img src="image/icon_download.svg" alt="">
+                            <img src="image/icon_more.svg" alt="">
                         </div>
                     </div>
-                    <div class="tools">
-                        <img src="image/icon_download.svg" alt="">
-                        <img src="image/icon_more.svg" alt="">
+                    <div class="fileCard">
+                        <div class="row flex-align-c flex-jus-c">
+                            <div class="col-2 row flex-align-c flex-jus-c"><img class="playBtn" src="image/btn_play.svg"
+                                    alt=""></div>
+                            <div class="col-10">
+                                <h3>宏正於44家已獲得傑出大獎</h3>
+                            </div>
+                            <div class="col-2">
+                                <p>12:50</p>
+                            </div>
+                            <div class="col-10">
+                                <p>2500 字 2022-07-28 14:33</p>
+                            </div>
+                        </div>
+                        <div class="tools">
+                            <img src="image/icon_download.svg" alt="">
+                            <img src="image/icon_more.svg" alt="">
+                        </div>
                     </div>
-                </div>
+                    <div class="fileCard">
+                        <div class="row flex-align-c flex-jus-c">
+                            <div class="col-2 row flex-align-c flex-jus-c"><img class="playBtn" src="image/btn_play.svg"
+                                    alt=""></div>
+                            <div class="col-10">
+                                <h3>宏正於44家已已已獲得傑出...</h3>
+                            </div>
+                            <div class="col-2">
+                                <p>12:50</p>
+                            </div>
+                            <div class="col-10">
+                                <p>2500 字 2022-07-28 14:33</p>
+                            </div>
+                        </div>
+                        <div class="tools">
+                            <img src="image/icon_download.svg" alt="">
+                            <img src="image/icon_more.svg" alt="">
+                        </div>
+                    </div>
 
-
+                </div>
+                <div class="footer">儲存 30天內合成的語音</div>
             </div>
-            <div class="footer">儲存 30天內合成的語音</div>
+
         </div>
     </div>
 </body>
@@ -742,7 +788,29 @@
         console.log("nothing")
     }
 
-    var imageUrlPrefix = "image/"
+    // ------------------------
+    // toggle
+    // ------------------------
+
+    toggle = (tagObj, do1, do0, autoSwitchTag = true) => {
+        if (tagObj.tag === 0) {
+            do1()
+            if (autoSwitchTag) {
+                tagObj.tag = 1
+            }
+        } else {
+            do0()
+            if (autoSwitchTag) {
+                tagObj.tag = 0
+            }
+        }
+    }
+
+
+
+
+
+
 
     class toolsTip {
         constructor(text, who, style = "toolsTip") {
@@ -810,7 +878,7 @@
     }
 
 
-
+    // ---------------------------
     // 插入新文字框功能
     // 插入的 HTML 内容
     let newHTML = `
@@ -824,7 +892,6 @@
     `
 
     //在指定位置插入新的 HTML 元素
-
 
     for (let i = 0; i < newVoiceBtn.length; i++) {
         let index = i * 2
@@ -845,9 +912,22 @@
     }
 
 
+    // ---------------------------
+    //語音庫功能
+    // ---------------------------
 
+    var fileBar = $css("fileBar")[0]
+    var openBtn = $css("openBtn")[0]
+    var fileBarTag = { tag: 0 }
 
+    openBtn.addEventListener("click", () => {
+        toggle(fileBarTag, () => {
+            fileBar.classList.add("close")
+        }, () => {
+            fileBar.classList.remove("close")
+        })
 
+    })
 
 </script>
 
