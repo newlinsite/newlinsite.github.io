@@ -748,8 +748,9 @@
         imageUrlPrefix + "03_scoreWait.mp3",
         imageUrlPrefix + "04_count.mp3",
     ];
-    var sound = new Sound(audioList)
 
+
+    var sound = new Sound(audioList)
     var bgmList = [
         { voice: imageUrlPrefix + "001.mp3" },
         { voice: imageUrlPrefix + "002.mp3" },
@@ -1081,9 +1082,24 @@
             bgm[5].gainNode.gain.value = 2.5
             bgm[6].gainNode.gain.value = 2.5
 
+            setTimeout(() => {
+                bgm[0].voice = document.createElement("audio")
+                bgm[0].voice.src = imageUrlPrefix + "002.mp3"
+                bgm[0].gainNode.gain.value = 0.3
+                // bgm[0].source.connect(this.gainNode).connect(this.gainFadeCode)
+                //     .connect(this.lowPassCode).connect(this.analyser)
+                //     .connect(mainGainNode).connect(ctx.destination);
+            }, 100)
+
         })
 
     }
+
+
+
+
+
+
 
     // 入場 Mask 關閉 測試用
     // openMask.style.opacity = 0
