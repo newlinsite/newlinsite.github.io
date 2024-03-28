@@ -300,221 +300,6 @@ class VkDisplay extends VkObject {
 
 
 
-// var VkObject = function (object, sizeRatio = [10, 1.77], position = [50, 50, 50], rotate = [0, 0, 0], deviceType = "VkObject", thick = [0, "#000"], videoWall = false, borderSize = 1) {
-
-//     this.object = object
-
-//     // -----------------
-//     //
-//     // object define
-//     //
-//     // -----------------
-
-//     this.deviceType = deviceType
-
-//     // 長寬 Size
-//     this.width = sizeRatio[0]
-//     this.height = sizeRatio[0] / sizeRatio[1]
-//     this.object.style.width = this.width + "%"
-//     this.object.style.paddingTop = this.height + "%"
-
-
-//     // 位置與旋轉
-//     this.x = position[0]
-//     this.y = position[1]
-//     this.z = position[2] * spaceW * 0.01
-//     this.xR = rotate[0]
-//     this.yR = rotate[1]
-//     this.zR = rotate[2]
-//     this.move = ([x, y, z] = [0, 0, 0], [xR, yR, zR] = [0, 0, 0]) => {
-//         this.x = this.x + x
-//         this.y = this.y + y
-//         this.z = this.z + z
-//         this.xR = this.xR + xR
-//         this.yR = this.yR + yR
-//         this.zR = this.zR + zR
-
-//         this.object.style.left = this.x + "%"
-//         this.object.style.top = this.y + "%"
-//         this.object.style.transform = "translate3d(-50%, -50%, " + this.z +
-//             "px) rotateX(" + this.xR +
-//             "deg) rotateY(" + this.yR +
-//             "deg) rotateZ(" + this.zR + "deg)"
-//     }
-//     this.move()
-
-
-
-//     // defaut value
-//     // defaut Tag
-//     this.tag = [{ tag: 0 }, { tag: 0 }, { tag: 0 }]
-
-
-
-
-
-//     // -----------------
-//     //
-//     // 物件動作
-//     //
-//     // -----------------
-
-
-//     // Appear, Opacity
-//     this.isAppear = { tag: 0 }
-//     this.appear = () => {
-//         this.object.style.opacity = 1
-//         this.isAppear.tag = 1
-//     }
-//     this.disappear = () => {
-//         this.object.style.opacity = 0
-//         this.isAppear.tag = 0
-//     }
-//     this.appearToggle = () => {
-//         toggle(this.isAppear, this.appear, this.disappear)
-//     }
-//     this.customOpacity = (opacity) => {
-//         this.object.style.opacity = opacity
-//         this.isAppear.tag = opacity
-//     }
-
-
-//     // hidden
-//     this.isHidden = { tag: 0 }
-//     this.hidden = () => {
-//         this.object.style.display = "none"
-//         this.isHidden.tag = 1
-//     }
-//     this.disHidden = () => {
-//         this.object.style.display = ""
-//         this.isHidden.tag = 0
-//     }
-//     this.hiddenToggle = () => {
-//         toggle(this.isHidden, this.hidden, this.disHidden)
-//     }
-
-
-
-//     // On and Off
-//     this.isOn = { tag: 0 }
-//     this.on = (style = "on") => {
-//         this.object.classList.add(style)
-//         this.isOn.tag = 1
-//     }
-//     this.off = (style = "on") => {
-//         this.object.classList.remove(style)
-//         this.isOn.tag = 0
-//     }
-//     this.onToggle = () => {
-//         toggle(this.isOn, this.on, this.off)
-//     }
-
-//     // press
-//     this.press = (style = "press", time = 200) => {
-//         this.object.classList.add(style)
-//         setTimeout(() => {
-//             this.object.classList.remove(style)
-//         }, time);
-//     }
-
-
-//     // 新增css
-//     this.addCss = (style) => {
-//         this.object.classList.add(style)
-//     }
-//     this.removeCss = (style) => {
-//         this.object.classList.remove(style)
-//     }
-
-
-//     // -----------------
-//     //
-//     // display define
-//     //
-//     // -----------------
-
-//     if (this.deviceType == "display") {
-
-//         this.displayBorder = this.width / 6 * borderSize
-//         this.object.style.border = this.displayBorder + "px solid #22222200"
-//         this.object.style.borderRadius = this.displayBorder + "px"
-//         this.object.appendChild(document.createElement("span"))
-
-//         // 加入電視牆隔線 ex: display[2].videoWall 3*3 = [ 3,3 ]
-//         if (videoWall != false) {
-//             // 直線
-//             this.videoWallLineH = []
-//             for (let i = 0; i < videoWall[0] - 1; i++) {
-//                 this.videoWallLineH[i] = document.createElement("div")
-//                 this.videoWallLineH[i].style.height = "100%"
-//                 this.videoWallLineH[i].style.width = 0.6 * this.displayBorder + "px"
-//                 this.videoWallLineH[i].style.backgroundColor = "#111"
-//                 this.videoWallLineH[i].style.top = 0
-//                 this.videoWallLineHP = 100 / videoWall[0] * (i + 1)
-//                 this.videoWallLineH[i].style.left = this.videoWallLineHP + "%"
-//                 this.object.appendChild(this.videoWallLineH[i])
-//             }
-//             // 橫線
-//             this.videoWallLineW = []
-//             for (let i = 0; i < videoWall[1] - 1; i++) {
-//                 this.videoWallLineW[i] = document.createElement("div")
-//                 this.videoWallLineW[i].style.width = "100%"
-//                 this.videoWallLineW[i].style.height = 0.6 * this.displayBorder + "px"
-//                 this.videoWallLineW[i].style.backgroundColor = "#000"
-//                 this.videoWallLineW[i].style.left = 0
-//                 this.videoWallLineWP = 100 / videoWall[1] * (i + 1)
-//                 this.videoWallLineW[i].style.top = this.videoWallLineWP + "%"
-//                 this.object.appendChild(this.videoWallLineW[i])
-//             }
-//         }
-
-
-//         // 新增螢幕厚度
-//         if (thick[0] > 0) {
-//             this.displayThick = []
-//             for (let i = 0; i < 4; i++) {
-//                 this.displayThick[i] = document.createElement("div")
-//                 this.displayThick[i].style.left = "50%"
-//                 this.displayThick[i].style.top = "50%"
-//                 this.displayThick[i].style.width = "100%"
-//                 this.displayThick[i].style.height = "100%"
-//                 this.displayThick[i].style.border = this.displayBorder + "px solid " + thick[1]
-//                 this.displayThick[i].style.borderRadius = this.displayBorder + "px"
-//                 this.displayThick[i].style.backgroundColor = thick[1]
-//                 this.displayThick[i].style.boxSizing = "content-box"
-//                 this.displayThick[i].style.transform = "translate3d(-50%, -50%, " + position[2] * thick[0] * (i + 0.5) + "px)"
-//                 this.object.appendChild(this.displayThick[i])
-//             }
-//         }
-
-
-//         // 新增視訊
-//         this.input = (source) => {
-
-//             if (source.deviceType == "media") {
-//                 this.source = source.output.cloneNode(true);
-//                 this.source.currentTime = videoTime
-//                 this.object.replaceChild(this.source, this.object.firstChild);
-//             }
-//             if (source.deviceType == "vp") {
-//                 this.source = source.output.cloneNode(true);
-//                 this.object.replaceChild(this.source, this.object.firstChild);
-
-//                 // 嘗試尋找物件裡面有 影片物件 的話將其時間同步
-//                 try {
-//                     this.vpVideos = this.object.querySelectorAll("video")
-//                     for (let i = 0; i < source.input.length; i++) {
-//                         this.vpVideos[i].currentTime = videoTime
-//                     }
-//                 } catch {
-//                     // test("no image in vp")
-//                 }
-//             }
-//         }
-//     }
-// }
-
-
 //--------------------------------------------------------------------------
 //
 // Media
@@ -1244,9 +1029,9 @@ var vp = new VP([
 
 var vw = new VP([
     media[2], media[1],
-    media[1], media[0],
-    // media[1],
-    // media[0], media[0]
+    media[0], media[0],
+    media[1],
+    media[0], media[0]
 ])
 
 
@@ -1440,7 +1225,7 @@ var testTag = { tag: 0 }
 //     // spaces[0].camera.style.transform = "translateZ(" + spaceW / 2 + "px) rotateX(" + -y + "deg) rotateY(" + x + "deg)"
 //     let x = (e.x - spaceW) / spaceW * 90 / 3 * 1
 //     let y = (e.y - spaceH) / spaceH * 90 / 3 * 0.5
-//     console.log(e.x, e.y, x, y, spaceW, spaceH)
+//     // console.log(e.x, e.y, x, y, spaceW, spaceH)
 //     ipad[0].ipad.object.style.transform = "translateZ(" + 500 + "px) rotateX(" + -y + "deg) rotateY(" + x + "deg)"
 //     ipad[0].ipad.object.style.transition = 0
 // })

@@ -29,7 +29,7 @@ spaceAtr = [{
 
 var mediaList = [
     "element/01.png",
-    "element/01.png",
+    // "element/01.png",
     "element/video.mp4",
     "image/i03.png"
 ]
