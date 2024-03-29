@@ -167,7 +167,7 @@
       transform: translate(-50%, -50%);
       opacity: 0;
       transition: 1.5s;
-      font-weight: 800 !important;
+
   }
 
   .gameOutContainer .openMask .startBtn p {
@@ -179,7 +179,9 @@
       padding: 0;
       font-size: 2em;
       color: #fff;
-      font-weight: 800;
+      font-weight: 800 !important;
+      font-family: "Noto sans TC", "Microsoft JhengHei ", "微軟正黑體", sans-serif !important;
+
   }
 
 

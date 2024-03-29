@@ -4,13 +4,13 @@
       <rect id="Mask" width="1380" height="50" transform="translate(298.5 425.16)" fill="#fff" opacity="0"/>
     </clipPath>
   </defs>
-  <g id="newVoice-2" data-name="newVoice" transform="translate(-298.5 -425.16)" opacity="0.5">
+  <g id="newVoice-2" data-name="newVoice" transform="translate(-298.5 -425.16)" opacity="0.6">
     <g id="newVoice-3" data-name="newVoice" clip-path="url(#clip-path)">
       <g id="newVoice-4" data-name="newVoice">
         <line id="Line_22" data-name="Line 22" x2="669" transform="translate(1009.5 450.16)" fill="none" stroke="#ececec" stroke-width="2"/>
-        <g id="icon_add" transform="translate(979.925 443.426)">
-          <circle id="Ellipse_172" data-name="Ellipse 172" cx="10" cy="10" r="10" transform="translate(-2.425 -3.266)" fill="rgba(240,240,240,0.5)"/>
-          <path id="Path_6911" data-name="Path 6911" d="M8564.382,22861.137v-2.35H8562v-1.432h2.382V22855h1.376v2.354h2.379v1.432h-2.379v2.35Z" transform="translate(-8557.85 -22851.09)" fill="#4a4a4a"/>
+        <g id="icon_add" transform="translate(976.123 439.625)">
+          <circle id="Ellipse_172" data-name="Ellipse 172" cx="13" cy="13" r="13" transform="translate(-1.623 -2.464)" fill="#f0f0f0" opacity="0"/>
+          <path id="Path_6911" data-name="Path 6911" d="M8565.943,22865.162v-3.895H8562v-2.369h3.943V22855h2.279v3.895h3.938v2.369h-3.937v3.895Z" transform="translate(-8556.197 -22849.209)" fill="#4a4a4a"/>
         </g>
         <line id="Line_21" data-name="Line 21" x2="667" transform="translate(298.5 450.16)" fill="none" stroke="#ececec" stroke-width="2"/>
       </g>

@@ -62,6 +62,23 @@ delay = (doSomething, delayTime, num = 0, cancelDalay = true) => {
 //
 
 
+
+class delay {
+    constructor() {
+        this.container = null
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
 // ------------------------
 // 影片計時器
 // ------------------------
