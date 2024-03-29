@@ -926,7 +926,7 @@
             level: "home", background: "home_bg.png",
             btn: [
                 { name: "start", size: [44, 28], xyr: [50, 45, 0], background: "btn_start.png", act: () => game.start(), color: "" },
-                { name: "kCyan", size: [75, 75], xyr: [70, 85, 0], background: "home_k.png", act: () => sound.play(1), color: "" },
+                { name: "kCyan", size: [80, 75], xyr: [70, 85, 0], background: "home_k.png", act: () => sound.play(1), color: "" },
                 { name: "mute", size: [10, 10], xyr: [10, 5, 0], background: "btn_Mute.png", act: () => mute(), color: "" }
             ], item: [], gameTime: 0, gameKachiNum: 0
         }, {
@@ -939,9 +939,9 @@
             btn: [
                 { name: "reStart", size: [0, 0], xyr: [25, 24.5, 0], background: "scorePBtn01.png", act: () => game.goHome(), color: "" },
             ], a: [
-                { name: "download", size: [21, 9], xyr: [26.5, 89, 0], background: "scorePBtn02.png", a: "#", download: false, act: nothing, color: "" },
-                { name: "link    ", size: [21, 9], xyr: [49, 89, 0], background: "scorePBtn03.png", a: "#", download: false, act: nothing, color: "" },
-                { name: "link    ", size: [21, 9], xyr: [71.5, 89, 0], background: "scorePBtn04.png", a: "#", download: false, act: nothing, color: "" },
+                { name: "download", size: [31, 13], xyr: [32, 87, 0], background: "scorePBtn02.png", a: "#", download: false, act: nothing, color: "" },
+                { name: "link    ", size: [31, 13], xyr: [66, 87, 0], background: "scorePBtn03.png", a: "#", download: false, act: nothing, color: "" },
+                { name: "link    ", size: [32, 5.5], xyr: [64.8, 66.1, 0], background: "scorePBtn04.png", a: "#", download: false, act: nothing, color: "" },
             ], item: [], gameTime: 0, gameKachiNum: 0
         }
     ]
@@ -1056,11 +1056,6 @@
                 scene[0].btn[0].object.style.transform = "translate(-50%, -50%)"
             }, 1500)
 
-
-            // bgm[0].voice = document.createElement("audio")
-            // bgm[0].voice.src = imageUrlPrefix + "002.mp3"
-            // bgm[1].voice = document.createElement("audio")
-            // bgm[1].voice.src = imageUrlPrefix + "001.wav"
             var bgmList = [
                 { voice: imageUrlPrefix + "001.mp3" },
                 { voice: imageUrlPrefix + "002.mp3" },
@@ -1091,10 +1086,6 @@
         })
 
     }
-
-
-
-
 
 
 

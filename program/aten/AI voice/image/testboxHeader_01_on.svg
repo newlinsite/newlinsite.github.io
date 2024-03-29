@@ -75,14 +75,14 @@
     </g>
   </g>
   <g id="attrubute" transform="translate(1 1)">
-    <g id="container-4" data-name="container" transform="translate(177 2)" fill="rgba(214,214,214,0.1)" stroke="#d6d6d6" stroke-width="1">
+    <g id="container-4" data-name="container" transform="translate(177 2)" fill="rgba(214,214,214,0.1)" stroke="#d6d6d6" stroke-width="1" opacity="0">
       <rect width="237" height="33" rx="16.5" stroke="none"/>
       <rect x="0.5" y="0.5" width="236" height="32" rx="16" fill="none"/>
     </g>
     <text id="音量:_11_速度:_10_語調:_-12" data-name="音量: 11 ,  速度: +10 ,  語調: -12" transform="translate(195 25)" fill="#161616" font-size="15" font-family="NotoSansTC-Regular, Noto Sans TC"><tspan x="0" y="0" xml:space="preserve">音量: 11 ,  速度: +10 ,  語調: -12</tspan></text>
   </g>
   <g id="voiceName" transform="translate(1 1)">
-    <g id="container-5" data-name="container" transform="translate(43 2)" fill="rgba(214,214,214,0.1)" stroke="#d6d6d6" stroke-width="1">
+    <g id="container-5" data-name="container" transform="translate(43 2)" fill="rgba(214,214,214,0.1)" stroke="#d6d6d6" stroke-width="1" opacity="0">
       <rect width="126" height="33" rx="16.5" stroke="none"/>
       <rect x="0.5" y="0.5" width="125" height="32" rx="16" fill="none"/>
     </g>

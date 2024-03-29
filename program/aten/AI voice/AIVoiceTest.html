@@ -386,6 +386,8 @@
         transition: 0.3s;
     }
 
+
+
     .workArea .textArea .textBox p {
         font-size: 18px;
         font-weight: 300;
@@ -393,15 +395,30 @@
         line-height: 1.88em;
         padding: 24px 0;
         margin: 12px auto;
+
+        padding: 24px;
+        border: 1px solid #ffffff00;
+        border-radius: 8px;
+    }
+
+    .workArea .textArea .textBox .pBox p:hover {
+        border: 1px solid #c0c0c0;
+    }
+
+    .workArea .textArea .textBox.focus .pBox p {
+        border: 1px solid #c0c0c0;
+        background-color: #ffffffc5;
     }
 
     .workArea .textArea .textBox:hover .pBox {
-        background: transparent linear-gradient(90deg, #ffffff00 0%, #ffffffaa 20%, #ffffffaa 80%, #ffffff00 100%) 0% 0% no-repeat padding-box;
+        /* background: transparent linear-gradient(90deg, #ffffff00 0%, #ffffffaa 20%, #ffffffaa 80%, #ffffff00 100%) 0% 0% no-repeat padding-box; */
     }
 
     .workArea .textArea .textBox.focus .pBox {
-        background: transparent linear-gradient(90deg, #ffffff00 0%, #fff 20%, #fff 80%, #ffffff00 100%) 0% 0% no-repeat padding-box;
+        /* background: transparent linear-gradient(90deg, #ffffff00 0%, #fff 20%, #fff 80%, #ffffff00 100%) 0% 0% no-repeat padding-box; */
     }
+
+
 
 
     /*   focus   */
@@ -905,8 +922,8 @@
 
     var fileBar = $css("fileBar")[0]
     var openBtn = $css("openBtn")[0]
-    var fileBarTag = { tag: 0 }
-
+    var fileBarTag = { tag: 1 }
+    fileBar.classList.add("close")
     openBtn.addEventListener("click", () => {
         toggle(fileBarTag, () => {
             fileBar.classList.add("close")

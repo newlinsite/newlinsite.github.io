@@ -25,7 +25,7 @@
       <circle id="Mask-3" data-name="Mask" cx="16" cy="16" r="16" transform="translate(0 0.003)" fill="#fff" stroke="#707070" stroke-width="1"/>
     </clipPath>
   </defs>
-  <g id="feature_box" data-name="feature box" transform="translate(970.163 36.001) rotate(180)" opacity="0.5">
+  <g id="feature_box" data-name="feature box" transform="translate(970.163 36.001) rotate(180)" opacity="0">
     <text id="_20_600" data-name="20 / 600" transform="translate(88.163 10.501) rotate(180)" fill="#161616" font-size="14" font-family="NotoSans, Noto Sans"><tspan x="0" y="0">20 / 600</tspan></text>
     <g id="icon_sort_down" data-name="icon_sort down" transform="translate(27.691 32.002) rotate(180)" opacity="0.6">
       <rect id="Container" width="32" height="32" rx="16" transform="translate(-0.472 0.001)" fill="none"/>
@@ -79,7 +79,7 @@
     <text id="音量:_11_速度:_10_語調:_-12" data-name="音量: 11 ,  速度: +10 ,  語調: -12" transform="translate(195 25)" fill="#161616" font-size="15" font-family="NotoSansTC-Regular, Noto Sans TC" opacity="0.7"><tspan x="0" y="0" xml:space="preserve">音量: 15,  速度: +15 ,  語調: -10</tspan></text>
   </g>
   <g id="voiceName" transform="translate(1 1)">
-    <g id="container-5" data-name="container" transform="translate(43 2)" fill="rgba(214,214,214,0.1)" stroke="#d6d6d6" stroke-width="1">
+    <g id="container-5" data-name="container" transform="translate(43 2)" fill="rgba(214,214,214,0.1)" stroke="#d6d6d6" stroke-width="1" opacity="0">
       <rect width="126" height="33" rx="16.5" stroke="none"/>
       <rect x="0.5" y="0.5" width="125" height="32" rx="16" fill="none"/>
     </g>

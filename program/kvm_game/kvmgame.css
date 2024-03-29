@@ -19,6 +19,12 @@
       display: none !important;
   }
 
+  div.markets-solutions-overview,
+  div.markets-solutions-applications,
+  div.markets-solutions-recommend-products {
+      padding: 0 !important;
+  }
+
   .markets-solutions-applications .gameOutContainer {
       display: block !important;
   }
@@ -28,7 +34,13 @@
       background: #3b3b3b !important;
   }
 
+  #gotoTop {
+      display: none !important;
+  }
 
+  .preview-info-action {
+      display: none;
+  }
 
   /******************************
 			import
@@ -72,7 +84,7 @@
   html {
       width: 100%;
       height: 100%;
-      font-family: "Noto sans TC", "Microsoft JhengHei ", "微軟正黑體", sans-serif;
+      font-family: "Noto sans TC", "Microsoft JhengHei ", "微軟正黑體", sans-serif !important;
       margin: 0;
       background-color: #3b3b3b;
   }
@@ -155,6 +167,7 @@
       transform: translate(-50%, -50%);
       opacity: 0;
       transition: 1.5s;
+      font-weight: 800 !important;
   }
 
   .gameOutContainer .openMask .startBtn p {
