@@ -615,7 +615,7 @@
             setTimeout(() => sound.play(3), 500)
 
             // 選擇眼力圖 > 開啟結果頁 > 更新分數 
-            const kekaNum = parseInt(this.score / 10) + 1
+            const kekaNum = parseInt(this.score / 10)
             let background = `scorePage_${kekaNum}`
             scorePage.object.style.backgroundImage = "url(" + imageUrlPrefix + background + ".png"
             scene[2].a[0].object.href = imageUrlPrefix + background + ".png"
