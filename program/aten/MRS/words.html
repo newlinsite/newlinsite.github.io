@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /******************************
+			import
+    *******************************/
+    @import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
+
+    @font-face {
+        font-family: 'Material Symbols Outlined';
+        font-style: normal;
+        font-weight: 400;
+        src: url(https://fonts.gstatic.com/s/materialsymbolsoutlined/v76/kJF4BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY40KH8nGzv3fz_VFU22ZZLsYEpzC_1ver5Y0.woff2) format('woff2');
+    }
+
+
+    /******************************
+         Page
+    *******************************/
+    * {
+        position: relative;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    body,
+    html {
+        width: 100%;
+        height: 100%;
+        font-family: "Noto sans TC", "Microsoft JhengHei ", "微軟正黑體", sans-serif !important;
+        margin: 0;
+        background-color: #3b3b3b;
+    }
+
+    .contrainer {
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+<body>
+    <div class="contrainer"></div>
+</body>
+<script src="../library/voiceControl.js"></script>
+<script>
+    var $id = function (name) {
+        return document.getElementById(name)
+    }
+    var $css = function (name) {
+        return document.getElementsByClassName(name)
+    }
+    var $tag = function (name) {
+        return document.getElementsByTagName(name)
+    }
+    var test = function (print = "test") {
+        console.log(print)
+    }
+    function nothing() {
+        // console.log("nothing")
+    }
+
+
+    var wordList = [
+        `
+        図る
+        はかる
+        政府は大臣達を集め、問題の解決を図る
+        試圖、謀求
+        5
+        `,
+        `
+        `,
+    ]
+    test = [{
+        name: "A",
+        Weights: "5",
+    }, {
+        name: "B",
+        Weights: "2",
+    }, {
+        name: "C",
+        Weights: "1",
+    },]
+    class word {
+        constructor() {
+
+        }
+    }
+
+
+
+</script>
+
+</html>
