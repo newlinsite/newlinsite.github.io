@@ -476,7 +476,7 @@
             game.score = game.score + score
             this.gameNowNum = this.gameNowNum + num
             test("" + score + ", Score : " + game.score)
-            game.onMask()
+            game.onMask(100, 100)
             this.onScoreNote(score, itemNum)
             this.reNewScore()
         }
@@ -1130,12 +1130,12 @@
 
 
 
-    // gameLevel[0][0].open()
+    gameLevel[0][0].open()
     // gameLevel[2][0].open()
 
     // gameLevel[1][0].reNewScore()
     // gameLevel[1][0].reNewTimeBar(30)
-    game.goHome()
+    // game.goHome()
     // game.end()
     // game.goToLevel(0)
     // scene[1].open()
