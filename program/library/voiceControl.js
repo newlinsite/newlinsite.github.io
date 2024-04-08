@@ -151,6 +151,7 @@ class music {
             this.voice.crossOrigin = "anonymous"
         } else {
             console.log("Voice source error")
+            return (console.log("Error"))
         }
 
 

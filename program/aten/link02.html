@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="400" height="400"></canvas>
+    <script>
+        class Box {
+            constructor(x, y, width, height) {
+                this.x = x;
+                this.y = y;
+                this.width = width;
+                this.height = height;
+                this.nodeRadius = 5; // 節點半徑
+                this.isDragging = false;
+                this.offsetX = 0;
+                this.offsetY = 0;
+            }
+
+            draw(ctx) {
+                ctx.fillStyle = 'blue';
+                ctx.fillRect(this.x, this.y, this.width, this.height);
+                // 繪製節點
+                this.drawNode(ctx, this.x + this.width / 2, this.y);
+                this.drawNode(ctx, this.x + this.width, this.y + this.height / 2);
+                this.drawNode(ctx, this.x + this.width / 2, this.y + this.height);
+                this.drawNode(ctx, this.x, this.y + this.height / 2);
+            }
+
+            drawNode(ctx, x, y) {
+                ctx.fillStyle = 'red';
+                ctx.beginPath();
+                ctx.arc(x, y, this.nodeRadius, 0, 2 * Math.PI);
+                ctx.fill();
+            }
+
+            isInside(mouseX, mouseY) {
+                return mouseX > this.x && mouseX < this.x + this.width &&
+                    mouseY > this.y && mouseY < this.y + this.height;
+            }
+        }
+
+        const canvas = document.getElementById('myCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // 創建兩個方塊
+        let box1 = new Box(100, 100, 50, 50);
+        let box2 = new Box(250, 250, 50, 50);
+
+        // 儲存連線的起點和終點的節點
+        let lineStartNode = null;
+        let lineEndNode = null;
+
+        // 清除 canvas
+        function clearCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        // 主繪製函數
+        function draw() {
+            clearCanvas();
+            box1.draw(ctx);
+            box2.draw(ctx);
+            drawLine({ x: box1.x + box1.width / 2, y: box1.y }, { x: box2.x + box2.width / 2, y: box2.y });
+        }
+
+        // 繪製連線
+        function drawLine(start, end) {
+            ctx.beginPath();
+            ctx.moveTo(start.x, start.y);
+            ctx.lineTo(end.x, end.y);
+            ctx.strokeStyle = 'red';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+        }
+
+        // 初次繪製
+        draw();
+
+        // 追踪拖動
+        let dragBox = null;
+
+        canvas.addEventListener('mousedown', (e) => {
+            const mouseX = e.clientX - canvas.getBoundingClientRect().left;
+            const mouseY = e.clientY - canvas.getBoundingClientRect().top;
+
+            // 檢查是否在方塊上點擊
+            if (box1.isInside(mouseX, mouseY)) {
+                dragBox = box1;
+                dragBox.isDragging = true;
+                dragBox.offsetX = mouseX - dragBox.x;
+                dragBox.offsetY = mouseY - dragBox.y;
+            } else if (box2.isInside(mouseX, mouseY)) {
+                dragBox = box2;
+                dragBox.isDragging = true;
+                dragBox.offsetX = mouseX - dragBox.x;
+                dragBox.offsetY = mouseY - dragBox.y;
+            }
+
+            // 如果點擊在節點上，追蹤連線的起點和終點
+            if (lineStartNode) {
+                if (box1.isInside(mouseX, mouseY)) {
+                    lineStartNode = box1;
+                } else if (box2.isInside(mouseX, mouseY)) {
+                    lineStartNode = box2;
+                }
+            }
+        });
+
+        canvas.addEventListener('mousemove', (e) => {
+            if (dragBox && dragBox.isDragging) {
+                const mouseX = e.clientX - canvas.getBoundingClientRect().left;
+                const mouseY = e.clientY - canvas.getBoundingClientRect().top;
+                dragBox.x = mouseX - dragBox.offsetX;
+                dragBox.y = mouseY - dragBox.offsetY;
+                draw();
+            }
+
+            const mouseX = e.clientX - canvas.getBoundingClientRect().left;
+            const mouseY = e.clientY - canvas.getBoundingClientRect().top;
+
+            // 更新連線的終點
+            if (lineStartNode && !dragBox) {
+                lineEndNode = null;
+                if (box1.isInside(mouseX, mouseY) && box1 !== lineStartNode) {
+                    lineEndNode = box1;
+                } else if (box2.isInside(mouseX, mouseY) && box2 !== lineStartNode) {
+                    lineEndNode = box2;
+                }
+                draw();
+            }
+        });
+
+        canvas.addEventListener('mouseup', () => {
+            if (dragBox) {
+                dragBox.isDragging = false;
+                dragBox = null;
+            }
+        });
+    </script>
+</body>
+
+</html>
