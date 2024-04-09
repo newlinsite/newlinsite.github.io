@@ -1069,6 +1069,7 @@
                 let musicInstance = new music(item.voice);
                 return musicInstance;
             });
+            // console.log(bgm[0].voice.src)
             bgm[0].gainNode.gain.value = 0.3
             bgm[1].gainNode.gain.value = 0.3
             bgm[2].gainNode.gain.value = 2.5
@@ -1079,10 +1080,10 @@
 
             setTimeout(() => {
                 bgm[0].voice = document.createElement("audio")
-                bgm[0].voice.src = imageUrlPrefix + "002.mp3"
+                bgm[0].voice.src = imageUrlPrefix + "001.mp3"
                 bgm[0].gainNode.gain.value = 0.3
+                // console.log(bgm[0].voice.src)
             }, 100)
-
         })
 
     }
