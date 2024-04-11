@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /******************************
+			import
+*******************************/
+    @import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
+
+    @font-face {
+        font-family: 'Material Symbols Outlined';
+        font-style: normal;
+        font-weight: 400;
+        src: url(https://fonts.gstatic.com/s/materialsymbolsoutlined/v76/kJF4BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY40KH8nGzv3fz_VFU22ZZLsYEpzC_1ver5Y0.woff2) format('woff2');
+    }
+
+    /*****************************************
+******************************************
+******************************************
+
+			Page
+
+******************************************
+******************************************
+******************************************/
+
+    * {
+        position: relative;
+        box-sizing: border-box;
+        color: var(--text-color)
+    }
+
+    span.g-icon {
+        font-family: "Material Symbols Outlined"
+    }
+
+
+    body,
+    html {
+        background-color: #222;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        font-family: Noto Sans, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+            Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        margin: 0;
+
+    }
+
+    .container {
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+        max-width: 1000px;
+        background-color: #222;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container>* {
+        padding: 8px 16px;
+        margin: 4px;
+    }
+
+    .mainText {
+        font-size: 24px;
+    }
+
+    .spellText {
+        font-size: 20px;
+    }
+
+    .exampleText {
+        font-size: 16px;
+        opacity: 0.7;
+    }
+
+    .okBtnBox {
+        margin-top: 24px;
+        border: 1px solid #444;
+        border-radius: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .okBtnBox>* {
+        padding: 8px;
+        margin: 0 16px;
+        cursor: pointer;
+        opacity: 0.8;
+        transition: 0.3s;
+    }
+
+
+
+    .okBtnBox>*:hover {
+        opacity: 1;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="mainText">mainText</div>
+        <div class="spellText">spellText</div>
+        <div class="exampleText">exampleText</div>
+        <div class="playBtn">
+            <span class="g-icon playBtn"> volume_up </span>
+        </div>
+        <div class="okBtnBox">
+            <span class="g-icon okBtn">Done</span>
+            <span class="g-icon noBtn">Close</span>
+        </div>
+    </div>
+</body>
+<script src='//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js'></script>
+
+<script src="library/voiceControl.js"></script>
+<script>
+    var $id = function (name) {
+        return document.getElementById(name)
+    }
+    var $css = function (name) {
+        return document.getElementsByClassName(name)
+    }
+    var $tag = function (name) {
+        return document.getElementsByTagName(name)
+    }
+    var test = function (print = "test") {
+        console.log(print)
+    }
+    function nothing() {
+        // console.log("nothing")
+    }
+
+
+
+
+    // 取得全部單字與欄位 > 變成list
+
+    // 根據權重隨機 > 帶入文字
+    // 問題 顯示部分內容
+    // 解答 顯示其他內容
+    // 選對錯
+    // 權重更新
+
+    // 權重 list > 倒回清單
+
+
+</script>
+
+</html>
