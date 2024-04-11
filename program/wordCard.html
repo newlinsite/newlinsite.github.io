@@ -144,6 +144,25 @@
 
 
 
+    var firstOnload = () => {
+        $.ajax({
+            url: "https://script.google.com/macros/s/AKfycbyUqTSPRUiCOosOVfwa9jRT5T0dAV8piDOZOyz0m-8hTrU7rmHYxG8s1D5bN96kHkXJ/exec",
+            data: {
+                "onload": true,
+                "timestamp": "time",
+            },
+            success: function (response) {
+                console.log("id : " + response.main, response)
+            },
+        });
+    }
+
+
+
+
+
+    firstOnload()
+
     // 取得全部單字與欄位 > 變成list
 
     // 根據權重隨機 > 帶入文字
