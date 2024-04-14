@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flowchart</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="800" height="600"></canvas>
+    <button id="addBlock">Add Block</button>
+    <script>
+        let color = "#64C31C #0E62CC #094576"
+        // 線彎曲
+        // block 圓角 > 各種形狀畫法
+        // 暫時線更優雅的寫法
+
+        class Drawer {
+            static rect(cvx, x, y, width, height, radius, color = "#555", borderColor = "#333", borderWidth = 0) {
+                cvx.beginPath();
+                cvx.moveTo(x + radius, y);
+                cvx.arcTo(x + width, y, x + width, y + height, radius);
+                cvx.arcTo(x + width, y + height, x, y + height, radius);
+                cvx.arcTo(x, y + height, x, y, radius);
+                cvx.arcTo(x, y, x + width, y, radius);
+                cvx.closePath();
+
+                cvx.fillStyle = color;
+                cvx.strokeStyle = borderColor;
+                cvx.lineWidth = borderWidth;
+
+                cvx.fill();
+                if (borderWidth != 0) {
+                    cvx.stroke();
+                }
+            }
+
+            static rotatedRect(cvx, x, y, width, height, radius, angle, color = "#555", borderColor = "#333", borderWidth = 0) {
+                const anglePI = Math.PI / 180 * angle
+                cvx.save(); // 保存当前画布状态
+                cvx.translate(x + width / 2, y + height / 2); // 将画布原点移动到矩形中心
+                cvx.rotate(anglePI); // 旋转画布
+                Drawer.rect(cvx, -width / 2, -height / 2, width, height, radius, color, borderColor, borderWidth); // 调用绘制矩形的方法
+                cvx.restore(); // 恢复之前保存的画布状态，防止旋转影响到其他绘制操作
+            }
+
+            static circle(cvx, x, y, radius, color = "#555", borderColor = "#333", borderWidth = 0) {
+                cvx.beginPath();
+                cvx.arc(x, y, radius, 0, 2 * Math.PI);
+                cvx.closePath();
+
+                cvx.fillStyle = color;
+                cvx.strokeStyle = borderColor;
+                cvx.lineWidth = borderWidth;
+
+                cvx.fill();
+                cvx.stroke();
+            }
+        }
+
+
+        class Block {
+            constructor(name, type, x, y, width, height, text, textH = 14) {
+                this.name = name
+                this.type = type
+                this.x = x
+                this.y = y
+                this.width = width
+                this.height = height
+                this.color = '#ccc'
+                this.borderColor = '#333'
+                this.borderWidth = 2
+                this.text = text
+                this.textH = textH
+                this.nodes = []; // Array to store nodes
+                this.createNodes(); // Create nodes when Block is created
+            }
+
+            createNodes() {
+                // Create nodes on each side of the block
+                this.nodes.push(new Node(this, 0, 0.5, 0)); // Top node
+                this.nodes.push(new Node(this, 1, 1, 0.5)); // Right node
+                this.nodes.push(new Node(this, 2, 0.5, 1)); // Bottom node
+                this.nodes.push(new Node(this, 3, 0, 0.5)); // Left node
+            }
+
+            draw(cvx) {
+
+                Drawer.rect(cvx, this.x, this.y, this.width, this.height, 10, this.color, this.borderColor, this.borderWidth)
+
+                // Draw text
+                cvx.fillStyle = '#000';
+                cvx.font = `${this.textH}px Arial`;
+                const textW = cvx.measureText(this.text).width;
+                const textX = this.x + (this.width - textW) / 2;
+                const textY = this.y + (this.height + this.textH) / 2;
+                cvx.fillText(this.text, textX, textY);
+
+                // Draw nodes
+                this.nodes.forEach(node => {
+                    node.draw(cvx);
+                });
+
+
+            }
+        }
+
+        class Node {
+            constructor(block, inWhere, absX, absY, color = "#333", size = 10, borderColor = '#aaa', borderWidth = 2) {
+                this.block = block
+                this.inWhere = inWhere
+                this.absX = absX
+                this.absY = absY
+                this.x = this.block.x + this.block.width * this.absX
+                this.y = this.block.y + this.block.height * this.absY
+                this.color = color
+                this.size = size;
+                this.borderColor = borderColor
+                this.borderWidth = borderWidth
+            }
+            draw(cvx) {
+                this.x = this.block.x + this.block.width * this.absX
+                this.y = this.block.y + this.block.height * this.absY
+                Drawer.circle(cvx, this.x, this.y, this.size, this.color, this.borderColor, this.borderWidth)
+            }
+        }
+        class ConnectLine {
+            constructor(startNode, endNode, color = "#008CFF", lineWidth = 2, temp = false) {
+                this.startNode = startNode
+                this.endNode = endNode
+                this.color = color
+                this.lineWidth = lineWidth
+                this.temp = temp
+                this.linePoint = []
+            }
+            draw(tempX = 0, tempY = 0) {
+                cvx.beginPath();
+                cvx.moveTo(this.startNode.x, this.startNode.y);
+                if (this.temp) {
+                    cvx.lineTo(tempX, tempY);
+                } else {
+
+
+                    if (this.startNode.inWhere == 1 && this.endNode.inWhere == 0 && this.startNode.y < this.endNode.y) {
+                        cvx.lineTo(this.endNode.x, this.startNode.y);
+                        cvx.lineTo(this.endNode.x, this.endNode.y);
+                        this.linePoint = [[this.startNode.x, this.startNode.y], [this.endNode.x, this.startNode.y], [this.endNode.x, this.endNode.y]]
+
+                    }
+                    if (this.startNode.inWhere == 1 && this.endNode.inWhere == 3) {
+
+                        const halfX = this.startNode.x + (this.endNode.x - this.startNode.x) / 2
+                        cvx.lineTo(halfX, this.startNode.y);
+                        cvx.lineTo(halfX, this.endNode.y);
+                        cvx.lineTo(this.endNode.x, this.endNode.y);
+                        this.linePoint = [[this.startNode.x, this.startNode.y], [halfX, this.startNode.y], [halfX, this.endNode.y], [this.endNode.x, this.endNode.y]]
+                    }
+                    if (this.startNode.inWhere == 1 && this.endNode.inWhere == 2 && this.startNode.y > this.endNode.y) {
+                        cvx.lineTo(this.endNode.x, this.startNode.y);
+                        cvx.lineTo(this.endNode.x, this.endNode.y);
+                    }
+
+
+                    // if (this.startNode.inWhere == 1 || this.startNode.inWhere == 3) {
+                    //     cvx.lineTo(this.endNode.x, this.startNode.y);
+                    //     cvx.lineTo(this.endNode.x, this.endNode.y);
+                    // } else if (this.startNode.inWhere == 0 || this.startNode.inWhere == 2) {
+                    //     cvx.lineTo(this.startNode.x, this.endNode.y);
+                    //     cvx.lineTo(this.endNode.x, this.endNode.y);
+                    // }
+
+
+                }
+
+                cvx.strokeStyle = this.color;
+                cvx.lineWidth = this.lineWidth;
+                cvx.stroke();
+            }
+
+
+
+            // 每個line class 可以被選到
+            // Line在 connect裡面 根據點點汗blok位置新增減少線
+        }
+
+
+
+        const canvas = document.getElementById('canvas');
+        const cvx = canvas.getContext('2d');
+
+        Drawer.rect(cvx, 100, 100, 50, 50, 0, "#ff1ff2", "#333", 2);
+        // Drawer.rotatedRect(cvx, 10, 10, 50, 50, 5, 45, "#004519");
+
+        let shapes = [];
+        let connectLines = []
+        let foundShape = false
+        let foundNode = false
+        let foundEndNode = false
+        let foundLine = false
+
+        let dragStartX, dragStartY;
+        let selectedStartNode = null;
+        let selectedShape = null;
+        let selectLine = null
+        let tempLine //拖曳時顯示線
+
+        document.getElementById('addBlock').addEventListener('click', () => addBlock());
+
+        canvas.addEventListener('mousedown', handleMouseDown);
+        canvas.addEventListener('mousemove', handleMouseMove);
+        canvas.addEventListener('mouseup', handleMouseUp);
+
+        let tempNum = 0
+        function addBlock(x = 100, y = 100, w = 100, h = 50) {
+
+            shapes.push(new Block("New" + tempNum, "test", x, y, w, h, 'New Block'));
+            redraw();
+            tempNum++
+        }
+        addBlock()
+        addBlock(200, 200)
+        connectLines.push(new ConnectLine(shapes[0].nodes[1], shapes[1].nodes[0]))
+        redraw();
+
+
+        //----------------------
+        //查看選到誰
+        //----------------------
+        function handleMouseDown(event) {
+            const mouseX = event.offsetX;
+            const mouseY = event.offsetY;
+
+            // 判斷點到誰
+            for (let i = shapes.length - 1; i >= 0; i--) {
+
+                //是否點到結點
+                const nodes = shapes[i].nodes;
+                for (let node of nodes) {
+                    if (mouseX >= node.x - node.size && mouseX <= node.x + node.size &&
+                        mouseY >= node.y - node.size && mouseY <= node.y + node.size) {
+                        selectedStartNode = node
+                        foundNode = true
+                        tempLine = new ConnectLine(selectedStartNode, "", "#444", 2, true)
+                        return
+                    }
+                }
+                //是否點到Block
+                const shape = shapes[i];
+                if (mouseX >= shape.x && mouseX <= shape.x + shape.width &&
+                    mouseY >= shape.y && mouseY <= shape.y + shape.height) {
+                    foundShape = true;
+                    dragStartX = mouseX - shape.x; // 滑鼠到物件起始點的距離
+                    dragStartY = mouseY - shape.y;
+                    selectedShape = shape;
+                    console.log(shape.name)
+                    return
+                }
+            }
+            //是否點到線
+            for (let index = 0; index < connectLines.length; index++) {
+                const line = connectLines[index];
+                for (let i = 0; i < line.linePoint.length - 1; i++) {
+                    let selectRange = 8
+                    if (mouseX >= line.linePoint[i][0] - selectRange && mouseX <= line.linePoint[i + 1][0] + selectRange &&
+                        mouseY >= line.linePoint[i][1] - selectRange && mouseY <= line.linePoint[i + 1][1] + selectRange) {
+                        selectLine = index
+                        foundLine = true
+                        line.color = "#64C31C"
+                        redraw();
+
+                        return
+                    }
+                }
+
+            }
+        }
+
+
+        //----------------------
+        //選到誰做移動作啥事
+        //----------------------
+
+        function handleMouseMove(event) {
+            const mouseX = event.offsetX;
+            const mouseY = event.offsetY;
+            if (foundNode) {
+                redraw();
+                tempLine.draw(mouseX, mouseY)
+            }
+            if (foundShape) {
+                selectedShape.x = mouseX - dragStartX;
+                selectedShape.y = mouseY - dragStartY;
+                redraw();
+            }
+            if (foundLine) {
+
+            }
+        }
+
+
+        //----------------------
+        //結束動作，復原所有選擇狀態
+        //----------------------
+        function handleMouseUp() {
+            // 畫連線
+            if (foundNode) {
+                const mouseX = event.offsetX;
+                const mouseY = event.offsetY;
+                for (let i = shapes.length - 1; i >= 0; i--) {
+                    const nodes = shapes[i].nodes;
+                    console.log(shapes[i].name)
+                    // 搜尋所有 node ，如果滑鼠在上面則連線到這裡
+                    for (let node of nodes) {
+                        if (mouseX >= node.x - node.size && mouseX <= node.x + node.size &&
+                            mouseY >= node.y - node.size && mouseY <= node.y + node.size) {
+                            connectLines.push(new ConnectLine(selectedStartNode, node))
+                            tempLine = null
+                            foundEndNode = true
+                            break;
+                        }
+                    }
+                    if (foundEndNode) {
+                        foundEndNode = false
+                        break;
+                    }
+                }
+            }
+
+            // 執行選取線的動作
+            if (foundLine) {
+                // connectLines.splice(selectLine, 1);
+                // console.log(connectLines)
+                connectLines[selectLine].color = "#555"
+            }
+
+            foundNode = false;
+            foundShape = false;
+            foundLine = false
+            selectedStartNode = null;
+            selectedShape = null;
+            redraw()
+        }
+
+        function redraw() {
+            cvx.clearRect(0, 0, canvas.width, canvas.height);
+
+            shapes.forEach(shape => {
+                shape.draw(cvx);
+            });
+            connectLines.forEach(line => {
+                line.draw(cvx);
+            });
+            // tempLine = new ConnectLine(selectedStartNode, "", "#444", 0, true)
+        }
+    </script>
+</body>
+
+</html>
