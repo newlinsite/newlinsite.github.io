@@ -941,7 +941,7 @@
             ], a: [
                 { name: "download", size: [31, 13], xyr: [32, 87, 0], background: "scorePBtn02.png", a: "#", download: false, act: nothing, color: "" },
                 { name: "link    ", size: [31, 13], xyr: [66, 87, 0], background: "scorePBtn03.png", a: "https://www.aten.com/tw/zh/campaign-page/tw-zh/kvm-everyday-tw/#form_ActON", download: false, act: nothing, color: "" },
-                { name: "link    ", size: [32, 5.5], xyr: [64.8, 66.1, 0], background: "scorePBtn04.png", a: "https://www.aten.com/tw/zh/campaign-page/tw-zh/kvm-everyday-tw/", download: false, act: nothing, color: "" },
+                { name: "link    ", size: [32, 6.0], xyr: [64.8, 66.1, 0], background: "scorePBtn04.png", a: "https://www.aten.com/tw/zh/campaign-page/tw-zh/kvm-everyday-tw/", download: false, act: nothing, color: "" },
             ], item: [], gameTime: 0, gameKachiNum: 0
         }
     ]
@@ -1091,8 +1091,8 @@
 
 
     // 入場 Mask 關閉 測試用
-    openMask.style.opacity = 0
-    setTimeout(() => openMask.remove(), 500)
+    // openMask.style.opacity = 0
+    // setTimeout(() => openMask.remove(), 500)
 
 
     //啟動音樂
@@ -1132,11 +1132,11 @@
 
 
     // gameLevel[0][0].open()
-    gameLevel[2][0].open()
+    // gameLevel[2][0].open()
 
     // gameLevel[1][0].reNewScore()
     // gameLevel[1][0].reNewTimeBar(30)
-    // game.goHome()
+    game.goHome()
     // game.end()
     // game.goToLevel(0)
     // scene[1].open()
