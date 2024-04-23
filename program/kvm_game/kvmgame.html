@@ -45,7 +45,7 @@
 
 
     var imageUrlPrefix = "//assets.aten.com/webpage/shared/campaign/global/kvmEveday/"
-    var imageUrlPrefix = "image/"
+    // var imageUrlPrefix = "image/"
 
 
     // ------------------------
@@ -386,7 +386,7 @@
                     if (!attr.item[i].isStableItem) { //如果不是靜態物件，加入遊戲規則
                         if (this.level / 100 > 3) { //第三關新增動畫class
                             this.item[i].object.classList.add("an" + i)
-                            this.item[i].object.style.animationDelay = i * 1.3 + "s"
+                            this.item[i].object.style.animationDelay = i * 0.21 + "s"
                         }
                         this.item[i].object.addEventListener("click", () => {
                             if (this.item[i].state == 0) {
@@ -539,7 +539,7 @@
                             setTimeout(() => this.gameOver(true), 1500)
                         })
                     //播放遊戲中音樂
-                    bgm[0].play("loop")
+                    bgm[7].play("loop")
                 }
             )
         }
@@ -727,6 +727,23 @@
     }
 
 
+
+    //讀取先讀取結果圖功能
+    var imgPreLoad = () => {
+        imgPreLoadObj = document.createElement("img")
+        const kekaNum = parseInt(this.score / 10)
+        let background = `scorePage_${kekaNum}`
+
+        imgPreLoadObj.src = imageUrlPrefix + background + ".png"
+        imgPreLoadObj.style.opacity = 1
+        imgPreLoadObj.style.height = 0
+        imgPreLoadObj.style.position = "absolute"
+        imgPreLoadObj.style.top = 0
+        container.appendChild(imagePreLoad[i])
+        setTimeout(() => { imagePreLoad[i].remove() }, 10)
+    }
+
+
     ///---------------------------------
     //
     //
@@ -760,6 +777,7 @@
         { voice: imageUrlPrefix + "K-3.mp3" },
         { voice: imageUrlPrefix + "K-4.mp3" },
         { voice: imageUrlPrefix + "K-5.mp3" },
+        { voice: imageUrlPrefix + "001.mp3" },
     ]
     var bgm = bgmList.map((item) => {
         let musicInstance = new music(item.voice);
@@ -769,13 +787,13 @@
 
 
 
-    bgm[0].gainNode.gain.value = 0.5
-    bgm[1].gainNode.gain.value = 0.5
-    bgm[2].gainNode.gain.value = 2.5
-    bgm[3].gainNode.gain.value = 2.5
-    bgm[4].gainNode.gain.value = 2.5
-    bgm[5].gainNode.gain.value = 2.5
-    bgm[6].gainNode.gain.value = 2.5
+    // bgm[0].gainNode.gain.value = 0.5
+    // bgm[1].gainNode.gain.value = 0.5
+    // bgm[2].gainNode.gain.value = 2.5
+    // bgm[3].gainNode.gain.value = 2.5
+    // bgm[4].gainNode.gain.value = 2.5
+    // bgm[5].gainNode.gain.value = 2.5
+    // bgm[6].gainNode.gain.value = 2.5
 
 
 
@@ -1066,10 +1084,13 @@
                 { voice: imageUrlPrefix + "K-4.mp3" },
                 { voice: imageUrlPrefix + "K-5.mp3" },
             ]
+            var bgm = []
             var bgm = bgmList.map((item) => {
                 let musicInstance = new music(item.voice);
                 return musicInstance;
             });
+
+
             // console.log(bgm[0].voice.src)
             bgm[0].gainNode.gain.value = 0.3
             bgm[1].gainNode.gain.value = 0.3
@@ -1078,6 +1099,8 @@
             bgm[4].gainNode.gain.value = 2.5
             bgm[5].gainNode.gain.value = 2.5
             bgm[6].gainNode.gain.value = 2.5
+
+
 
             setTimeout(() => {
                 bgm[0].voice = document.createElement("audio")
@@ -1088,8 +1111,6 @@
         })
 
     }
-
-
 
     // 入場 Mask 關閉 測試用
     // openMask.style.opacity = 0
@@ -1104,17 +1125,17 @@
     var imagePreLoad = []
     var imagePreLoadUrl = [
         imageUrlPrefix + "scorePage_loading_Bg.png",
-        imageUrlPrefix + "scorePage_0.png",
-        imageUrlPrefix + "scorePage_1.png",
-        imageUrlPrefix + "scorePage_2.png",
-        imageUrlPrefix + "scorePage_3.png",
-        imageUrlPrefix + "scorePage_4.png",
-        imageUrlPrefix + "scorePage_5.png",
-        imageUrlPrefix + "scorePage_6.png",
-        imageUrlPrefix + "scorePage_7.png",
-        imageUrlPrefix + "scorePage_8.png",
-        imageUrlPrefix + "scorePage_9.png",
-        imageUrlPrefix + "scorePage_10.png",
+        // imageUrlPrefix + "scorePage_0.png",
+        // imageUrlPrefix + "scorePage_1.png",
+        // imageUrlPrefix + "scorePage_2.png",
+        // imageUrlPrefix + "scorePage_3.png",
+        // imageUrlPrefix + "scorePage_4.png",
+        // imageUrlPrefix + "scorePage_5.png",
+        // imageUrlPrefix + "scorePage_6.png",
+        // imageUrlPrefix + "scorePage_7.png",
+        // imageUrlPrefix + "scorePage_8.png",
+        // imageUrlPrefix + "scorePage_9.png",
+        // imageUrlPrefix + "scorePage_10.png",
     ]
     for (let i = 0; i < imagePreLoadUrl.length; i++) {
         imagePreLoad[i] = document.createElement("img")
@@ -1186,7 +1207,8 @@
             sound.play(5, "stop")
         }
         if (keyID === 'KeyE') {
-
+            test(bgmList)
+            test(bgm)
         }
 
 

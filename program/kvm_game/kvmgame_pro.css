@@ -345,8 +345,8 @@ html {
 .gameItem.an8 {
     -webkit-animation: kAn02;
     animation: kAn02;
-    -webkit-animation-duration: 6.5s;
-    animation-duration: 6.5s;
+    -webkit-animation-duration: 8.5s;
+    animation-duration: 8.5s;
     -webkit-animation-iteration-count: infinite;
     animation-iteration-count: infinite;
     -webkit-animation-timing-function: ease-in;
@@ -354,8 +354,8 @@ html {
 }
 
 .gameItem.an8 {
-    -webkit-animation-duration: 9s;
-    animation-duration: 9s;
+    -webkit-animation-duration: 10s;
+    animation-duration: 10s;
 }
 
 .gameItem.an6 {
@@ -419,14 +419,24 @@ html {
         transform: translate(0, 0);
     }
 
-    50% {
-        -webkit-transform: translate(0, 0);
-        transform: translate(0, 0);
+    10% {
+        -webkit-transform: translate(-12%, 16%);
+        transform: translate(-12%, 16%);
     }
 
-    95% {
-        -webkit-transform: translate(19%, -20%);
-        transform: translate(19%, -20%);
+    40% {
+        -webkit-transform: translate(-10%, 15%);
+        transform: translate(-10%, 15%);
+    }
+
+    65% {
+        -webkit-transform: translate(10%, -10%);
+        transform: translate(10%, -10%);
+    }
+
+    70% {
+        -webkit-transform: translate(-12%, 16%);
+        transform: translate(-12%, 16%);
     }
 
     100% {
@@ -441,14 +451,24 @@ html {
         transform: translate(0, 0);
     }
 
-    50% {
-        -webkit-transform: translate(0, 0);
-        transform: translate(0, 0);
+    10% {
+        -webkit-transform: translate(-12%, 16%);
+        transform: translate(-12%, 16%);
     }
 
-    95% {
-        -webkit-transform: translate(19%, -20%);
-        transform: translate(19%, -20%);
+    40% {
+        -webkit-transform: translate(-10%, 15%);
+        transform: translate(-10%, 15%);
+    }
+
+    65% {
+        -webkit-transform: translate(10%, -10%);
+        transform: translate(10%, -10%);
+    }
+
+    70% {
+        -webkit-transform: translate(-12%, 16%);
+        transform: translate(-12%, 16%);
     }
 
     100% {
@@ -459,8 +479,8 @@ html {
 
 @-webkit-keyframes kAn03 {
     0% {
-        -webkit-transform: translate(10%, 0);
-        transform: translate(10%, 0);
+        -webkit-transform: translate(0, 0);
+        transform: translate(0, 0);
     }
 
     75% {
@@ -474,15 +494,15 @@ html {
     }
 
     100% {
-        -webkit-transform: translate(10%, 0);
-        transform: translate(10%, 0);
+        -webkit-transform: translate(0, 0);
+        transform: translate(0, 0);
     }
 }
 
 @keyframes kAn03 {
     0% {
-        -webkit-transform: translate(10%, 0);
-        transform: translate(10%, 0);
+        -webkit-transform: translate(0, 0);
+        transform: translate(0, 0);
     }
 
     75% {
@@ -496,8 +516,8 @@ html {
     }
 
     100% {
-        -webkit-transform: translate(10%, 0);
-        transform: translate(10%, 0);
+        -webkit-transform: translate(0, 0);
+        transform: translate(0, 0);
     }
 }
 
