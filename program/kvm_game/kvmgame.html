@@ -1075,38 +1075,36 @@
                 scene[0].btn[0].object.style.transform = "translate(-50%, -50%)"
             }, 1500)
 
-            var bgmList = [
-                { voice: imageUrlPrefix + "001.mp3" },
-                { voice: imageUrlPrefix + "002.mp3" },
-                { voice: imageUrlPrefix + "K-1.mp3" },
-                { voice: imageUrlPrefix + "K-2.mp3" },
-                { voice: imageUrlPrefix + "K-3.mp3" },
-                { voice: imageUrlPrefix + "K-4.mp3" },
-                { voice: imageUrlPrefix + "K-5.mp3" },
-            ]
-            var bgm = []
-            var bgm = bgmList.map((item) => {
-                let musicInstance = new music(item.voice);
-                return musicInstance;
-            });
+            // var bgmList = [
+            //     { voice: imageUrlPrefix + "001.mp3" },
+            //     { voice: imageUrlPrefix + "002.mp3" },
+            //     { voice: imageUrlPrefix + "K-1.mp3" },
+            //     { voice: imageUrlPrefix + "K-2.mp3" },
+            //     { voice: imageUrlPrefix + "K-3.mp3" },
+            //     { voice: imageUrlPrefix + "K-4.mp3" },
+            //     { voice: imageUrlPrefix + "K-5.mp3" },
+            // ]
+            // var bgm = bgmList.map((item) => {
+            //     let musicInstance = new music(item.voice);
+            //     return musicInstance;
+            // });
 
 
-            // console.log(bgm[0].voice.src)
-            bgm[0].gainNode.gain.value = 0.3
-            bgm[1].gainNode.gain.value = 0.3
-            bgm[2].gainNode.gain.value = 2.5
-            bgm[3].gainNode.gain.value = 2.5
-            bgm[4].gainNode.gain.value = 2.5
-            bgm[5].gainNode.gain.value = 2.5
-            bgm[6].gainNode.gain.value = 2.5
+            // bgm[0].gainNode.gain.value = 0.3
+            // bgm[1].gainNode.gain.value = 0.3
+            // bgm[2].gainNode.gain.value = 2.5
+            // bgm[3].gainNode.gain.value = 2.5
+            // bgm[4].gainNode.gain.value = 2.5
+            // bgm[5].gainNode.gain.value = 2.5
+            // bgm[6].gainNode.gain.value = 2.5
 
 
 
             setTimeout(() => {
-                bgm[0].voice = document.createElement("audio")
-                bgm[0].voice.src = imageUrlPrefix + "001.mp3"
+                // bgm[0].voice = document.createElement("audio")
+                // bgm[0].voice.src = imageUrlPrefix + "001.mp3"
+                bgm[0].voice.mute = false
                 bgm[0].gainNode.gain.value = 0.3
-                // console.log(bgm[0].voice.src)
             }, 100)
         })
 
