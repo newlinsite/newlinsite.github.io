@@ -539,7 +539,7 @@
                             setTimeout(() => this.gameOver(true), 1500)
                         })
                     //播放遊戲中音樂
-                    bgm[1].play("loop")
+                    bgm[7].play()
                 }
             )
         }
@@ -777,7 +777,7 @@
         { voice: imageUrlPrefix + "K-3.mp3" },
         { voice: imageUrlPrefix + "K-4.mp3" },
         { voice: imageUrlPrefix + "K-5.mp3" },
-        { voice: imageUrlPrefix + "game.mp3" },
+        { voice: imageUrlPrefix + "game2.mp3" },
     ]
     var bgm = bgmList.map((item) => {
         let musicInstance = new music(item.voice);
