@@ -1,0 +1,383 @@
+:root {
+    --z-voice: 6000;
+    --z-ppt: 5000;
+    --z-Stream: 4000;
+    --z-Stream-device: 4100;
+    --z-upper: 3000;
+    --z-text: 2000;
+    --z-bgvideo: 1000;
+}
+
+
+* {
+    position: relative;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+body,
+html {
+    background-color: #000;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+
+}
+
+.container {
+    width: 100%;
+    padding-top: 18.75%;
+    overflow: hidden;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.container>* {
+    width: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+}
+
+.container>*.hight100 {
+    width: auto;
+    height: 100%;
+}
+
+img {
+    transition: 0.5s;
+}
+
+img.bg {
+    opacity: 1;
+    transition: 2s;
+}
+
+video.bg {
+    transition: 2s;
+    z-index: var(--z-bgvideo);
+}
+
+img.bg.off,
+video.bg.off {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.4);
+    transition: 1s;
+}
+
+
+
+
+video {
+    transition: 0.6s;
+}
+
+
+
+
+
+
+/* textBox */
+
+.textBox {
+    color: #fff;
+    font-family: 'Quicksand';
+    width: 60%;
+    padding: 10% 0;
+    font-size: 5em;
+    letter-spacing: 0.2em;
+    z-index: var(--z-text);
+    text-align: center;
+    font-weight: 400;
+    line-height: 1.6em;
+    /* background: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 40%); */
+    transition: 1s cubic-bezier(.56, -0.02, .75, 1.5);
+    transform: translate(-50%, -50%) scale(0.5);
+    text-shadow: 0px 2px 28px rgba(0, 0, 0, 0.4);
+}
+
+.textBox span {
+    letter-spacing: 0.01em;
+    font-size: 1.6em;
+    font-weight: 600;
+}
+
+
+.textBox.show {
+    opacity: 0.9;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.textBox>img {
+    margin: 28px;
+}
+
+.textBox.shadow>img {
+    filter: drop-shadow(0 0 32px rgba(0, 0, 0, 0.65));
+}
+
+
+
+
+/* upper */
+
+.upperBoxs {
+    height: 100%;
+    width: 100%;
+    opacity: 1;
+    z-index: var(--z-upper);
+}
+
+
+.uBox {
+    background-color: rgba(15, 49, 107, 0.7);
+    transition: 0.4s;
+}
+
+.uBox.off {
+    background-color: #15115b00;
+}
+
+.uBox.off::after {
+    background-image: linear-gradient(154deg, #170b8700 8%, #3a25b100 25%, #28078200 63%, rgba(80, 7, 120, 0) 79%);
+    box-shadow: 0 0 32px 0 rgba(0, 0, 0, 0);
+}
+
+.uBoxs.quick .uBox {
+    transition: 0s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ------------ window  ( for upper and stream ) ---------------- */
+
+
+
+.window {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 30%;
+    padding-top: 16.88%;
+    border-radius: 2px;
+}
+
+
+.window.left {
+    left: 16%;
+}
+
+
+.window.right {
+    left: 84%;
+}
+
+
+.window.left.sm {
+    top: 37.2%;
+    left: 12%;
+    width: 22%;
+    padding-top: 12.38%;
+}
+
+.window.right.sm {
+    top: 37.2%;
+    left: 88%;
+    width: 22%;
+    padding-top: 12.38%;
+}
+
+.window::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 103.375%;
+    height: 106%;
+    transform: translate(-50%, -50%);
+    opacity: 0.6;
+    border-radius: 16px;
+    box-shadow: 0 0 32px 0 rgba(0, 0, 0, 0.69);
+    background-image: linear-gradient(154deg, #898989 6%, #777777 22%, #535353 50%, rgba(66, 66, 66, 0.54) 79%);
+    /* background-image: linear-gradient(154deg, #170b87 8%, #3a25b1 25%, #280782 63%, rgba(80, 7, 120, 0.54) 79%); */
+    transition: 0.4s;
+}
+
+
+
+
+
+
+/* --------- stream ---------  */
+
+.deviceStreamBox {
+    z-index: var(--z-Stream);
+    top: 50%;
+    left: 50%;
+    transition: 0.3s;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.95);
+}
+
+
+
+.deviceStreamBox.show {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+
+.deviceStreamBox .videoCrop {
+    border-radius: 18px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+
+.deviceStreamBox .deviceStream {
+    z-index: var(--z-Stream-device);
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+
+
+
+
+/* -------------- PPT -------------- */
+
+
+
+
+
+
+.ppt {
+    opacity: 1;
+    width: 100%;
+    height: 100.5%;
+    z-index: var(--z-ppt);
+}
+
+.ppt img,
+.ppt video {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.pptNum {
+    font-size: 32px;
+    color: #fff;
+    position: fixed;
+    bottom: 8px;
+    left: 8px;
+    opacity: 0;
+    transition: 2s;
+}
+
+.tempShow {
+    opacity: 0.4;
+}
+
+
+
+
+
+
+/* -------------- Voice -------------- */
+
+
+.playing_mask {
+    width: 18.75%;
+    height: 100%;
+    left: 15%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: 0.6s;
+    z-index: var(--z-voice);
+    opacity: 1;
+    display: flex;
+}
+
+.playing_mask .speaker {
+    background-color: #00000067;
+    width: 40%;
+    height: 40%;
+    border-radius: 50%;
+    /* background-image: url(../element/voice/001.png); */
+    border: 8px solid #ffffff81;
+    background-size: cover;
+    box-shadow: 0 0 30px #000000c4;
+    margin-bottom: 32px;
+
+}
+
+.playing_mask .speaker::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 28px solid #ffffff27;
+}
+
+#freqCanvasBox {
+    height: 20%;
+    width: 100%;
+    border-radius: 6px;
+}
+
+#freqCanvasBox .freqCanvas {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.playing_mask.op0 {
+    opacity: 0;
+}
