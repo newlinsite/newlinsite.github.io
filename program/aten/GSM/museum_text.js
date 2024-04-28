@@ -92,3 +92,38 @@ var bgmList = [
 
 
 
+//------------------------------------------------------------------------
+//
+// Group Action
+//
+//------------------------------------------------------------------------
+
+
+var groupActionList = [
+    {
+        act: () => {
+            offAll()
+            imgs[0].on()
+
+            setTimeout(offAll, 500)
+            setTimeout(videos[2].on, 500)
+
+            setTimeout(offAll, videos[2].object.duration * 1000 + 1500)
+            setTimeout(imgs[3].on, videos[2].object.duration * 1000 + 1500)
+            console.log(videos[2].object.duration * 1000 + 1500)
+            // setTimeout(offAll, 2000)
+            // setTimeout(imgs[3].on, 2000)
+
+            // setTimeout(offAll, 2500)
+            // setTimeout(imgs[0].on, 2500)
+            // videoStopToImg = 1
+
+        }, hotkey: "KeyQ"
+    },
+    {
+        act: () => {
+            offAll()
+            imgs[1].on()
+        }, hotkey: "KeyW"
+    },
+]

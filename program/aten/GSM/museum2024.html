@@ -660,6 +660,14 @@
     }
 
 
+    groupHotkey = (data, keyID) => {
+        for (let i = 0; i < data.length; i++) {
+            hotkey = data[i].hotkey
+            if (keyID === hotkey) {
+                data[i].act()
+            }
+        }
+    }
 
 
 
@@ -691,12 +699,6 @@
             });
         }
     });
-
-
-
-
-
-
 
 
 
@@ -751,7 +753,6 @@
 
 
 
-
         // 文字切換
         if (keyID === 'KeyT') {
             if (textBox.cssTag == 0) {
@@ -796,6 +797,8 @@
         }
 
 
+        // Group Action
+        groupHotkey(groupActionList, keyID)
 
         // 影片結尾視覺圖切換
         if (keyID === 'KeyA') {
