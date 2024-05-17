@@ -63,11 +63,11 @@ delay = (doSomething, delayTime, num = 0, cancelDalay = true) => {
 
 
 
-class delay {
-    constructor() {
-        this.container = null
-    }
-}
+// class delay {
+//     constructor() {
+//         this.container = null
+//     }
+// }
 
 
 
