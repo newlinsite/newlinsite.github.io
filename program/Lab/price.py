@@ -1,6 +1,6 @@
 
 
-import pandas as pd
+# import pandas as pd
 
 price= 50
 count_t=3600
