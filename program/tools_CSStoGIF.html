@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Export CSS Animation to GIF</title>
+    <style>
+        body,
+        html {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            background-color: #656565;
+        }
+
+        #animation {
+            width: 300px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(121, 91, 91);
+        }
+
+        #animation .box {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(125, 125, 125);
+            /* animation: spin 20s linear infinite; */
+            box-shadow: 0 0 12px #00000000;
+            transition: 1s;
+
+        }
+
+        #animation .box.hover {
+            box-shadow: 0 0 24px #00000055;
+        }
+
+
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        #animationCanvas {
+            display: none;
+        }
+
+        #downloadLink {
+            display: none;
+        }
+
+        .testBox {
+            background-color: #4f4f4f;
+            width: 500px;
+            height: 500px;
+        }
+
+        .testBox>* {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="animation">
+        <div class="box"></div>
+    </div>
+    <div class="testBox"></div>
+    <canvas id="animationCanvas" width="200" height="200"></canvas>
+    <button id="generateGifButton">Generate GIF</button>
+    <a id="downloadLink">Download GIF</a>
+
+    <!-- 引入 gif.js 库 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gif.js/0.2.0/gif.js"></script>
+    <!-- 引入 html2canvas 库 -->
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var canvas = document.getElementById('animationCanvas');
+            var testBox = document.getElementsByClassName('testBox')[0];
+            var box = document.getElementsByClassName('box')[0];
+            var ctx = canvas.getContext('2d', { willReadFrequently: true });
+            var animationElement = document.getElementById('animation');
+            var generateGifButton = document.getElementById('generateGifButton');
+            var downloadLink = document.getElementById('downloadLink');
+
+            // 創建GIF實例
+            function createGif() {
+                return new GIF({
+                    workers: 2,
+                    quality: 10,
+                    workerScript: 'gif.worker.js',
+                    transparent: 0x00FF00 // 設定透明背景色（使用與CSS動畫背景相同的顏色）
+                });
+            }
+
+            // 捕捉動畫幀
+            function captureFrame(gif) {
+                html2canvas(animationElement, { backgroundColor: null }).then(function (canvas) {
+                    gif.addFrame(canvas, { copy: true, delay: 0 });
+                    console.log("捕捉");
+                });
+            }
+
+            // function captureFrame(gif) {
+            //     html2canvas(animationElement, { backgroundColor: null }).then(canvas => { testBox.appendChild(canvas) });
+            // }
+
+
+            let tag = false
+            testBox.addEventListener('click', () => {
+                if (tag) {
+                    box.classList.remove('hover')
+                    tag = false
+                } else {
+                    box.classList.add('hover')
+                    tag = true
+                }
+
+                console.log(1)
+            })
+
+            // 生成GIF動畫
+            function generateGif() {
+                var gif = createGif();
+                var frameCount = 50; // 10秒 * 25幀每秒
+                var frameInterval = setInterval(function () {
+                    captureFrame(gif);
+                    frameCount--;
+                    console.log("render", frameCount);
+                    if (frameCount <= 0) {
+                        clearInterval(frameInterval);
+                        gif.render();
+                    }
+                }, 500); // 每50毫秒捕捉一幀（20幀每秒）
+
+                gif.on('finished', function (blob) {
+                    var url = URL.createObjectURL(blob);
+                    downloadLink.href = url;
+                    downloadLink.download = 'animation.gif';
+                    downloadLink.style.display = 'block';
+                });
+            }
+
+            // 綁定按鈕點擊事件
+            generateGifButton.addEventListener('click', generateGif);
+        });
+    </script>
+</body>
+
+</html>
