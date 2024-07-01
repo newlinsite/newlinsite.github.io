@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hello Three.js</title>
+</head>
+<style>
+    body {
+        margin: 0;
+        overflow: hidden;
+    }
+</style>
+
+
+<body>
+
+
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r132/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/loaders/GLTFLoader.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.2.0/Tween.min.js"></script>
+
+
+
+<script>
+    // 相機資料
+    const cameraData = [
+        {
+            fov: 45,
+            aspect: window.innerWidth / window.innerHeight,
+            near: 0.1,
+            far: 100,
+            position: [20, 20, 20],
+            lookAt: [0, 0, 0]
+        },
+        // 其他相機資料...
+    ];
+
+    // 光源資料
+    const lightData = [
+        { type: 'PointLight', color: 0xeeeeee, intensity: 1, position: [10, 10, -10] },
+        { type: 'PointLight', color: 0xaaaaaa, intensity: 1, position: [-50, 50, 100] },
+        // 其他光源資料...
+    ];
+
+    // 物體資料
+    const objectData = [
+        {
+            type: 'Plane',
+            geometryParams: [200, 200],
+            materialParams: { color: 0xaaaaaa },
+            position: [0, 0, 0],
+            rotationParams: [270, 0, 0], // 自定義旋轉參數
+            animation: false // 可選值: 'rotate', 'moveLeftRight', 'moveUpDown'
+        },
+        {
+            type: 'Sphere',
+            geometryParams: [1, 20, 100, 0, 10],
+            materialParams: { color: 0xffffff },
+            position: [0, 0, 0],
+            rotationParams: [0, 0, 0], // 自定義旋轉參數
+            animation: 'rotate', // 可選值: 'rotate', 'moveLeftRight', 'moveUpDown'
+        }, {
+            type: 'Box',
+            geometryParams: [1, 2, 1],
+            materialParams: { color: 0xfbfaec },
+            position: [-10, 0, 0],
+            rotationParams: [0, 45, 0], // 自定義旋轉參數
+            animation: null // 可選值: 'rotate', 'moveLeftRight', 'moveUpDown'
+        },
+        {
+            type: 'File',
+            filePath: 'model/N01_Oak.gltf',
+            materialParams: { color: 0xfbfaec },
+            size: [0.1, 0.1, 0.1],
+            position: [0, 0, 0],
+            rotationParams: [0, 0, 0],
+            animation: null // 可選值: 'rotate', 'moveLeftRight', 'moveUpDown'
+        }, {
+            type: 'File',
+            filePath: 'N01_Oak2/N01_Oak.gltf',
+            materialParams: { color: 0xfbfaec },
+            size: [0.1, 0.1, 0.1],
+            position: [-10, 0, 0],
+            rotationParams: [0, 0, 0],
+            animation: null // 可選值: 'rotate', 'moveLeftRight', 'moveUpDown'
+        }, {
+            type: 'File',
+            filePath: 'N01_Oak2/N01_Oak.gltf',
+            materialParams: { color: 0xfbfaec },
+            size: [0.1, 0.1, 0.1],
+            position: [10, 0, 0],
+            rotationParams: [0, 0, 0],
+            animation: null // 可選值: 'rotate', 'moveLeftRight', 'moveUpDown'
+        },
+
+    ];
+
+
+
+    // 定義場景類別
+    class Scene {
+        constructor() {
+            this.scene = new THREE.Scene();
+            // 建立渲染器
+            this.renderer = new THREE.WebGLRenderer({ antialias: true });
+            this.renderer.setSize(window.innerWidth, window.innerHeight); // 場景大小
+            this.renderer.setClearColor(0xeeeeee, 1.0); // 預設背景顏色
+            this.renderer.shadowMap.enabled = true; // 陰影效果
+            this.renderer.shadowMap.type = THREE.PCFSoftShadowMap; // 陰影地圖類型
+            this.renderer.setPixelRatio(window.devicePixelRatio); // 設置設備像素比率
+            document.body.appendChild(this.renderer.domElement); // 將渲染器的 DOM 綁到網頁上
+        }
+    }
+
+    // 定義相機類別
+    class Camera {
+        constructor(fov, aspect, near, far, position, lookAt) {
+            this.camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+            this.camera.position.set(...position);
+            this.camera.lookAt(...lookAt);
+            this.lookAtNow = lookAt
+        }
+
+        // 移動攝影機位置（帶有過場效果）
+        moveTo(newPosition, duration) {
+            const currentPos = {
+                x: this.camera.position.x,
+                y: this.camera.position.y,
+                z: this.camera.position.z
+            };
+            const targetPos = {
+                x: newPosition[0],
+                y: newPosition[1],
+                z: newPosition[2]
+            };
+            new TWEEN.Tween(currentPos)
+                .to(targetPos, duration)
+                .onUpdate(() => {
+                    this.camera.position.set(currentPos.x, currentPos.y, currentPos.z);
+                    this.camera.lookAt(...this.lookAtNow);
+                })
+                .start();
+        }
+        move(offsetPosition, duration = 10) {
+            const newPosition = {
+                x: this.camera.position.x + offsetPosition[0],
+                y: this.camera.position.y + offsetPosition[1],
+                z: this.camera.position.z + offsetPosition[2]
+            };
+            this.moveTo([newPosition.x, newPosition.y, newPosition.z], duration)
+
+        }
+
+
+        // 移動攝影機位置
+        setPosition(newPosition) {
+            this.camera.position.set(...newPosition);
+        }
+
+        // 設定攝影機的 lookAt 位置
+        setLookAt(newLookAt) {
+            this.lookAtNow = newLookAt
+            this.camera.lookAt(...newLookAt);
+        }
+    }
+
+
+
+    // 定義光源類別
+    class Light {
+        constructor(type, color, intensity, position) {
+            this.light = new THREE[type](color, intensity);
+            this.light.position.set(...position);
+            this.light.castShadow = true;
+
+            // 設置陰影地圖尺寸
+            this.light.shadow.mapSize.width = 2048; // 或更高的值，如 4096
+            this.light.shadow.mapSize.height = 2048; // 或更高的值，如 4096
+
+            // 設置陰影相機屬性（適用於方向光）
+            if (type === 'DirectionalLight' || type === 'SpotLight') {
+                this.light.shadow.camera.near = 0.5;
+                this.light.shadow.camera.far = 500;
+                this.light.shadow.camera.left = -50;
+                this.light.shadow.camera.right = 50;
+                this.light.shadow.camera.top = 50;
+                this.light.shadow.camera.bottom = -50;
+            }
+        }
+    }
+
+    // 輔助函數：將度數轉換為弧度
+    function degreesToRadians(degrees) {
+        return degrees * (Math.PI / 180);
+    }
+
+    // 定義物體類別
+    class Object3D {
+        constructor(type, geometryParams, materialParams, position, rotationParams, animation) {
+            const geometry = new THREE[type + 'Geometry'](...geometryParams);
+            const material = new THREE.MeshPhongMaterial(materialParams);
+            this.mesh = new THREE.Mesh(geometry, material);
+            this.mesh.position.set(...position);
+            this.mesh.castShadow = true; // 啟用陰影投射
+            this.mesh.receiveShadow = true; // 啟用接收陰影
+            this.animation = animation;
+            this.mesh.rotation.x = degreesToRadians(rotationParams[0] || 0)
+            this.mesh.rotation.y = degreesToRadians(rotationParams[1] || 0)
+            this.mesh.rotation.z = degreesToRadians(rotationParams[2] || 0)
+            this.direction = 1; // 用於左右或上下移動的方向
+        }
+
+        // 動畫更新方法
+        updateAnimation() {
+            if (this.animation === 'rotate') {
+                this.mesh.rotation.x += 0.01;
+                this.mesh.rotation.y += 0.01;
+            } else if (this.animation === 'moveLeftRight') {
+                this.mesh.position.x += 0.05 * this.direction;
+                if (this.mesh.position.x > 5 || this.mesh.position.x < -5) {
+                    this.direction *= -1;
+                }
+            } else if (this.animation === 'moveUpDown') {
+                this.mesh.position.y += 0.05 * this.direction;
+                if (this.mesh.position.y > 5 || this.mesh.position.y < -5) {
+                    this.direction *= -1;
+                }
+            }
+        }
+    }
+
+    class Object3DFromFile extends Object3D {
+        constructor(filePath, materialParams, position, rotationParams, animation, size) {
+            super('Buffer', [], materialParams, position, rotationParams, animation);
+            this.mesh = new THREE.Group();
+            this.loadModel(filePath, materialParams, size, position, rotationParams)
+                .then(() => {
+                    scene.add(this.mesh);  // 将 this.mesh 添加到场景
+                })
+                .catch(error => {
+                    console.error('Failed to load model:', error);
+                });
+        }
+
+        loadModel(filePath, materialParams, size, position, rotationParams) {
+            return new Promise((resolve, reject) => {
+                const loader = new THREE.GLTFLoader();
+                loader.load(filePath, (gltf) => {
+                    gltf.scene.traverse((child) => {
+                        if (child.isMesh) {
+                            if (materialParams) {
+                                child.material = new THREE.MeshPhongMaterial(materialParams);
+                            }
+                            child.castShadow = true;
+                            child.receiveShadow = true;
+                            child.scale.set(size[0], size[1], size[2]);
+                        }
+                    });
+
+                    gltf.scene.position.set(...position);
+                    gltf.scene.rotation.x = degreesToRadians(rotationParams[0] || 0);
+                    gltf.scene.rotation.y = degreesToRadians(rotationParams[1] || 0);
+                    gltf.scene.rotation.z = degreesToRadians(rotationParams[2] || 0);
+
+                    this.mesh.add(gltf.scene);
+                    resolve();
+                }, undefined, (error) => {
+                    reject(error);
+                });
+            });
+        }
+
+        updateAnimation() {
+            if (this.mesh) {
+                super.updateAnimation();
+            }
+        }
+    }
+
+    //  -------------------------------
+    // 
+    //  初始化函數   環境架設
+    //
+    //  -------------------------------
+
+
+    // 建立場景
+    const sceneInstance = new Scene();
+    const scene = sceneInstance.scene;
+    const renderer = sceneInstance.renderer;
+
+
+
+
+
+
+
+    // 創建相機
+    const camera = cameraData.map(data => {
+        const cameraInstance = new Camera(
+            data.fov,
+            data.aspect,
+            data.near,
+            data.far,
+            data.position,
+            data.lookAt
+        );
+        return cameraInstance;
+    });
+
+
+    // 創建光源
+    const lights = lightData.map(data => {
+        const lightInstance = new Light(data.type, data.color, data.intensity, data.position);
+        scene.add(lightInstance.light);
+        return lightInstance;
+    });
+
+
+    // 創建物體
+    const objects = objectData.map(data => {
+        let objectInstance;
+        if (data.type === 'File') {
+            objectInstance = new Object3DFromFile(
+                data.filePath,
+                data.materialParams,
+                data.position,
+                data.rotationParams,
+                data.animation,
+                data.size
+            );
+        } else {
+            objectInstance = new Object3D(
+                data.type,
+                data.geometryParams,
+                data.materialParams,
+                data.position,
+                data.rotationParams,
+                data.animation
+            );
+        }
+        scene.add(objectInstance.mesh);
+        return objectInstance;
+    });
+
+
+
+
+    // 渲染場景
+    function render() {
+        objects.forEach(obj => obj.updateAnimation());  // 建立動畫
+        TWEEN.update();
+
+        requestAnimationFrame(render);
+        renderer.render(scene, camera[0].camera);
+    }
+    render();
+
+
+
+    window.addEventListener("keydown", keyboardListener, false);
+    function keyboardListener(e) {
+        var keyID = e.code;
+        if (keyID === 'KeyQ') {
+            objects[1].animation = 'moveLeftRight'
+        }
+        if (keyID === 'KeyA') {
+            objects[1].animation = 'rotate'
+        }
+        if (keyID === 'KeyW') {
+            camera[0].moveTo([-20, 20, -20])
+        }
+        if (keyID === 'KeyS') {
+            camera[0].moveTo([-20, 0, -20], 2000)
+        }
+        if (keyID === 'KeyX') {
+            camera[0].moveTo([20, 5, -20], 1500)
+        }
+
+        if (keyID === 'KeyE') {
+            camera[0].setLookAt([0, 0, 0])
+        }
+        if (keyID === 'KeyD') {
+            camera[0].setLookAt([10, 10, 10])
+        }
+
+        if (keyID === 'ArrowLeft') {
+            camera[0].move([1, 0, -1])
+        }
+        if (keyID === 'ArrowRight') {
+            camera[0].move([-1, 0, 1])
+        }
+        if (keyID === 'ArrowUp') {
+            camera[0].move([0, 1, 0])
+        }
+        if (keyID === 'ArrowDown') {
+            camera[0].move([0, -1, 0])
+
+        }
+
+
+    }
+
+</script>
+
+
+</html>
