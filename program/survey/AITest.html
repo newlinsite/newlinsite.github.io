@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TEST</title>
+    <!-- <link rel="stylesheet" type="text/css" href="index.css"> -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="survey.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="container">
+            <h1>问卷调查</h1>
+            <form id="questionnaireForm">
+                <div>
+                    <label for="name">名称:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+            </form>
+            <button type="button" onclick="send()">提交</button>
+
+
+        </div>
+
+    </div>
+
+</body>
+<script src='//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js'></script>
+<script>
+
+
+
+
+    class Option {
+        constructor(name, weight, imgUrl, text) {
+            this.name = name;
+            this.weight = weight;
+            this.imgUrl = imgUrl;
+            this.text = text;
+        }
+    }
+
+    class Question {
+        constructor(id, text, imgUrl, options) {
+            this.id = id;
+            this.text = text;
+            this.imgUrl = imgUrl;
+            this.options = options;
+        }
+
+        render() {
+            const container = document.createElement('div');
+            container.className = 'question';
+
+            const questionText = document.createElement('p');
+            questionText.textContent = ` ${this.id}: ${this.text}`;
+            container.appendChild(questionText);
+
+            if (this.imgUrl) {
+                const img = document.createElement('img');
+                img.src = this.imgUrl;
+                container.appendChild(img);
+            }
+
+            const optionsContainer = document.createElement('div');
+            optionsContainer.className = 'options';
+
+            this.options.forEach((option, index) => {
+                const label = document.createElement('label');
+                const input = document.createElement('input');
+                input.type = 'radio';
+                input.name = `question${this.id}`;
+                input.value = index;
+                label.appendChild(input);
+
+                if (option.imgUrl) {
+                    const img = document.createElement('img');
+                    img.src = option.imgUrl;
+                    label.appendChild(img);
+                }
+
+                const optionText = document.createTextNode(option.text);
+                label.appendChild(optionText);
+                optionsContainer.appendChild(label);
+            });
+
+            container.appendChild(optionsContainer);
+            return container;
+        }
+    }
+    id, text, imgUrl, options
+    const questions = [
+        new Question(1, '请选择一个选项', '', [
+            new Option('option1', 1, '', '选项1'),
+            new Option('option2', 1, '', '选项2'),
+            new Option('option3', 1, '', '选项3'),
+            new Option('option4', 1, '', '选项4')
+        ]),
+        new Question(2, '请选择一个选项', '', [
+            new Option('option1', 1, '', '选项1'),
+            new Option('option2', 1, '', '选项2'),
+            new Option('option3', 1, '', '选项3'),
+            new Option('option4', 1, '', '选项4')
+        ]),
+    ];
+
+    const form = document.getElementById('questionnaireForm');
+    questions.forEach(question => {
+        form.appendChild(question.render());
+    });
+
+
+    var getTime = () => {
+        const timestamp = new Date().getTime();
+        const date = new Date(timestamp);
+        const time = date.getFullYear() + '/' + (date.getMonth() + 1) + '/' +
+            date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' +
+            date.getSeconds();
+        return time
+    }
+
+
+
+
+
+    // 发送数据
+    const send = () => {
+        const formData = new FormData(form);
+        const data = {
+            timestamp: getTime(),
+            name: formData.get('name'),
+            responses: []
+        };
+        formData.forEach((value, key) => {
+            if (key.startsWith('question')) {
+                const questionId = parseInt(key.replace('question', ''), 10);
+                data.responses.push({ q: questionId, a: parseInt(value, 10) });
+            }
+        });
+        console.log(data);
+    };
+
+
+
+
+
+
+    // id = 0
+    // question = 2
+    // answer = 3
+
+    // // 傳送資訊
+    // var send = () => {
+    //     const formData = new FormData(form);
+    //     console.log(formData)
+    //     // question = document.querySelector('#question').value;
+    //     // answer = document.querySelector('#answer').value;
+    //     getTime()
+    //     $.ajax({
+    //         url: "https://script.google.com/macros/s/AKfycbw-eaPLGYKlUhj2f6cwLgXILXpCchUx8_tO8JwrBYlHPRM8V5Ja2ilj1KtSHHWBVVW2/exec",
+    //         data: {
+    //             "inputData": true,
+    //             "timestamp": time,
+    //             "id": id,
+    //             "question": question,
+    //             "answer": answer
+    //         },
+    //         success: function (response) {
+    //             console.log("id : " + response.id + "  Q : " + question + "  A : " + answer)
+    //         },
+    //     });
+    // };
+
+</script>
+
+
+
+</script>
+
+</html>

@@ -42,6 +42,10 @@ h1 {
     color: #fff;
 }
 
+#questionnaireForm {
+    width: 100%;
+}
+
 .question {
     color: #fff;
     margin: 10% 1%;
