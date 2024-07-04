@@ -24,6 +24,15 @@
 
 
 <script>
+
+    // ****************************************************
+    // 
+    //
+    //  Data
+    // 
+    //
+    // ****************************************************
+
     // 相機資料
     const cameraData = [
         {
@@ -71,7 +80,7 @@
         },
         {
             type: 'File',
-            filePath: 'model/N01_Oak.gltf',
+            filePath: 'model/N01_Oak/N01_Oak.gltf',
             materialParams: { color: 0xfbfaec },
             size: [0.1, 0.1, 0.1],
             position: [0, 0, 0],
@@ -79,7 +88,7 @@
             animation: null // 可選值: 'rotate', 'moveLeftRight', 'moveUpDown'
         }, {
             type: 'File',
-            filePath: 'N01_Oak2/N01_Oak.gltf',
+            filePath: 'model/N01_Oak/N01_Oak.gltf',
             materialParams: { color: 0xfbfaec },
             size: [0.1, 0.1, 0.1],
             position: [-10, 0, 0],
@@ -87,7 +96,7 @@
             animation: null // 可選值: 'rotate', 'moveLeftRight', 'moveUpDown'
         }, {
             type: 'File',
-            filePath: 'N01_Oak2/N01_Oak.gltf',
+            filePath: 'model/N01_Oak/N01_Oak.gltf',
             materialParams: { color: 0xfbfaec },
             size: [0.1, 0.1, 0.1],
             position: [10, 0, 0],
@@ -97,6 +106,15 @@
 
     ];
 
+
+
+    // ****************************************************
+    // 
+    //
+    //  Class
+    // 
+    //
+    // ****************************************************
 
 
     // 定義場景類別
@@ -293,10 +311,6 @@
 
 
 
-
-
-
-
     // 創建相機
     const camera = cameraData.map(data => {
         const cameraInstance = new Camera(
@@ -320,39 +334,45 @@
 
 
     // 創建物體
-    const objects = objectData.map(data => {
-        let objectInstance;
-        if (data.type === 'File') {
-            objectInstance = new Object3DFromFile(
-                data.filePath,
-                data.materialParams,
-                data.position,
-                data.rotationParams,
-                data.animation,
-                data.size
-            );
-        } else {
-            objectInstance = new Object3D(
-                data.type,
-                data.geometryParams,
-                data.materialParams,
-                data.position,
-                data.rotationParams,
-                data.animation
-            );
-        }
-        scene.add(objectInstance.mesh);
-        return objectInstance;
-    });
+
+    var create3dObject = (datas, where = scene) => {
+        const objects = datas.map(data => {
+            let objectInstance;
+            if (data.type === 'File') {
+                objectInstance = new Object3DFromFile(
+                    data.filePath,
+                    data.materialParams,
+                    data.position,
+                    data.rotationParams,
+                    data.animation,
+                    data.size
+                );
+            } else {
+                objectInstance = new Object3D(
+                    data.type,
+                    data.geometryParams,
+                    data.materialParams,
+                    data.position,
+                    data.rotationParams,
+                    data.animation
+                );
+            }
+            where.add(objectInstance.mesh);
+            return objectInstance;
+        });
+        return objects
+    }
+
+
+    const models = create3dObject(objectData)
 
 
 
 
     // 渲染場景
     function render() {
-        objects.forEach(obj => obj.updateAnimation());  // 建立動畫
+        models.forEach(obj => obj.updateAnimation());  // 建立動畫
         TWEEN.update();
-
         requestAnimationFrame(render);
         renderer.render(scene, camera[0].camera);
     }
