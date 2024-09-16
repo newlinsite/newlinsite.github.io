@@ -1,10 +1,9 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Word Card</title>
 </head>
 <style>
     /******************************
@@ -23,7 +22,7 @@
 ******************************************
 ******************************************
 
-			Page
+        Page
 
 ******************************************
 ******************************************
@@ -35,7 +34,7 @@
         color: var(--text-color)
     }
 
-    span.g-icon {
+    .g-icon {
         font-family: "Material Symbols Outlined"
     }
 
@@ -52,10 +51,53 @@
 
     }
 
+    button#updateBtn {
+        z-index: 1000;
+        position: fixed;
+        top: 8px;
+        left: 8px;
+        background-color: #272727;
+        border: 1px solid #444;
+        padding: 6px;
+        border-radius: 4px;
+        font-size: 24px;
+        color: #a1a1a1;
+    }
+
+    .pageBtn {
+        width: 320px;
+        height: 320px;
+        position: fixed;
+        background-color: #10eaf1;
+        bottom: -280px;
+        left: 50%;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        opacity: .8;
+        z-index: 10;
+        transition: 3s;
+        cursor: pointer;
+    }
+
+    .pageBtn:hover {
+        opacity: 1;
+    }
+
+    .pageBtn.mask {
+        opacity: 0.1;
+        width: 200px;
+        height: 200px;
+        bottom: 50%;
+        z-index: 2000;
+        pointer-events: none;
+    }
+
+
     .container {
         width: 100%;
-        height: 100%;
+        height: 80%;
         margin: 0 auto;
+        padding: 16px;
         max-width: 1000px;
         background-color: #222;
         color: #fff;
@@ -70,18 +112,49 @@
         margin: 4px;
     }
 
-    .mainText {
+
+    .text {
+        opacity: 0;
+        transition: 0s;
+        text-align: center;
+
+    }
+
+    .text.on {
+        opacity: 1;
+        transition: 1s;
+
+    }
+
+    .text.on.tag::before {
+        content: '';
+        width: 220%;
+        height: 100%;
+        position: absolute;
+        background: linear-gradient(90deg, rgba(174, 229, 255, 0) 0%, rgba(174, 229, 255, 0.1) 50%, rgba(174, 229, 255, 0) 100%);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .text.jp {
         font-size: 24px;
     }
 
-    .spellText {
+    .text.ch {
         font-size: 20px;
     }
 
-    .exampleText {
-        font-size: 16px;
-        opacity: 0.7;
+    .text.spell {
+        font-size: 20px;
     }
+
+    .text.example {
+        font-size: 16px;
+        color: #c2c2c2;
+
+    }
+
 
     .okBtnBox {
         margin-top: 24px;
@@ -90,17 +163,22 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        opacity: 0;
+        z-index: 1000;
+    }
+
+    .okBtnBox.on {
+        opacity: 1;
     }
 
     .okBtnBox>* {
-        padding: 8px;
+        font-size: 16px;
+        padding: 12px;
         margin: 0 16px;
         cursor: pointer;
         opacity: 0.8;
         transition: 0.3s;
     }
-
-
 
     .okBtnBox>*:hover {
         opacity: 1;
@@ -108,23 +186,24 @@
 </style>
 
 <body>
+    <div class="pageBtn mask"></div>
+    <button id="updateBtn" class="g-icon">Save</button>
     <div class="container">
-        <div class="mainText">mainText</div>
-        <div class="spellText">spellText</div>
-        <div class="exampleText">exampleText</div>
-        <div class="playBtn">
-            <span class="g-icon playBtn"> volume_up </span>
-        </div>
+        <div class="text jp" id="jpText">jpText</div>
+        <div class="text spell" id="spellText">spellText</div>
+        <div class="text ch" id="chText">cnText</div>
+        <div class="text example" id="exampleText">exampleText</div>
         <div class="okBtnBox">
-            <span class="g-icon okBtn">Done</span>
-            <span class="g-icon noBtn">Close</span>
+            <span class="g-icon okBtn" id="okBtn">done</span>
+            <span class="g-icon noBtn" id="noBtn">close</span>
         </div>
     </div>
 </body>
+
 <script src='//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js'></script>
 
-<script src="library/voiceControl.js"></script>
 <script>
+
     var $id = function (name) {
         return document.getElementById(name)
     }
@@ -137,41 +216,202 @@
     var test = function (print = "test") {
         console.log(print)
     }
-    function nothing() {
-        // console.log("nothing")
+
+
+
+    var pageBtn = $css("pageBtn")[0]
+    var jpText = $id("jpText")
+    var spellText = $id("spellText")
+    var chText = $id("chText")
+    var exampleText = $id("exampleText")
+    var okBtnBox = $css("okBtnBox")[0]
+    var wordList = [];
+    let currentWordIndex = [];
+    let step = 0;
+
+    function showText([index, place]) {
+        jpText.innerHTML = wordList[index].jp.text
+        spellText.innerHTML = wordList[index].spell.text
+        chText.innerHTML = wordList[index].ch.text
+        exampleText.innerHTML = wordList[index].example
+        if (place == "jp") {
+            jpText.classList.add("on")
+            jpText.classList.add("tag")
+        } else if (place == "ch") {
+            chText.classList.add("on")
+            chText.classList.add("tag")
+        } else if (place == "spell") {
+            spellText.classList.add("on")
+            spellText.classList.add("tag")
+        }
+    }
+
+    function showAllText() {
+        jpText.classList.add("on")
+        spellText.classList.add("on")
+        chText.classList.add("on")
+        exampleText.classList.add("on")
+        okBtnBox.classList.add("on")
+    }
+
+    function hiddenText() {
+        jpText.classList.remove("on")
+        spellText.classList.remove("on")
+        chText.classList.remove("on")
+        exampleText.classList.remove("on")
+        okBtnBox.classList.remove("on")
+        jpText.classList.remove("tag")
+        spellText.classList.remove("tag")
+        chText.classList.remove("tag")
+    }
+
+    function changeWeight(num, [index, place]) {
+        test([index, place])
+        if (place == "jp") {
+            wordList[index].jp.weight += num
+            test(wordList[index].jp.weight)
+        } else if (place == "ch") {
+            wordList[index].ch.weight += num
+            test(wordList[index].ch.weight)
+
+        } else if (place == "spell") {
+            wordList[index].spell.weight += num
+            test(wordList[index].spell.weight)
+
+        }
+    }
+
+    function nextWord() {
+        hiddenText()
+        currentWordIndex = getRandomWeightedItem(wordList)
+        console.log(currentWordIndex)
+        showText(currentWordIndex)
+    }
+
+
+
+    function getRandomWeightedItem(items) {
+        // 計算總權重
+        const totalWeight = items.reduce((acc, item) => acc + item.ch.weight + item.jp.weight + item.spell.weight, 0);
+
+        // 隨機選擇一個值，範圍是 0 到總權重
+        let random = Math.random() * totalWeight;
+
+        for (const item of items) {
+            // 計算 cn 權重
+            if (random < item.ch.weight) {
+                return [item.index, "ch"];
+            }
+            random -= item.ch.weight;
+
+            // 計算 jp 權重
+            if (random < item.jp.weight) {
+                return [item.index, "jp"];
+            }
+            random -= item.jp.weight;
+
+            // 計算 spell 權重
+            if (random < item.spell.weight) {
+                return [item.index, "spell"];
+            }
+            random -= item.spell.weight;
+        }
     }
 
 
 
 
-    var firstOnload = () => {
+    // Update word familiarity based on user input
+    $('#okBtn').on('click', function () {
+        changeWeight(-1, currentWordIndex)
+    });
+
+    $('#noBtn').on('click', function () {
+        changeWeight(1, currentWordIndex)
+
+    });
+
+    pageBtn.addEventListener("click", () => {
+        if (step == 1) {
+            nextWord()
+            step = 0
+        } else if (step == 0) {
+            showAllText()
+            step = 1
+        }
+    })
+
+    $id("updateBtn").addEventListener("click", () => {
+        update()
+    })
+
+    jpText.addEventListener("click", () => {
+        test(wordList[currentWordIndex[0]].jp.text)
+        const speak = new SpeechSynthesisUtterance(wordList[currentWordIndex[0]].jp.text)
+        speak.lang = "ja-JP"
+        window.speechSynthesis.speak(speak)
+    })
+
+    exampleText.addEventListener("click", () => {
+        test(wordList[currentWordIndex[0]].example)
+        const speak = new SpeechSynthesisUtterance(wordList[currentWordIndex[0]].example)
+        speak.lang = "ja-JP"
+        window.speechSynthesis.speak(speak)
+    })
+
+
+    // Fetch data on page load
+    function firstOnload() {
         $.ajax({
             url: "https://script.google.com/macros/s/AKfycbyUqTSPRUiCOosOVfwa9jRT5T0dAV8piDOZOyz0m-8hTrU7rmHYxG8s1D5bN96kHkXJ/exec",
             data: {
                 "onload": true,
-                "timestamp": "time",
             },
             success: function (response) {
-                console.log("id : " + response.main, response)
+                wordList = response;
+                console.log(wordList)
+                pageBtn.classList.remove("mask")
+                nextWord()
             },
         });
     }
 
 
+    function update() {
+        test("update")
+        $.ajax({
+            url: "https://script.google.com/macros/s/AKfycbyUqTSPRUiCOosOVfwa9jRT5T0dAV8piDOZOyz0m-8hTrU7rmHYxG8s1D5bN96kHkXJ/exec",
+            data: {
+                "update": true,
+                "wordList": JSON.stringify(wordList)
+            },
+            success: function (response) {
+
+                console.log(response)
+
+            },
+        });
+
+    }
 
 
 
-    firstOnload()
 
-    // 取得全部單字與欄位 > 變成list
 
-    // 根據權重隨機 > 帶入文字
-    // 問題 顯示部分內容
-    // 解答 顯示其他內容
-    // 選對錯
-    // 權重更新
+    // Initialize the page
+    firstOnload();
 
-    // 權重 list > 倒回清單
+
+    // 鍵盤快捷鍵
+    window.addEventListener("keydown", keyboardListener, false);
+    function keyboardListener(e) {
+        var keyID = e.code;
+        if (keyID === 'KeyQ') {
+            console.log(wordList)
+        }
+
+
+    }
 
 
 </script>
