@@ -51,7 +51,8 @@
 
     }
 
-    button#updateBtn {
+    button#updateBtn,
+    #weightAll {
         z-index: 1000;
         position: fixed;
         top: 8px;
@@ -64,12 +65,19 @@
         color: #a1a1a1;
     }
 
+    #weightAll {
+        font-size: 16px;
+        right: 8px;
+        left: auto;
+    }
+
     .pageBtn {
-        width: 320px;
-        height: 320px;
+        width: 420px;
+        height: 420px;
         position: fixed;
-        background-color: #10eaf1;
-        bottom: -280px;
+        /* background-color: #10eaf1; */
+        background: linear-gradient(0deg, #10eaf1 0%, #10eaf199 52%, #10eaf111 95%);
+        bottom: -440px;
         left: 50%;
         border-radius: 50%;
         transform: translate(-50%, -50%);
@@ -188,6 +196,7 @@
 <body>
     <div class="pageBtn mask"></div>
     <button id="updateBtn" class="g-icon">Save</button>
+    <div id="weightAll"></div>
     <div class="container">
         <div class="text jp" id="jpText">jpText</div>
         <div class="text spell" id="spellText">spellText</div>
@@ -225,6 +234,7 @@
     var chText = $id("chText")
     var exampleText = $id("exampleText")
     var okBtnBox = $css("okBtnBox")[0]
+    var weightAll = $id("weightAll")
     var wordList = [];
     let currentWordIndex = [];
     let step = 0;
@@ -293,7 +303,7 @@
     function getRandomWeightedItem(items) {
         // 計算總權重
         const totalWeight = items.reduce((acc, item) => acc + item.ch.weight + item.jp.weight + item.spell.weight, 0);
-
+        weightAll.innerHTML = totalWeight
         // 隨機選擇一個值，範圍是 0 到總權重
         let random = Math.random() * totalWeight;
 
