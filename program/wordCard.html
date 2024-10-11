@@ -145,6 +145,15 @@
         transform: translate(-50%, -50%);
     }
 
+    .text.level {
+        font-size: 14px;
+        background-color: #5a7c9638;
+        padding: 4px 16px;
+        border-radius: 24px;
+        margin-bottom: 8px;
+        opacity: 0.8;
+    }
+
     .text.jp {
         font-size: 24px;
     }
@@ -181,9 +190,11 @@
 
     .okBtnBox>* {
         font-size: 16px;
-        padding: 12px;
-        margin: 0 16px;
+        padding: 24px;
+        margin: 8px;
         cursor: pointer;
+        background-color: #ffffff15;
+        border-radius: 50%;
         opacity: 0.8;
         transition: 0.3s;
     }
@@ -198,6 +209,7 @@
     <button id="updateBtn" class="g-icon">Save</button>
     <div id="weightAll"></div>
     <div class="container">
+        <div class="text level" id="textLevel">level</div>
         <div class="text jp" id="jpText">jpText</div>
         <div class="text spell" id="spellText">spellText</div>
         <div class="text ch" id="chText">cnText</div>
@@ -229,6 +241,7 @@
 
 
     var pageBtn = $css("pageBtn")[0]
+    var textLevel = $id("textLevel")
     var jpText = $id("jpText")
     var spellText = $id("spellText")
     var chText = $id("chText")
@@ -240,6 +253,7 @@
     let step = 0;
 
     function showText([index, place]) {
+        textLevel.innerHTML = wordList[index].level
         jpText.innerHTML = wordList[index].jp.text
         spellText.innerHTML = wordList[index].spell.text
         chText.innerHTML = wordList[index].ch.text
@@ -373,7 +387,7 @@
     // Fetch data on page load
     function firstOnload() {
         $.ajax({
-            url: "https://script.google.com/macros/s/AKfycbyUqTSPRUiCOosOVfwa9jRT5T0dAV8piDOZOyz0m-8hTrU7rmHYxG8s1D5bN96kHkXJ/exec",
+            url: "https://script.google.com/macros/s/AKfycbzUbq__1arTRg0P4GxHwvu1-MxY_vU2ZbjsVbl41TFUGTzDTOO05XP2dNB3PU708pii/exec",
             data: {
                 "onload": true,
             },
@@ -387,23 +401,27 @@
     }
 
 
-    function update() {
 
-        test(wordList)
+    function update() {
+        console.log(wordList);
         $.ajax({
-            url: "https://script.google.com/macros/s/AKfycbyUqTSPRUiCOosOVfwa9jRT5T0dAV8piDOZOyz0m-8hTrU7rmHYxG8s1D5bN96kHkXJ/exec",
+            type: "POST",  // 使用 POST 而不是 GET，GET有網址長度限制
+            url: "https://script.google.com/macros/s/AKfycbzUbq__1arTRg0P4GxHwvu1-MxY_vU2ZbjsVbl41TFUGTzDTOO05XP2dNB3PU708pii/exec",
             data: {
                 "update": true,
                 "wordList": JSON.stringify(wordList)
             },
+
             success: function (response) {
-
-                console.log(response)
-
+                console.log(response);
             },
+            error: function (error) {
+                console.log("fail")
+                console.error(error);
+            }
         });
-
     }
+
 
 
 
@@ -420,8 +438,6 @@
         if (keyID === 'KeyQ') {
             console.log(wordList)
         }
-
-
     }
 
 
