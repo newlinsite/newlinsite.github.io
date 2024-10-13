@@ -316,7 +316,13 @@
 
     function getRandomWeightedItem(items) {
         // 計算總權重
-        const totalWeight = items.reduce((acc, item) => acc + item.ch.weight + item.jp.weight + item.spell.weight, 0);
+        const totalWeight = items.reduce((acc, item) => {
+            const chWeight = Number(item.ch?.weight) || 0;
+            const jpWeight = Number(item.jp?.weight) || 0;
+            const spellWeight = Number(item.spell?.weight) || 0;
+
+            return acc + chWeight + jpWeight + spellWeight;
+        }, 0);
         weightAll.innerHTML = totalWeight
         // 隨機選擇一個值，範圍是 0 到總權重
         let random = Math.random() * totalWeight;
