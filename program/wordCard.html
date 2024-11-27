@@ -420,12 +420,48 @@
 
             success: function (response) {
                 console.log(response);
+                const toast = new Toast('Updated', 5000);
+                toast.show();
             },
             error: function (error) {
                 console.log("fail")
                 console.error(error);
+                const toast = new Toast('Fail', 5000);
+                toast.show();
             }
         });
+    }
+
+
+    class Toast {
+        constructor(text, duration = 5000, style = {}) {
+            this.text = text;
+            this.duration = duration;
+            this.style = {
+                position: 'fixed',
+                top: '20px',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                backgroundColor: '#061624',
+                color: '#888',
+                padding: '10px 20px',
+                borderRadius: '5px',
+                zIndex: 3000,
+                ...style
+            };
+        }
+
+        show() {
+            const toastElement = document.createElement('div');
+            toastElement.textContent = this.text;
+            Object.assign(toastElement.style, this.style);
+
+            document.body.appendChild(toastElement);
+
+            setTimeout(() => {
+                toastElement.remove();
+            }, this.duration);
+        }
     }
 
 

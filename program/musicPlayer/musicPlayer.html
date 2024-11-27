@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="musicPlayer.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="cdheader" style="background-image: url('cdHeader.png');"></div>
+
+        <div class="cdCover" style="background-image: url('cdCover.png');"></div>
+        <div class="cdSings">
+
+        </div>
+        <div class="cd">
+            <div class="CDsudak"></div>
+        </div>
+    </div>
+
+</body>
+
+
+<script>
+
+    // ****************************************************************************************************
+    //
+    // 
+    //      基本功能
+    //      
+    // 
+    // ****************************************************************************************************
+
+    var $id = function (name) {
+        return document.getElementById(name)
+    }
+    var $css = function (name) {
+        return document.getElementsByClassName(name)
+    }
+    var $tag = function (name) {
+        return document.getElementsByTagName(name)
+    }
+
+    var test = function (test) {
+        console.log(test)
+    }
+
+    // ****************************************************************************************************
+
+
+
+    class SingCard {
+        constructor(data, where) {
+            this.defaultImage = data.defaultImage
+            this.singCover = data.singCover
+            this.videoLink = data.videoLink
+            this.musicLink = data.musicLink
+            this.hintMusic = data.hintMusic
+            this.where = where
+        }
+        init() {
+            this.singCardContainer = document.createElement('div')
+            this.singCardContainer.classList = 'singCard'
+            this.singCardContainer.style.backgroundImage = `url(${this.defaultImage}.png)`
+
+            this.hintPlayBtn = document.createElement('div')
+            this.hintPlayBtn.classList = 'hintPlayBtn'
+
+
+            this.singCardContainer.appendChild(this.hintPlayBtn)
+            this.where.appendChild(this.singCardContainer)
+        }
+
+
+        playHint() {
+
+        }
+
+        playVideo() {
+
+            openVideoPlayer()
+
+
+
+        }
+
+        openVideoPlayer() {
+
+        }
+
+        isOk() { }
+
+        reset() { }
+
+    }
+
+
+    singCardData = [{
+        defaultImage: "singIcon01",
+        singCover: "",
+        videoLink: "",
+        musicLink: "",
+        hintMusic: "",
+    }, {
+        defaultImage: "singIcon02",
+        singCover: "",
+        videoLink: "",
+        musicLink: "",
+        hintMusic: "",
+    }, {
+        defaultImage: "singIcon03",
+        singCover: "",
+        videoLink: "",
+        musicLink: "",
+        hintMusic: "",
+    }, {
+        defaultImage: "singIcon04",
+        singCover: "",
+        videoLink: "",
+        musicLink: "",
+        hintMusic: "",
+    }, {
+        defaultImage: "singIcon05",
+        singCover: "",
+        videoLink: "",
+        musicLink: "",
+        hintMusic: "",
+    }, {
+        defaultImage: "singIcon06",
+        singCover: "",
+        videoLink: "",
+        musicLink: "",
+        hintMusic: "",
+    }, {
+        defaultImage: "singIcon07",
+        singCover: "",
+        videoLink: "",
+        musicLink: "",
+        hintMusic: "",
+    }, {
+        defaultImage: "singIcon08",
+        singCover: "",
+        videoLink: "",
+        musicLink: "",
+        hintMusic: "",
+    }, {
+        defaultImage: "singIcon09",
+        singCover: "",
+        videoLink: "",
+        musicLink: "",
+        hintMusic: "",
+    }]
+
+
+    cdSings = $css("cdSings")[0]
+    this.singCards = singCardData.map((data, index) => {
+        const card = new SingCard(data, cdSings)
+        card.init()
+        return card
+
+
+    })
+
+
+</script>
+
+
+</html>
