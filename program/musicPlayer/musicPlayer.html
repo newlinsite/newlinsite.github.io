@@ -17,6 +17,12 @@
         <div class="cdSings">
 
         </div>
+        <div class="videoPlayer">
+            <div class="maruBtnBox">
+                <div class="maruBtnOk"></div>
+                <div class="maruBtnNo"></div>
+            </div>
+        </div>
         <div class="cd">
             <div class="CDsudak"></div>
         </div>
@@ -50,6 +56,14 @@
     }
 
     // ****************************************************************************************************
+
+    var cdSingBox = $css("cdSings")[0]
+    var cd = $css("cd")[0]
+    var maruBtnOk = $css("maruBtnOk")[0]
+    var maruBtnNo = $css("maruBtnNo")[0]
+    var playerNow = 0
+
+
 
 
 
@@ -99,9 +113,6 @@
         reset() { }
 
     }
-
-
-
 
 
 
@@ -162,9 +173,8 @@
     }]
 
 
-    cdSings = $css("cdSings")[0]
     this.singCards = singCardData.map((data, index) => {
-        const card = new SingCard(data, cdSings)
+        const card = new SingCard(data, cdSingBox)
         card.init()
         return card
 
